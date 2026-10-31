@@ -121,7 +121,7 @@ fn main() {
 
             // Check WebSocket Upgrade
             let is_upgrade = req.headers.get("upgrade").map(|s| s.to_lowercase() == "websocket").unwrap_or(false);
-            if req.path == "/api/v1/ws" && is_upgrade {
+            if (req.path == "/api/v1/ws" || req.path == "/api/v2/ws") && is_upgrade {
                 let ticket_param = req.query.get("ticket").map(|s| s.as_str()).unwrap_or("");
                 let origin = req.headers.get("origin").map(|s| s.as_str());
 
@@ -153,12 +153,13 @@ fn main() {
                     }
                 };
 
-                let conn = match perform_ws_handshake(stream, &ws_key) {
+                let subprotocol = if ticket.protocol_version == "2.0.0" { "discovery.v2" } else { "discovery.v1" };
+                let conn = match perform_ws_handshake(stream, &ws_key, subprotocol, &ticket.protocol_version) {
                     Ok(c) => c,
                     Err(_) => return,
                 };
 
-                run_ws_session(conn, ticket, player_id, game_c, config_c, spatial_c, ai_c, wallet_c, comp_c, bcast_c, inst_c);
+                run_ws_session(conn, ticket, player_id, game_c, config_c, spatial_c, ai_c, wallet_c, comp_c, knowledge_c, bcast_c, inst_c);
             } else {
                 let resp = dispatch_http(&req, &auth_c, &game_c, &config_c, &spatial_c, &ai_c, &wallet_c, &comp_c, &knowledge_c, &inst_c);
                 let _ = resp.write_to(&mut stream);

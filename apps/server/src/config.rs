@@ -45,6 +45,7 @@ impl ConfigService {
         // Fallback to fixture files if DB was empty
         let admin_values = admin_val.unwrap_or_else(|| {
             let content = std::fs::read_to_string("assets/config/admin-config.json")
+                .or_else(|_| std::fs::read_to_string("discovery-protocol-2.0.0/fixtures/v2.0.0/http/admin-config.json"))
                 .or_else(|_| std::fs::read_to_string("discovery-protocol-1.1.0/fixtures/v1.1.0/http/admin-config.json"))
                 .or_else(|_| std::fs::read_to_string("discovery-protocol-1.0.0/fixtures/http/admin-config.json"))
                 .unwrap_or_else(|_| "{}".to_string());
@@ -53,6 +54,7 @@ impl ConfigService {
 
         let public_values = pub_val.unwrap_or_else(|| {
             let content = std::fs::read_to_string("assets/config/public-config.json")
+                .or_else(|_| std::fs::read_to_string("discovery-protocol-2.0.0/fixtures/v2.0.0/http/public-config.json"))
                 .or_else(|_| std::fs::read_to_string("discovery-protocol-1.1.0/fixtures/v1.1.0/http/public-config.json"))
                 .or_else(|_| std::fs::read_to_string("discovery-protocol-1.0.0/fixtures/http/public-config.json"))
                 .unwrap_or_else(|_| "{}".to_string());
@@ -148,10 +150,10 @@ impl ConfigService {
             }
         }
 
-        // Build new public config (strip server-only npcBehavior, activeChunkIds, placements, npcIds)
+        // Build new public config (strip server-only npcBehavior, economy, activeChunkIds, placements, npcIds)
         let mut pub_values = new_values.clone();
         if let JsonValue::Object(entries) = &mut pub_values {
-            entries.retain(|(k, _)| k != "npcBehavior");
+            entries.retain(|(k, _)| k != "npcBehavior" && k != "economy");
             if let Some((_, JsonValue::Object(w_entries))) = entries.iter_mut().find(|(k, _)| k == "world") {
                 w_entries.retain(|(k, _)| k != "activeChunkIds" && k != "placements" && k != "npcIds");
             }

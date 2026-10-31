@@ -16,6 +16,7 @@ pub struct SpatialService {
 impl SpatialService {
     pub fn new() -> Self {
         let catalog_str = std::fs::read_to_string("assets/world/catalog.server-only.json")
+            .or_else(|_| std::fs::read_to_string("discovery-protocol-2.0.0/fixtures/v2.0.0/catalog.server-only.json"))
             .or_else(|_| std::fs::read_to_string("discovery-protocol-1.1.0/fixtures/catalog.server-only.json"))
             .or_else(|_| std::fs::read_to_string("discovery-protocol-1.0.0/fixtures/catalog.server-only.json"))
             .unwrap_or_else(|_| "{}".to_string());
@@ -70,6 +71,8 @@ impl SpatialService {
         // Pre-load all available resources from fixtures/resources/
         let res_dir = if std::path::Path::new("assets/world/resources").exists() {
             "assets/world/resources"
+        } else if std::path::Path::new("discovery-protocol-2.0.0/fixtures/resources").exists() {
+            "discovery-protocol-2.0.0/fixtures/resources"
         } else if std::path::Path::new("discovery-protocol-1.1.0/fixtures/resources").exists() {
             "discovery-protocol-1.1.0/fixtures/resources"
         } else {

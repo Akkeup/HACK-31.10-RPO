@@ -141,21 +141,31 @@ pub fn dispatch_http(
     instance_id: &str,
 ) -> HttpResponse {
     let method = req.method.as_str();
-    let path = req.path.as_str();
+    let raw_path = req.path.as_str();
+    let norm_path = if raw_path.starts_with("/api/v2/") {
+        format!("/api/v1/{}", &raw_path["/api/v2/".len()..])
+    } else {
+        raw_path.to_string()
+    };
+    let path = norm_path.as_str();
 
     // Health
-    if path == "/health/live" || path == "/health/ready" {
+    if raw_path == "/health/live" || raw_path == "/health/ready" || path == "/health/live" || path == "/health/ready" {
         let val = JsonValue::Object(vec![
             ("status".to_string(), JsonValue::String("pass".to_string())),
-            ("version".to_string(), JsonValue::String("1.0.0".to_string())),
+            ("version".to_string(), JsonValue::String("2.0.0".to_string())),
         ]);
         return HttpResponse::json(200, "OK", &val);
     }
 
     // Bootstrap
-    if path == "/api/v1/bootstrap" && method == "GET" {
+    if (path == "/api/v1/bootstrap" || raw_path == "/api/v2/bootstrap") && method == "GET" {
         let val = JsonValue::Object(vec![
-            ("protocolVersions".to_string(), JsonValue::Array(vec![JsonValue::String("1.0.0".to_string()), JsonValue::String("1.1.0".to_string())])),
+            ("protocolVersions".to_string(), JsonValue::Array(vec![
+                JsonValue::String("2.0.0".to_string()),
+                JsonValue::String("1.1.0".to_string()),
+                JsonValue::String("1.0.0".to_string()),
+            ])),
             ("serverInstanceId".to_string(), JsonValue::String(instance_id.to_string())),
             ("worldIds".to_string(), JsonValue::Array(vec![JsonValue::String("discovery-campus".to_string())])),
             ("offline".to_string(), JsonValue::Bool(true)),
@@ -258,15 +268,16 @@ pub fn dispatch_http(
             let origin = req.headers.get("origin").map(|s| s.as_str()).unwrap_or("");
             let body_str = String::from_utf8_lossy(&req.body);
             let json = parse_json(&body_str).unwrap_or(JsonValue::Null);
-            let proto_ver = json.get_str("protocolVersion").unwrap_or("1.0.0");
+            let proto_ver = json.get_str("protocolVersion").unwrap_or(if raw_path.starts_with("/api/v2") { "2.0.0" } else { "1.0.0" });
 
             match auth.create_ws_ticket(&user.user_id, session_id, origin, proto_ver) {
                 Ok(ticket_str) => {
+                    let is_v2 = proto_ver == "2.0.0";
                     let resp = TicketResponse {
                         ticket: ticket_str,
                         expires_in_seconds: 30,
-                        ws_path: "/api/v1/ws".to_string(),
-                        subprotocol: "discovery.v1".to_string(),
+                        ws_path: if is_v2 { "/api/v2/ws".to_string() } else { "/api/v1/ws".to_string() },
+                        subprotocol: if is_v2 { "discovery.v2".to_string() } else { "discovery.v1".to_string() },
                     };
                     return HttpResponse::json(200, "OK", &resp.to_json());
                 }
@@ -473,29 +484,29 @@ pub fn dispatch_http(
         let val = JsonValue::Object(vec![
             ("books".to_string(), JsonValue::Array(vec![
                 JsonValue::Object(vec![
-                    ("bookId".to_string(), JsonValue::String("book-math".to_string())),
-                    ("shelfId".to_string(), JsonValue::String("shelf-math".to_string())),
+                    ("bookId".to_string(), JsonValue::String("book-math-basics".to_string())),
+                    ("shelfId".to_string(), JsonValue::String("shelf-mathematics".to_string())),
                     ("moduleId".to_string(), JsonValue::String("math-basics".to_string())),
                     ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
                     ("title".to_string(), JsonValue::String("Арифметика и базовые вычисления".to_string())),
                 ]),
                 JsonValue::Object(vec![
-                    ("bookId".to_string(), JsonValue::String("book-info".to_string())),
+                    ("bookId".to_string(), JsonValue::String("book-informatics-basics".to_string())),
                     ("shelfId".to_string(), JsonValue::String("shelf-informatics".to_string())),
                     ("moduleId".to_string(), JsonValue::String("informatics-basics".to_string())),
                     ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
                     ("title".to_string(), JsonValue::String("Информатика и двоичные данные".to_string())),
                 ]),
                 JsonValue::Object(vec![
-                    ("bookId".to_string(), JsonValue::String("book-hist".to_string())),
+                    ("bookId".to_string(), JsonValue::String("book-history-basics".to_string())),
                     ("shelfId".to_string(), JsonValue::String("shelf-history".to_string())),
                     ("moduleId".to_string(), JsonValue::String("history-basics".to_string())),
                     ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
                     ("title".to_string(), JsonValue::String("Исторические источники и хронология".to_string())),
                 ]),
                 JsonValue::Object(vec![
-                    ("bookId".to_string(), JsonValue::String("book-flags".to_string())),
-                    ("shelfId".to_string(), JsonValue::String("shelf-flags".to_string())),
+                    ("bookId".to_string(), JsonValue::String("book-flags-demo".to_string())),
+                    ("shelfId".to_string(), JsonValue::String("shelf-geography_flags".to_string())),
                     ("moduleId".to_string(), JsonValue::String("flags-basics".to_string())),
                     ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
                     ("title".to_string(), JsonValue::String("Атлас государственных флагов".to_string())),

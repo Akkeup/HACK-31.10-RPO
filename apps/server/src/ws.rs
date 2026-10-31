@@ -19,11 +19,12 @@ use crate::wallet::WalletService;
 pub struct WsWriter {
     stream: TcpStream,
     pub server_seq: u64,
+    pub protocol_version: String,
 }
 
 impl WsWriter {
-    pub fn new(stream: TcpStream) -> Self {
-        Self { stream, server_seq: 1 }
+    pub fn new(stream: TcpStream, protocol_version: &str) -> Self {
+        Self { stream, server_seq: 1, protocol_version: protocol_version.to_string() }
     }
 
     pub fn write_frame(&mut self, opcode: u8, payload: &[u8]) -> Result<(), std::io::Error> {
@@ -66,7 +67,7 @@ impl WsWriter {
 
     pub fn send_envelope(&mut self, msg_type: &str, req_id: Option<String>, payload: JsonValue) -> Result<(), std::io::Error> {
         let seq = self.next_seq();
-        let env = make_server_envelope(msg_type, req_id, seq, &rfc3339_now(), payload);
+        let env = make_server_envelope(&self.protocol_version, msg_type, req_id, seq, &rfc3339_now(), payload);
         self.write_json(&env)
     }
 }
@@ -125,9 +126,9 @@ pub struct WsConnection {
 }
 
 impl WsConnection {
-    pub fn new(stream: TcpStream) -> Result<Self, std::io::Error> {
+    pub fn new(stream: TcpStream, protocol_version: &str) -> Result<Self, std::io::Error> {
         let write_stream = stream.try_clone()?;
-        let writer = Arc::new(Mutex::new(WsWriter::new(write_stream)));
+        let writer = Arc::new(Mutex::new(WsWriter::new(write_stream, protocol_version)));
         Ok(Self { reader: stream, writer })
     }
 
@@ -189,7 +190,7 @@ impl WsConnection {
 }
 
 
-pub fn perform_ws_handshake(mut stream: TcpStream, ws_key: &str) -> Result<WsConnection, std::io::Error> {
+pub fn perform_ws_handshake(mut stream: TcpStream, ws_key: &str, subprotocol: &str, protocol_version: &str) -> Result<WsConnection, std::io::Error> {
     let mut combined = String::from(ws_key);
     combined.push_str("258EAFA5-E914-47DA-95CA-C5AB0DC85B11");
     let sha1 = sha1_bytes(combined.as_bytes());
@@ -200,12 +201,12 @@ pub fn perform_ws_handshake(mut stream: TcpStream, ws_key: &str) -> Result<WsCon
          Upgrade: websocket\r\n\
          Connection: Upgrade\r\n\
          Sec-WebSocket-Accept: {}\r\n\
-         Sec-WebSocket-Protocol: discovery.v1\r\n\r\n",
-        accept
+         Sec-WebSocket-Protocol: {}\r\n\r\n",
+        accept, subprotocol
     );
     stream.write_all(resp.as_bytes())?;
     stream.flush()?;
-    WsConnection::new(stream)
+    WsConnection::new(stream, protocol_version)
 }
 
 pub fn rfc3339_now() -> String {
@@ -222,6 +223,7 @@ pub fn run_ws_session(
     ai: Arc<NpcAiService>,
     wallet: Arc<WalletService>,
     competition: Arc<CompetitionService>,
+    knowledge: Arc<crate::knowledge::KnowledgeService>,
     broadcaster: Arc<WsBroadcaster>,
     instance_id: String,
 ) {
@@ -261,7 +263,7 @@ pub fn run_ws_session(
             Err(_) => {
                 let seq = conn.next_seq();
                 let err = ErrorResponse::new("INVALID_REQUEST", "Invalid JSON syntax", false, None);
-                let _ = conn.write_json(&make_server_envelope("server.error", None, seq, &rfc3339_now(), err.to_json()));
+                let _ = conn.write_json(&make_server_envelope(&ticket.protocol_version, "server.error", None, seq, &rfc3339_now(), err.to_json()));
                 continue;
             }
         };
@@ -274,7 +276,7 @@ pub fn run_ws_session(
             if has_received_hello {
                 let seq = conn.next_seq();
                 let err = ErrorResponse::new("INVALID_REQUEST", "client.hello already received", false, req_id.clone());
-                let _ = conn.write_json(&make_server_envelope("server.error", req_id, seq, &rfc3339_now(), err.to_json()));
+                let _ = conn.write_json(&make_server_envelope(&ticket.protocol_version, "server.error", req_id, seq, &rfc3339_now(), err.to_json()));
                 continue;
             }
             has_received_hello = true;
@@ -289,6 +291,16 @@ pub fn run_ws_session(
             }
         } else if msg_type == "npc.interact" {
             handle_npc_interact(&mut conn, &ticket, &player_id, req_id, payload_obj, &game, &ai, &config);
+        } else if msg_type == "npc.cancel" {
+            handle_npc_cancel(&conn, req_id, payload_obj);
+        } else if msg_type == "library.open" {
+            handle_library_open(&conn, req_id, payload_obj, &knowledge, &game, &ticket.user_id);
+        } else if msg_type == "country.describe" {
+            handle_country_describe(&conn, req_id, payload_obj, &knowledge);
+        } else if msg_type == "lesson.open" {
+            handle_lesson_open(&conn, req_id, payload_obj, &knowledge, &game, &ticket.user_id);
+        } else if msg_type == "lesson.close" {
+            handle_lesson_close(&conn, req_id, &game, &ticket.user_id);
         } else if msg_type == "competition.join" {
             handle_competition_join(&conn, &ticket, &player_id, req_id, payload_obj, &game, &competition, &broadcaster);
         } else if msg_type == "competition.configure" {
@@ -306,7 +318,7 @@ pub fn run_ws_session(
             let seq = conn.next_seq();
             let nonce = payload_obj.and_then(|p| p.get_str("nonce")).unwrap_or("0");
             let pong = JsonValue::Object(vec![("nonce".to_string(), JsonValue::String(nonce.to_string()))]);
-            let _ = conn.write_json(&make_server_envelope("server.pong", req_id, seq, &rfc3339_now(), pong));
+            let _ = conn.write_json(&make_server_envelope(&ticket.protocol_version, "server.pong", req_id, seq, &rfc3339_now(), pong));
         }
     }
 
@@ -338,14 +350,12 @@ fn handle_hello(
         ("heartbeatTimeoutMs".to_string(), JsonValue::Number(30000.0)),
     ]);
 
-    let seq = conn.next_seq();
-    let _ = conn.write_json(&make_server_envelope("server.welcome", req_id, seq, &rfc3339_now(), welcome_payload));
+    let _ = conn.writer.lock().unwrap().send_envelope("server.welcome", req_id, welcome_payload);
 
     // Send world.interest
     let (px, _, pz) = game.get_player_pos(&ticket.session_id, player_id).unwrap_or((1.0, 0.0, 1.0));
     let interest = spatial.compute_interest(px, pz, 1);
-    let int_seq = conn.next_seq();
-    let _ = conn.write_json(&make_server_envelope("world.interest", None, int_seq, &rfc3339_now(), interest.to_json()));
+    let _ = conn.writer.lock().unwrap().send_envelope("world.interest", None, interest.to_json());
 }
 
 fn send_snapshot(
@@ -378,8 +388,7 @@ fn send_snapshot(
             ("npcs".to_string(), JsonValue::Array(npcs.into_iter().map(|n| n.to_json()).collect())),
             ("tables".to_string(), JsonValue::Array(tables)),
         ]);
-        let seq = conn.next_seq();
-        let _ = conn.write_json(&make_server_envelope("world.snapshot", None, seq, &rfc3339_now(), snapshot_payload));
+        let _ = conn.writer.lock().unwrap().send_envelope("world.snapshot", None, snapshot_payload);
     }
 }
 
@@ -418,9 +427,8 @@ fn handle_npc_interact(
     let (_, _, max_dist) = config.get_character_speed();
 
     if dist > max_dist {
-        let seq = conn.next_seq();
         let err = ErrorResponse::new("OUT_OF_RANGE", "Player is out of range to interact with NPC", true, Some(req_id_str.clone()));
-        let _ = conn.write_json(&make_server_envelope("server.error", Some(req_id_str), seq, &rfc3339_now(), err.to_json()));
+        let _ = conn.writer.lock().unwrap().send_envelope("server.error", Some(req_id_str), err.to_json());
         return;
     }
 
@@ -436,8 +444,7 @@ fn handle_npc_interact(
         error: None,
     };
     let acc_payload = JsonValue::Object(vec![("interaction".to_string(), pending_dto.to_json())]);
-    let acc_seq = conn.next_seq();
-    let _ = conn.write_json(&make_server_envelope("npc.accepted", Some(req_id_str.clone()), acc_seq, &rfc3339_now(), acc_payload));
+    let _ = conn.writer.lock().unwrap().send_envelope("npc.accepted", Some(req_id_str.clone()), acc_payload);
 
     // 2. Process interaction
     let cur_prog = ai.get_progress(&ticket.user_id);
@@ -449,8 +456,7 @@ fn handle_npc_interact(
 
     // 3. Send npc.result
     let res_payload = JsonValue::Object(vec![("interaction".to_string(), result.to_json())]);
-    let res_seq = conn.next_seq();
-    let _ = conn.write_json(&make_server_envelope("npc.result", Some(req_id_str), res_seq, &rfc3339_now(), res_payload));
+    let _ = conn.writer.lock().unwrap().send_envelope("npc.result", Some(req_id_str), res_payload);
 
     // 4. Send progress.updated
     let updated_prog = ai.get_progress(&ticket.user_id);
@@ -464,8 +470,7 @@ fn handle_npc_interact(
         },
         updated_at: rfc3339_now(),
     };
-    let prog_seq = conn.next_seq();
-    let _ = conn.write_json(&make_server_envelope("progress.updated", None, prog_seq, &rfc3339_now(), prog_dto.to_json()));
+    let _ = conn.writer.lock().unwrap().send_envelope("progress.updated", None, prog_dto.to_json());
 }
 
 fn handle_competition_join(
@@ -640,15 +645,29 @@ fn handle_competition_answer(
     };
     let match_id = p.get_str("matchId").unwrap_or("");
     let question_id = p.get_str("questionId").unwrap_or("");
-    let option_id = p.get_str("optionId").unwrap_or("");
+    let answer_val = if let Some(ans_obj) = p.get("answer") {
+        ans_obj.get_str("value").unwrap_or("")
+    } else {
+        p.get_str("optionId").unwrap_or("")
+    };
 
-    match competition.submit_answer(player_id, match_id, question_id, option_id) {
+    let ans_dto = if let Some(a) = p.get("answer") {
+        a.clone()
+    } else {
+        JsonValue::Object(vec![
+            ("kind".to_string(), JsonValue::String("single_choice".to_string())),
+            ("value".to_string(), JsonValue::String(answer_val.to_string())),
+        ])
+    };
+
+    match competition.submit_answer(player_id, match_id, question_id, answer_val) {
         Ok(round_closed) => {
             let acc_payload = JsonValue::Object(vec![
                 ("matchId".to_string(), JsonValue::String(match_id.to_string())),
                 ("questionId".to_string(), JsonValue::String(question_id.to_string())),
-                ("optionId".to_string(), JsonValue::String(option_id.to_string())),
+                ("answer".to_string(), ans_dto),
                 ("acceptedAt".to_string(), JsonValue::String(rfc3339_now())),
+                ("optionId".to_string(), JsonValue::String(answer_val.to_string())),
             ]);
             let _ = conn.writer.lock().unwrap().send_envelope("competition.answer.accepted", req_id, acc_payload);
 
@@ -711,6 +730,114 @@ fn handle_competition_leave(
     if !remaining.is_empty() {
         broadcaster.broadcast_to_players(&remaining, "competition.state", &state_val);
     }
+}
+
+fn handle_library_open(
+    conn: &WsConnection,
+    req_id: Option<String>,
+    payload: Option<&JsonValue>,
+    knowledge: &Arc<crate::knowledge::KnowledgeService>,
+    game: &Arc<GameManager>,
+    user_id: &str,
+) {
+    let book_id = payload.and_then(|p| p.get_str("bookId")).unwrap_or("");
+    let module_id = match book_id {
+        "book-info" | "book-informatics-basics" => "informatics-basics",
+        "book-hist" | "book-history-basics" => "history-basics",
+        "book-flags" | "book-flags-demo" => "flags-basics",
+        _ => "math-basics",
+    };
+    let material = knowledge.get_module_material(module_id, "v1").unwrap_or(JsonValue::Null);
+    let lesson_id = AuthService::generate_id();
+    game.update_player_activity(user_id, "reading", Some(book_id.to_string()), None);
+    let resp_payload = JsonValue::Object(vec![
+        ("lessonId".to_string(), JsonValue::String(lesson_id)),
+        ("material".to_string(), material),
+    ]);
+    let _ = conn.writer.lock().unwrap().send_envelope("library.opened", req_id, resp_payload);
+}
+
+fn handle_country_describe(
+    conn: &WsConnection,
+    req_id: Option<String>,
+    payload: Option<&JsonValue>,
+    knowledge: &Arc<crate::knowledge::KnowledgeService>,
+) {
+    let country_id = payload.and_then(|p| p.get_str("countryId")).unwrap_or("");
+    if let Some(card) = knowledge.get_country_description(country_id) {
+        let _ = conn.writer.lock().unwrap().send_envelope("country.description", req_id, card);
+    } else {
+        let err = ErrorResponse::new("NOT_FOUND", "Country card not found", false, req_id.clone());
+        let _ = conn.writer.lock().unwrap().send_envelope("server.error", req_id, err.to_json());
+    }
+}
+
+fn handle_lesson_open(
+    conn: &WsConnection,
+    req_id: Option<String>,
+    payload: Option<&JsonValue>,
+    knowledge: &Arc<crate::knowledge::KnowledgeService>,
+    game: &Arc<GameManager>,
+    user_id: &str,
+) {
+    let npc_id = payload.and_then(|p| p.get_str("npcId")).unwrap_or("");
+    let module_id = match npc_id {
+        "examiner-informatics" | "teacher-informatics" => "informatics-basics",
+        "examiner-history" | "teacher-history" => "history-basics",
+        "examiner-flags" | "teacher-flags" => "flags-basics",
+        _ => "math-basics",
+    };
+    let material = knowledge.get_module_material(module_id, "v1").unwrap_or(JsonValue::Null);
+    let lesson_id = AuthService::generate_id();
+    game.update_player_activity(user_id, "learning", Some(npc_id.to_string()), None);
+    let resp_payload = JsonValue::Object(vec![
+        ("lessonId".to_string(), JsonValue::String(lesson_id)),
+        ("material".to_string(), material),
+    ]);
+    let _ = conn.writer.lock().unwrap().send_envelope("lesson.opened", req_id, resp_payload);
+}
+
+fn handle_lesson_close(
+    conn: &WsConnection,
+    req_id: Option<String>,
+    game: &Arc<GameManager>,
+    user_id: &str,
+) {
+    game.update_player_activity(user_id, "exploring", None, None);
+    let act_payload = JsonValue::Object(vec![
+        ("activity".to_string(), JsonValue::Object(vec![
+            ("mode".to_string(), JsonValue::String("exploring".to_string())),
+            ("targetId".to_string(), JsonValue::Null),
+            ("seatId".to_string(), JsonValue::Null),
+        ])),
+        ("lessonId".to_string(), JsonValue::Null),
+        ("attemptId".to_string(), JsonValue::Null),
+        ("matchId".to_string(), JsonValue::Null),
+        ("lobbyId".to_string(), JsonValue::Null),
+        ("revision".to_string(), JsonValue::Number(1.0)),
+    ]);
+    let _ = conn.writer.lock().unwrap().send_envelope("activity.changed", req_id, act_payload);
+}
+
+fn handle_npc_cancel(
+    conn: &WsConnection,
+    req_id: Option<String>,
+    payload: Option<&JsonValue>,
+) {
+    let req_id_str = req_id.unwrap_or_else(|| AuthService::generate_id());
+    let npc_id = payload.and_then(|p| p.get_str("npcId")).unwrap_or("npc-guide");
+    let cancel_dto = InteractionDto {
+        request_id: req_id_str.clone(),
+        npc_id: npc_id.to_string(),
+        status: "cancelled".to_string(),
+        text: "".to_string(),
+        source: "none".to_string(),
+        knowledge_ids: Vec::new(),
+        progress_revision: 1,
+        error: None,
+    };
+    let cancel_payload = JsonValue::Object(vec![("interaction".to_string(), cancel_dto.to_json())]);
+    let _ = conn.writer.lock().unwrap().send_envelope("npc.cancelled", Some(req_id_str), cancel_payload);
 }
 
 

@@ -381,14 +381,16 @@ impl InteractionDto {
 }
 
 pub fn make_server_envelope(
+    proto_ver: &str,
     msg_type: &str,
     request_id: Option<String>,
     server_seq: u64,
     server_time: &str,
     payload: JsonValue,
 ) -> JsonValue {
+    let ver = if proto_ver.is_empty() { "2.0.0" } else { proto_ver };
     JsonValue::Object(vec![
-        ("protocolVersion".to_string(), JsonValue::String("1.1.0".to_string())),
+        ("protocolVersion".to_string(), JsonValue::String(ver.to_string())),
         ("type".to_string(), JsonValue::String(msg_type.to_string())),
         ("requestId".to_string(), match request_id {
             Some(id) => JsonValue::String(id),

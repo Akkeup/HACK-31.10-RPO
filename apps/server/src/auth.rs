@@ -140,7 +140,7 @@ impl AuthService {
         origin: &str,
         protocol_version: &str,
     ) -> Result<String, (u16, &'static str, &'static str)> {
-        if protocol_version != "1.0.0" && protocol_version != "1.1.0" {
+        if protocol_version != "1.0.0" && protocol_version != "1.1.0" && protocol_version != "2.0.0" {
             return Err((409, "VERSION_UNSUPPORTED", "Unsupported protocol version"));
         }
         let ticket_str = format!("tkt_{}", Self::generate_id());

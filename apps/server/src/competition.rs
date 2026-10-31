@@ -228,10 +228,13 @@ pub struct CompetitionService {
 impl CompetitionService {
     pub fn new(db: DbPool, wallet: Arc<WalletService>) -> Self {
         let mut packs = HashMap::new();
-        for id in &["math-basics", "informatics-basics", "history-basics"] {
+        for id in &["math-basics", "informatics-basics", "history-basics", "flags-basics"] {
             let path_primary = format!("assets/content/{}.json", id);
-            let path_fallback = format!("discovery-protocol-1.1.0/fixtures/v1.1.0/content-server-only/{}.json", id);
-            let content_res = std::fs::read_to_string(&path_primary).or_else(|_| std::fs::read_to_string(&path_fallback));
+            let path_fallback_v2 = format!("discovery-protocol-2.0.0/fixtures/v2.0.0/content-server-only/{}.json", id);
+            let path_fallback_v1 = format!("discovery-protocol-1.1.0/fixtures/v1.1.0/content-server-only/{}.json", id);
+            let content_res = std::fs::read_to_string(&path_primary)
+                .or_else(|_| std::fs::read_to_string(&path_fallback_v2))
+                .or_else(|_| std::fs::read_to_string(&path_fallback_v1));
             if let Ok(content) = content_res {
                 if let Ok(json) = parse_json(&content) {
                     let m = json.get("module").unwrap();
@@ -477,6 +480,7 @@ impl CompetitionService {
         t.module_id = match subject {
             "informatics" => "informatics-basics".to_string(),
             "history" => "history-basics".to_string(),
+            "geography_flags" => "flags-basics".to_string(),
             _ => "math-basics".to_string(),
         };
         t.stake_aura = stake;
@@ -647,7 +651,13 @@ impl CompetitionService {
 
         let mut scores_summary = Vec::new();
         for p in &mut t.participants {
-            let is_corr = p.current_option_id.as_deref() == Some(&round.correct_option_id);
+            let is_corr = if let Some(sub) = &p.current_option_id {
+                let sub_trimmed = sub.trim().to_lowercase();
+                let corr_trimmed = round.correct_option_id.trim().to_lowercase();
+                sub_trimmed == corr_trimmed || round.options.iter().any(|o| o.option_id == round.correct_option_id && o.text.trim().to_lowercase() == sub_trimmed)
+            } else {
+                false
+            };
             if is_corr {
                 p.score += 1;
             }
@@ -814,11 +824,19 @@ impl CompetitionService {
             Some(o) => JsonValue::String(o.clone()),
             None => JsonValue::Null,
         };
+        let submitted_ans = match &p.current_option_id {
+            Some(o) => JsonValue::Object(vec![
+                ("kind".to_string(), JsonValue::String("single_choice".to_string())),
+                ("value".to_string(), JsonValue::String(o.clone())),
+            ]),
+            None => JsonValue::Null,
+        };
         let ans_acc = p.current_option_id.is_some();
 
         Some(JsonValue::Object(vec![
             ("state".to_string(), state_val),
             ("selectedOptionId".to_string(), selected_opt),
+            ("submittedAnswer".to_string(), submitted_ans),
             ("answerAccepted".to_string(), JsonValue::Bool(ans_acc)),
         ]))
     }
@@ -888,7 +906,8 @@ impl CompetitionService {
             ("matchId".to_string(), JsonValue::String(match_id)),
             ("ordinal".to_string(), JsonValue::Number(ord as f64)),
             ("questionId".to_string(), JsonValue::String(q_id)),
-            ("correctOptionId".to_string(), JsonValue::String(corr_id)),
+            ("correctOptionId".to_string(), JsonValue::String(corr_id.clone())),
+            ("expectedAnswer".to_string(), JsonValue::String(corr_id)),
             ("explanation".to_string(), JsonValue::String(expl)),
             ("scores".to_string(), JsonValue::Array(scores_arr)),
             ("nextRoundStartsAt".to_string(), next_val),

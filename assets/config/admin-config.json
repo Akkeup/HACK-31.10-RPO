@@ -410,7 +410,8 @@
             "subjects": [
               "mathematics",
               "informatics",
-              "history"
+              "history",
+              "geography_flags"
             ]
           }
         ]
@@ -420,6 +421,68 @@
       "initialBalanceAura": 100,
       "maxBalanceAura": 1000000000,
       "currency": "aura"
+    },
+    "readingRoom": {
+      "roomId": "reading-room-main",
+      "style": "warm_reading_room",
+      "shelves": [
+        {
+          "shelfId": "shelf-mathematics",
+          "subject": "mathematics",
+          "bookIds": [
+            "book-math-basics"
+          ]
+        },
+        {
+          "shelfId": "shelf-informatics",
+          "subject": "informatics",
+          "bookIds": [
+            "book-informatics-basics"
+          ]
+        },
+        {
+          "shelfId": "shelf-history",
+          "subject": "history",
+          "bookIds": [
+            "book-history-basics"
+          ]
+        },
+        {
+          "shelfId": "shelf-geography_flags",
+          "subject": "geography_flags",
+          "bookIds": [
+            "book-flags-demo"
+          ]
+        }
+      ],
+      "notebooks": [
+        {
+          "notebookId": "notebook-math-basics",
+          "moduleId": "math-basics",
+          "examinerId": "examiner-mathematics",
+          "seatId": "seat-math-basics"
+        },
+        {
+          "notebookId": "notebook-informatics-basics",
+          "moduleId": "informatics-basics",
+          "examinerId": "examiner-informatics",
+          "seatId": "seat-informatics-basics"
+        },
+        {
+          "notebookId": "notebook-history-basics",
+          "moduleId": "history-basics",
+          "examinerId": "examiner-history",
+          "seatId": "seat-history-basics"
+        },
+        {
+          "notebookId": "notebook-flags-demo",
+          "moduleId": "flags-demo",
+          "examinerId": "examiner-flags",
+          "seatId": "seat-flags-demo"
+        }
+      ],
+      "competitionTableId": "competition-central",
+      "assetSlots": []
     }
   }
 }
