@@ -71,6 +71,13 @@ try:
         d = json.loads(r.read())
         assert d["status"] == "pass"
 
+    print("Testing Static Frontend Serving at / ...")
+    with urllib.request.urlopen("http://127.0.0.1:8089/") as r:
+        assert r.status == 200
+        html = r.read().decode("utf-8")
+        assert "<!doctype html>" in html.lower()
+        assert "discovery" in html.lower()
+
     print("Testing /api/v2/bootstrap...")
     with urllib.request.urlopen("http://127.0.0.1:8089/api/v2/bootstrap") as r:
         assert r.status == 200
@@ -195,6 +202,12 @@ try:
     country_msg = recv_ws_frame(s)
     assert country_msg["type"] == "country.description"
     assert country_msg["payload"]["countryId"] == "country-jp"
+
+    print("Sending lesson.close to restore exploring mode...")
+    send_ws_frame(s, '{"protocolVersion":"2.0.0","type":"lesson.close","requestId":"req-close","payload":{}}')
+    close_msg = recv_ws_frame(s)
+    assert close_msg["type"] == "activity.changed"
+    assert close_msg["payload"]["activity"]["mode"] == "exploring"
 
     print("Sending competition.join...")
     send_ws_frame(s, '{"protocolVersion":"2.0.0","type":"competition.join","requestId":"req-4","payload":{"tableId":"competition-central"}}')

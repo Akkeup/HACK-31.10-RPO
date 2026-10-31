@@ -549,6 +549,55 @@ pub fn dispatch_http(
         return HttpResponse::error(404, "NOT_FOUND", "Asset not found", false);
     }
 
+    // Static client files (Three.js Web UI)
+    if method == "GET" && !raw_path.starts_with("/api/") && !raw_path.starts_with("/health/") {
+        let clean_path = if raw_path == "/" || raw_path.is_empty() {
+            "index.html"
+        } else {
+            raw_path.trim_start_matches('/').split('?').next().unwrap_or("index.html")
+        };
+        let dist_dirs = &["apps/client/dist", "dist"];
+        for dir in dist_dirs {
+            let file_path = format!("{}/{}", dir, clean_path);
+            if let Ok(bytes) = std::fs::read(&file_path) {
+                let content_type = if file_path.ends_with(".html") {
+                    "text/html; charset=utf-8"
+                } else if file_path.ends_with(".js") || file_path.ends_with(".mjs") {
+                    "application/javascript; charset=utf-8"
+                } else if file_path.ends_with(".css") {
+                    "text/css; charset=utf-8"
+                } else if file_path.ends_with(".json") {
+                    "application/json"
+                } else if file_path.ends_with(".svg") {
+                    "image/svg+xml"
+                } else if file_path.ends_with(".glb") {
+                    "model/gltf-binary"
+                } else if file_path.ends_with(".png") {
+                    "image/png"
+                } else if file_path.ends_with(".jpg") || file_path.ends_with(".jpeg") {
+                    "image/jpeg"
+                } else {
+                    "application/octet-stream"
+                };
+                let mut resp = HttpResponse::new(200, "OK");
+                resp.headers.push(("Content-Type".to_string(), content_type.to_string()));
+                resp.headers.push(("Content-Length".to_string(), bytes.len().to_string()));
+                resp.body = bytes;
+                return resp;
+            }
+        }
+        for dir in dist_dirs {
+            let index_path = format!("{}/index.html", dir);
+            if let Ok(bytes) = std::fs::read(&index_path) {
+                let mut resp = HttpResponse::new(200, "OK");
+                resp.headers.push(("Content-Type".to_string(), "text/html; charset=utf-8".to_string()));
+                resp.headers.push(("Content-Length".to_string(), bytes.len().to_string()));
+                resp.body = bytes;
+                return resp;
+            }
+        }
+    }
+
     HttpResponse::error(404, "NOT_FOUND", "Endpoint not found", false)
 }
 

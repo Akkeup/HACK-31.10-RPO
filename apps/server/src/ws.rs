@@ -294,13 +294,13 @@ pub fn run_ws_session(
         } else if msg_type == "npc.cancel" {
             handle_npc_cancel(&conn, req_id, payload_obj);
         } else if msg_type == "library.open" {
-            handle_library_open(&conn, req_id, payload_obj, &knowledge, &game, &ticket.user_id);
+            handle_library_open(&conn, req_id, payload_obj, &knowledge, &game, &competition, &ticket.user_id);
         } else if msg_type == "country.describe" {
             handle_country_describe(&conn, req_id, payload_obj, &knowledge);
         } else if msg_type == "lesson.open" {
-            handle_lesson_open(&conn, req_id, payload_obj, &knowledge, &game, &ticket.user_id);
+            handle_lesson_open(&conn, req_id, payload_obj, &knowledge, &game, &competition, &ticket.user_id);
         } else if msg_type == "lesson.close" {
-            handle_lesson_close(&conn, req_id, &game, &ticket.user_id);
+            handle_lesson_close(&conn, req_id, &game, &competition, &ticket.user_id);
         } else if msg_type == "competition.join" {
             handle_competition_join(&conn, &ticket, &player_id, req_id, payload_obj, &game, &competition, &broadcaster);
         } else if msg_type == "competition.configure" {
@@ -738,6 +738,7 @@ fn handle_library_open(
     payload: Option<&JsonValue>,
     knowledge: &Arc<crate::knowledge::KnowledgeService>,
     game: &Arc<GameManager>,
+    competition: &Arc<CompetitionService>,
     user_id: &str,
 ) {
     let book_id = payload.and_then(|p| p.get_str("bookId")).unwrap_or("");
@@ -750,6 +751,7 @@ fn handle_library_open(
     let material = knowledge.get_module_material(module_id, "v1").unwrap_or(JsonValue::Null);
     let lesson_id = AuthService::generate_id();
     game.update_player_activity(user_id, "reading", Some(book_id.to_string()), None);
+    competition.set_activity(user_id, "reading", Some(book_id), None, None, None);
     let resp_payload = JsonValue::Object(vec![
         ("lessonId".to_string(), JsonValue::String(lesson_id)),
         ("material".to_string(), material),
@@ -778,6 +780,7 @@ fn handle_lesson_open(
     payload: Option<&JsonValue>,
     knowledge: &Arc<crate::knowledge::KnowledgeService>,
     game: &Arc<GameManager>,
+    competition: &Arc<CompetitionService>,
     user_id: &str,
 ) {
     let npc_id = payload.and_then(|p| p.get_str("npcId")).unwrap_or("");
@@ -790,6 +793,7 @@ fn handle_lesson_open(
     let material = knowledge.get_module_material(module_id, "v1").unwrap_or(JsonValue::Null);
     let lesson_id = AuthService::generate_id();
     game.update_player_activity(user_id, "learning", Some(npc_id.to_string()), None);
+    competition.set_activity(user_id, "learning", Some(npc_id), None, None, None);
     let resp_payload = JsonValue::Object(vec![
         ("lessonId".to_string(), JsonValue::String(lesson_id)),
         ("material".to_string(), material),
@@ -801,9 +805,11 @@ fn handle_lesson_close(
     conn: &WsConnection,
     req_id: Option<String>,
     game: &Arc<GameManager>,
+    competition: &Arc<CompetitionService>,
     user_id: &str,
 ) {
     game.update_player_activity(user_id, "exploring", None, None);
+    competition.set_activity(user_id, "exploring", None, None, None, None);
     let act_payload = JsonValue::Object(vec![
         ("activity".to_string(), JsonValue::Object(vec![
             ("mode".to_string(), JsonValue::String("exploring".to_string())),

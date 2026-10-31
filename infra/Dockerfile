@@ -14,5 +14,6 @@ USER root
 WORKDIR /app
 COPY --from=builder /build/discovery-server /app/discovery-server
 COPY assets/ /app/assets/
+COPY --from=builder /build/apps/client/dist /app/apps/client/dist
 EXPOSE 8080
 ENTRYPOINT ["/app/discovery-server"]

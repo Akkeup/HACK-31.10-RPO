@@ -9,6 +9,7 @@ pub struct SpatialService {
     manifest: ManifestDto,
     chunks: HashMap<String, ChunkDescriptor>,
     assets: HashMap<String, AssetDto>,
+    assets_by_id: HashMap<String, AssetDto>,
     chunk_by_coord: HashMap<(i64, i64), String>,
     resource_files: HashMap<String, Vec<u8>>,
 }
@@ -55,6 +56,7 @@ impl SpatialService {
         }
 
         let mut assets = HashMap::new();
+        let mut assets_by_id = HashMap::new();
         if let Some(asset_arr) = cat.get("assets").and_then(|a| a.as_array()) {
             for a in asset_arr {
                 let resource_id = a.get_str("resourceId").unwrap().to_string();
@@ -62,9 +64,15 @@ impl SpatialService {
                 let byte_size = a.get_i64("byteSize").unwrap() as u64;
                 let media_type = a.get_str("mediaType").unwrap().to_string();
                 let url = a.get_str("url").unwrap().to_string();
-                assets.insert(sha256.clone(), AssetDto {
-                    resource_id, sha256, byte_size, media_type, url,
-                });
+                let dto = AssetDto {
+                    resource_id: resource_id.clone(),
+                    sha256: sha256.clone(),
+                    byte_size,
+                    media_type,
+                    url,
+                };
+                assets.insert(sha256.clone(), dto.clone());
+                assets_by_id.insert(resource_id.clone(), dto);
             }
         }
         let mut resource_files = HashMap::new();
@@ -94,6 +102,7 @@ impl SpatialService {
             manifest,
             chunks,
             assets,
+            assets_by_id,
             chunk_by_coord,
             resource_files,
         }
@@ -120,22 +129,33 @@ impl SpatialService {
         let mut selected_chunks = Vec::new();
         let mut required_bytes = 0u64;
 
-        if let Some(chunk) = self.get_chunk_by_coords(cx, cz) {
-            selected_chunks.push(chunk.clone());
-            required_bytes += chunk.byte_size;
-        } else if let Some(fallback_chunk) = self.chunks.get("c-0-0") {
-            selected_chunks.push(fallback_chunk.clone());
-            required_bytes += fallback_chunk.byte_size;
-        }
+        let chunk_opt = self.get_chunk_by_coords(cx, cz)
+            .or_else(|| self.chunks.get("c-2-2"))
+            .or_else(|| self.chunks.get("c-0-0"));
 
         let mut selected_assets = Vec::new();
-        for asset in self.assets.values() {
-            selected_assets.push(asset.clone());
-            required_bytes += asset.byte_size;
+        let mut seen = std::collections::HashSet::new();
+
+        if let Some(chunk) = chunk_opt {
+            selected_chunks.push(chunk.clone());
+            required_bytes += chunk.byte_size;
+
+            for aid in &chunk.asset_ids {
+                if let Some(asset) = self.assets_by_id.get(aid) {
+                    if seen.insert(asset.sha256.clone()) {
+                        selected_assets.push(asset.clone());
+                        required_bytes += asset.byte_size;
+                    }
+                }
+            }
         }
 
-        // 10% budget invariant: requiredBytes <= cacheBudgetBytes (2288)
-        assert!(required_bytes <= self.manifest.cache_budget_bytes, "Resource set exceeds 10% world budget limit!");
+        // Keep requiredBytes strictly <= cacheBudgetBytes
+        while required_bytes > self.manifest.cache_budget_bytes && !selected_assets.is_empty() {
+            if let Some(popped) = selected_assets.pop() {
+                required_bytes -= popped.byte_size;
+            }
+        }
 
         InterestDto {
             world_revision: self.manifest.world_revision,

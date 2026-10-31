@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.json text eol=lf
+*.schema.json text eol=lf
+*.glb binary
+*.png binary
+*.jpg binary
