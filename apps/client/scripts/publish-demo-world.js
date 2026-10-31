@@ -58,14 +58,21 @@ const gameplayLayout = config.values;
 const { placements } = JSON.parse(
   await readFile(new URL("world/reading-room-layout.json", root), "utf8"),
 );
-for (const kind of ["shelf", "book", "desk", "notebook"])
+for (const kind of ["shelf", "book", "desk", "notebook"]) {
+  const imported = ["shelf", "desk"].includes(kind);
   await asset(
     "reading-" + kind,
-    Buffer.from(await exporter.parseAsync(readingArt(kind), { binary: true })),
+    imported
+      ? await readFile(
+          new URL(`models/imported/reading-${kind}-runtime.glb`, root),
+        )
+      : Buffer.from(
+          await exporter.parseAsync(readingArt(kind), { binary: true }),
+        ),
   );
+}
 // Shared unit geometry keeps furniture and costumes inside the real streaming budget.
 const furnitureBox = new THREE.BoxGeometry(1, 1, 1);
-const furnitureCylinder = new THREE.CylinderGeometry(1, 1, 1, 24);
 const furnitureMaterials = new Map();
 function furniture(shape, color, position, scale) {
   if (!furnitureMaterials.has(color))
@@ -83,14 +90,6 @@ const flag = await asset(
   await readFile(new URL("textures/reading-flag.svg", root)),
   "image/svg+xml",
 );
-const tableArt = new THREE.Group();
-for (const [color, position, scale] of [
-  [0x415b50, [0, 0.82, 0], [1.55, 0.18, 1.55]],
-  [0xa88154, [0, 0.38, 0], [0.35, 0.75, 0.35]],
-  [0xb99567, [0, 0.06, 0], [1, 0.12, 1]],
-  [0xd3b978, [0, 0.92, 0], [1.61, 0.07, 1.61]],
-])
-  tableArt.add(furniture(furnitureCylinder, color, position, scale));
 const chairArt = new THREE.Group();
 chairArt.add(
   furniture(furnitureBox, 0xb99567, [0, 0.45, 0], [0.62, 0.12, 0.65]),
@@ -103,7 +102,12 @@ for (const x of [-0.24, 0.24])
     );
 await asset(
   "competition-table",
-  Buffer.from(await exporter.parseAsync(tableArt, { binary: true })),
+  await readFile(
+    new URL(
+      "../apps/client/public/assets/models/furniture/round-table.glb",
+      root,
+    ),
+  ),
 );
 await asset(
   "competition-chair",

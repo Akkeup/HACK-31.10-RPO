@@ -2,6 +2,7 @@ import { readingCards } from "./reading-cards.js";
 import { EducationUI } from "./education-ui.js";
 import { CompetitionUI } from "./competition-ui.js";
 import { icon } from "./icons.js";
+import { ACADEMY_HUB, ACADEMY_ROOMS, roomById } from "../world/academy-locations.js";
 import {
   presets,
   validateConfig,
@@ -33,12 +34,12 @@ export class UI {
     this.drafts = {};
     this.dialogueGeneration = 0;
     document.querySelector("#app").innerHTML = `
- <main class="discovery"><header class="topbar"><a class="brand" href="./" aria-label="Discovery — главная"><span class="brand-mark">${icon("compass")}</span>discovery<span class="brand-dot">®</span></a><span class="header-divider"></span><span class="edition">МИР, ПОЛНЫЙ ОТКРЫТИЙ</span><nav class="main-nav" aria-label="Навигация"><button class="nav-item selected" id="world-nav">${icon("world")} Мир</button><button class="nav-item" id="journal">${icon("book")} Дневник <span class="count">01</span></button></nav><div class="header-right"><span class="connection" id="connection"><i></i> Подключение</span><button class="icon-btn" id="help" aria-label="Как играть">${icon("help")}</button><button class="profile" id="profile" aria-label="Профиль исследователя"><span>И</span><span class="profile-label">Исследователь<small id="role-label">Локальный сеанс</small></span>${icon("chevron")}</button></div></header>
+ <main class="discovery"><header class="topbar"><a class="brand" href="./" aria-label="Discovery — главная"><span class="brand-mark">${icon("compass")}</span>discovery<span class="brand-dot">®</span></a><span class="header-divider"></span><span class="edition">МИР, ПОЛНЫЙ ОТКРЫТИЙ</span><nav class="main-nav" aria-label="Навигация"><button class="nav-item" id="home-nav">Главная</button><button class="nav-item" id="examples-nav">Примеры</button><button class="nav-item selected" id="world-nav">${icon("world")} Академия</button><button class="nav-item" id="teachers-nav">Преподаватели</button><button class="nav-item" id="journal">${icon("book")} Дневник</button></nav><div class="header-right"><span class="connection" id="connection"><i></i> Подключение</span><button class="icon-btn" id="help" aria-label="Как играть">${icon("help")}</button><button class="profile" id="profile" aria-label="Профиль исследователя"><span>И</span><span class="profile-label">Исследователь<small id="role-label">Локальный сеанс</small></span>${icon("chevron")}</button></div></header>
  <div id="world" class="world-viewport"></div>
- <div class="world-heading"><div class="eyebrow"><span class="live-dot"></span> БИБЛИОТЕКА <span> / </span> PROTOCOL 2.0</div><h1>Читальный зал<span>Место, где любопытство становится знанием.</span></h1><div class="region-meta">${icon("pin")} Четыре секции · Демо <span class="meta-dot">·</span> <span id="world-time">15:00</span> <span class="weather">${icon("sun")} Ясно</span></div></div>
+ <div class="world-heading"><div class="eyebrow"><span class="live-dot"></span> DISCOVERY ACADEMY <span> / </span> PROTOCOL 2.0</div><h1 id="location-title">Читальный зал<span id="location-subtitle">Выберите кабинет или откройте книгу.</span></h1><div class="region-meta">${icon("pin")} <span id="location-meta">Четыре кабинета · Демо</span> <span class="meta-dot">·</span> <span id="world-time">15:00</span></div></div><div class="route-guide hidden" id="route-guide"></div>
  <div class="left-tools"><button class="tool active" id="map-toggle" aria-label="Показать карту" title="Карта кампуса">${icon("world")}</button><button class="tool" id="npc-tool" aria-label="Найти собеседника" title="Познакомиться с Софией">${icon("chat")}</button><span></span><button class="tool" id="settings-toggle" aria-label="Показать настройки" title="Настройки мира">${icon("settings")}</button></div>
 
- <aside class="quest-card" id="quest"><div class="quest-top"><span class="quest-icon">${icon("spark")}</span><span>ПЕРВОЕ ОТКРЫТИЕ</span><span class="quest-number">01 / 03</span></div><h2>Всё начинается с вопроса</h2><p>Познакомьтесь с Софией — она поможет<br>найти свою первую тему для исследования.</p><button id="meet-npc">Найти Софию ${icon("arrow")}</button><div class="quest-progress"><i></i><i></i><i></i></div></aside>
+ <aside class="quest-card" id="quest"><div class="quest-top"><span class="quest-icon">${icon("spark")}</span><span>СЛЕДУЮЩИЙ ШАГ</span></div><h2>Начните исследование</h2><p>Откройте каталог преподавателей и выберите кабинет.</p><button id="meet-npc">Найти Софию ${icon("arrow")}</button><div class="quest-progress"><i></i><i></i><i></i></div></aside>
  <div class="controls-hint"><div><kbd>W</kbd><span class="keys-bottom"><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span></div><span>Движение</span><b></b><span class="mouse-symbol">↔</span><span>Камера</span><b></b><kbd>E</kbd><span>Взаимодействие</span></div>
  <div class="world-status"><span class="live-dot"></span><span id="players">3 исследователя</span><span class="status-separator">/</span><span id="fps">— FPS</span><span class="status-separator">/</span><span id="coords">0, 7</span><button id="fullscreen" aria-label="Полноэкранный режим">${icon("expand")}</button></div>
  <aside class="settings-panel" id="settings"><div class="panel-head"><div><span class="eyebrow">ВАШ МИР — ВАШИ ПРАВИЛА</span><h2>Настройки мира</h2></div><button class="icon-btn" id="close-settings" aria-label="Закрыть настройки">${icon("close")}</button></div><div class="settings-tabs" role="tablist" aria-label="Раздел настроек"><button role="tab" aria-selected="true" data-tab="local">Графика</button><button role="tab" aria-selected="false" data-tab="world">Мир</button><button role="tab" aria-selected="false" data-tab="behavior">Поведение</button></div><div class="settings-content" id="settings-content"></div><div class="panel-footer"><span id="save-state">${icon("check")} Изменения сохраняются автоматически</span><button id="reset-settings">${icon("reset")} Сбросить настройки</button></div></aside>
@@ -81,9 +82,63 @@ export class UI {
       this.progress = value;
     };
   }
+  showHome() {
+    const rows = this.educationProgress?.modules || this.progress?.modules || [];
+    const completed = rows.filter((row) => row.passed).length;
+    this.info(
+      "Добро пожаловать в Discovery Academy",
+      `<p>Исследуйте четыре учебных направления в уютной академии: читайте материалы, говорите с преподавателями и проходите письменные проверки.</p><p><strong>Ваш прогресс:</strong> ${completed} из 4 направлений пройдено.</p><p>Следующий шаг — выбрать кабинет в каталоге или открыть книгу в читальном зале.</p><button class="primary-btn" data-home-enter>Войти в академию</button>`,
+    );
+  }
+  showExamples() {
+    const rows = this.isMock ? [
+      ["Математика", "Числовой ответ", "Сколько получится: 3 × 4?", "room-mathematics"],
+      ["Информатика", "Короткий текст", "Как называется последовательность шагов решения задачи?", "room-informatics"],
+      ["История", "Выбор варианта", "Какой источник является вещественным?", "room-history"],
+      ["Страны и флаги", "Демонстрационная карточка", "Какой вымышленной стране принадлежит учебный флаг?", "room-geography"],
+    ] : [];
+    this.info("Примеры заданий", rows.length
+      ? `<p>Это вопросы из локальной демонстрации. В кабинете преподавателя доступны объяснение, проверка из пяти вопросов и обратная связь.</p><div class="academy-cards">${rows.map(([subject, kind, prompt, id]) => `<article><small>${escape(subject)} · ${escape(kind)}</small><h3>${escape(prompt)}</h3><button data-show-room="${id}">Показать кабинет →</button></article>`).join("")}</div>`
+      : `<p>Примеры заданий появятся после подключения учебных материалов сервера. Доступные модули можно открыть в академии.</p>`,
+    );
+  }
+  showTeachers() {
+    this.info("Каталог преподавателей", `<p>Выберите дисциплину. Маркер укажет дверь кабинета на северной стене читального зала.</p><div class="academy-cards">${ACADEMY_ROOMS.map((room) => `<article><small>КАБИНЕТ ${room.number} · ${escape(room.subject)}</small><h3>${escape(room.teacherName)}</h3><p>Материал, объяснение и письменная проверка.</p><button data-show-room="${room.roomId}">Показать кабинет →</button></article>`).join("")}</div>`);
+  }
+  chooseCabinet(roomId) {
+    const room = roomById(roomId);
+    if (!room) return;
+    this.game.guideRoomId = roomId;
+    this.$("#info-overlay").classList.add("hidden");
+    this.game.setBlocked(false, "info");
+    this.game.focusControls();
+    this.$("#route-guide").textContent = `${room.number} · ${room.subject} — дверь на северной стене`;
+    this.$("#route-guide").classList.remove("hidden");
+    this.toast(`Кабинет ${room.number} отмечен. Идите к северной стене.`);
+  }
+  async usePortal(portal) {
+    if (!portal?.roomId) return;
+    try {
+      this.game.setBlocked(true, "transition");
+      this.$("#world").classList.add("location-transition");
+      await new Promise((resolve) => setTimeout(resolve, 180));
+      await this.game.enterLocation(portal.roomId);
+      this.$("#route-guide").classList.add("hidden");
+    } catch (error) {
+      this.toast(error.message);
+    } finally {
+      this.$("#world").classList.remove("location-transition");
+      this.game.setBlocked(false, "transition");
+      this.game.focusControls();
+    }
+  }
   bind() {
     const $ = (s) => document.querySelector(s);
     this.$ = $;
+    $("#home-nav").onclick = () => this.showHome();
+    $("#examples-nav").onclick = () => this.showExamples();
+    $("#teachers-nav").onclick = () => this.showTeachers();
+    $(".brand").onclick = (event) => { event.preventDefault(); this.showHome(); };
     $("#close-settings").onclick = () => this.toggleSettings(false);
     $("#settings-toggle").onclick = () =>
       this.toggleSettings($("#settings").classList.contains("hidden"));
@@ -212,6 +267,13 @@ export class UI {
         `<p>Роль из авторизованного API: <strong>${this.adapter.role === "admin" ? "администратор" : "игрок"}</strong>.</p><p>${this.isMock ? "Мира и Алекс — синтетические участники локального mock-сервера." : "Многопользовательский сеанс на сервере Discovery."}</p><p class="muted">Protocol 2.0.0 · токен хранится только в памяти браузера.</p><button id="logout-client" class="primary-btn">Выйти из сеанса</button>`,
       );
     $("#info-body").addEventListener("click", async (e) => {
+      if (e.target.closest("[data-home-enter]")) {
+        $("#info-overlay").classList.add("hidden");
+        this.game.setBlocked(false, "info");
+        this.game.focusControls();
+      }
+      const roomButton = e.target.closest("[data-show-room]");
+      if (roomButton) this.chooseCabinet(roomButton.dataset.showRoom);
       if (e.target.id === "logout-client") {
         try {
           await this.adapter.logout();
@@ -284,7 +346,7 @@ export class UI {
         this.nearest?.distance <= this.configs.character.interactionRadiusM &&
         $("#info-overlay").classList.contains("hidden")
       )
-        this.openDialogue(this.nearest.id);
+        this.nearest.kind === "door" ? this.usePortal(this.nearest) : this.openDialogue(this.nearest.id);
     });
     for (const id of ["dialogue-overlay", "info-overlay"])
       $("#" + id).addEventListener("keydown", (e) => {
@@ -397,7 +459,7 @@ export class UI {
             ["none", "Без реакции"],
           ],
         },
-      )}</details><details class="settings-details"><summary>${icon("settings")} Освещение и отображение ${icon("chevron")}</summary>${f("local.render.exposure", "Экспозиция", { min: 0.1, max: 4, step: 0.1 })}<label class="toggle-row"><span>Показывать модели мира</span><input type="checkbox" data-view="modelsVisible" ${this.game?.modelsVisible === false ? "" : "checked"}/><span class="switch"></span></label><label class="toggle-row"><span>Границы чанков на карте</span><input type="checkbox" data-view="showChunks" ${this.showChunks ? "checked" : ""}/><span class="switch"></span></label></details><div class="resource-card"><div>${icon("leaf")} БЮДЖЕТ ДЕМО <span id="resource-active">—</span></div><div class="resource-bar"><i id="resource-bar"></i></div><p>Удержано <strong id="resource-cache">—</strong> / <span id="resource-limit">—</span><span>≤10% W</span></p><small id="resource-detail">Активные + LRU + резервы · уникальные SHA-256</small></div><details class="settings-details"><summary>Диагностика ${icon("chevron")}</summary><div id="diagnostics">Ожидание сцены…</div><button class="secondary-btn" id="clear-cache">Очистить неактивный LRU</button></details>`;
+      )}</details><details class="settings-details"><summary>${icon("settings")} Освещение и отображение ${icon("chevron")}</summary>${f("local.render.exposure", "Экспозиция", { min: 0.1, max: 4, step: 0.1 })}<label class="toggle-row"><span>Показывать модели мира</span><input type="checkbox" data-view="modelsVisible" ${this.game?.modelsVisible === false ? "" : "checked"}/><span class="switch"></span></label><label class="toggle-row"><span>Границы чанков на карте</span><input type="checkbox" data-view="showChunks" ${this.showChunks ? "checked" : ""}/><span class="switch"></span></label></details><div class="resource-card"><div>${icon("leaf")} БЮДЖЕТ ДЕМО <span id="resource-active">—</span></div><div class="resource-bar"><i id="resource-bar"></i></div><p>Удержано <strong id="resource-cache">—</strong> / <span id="resource-limit">—</span><span>≤10% W</span></p><small id="resource-detail">Потоковые ресурсы; локальные модели /assets/models/ вне этого показателя. Не production-замер.</small></div><details class="settings-details"><summary>Диагностика ${icon("chevron")}</summary><div id="diagnostics">Ожидание сцены…</div><button class="secondary-btn" id="clear-cache">Очистить неактивный LRU</button></details>`;
     } else {
       html = `<div class="scope-note">${icon("shield")} Авторизованный серверный API <span class="scope-dot server"></span></div>`;
       if (this.adapter.role !== "admin") {
@@ -551,6 +613,11 @@ export class UI {
     this.lastStats = stats;
     this.competition?.update(stats);
     this.nearest = stats.nearest;
+    const currentRoom = roomById(stats.locationId);
+    this.$("#location-title").firstChild.textContent = currentRoom?.title || "Читальный зал";
+    this.$("#location-subtitle").textContent = currentRoom ? "Учитесь у преподавателя и проходите проверку." : "Выберите кабинет или откройте книгу.";
+    this.$("#location-meta").textContent = currentRoom ? `${currentRoom.subject} · Демо` : "Четыре кабинета · Демо";
+    this.$("#quest").classList.toggle("hidden", Boolean(currentRoom));
     this.$("#fps").textContent = stats.fps + " FPS";
     this.$("#players").textContent = stats.players + " исследователя";
     this.$("#coords").textContent =
@@ -569,6 +636,8 @@ export class UI {
       "<kbd>E</kbd> " +
       (this.nearest?.kind === "shelf"
         ? "Выбрать книгу"
+        : this.nearest?.kind === "door"
+          ? this.nearest.roomId === ACADEMY_HUB ? "Выйти" : "Войти"
         : this.nearest?.kind === "notebook"
           ? "Начать проверку"
           : this.nearest?.role === "examiner"
@@ -631,6 +700,8 @@ export class UI {
   async openDialogue(id) {
     if (!id || !this.$("#dialogue-overlay").classList.contains("hidden"))
       return;
+    const door = this.nearest?.kind === "door" && this.nearest.id === id ? this.nearest : null;
+    if (door) { await this.usePortal(door); return; }
     const object = this.game.readingObjects().find((o) => o.id === id);
     if (object) {
       await this.education.openObject(object);

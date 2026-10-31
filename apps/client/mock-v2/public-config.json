@@ -340,7 +340,7 @@
         {
           "slotId": "shelf",
           "modelId": "reading-shelf",
-          "placeholder": true
+          "placeholder": false
         },
         {
           "slotId": "book",
@@ -350,7 +350,7 @@
         {
           "slotId": "desk",
           "modelId": "reading-desk",
-          "placeholder": true
+          "placeholder": false
         },
         {
           "slotId": "chair",
@@ -365,7 +365,7 @@
         {
           "slotId": "round-table",
           "modelId": "competition-table",
-          "placeholder": true
+          "placeholder": false
         },
         {
           "slotId": "npc",

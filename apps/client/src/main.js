@@ -109,6 +109,19 @@ async function start() {
         await import("../tests/reading-room-browser.js");
       runRoomChecks({ game, ui, adapter, configs });
     }
+    if (import.meta.env.DEV && adapter.isMock) {
+      const roomId = new URLSearchParams(location.search).get("academy-view");
+      if (roomId) {
+        const { roomById } = await import("./world/academy-locations.js");
+        const room = roomById(roomId);
+        if (room) {
+          adapter.user.player.position = { x: room.door.x, y: 0, z: room.door.z + 1.6 };
+          adapter.tickCount++;
+          adapter.snapshot();
+          await game.enterLocation(room.roomId);
+        }
+      }
+    }
     window.discovery = Object.freeze({
       mode: adapter.isMock ? "mock" : "real",
       diagnostics: () => structuredClone(ui.lastStats || {}),

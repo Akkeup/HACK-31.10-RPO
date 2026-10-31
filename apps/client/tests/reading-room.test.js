@@ -5,6 +5,7 @@ import { createHash } from "node:crypto";
 import { LocalMockAdapter } from "../mock-v2/adapter.js";
 import { validate, command } from "../src/network/protocol.js";
 import { grade } from "../mock-v2/questions.js";
+import { ACADEMY_HUB, ACADEMY_ROOMS } from "../src/world/academy-locations.js";
 const memory=()=>{const map=new Map();return {getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)};};
 async function setup(storage=memory()) {
   let clock=Date.now();const a=new LocalMockAdapter({storage,latency:0,now:()=>clock});
@@ -82,6 +83,17 @@ for(const outcome of ['win','loss','draw','cancelled'])test('v2 competition demo
    const balance=a.user.wallet.balanceAura;a.competition.settle(l);assert.equal(a.user.wallet.balanceAura,balance);
  }finally{a.close();}
 });
+test('world.ready accepts the validated copy of the current interest and starts snapshots',async()=>{
+ const a=new LocalMockAdapter({storage:memory(),latency:0});
+ try{
+   await a.initialize();const snapshots=[];
+   a.onEvent(e=>{if(e.type==='world.snapshot')snapshots.push(e.payload);});
+   await a.connect();
+   a.markReady(structuredClone(a.interest),[...new Set([...a.interest.chunks,...a.interest.assets].map(d=>d.sha256))]);
+   assert.equal(a.ready,true);
+   assert.ok(snapshots.some(s=>s.npcs.some(n=>n.npcId==='npc-guide')));
+ }finally{a.close();}
+});
 test('insufficient aura, occupied table, readiness reset and full pre-start return',async()=>{
  const a=await setup();try{let l=await lobby(a);await send(a,'competition.configure',{...conditions(l),subject:'geography_flags',stakeAura:101},['competition.state']);await assert.rejects(send(a,'competition.ready',{...conditions(l),ready:true},['competition.state']),{code:'INSUFFICIENT_AURA'});
  await send(a,'competition.configure',{...conditions(l),subject:'history',stakeAura:10},['competition.state']);await send(a,'competition.ready',{...conditions(l),ready:true},['competition.state']);assert.equal(a.user.wallet.reservedAura,10);
@@ -89,4 +101,47 @@ test('insufficient aura, occupied table, readiness reset and full pre-start retu
  await send(a,'competition.leave',{tableId:l.state.tableId},['activity.changed']);assert.equal(a.user.wallet.balanceAura,100);
  await a.demoScenario('occupied');await assert.rejects(send(a,'competition.join',{tableId:l.state.tableId},['competition.state']),{code:'SEAT_OCCUPIED'});
  }finally{a.close();}
+});
+
+test('each academy door leads to its configured teacher, existing quiz and safe return', async () => {
+  const a = await setup();
+  try {
+    const snapshots = [];
+    a.onEvent((event) => { if (event.type === 'world.snapshot') snapshots.push(event.payload); });
+    for (const room of ACADEMY_ROOMS) {
+      move(a, room.door);
+      await a.enterLocation(room.roomId);
+      assert.equal(a.locationId, room.roomId);
+      assert.deepEqual(a.user.player.position, room.entry);
+      const npcIds = snapshots.at(-1).npcs.map((npc) => npc.npcId);
+      assert.deepEqual(npcIds.sort(), [room.teacherId, room.examinerId].sort());
+      move(a, room.examinerSeat.position);
+      const attempt = await send(a, 'quiz.start', { npcId: room.examinerId });
+      assert.equal(attempt.moduleId, room.moduleId);
+      await assert.rejects(a.enterLocation(ACADEMY_HUB), { code: 'ACTIVITY_CONFLICT' });
+      await send(a, 'quiz.leave', { attemptId: attempt.attemptId }, ['activity.changed']);
+      move(a, room.exit);
+      await a.enterLocation(ACADEMY_HUB);
+      assert.equal(a.locationId, ACADEMY_HUB);
+      assert.deepEqual(a.user.player.position, room.hubReturn);
+      assert.deepEqual(snapshots.at(-1).npcs.map((npc) => npc.npcId), ['npc-guide']);
+    }
+    await assert.rejects(a.enterLocation(ACADEMY_ROOMS[0].roomId), { code: 'OUT_OF_RANGE' });
+  } finally { a.close(); }
+});
+
+test('room movement stops at walls and configured desks', async () => {
+  const a = await setup();
+  try {
+    const room = ACADEMY_ROOMS[0];
+    move(a, room.door);
+    await a.enterLocation(room.roomId);
+    move(a, { x: room.center.x, y: 0, z: 75 });
+    for (let i = 0; i < 60; i++) { a.inputs = [0, -1]; a.lastInputAt = a.now(); a.advance(50); }
+    assert.equal(a.user.player.position.z, room.bounds.minZ);
+    move(a, { x: room.center.x + 1.7, y: 0, z: room.center.z - 0.95 });
+    for (let i = 0; i < 30; i++) { a.inputs = [1, 0]; a.lastInputAt = a.now(); a.advance(50); }
+    const desk = room.colliders[1];
+    assert.ok(Math.abs(a.user.player.position.x - desk.x) >= desk.hx);
+  } finally { a.close(); }
 });

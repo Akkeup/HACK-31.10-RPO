@@ -2,8 +2,8 @@
   "manifest": {
     "worldId": "discovery-campus",
     "worldRevision": 1,
-    "totalWorldBytes": 2976741,
-    "cacheBudgetBytes": 297674,
+    "totalWorldBytes": 2955358,
+    "cacheBudgetBytes": 295535,
     "accounting": "unique-uncompressed-resource-bytes",
     "maxResourceBytes": 1048576,
     "maxChunkBytes": 262144
@@ -277,17 +277,15 @@
       "chunkId": "c-2-2",
       "x": 2,
       "z": 2,
-      "sha256": "cb472a92b20bd8ba4ac9a3f08a3b8d8ca12af0a3b3e4264bbace69f10ddc1a32",
-      "byteSize": 3837,
-      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-2/cb472a92b20bd8ba4ac9a3f08a3b8d8ca12af0a3b3e4264bbace69f10ddc1a32",
+      "sha256": "a30d11c7cd8ba55a80bea386552bbf8d2c001cdcf1ab2608a311233a9ebc5196",
+      "byteSize": 2394,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-2/a30d11c7cd8ba55a80bea386552bbf8d2c001cdcf1ab2608a311233a9ebc5196",
       "assetIds": [
         "terrain-2-2",
         "reading-shelf",
         "reading-book",
-        "reading-desk",
-        "reading-notebook",
-        "competition-chair",
         "competition-table",
+        "competition-chair",
         "explorer",
         "demo-flag-01"
       ]
@@ -1227,31 +1225,31 @@
     },
     {
       "resourceId": "reading-shelf",
-      "sha256": "92c783e84f0e4a2d60f23e31df1ceb64ce349f9f170dd204258f99f009e930e8",
-      "byteSize": 55012,
+      "sha256": "dae724f52072e35d2442b233483bb76e4f348ea0ad2fe4b33897585c2abff99b",
+      "byteSize": 63756,
       "mediaType": "model/gltf-binary",
-      "url": "/api/v2/worlds/discovery-campus/assets/92c783e84f0e4a2d60f23e31df1ceb64ce349f9f170dd204258f99f009e930e8"
+      "url": "/api/v2/worlds/discovery-campus/assets/dae724f52072e35d2442b233483bb76e4f348ea0ad2fe4b33897585c2abff99b"
     },
     {
       "resourceId": "reading-book",
-      "sha256": "aaef82101763d8ba02edbf4aa389b127720e73b1e77db31fdd6c345bef277bb9",
-      "byteSize": 6296,
+      "sha256": "fae24a3fe0502485cb966ab80546edb97f9825d0742d48e70dc9108ebc8e09c6",
+      "byteSize": 2744,
       "mediaType": "model/gltf-binary",
-      "url": "/api/v2/worlds/discovery-campus/assets/aaef82101763d8ba02edbf4aa389b127720e73b1e77db31fdd6c345bef277bb9"
+      "url": "/api/v2/worlds/discovery-campus/assets/fae24a3fe0502485cb966ab80546edb97f9825d0742d48e70dc9108ebc8e09c6"
     },
     {
       "resourceId": "reading-desk",
-      "sha256": "7062e3dd58e4efb77a1436c774fe277977cb708a5265900f7b546fe1189c8c7c",
-      "byteSize": 7760,
+      "sha256": "af68f2ea23b64603d406416022567c77b227b845f39243e133269fce14907af8",
+      "byteSize": 36148,
       "mediaType": "model/gltf-binary",
-      "url": "/api/v2/worlds/discovery-campus/assets/7062e3dd58e4efb77a1436c774fe277977cb708a5265900f7b546fe1189c8c7c"
+      "url": "/api/v2/worlds/discovery-campus/assets/af68f2ea23b64603d406416022567c77b227b845f39243e133269fce14907af8"
     },
     {
       "resourceId": "reading-notebook",
-      "sha256": "c0d306f356dc1ed33b0df3671ecd656a673873188a2542bddef5324be1cc83b4",
-      "byteSize": 20784,
+      "sha256": "a0ef67a25ffaea353d03815c95b80b337f8c9ae7109e2392affe7647c69f145f",
+      "byteSize": 4564,
       "mediaType": "model/gltf-binary",
-      "url": "/api/v2/worlds/discovery-campus/assets/c0d306f356dc1ed33b0df3671ecd656a673873188a2542bddef5324be1cc83b4"
+      "url": "/api/v2/worlds/discovery-campus/assets/a0ef67a25ffaea353d03815c95b80b337f8c9ae7109e2392affe7647c69f145f"
     },
     {
       "resourceId": "demo-flag-01",
@@ -1262,10 +1260,10 @@
     },
     {
       "resourceId": "competition-table",
-      "sha256": "c1ae7ebff3663a223b597559879e3e472888ba5306a84fc8434de0a333d896f2",
-      "byteSize": 7532,
+      "sha256": "d8f089acf10f77eb24778b347a8f6e2435d9687b1964ad0170731f0a1496563d",
+      "byteSize": 46328,
       "mediaType": "model/gltf-binary",
-      "url": "/api/v2/worlds/discovery-campus/assets/c1ae7ebff3663a223b597559879e3e472888ba5306a84fc8434de0a333d896f2"
+      "url": "/api/v2/worlds/discovery-campus/assets/d8f089acf10f77eb24778b347a8f6e2435d9687b1964ad0170731f0a1496563d"
     },
     {
       "resourceId": "competition-chair",
@@ -1430,10 +1428,10 @@
     },
     {
       "resourceId": "terrain-2-2",
-      "sha256": "9203d619cfc8fb1efa13c6fe6fb393ab17603191850336bef1c0dd668d3c5346",
-      "byteSize": 116928,
+      "sha256": "cceb1946cfafd2ee012334ad98f14013c605bde4684dfd64c542ac508b354d75",
+      "byteSize": 40832,
       "mediaType": "model/gltf-binary",
-      "url": "/api/v2/worlds/discovery-campus/assets/9203d619cfc8fb1efa13c6fe6fb393ab17603191850336bef1c0dd668d3c5346"
+      "url": "/api/v2/worlds/discovery-campus/assets/cceb1946cfafd2ee012334ad98f14013c605bde4684dfd64c542ac508b354d75"
     },
     {
       "resourceId": "terrain-3-2",

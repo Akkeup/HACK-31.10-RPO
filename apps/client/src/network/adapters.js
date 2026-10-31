@@ -7,6 +7,9 @@ import {
 } from "./protocol.js";
 import { validateAdmin } from "../config/config.js";
 export class DiscoveryAdapter {
+  async enterLocation() {
+    throw new Error("Переход между кабинетами доступен в локальном демо-мире.");
+  }
   #token;
   constructor({ mock = false } = {}) {
     this.isMock = mock;
@@ -330,7 +333,12 @@ export class DiscoveryAdapter {
     );
   }
   markReady(interest, hashes) {
-    if (this.interest !== interest) return;
+    if (
+      !this.interest ||
+      this.interest.worldRevision !== interest.worldRevision ||
+      this.interest.interestRevision !== interest.interestRevision
+    )
+      return;
     this.send(
       command("world.ready", {
         interestRevision: interest.interestRevision,

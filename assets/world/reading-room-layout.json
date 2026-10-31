@@ -5,11 +5,11 @@
       "chunkId": "c-2-2",
       "modelId": "reading-shelf",
       "position": {
-        "x": 69,
+        "x": 67.4,
         "y": 0,
-        "z": 66.7
+        "z": 72
       },
-      "yawRad": 0.0,
+      "yawRad": 1.5707963267948966,
       "collidable": true
     },
     {
@@ -17,59 +17,23 @@
       "chunkId": "c-2-2",
       "modelId": "reading-book",
       "position": {
-        "x": 69,
+        "x": 68.25,
         "y": 0.95,
-        "z": 67.1
+        "z": 72
       },
-      "yawRad": 0.0,
+      "yawRad": 1.5707963267948966,
       "collidable": false
-    },
-    {
-      "id": "desk-math-basics",
-      "chunkId": "c-2-2",
-      "modelId": "reading-desk",
-      "position": {
-        "x": 69,
-        "y": 0,
-        "z": 74.6
-      },
-      "yawRad": 0.0,
-      "collidable": true
-    },
-    {
-      "id": "notebook-math-basics",
-      "chunkId": "c-2-2",
-      "modelId": "reading-notebook",
-      "position": {
-        "x": 69,
-        "y": 0.95,
-        "z": 74.7
-      },
-      "yawRad": 0.0,
-      "collidable": false
-    },
-    {
-      "id": "seat-math-basics",
-      "chunkId": "c-2-2",
-      "modelId": "competition-chair",
-      "position": {
-        "x": 69,
-        "y": 0,
-        "z": 76
-      },
-      "yawRad": 0.0,
-      "collidable": true
     },
     {
       "id": "shelf-informatics",
       "chunkId": "c-2-2",
       "modelId": "reading-shelf",
       "position": {
-        "x": 76,
+        "x": 67.4,
         "y": 0,
-        "z": 66.7
+        "z": 79
       },
-      "yawRad": 0.0,
+      "yawRad": 1.5707963267948966,
       "collidable": true
     },
     {
@@ -77,59 +41,23 @@
       "chunkId": "c-2-2",
       "modelId": "reading-book",
       "position": {
-        "x": 76,
+        "x": 68.25,
         "y": 0.95,
-        "z": 67.1
+        "z": 79
       },
-      "yawRad": 0.0,
+      "yawRad": 1.5707963267948966,
       "collidable": false
-    },
-    {
-      "id": "desk-informatics-basics",
-      "chunkId": "c-2-2",
-      "modelId": "reading-desk",
-      "position": {
-        "x": 76,
-        "y": 0,
-        "z": 74.6
-      },
-      "yawRad": 0.0,
-      "collidable": true
-    },
-    {
-      "id": "notebook-informatics-basics",
-      "chunkId": "c-2-2",
-      "modelId": "reading-notebook",
-      "position": {
-        "x": 76,
-        "y": 0.95,
-        "z": 74.7
-      },
-      "yawRad": 0.0,
-      "collidable": false
-    },
-    {
-      "id": "seat-informatics-basics",
-      "chunkId": "c-2-2",
-      "modelId": "competition-chair",
-      "position": {
-        "x": 76,
-        "y": 0,
-        "z": 76
-      },
-      "yawRad": 0.0,
-      "collidable": true
     },
     {
       "id": "shelf-history",
       "chunkId": "c-2-2",
       "modelId": "reading-shelf",
       "position": {
-        "x": 83,
+        "x": 92.6,
         "y": 0,
-        "z": 66.7
+        "z": 72
       },
-      "yawRad": 0.0,
+      "yawRad": -1.5707963267948966,
       "collidable": true
     },
     {
@@ -137,59 +65,23 @@
       "chunkId": "c-2-2",
       "modelId": "reading-book",
       "position": {
-        "x": 83,
+        "x": 91.75,
         "y": 0.95,
-        "z": 67.1
+        "z": 72
       },
-      "yawRad": 0.0,
+      "yawRad": -1.5707963267948966,
       "collidable": false
-    },
-    {
-      "id": "desk-history-basics",
-      "chunkId": "c-2-2",
-      "modelId": "reading-desk",
-      "position": {
-        "x": 83,
-        "y": 0,
-        "z": 74.6
-      },
-      "yawRad": 0.0,
-      "collidable": true
-    },
-    {
-      "id": "notebook-history-basics",
-      "chunkId": "c-2-2",
-      "modelId": "reading-notebook",
-      "position": {
-        "x": 83,
-        "y": 0.95,
-        "z": 74.7
-      },
-      "yawRad": 0.0,
-      "collidable": false
-    },
-    {
-      "id": "seat-history-basics",
-      "chunkId": "c-2-2",
-      "modelId": "competition-chair",
-      "position": {
-        "x": 83,
-        "y": 0,
-        "z": 76
-      },
-      "yawRad": 0.0,
-      "collidable": true
     },
     {
       "id": "shelf-geography_flags",
       "chunkId": "c-2-2",
       "modelId": "reading-shelf",
       "position": {
-        "x": 90,
+        "x": 92.6,
         "y": 0,
-        "z": 66.7
+        "z": 79
       },
-      "yawRad": 0.0,
+      "yawRad": -1.5707963267948966,
       "collidable": true
     },
     {
@@ -197,48 +89,12 @@
       "chunkId": "c-2-2",
       "modelId": "reading-book",
       "position": {
-        "x": 90,
+        "x": 91.75,
         "y": 0.95,
-        "z": 67.1
+        "z": 79
       },
-      "yawRad": 0.0,
+      "yawRad": -1.5707963267948966,
       "collidable": false
-    },
-    {
-      "id": "desk-flags-demo",
-      "chunkId": "c-2-2",
-      "modelId": "reading-desk",
-      "position": {
-        "x": 90,
-        "y": 0,
-        "z": 74.6
-      },
-      "yawRad": 0.0,
-      "collidable": true
-    },
-    {
-      "id": "notebook-flags-demo",
-      "chunkId": "c-2-2",
-      "modelId": "reading-notebook",
-      "position": {
-        "x": 90,
-        "y": 0.95,
-        "z": 74.7
-      },
-      "yawRad": 0.0,
-      "collidable": false
-    },
-    {
-      "id": "seat-flags-demo",
-      "chunkId": "c-2-2",
-      "modelId": "competition-chair",
-      "position": {
-        "x": 90,
-        "y": 0,
-        "z": 76
-      },
-      "yawRad": 0.0,
-      "collidable": true
     },
     {
       "id": "competition-central",
@@ -249,7 +105,7 @@
         "y": 0,
         "z": 83
       },
-      "yawRad": 0.0,
+      "yawRad": 0,
       "collidable": true
     },
     {
@@ -257,11 +113,11 @@
       "chunkId": "c-2-2",
       "modelId": "competition-chair",
       "position": {
-        "x": 80.0,
+        "x": 80,
         "y": 0,
         "z": 85.3
       },
-      "yawRad": 0.0,
+      "yawRad": 0,
       "collidable": true
     },
     {
