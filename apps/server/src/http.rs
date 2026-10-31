@@ -160,12 +160,14 @@ pub fn dispatch_http(
 
     // Bootstrap
     if (path == "/api/v1/bootstrap" || raw_path == "/api/v2/bootstrap") && method == "GET" {
+        let is_v2 = raw_path.starts_with("/api/v2/");
+        let proto_list = if is_v2 {
+            vec![JsonValue::String("2.0.0".to_string())]
+        } else {
+            vec![JsonValue::String("1.0.0".to_string())]
+        };
         let val = JsonValue::Object(vec![
-            ("protocolVersions".to_string(), JsonValue::Array(vec![
-                JsonValue::String("2.0.0".to_string()),
-                JsonValue::String("1.1.0".to_string()),
-                JsonValue::String("1.0.0".to_string()),
-            ])),
+            ("protocolVersions".to_string(), JsonValue::Array(proto_list)),
             ("serverInstanceId".to_string(), JsonValue::String(instance_id.to_string())),
             ("worldIds".to_string(), JsonValue::Array(vec![JsonValue::String("discovery-campus".to_string())])),
             ("offline".to_string(), JsonValue::Bool(true)),
