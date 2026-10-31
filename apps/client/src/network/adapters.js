@@ -2,6 +2,7 @@ import {
   command,
   parseEvent,
   parseJSON,
+  safeRandomUUID,
   validate,
   VERSION,
 } from "./protocol.js";
@@ -306,7 +307,7 @@ export class DiscoveryAdapter {
     };
   }
   ping() {
-    const nonce = crypto.randomUUID();
+    const nonce = safeRandomUUID();
     this.pingSent.clear();
     this.pingSent.set(nonce, Date.now());
     this.send(command("client.ping", { nonce }));
@@ -355,7 +356,7 @@ export class DiscoveryAdapter {
     type,
     payload,
     types = ["competition.state"],
-    requestId = crypto.randomUUID(),
+    requestId = safeRandomUUID(),
   ) {
     if (!this.ready || this.lastStatus !== "connected")
       return Promise.reject(Error("Восстанавливаем соединение…"));
@@ -481,7 +482,7 @@ export class DiscoveryAdapter {
     validate("config", result.value, "adminDocument");
     return result;
   }
-  talk(npcId, text, requestId = crypto.randomUUID()) {
+  talk(npcId, text, requestId = safeRandomUUID()) {
     if (!this.ready) return Promise.reject(Error("Мир ещё загружается"));
     const packet = command(
       "npc.interact",

@@ -1,6 +1,7 @@
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 import { protocolSchemas } from "../protocol/schemas.js";
+import { safeRandomUUID } from "./protocol.js";
 export const VERSION = "1.1.0";
 const base = "https://discovery.invalid/protocol/1.1.0/";
 const ajv = new Ajv2020({
@@ -67,7 +68,7 @@ export function parseEvent(raw) {
     typeof raw === "string" ? parseJSON(raw) : raw,
   );
 }
-export function command(type, payload, requestId = crypto.randomUUID()) {
+export function command(type, payload, requestId = safeRandomUUID()) {
   return validate("client-message", {
     protocolVersion: VERSION,
     type,
