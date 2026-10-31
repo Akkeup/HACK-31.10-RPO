@@ -30,12 +30,18 @@ impl ConfigService {
                     }
                 }
                 if let Some(admin_str) = row.get(1) {
-                    if let Ok(v) = parse_json(admin_str) {
+                    if let Ok(mut v) = parse_json(admin_str) {
+                        while let Some(inner) = v.get("values") {
+                            v = inner.clone();
+                        }
                         admin_val = Some(v);
                     }
                 }
                 if let Some(pub_str) = row.get(2) {
-                    if let Ok(v) = parse_json(pub_str) {
+                    if let Ok(mut v) = parse_json(pub_str) {
+                        while let Some(inner) = v.get("values") {
+                            v = inner.clone();
+                        }
                         pub_val = Some(v);
                     }
                 }
@@ -43,23 +49,63 @@ impl ConfigService {
         }
 
         // Fallback to fixture files if DB was empty
-        let admin_values = admin_val.unwrap_or_else(|| {
+        let mut admin_values = admin_val.unwrap_or_else(|| {
             let content = std::fs::read_to_string("assets/config/admin-config.json")
                 .or_else(|_| std::fs::read_to_string("discovery-protocol-2.0.0/fixtures/v2.0.0/http/admin-config.json"))
                 .or_else(|_| std::fs::read_to_string("discovery-protocol-1.1.0/fixtures/v1.1.0/http/admin-config.json"))
                 .or_else(|_| std::fs::read_to_string("discovery-protocol-1.0.0/fixtures/http/admin-config.json"))
                 .unwrap_or_else(|_| "{}".to_string());
-            parse_json(&content).unwrap().get("values").unwrap().clone()
+            let mut v = parse_json(&content).unwrap_or(JsonValue::Null);
+            while let Some(inner) = v.get("values") {
+                v = inner.clone();
+            }
+            v
         });
+        while let Some(inner) = admin_values.get("values") {
+            admin_values = inner.clone();
+        }
 
-        let public_values = pub_val.unwrap_or_else(|| {
+        let mut public_values = pub_val.unwrap_or_else(|| {
             let content = std::fs::read_to_string("assets/config/public-config.json")
                 .or_else(|_| std::fs::read_to_string("discovery-protocol-2.0.0/fixtures/v2.0.0/http/public-config.json"))
                 .or_else(|_| std::fs::read_to_string("discovery-protocol-1.1.0/fixtures/v1.1.0/http/public-config.json"))
                 .or_else(|_| std::fs::read_to_string("discovery-protocol-1.0.0/fixtures/http/public-config.json"))
                 .unwrap_or_else(|_| "{}".to_string());
-            parse_json(&content).unwrap().get("values").unwrap().clone()
+            let mut v = parse_json(&content).unwrap_or(JsonValue::Null);
+            while let Some(inner) = v.get("values") {
+                v = inner.clone();
+            }
+            v
         });
+        while let Some(inner) = public_values.get("values") {
+            public_values = inner.clone();
+        }
+
+        // Ensure readingRoom and gameplay exist for v2
+        if public_values.get("readingRoom").is_none() || public_values.get("gameplay").is_none() {
+            if let Ok(file_content) = std::fs::read_to_string("assets/config/public-config.json") {
+                if let Ok(file_v) = parse_json(&file_content) {
+                    let mut unwrap_v = file_v;
+                    while let Some(inner) = unwrap_v.get("values") {
+                        unwrap_v = inner.clone();
+                    }
+                    if let Some(rr) = unwrap_v.get("readingRoom") {
+                        if public_values.get("readingRoom").is_none() {
+                            if let JsonValue::Object(ref mut map) = public_values {
+                                map.push(("readingRoom".to_string(), rr.clone()));
+                            }
+                        }
+                    }
+                    if let Some(gp) = unwrap_v.get("gameplay") {
+                        if public_values.get("gameplay").is_none() {
+                            if let JsonValue::Object(ref mut map) = public_values {
+                                map.push(("gameplay".to_string(), gp.clone()));
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         Self {
             db,
@@ -82,9 +128,13 @@ impl ConfigService {
 
     pub fn get_public_config(&self) -> (JsonValue, String) {
         let guard = self.state.read().unwrap();
+        let mut pub_vals = guard.public_values.clone();
+        if let JsonValue::Object(ref mut map) = pub_vals {
+            map.retain(|(k, _)| k != "economy" && k != "npcBehavior");
+        }
         let body = JsonValue::Object(vec![
             ("revision".to_string(), JsonValue::Number(guard.revision as f64)),
-            ("values".to_string(), guard.public_values.clone()),
+            ("values".to_string(), pub_vals),
         ]);
         (body, format!("config-{}", guard.revision))
     }
