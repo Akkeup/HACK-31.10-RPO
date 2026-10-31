@@ -17,91 +17,28 @@ pub struct ConfigService {
 
 impl ConfigService {
     pub fn new(db: DbPool) -> Self {
-        // Try reading revision 1 from database
-        let mut revision = 1u64;
-        let mut admin_val = None;
-        let mut pub_val = None;
-
-        if let Ok(rows) = db.query("SELECT revision, admin_values::text, public_values::text FROM config_revisions ORDER BY revision DESC LIMIT 1") {
-            if let Some(row) = rows.get(0) {
-                if let Some(rev_str) = row.get(0) {
-                    if let Ok(r) = rev_str.parse::<u64>() {
-                        revision = r;
-                    }
-                }
-                if let Some(admin_str) = row.get(1) {
-                    if let Ok(mut v) = parse_json(admin_str) {
-                        while let Some(inner) = v.get("values") {
-                            v = inner.clone();
-                        }
-                        admin_val = Some(v);
-                    }
-                }
-                if let Some(pub_str) = row.get(2) {
-                    if let Ok(mut v) = parse_json(pub_str) {
-                        while let Some(inner) = v.get("values") {
-                            v = inner.clone();
-                        }
-                        pub_val = Some(v);
-                    }
-                }
-            }
-        }
-
-        // Fallback to fixture files if DB was empty
-        let mut admin_values = admin_val.unwrap_or_else(|| {
-            let content = std::fs::read_to_string("assets/config/admin-config.json")
-                .or_else(|_| std::fs::read_to_string("discovery-protocol-2.0.0/fixtures/v2.0.0/http/admin-config.json"))
-                .or_else(|_| std::fs::read_to_string("discovery-protocol-1.1.0/fixtures/v1.1.0/http/admin-config.json"))
-                .or_else(|_| std::fs::read_to_string("discovery-protocol-1.0.0/fixtures/http/admin-config.json"))
-                .unwrap_or_else(|_| "{}".to_string());
-            let mut v = parse_json(&content).unwrap_or(JsonValue::Null);
-            while let Some(inner) = v.get("values") {
-                v = inner.clone();
-            }
-            v
-        });
+        let admin_content = std::fs::read_to_string("assets/config/admin-config.json")
+            .or_else(|_| std::fs::read_to_string("apps/client/tests/fixtures/v2.0.0/http/admin-config.json"))
+            .unwrap_or_else(|_| "{}".to_string());
+        let mut admin_values = parse_json(&admin_content).unwrap_or(JsonValue::Null);
         while let Some(inner) = admin_values.get("values") {
             admin_values = inner.clone();
         }
 
-        let mut public_values = pub_val.unwrap_or_else(|| {
-            let content = std::fs::read_to_string("assets/config/public-config.json")
-                .or_else(|_| std::fs::read_to_string("discovery-protocol-2.0.0/fixtures/v2.0.0/http/public-config.json"))
-                .or_else(|_| std::fs::read_to_string("discovery-protocol-1.1.0/fixtures/v1.1.0/http/public-config.json"))
-                .or_else(|_| std::fs::read_to_string("discovery-protocol-1.0.0/fixtures/http/public-config.json"))
-                .unwrap_or_else(|_| "{}".to_string());
-            let mut v = parse_json(&content).unwrap_or(JsonValue::Null);
-            while let Some(inner) = v.get("values") {
-                v = inner.clone();
-            }
-            v
-        });
+        let public_content = std::fs::read_to_string("assets/config/public-config.json")
+            .or_else(|_| std::fs::read_to_string("apps/client/tests/fixtures/v2.0.0/http/public-config.json"))
+            .unwrap_or_else(|_| "{}".to_string());
+        let mut public_values = parse_json(&public_content).unwrap_or(JsonValue::Null);
         while let Some(inner) = public_values.get("values") {
             public_values = inner.clone();
         }
 
-        // Ensure readingRoom and gameplay exist for v2
-        if public_values.get("readingRoom").is_none() || public_values.get("gameplay").is_none() {
-            if let Ok(file_content) = std::fs::read_to_string("assets/config/public-config.json") {
-                if let Ok(file_v) = parse_json(&file_content) {
-                    let mut unwrap_v = file_v;
-                    while let Some(inner) = unwrap_v.get("values") {
-                        unwrap_v = inner.clone();
-                    }
-                    if let Some(rr) = unwrap_v.get("readingRoom") {
-                        if public_values.get("readingRoom").is_none() {
-                            if let JsonValue::Object(ref mut map) = public_values {
-                                map.push(("readingRoom".to_string(), rr.clone()));
-                            }
-                        }
-                    }
-                    if let Some(gp) = unwrap_v.get("gameplay") {
-                        if public_values.get("gameplay").is_none() {
-                            if let JsonValue::Object(ref mut map) = public_values {
-                                map.push(("gameplay".to_string(), gp.clone()));
-                            }
-                        }
+        let mut revision = 1u64;
+        if let Ok(rows) = db.query("SELECT revision FROM config_revisions ORDER BY revision DESC LIMIT 1") {
+            if let Some(row) = rows.get(0) {
+                if let Some(rev_str) = row.get(0) {
+                    if let Ok(r) = rev_str.parse::<u64>() {
+                        revision = r;
                     }
                 }
             }

@@ -156,6 +156,35 @@
                 "z": 8
               }
             }
+          },
+          {
+            "moduleId": "flags-demo",
+            "teacherId": "teacher-flags",
+            "examinerId": "examiner-flags",
+            "teacherPosition": {
+              "x": 25,
+              "y": 0,
+              "z": 3
+            },
+            "examinerPosition": {
+              "x": 25,
+              "y": 0,
+              "z": 6
+            },
+            "examinerSeat": {
+              "seatId": "seat-flags-demo",
+              "position": {
+                "x": 25,
+                "y": 0,
+                "z": 7
+              },
+              "yawRad": 0,
+              "exitPosition": {
+                "x": 25,
+                "y": 0,
+                "z": 8
+              }
+            }
           }
         ]
       },
@@ -318,7 +347,48 @@
         }
       ],
       "competitionTableId": "competition-central",
-      "assetSlots": []
+      "assetSlots": [
+        {
+          "slotId": "shelf",
+          "modelId": "model-triangle",
+          "placeholder": true
+        },
+        {
+          "slotId": "book",
+          "modelId": "model-triangle",
+          "placeholder": true
+        },
+        {
+          "slotId": "desk",
+          "modelId": "model-triangle",
+          "placeholder": true
+        },
+        {
+          "slotId": "chair",
+          "modelId": "model-triangle",
+          "placeholder": true
+        },
+        {
+          "slotId": "notebook",
+          "modelId": "model-triangle",
+          "placeholder": true
+        },
+        {
+          "slotId": "round-table",
+          "modelId": "model-triangle",
+          "placeholder": true
+        },
+        {
+          "slotId": "npc",
+          "modelId": "model-triangle",
+          "placeholder": true
+        },
+        {
+          "slotId": "player",
+          "modelId": "model-triangle",
+          "placeholder": true
+        }
+      ]
     }
   }
 }
