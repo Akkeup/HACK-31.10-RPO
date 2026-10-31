@@ -2,6 +2,7 @@ import {
   command,
   parseEvent,
   parseJSON,
+  safeDigestSha256,
   safeRandomUUID,
   validate,
   VERSION,
@@ -493,11 +494,7 @@ export class DiscoveryAdapter {
       }
       if (offset !== descriptor.byteSize)
         throw Error("INVALID_REQUEST: неполный ресурс");
-      const hash = [
-        ...new Uint8Array(await crypto.subtle.digest("SHA-256", buffer)),
-      ]
-        .map((x) => x.toString(16).padStart(2, "0"))
-        .join("");
+      const hash = await safeDigestSha256(buffer);
       if (hash !== descriptor.sha256) throw Error("INVALID_REQUEST: SHA-256");
       return buffer;
     } catch (error) {

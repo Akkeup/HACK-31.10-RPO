@@ -35,6 +35,9 @@
           });
         };
       }
+      if (typeof crypto !== "undefined" && !crypto.subtle) {
+        crypto.subtle = {};
+      }
     </script>
   </head>
   <body>

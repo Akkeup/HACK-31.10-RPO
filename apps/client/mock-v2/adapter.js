@@ -1,6 +1,6 @@
 // DEMO ONLY. This chunk (including keys) is deliberately excluded when VITE_TRANSPORT=real.
 import { DiscoveryAdapter } from "../src/network/adapters.js";
-import { command, parseEvent, safeRandomUUID, validate } from "../src/network/protocol.js";
+import { command, parseEvent, safeDigestSha256, safeRandomUUID, validate } from "../src/network/protocol.js";
 import { CompetitionServer } from "./competition.js";
 import { makePacks, grade, materials } from "./questions.js";
 import publicConfig from "./public-config.json" with { type: "json" };
@@ -792,11 +792,7 @@ export class LocalMockAdapter extends DiscoveryAdapter {
     if (!response.ok)
       throw Error("Не удалось загрузить локальный ресурс: " + response.status);
     const bytes = new Uint8Array(await response.arrayBuffer());
-    const hash = [
-      ...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)),
-    ]
-      .map((x) => x.toString(16).padStart(2, "0"))
-      .join("");
+    const hash = await safeDigestSha256(bytes);
     if (bytes.byteLength !== d.byteSize || hash !== d.sha256)
       throw Error("Неверные размер или SHA-256 локального ресурса.");
     if (d.chunkId) {
