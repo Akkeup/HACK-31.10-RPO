@@ -36,18 +36,33 @@ export function readingCards(blocks, measure, width, rows = 4) {
   });
 }
 export function lessonBlocks(material) {
-  return [
-    ...material.sections.map((section) => ({
-      heading: section.heading,
-      text: section.text,
-    })),
-    {
-      heading: "Примеры",
-      text: material.examples.map((t, i) => `${i + 1}. ${t}`).join(" "),
-    },
-    {
-      heading: "Главное",
-      text: material.keyPoints.map((t, i) => `${i + 1}. ${t}`).join(" "),
-    },
-  ];
+  // Repeated summaries are common in content packs. Keep the first copy only.
+  const seen = new Set();
+  const unique = (items) =>
+    items.filter((text) => {
+      const key = text
+        .normalize("NFKC")
+        .trim()
+        .replace(/\s+/g, " ")
+        .toLocaleLowerCase("ru");
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  const blocks = material.sections.map((section) => ({
+    heading: section.heading,
+    text: section.text,
+  }));
+  for (const [heading, items] of [
+    ["Примеры", material.examples],
+    ["Главное", material.keyPoints],
+  ]) {
+    const texts = unique(items);
+    if (texts.length)
+      blocks.push({
+        heading,
+        text: texts.map((t, i) => `${i + 1}. ${t}`).join(" "),
+      });
+  }
+  return blocks;
 }

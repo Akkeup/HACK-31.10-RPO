@@ -2,7 +2,11 @@ import { readingCards } from "./reading-cards.js";
 import { EducationUI } from "./education-ui.js";
 import { CompetitionUI } from "./competition-ui.js";
 import { icon } from "./icons.js";
-import { ACADEMY_HUB, ACADEMY_ROOMS, roomById } from "../world/academy-locations.js";
+import {
+  ACADEMY_HUB,
+  ACADEMY_ROOMS,
+  roomById,
+} from "../world/academy-locations.js";
 import {
   presets,
   validateConfig,
@@ -83,7 +87,8 @@ export class UI {
     };
   }
   showHome() {
-    const rows = this.educationProgress?.modules || this.progress?.modules || [];
+    const rows =
+      this.educationProgress?.modules || this.progress?.modules || [];
     const completed = rows.filter((row) => row.passed).length;
     this.info(
       "Добро пожаловать в Discovery Academy",
@@ -91,19 +96,46 @@ export class UI {
     );
   }
   showExamples() {
-    const rows = this.isMock ? [
-      ["Математика", "Числовой ответ", "Сколько получится: 3 × 4?", "room-mathematics"],
-      ["Информатика", "Короткий текст", "Как называется последовательность шагов решения задачи?", "room-informatics"],
-      ["История", "Выбор варианта", "Какой источник является вещественным?", "room-history"],
-      ["Страны и флаги", "Демонстрационная карточка", "Какой вымышленной стране принадлежит учебный флаг?", "room-geography"],
-    ] : [];
-    this.info("Примеры заданий", rows.length
-      ? `<p>Это вопросы из локальной демонстрации. В кабинете преподавателя доступны объяснение, проверка из пяти вопросов и обратная связь.</p><div class="academy-cards">${rows.map(([subject, kind, prompt, id]) => `<article><small>${escape(subject)} · ${escape(kind)}</small><h3>${escape(prompt)}</h3><button data-show-room="${id}">Показать кабинет →</button></article>`).join("")}</div>`
-      : `<p>Примеры заданий появятся после подключения учебных материалов сервера. Доступные модули можно открыть в академии.</p>`,
+    const rows = this.isMock
+      ? [
+          [
+            "Математика",
+            "Числовой ответ",
+            "Сколько получится: 3 × 4?",
+            "room-mathematics",
+          ],
+          [
+            "Информатика",
+            "Короткий текст",
+            "Как называется последовательность шагов решения задачи?",
+            "room-informatics",
+          ],
+          [
+            "История",
+            "Выбор варианта",
+            "Какой источник является вещественным?",
+            "room-history",
+          ],
+          [
+            "Страны и флаги",
+            "Демонстрационная карточка",
+            "Какой вымышленной стране принадлежит учебный флаг?",
+            "room-geography",
+          ],
+        ]
+      : [];
+    this.info(
+      "Примеры заданий",
+      rows.length
+        ? `<p>Это вопросы из локальной демонстрации. В кабинете преподавателя доступны объяснение, проверка из пяти вопросов и обратная связь.</p><div class="academy-cards">${rows.map(([subject, kind, prompt, id]) => `<article><small>${escape(subject)} · ${escape(kind)}</small><h3>${escape(prompt)}</h3><button data-show-room="${id}">Показать кабинет →</button></article>`).join("")}</div>`
+        : `<p>Примеры заданий появятся после подключения учебных материалов сервера. Доступные модули можно открыть в академии.</p>`,
     );
   }
   showTeachers() {
-    this.info("Каталог преподавателей", `<p>Выберите дисциплину. Маркер укажет дверь кабинета на северной стене читального зала.</p><div class="academy-cards">${ACADEMY_ROOMS.map((room) => `<article><small>КАБИНЕТ ${room.number} · ${escape(room.subject)}</small><h3>${escape(room.teacherName)}</h3><p>Материал, объяснение и письменная проверка.</p><button data-show-room="${room.roomId}">Показать кабинет →</button></article>`).join("")}</div>`);
+    this.info(
+      "Каталог преподавателей",
+      `<p>Выберите дисциплину. Маркер укажет дверь кабинета на северной стене читального зала.</p><div class="academy-cards">${ACADEMY_ROOMS.map((room) => `<article><small>КАБИНЕТ ${room.number} · ${escape(room.subject)}</small><h3>${escape(room.teacherName)}</h3><p>Материал, объяснение и письменная проверка.</p><button data-show-room="${room.roomId}">Показать кабинет →</button></article>`).join("")}</div>`,
+    );
   }
   chooseCabinet(roomId) {
     const room = roomById(roomId);
@@ -112,7 +144,8 @@ export class UI {
     this.$("#info-overlay").classList.add("hidden");
     this.game.setBlocked(false, "info");
     this.game.focusControls();
-    this.$("#route-guide").textContent = `${room.number} · ${room.subject} — дверь на северной стене`;
+    this.$("#route-guide").textContent =
+      `${room.number} · ${room.subject} — дверь на северной стене`;
     this.$("#route-guide").classList.remove("hidden");
     this.toast(`Кабинет ${room.number} отмечен. Идите к северной стене.`);
   }
@@ -138,7 +171,10 @@ export class UI {
     $("#home-nav").onclick = () => this.showHome();
     $("#examples-nav").onclick = () => this.showExamples();
     $("#teachers-nav").onclick = () => this.showTeachers();
-    $(".brand").onclick = (event) => { event.preventDefault(); this.showHome(); };
+    $(".brand").onclick = (event) => {
+      event.preventDefault();
+      this.showHome();
+    };
     $("#close-settings").onclick = () => this.toggleSettings(false);
     $("#settings-toggle").onclick = () =>
       this.toggleSettings($("#settings").classList.contains("hidden"));
@@ -182,7 +218,7 @@ export class UI {
           this.setRole("admin");
           await this.reloadAdmin();
           this.renderSettings();
-          this.toast("Демо-администратор: вход через /api/v1/auth/login");
+          this.toast("Демо-администратор: вход через /api/v2/auth/login");
         }
         if (e.target.closest("#save-server")) await this.saveServer();
         if (e.target.closest("#reload-server")) {
@@ -346,7 +382,9 @@ export class UI {
         this.nearest?.distance <= this.configs.character.interactionRadiusM &&
         $("#info-overlay").classList.contains("hidden")
       )
-        this.nearest.kind === "door" ? this.usePortal(this.nearest) : this.openDialogue(this.nearest.id);
+        this.nearest.kind === "door"
+          ? this.usePortal(this.nearest)
+          : this.openDialogue(this.nearest.id);
     });
     for (const id of ["dialogue-overlay", "info-overlay"])
       $("#" + id).addEventListener("keydown", (e) => {
@@ -614,9 +652,14 @@ export class UI {
     this.competition?.update(stats);
     this.nearest = stats.nearest;
     const currentRoom = roomById(stats.locationId);
-    this.$("#location-title").firstChild.textContent = currentRoom?.title || "Читальный зал";
-    this.$("#location-subtitle").textContent = currentRoom ? "Учитесь у преподавателя и проходите проверку." : "Выберите кабинет или откройте книгу.";
-    this.$("#location-meta").textContent = currentRoom ? `${currentRoom.subject} · Демо` : "Четыре кабинета · Демо";
+    this.$("#location-title").firstChild.textContent =
+      currentRoom?.title || "Читальный зал";
+    this.$("#location-subtitle").textContent = currentRoom
+      ? "Учитесь у преподавателя и проходите проверку."
+      : "Выберите кабинет или откройте книгу.";
+    this.$("#location-meta").textContent = currentRoom
+      ? `${currentRoom.subject} · Демо`
+      : "Четыре кабинета · Демо";
     this.$("#quest").classList.toggle("hidden", Boolean(currentRoom));
     this.$("#fps").textContent = stats.fps + " FPS";
     this.$("#players").textContent = stats.players + " исследователя";
@@ -637,14 +680,16 @@ export class UI {
       (this.nearest?.kind === "shelf"
         ? "Выбрать книгу"
         : this.nearest?.kind === "door"
-          ? this.nearest.roomId === ACADEMY_HUB ? "Выйти" : "Войти"
-        : this.nearest?.kind === "notebook"
-          ? "Начать проверку"
-          : this.nearest?.role === "examiner"
-            ? "Выбрать тему"
-            : this.nearest?.id === "npc-guide"
-              ? "Поговорить"
-              : "Изучить материал");
+          ? this.nearest.roomId === ACADEMY_HUB
+            ? "Выйти"
+            : "Войти"
+          : this.nearest?.kind === "notebook"
+            ? "Начать проверку"
+            : this.nearest?.role === "examiner"
+              ? "Выбрать тему"
+              : this.nearest?.id === "npc-guide"
+                ? "Поговорить"
+                : "Изучить материал");
     const x = stats.position[0],
       z = stats.position[2],
       size = this.configs.world.chunkSizeM;
@@ -700,8 +745,14 @@ export class UI {
   async openDialogue(id) {
     if (!id || !this.$("#dialogue-overlay").classList.contains("hidden"))
       return;
-    const door = this.nearest?.kind === "door" && this.nearest.id === id ? this.nearest : null;
-    if (door) { await this.usePortal(door); return; }
+    const door =
+      this.nearest?.kind === "door" && this.nearest.id === id
+        ? this.nearest
+        : null;
+    if (door) {
+      await this.usePortal(door);
+      return;
+    }
     const object = this.game.readingObjects().find((o) => o.id === id);
     if (object) {
       await this.education.openObject(object);

@@ -1,3 +1,5 @@
+> Архив реализации 1.x. Не инструкция для текущего клиента 2.0.0. См. [актуальный README](README.md) и [проверку совместимости](protocol-v2-audit.md).
+
 # Discovery Protocol 1.1.0: интеграция
 
 Источник — переданный пользователем `Discovery-Protocol-v1.1.0.zip`. HTTP `/api/v1`, subprotocol `discovery.v1`, protocolVersion `1.1.0`; каждый HTTP-запрос, кроме bootstrap/health/WS-upgrade, передаёт `X-Discovery-Protocol: 1.1.0`. Wire-форматы совпадают с новым архивом. Неизменённые схемы 1.0.0 сохранены рядом. Схемы в `apps/client/src/protocol/v1.1.0` побайтно совпадают с архивом (проверяются тестом). Копия OpenAPI, AsyncAPI и нормативных документов: [protocol-v1.1.0](protocol-v1.1.0/PROTOCOL_RULES.md).

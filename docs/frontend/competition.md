@@ -1,3 +1,5 @@
+> Архив реализации 1.x. Не инструкция для текущего клиента 2.0.0. См. [актуальный README](README.md) и [проверку совместимости](protocol-v2-audit.md).
+
 # Соревновательный стол — Protocol 1.1.0
 
 Клиент использует переданный `Discovery-Protocol-v1.1.0.zip`, HTTP `/api/v1`, WS subprotocol `discovery.v1`, точную версию `1.1.0` и заголовок `X-Discovery-Protocol`. Rust, БД и инфраструктура не менялись.

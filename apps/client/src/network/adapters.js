@@ -6,12 +6,15 @@ import {
   safeRandomUUID,
   validate,
   VERSION,
+  API_ROOT,
+  WS_SUBPROTOCOL,
 } from "./protocol.js";
 import { validateAdmin } from "../config/config.js";
 export class DiscoveryAdapter {
   async enterLocation(roomId) {
-    this.locationId = roomId;
-    return roomId;
+    throw Error(
+      "Переход между кабинетами пока доступен только в демо: в Protocol 2.0.0 нет команды смены локации.",
+    );
   }
   #token;
   constructor({ mock = false } = {}) {
@@ -51,16 +54,23 @@ export class DiscoveryAdapter {
     path,
     { method = "GET", body, headers = {}, signal, maxBytes = 65536 } = {},
   ) {
+    const target = new URL(path, "https://discovery.invalid");
+    if (
+      !path.startsWith(API_ROOT + "/") ||
+      target.origin !== "https://discovery.invalid" ||
+      !target.pathname.startsWith(API_ROOT + "/")
+    )
+      throw Error("VERSION_UNSUPPORTED: клиент поддерживает только /api/v2/");
     const response = await fetch(path, {
       method,
       signal: signal || AbortSignal.timeout(10000),
       cache: "no-store",
       credentials: "omit",
       headers: {
-        "X-Discovery-Protocol": VERSION,
         ...(this.#token ? { Authorization: "Bearer " + this.#token } : {}),
         ...(body !== undefined ? { "Content-Type": "application/json" } : {}),
         ...headers,
+        "X-Discovery-Protocol": VERSION,
       },
       ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
     });
@@ -117,25 +127,36 @@ export class DiscoveryAdapter {
     if (sessionId) validate("common", sessionId, "uuid");
     let session;
     if (sessionId) {
-      const res = await this.request(`/api/v2/sessions/${sessionId}/members/me`, {
-        method: "PUT",
-      });
+      const res = await this.request(
+        `/api/v2/sessions/${sessionId}/members/me`,
+        {
+          method: "PUT",
+        },
+      );
       session = res.value;
     } else {
-      const storageKey = this.user?.userId ? `discovery:session:${this.user.userId}` : null;
-      let existingSessionId = storageKey && typeof localStorage !== "undefined"
-        ? localStorage.getItem(storageKey)
+      const storageKey = this.user?.userId
+        ? `discovery:session:${this.user.userId}`
         : null;
+      let existingSessionId =
+        storageKey && typeof localStorage !== "undefined"
+          ? localStorage.getItem(storageKey)
+          : null;
 
       if (existingSessionId) {
         try {
-          const res = await this.request(`/api/v2/sessions/${existingSessionId}/members/me`, {
-            method: "PUT",
-          });
+          const res = await this.request(
+            `/api/v2/sessions/${existingSessionId}/members/me`,
+            {
+              method: "PUT",
+            },
+          );
           session = res.value;
         } catch {
           if (storageKey && typeof localStorage !== "undefined") {
-            try { localStorage.removeItem(storageKey); } catch {}
+            try {
+              localStorage.removeItem(storageKey);
+            } catch {}
           }
           existingSessionId = null;
         }
@@ -150,19 +171,26 @@ export class DiscoveryAdapter {
           session = res.value;
         } catch (err) {
           if (err.code === "ALREADY_IN_SESSION") {
-            const sid = err.details?.find((d) => d.path === "sessionId")?.reason;
+            const sid = err.details?.find(
+              (d) => d.path === "sessionId",
+            )?.reason;
             let targetSessionId = sid;
             if (!targetSessionId) {
               const sessions = await this.listSessions();
               const found = sessions.find((s) =>
-                s.players?.some((p) => p.displayName === this.user?.displayName),
+                s.players?.some(
+                  (p) => p.displayName === this.user?.displayName,
+                ),
               );
               if (found) targetSessionId = found.sessionId;
             }
             if (targetSessionId) {
-              const res = await this.request(`/api/v2/sessions/${targetSessionId}/members/me`, {
-                method: "PUT",
-              });
+              const res = await this.request(
+                `/api/v2/sessions/${targetSessionId}/members/me`,
+                {
+                  method: "PUT",
+                },
+              );
               session = res.value;
             } else {
               throw err;
@@ -178,7 +206,10 @@ export class DiscoveryAdapter {
     this.sessionId = session.sessionId;
     if (this.user?.userId && typeof localStorage !== "undefined") {
       try {
-        localStorage.setItem(`discovery:session:${this.user.userId}`, session.sessionId);
+        localStorage.setItem(
+          `discovery:session:${this.user.userId}`,
+          session.sessionId,
+        );
       } catch {}
     }
     return { publicConfig, manifest, user: this.user };
@@ -209,7 +240,7 @@ export class DiscoveryAdapter {
     const url = new URL(ticket.wsPath, location.origin);
     url.protocol = location.protocol === "https:" ? "wss:" : "ws:";
     url.searchParams.set("ticket", ticket.ticket);
-    const socket = new WebSocket(url, ticket.subprotocol);
+    const socket = new WebSocket(url, WS_SUBPROTOCOL);
     this.socket = socket;
     this.serverSeq = 0;
     this.inputSeq = 0;

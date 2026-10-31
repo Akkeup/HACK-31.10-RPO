@@ -1,7 +1,7 @@
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
-import { protocolSchemas } from "../protocol/schemas.js";
-import { safeRandomUUID } from "./protocol.js";
+import { protocolSchemas } from "../protocol/legacy-schemas.js";
+import { safeRandomUUID } from "./crypto.js";
 export const VERSION = "1.1.0";
 const base = "https://discovery.invalid/protocol/1.1.0/";
 const ajv = new Ajv2020({

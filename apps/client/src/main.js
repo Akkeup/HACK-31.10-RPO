@@ -80,29 +80,6 @@ async function start() {
         );
     if (
       import.meta.env.DEV &&
-      new URLSearchParams(location.search).has("legacy-controlsqa")
-    ) {
-      const { runControlChecks } =
-        await import("../tests/ui-controls-browser.js");
-      runControlChecks({ game, ui, adapter, configs });
-    }
-    if (
-      import.meta.env.DEV &&
-      new URLSearchParams(location.search).has("legacy-educationqa")
-    ) {
-      const { runEducationChecks } =
-        await import("../tests/education-browser.js");
-      runEducationChecks({ game, ui, adapter, configs });
-    }
-    if (
-      import.meta.env.DEV &&
-      new URLSearchParams(location.search).has("legacy-qa")
-    ) {
-      const { runBrowserChecks } = await import("../tests/browser-suite.js");
-      runBrowserChecks({ game, ui, adapter, configs });
-    }
-    if (
-      import.meta.env.DEV &&
       new URLSearchParams(location.search).has("roomqa")
     ) {
       const { runRoomChecks } =
@@ -115,7 +92,11 @@ async function start() {
         const { roomById } = await import("./world/academy-locations.js");
         const room = roomById(roomId);
         if (room) {
-          adapter.user.player.position = { x: room.door.x, y: 0, z: room.door.z + 1.6 };
+          adapter.user.player.position = {
+            x: room.door.x,
+            y: 0,
+            z: room.door.z + 1.6,
+          };
           adapter.tickCount++;
           adapter.snapshot();
           await game.enterLocation(room.roomId);

@@ -92,7 +92,7 @@ export class Game {
     this.unsubStatus = adapter.onStatus((status) => {
       if (status === "connected") {
         this.lastTick = -1;
-        for (const other of this.others.values())
+        for (const other of [...this.others.values(), ...this.npcs.values()])
           other.buffer = new SnapshotBuffer();
       }
       if (status === "auth-expired") {
@@ -110,7 +110,12 @@ export class Game {
     const root = new THREE.Group();
     const tag = nameTag(name);
     root.add(tag);
-    root.userData = { tag, body: null, modelId: null };
+    root.userData = {
+      tag,
+      body: null,
+      modelId: null,
+      actorKind: id === "self" || id.startsWith("player:") ? "player" : "npc",
+    };
     this.scene.add(root);
     this.actors.set(id, root);
     return root;
@@ -197,13 +202,23 @@ export class Game {
     this.locationId = roomId;
     this.academyArt.setLocation(roomId);
     const room = roomById(roomId);
-    const at = room ? room.entry : ACADEMY_ROOMS.find((item) =>
-      Math.hypot(this.authoritative.x - item.hubReturn.x, this.authoritative.z - item.hubReturn.z) < 3
-    )?.hubReturn;
+    const at = room
+      ? room.entry
+      : ACADEMY_ROOMS.find(
+          (item) =>
+            Math.hypot(
+              this.authoritative.x - item.hubReturn.x,
+              this.authoritative.z - item.hubReturn.z,
+            ) < 3,
+        )?.hubReturn;
     if (at) {
       this.authoritative.set(at.x, 0, at.z);
       this.player.position.copy(this.authoritative);
-      this.camera.position.set(at.x, this.configs.firstPerson.standingEyeHeightM, at.z);
+      this.camera.position.set(
+        at.x,
+        this.configs.firstPerson.standingEyeHeightM,
+        at.z,
+      );
     }
     this.yaw = room ? 0 : Math.PI;
     this.pitch = 0;
@@ -341,11 +356,26 @@ export class Game {
           name: npc.displayName,
           title: npc.subject,
           root: this.createActor("npc:" + npc.npcId, npc.displayName),
+          buffer: new SnapshotBuffer(),
         };
         this.npcs.set(npc.npcId, actor);
       }
-      actor.root.position.set(npc.position.x, npc.position.y, npc.position.z);
-      actor.root.rotation.y = npc.yawRad;
+      if (
+        !actor.buffer.frames.length ||
+        actor.root.position.distanceTo(
+          new THREE.Vector3(npc.position.x, npc.position.y, npc.position.z),
+        ) > 8
+      ) {
+        actor.buffer = new SnapshotBuffer();
+        actor.root.position.set(npc.position.x, npc.position.y, npc.position.z);
+        actor.root.rotation.y = npc.yawRad;
+      }
+      actor.buffer.push(
+        [npc.position.x, npc.position.y, npc.position.z],
+        npc.yawRad,
+        performance.now(),
+        p.tick,
+      );
       actor.root.userData.npcProfile = {
         npcId: npc.npcId,
         role: npc.role,
@@ -474,7 +504,8 @@ export class Game {
     }
   }
   getAimedTable() {
-    if (this.activity.mode !== "exploring" || this.locationId !== ACADEMY_HUB) return null;
+    if (this.activity.mode !== "exploring" || this.locationId !== ACADEMY_HUB)
+      return null;
     const direction = new THREE.Vector3();
     this.camera.getWorldDirection(direction);
     for (const t of this.configs.gameplay.competition.tables) {
@@ -536,7 +567,7 @@ export class Game {
       );
       const name =
         object.kind === "notebook"
-          ? "Тетрадь · " +
+          ? "Проверка · " +
             ({
               "math-basics": "Математика",
               "informatics-basics": "Информатика",
@@ -547,7 +578,7 @@ export class Game {
       const tag = nameTag(name);
       tag.position.set(
         object.position.x,
-        object.kind === "shelf" ? 2.9 : 1.5,
+        object.kind === "shelf" ? 2.2 : 1.12,
         object.position.z,
       );
       this.scene.add(tag);
@@ -556,13 +587,38 @@ export class Game {
   }
   readingObjects() {
     const current = roomById(this.locationId);
-    if (current) return [{
-      id: `notebook-${current.moduleId}`,
-      kind: "notebook",
-      name: `Тетрадь · ${current.subject}`,
-      position: current.notebook,
-      notebook: { moduleId: current.moduleId, examinerId: current.examinerId },
-    }];
+    if (current) {
+      const shelf = this.configs.readingRoom?.shelves.find((s) =>
+        s.bookIds.includes(`book-${current.moduleId}`),
+      );
+      return [
+        {
+          id: `notebook-${current.moduleId}`,
+          kind: "notebook",
+          name: `Проверка · ${current.subject}`,
+          position: current.notebook,
+          notebook: {
+            moduleId: current.moduleId,
+            examinerId: current.examinerId,
+          },
+        },
+        ...(shelf
+          ? [
+              {
+                id: shelf.shelfId,
+                kind: "shelf",
+                name: `Полка · ${current.subject}`,
+                position: {
+                  x: current.center.x - 4.75,
+                  y: 0,
+                  z: current.center.z + 1,
+                },
+                shelf,
+              },
+            ]
+          : []),
+      ];
+    }
     const room = this.configs.readingRoom;
     if (!room) return [];
     const kinds = new Map([
@@ -595,14 +651,42 @@ export class Game {
   getNearby() {
     const room = roomById(this.locationId);
     const portal = room
-      ? { id: "exit-" + room.roomId, kind: "door", roomId: ACADEMY_HUB, name: "Выход в читальный зал", position: room.exit }
-      : ACADEMY_ROOMS.map((item) => ({ id: "door-" + item.roomId, kind: "door", roomId: item.roomId, name: item.title, position: item.door }))
-        .find((item) => Math.hypot(item.position.x - this.player.position.x, item.position.z - this.player.position.z) < 3.2);
+      ? {
+          id: "exit-" + room.roomId,
+          kind: "door",
+          roomId: ACADEMY_HUB,
+          name: "Выход в читальный зал",
+          position: room.exit,
+        }
+      : ACADEMY_ROOMS.map((item) => ({
+          id: "door-" + item.roomId,
+          kind: "door",
+          roomId: item.roomId,
+          name: item.title,
+          position: item.door,
+        })).find(
+          (item) =>
+            Math.hypot(
+              item.position.x - this.player.position.x,
+              item.position.z - this.player.position.z,
+            ) < 3.2,
+        );
     if (portal) {
-      const distance = Math.hypot(portal.position.x - this.player.position.x, portal.position.z - this.player.position.z);
-      const direction = new THREE.Vector3(portal.position.x, 1.5, portal.position.z)
-        .sub(this.camera.position).normalize();
-      if (distance <= 3.2 && direction.dot(this.camera.getWorldDirection(new THREE.Vector3())) > 0.45)
+      const distance = Math.hypot(
+        portal.position.x - this.player.position.x,
+        portal.position.z - this.player.position.z,
+      );
+      const direction = new THREE.Vector3(
+        portal.position.x,
+        1.5,
+        portal.position.z,
+      )
+        .sub(this.camera.position)
+        .normalize();
+      if (
+        distance <= 3.2 &&
+        direction.dot(this.camera.getWorldDirection(new THREE.Vector3())) > 0.45
+      )
         return { ...portal, distance };
     }
     let nearest = null;
@@ -706,7 +790,13 @@ export class Game {
     this.sun.target.updateMatrixWorld();
     this.academyArt?.setLocation(this.locationId);
     for (const { roots } of this.resources?.roots.values() || [])
-      roots.forEach((root) => (root.visible = this.modelsVisible !== false && this.locationId === ACADEMY_HUB));
+      roots.forEach(
+        (root) =>
+          (root.visible =
+            !root.userData.presentationHidden &&
+            this.modelsVisible !== false &&
+            this.locationId === ACADEMY_HUB),
+      );
     this.scene.traverse((node) => {
       if (node.name.startsWith("lod-far")) node.visible = false;
       if (node.name.startsWith("decor-"))
@@ -769,18 +859,36 @@ export class Game {
     this.player.position.lerp(this.authoritative, 1 - Math.exp(-18 * dt));
     this.player.rotation.y = this.heading;
     for (const npc of this.npcs.values()) {
-      const root = npc.root;
-      const dx = this.player.position.x - root.position.x;
-      const dz = this.player.position.z - root.position.z;
-      if (Math.hypot(dx, dz) > 3.2 || npc.role !== "teacher" || npc.id === "npc-guide") continue;
-      const target = Math.atan2(dx, dz);
-      const difference = Math.atan2(Math.sin(target - root.rotation.y), Math.cos(target - root.rotation.y));
-      root.rotation.y += difference * (1 - Math.exp(-3.8 * dt));
+      const root = npc.root,
+        pose = npc.buffer.sample(now);
+      const previous = root.position.clone();
+      if (pose) root.position.fromArray(pose.position);
+      root.userData.moveSpeed =
+        dt > 0 ? Math.min(2, previous.distanceTo(root.position) / dt) : 0;
+      let target = pose?.heading ?? root.rotation.y;
+      const dx = this.player.position.x - root.position.x,
+        dz = this.player.position.z - root.position.z;
+      if (
+        npc.state !== "walking" &&
+        Math.hypot(dx, dz) <= 3.2 &&
+        npc.role === "teacher"
+      )
+        target = Math.atan2(dx, dz);
+      const difference = Math.atan2(
+        Math.sin(target - root.rotation.y),
+        Math.cos(target - root.rotation.y),
+      );
+      root.rotation.y += difference * (1 - Math.exp(-6 * dt));
     }
     for (const other of this.others.values()) {
       const pose = other.buffer.sample(now);
       if (pose) {
+        const previous = other.root.position.clone();
         other.root.position.fromArray(pose.position);
+        other.root.userData.moveSpeed =
+          dt > 0
+            ? Math.min(6, previous.distanceTo(other.root.position) / dt)
+            : 0;
         other.root.rotation.y = pose.heading + Math.PI;
       }
     }
@@ -789,12 +897,14 @@ export class Game {
         const body = actor.userData.body;
         if (!body) continue;
         const seated = actor.userData.seated;
-        const moving = id === "self" ? length : !id.startsWith("npc:");
+        const moving =
+          id === "self" ? length : actor.userData.moveSpeed > 0.025;
         if (
           this.localArt?.updateActor(
             actor,
             seated ? "sitting" : moving ? "walking" : "idle",
             dt * this.configs.characterVisual.animationRate,
+            actor.userData.moveSpeed || 0,
           )
         ) {
           actor.userData.tag.position.y = seated ? 2.1 : 2.55;

@@ -1,12 +1,23 @@
 // DEMO ONLY. This chunk (including keys) is deliberately excluded when VITE_TRANSPORT=real.
 import { DiscoveryAdapter } from "../src/network/adapters.js";
-import { command, parseEvent, safeDigestSha256, safeRandomUUID, validate } from "../src/network/protocol.js";
+import {
+  command,
+  parseEvent,
+  safeDigestSha256,
+  safeRandomUUID,
+  validate,
+} from "../src/network/protocol.js";
+import { RoomNpcMotion } from "./npc-motion.js";
 import { CompetitionServer } from "./competition.js";
 import { makePacks, grade, materials } from "./questions.js";
 import publicConfig from "./public-config.json" with { type: "json" };
 import published from "./published.json" with { type: "json" };
 import country from "./country.json" with { type: "json" };
-import { ACADEMY_HUB, ACADEMY_ROOMS, roomById } from "../src/world/academy-locations.js";
+import {
+  ACADEMY_HUB,
+  ACADEMY_ROOMS,
+  roomById,
+} from "../src/world/academy-locations.js";
 const clone = structuredClone,
   uuid = () => safeRandomUUID(),
   exploring = () => ({ mode: "exploring", targetId: null, seatId: null });
@@ -30,21 +41,27 @@ export class LocalMockAdapter extends DiscoveryAdapter {
     this.botTimers = new Set();
     this.inputs = [0, 0];
     this.locationId = ACADEMY_HUB;
+    this.npcMotion = new Map(
+      ACADEMY_ROOMS.flatMap((room) =>
+        ["teacher", "examiner"].map((role) => [
+          room[role + "Id"],
+          new RoomNpcMotion(room, role),
+        ]),
+      ),
+    );
   }
   async initialize() {
     const locationConfig = clone(publicConfig);
     for (const station of locationConfig.values.gameplay.education.stations) {
-      const room = ACADEMY_ROOMS.find((item) => item.moduleId === station.moduleId);
+      const room = ACADEMY_ROOMS.find(
+        (item) => item.moduleId === station.moduleId,
+      );
       if (!room) continue;
       station.teacherPosition = clone(room.teacherPosition);
       station.examinerPosition = clone(room.examinerPosition);
       station.examinerSeat = clone(room.examinerSeat);
     }
-    this.publicConfig = validate(
-      "config",
-      locationConfig,
-      "publicDocument",
-    );
+    this.publicConfig = validate("config", locationConfig, "publicDocument");
     this.manifest = validate(
       "streaming",
       clone(published.manifest),
@@ -278,33 +295,67 @@ export class LocalMockAdapter extends DiscoveryAdapter {
       }
       const speed = this.publicConfig.values.character.walkSpeedMps * 0.05;
       const room = roomById(this.locationId);
-      const bounds = room?.bounds || { minX: 66.5, maxX: 93.5, minZ: 66.5, maxZ: 93.5 };
+      const bounds = room?.bounds || {
+        minX: 66.5,
+        maxX: 93.5,
+        minZ: 66.5,
+        maxZ: 93.5,
+      };
       const pos = {
-        x: Math.min(bounds.maxX, Math.max(bounds.minX, p.position.x + x * speed)),
+        x: Math.min(
+          bounds.maxX,
+          Math.max(bounds.minX, p.position.x + x * speed),
+        ),
         y: 0,
-        z: Math.min(bounds.maxZ, Math.max(bounds.minZ, p.position.z + z * speed)),
+        z: Math.min(
+          bounds.maxZ,
+          Math.max(bounds.minZ, p.position.z + z * speed),
+        ),
       };
       // Demo collision bounds belong to the adapter, never local graphics settings.
       const blocked = (v) =>
-        (room ? room.colliders.some((o) => Math.abs(v.x - o.x) < o.hx && Math.abs(v.z - o.z) < o.hz) : [
-          ...[72, 88].flatMap((x) => [83, 88].map((z) => ({ x, z, hx: 1.2, hz: 0.65 }))),
-          { x: 74, z: 90.5, hx: 2.4, hz: 0.55 },
-        ].some((o) => Math.abs(v.x - o.x) < o.hx + 0.25 && Math.abs(v.z - o.z) < o.hz + 0.25) || this.interestObjects?.some(
-          (o) =>
-            o.collidable &&
-            o.modelId !== "competition-chair" &&
-            Math.abs(v.x - o.position.x) <
-              (o.modelId === "competition-table" ? 1.8 : o.modelId === "reading-shelf" && Math.abs(o.yawRad) > 1 ? 0.88 : 1.45) &&
-            Math.abs(v.z - o.position.z) <
-              (o.modelId === "reading-shelf"
-                ? Math.abs(o.yawRad) > 1 ? 1.6 : 0.65
-                : o.modelId === "competition-table"
-                  ? 1.8
-                  : 0.85),
-        ));
+        room
+          ? room.colliders.some(
+              (o) => Math.abs(v.x - o.x) < o.hx && Math.abs(v.z - o.z) < o.hz,
+            )
+          : [
+              ...[72, 88].flatMap((x) =>
+                [83, 88].map((z) => ({ x, z, hx: 1.2, hz: 0.65 })),
+              ),
+              { x: 74, z: 90.5, hx: 2.4, hz: 0.55 },
+            ].some(
+              (o) =>
+                Math.abs(v.x - o.x) < o.hx + 0.25 &&
+                Math.abs(v.z - o.z) < o.hz + 0.25,
+            ) ||
+            this.interestObjects?.some(
+              (o) =>
+                o.collidable &&
+                o.modelId !== "competition-chair" &&
+                Math.abs(v.x - o.position.x) <
+                  (o.modelId === "competition-table"
+                    ? 1.8
+                    : o.modelId === "reading-shelf" && Math.abs(o.yawRad) > 1
+                      ? 0.88
+                      : 1.45) &&
+                Math.abs(v.z - o.position.z) <
+                  (o.modelId === "reading-shelf"
+                    ? Math.abs(o.yawRad) > 1
+                      ? 1.6
+                      : 0.65
+                    : o.modelId === "competition-table"
+                      ? 1.8
+                      : 0.85),
+            );
       if (!blocked({ ...pos, z: p.position.z })) p.position.x = pos.x;
       if (!blocked({ ...pos, x: p.position.x })) p.position.z = pos.z;
     }
+    const currentRoom = roomById(this.locationId);
+    if (currentRoom)
+      for (const role of ["teacher", "examiner"])
+        this.npcMotion
+          .get(currentRoom[role + "Id"])
+          .tick(0.05, p.position, p.activity.mode !== "exploring");
     this.competition.tick();
     this.botAnswers();
     if (this.tickCount % 2 === 0) this.snapshot();
@@ -318,40 +369,58 @@ export class LocalMockAdapter extends DiscoveryAdapter {
       players: [this.user, ...this.bots].map((u) => u.player),
       tables: this.competition.summaries(),
       npcs: [
-        ...(!roomById(this.locationId) ? [{
-          npcId: "npc-guide",
-          displayName: "София · Проводник",
-          position: { x: 83, y: 0, z: 90 },
-          yawRad: 0,
-          state: "idle",
-          subject: "Читальный зал · Демо",
-          role: "teacher",
-          moduleId: "math-basics",
-        }] : []),
-        ...this.publicConfig.values.gameplay.education.stations.filter((s) =>
-          roomById(this.locationId)?.moduleId === s.moduleId
-        ).flatMap((s) =>
-          ["teacher", "examiner"].map((role) => ({
-            npcId: s[role + "Id"],
-            displayName: role === "teacher"
-              ? roomById(this.locationId)?.teacherName || this.packs[s.moduleId].module.title
-              : "Экзаменатор",
-            position: s[role + "Position"],
-            yawRad: 0,
-            state: "idle",
-            subject: this.packs[s.moduleId].module.subject,
-            role,
-            moduleId: s.moduleId,
-          })),
-        ),
+        ...(!roomById(this.locationId)
+          ? [
+              {
+                npcId: "npc-guide",
+                displayName: "София · Проводник",
+                position: { x: 83, y: 0, z: 90 },
+                yawRad: 0,
+                state: "idle",
+                subject: "Читальный зал · Демо",
+                role: "teacher",
+                moduleId: "math-basics",
+              },
+            ]
+          : []),
+        ...this.publicConfig.values.gameplay.education.stations
+          .filter((s) => roomById(this.locationId)?.moduleId === s.moduleId)
+          .flatMap((s) =>
+            ["teacher", "examiner"].map((role) => ({
+              npcId: s[role + "Id"],
+              displayName:
+                role === "teacher"
+                  ? roomById(this.locationId)?.teacherName ||
+                    this.packs[s.moduleId].module.title
+                  : "Экзаменатор",
+              position: this.stationPose(s, role).position,
+              yawRad: this.stationPose(s, role).yawRad,
+              state: this.stationPose(s, role).state,
+              subject: this.packs[s.moduleId].module.subject,
+              role,
+              moduleId: s.moduleId,
+            })),
+          ),
       ],
     });
+  }
+  stationPose(station, role) {
+    const room = ACADEMY_ROOMS.find(
+      (room) => room.moduleId === station.moduleId,
+    );
+    return room && this.locationId === room.roomId
+      ? this.npcMotion.get(station[role + "Id"])
+      : { position: station[role + "Position"], yawRad: 0, state: "idle" };
+  }
+  teacherPose(station) {
+    return this.stationPose(station, "teacher");
   }
   async enterLocation(roomId) {
     const room = roomById(roomId);
     this.free();
     if (room) {
-      if (this.locationId !== ACADEMY_HUB) this.fail("ACTIVITY_CONFLICT", "Сначала выйдите из кабинета.");
+      if (this.locationId !== ACADEMY_HUB)
+        this.fail("ACTIVITY_CONFLICT", "Сначала выйдите из кабинета.");
       this.near(room.door, 3.2);
       this.locationId = room.roomId;
       this.user.player.position = clone(room.entry);
@@ -484,15 +553,25 @@ export class LocalMockAdapter extends DiscoveryAdapter {
         const b = this.books().books.find((b) => b.bookId === p.bookId);
         if (b) {
           pack = this.packs[b.moduleId];
-          this.near(
-            this.interestObjects.find((o) => o.id === b.bookId).position,
-          );
+          const current = roomById(this.locationId);
+          if (current) {
+            if (current.moduleId !== b.moduleId)
+              this.fail("OUT_OF_RANGE", "Полка находится в другом кабинете.");
+            this.near({ x: current.center.x - 4.75, z: current.center.z + 1 });
+          } else {
+            const shelf = this.publicConfig.values.readingRoom.shelves.find(
+              (s) => s.bookIds.includes(b.bookId),
+            );
+            this.near(
+              this.interestObjects.find((o) => o.id === shelf.shelfId).position,
+            );
+          }
         }
       } else {
         const s = stations.find((s) => s.teacherId === p.npcId);
         if (s) {
           pack = this.packs[s.moduleId];
-          this.near(s.teacherPosition);
+          this.near(this.teacherPose(s).position);
         }
       }
       if (!pack) this.fail("NOT_FOUND", "Материал не найден.");
@@ -519,7 +598,7 @@ export class LocalMockAdapter extends DiscoveryAdapter {
       );
       if (!s || p.countryId !== country.countryId)
         this.fail("NOT_FOUND", "Карточка страны не найдена.");
-      this.near(s.teacherPosition);
+      this.near(this.teacherPose(s).position);
       if (this.user.player.activity.mode === "seated_quiz")
         this.fail(
           "ACTIVITY_CONFLICT",
@@ -538,7 +617,7 @@ export class LocalMockAdapter extends DiscoveryAdapter {
           this.user.player.position.x - s.examinerSeat.position.x,
           this.user.player.position.z - s.examinerSeat.position.z,
         ) <= 3;
-      if (!nearNotebook) this.near(s.examinerPosition);
+      if (!nearNotebook) this.near(this.stationPose(s, "examiner").position);
       let a;
       if (m.type === "quiz.resume") {
         a = this.attempts.get(p.attemptId);

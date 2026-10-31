@@ -351,7 +351,8 @@ export class EducationUI {
       this.country
         ? [
             {
-              heading: this.country.nameRu + " · Демо",
+              heading:
+                this.country.nameRu + (this.country.synthetic ? " · Демо" : ""),
               text: this.country.descriptionSentences.join(" "),
             },
           ]
@@ -408,7 +409,7 @@ export class EducationUI {
       this.opening = false;
       return;
     }
-    if (action === "country") {
+    if (action === "country" && this.adapter.isMock) {
       await this.send(
         "country.describe",
         {
@@ -523,7 +524,7 @@ export class EducationUI {
       const cards = this.cards();
       this.page = Math.min(cards.length - 1, Math.max(0, this.page));
       const card = cards[this.page];
-      content = `<article class="lesson-card"><span class="eyebrow">${safe(l.material.module.title)}${this.adapter.isMock ? " · Демо" : ""}</span><h3>${safe(card.heading)}</h3><div class="lesson-card-lines" aria-live="polite">${card.lines.map((line) => `<span class="lesson-card-line">${safe(line)}</span>`).join("")}</div></article><nav class="lesson-navigation" aria-label="Карточки материала"><button data-education="card-prev" aria-label="Предыдущая карточка" ${this.page === 0 ? "disabled" : ""}>←</button><span>Карточка ${this.page + 1} из ${cards.length}</span><button data-education="card-next" aria-label="Следующая карточка" ${this.page === cards.length - 1 ? "disabled" : ""}>→</button></nav><p class="lesson-instruction">${this.page === cards.length - 1 ? "Материал прочитан. Можно вернуться в зал." : "Нажмите → для следующей карточки."}</p>${l.material.module.subject === "geography_flags" && !this.country ? `<button data-education="country" ${d}>Демо: преподаватель расскажет о стране</button>` : ""}`;
+      content = `<article class="lesson-card"><span class="eyebrow">${safe(l.material.module.title)}${this.adapter.isMock ? " · Демо" : ""}</span><h3>${safe(card.heading)}</h3><div class="lesson-card-lines" aria-live="polite">${card.lines.map((line) => `<span class="lesson-card-line">${safe(line)}</span>`).join("")}</div></article><nav class="lesson-navigation" aria-label="Карточки материала"><button data-education="card-prev" aria-label="Предыдущая карточка" ${this.page === 0 ? "disabled" : ""}>←</button><span>Карточка ${this.page + 1} из ${cards.length}</span><button data-education="card-next" aria-label="Следующая карточка" ${this.page === cards.length - 1 ? "disabled" : ""}>→</button></nav><p class="lesson-instruction">${this.page === cards.length - 1 ? "Материал прочитан. Можно вернуться в зал." : "Нажмите → для следующей карточки."}</p>${this.adapter.isMock && l.material.module.subject === "geography_flags" && !this.country ? `<button data-education="country" ${d}>Демо: преподаватель расскажет о стране</button>` : ""}`;
     }
     const imageUrl = this.flag(a?.status === "active" ? a.question : null);
     if (a) {

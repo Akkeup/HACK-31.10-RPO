@@ -75,15 +75,15 @@ export const ACADEMY_ROOMS = [
   entry: { x: room.center.x, y: 0, z: 84.5 },
   exit: { x: room.center.x, y: 0, z: 85.55 },
   hubReturn: { x: room.door.x, y: 0, z: 68.1 },
-  teacherPosition: { x: room.center.x - 2.5, y: 0, z: 77.5 },
-  examinerPosition: { x: room.center.x + 3.6, y: 0, z: 78.2 },
+  teacherPosition: { x: room.center.x - 2.5, y: 0, z: 78.1 },
+  examinerPosition: { x: room.center.x + 3.6, y: 0, z: 77.85 },
   examinerSeat: {
     seatId: `seat-${room.moduleId}`,
     position: { x: room.center.x + 3.4, y: 0, z: 80.1 },
     yawRad: Math.PI,
     exitPosition: { x: room.center.x + 1.7, y: 0, z: 81.5 },
   },
-  notebook: { x: room.center.x + 3.4, y: 0.92, z: 78.9 },
+  notebook: { x: room.center.x + 3.4, y: 0.9, z: 79.05 },
   bounds: {
     minX: room.center.x - 6.15,
     maxX: room.center.x + 6.15,
@@ -92,17 +92,30 @@ export const ACADEMY_ROOMS = [
   },
   objects: [
     { kind: "desk", x: -2.5, z: -3.3, width: 2.3 },
-    { kind: "desk", x: 3.4, z: -0.95, width: 2.1 },
+    { kind: "desk", x: 3.4, z: -0.95, width: 2.1, study: true },
     { kind: "shelf", x: -4.75, z: 1 },
-    { kind: "shelf", x: 4.75, z: -3.2 },
     { kind: "lamp", x: -3.25, z: -3.4, y: 0.9 },
+  ],
+  // A clear loop in front of the teacher desk; never crosses a seat or bookshelf.
+  teacherRoute: [
+    [-2.5, -1.9],
+    [-0.6, -1.9],
+    [-0.6, 1.8],
+    [-2.5, 1.8],
+  ],
+  examinerRoute: [
+    [3.6, -2.15],
+    [4.8, -2.15],
+    [4.8, -4.5],
+    [2.8, -4.5],
+    [2.8, -2.15],
   ],
   colliders: [
     { x: room.center.x - 2.5, z: 76.7, hx: 1.4, hz: 0.85 },
     { x: room.center.x + 3.4, z: 79.05, hx: 1.3, hz: 0.85 },
     { x: room.center.x - 4.75, z: 81, hx: 1.25, hz: 0.6 },
-    { x: room.center.x + 4.75, z: 76.8, hx: 1.25, hz: 0.6 },
   ],
 }));
 
-export const roomById = (id) => ACADEMY_ROOMS.find((room) => room.roomId === id);
+export const roomById = (id) =>
+  ACADEMY_ROOMS.find((room) => room.roomId === id);

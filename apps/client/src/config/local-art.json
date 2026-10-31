@@ -28,7 +28,7 @@
     "offset": [0, 0, 0]
   },
   "examiner": {
-    "path": "/assets/models/npc/examiner.glb",
+    "path": "/assets/models/pack-2/npc-common.glb",
     "available": true,
     "scale": 1,
     "rotationY": 0,
@@ -41,33 +41,13 @@
     "rotationY": 0,
     "offset": [0, 0, 0]
   },
-  "book": {
-    "path": "/assets/models/furniture/book.glb",
-    "available": true,
-    "scale": 1,
-    "rotationY": 0,
-    "offset": [0, 0, 0]
-  },
-  "desk": {
-    "path": "/assets/models/furniture/desk.glb",
-    "available": true,
-    "scale": 1,
-    "rotationY": 0,
-    "offset": [0, 0, 0]
-  },
   "chair": {
-    "path": "/assets/models/furniture/chair.glb",
+    "path": "/assets/models/pack-2/chair.glb",
     "available": true,
-    "scale": 1,
-    "rotationY": 0,
-    "offset": [0, 0, 0]
-  },
-  "notebook": {
-    "path": "/assets/models/furniture/notebook.glb",
-    "available": false,
-    "scale": 1,
-    "rotationY": 0,
-    "offset": [0, 0, 0]
+    "scale": 1.25,
+    "rotationY": 3.141592653589793,
+    "offset": [0, 0, 0],
+    "hiddenNodes": ["dressing"]
   },
   "round-table": {
     "path": "/assets/models/furniture/round-table.glb",
@@ -82,5 +62,57 @@
     "scale": 1,
     "rotationY": 0,
     "offset": [0, 0, 0]
+  },
+  "guide": {
+    "path": "/assets/models/pack-2/sophia.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "player": {
+    "path": "/assets/models/pack-2/player.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "door": {
+    "path": "/assets/models/pack-2/door.glb",
+    "available": true,
+    "scale": 1.4,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "computer-desk": {
+    "path": "/assets/models/pack-2/computer-desk.glb",
+    "available": true,
+    "scale": 1.15,
+    "rotationY": 0,
+    "offset": [0, 0, 0],
+    "hiddenNodes": ["dressing"]
+  },
+  "board": {
+    "path": "/assets/models/pack-2/board.glb",
+    "available": false,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0],
+    "hiddenNodes": ["board-writing", "papers"]
+  },
+  "ceiling": {
+    "path": "/assets/models/pack-2/floor-module.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "study-desk": {
+    "path": "/assets/models/pack-2/computer-desk.glb",
+    "available": true,
+    "scale": 1.19,
+    "rotationY": 0,
+    "offset": [0, 0, 0],
+    "hiddenNodes": ["equipment", "dressing"]
   }
 }

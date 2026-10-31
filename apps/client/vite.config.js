@@ -1,10 +1,12 @@
 import { defineConfig, loadEnv } from "vite";
+import { resolveTransport } from "./src/config/transport.js";
 import { readFileSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { readFile } from "node:fs/promises";
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  const transport = resolveTransport(env.VITE_TRANSPORT);
   async function configure(server) {
     if (server.watcher)
       server.middlewares.use(async (req, res, next) => {
@@ -35,7 +37,7 @@ export default defineConfig(({ mode }) => {
         }
       });
 
-    if (env.VITE_TRANSPORT === "real") return;
+    if (transport === "real") return;
     const data = JSON.parse(
       await readFile(resolve("mock-v2/published.json"), "utf8"),
     );
@@ -75,6 +77,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     publicDir: "public",
+    define: { "import.meta.env.VITE_TRANSPORT": JSON.stringify(transport) },
     plugins: [
       {
         name: "discovery-mock",
@@ -84,7 +87,7 @@ export default defineConfig(({ mode }) => {
       {
         name: "discovery-offline",
         async generateBundle(_, bundle) {
-          if (env.VITE_TRANSPORT !== "real") {
+          if (transport === "mock") {
             const data = JSON.parse(
               await readFile(resolve("mock-v2/published.json"), "utf8"),
             );
@@ -131,7 +134,7 @@ export default defineConfig(({ mode }) => {
       },
     ],
     server:
-      env.VITE_TRANSPORT === "real" && env.DISCOVERY_BACKEND_URL
+      transport === "real" && env.DISCOVERY_BACKEND_URL
         ? {
             proxy: {
               "/api": {
