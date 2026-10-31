@@ -1,7 +1,7 @@
 // Build-time artwork. Geometry is published as budgeted GLB, never embedded in the game bundle.
 import * as THREE from "three";
 import { GLTFExporter } from "three/addons/exporters/GLTFExporter.js";
-import { readFile, writeFile, mkdir, readdir, unlink } from "node:fs/promises";
+import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { readingArt } from "./reading-room-art.js";
 import { mesh, box, cylinder } from "./art.js";
@@ -236,7 +236,7 @@ for (let z = 0; z < 10; z++)
       )
         continue;
       const { chunkId, ...placement } = object;
-      chunk.objects.push({ ...placement, scale: 1 });
+      chunk.objects.push({ ...placement, scale: placement.scale ?? 1 });
     }
     validate("chunk", chunk);
     const bytes = Buffer.from(JSON.stringify(chunk) + "\n");
@@ -291,11 +291,8 @@ console.log(
   }),
 );
 
-const keep = new Set([...contents.keys()]);
-for (const file of await readdir(new URL("world/resources/", root))) {
-  if (!keep.has(file.split(".")[0]))
-    await unlink(new URL("world/resources/" + file, root));
-}
+// Retain older content-addressed resources for clients still using the previous
+// catalog, and leave backend resource directories untouched.
 
 const chosen = chunks.filter((c) => c.x === 2 && c.z === 2);
 const ids = new Set(chosen.flatMap((c) => c.assetIds));

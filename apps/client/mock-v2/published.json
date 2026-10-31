@@ -2,8 +2,8 @@
   "manifest": {
     "worldId": "discovery-campus",
     "worldRevision": 1,
-    "totalWorldBytes": 2955358,
-    "cacheBudgetBytes": 295535,
+    "totalWorldBytes": 2958644,
+    "cacheBudgetBytes": 295864,
     "accounting": "unique-uncompressed-resource-bytes",
     "maxResourceBytes": 1048576,
     "maxChunkBytes": 262144
@@ -16,9 +16,9 @@
         "chunkId": "c-2-2",
         "x": 2,
         "z": 2,
-        "sha256": "a30d11c7cd8ba55a80bea386552bbf8d2c001cdcf1ab2608a311233a9ebc5196",
-        "byteSize": 2394,
-        "url": "/api/v2/worlds/discovery-campus/chunks/c-2-2/a30d11c7cd8ba55a80bea386552bbf8d2c001cdcf1ab2608a311233a9ebc5196",
+        "sha256": "cf6279e7d99653a8d309ab76d02ac40d626e48a365ca3896fccf848bc7833c40",
+        "byteSize": 5680,
+        "url": "/api/v2/worlds/discovery-campus/chunks/c-2-2/cf6279e7d99653a8d309ab76d02ac40d626e48a365ca3896fccf848bc7833c40",
         "assetIds": [
           "terrain-2-2",
           "reading-shelf",
@@ -68,20 +68,20 @@
       },
       {
         "resourceId": "competition-chair",
-        "sha256": "d27087790d733ae2c75b54ca1b4270cc5490f4caf8a88851def315b1c0dbbb45",
+        "sha256": "9cf0b5a8f9c71ac378376877f3352dc7ad22be8c7453df458b06df572c1b4d40",
         "byteSize": 2972,
         "mediaType": "model/gltf-binary",
-        "url": "/api/v2/worlds/discovery-campus/assets/d27087790d733ae2c75b54ca1b4270cc5490f4caf8a88851def315b1c0dbbb45"
+        "url": "/api/v2/worlds/discovery-campus/assets/9cf0b5a8f9c71ac378376877f3352dc7ad22be8c7453df458b06df572c1b4d40"
       },
       {
         "resourceId": "terrain-2-2",
-        "sha256": "cceb1946cfafd2ee012334ad98f14013c605bde4684dfd64c542ac508b354d75",
+        "sha256": "531a2784dfe386a3412c818961cb21c0f6590a9ae506c7e109d59027c1d22c69",
         "byteSize": 40832,
         "mediaType": "model/gltf-binary",
-        "url": "/api/v2/worlds/discovery-campus/assets/cceb1946cfafd2ee012334ad98f14013c605bde4684dfd64c542ac508b354d75"
+        "url": "/api/v2/worlds/discovery-campus/assets/531a2784dfe386a3412c818961cb21c0f6590a9ae506c7e109d59027c1d22c69"
       }
     ],
-    "requiredBytes": 161955
+    "requiredBytes": 165241
   },
   "flag": {
     "resourceId": "demo-flag-01",

@@ -336,12 +336,12 @@ export class LocalMockAdapter extends DiscoveryAdapter {
                   (o.modelId === "competition-table"
                     ? 1.8
                     : o.modelId === "reading-shelf" && Math.abs(o.yawRad) > 1
-                      ? 0.88
+                      ? 0.5 * o.scale + 0.35
                       : 1.45) &&
                 Math.abs(v.z - o.position.z) <
                   (o.modelId === "reading-shelf"
                     ? Math.abs(o.yawRad) > 1
-                      ? 1.6
+                      ? o.scale + 0.35
                       : 0.65
                     : o.modelId === "competition-table"
                       ? 1.8
