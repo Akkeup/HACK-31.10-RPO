@@ -77,22 +77,19 @@ impl SpatialService {
         }
         let mut resource_files = HashMap::new();
         // Pre-load all available resources from fixtures/resources/
-        let res_dir = if std::path::Path::new("assets/world/resources").exists() {
-            "assets/world/resources"
-        } else if std::path::Path::new("discovery-protocol-2.0.0/fixtures/resources").exists() {
-            "discovery-protocol-2.0.0/fixtures/resources"
-        } else if std::path::Path::new("discovery-protocol-1.1.0/fixtures/resources").exists() {
-            "discovery-protocol-1.1.0/fixtures/resources"
-        } else {
-            "discovery-protocol-1.0.0/fixtures/resources"
-        };
-        if let Ok(entries) = std::fs::read_dir(res_dir) {
-            for entry in entries.flatten() {
-                let path = entry.path();
-                if path.is_file() {
-                    let filename = path.file_name().unwrap().to_string_lossy().to_string();
-                    if let Ok(bytes) = std::fs::read(&path) {
-                        resource_files.insert(filename, bytes);
+        let res_dirs = &["assets/world/resources", "assets/world/resources/chunks", "discovery-protocol-2.0.0/fixtures/resources"];
+        for dir in res_dirs {
+            if let Ok(entries) = std::fs::read_dir(dir) {
+                for entry in entries.flatten() {
+                    let path = entry.path();
+                    if path.is_file() {
+                        let filename = path.file_name().unwrap().to_string_lossy().to_string();
+                        if let Ok(bytes) = std::fs::read(&path) {
+                            resource_files.insert(filename, bytes.clone());
+                            if let Some(stem) = path.file_stem() {
+                                resource_files.insert(stem.to_string_lossy().to_string(), bytes);
+                            }
+                        }
                     }
                 }
             }
@@ -170,6 +167,12 @@ impl SpatialService {
         if let Some(bytes) = self.resource_files.get(sha256) {
             return Some(bytes);
         }
+        if let Some(bytes) = self.resource_files.get(&format!("{}.json", sha256)) {
+            return Some(bytes);
+        }
+        if let Some(bytes) = self.resource_files.get(chunk_id) {
+            return Some(bytes);
+        }
         if let Some(bytes) = self.resource_files.get(&format!("{}.json", chunk_id)) {
             return Some(bytes);
         }
@@ -181,11 +184,20 @@ impl SpatialService {
             if let Some(bytes) = self.resource_files.get(sha256) {
                 return Some((bytes, &asset.media_type));
             }
+            if let Some(bytes) = self.resource_files.get(&format!("{}.glb", sha256)) {
+                return Some((bytes, &asset.media_type));
+            }
+            if let Some(bytes) = self.resource_files.get(&format!("{}.svg", sha256)) {
+                return Some((bytes, &asset.media_type));
+            }
             if let Some(bytes) = self.resource_files.get("triangle.gltf") {
                 return Some((bytes, &asset.media_type));
             }
         }
         if let Some(bytes) = self.resource_files.get(sha256) {
+            return Some((bytes, "image/svg+xml"));
+        }
+        if let Some(bytes) = self.resource_files.get(&format!("{}.svg", sha256)) {
             return Some((bytes, "image/svg+xml"));
         }
         None
