@@ -1,6 +1,7 @@
 // DEMO ONLY. Fake local wallets and private keys. Excluded from network builds.
 import { grade } from "./questions.js";
-const randomUUID = () => crypto.randomUUID();
+import { safeRandomUUID } from "../src/network/protocol.js";
+const randomUUID = () => safeRandomUUID();
 const exploring = () => ({ mode: "exploring", targetId: null, seatId: null });
 const copy = structuredClone;
 const canonical = (value) => JSON.stringify(value);

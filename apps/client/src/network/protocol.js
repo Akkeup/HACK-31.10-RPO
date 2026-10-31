@@ -85,6 +85,11 @@ export function safeRandomUUID() {
     return v.toString(16);
   });
 }
+if (typeof crypto !== "undefined" && typeof crypto.randomUUID !== "function") {
+  try {
+    crypto.randomUUID = safeRandomUUID;
+  } catch {}
+}
 export function command(type, payload, requestId = safeRandomUUID()) {
   return validate("client-message", {
     protocolVersion: VERSION,

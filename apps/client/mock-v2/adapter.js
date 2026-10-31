@@ -1,6 +1,6 @@
 // DEMO ONLY. This chunk (including keys) is deliberately excluded when VITE_TRANSPORT=real.
 import { DiscoveryAdapter } from "../src/network/adapters.js";
-import { command, parseEvent, validate } from "../src/network/protocol.js";
+import { command, parseEvent, safeRandomUUID, validate } from "../src/network/protocol.js";
 import { CompetitionServer } from "./competition.js";
 import { makePacks, grade, materials } from "./questions.js";
 import publicConfig from "./public-config.json" with { type: "json" };
@@ -8,7 +8,7 @@ import published from "./published.json" with { type: "json" };
 import country from "./country.json" with { type: "json" };
 import { ACADEMY_HUB, ACADEMY_ROOMS, roomById } from "../src/world/academy-locations.js";
 const clone = structuredClone,
-  uuid = () => crypto.randomUUID(),
+  uuid = () => safeRandomUUID(),
   exploring = () => ({ mode: "exploring", targetId: null, seatId: null });
 const STORE = "discovery:reading-room:demo:2.0.0:v1";
 export class LocalMockAdapter extends DiscoveryAdapter {

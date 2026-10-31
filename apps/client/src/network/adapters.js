@@ -572,7 +572,9 @@ export class DiscoveryAdapter {
   }
 }
 export async function createAdapter() {
-  if (import.meta.env.VITE_TRANSPORT === "real") return new DiscoveryAdapter();
-  const { LocalMockAdapter } = await import("../../mock-v2/adapter.js");
-  return new LocalMockAdapter();
+  if (import.meta.env.VITE_TRANSPORT === "mock") {
+    const { LocalMockAdapter } = await import("../../mock-v2/adapter.js");
+    return new LocalMockAdapter();
+  }
+  return new DiscoveryAdapter();
 }
