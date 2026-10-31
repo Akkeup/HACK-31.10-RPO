@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/1.1.0/character-visual-config.schema.json",
+  "type": "object",
+  "properties": {
+    "playerModelId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+    },
+    "npcModelId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+    },
+    "modelScale": {
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 5
+    },
+    "animationRate": {
+      "type": "number",
+      "minimum": 0.25,
+      "maximum": 3
+    },
+    "showNames": {
+      "type": "boolean"
+    },
+    "materialStyle": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "flat"
+      ]
+    },
+    "interactionReaction": {
+      "type": "string",
+      "enum": [
+        "nod",
+        "wave",
+        "none"
+      ]
+    }
+  },
+  "required": [
+    "playerModelId",
+    "npcModelId",
+    "modelScale",
+    "animationRate",
+    "showNames",
+    "materialStyle",
+    "interactionReaction"
+  ],
+  "additionalProperties": false
+}

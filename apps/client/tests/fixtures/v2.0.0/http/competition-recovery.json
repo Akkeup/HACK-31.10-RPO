@@ -1,0 +1,71 @@
+{
+  "state": {
+    "tableId": "competition-central",
+    "lobbyId": "0000000c-1234-4234-8234-00000000000c",
+    "matchId": "0000000d-1234-4234-8234-00000000000d",
+    "ownerPlayerId": "22222222-2222-4222-8222-222222222222",
+    "revision": 5,
+    "status": "running",
+    "subject": "mathematics",
+    "moduleId": "math-basics",
+    "contentVersion": "v1",
+    "stakeAura": 10,
+    "potAura": 20,
+    "questionCount": 5,
+    "roundSeconds": 20,
+    "participants": [
+      {
+        "playerId": "22222222-2222-4222-8222-222222222222",
+        "displayName": "Игрок 1",
+        "seatId": "competition-seat-1",
+        "ready": true,
+        "connected": true,
+        "left": false,
+        "score": 0
+      },
+      {
+        "playerId": "00000002-1234-4234-8234-000000000002",
+        "displayName": "Игрок 2",
+        "seatId": "competition-seat-2",
+        "ready": true,
+        "connected": true,
+        "left": false,
+        "score": 0
+      }
+    ],
+    "round": {
+      "ordinal": 1,
+      "question": {
+        "questionId": "math-basics-q1",
+        "prompt": "Сколько будет 2 + 3?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "5"
+          },
+          {
+            "optionId": "option-2",
+            "text": "4"
+          },
+          {
+            "optionId": "option-3",
+            "text": "6"
+          },
+          {
+            "optionId": "option-4",
+            "text": "1"
+          }
+        ],
+        "kind": "single_choice"
+      },
+      "deadlineAt": "2026-10-31T09:00:20Z",
+      "answeredPlayerIds": []
+    },
+    "settlement": null
+  },
+  "answerAccepted": true,
+  "submittedAnswer": {
+    "kind": "single_choice",
+    "value": "option-1"
+  }
+}

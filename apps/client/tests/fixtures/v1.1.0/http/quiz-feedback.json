@@ -1,0 +1,23 @@
+{
+  "attemptId": "0000000a-1234-4234-8234-00000000000a",
+  "moduleId": "math-basics",
+  "contentVersion": "v1",
+  "npcId": "examiner-mathematics",
+  "seatId": "seat-math-basics",
+  "status": "feedback",
+  "revision": 2,
+  "ordinal": 1,
+  "questionCount": 5,
+  "passScore": 4,
+  "score": 1,
+  "question": null,
+  "feedback": {
+    "questionId": "math-basics-q1",
+    "selectedOptionId": "option-1",
+    "correctOptionId": "option-1",
+    "correct": true,
+    "explanation": "Сложение объединяет количества: два и три дают пять."
+  },
+  "result": null,
+  "interruptionReason": null
+}

@@ -1,0 +1,13 @@
+{
+  "protocolVersion": "1.1.0",
+  "type": "player.input",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "inputSeq": 1,
+    "moveX": 1,
+    "moveZ": 0,
+    "yawRad": 0,
+    "running": false,
+    "interestRevision": 1
+  }
+}

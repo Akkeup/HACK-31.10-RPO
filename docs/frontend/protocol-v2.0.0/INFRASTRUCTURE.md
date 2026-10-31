@@ -1,0 +1,13 @@
+# Неизменённые требования инфраструктуры
+
+Rust/Axum авторитетный сервер; PostgreSQL18 durable data; Docker Desktop Windows Linux containers/WSL2; Caddy один HTTPS origin, внутренние порты БД/Axum/LLM не публикуются. CA и SAN доверены всем устройствам заранее. Все images/dependencies/models/weights подготовлены до отключения WAN, никаких CDN/облачных auth/LLM в runtime. Named volumes DB/CA/content, health ready проверяет миграции/БД/ресурсы. Реальная Windows/LAN приёмка отдельно.
+
+Opaque bearer>=256bit TTL3600s в памяти браузера, не URL/localStorage. Login local accounts без открытой регистрации. POST ws-ticket выдаёт30s single-use bound user/session/version/origin, query ticket только в WSS, потребление атомарно до upgrade. Origin allowlist и discovery.v2 обязательны. Не логировать token/password/ticket query. Logout/expiry закрывают связанные sockets и отзывают tickets; reconnect новый ticket/полная синхронизация.
+
+UTF8 text WS assembled<=64KiB, binary1003, encoding1007, oversize1009, policy1008. hello5s, heartbeat client ping10s/timeout30s, overload1013, auth expiry4003, replacement4001; serverSeq1.. перезапускается на новом connectionId. Tick20Hz, snapshot10Hz, input<=20/s, normalize move vector, max silence250ms. DB progress commit до успеха, позиции checkpoint5s. Долгие IO/LLM вне global locks.
+
+HTTP JSON body256KiB, adminPUT1MiB, public config64KiB, chunk256KiB, asset1MiB. API no-store, world resources identity/no-store с точным Content-Length. Один origin, bearer и credentials:omit. Admin PUT full replacement с If-Match, stale412/missing428 CONFIG_CONFLICT; значения schema+semantic validated. Структурные content/seats/placements меняются только при остановленных комнатах. Горячие игровые правила применяются только к новым attempts/lobbies.
+
+W=sum unique uncompressed SHA ресурсы мира, B=floor(W/10), C active+cached hashes плюс reserved downloads R; sum(C union R)<=B на каждой операции. Одинаковый hash один раз, но счётчик не удаляется до освобождения CPU/GPU ссылок. Reserve до fetch, максимум2 concurrent, exact byteSize/hash verify, invalidate on worldRevision change. GPU/RAM отдельно limit256MiB estimate. Только управляемый in-memory cache, без SW/IndexedDB/дискового world cache. Не весь catalog клиенту: summary manifest и серверный interest, X-Interest-Revision проверяется при asset/chunkGET. Модели, изображения флагов и зависимости входят в учёт, control metadata не содержит скрытую геометрию.
+
+world.ready подтверждает точный hash set текущего interest; до ready игрок frozen. Чужие ресурсы403, staleinterest409, неизвестные404. Unknown flags/data не подменяются fetch с внешнего URL. При недостатке B сервер отклоняет контент/интерес, не увеличивает denominator фиктивными файлами.

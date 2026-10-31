@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/1.1.0/wallet.schema.json",
+  "$defs": {
+    "balance": {
+      "type": "object",
+      "properties": {
+        "balanceAura": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "reservedAura": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "availableAura": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "balanceAura",
+        "reservedAura",
+        "availableAura",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "entry": {
+      "type": "object",
+      "properties": {
+        "entryId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "transactionId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "initial",
+            "reserve",
+            "release",
+            "stake",
+            "payout",
+            "refund"
+          ]
+        },
+        "amountAura": {
+          "type": "integer",
+          "minimum": -1000000000,
+          "maximum": 1000000000
+        },
+        "reservedDeltaAura": {
+          "type": "integer",
+          "minimum": -1000000000,
+          "maximum": 1000000000
+        },
+        "balanceAfterAura": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "reservedAfterAura": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "matchId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "lobbyId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "entryId",
+        "transactionId",
+        "kind",
+        "amountAura",
+        "reservedDeltaAura",
+        "balanceAfterAura",
+        "reservedAfterAura",
+        "matchId",
+        "lobbyId",
+        "createdAt"
+      ],
+      "additionalProperties": false
+    },
+    "ledger": {
+      "type": "object",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entryId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "transactionId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "initial",
+                  "reserve",
+                  "release",
+                  "stake",
+                  "payout",
+                  "refund"
+                ]
+              },
+              "amountAura": {
+                "type": "integer",
+                "minimum": -1000000000,
+                "maximum": 1000000000
+              },
+              "reservedDeltaAura": {
+                "type": "integer",
+                "minimum": -1000000000,
+                "maximum": 1000000000
+              },
+              "balanceAfterAura": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000000
+              },
+              "reservedAfterAura": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000000
+              },
+              "matchId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "lobbyId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "entryId",
+              "transactionId",
+              "kind",
+              "amountAura",
+              "reservedDeltaAura",
+              "balanceAfterAura",
+              "reservedAfterAura",
+              "matchId",
+              "lobbyId",
+              "createdAt"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "entries",
+        "nextCursor"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

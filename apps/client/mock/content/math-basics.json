@@ -1,0 +1,177 @@
+{
+  "module": {
+    "moduleId": "math-basics",
+    "subject": "mathematics",
+    "title": "Математика: основные операции",
+    "contentVersion": "v1",
+    "teacherId": "teacher-mathematics",
+    "examinerId": "examiner-mathematics"
+  },
+  "material": {
+    "module": {
+      "moduleId": "math-basics",
+      "subject": "mathematics",
+      "title": "Математика: основные операции",
+      "contentVersion": "v1",
+      "teacherId": "teacher-mathematics",
+      "examinerId": "examiner-mathematics"
+    },
+    "sections": [
+      {
+        "heading": "Основные понятия",
+        "text": "Сложение объединяет количества, вычитание находит остаток. Умножение можно понимать как сложение равных групп, деление — как разделение на равные группы. Умножение и деление выполняются раньше сложения и вычитания."
+      }
+    ],
+    "examples": [
+      "Сложение объединяет количества: два и три дают пять.",
+      "Вычитание четырёх из семи оставляет три.",
+      "Три группы по четыре содержат двенадцать элементов.",
+      "При делении двенадцати на три равные группы в каждой будет четыре.",
+      "Сначала умножение: 3 × 4 = 12, затем 2 + 12 = 14."
+    ],
+    "keyPoints": [
+      "Сложение объединяет количества: два и три дают пять.",
+      "Вычитание четырёх из семи оставляет три.",
+      "Три группы по четыре содержат двенадцать элементов.",
+      "При делении двенадцати на три равные группы в каждой будет четыре.",
+      "Сначала умножение: 3 × 4 = 12, затем 2 + 12 = 14."
+    ]
+  },
+  "questions": [
+    {
+      "question": {
+        "questionId": "math-basics-q1",
+        "prompt": "Сколько будет 2 + 3?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "5"
+          },
+          {
+            "optionId": "option-2",
+            "text": "4"
+          },
+          {
+            "optionId": "option-3",
+            "text": "6"
+          },
+          {
+            "optionId": "option-4",
+            "text": "1"
+          }
+        ]
+      },
+      "correctOptionId": "option-1",
+      "explanation": "Сложение объединяет количества: два и три дают пять.",
+      "reviewTopic": "Математика: основные операции"
+    },
+    {
+      "question": {
+        "questionId": "math-basics-q2",
+        "prompt": "Сколько будет 7 − 4?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "2"
+          },
+          {
+            "optionId": "option-2",
+            "text": "3"
+          },
+          {
+            "optionId": "option-3",
+            "text": "4"
+          },
+          {
+            "optionId": "option-4",
+            "text": "11"
+          }
+        ]
+      },
+      "correctOptionId": "option-2",
+      "explanation": "Вычитание четырёх из семи оставляет три.",
+      "reviewTopic": "Математика: основные операции"
+    },
+    {
+      "question": {
+        "questionId": "math-basics-q3",
+        "prompt": "Сколько будет 3 × 4?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "7"
+          },
+          {
+            "optionId": "option-2",
+            "text": "10"
+          },
+          {
+            "optionId": "option-3",
+            "text": "12"
+          },
+          {
+            "optionId": "option-4",
+            "text": "14"
+          }
+        ]
+      },
+      "correctOptionId": "option-3",
+      "explanation": "Три группы по четыре содержат двенадцать элементов.",
+      "reviewTopic": "Математика: основные операции"
+    },
+    {
+      "question": {
+        "questionId": "math-basics-q4",
+        "prompt": "Сколько будет 12 ÷ 3?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "3"
+          },
+          {
+            "optionId": "option-2",
+            "text": "6"
+          },
+          {
+            "optionId": "option-3",
+            "text": "9"
+          },
+          {
+            "optionId": "option-4",
+            "text": "4"
+          }
+        ]
+      },
+      "correctOptionId": "option-4",
+      "explanation": "При делении двенадцати на три равные группы в каждой будет четыре.",
+      "reviewTopic": "Математика: основные операции"
+    },
+    {
+      "question": {
+        "questionId": "math-basics-q5",
+        "prompt": "Чему равно 2 + 3 × 4?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "20"
+          },
+          {
+            "optionId": "option-2",
+            "text": "14"
+          },
+          {
+            "optionId": "option-3",
+            "text": "24"
+          },
+          {
+            "optionId": "option-4",
+            "text": "9"
+          }
+        ]
+      },
+      "correctOptionId": "option-2",
+      "explanation": "Сначала умножение: 3 × 4 = 12, затем 2 + 12 = 14.",
+      "reviewTopic": "Математика: основные операции"
+    }
+  ]
+}

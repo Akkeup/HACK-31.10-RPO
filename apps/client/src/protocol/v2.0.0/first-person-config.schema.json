@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/2.0.0/first-person-config.schema.json",
+  "type": "object",
+  "properties": {
+    "mode": {
+      "const": "first_person"
+    },
+    "standingEyeHeightM": {
+      "type": "number",
+      "minimum": 1.2,
+      "maximum": 2
+    },
+    "seatedEyeHeightM": {
+      "type": "number",
+      "minimum": 0.7,
+      "maximum": 1.6
+    },
+    "mouseSensitivity": {
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 3
+    },
+    "pitchMinRad": {
+      "type": "number",
+      "minimum": -1.55,
+      "maximum": 0
+    },
+    "pitchMaxRad": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1.55
+    },
+    "seatTransitionMs": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2000
+    },
+    "crosshair": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "mode",
+    "standingEyeHeightM",
+    "seatedEyeHeightM",
+    "mouseSensitivity",
+    "pitchMinRad",
+    "pitchMaxRad",
+    "seatTransitionMs",
+    "crosshair"
+  ],
+  "additionalProperties": false
+}

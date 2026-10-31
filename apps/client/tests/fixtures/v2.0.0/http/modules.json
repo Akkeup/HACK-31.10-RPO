@@ -1,0 +1,36 @@
+{
+  "modules": [
+    {
+      "moduleId": "math-basics",
+      "subject": "mathematics",
+      "title": "Математика: основные операции",
+      "contentVersion": "v1",
+      "teacherId": "teacher-mathematics",
+      "examinerId": "examiner-mathematics"
+    },
+    {
+      "moduleId": "informatics-basics",
+      "subject": "informatics",
+      "title": "Информатика: данные и алгоритмы",
+      "contentVersion": "v1",
+      "teacherId": "teacher-informatics",
+      "examinerId": "examiner-informatics"
+    },
+    {
+      "moduleId": "history-basics",
+      "subject": "history",
+      "title": "История: источники и хронология",
+      "contentVersion": "v1",
+      "teacherId": "teacher-history",
+      "examinerId": "examiner-history"
+    },
+    {
+      "moduleId": "flags-demo",
+      "subject": "geography_flags",
+      "title": "Демо: страны и флаги",
+      "contentVersion": "demo-v1",
+      "teacherId": "teacher-flags",
+      "examinerId": "examiner-flags"
+    }
+  ]
+}

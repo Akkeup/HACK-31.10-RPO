@@ -1,0 +1,11 @@
+{
+  "protocolVersion": "1.1.0",
+  "type": "client.metrics",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "residentBytes": 925,
+    "reservedBytes": 0,
+    "budgetBytes": 2312,
+    "fps": 60
+  }
+}

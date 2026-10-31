@@ -1,0 +1,35 @@
+{
+  "worldRevision": 1,
+  "interestRevision": 1,
+  "chunks": [
+    {
+      "chunkId": "c-0-0",
+      "x": 0,
+      "z": 0,
+      "sha256": "0a6e3fd571a3e90f1b3fd426c2169c0c107e00be66001304836b1e1c22a61807",
+      "byteSize": 502,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-0/0a6e3fd571a3e90f1b3fd426c2169c0c107e00be66001304836b1e1c22a61807",
+      "assetIds": [
+        "model-triangle",
+        "demo-flag-01"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "resourceId": "model-triangle",
+      "sha256": "18023c4b7bf43d906ad1038f48a0a10e5c3c62a32493852dede171ef3cd2ed0f",
+      "byteSize": 456,
+      "mediaType": "model/gltf+json",
+      "url": "/api/v2/worlds/discovery-campus/assets/18023c4b7bf43d906ad1038f48a0a10e5c3c62a32493852dede171ef3cd2ed0f"
+    },
+    {
+      "resourceId": "demo-flag-01",
+      "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+      "byteSize": 177,
+      "mediaType": "image/svg+xml",
+      "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8"
+    }
+  ],
+  "requiredBytes": 1135
+}

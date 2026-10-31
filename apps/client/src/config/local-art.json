@@ -1,0 +1,86 @@
+{
+  "teacher-mathematics": {
+    "path": "/assets/models/npc/teacher-mathematics.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "teacher-informatics": {
+    "path": "/assets/models/npc/teacher-informatics.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "teacher-history": {
+    "path": "/assets/models/npc/teacher-history.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "teacher-flags": {
+    "path": "/assets/models/npc/teacher-geography.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "examiner": {
+    "path": "/assets/models/npc/examiner.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "shelf": {
+    "path": "/assets/models/furniture/bookshelf.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "book": {
+    "path": "/assets/models/furniture/book.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "desk": {
+    "path": "/assets/models/furniture/desk.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "chair": {
+    "path": "/assets/models/furniture/chair.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "notebook": {
+    "path": "/assets/models/furniture/notebook.glb",
+    "available": false,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "round-table": {
+    "path": "/assets/models/furniture/round-table.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "lamp": {
+    "path": "/assets/models/furniture/lamp-table.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  }
+}

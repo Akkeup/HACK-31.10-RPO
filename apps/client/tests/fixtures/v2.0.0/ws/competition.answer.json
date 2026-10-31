@@ -1,0 +1,13 @@
+{
+  "protocolVersion": "2.0.0",
+  "type": "competition.answer",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "matchId": "0000000d-1234-4234-8234-00000000000d",
+    "questionId": "math-basics-q1",
+    "answer": {
+      "kind": "single_choice",
+      "value": "option-1"
+    }
+  }
+}

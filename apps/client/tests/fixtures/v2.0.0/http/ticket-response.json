@@ -1,0 +1,6 @@
+{
+  "ticket": "fixture_ticket_not_a_real_secret_00000001",
+  "expiresInSeconds": 30,
+  "wsPath": "/api/v2/ws",
+  "subprotocol": "discovery.v2"
+}

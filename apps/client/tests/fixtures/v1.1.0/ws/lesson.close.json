@@ -1,0 +1,8 @@
+{
+  "protocolVersion": "1.1.0",
+  "type": "lesson.close",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "lessonId": "0000000b-1234-4234-8234-00000000000b"
+  }
+}

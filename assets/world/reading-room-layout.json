@@ -1,0 +1,172 @@
+{
+  "placements": [
+    {
+      "id": "shelf-mathematics",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 67.4,
+        "y": 0,
+        "z": 72
+      },
+      "yawRad": 1.5707963267948966,
+      "collidable": true
+    },
+    {
+      "id": "book-math-basics",
+      "chunkId": "c-2-2",
+      "modelId": "reading-book",
+      "position": {
+        "x": 68.25,
+        "y": 0.95,
+        "z": 72
+      },
+      "yawRad": 1.5707963267948966,
+      "collidable": false
+    },
+    {
+      "id": "shelf-informatics",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 67.4,
+        "y": 0,
+        "z": 79
+      },
+      "yawRad": 1.5707963267948966,
+      "collidable": true
+    },
+    {
+      "id": "book-informatics-basics",
+      "chunkId": "c-2-2",
+      "modelId": "reading-book",
+      "position": {
+        "x": 68.25,
+        "y": 0.95,
+        "z": 79
+      },
+      "yawRad": 1.5707963267948966,
+      "collidable": false
+    },
+    {
+      "id": "shelf-history",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 92.6,
+        "y": 0,
+        "z": 72
+      },
+      "yawRad": -1.5707963267948966,
+      "collidable": true
+    },
+    {
+      "id": "book-history-basics",
+      "chunkId": "c-2-2",
+      "modelId": "reading-book",
+      "position": {
+        "x": 91.75,
+        "y": 0.95,
+        "z": 72
+      },
+      "yawRad": -1.5707963267948966,
+      "collidable": false
+    },
+    {
+      "id": "shelf-geography_flags",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 92.6,
+        "y": 0,
+        "z": 79
+      },
+      "yawRad": -1.5707963267948966,
+      "collidable": true
+    },
+    {
+      "id": "book-flags-demo",
+      "chunkId": "c-2-2",
+      "modelId": "reading-book",
+      "position": {
+        "x": 91.75,
+        "y": 0.95,
+        "z": 79
+      },
+      "yawRad": -1.5707963267948966,
+      "collidable": false
+    },
+    {
+      "id": "competition-central",
+      "chunkId": "c-2-2",
+      "modelId": "competition-table",
+      "position": {
+        "x": 80,
+        "y": 0,
+        "z": 83
+      },
+      "yawRad": 0,
+      "collidable": true
+    },
+    {
+      "id": "competition-seat-1",
+      "chunkId": "c-2-2",
+      "modelId": "competition-chair",
+      "position": {
+        "x": 80,
+        "y": 0,
+        "z": 85.3
+      },
+      "yawRad": 0,
+      "collidable": true
+    },
+    {
+      "id": "competition-seat-2",
+      "chunkId": "c-2-2",
+      "modelId": "competition-chair",
+      "position": {
+        "x": 82.187,
+        "y": 0,
+        "z": 83.711
+      },
+      "yawRad": 1.2566,
+      "collidable": true
+    },
+    {
+      "id": "competition-seat-3",
+      "chunkId": "c-2-2",
+      "modelId": "competition-chair",
+      "position": {
+        "x": 81.352,
+        "y": 0,
+        "z": 81.139
+      },
+      "yawRad": 2.5133,
+      "collidable": true
+    },
+    {
+      "id": "competition-seat-4",
+      "chunkId": "c-2-2",
+      "modelId": "competition-chair",
+      "position": {
+        "x": 78.648,
+        "y": 0,
+        "z": 81.139
+      },
+      "yawRad": -2.5133,
+      "collidable": true
+    },
+    {
+      "id": "competition-seat-5",
+      "chunkId": "c-2-2",
+      "modelId": "competition-chair",
+      "position": {
+        "x": 77.813,
+        "y": 0,
+        "z": 83.711
+      },
+      "yawRad": -1.2567,
+      "collidable": true
+    }
+  ]
+}

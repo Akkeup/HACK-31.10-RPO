@@ -1,0 +1,177 @@
+{
+  "module": {
+    "moduleId": "history-basics",
+    "subject": "history",
+    "title": "История: источники и хронология",
+    "contentVersion": "v1",
+    "teacherId": "teacher-history",
+    "examinerId": "examiner-history"
+  },
+  "material": {
+    "module": {
+      "moduleId": "history-basics",
+      "subject": "history",
+      "title": "История: источники и хронология",
+      "contentVersion": "v1",
+      "teacherId": "teacher-history",
+      "examinerId": "examiner-history"
+    },
+    "sections": [
+      {
+        "heading": "Основные понятия",
+        "text": "Исторические источники помогают изучать прошлое. Монета — вещественный источник. Хронология упорядочивает события во времени. XVIII век длится с 1701 по 1800 год. Сопоставление источников помогает проверить сведения."
+      }
+    ],
+    "examples": [
+      "Исторические источники — свидетельства, на основе которых изучают прошлое.",
+      "Хронология описывает последовательность событий во времени.",
+      "XVIII век включает годы с 1701 по 1800.",
+      "Монета является материальным, то есть вещественным источником.",
+      "Сопоставление помогает проверять сведения и замечать противоречия."
+    ],
+    "keyPoints": [
+      "Исторические источники — свидетельства, на основе которых изучают прошлое.",
+      "Хронология описывает последовательность событий во времени.",
+      "XVIII век включает годы с 1701 по 1800.",
+      "Монета является материальным, то есть вещественным источником.",
+      "Сопоставление помогает проверять сведения и замечать противоречия."
+    ]
+  },
+  "questions": [
+    {
+      "question": {
+        "questionId": "history-basics-q1",
+        "prompt": "Что помогает изучать прошлое?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "Исторические источники"
+          },
+          {
+            "optionId": "option-2",
+            "text": "Только прогнозы"
+          },
+          {
+            "optionId": "option-3",
+            "text": "Только будущие планы"
+          },
+          {
+            "optionId": "option-4",
+            "text": "Случайные числа"
+          }
+        ]
+      },
+      "correctOptionId": "option-1",
+      "explanation": "Исторические источники — свидетельства, на основе которых изучают прошлое.",
+      "reviewTopic": "История: источники и хронология"
+    },
+    {
+      "question": {
+        "questionId": "history-basics-q2",
+        "prompt": "Как называется расположение событий по времени?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "Геометрия"
+          },
+          {
+            "optionId": "option-2",
+            "text": "Хронология"
+          },
+          {
+            "optionId": "option-3",
+            "text": "Орфография"
+          },
+          {
+            "optionId": "option-4",
+            "text": "Алгоритм"
+          }
+        ]
+      },
+      "correctOptionId": "option-2",
+      "explanation": "Хронология описывает последовательность событий во времени.",
+      "reviewTopic": "История: источники и хронология"
+    },
+    {
+      "question": {
+        "questionId": "history-basics-q3",
+        "prompt": "К какому веку относится 1701 год?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "XVII"
+          },
+          {
+            "optionId": "option-2",
+            "text": "XVI"
+          },
+          {
+            "optionId": "option-3",
+            "text": "XVIII"
+          },
+          {
+            "optionId": "option-4",
+            "text": "XIX"
+          }
+        ]
+      },
+      "correctOptionId": "option-3",
+      "explanation": "XVIII век включает годы с 1701 по 1800.",
+      "reviewTopic": "История: источники и хронология"
+    },
+    {
+      "question": {
+        "questionId": "history-basics-q4",
+        "prompt": "К какому типу источников относится древняя монета?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "Устный"
+          },
+          {
+            "optionId": "option-2",
+            "text": "Будущий"
+          },
+          {
+            "optionId": "option-3",
+            "text": "Метеорологический"
+          },
+          {
+            "optionId": "option-4",
+            "text": "Вещественный"
+          }
+        ]
+      },
+      "correctOptionId": "option-4",
+      "explanation": "Монета является материальным, то есть вещественным источником.",
+      "reviewTopic": "История: источники и хронология"
+    },
+    {
+      "question": {
+        "questionId": "history-basics-q5",
+        "prompt": "Зачем сопоставлять несколько источников?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "Чтобы проверить и уточнить сведения"
+          },
+          {
+            "optionId": "option-2",
+            "text": "Чтобы убрать все даты"
+          },
+          {
+            "optionId": "option-3",
+            "text": "Чтобы заменить факты догадками"
+          },
+          {
+            "optionId": "option-4",
+            "text": "Чтобы не читать источники"
+          }
+        ]
+      },
+      "correctOptionId": "option-1",
+      "explanation": "Сопоставление помогает проверять сведения и замечать противоречия.",
+      "reviewTopic": "История: источники и хронология"
+    }
+  ]
+}

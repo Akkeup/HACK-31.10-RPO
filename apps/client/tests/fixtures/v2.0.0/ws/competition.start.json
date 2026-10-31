@@ -1,0 +1,10 @@
+{
+  "protocolVersion": "2.0.0",
+  "type": "competition.start",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "tableId": "competition-central",
+    "lobbyId": "0000000c-1234-4234-8234-00000000000c",
+    "expectedRevision": 4
+  }
+}

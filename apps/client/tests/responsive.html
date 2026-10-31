@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+  <meta charset="UTF-8" /><title>Discovery — mobile layout QA</title
+  ><style>
+    body {
+      margin: 0;
+      background: #d9dfd0;
+      font: 14px system-ui;
+      color: #3a4b35;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 35px;
+      padding: 30px;
+    }
+    iframe {
+      width: 390px;
+      height: 844px;
+      border: 1px solid #879b78;
+      border-radius: 16px;
+      background: #e6ebdd;
+    }
+    section {
+      max-width: 340px;
+    }
+    h1 {
+      font: 28px Georgia;
+    }
+    p {
+      line-height: 1.8;
+    }
+    button {
+      padding: 12px;
+      background: #61794e;
+      color: white;
+      border: 0;
+      border-radius: 7px;
+    }</style
+  ><iframe title="Discovery 390×844" src="/?responsiveqa=1"></iframe>
+  <section>
+    <h1>Мобильная проверка</h1>
+    <p id="result">Ожидание сцены 390 × 844…</p>
+    <button id="settings">Показать / скрыть настройки</button>
+  </section>
+  <script type="module">
+    const frame = document.querySelector("iframe");
+    const result = document.querySelector("#result");
+    const timer = setInterval(() => {
+      try {
+        const w = frame.contentWindow,
+          d = w.document,
+          stats = w.discovery?.diagnostics();
+        if (!stats?.ready) return;
+        clearInterval(timer);
+        const overflow = d.documentElement.scrollWidth > w.innerWidth;
+        const initiallyHidden = d
+          .querySelector("#settings")
+          .classList.contains("hidden");
+        d.querySelector("#settings-toggle").click();
+        const r = d.querySelector("#settings").getBoundingClientRect();
+        const fits =
+          r.left >= 0 && r.right <= w.innerWidth && r.bottom <= w.innerHeight;
+        d.querySelector("#close-settings").click();
+        result.textContent = `${!overflow && initiallyHidden && fits ? "PASS" : "FAIL"}: горизонтальный overflow=${overflow}, панель скрыта при входе=${initiallyHidden}, открытая панель помещается=${fits}. Сцена ${w.innerWidth}×${w.innerHeight}, ${stats.fps} FPS, C+R ${stats.used}/${stats.budget} байт.`;
+
+        const hint = d.querySelector(".competition-hint");
+        if (hint && !hint.classList.contains("hidden")) hint.click();
+        const waitPanel = setInterval(() => {
+          const panel = d.querySelector("#competition"),
+            people = panel?.querySelectorAll(".competition-people>span").length;
+          if (!panel || panel.classList.contains("hidden") || !people) return;
+          clearInterval(waitPanel);
+          const bounds = panel.getBoundingClientRect(),
+            panelFits =
+              bounds.left >= 0 &&
+              bounds.right <= w.innerWidth &&
+              bounds.top >= 78 &&
+              bounds.bottom <= w.innerHeight;
+          const competitionOverflow =
+            d.documentElement.scrollWidth > w.innerWidth;
+          result.textContent += ` Стол: ${people}/5 участников; панель помещается=${panelFits}; overflow=${competitionOverflow}.`;
+          fetch("/__qa/report/mobile", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              passed:
+                !overflow &&
+                initiallyHidden &&
+                fits &&
+                panelFits &&
+                !competitionOverflow,
+              overflow,
+              initiallyHidden,
+              fits,
+              panelFits,
+              competitionOverflow,
+              participants: people,
+              viewport: [w.innerWidth, w.innerHeight],
+              used: stats.used,
+              budget: stats.budget,
+            }),
+          });
+        }, 200);
+        fetch("/__qa/report/mobile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            passed: !overflow && initiallyHidden && fits,
+            overflow,
+            initiallyHidden,
+            fits,
+            viewport: [w.innerWidth, w.innerHeight],
+            fps: stats.fps,
+            used: stats.used,
+            budget: stats.budget,
+          }),
+        });
+      } catch (e) {
+        result.textContent = e.message;
+      }
+    }, 250);
+    document.querySelector("#settings").onclick = () =>
+      frame.contentDocument.querySelector("#settings-toggle").click();
+  </script>
+</html>

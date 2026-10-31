@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/1.0.0/error.schema.json",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "enum": [
+        "INVALID_REQUEST",
+        "UNAUTHORIZED",
+        "TOKEN_EXPIRED",
+        "FORBIDDEN",
+        "NOT_FOUND",
+        "CONFLICT",
+        "SESSION_FULL",
+        "ALREADY_IN_SESSION",
+        "VERSION_UNSUPPORTED",
+        "RATE_LIMITED",
+        "STALE_INTEREST",
+        "OUT_OF_INTEREST",
+        "RESOURCE_TOO_LARGE",
+        "CONFIG_CONFLICT",
+        "RESTART_REQUIRED",
+        "NPC_BUSY",
+        "NPC_TIMEOUT",
+        "OUT_OF_RANGE",
+        "REQUEST_ID_REUSED",
+        "INTERNAL_ERROR",
+        "SERVICE_UNAVAILABLE",
+        "CANCELLED"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "retryable": {
+      "type": "boolean"
+    },
+    "requestId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uuid"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "details": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 300
+          }
+        },
+        "required": [
+          "path",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 20
+    },
+    "retryAfterMs": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 60000
+    }
+  },
+  "required": [
+    "code",
+    "message",
+    "retryable",
+    "requestId",
+    "details"
+  ],
+  "additionalProperties": false
+}

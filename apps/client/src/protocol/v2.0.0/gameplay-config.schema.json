@@ -1,0 +1,384 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/2.0.0/gameplay-config.schema.json",
+  "type": "object",
+  "properties": {
+    "education": {
+      "type": "object",
+      "properties": {
+        "questionCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "passScore": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "reconnectGraceSeconds": {
+          "const": 60
+        },
+        "stations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "moduleId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "teacherId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "examinerId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "teacherPosition": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -10000,
+                    "maximum": 10000
+                  },
+                  "z": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ],
+                "additionalProperties": false
+              },
+              "examinerPosition": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -10000,
+                    "maximum": 10000
+                  },
+                  "z": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ],
+                "additionalProperties": false
+              },
+              "examinerSeat": {
+                "type": "object",
+                "properties": {
+                  "seatId": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                  },
+                  "position": {
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "minimum": -100000,
+                        "maximum": 100000
+                      },
+                      "y": {
+                        "type": "number",
+                        "minimum": -10000,
+                        "maximum": 10000
+                      },
+                      "z": {
+                        "type": "number",
+                        "minimum": -100000,
+                        "maximum": 100000
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y",
+                      "z"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "yawRad": {
+                    "type": "number",
+                    "minimum": -3.141593,
+                    "maximum": 3.141593
+                  },
+                  "exitPosition": {
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "minimum": -100000,
+                        "maximum": 100000
+                      },
+                      "y": {
+                        "type": "number",
+                        "minimum": -10000,
+                        "maximum": 10000
+                      },
+                      "z": {
+                        "type": "number",
+                        "minimum": -100000,
+                        "maximum": 100000
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y",
+                      "z"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "seatId",
+                  "position",
+                  "yawRad",
+                  "exitPosition"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "moduleId",
+              "teacherId",
+              "examinerId",
+              "teacherPosition",
+              "examinerPosition",
+              "examinerSeat"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 4,
+          "maxItems": 50
+        }
+      },
+      "required": [
+        "questionCount",
+        "passScore",
+        "reconnectGraceSeconds",
+        "stations"
+      ],
+      "additionalProperties": false
+    },
+    "competition": {
+      "type": "object",
+      "properties": {
+        "minPlayers": {
+          "const": 2
+        },
+        "maxPlayers": {
+          "const": 5
+        },
+        "questionCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "roundSeconds": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 120
+        },
+        "minStakeAura": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "maxStakeAura": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "tiePolicy": {
+          "const": "refund_all"
+        },
+        "tables": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "tableId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "position": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -10000,
+                    "maximum": 10000
+                  },
+                  "z": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ],
+                "additionalProperties": false
+              },
+              "interactionRadiusM": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "seats": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "seatId": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                    },
+                    "position": {
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "type": "number",
+                          "minimum": -100000,
+                          "maximum": 100000
+                        },
+                        "y": {
+                          "type": "number",
+                          "minimum": -10000,
+                          "maximum": 10000
+                        },
+                        "z": {
+                          "type": "number",
+                          "minimum": -100000,
+                          "maximum": 100000
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "yawRad": {
+                      "type": "number",
+                      "minimum": -3.141593,
+                      "maximum": 3.141593
+                    },
+                    "exitPosition": {
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "type": "number",
+                          "minimum": -100000,
+                          "maximum": 100000
+                        },
+                        "y": {
+                          "type": "number",
+                          "minimum": -10000,
+                          "maximum": 10000
+                        },
+                        "z": {
+                          "type": "number",
+                          "minimum": -100000,
+                          "maximum": 100000
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "seatId",
+                    "position",
+                    "yawRad",
+                    "exitPosition"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 5,
+                "maxItems": 5
+              },
+              "subjects": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "mathematics",
+                    "informatics",
+                    "history",
+                    "geography_flags"
+                  ]
+                },
+                "minItems": 4,
+                "maxItems": 4,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "tableId",
+              "position",
+              "interactionRadiusM",
+              "seats",
+              "subjects"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "minPlayers",
+        "maxPlayers",
+        "questionCount",
+        "roundSeconds",
+        "minStakeAura",
+        "maxStakeAura",
+        "tiePolicy",
+        "tables"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "education",
+    "competition"
+  ],
+  "additionalProperties": false
+}

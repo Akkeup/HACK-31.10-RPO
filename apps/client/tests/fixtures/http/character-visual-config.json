@@ -1,0 +1,9 @@
+{
+  "playerModelId": "model-triangle",
+  "npcModelId": "model-triangle",
+  "modelScale": 1,
+  "animationRate": 1,
+  "showNames": true,
+  "materialStyle": "standard",
+  "interactionReaction": "nod"
+}

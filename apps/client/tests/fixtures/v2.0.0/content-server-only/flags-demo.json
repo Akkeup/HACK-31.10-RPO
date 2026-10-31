@@ -1,0 +1,199 @@
+{
+  "module": {
+    "moduleId": "flags-demo",
+    "subject": "geography_flags",
+    "title": "Демо: страны и флаги",
+    "contentVersion": "demo-v1",
+    "teacherId": "teacher-flags",
+    "examinerId": "examiner-flags"
+  },
+  "material": {
+    "module": {
+      "moduleId": "flags-demo",
+      "subject": "geography_flags",
+      "title": "Демо: страны и флаги",
+      "contentVersion": "demo-v1",
+      "teacherId": "teacher-flags",
+      "examinerId": "examiner-flags"
+    },
+    "sections": [
+      {
+        "heading": "Демонстрация",
+        "text": "Это вымышленная страна для проверки интерфейса. Реальный датасет подключается позже."
+      }
+    ],
+    "examples": [
+      "Демо-страна А имеет учебный флаг из двух цветных полос."
+    ],
+    "keyPoints": [
+      "Данные этого модуля вымышлены и не предназначены для настоящего теста."
+    ]
+  },
+  "questions": [
+    {
+      "question": {
+        "questionId": "flag-demo-q1",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот учебный флаг?",
+        "image": {
+          "assetId": "demo-flag-01",
+          "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+          "byteSize": 177,
+          "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+          "mediaType": "image/svg+xml",
+          "width": 240,
+          "height": 160,
+          "alt": "Флаг страны для вопроса"
+        }
+      },
+      "questionFamilyId": "flag-family-demo",
+      "sourceIds": [
+        "demo-source"
+      ],
+      "answerKey": {
+        "acceptedValues": [
+          "Демо-страна А",
+          "Демо страна А"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Это вымышленный флаг Демо-страны А.",
+      "reviewTopic": "Демонстрационные страны"
+    },
+    {
+      "question": {
+        "questionId": "flag-demo-q2",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот учебный флаг?",
+        "image": {
+          "assetId": "demo-flag-01",
+          "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+          "byteSize": 177,
+          "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+          "mediaType": "image/svg+xml",
+          "width": 240,
+          "height": 160,
+          "alt": "Флаг страны для вопроса"
+        }
+      },
+      "questionFamilyId": "flag-family-demo",
+      "sourceIds": [
+        "demo-source"
+      ],
+      "answerKey": {
+        "acceptedValues": [
+          "Демо-страна А",
+          "Демо страна А"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Это вымышленный флаг Демо-страны А.",
+      "reviewTopic": "Демонстрационные страны"
+    },
+    {
+      "question": {
+        "questionId": "flag-demo-q3",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот учебный флаг?",
+        "image": {
+          "assetId": "demo-flag-01",
+          "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+          "byteSize": 177,
+          "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+          "mediaType": "image/svg+xml",
+          "width": 240,
+          "height": 160,
+          "alt": "Флаг страны для вопроса"
+        }
+      },
+      "questionFamilyId": "flag-family-demo",
+      "sourceIds": [
+        "demo-source"
+      ],
+      "answerKey": {
+        "acceptedValues": [
+          "Демо-страна А",
+          "Демо страна А"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Это вымышленный флаг Демо-страны А.",
+      "reviewTopic": "Демонстрационные страны"
+    },
+    {
+      "question": {
+        "questionId": "flag-demo-q4",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот учебный флаг?",
+        "image": {
+          "assetId": "demo-flag-01",
+          "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+          "byteSize": 177,
+          "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+          "mediaType": "image/svg+xml",
+          "width": 240,
+          "height": 160,
+          "alt": "Флаг страны для вопроса"
+        }
+      },
+      "questionFamilyId": "flag-family-demo",
+      "sourceIds": [
+        "demo-source"
+      ],
+      "answerKey": {
+        "acceptedValues": [
+          "Демо-страна А",
+          "Демо страна А"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Это вымышленный флаг Демо-страны А.",
+      "reviewTopic": "Демонстрационные страны"
+    },
+    {
+      "question": {
+        "questionId": "flag-demo-q5",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот учебный флаг?",
+        "image": {
+          "assetId": "demo-flag-01",
+          "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+          "byteSize": 177,
+          "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+          "mediaType": "image/svg+xml",
+          "width": 240,
+          "height": 160,
+          "alt": "Флаг страны для вопроса"
+        }
+      },
+      "questionFamilyId": "flag-family-demo",
+      "sourceIds": [
+        "demo-source"
+      ],
+      "answerKey": {
+        "acceptedValues": [
+          "Демо-страна А",
+          "Демо страна А"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Это вымышленный флаг Демо-страны А.",
+      "reviewTopic": "Демонстрационные страны"
+    }
+  ]
+}

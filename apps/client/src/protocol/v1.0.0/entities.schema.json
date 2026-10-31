@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/1.0.0/entities.schema.json",
+  "$defs": {
+    "player": {
+      "type": "object",
+      "properties": {
+        "playerId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "position": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -100000,
+              "maximum": 100000
+            },
+            "y": {
+              "type": "number",
+              "minimum": -10000,
+              "maximum": 10000
+            },
+            "z": {
+              "type": "number",
+              "minimum": -100000,
+              "maximum": 100000
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false
+        },
+        "yawRad": {
+          "type": "number",
+          "minimum": -3.141593,
+          "maximum": 3.141593
+        },
+        "connected": {
+          "type": "boolean"
+        },
+        "lastProcessedInputSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "playerId",
+        "displayName",
+        "position",
+        "yawRad",
+        "connected",
+        "lastProcessedInputSeq"
+      ],
+      "additionalProperties": false
+    },
+    "npc": {
+      "type": "object",
+      "properties": {
+        "npcId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "position": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -100000,
+              "maximum": 100000
+            },
+            "y": {
+              "type": "number",
+              "minimum": -10000,
+              "maximum": 10000
+            },
+            "z": {
+              "type": "number",
+              "minimum": -100000,
+              "maximum": 100000
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false
+        },
+        "yawRad": {
+          "type": "number",
+          "minimum": -3.141593,
+          "maximum": 3.141593
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "idle",
+            "talking",
+            "walking"
+          ]
+        },
+        "subject": {
+          "type": "string",
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "npcId",
+        "displayName",
+        "position",
+        "yawRad",
+        "state",
+        "subject"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

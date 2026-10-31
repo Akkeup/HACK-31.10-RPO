@@ -1,0 +1,18 @@
+{
+  "interaction.schema.json": "11130f379251a6ebb62a71fc8c05f111c0c442651d1dd2bf1a73525913de8f24",
+  "error.schema.json": "8b3829d06adcb37ba091c42f79d69f8e9e61d7a4880259021734075fa38fa530",
+  "character-config.schema.json": "dfc998543b797f217157a699d1fcf920b0f537301a32a3cb30931363cd7b4c3a",
+  "server-message.schema.json": "b1bc73bc593e253272f0dd31a564213411b53acbcf4005a8a26c2ce07d7ae84c",
+  "client-message.schema.json": "7466644dfa2cda5c9490d03c9d2a948cfb6ae6d36ccaaed48355c831de7888f1",
+  "world-config.schema.json": "40815b2a6f11d737117043d355bedc2acaa094e6e302ac5edde5a4093e3daf43",
+  "entities.schema.json": "fc203514aa4e00bb6c491ab847729ceb6025a687fa5fec8fd7c040b33048d8ea",
+  "common.schema.json": "378c7851620e02b1612da047043931ca2180c88a8774e4b0607438c01ef30d08",
+  "progress.schema.json": "6ce3a3868efa4891825b24a19e670e35aba2dc6e715f9252ba72329112dda71b",
+  "character-visual-config.schema.json": "32e25607c503010c7ea1064c701369b13c7a98f721d135047f04e2e1f4dcfee6",
+  "config.schema.json": "603c08e555bbd569dfb87449cbd6613a78fd5e7b8a8bf808732bb8b2bc2585c9",
+  "http.schema.json": "6e6449b4a07ca3d346463d1a48115091e56bc304742998a42f31c1f516565cd8",
+  "render-config.schema.json": "47b9ae683e6da72b1d86db13f71ed79a0655914641a756ea8867c10c36cb4136",
+  "chunk.schema.json": "0b436e14a9eb9114fc9d1b92deef52d2e1b9b9aa2800b4dc7f56fb04bef7fd47",
+  "npc-behavior-config.schema.json": "59a256666f1b33fa163204d69eb898078ff21d2deb4dea9755cf4d5f3f5b1e11",
+  "streaming.schema.json": "9cbc4cd9d98d0411585c46eb7692764971abd5adef4bf02169a348da88abf072"
+}
