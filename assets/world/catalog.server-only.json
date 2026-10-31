@@ -1,0 +1,1122 @@
+{
+  "manifest": {
+    "worldId": "discovery-campus",
+    "worldRevision": 1,
+    "totalWorldBytes": 22887,
+    "cacheBudgetBytes": 2288,
+    "accounting": "unique-uncompressed-resource-bytes",
+    "maxResourceBytes": 1048576,
+    "maxChunkBytes": 262144
+  },
+  "chunks": [
+    {
+      "chunkId": "c-0-0",
+      "x": 0,
+      "z": 0,
+      "sha256": "15077590a13b325496d9ff6a6efee1ee54a3f75fe39e81bbf58e7ec766a5fb0f",
+      "byteSize": 232,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-0-0/15077590a13b325496d9ff6a6efee1ee54a3f75fe39e81bbf58e7ec766a5fb0f",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-1-0",
+      "x": 1,
+      "z": 0,
+      "sha256": "f20c187637bef3a20652c2c6c91530c01bb8169b05bf4f08ac4a85c67e5804dc",
+      "byteSize": 222,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-1-0/f20c187637bef3a20652c2c6c91530c01bb8169b05bf4f08ac4a85c67e5804dc",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-2-0",
+      "x": 2,
+      "z": 0,
+      "sha256": "7861b2eba050ee3728eb4f4ac69bd68e176384a93e0be598658613180725671c",
+      "byteSize": 222,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-2-0/7861b2eba050ee3728eb4f4ac69bd68e176384a93e0be598658613180725671c",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-3-0",
+      "x": 3,
+      "z": 0,
+      "sha256": "719a5605674d75a8e43d7cfee968f846070c3c7f6cb65fa92bc5bd4075b30e5a",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-3-0/719a5605674d75a8e43d7cfee968f846070c3c7f6cb65fa92bc5bd4075b30e5a",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-4-0",
+      "x": 4,
+      "z": 0,
+      "sha256": "89bc2d6a09888f8ec85c0961864854caa8f81a3814935f2e28f42a3c1ef0568f",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-4-0/89bc2d6a09888f8ec85c0961864854caa8f81a3814935f2e28f42a3c1ef0568f",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-5-0",
+      "x": 5,
+      "z": 0,
+      "sha256": "86d23d05d1ba0bca7850e2eb9b772c87168944d04f61f5093c7d4e12085a6057",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-5-0/86d23d05d1ba0bca7850e2eb9b772c87168944d04f61f5093c7d4e12085a6057",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-6-0",
+      "x": 6,
+      "z": 0,
+      "sha256": "e86602129ca81ba20ff77353877dcec10c15a90619cdd3f62aa9adc6d6311af5",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-6-0/e86602129ca81ba20ff77353877dcec10c15a90619cdd3f62aa9adc6d6311af5",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-7-0",
+      "x": 7,
+      "z": 0,
+      "sha256": "8ca8b931887c3ced23eeb238da8e77a73fab4fa4ce4316d2a0b87373e13854be",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-7-0/8ca8b931887c3ced23eeb238da8e77a73fab4fa4ce4316d2a0b87373e13854be",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-8-0",
+      "x": 8,
+      "z": 0,
+      "sha256": "c207c9280fbb56b66848e49303cafc8f4aeb05f505b6e05408d9603511f9daab",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-8-0/c207c9280fbb56b66848e49303cafc8f4aeb05f505b6e05408d9603511f9daab",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-9-0",
+      "x": 9,
+      "z": 0,
+      "sha256": "b02096df10112d60f21a65c89c231459db492484c9c195d8841688585113b4b7",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-9-0/b02096df10112d60f21a65c89c231459db492484c9c195d8841688585113b4b7",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-0-1",
+      "x": 0,
+      "z": 1,
+      "sha256": "516d7ef6968b7f3c981d329c6083e55e265c800238964841fe9ef4f699ad8c52",
+      "byteSize": 222,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-0-1/516d7ef6968b7f3c981d329c6083e55e265c800238964841fe9ef4f699ad8c52",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-1-1",
+      "x": 1,
+      "z": 1,
+      "sha256": "b1ffe17e7f75298aa4ae0235b2e5a42015c230b1509cc7112d2f2a95b15bd33d",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-1-1/b1ffe17e7f75298aa4ae0235b2e5a42015c230b1509cc7112d2f2a95b15bd33d",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-2-1",
+      "x": 2,
+      "z": 1,
+      "sha256": "90a96de18f01bd41fac45d688ab815222c92fcd9b303c6dbbddbdd0eb882ccbe",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-2-1/90a96de18f01bd41fac45d688ab815222c92fcd9b303c6dbbddbdd0eb882ccbe",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-3-1",
+      "x": 3,
+      "z": 1,
+      "sha256": "d1a519343e7339b6f071ce08105c2f30ea42aff53452be2c055117fea745a32a",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-3-1/d1a519343e7339b6f071ce08105c2f30ea42aff53452be2c055117fea745a32a",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-4-1",
+      "x": 4,
+      "z": 1,
+      "sha256": "042ccb8d6a4b9956a6c435d49b9d19322ee2f29954019ec457c22f507416d2c4",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-4-1/042ccb8d6a4b9956a6c435d49b9d19322ee2f29954019ec457c22f507416d2c4",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-5-1",
+      "x": 5,
+      "z": 1,
+      "sha256": "e687c77efae3f5a44188fbbd07ed4c79d5ed6e6d5b7a73f2ae02684065e75370",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-5-1/e687c77efae3f5a44188fbbd07ed4c79d5ed6e6d5b7a73f2ae02684065e75370",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-6-1",
+      "x": 6,
+      "z": 1,
+      "sha256": "f7644cdaebafda86d050e8547bf2d6c4c965bc1d5efb99759a1148a2e920f3c0",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-6-1/f7644cdaebafda86d050e8547bf2d6c4c965bc1d5efb99759a1148a2e920f3c0",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-7-1",
+      "x": 7,
+      "z": 1,
+      "sha256": "97d89b0cf6fa88187c8def3f66d85ba57d103174bc4531d027d368df24bb7d9d",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-7-1/97d89b0cf6fa88187c8def3f66d85ba57d103174bc4531d027d368df24bb7d9d",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-8-1",
+      "x": 8,
+      "z": 1,
+      "sha256": "afa1a5c817e062cbad49d790e4cbd7d436b00d09716515eb8fe02a693207db9f",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-8-1/afa1a5c817e062cbad49d790e4cbd7d436b00d09716515eb8fe02a693207db9f",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-9-1",
+      "x": 9,
+      "z": 1,
+      "sha256": "423f7874c809a6f6c8e813775c2cd9ee224e5caaaa20fadfebeeacfbd026f3df",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-9-1/423f7874c809a6f6c8e813775c2cd9ee224e5caaaa20fadfebeeacfbd026f3df",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-0-2",
+      "x": 0,
+      "z": 2,
+      "sha256": "7d0631e45aebff3ee60a88ac7f0947197f0b0409f7526588b91b42d965a8f478",
+      "byteSize": 222,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-0-2/7d0631e45aebff3ee60a88ac7f0947197f0b0409f7526588b91b42d965a8f478",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-1-2",
+      "x": 1,
+      "z": 2,
+      "sha256": "a0dd821992dfb2c00641642470c9bf71dd6b63fab805ca667e76156afe013856",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-1-2/a0dd821992dfb2c00641642470c9bf71dd6b63fab805ca667e76156afe013856",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-2-2",
+      "x": 2,
+      "z": 2,
+      "sha256": "f0f512f227c766f21746ed94bc13b9ff54b0fbeb48b7d96b049552741d7cbc64",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-2-2/f0f512f227c766f21746ed94bc13b9ff54b0fbeb48b7d96b049552741d7cbc64",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-3-2",
+      "x": 3,
+      "z": 2,
+      "sha256": "b643644ae7cad851301121075394f9c2a6ce28d43671c528927be03f297d500e",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-3-2/b643644ae7cad851301121075394f9c2a6ce28d43671c528927be03f297d500e",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-4-2",
+      "x": 4,
+      "z": 2,
+      "sha256": "094cd374c19f0c7b7216023d39cd6f931c567cfc5d6f6575dc2821b4c6bf8e39",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-4-2/094cd374c19f0c7b7216023d39cd6f931c567cfc5d6f6575dc2821b4c6bf8e39",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-5-2",
+      "x": 5,
+      "z": 2,
+      "sha256": "541242ed17d5b4d4de05d6295563dd68245618c875f8df3b85fa556808225096",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-5-2/541242ed17d5b4d4de05d6295563dd68245618c875f8df3b85fa556808225096",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-6-2",
+      "x": 6,
+      "z": 2,
+      "sha256": "10f808c6713410b25904167b603aa51323bb53e33c04dde08226cc984a653d69",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-6-2/10f808c6713410b25904167b603aa51323bb53e33c04dde08226cc984a653d69",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-7-2",
+      "x": 7,
+      "z": 2,
+      "sha256": "f0639d70a1552d1761da414559ddd45ed91ed89e89c5ec9ab0c0cb3e1c2b39ec",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-7-2/f0639d70a1552d1761da414559ddd45ed91ed89e89c5ec9ab0c0cb3e1c2b39ec",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-8-2",
+      "x": 8,
+      "z": 2,
+      "sha256": "33d071c545cf714e0af9c722e5b00080850b6c2f8f2e17a7c3593e72ba4d26e0",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-8-2/33d071c545cf714e0af9c722e5b00080850b6c2f8f2e17a7c3593e72ba4d26e0",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-9-2",
+      "x": 9,
+      "z": 2,
+      "sha256": "66c79b930e9c69b8ee91c671b17f5ea150a3622c721402051bb2021a099e1ec6",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-9-2/66c79b930e9c69b8ee91c671b17f5ea150a3622c721402051bb2021a099e1ec6",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-0-3",
+      "x": 0,
+      "z": 3,
+      "sha256": "fc7758aefd6c4a6a79cd11d31c6d0243709f27a50ef06033572028bfd0e0da43",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-0-3/fc7758aefd6c4a6a79cd11d31c6d0243709f27a50ef06033572028bfd0e0da43",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-1-3",
+      "x": 1,
+      "z": 3,
+      "sha256": "1bdf338680a8d2dc44dd6ded9c13178d27e6238eb390c935bdea7e8c8c9de7a3",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-1-3/1bdf338680a8d2dc44dd6ded9c13178d27e6238eb390c935bdea7e8c8c9de7a3",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-2-3",
+      "x": 2,
+      "z": 3,
+      "sha256": "24b01c3a53665f53b166cef9661d321f4642ef52553555049ae93cef6e39b686",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-2-3/24b01c3a53665f53b166cef9661d321f4642ef52553555049ae93cef6e39b686",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-3-3",
+      "x": 3,
+      "z": 3,
+      "sha256": "63332b4260b25d201793c41f07607f516e1cde5d480db57b5dc2f31625322049",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-3-3/63332b4260b25d201793c41f07607f516e1cde5d480db57b5dc2f31625322049",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-4-3",
+      "x": 4,
+      "z": 3,
+      "sha256": "70e4e0f5aeaf64213d6af4c5680ff571b94eee33cfac9f325b0c13ce482ea1dd",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-4-3/70e4e0f5aeaf64213d6af4c5680ff571b94eee33cfac9f325b0c13ce482ea1dd",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-5-3",
+      "x": 5,
+      "z": 3,
+      "sha256": "30a0d2873713534490805d8a8846f855ccc327c969dc6fdb1b6be0ba5c4db548",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-5-3/30a0d2873713534490805d8a8846f855ccc327c969dc6fdb1b6be0ba5c4db548",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-6-3",
+      "x": 6,
+      "z": 3,
+      "sha256": "7cc82874ec9162eaa4e1b32c07e5c6e57f65ab395b0b89c0d44158d453e34934",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-6-3/7cc82874ec9162eaa4e1b32c07e5c6e57f65ab395b0b89c0d44158d453e34934",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-7-3",
+      "x": 7,
+      "z": 3,
+      "sha256": "b13951c7257ccd9a490c296729089cdb37676c0c244807fc51c54cd05713272a",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-7-3/b13951c7257ccd9a490c296729089cdb37676c0c244807fc51c54cd05713272a",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-8-3",
+      "x": 8,
+      "z": 3,
+      "sha256": "da912e2a5b2a6d915e0f7030daddd6dfa234f2c3d215a49cb7e55826f27f1701",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-8-3/da912e2a5b2a6d915e0f7030daddd6dfa234f2c3d215a49cb7e55826f27f1701",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-9-3",
+      "x": 9,
+      "z": 3,
+      "sha256": "e823dae804a578ebf3375547a7a3d608dd497b6ce52ba4ce99e2dd06dfa17a19",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-9-3/e823dae804a578ebf3375547a7a3d608dd497b6ce52ba4ce99e2dd06dfa17a19",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-0-4",
+      "x": 0,
+      "z": 4,
+      "sha256": "950118f01ab4ae88fea5e49c81481d9bbaf8b0b2209e3f74bb3e9764076b3a6c",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-0-4/950118f01ab4ae88fea5e49c81481d9bbaf8b0b2209e3f74bb3e9764076b3a6c",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-1-4",
+      "x": 1,
+      "z": 4,
+      "sha256": "2d315c45641f7efeb99625da76344eb0eb47a6abe1fbf74c38a948391cdceb97",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-1-4/2d315c45641f7efeb99625da76344eb0eb47a6abe1fbf74c38a948391cdceb97",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-2-4",
+      "x": 2,
+      "z": 4,
+      "sha256": "f82b6df3e97d84be404b0b3fed799ce9bc3c5cc6e2b8f89000a26c13858f7c21",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-2-4/f82b6df3e97d84be404b0b3fed799ce9bc3c5cc6e2b8f89000a26c13858f7c21",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-3-4",
+      "x": 3,
+      "z": 4,
+      "sha256": "5622d16b271b48085b9278fc18b57dc4a6bfd1b8d112ce90800b7af00abb8aea",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-3-4/5622d16b271b48085b9278fc18b57dc4a6bfd1b8d112ce90800b7af00abb8aea",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-4-4",
+      "x": 4,
+      "z": 4,
+      "sha256": "5a1063abaa12846b2c8c40889ac4fa974b5fed66b7f93cb9d921e5d41da5d8f3",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-4-4/5a1063abaa12846b2c8c40889ac4fa974b5fed66b7f93cb9d921e5d41da5d8f3",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-5-4",
+      "x": 5,
+      "z": 4,
+      "sha256": "ce083e351f3e70a54e38bf257c3b0445a89268a685ba51bf5a43246487d0b81e",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-5-4/ce083e351f3e70a54e38bf257c3b0445a89268a685ba51bf5a43246487d0b81e",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-6-4",
+      "x": 6,
+      "z": 4,
+      "sha256": "bac62d2be5c178b4d9eda2e4e34b35101417f7e4de74049113301f128c7a0c81",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-6-4/bac62d2be5c178b4d9eda2e4e34b35101417f7e4de74049113301f128c7a0c81",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-7-4",
+      "x": 7,
+      "z": 4,
+      "sha256": "b89581fd499334c64c2ab2b1e8f871c38e3725aa5684d62251ad19b2ae588e6a",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-7-4/b89581fd499334c64c2ab2b1e8f871c38e3725aa5684d62251ad19b2ae588e6a",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-8-4",
+      "x": 8,
+      "z": 4,
+      "sha256": "a9fef0c85738cd9a831976f8539157fb2f8a38c7920289aaddaf5b1c68218423",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-8-4/a9fef0c85738cd9a831976f8539157fb2f8a38c7920289aaddaf5b1c68218423",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-9-4",
+      "x": 9,
+      "z": 4,
+      "sha256": "6b4bfc9cbe18f5a1442e21df54fc050d47e5ffe6be4b66e216d71f72d67a1f00",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-9-4/6b4bfc9cbe18f5a1442e21df54fc050d47e5ffe6be4b66e216d71f72d67a1f00",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-0-5",
+      "x": 0,
+      "z": 5,
+      "sha256": "389538e414f6c1ead352c06b1810cc147445e339b671c66aae5cc47a8dd7f45a",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-0-5/389538e414f6c1ead352c06b1810cc147445e339b671c66aae5cc47a8dd7f45a",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-1-5",
+      "x": 1,
+      "z": 5,
+      "sha256": "1ee73874978b64c0b0e0fe29b77fd2caf04e85b5f2b3ee65df407ed3e3219f2a",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-1-5/1ee73874978b64c0b0e0fe29b77fd2caf04e85b5f2b3ee65df407ed3e3219f2a",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-2-5",
+      "x": 2,
+      "z": 5,
+      "sha256": "d9f296e9c7f0c3a56693cbe0c01e89519671801ef9226bb15014b1987ec4c564",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-2-5/d9f296e9c7f0c3a56693cbe0c01e89519671801ef9226bb15014b1987ec4c564",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-3-5",
+      "x": 3,
+      "z": 5,
+      "sha256": "08aa2789ff3653c21ccb6fa8bde3851eab1d3d033b1e637ef172bccc698bf8ba",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-3-5/08aa2789ff3653c21ccb6fa8bde3851eab1d3d033b1e637ef172bccc698bf8ba",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-4-5",
+      "x": 4,
+      "z": 5,
+      "sha256": "81ccbc3b46bc1e0e10e2da5477e17617130c7449a5410cd9a5b30ea5ff174b3c",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-4-5/81ccbc3b46bc1e0e10e2da5477e17617130c7449a5410cd9a5b30ea5ff174b3c",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-5-5",
+      "x": 5,
+      "z": 5,
+      "sha256": "d820056a6d8422fd6779a56af2473cd7f9f1b99c7a6e849117520a1fa5df41fd",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-5-5/d820056a6d8422fd6779a56af2473cd7f9f1b99c7a6e849117520a1fa5df41fd",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-6-5",
+      "x": 6,
+      "z": 5,
+      "sha256": "fa16ea400339bfefcbbafd4e630a411c11664e87595ebfbb93eab4855aa0ed59",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-6-5/fa16ea400339bfefcbbafd4e630a411c11664e87595ebfbb93eab4855aa0ed59",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-7-5",
+      "x": 7,
+      "z": 5,
+      "sha256": "5b1301ef37300798510009808e86d6b1ca258730ad55f3bf25f1488791655618",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-7-5/5b1301ef37300798510009808e86d6b1ca258730ad55f3bf25f1488791655618",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-8-5",
+      "x": 8,
+      "z": 5,
+      "sha256": "9da16af2295df2958d363b353fbf279aeb78ae47023c6fcf49f2da8ddf308680",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-8-5/9da16af2295df2958d363b353fbf279aeb78ae47023c6fcf49f2da8ddf308680",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-9-5",
+      "x": 9,
+      "z": 5,
+      "sha256": "9812fbbd4089308b1cbd291538d75bba10f6b189af527b013dfbfabc1b4a4516",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-9-5/9812fbbd4089308b1cbd291538d75bba10f6b189af527b013dfbfabc1b4a4516",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-0-6",
+      "x": 0,
+      "z": 6,
+      "sha256": "cd48f88ed9cce41acf71f2fa08e94f403a3c1497d58f583def406d9c56a7d957",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-0-6/cd48f88ed9cce41acf71f2fa08e94f403a3c1497d58f583def406d9c56a7d957",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-1-6",
+      "x": 1,
+      "z": 6,
+      "sha256": "7fd4a94cfd57467081ade823aa1c3677fdbb9a4f78decf2d15f9102eda6c6d85",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-1-6/7fd4a94cfd57467081ade823aa1c3677fdbb9a4f78decf2d15f9102eda6c6d85",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-2-6",
+      "x": 2,
+      "z": 6,
+      "sha256": "24de6be54b920b97d4a37c07ac6c077b65adf48ea08387bb867804c8b268b4c9",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-2-6/24de6be54b920b97d4a37c07ac6c077b65adf48ea08387bb867804c8b268b4c9",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-3-6",
+      "x": 3,
+      "z": 6,
+      "sha256": "a927f0c3d1bab7deba90d6047ec363c23c35cf01be4d7fe11f3c7f04ab9fa4ea",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-3-6/a927f0c3d1bab7deba90d6047ec363c23c35cf01be4d7fe11f3c7f04ab9fa4ea",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-4-6",
+      "x": 4,
+      "z": 6,
+      "sha256": "672135106ba21863dd665620c24c746615c7c18e5bc58b5cad52409e0595078d",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-4-6/672135106ba21863dd665620c24c746615c7c18e5bc58b5cad52409e0595078d",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-5-6",
+      "x": 5,
+      "z": 6,
+      "sha256": "2ce3387e81debda35e45520dcae2938b7dd162eafc820f86b3212ab717fb0d51",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-5-6/2ce3387e81debda35e45520dcae2938b7dd162eafc820f86b3212ab717fb0d51",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-6-6",
+      "x": 6,
+      "z": 6,
+      "sha256": "635b9f91fc1cc63f091c59b078554cf63ab1aafd1918e0c2c827c203f28de778",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-6-6/635b9f91fc1cc63f091c59b078554cf63ab1aafd1918e0c2c827c203f28de778",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-7-6",
+      "x": 7,
+      "z": 6,
+      "sha256": "b41343ed409af4ee3587eccb9206174667948d06eadd1dcf87f902178c7357b2",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-7-6/b41343ed409af4ee3587eccb9206174667948d06eadd1dcf87f902178c7357b2",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-8-6",
+      "x": 8,
+      "z": 6,
+      "sha256": "3b997e7f4ec124ea629e7ed7e69d68126fbc751da68c88f9635a9d7ed7aa1765",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-8-6/3b997e7f4ec124ea629e7ed7e69d68126fbc751da68c88f9635a9d7ed7aa1765",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-9-6",
+      "x": 9,
+      "z": 6,
+      "sha256": "2e5995344c6c5d1924965bd947315f15ea67bd4dc1a3e633d5275dd791e6ea97",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-9-6/2e5995344c6c5d1924965bd947315f15ea67bd4dc1a3e633d5275dd791e6ea97",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-0-7",
+      "x": 0,
+      "z": 7,
+      "sha256": "502e2db57c22817025b67efd0bfaa9064b0318103f92608f608e36a1e668a662",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-0-7/502e2db57c22817025b67efd0bfaa9064b0318103f92608f608e36a1e668a662",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-1-7",
+      "x": 1,
+      "z": 7,
+      "sha256": "7809bc578bacf19d13e5407efe98b0f1f2e2288536afe1c776044ee5f157eaab",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-1-7/7809bc578bacf19d13e5407efe98b0f1f2e2288536afe1c776044ee5f157eaab",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-2-7",
+      "x": 2,
+      "z": 7,
+      "sha256": "2ba7300d5f842440c0f2f84d72c7fb41067dc77609149b5b730cbac2307b5eef",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-2-7/2ba7300d5f842440c0f2f84d72c7fb41067dc77609149b5b730cbac2307b5eef",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-3-7",
+      "x": 3,
+      "z": 7,
+      "sha256": "7d20cfb7416e29f78d89a500c7ad759db21fc9ea3f0ba13a0037ab56c7270f69",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-3-7/7d20cfb7416e29f78d89a500c7ad759db21fc9ea3f0ba13a0037ab56c7270f69",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-4-7",
+      "x": 4,
+      "z": 7,
+      "sha256": "7cdf4347735da7efc2a77aee6de9d73765244ae15851dfeb9be024ed0abc8191",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-4-7/7cdf4347735da7efc2a77aee6de9d73765244ae15851dfeb9be024ed0abc8191",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-5-7",
+      "x": 5,
+      "z": 7,
+      "sha256": "9e317d7a109a3ba7ecaecb2a8a83aa72a5a4ba62a7ba3a94f977c9ee2b10f25c",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-5-7/9e317d7a109a3ba7ecaecb2a8a83aa72a5a4ba62a7ba3a94f977c9ee2b10f25c",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-6-7",
+      "x": 6,
+      "z": 7,
+      "sha256": "e139416e1677be3136d0de484b5e65f6d163f75d463fd06e9ff0f0890d346e07",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-6-7/e139416e1677be3136d0de484b5e65f6d163f75d463fd06e9ff0f0890d346e07",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-7-7",
+      "x": 7,
+      "z": 7,
+      "sha256": "55ffc42817368aef2bbe831da010b337f2a9866614f3bb4c16f758fa9b635790",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-7-7/55ffc42817368aef2bbe831da010b337f2a9866614f3bb4c16f758fa9b635790",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-8-7",
+      "x": 8,
+      "z": 7,
+      "sha256": "86deed46c44cab44b15f886b23e0b33ca27483eed6efe12ab330754dbcdc4b35",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-8-7/86deed46c44cab44b15f886b23e0b33ca27483eed6efe12ab330754dbcdc4b35",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-9-7",
+      "x": 9,
+      "z": 7,
+      "sha256": "1b100b88ed9c4cd7fec401c06219bfa71df19716b1f1273fa00cdf9277dd31cc",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-9-7/1b100b88ed9c4cd7fec401c06219bfa71df19716b1f1273fa00cdf9277dd31cc",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-0-8",
+      "x": 0,
+      "z": 8,
+      "sha256": "a27e9bd77ed4e09a2c9ebc56e323c880c5956c492d9cb0166433e1ff18d9d127",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-0-8/a27e9bd77ed4e09a2c9ebc56e323c880c5956c492d9cb0166433e1ff18d9d127",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-1-8",
+      "x": 1,
+      "z": 8,
+      "sha256": "7e8456e2d91059409ab96c092e98e3f25c6b1faa5ad0ab1acfc6f6121a92e585",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-1-8/7e8456e2d91059409ab96c092e98e3f25c6b1faa5ad0ab1acfc6f6121a92e585",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-2-8",
+      "x": 2,
+      "z": 8,
+      "sha256": "9f328651e58a3aa096c87e81fe1149e266d2ade3e9b4e71fdc4da457eb7a75a3",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-2-8/9f328651e58a3aa096c87e81fe1149e266d2ade3e9b4e71fdc4da457eb7a75a3",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-3-8",
+      "x": 3,
+      "z": 8,
+      "sha256": "9383255fc96f5e2ded98b885a93f4512c2636251af3068a4c4724c0a231a349b",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-3-8/9383255fc96f5e2ded98b885a93f4512c2636251af3068a4c4724c0a231a349b",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-4-8",
+      "x": 4,
+      "z": 8,
+      "sha256": "784843946b35b666d19519deb70fb8a77dd4a45bb0f83e0801592c9107ce0fd9",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-4-8/784843946b35b666d19519deb70fb8a77dd4a45bb0f83e0801592c9107ce0fd9",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-5-8",
+      "x": 5,
+      "z": 8,
+      "sha256": "fde6a406d9228da29fc5f6681cf8a5e5f4ed4496d6a2e7f46ad69a5ba96428a3",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-5-8/fde6a406d9228da29fc5f6681cf8a5e5f4ed4496d6a2e7f46ad69a5ba96428a3",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-6-8",
+      "x": 6,
+      "z": 8,
+      "sha256": "3537818f97cfe6d3a407dd9722b3b11984f4470c1c29d4ebbbfc7094e16352d5",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-6-8/3537818f97cfe6d3a407dd9722b3b11984f4470c1c29d4ebbbfc7094e16352d5",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-7-8",
+      "x": 7,
+      "z": 8,
+      "sha256": "84eea7bfd05ccdb908628bfb28e4e7bdb9083486b3578051e13911f04270bd3f",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-7-8/84eea7bfd05ccdb908628bfb28e4e7bdb9083486b3578051e13911f04270bd3f",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-8-8",
+      "x": 8,
+      "z": 8,
+      "sha256": "802fe4e8990676bc87b87060b6b375f21c8725e8e0155fca8609d7b4bdc0dc86",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-8-8/802fe4e8990676bc87b87060b6b375f21c8725e8e0155fca8609d7b4bdc0dc86",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-9-8",
+      "x": 9,
+      "z": 8,
+      "sha256": "01b5a512cac9d6930f2a285ab53aa507695e65afa75e821b0fc551e45b598422",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-9-8/01b5a512cac9d6930f2a285ab53aa507695e65afa75e821b0fc551e45b598422",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-0-9",
+      "x": 0,
+      "z": 9,
+      "sha256": "e9d509acb36c200d982ff39f99b2c7cabd83a22f26bcc6fb7a3ea4db9b924596",
+      "byteSize": 223,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-0-9/e9d509acb36c200d982ff39f99b2c7cabd83a22f26bcc6fb7a3ea4db9b924596",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-1-9",
+      "x": 1,
+      "z": 9,
+      "sha256": "efb1bdeda54378661ee90c88792be8e28b1f28315132f141fa1af3ea1a83d752",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-1-9/efb1bdeda54378661ee90c88792be8e28b1f28315132f141fa1af3ea1a83d752",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-2-9",
+      "x": 2,
+      "z": 9,
+      "sha256": "252081c2de10db7e53fc7ae68f6aec499261653d8b6a9f89eb058d833cf34eb4",
+      "byteSize": 224,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-2-9/252081c2de10db7e53fc7ae68f6aec499261653d8b6a9f89eb058d833cf34eb4",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-3-9",
+      "x": 3,
+      "z": 9,
+      "sha256": "fec82eff9a8578a9d028d7a11326596e3f6871143ec75416ed8aaaf38a5af919",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-3-9/fec82eff9a8578a9d028d7a11326596e3f6871143ec75416ed8aaaf38a5af919",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-4-9",
+      "x": 4,
+      "z": 9,
+      "sha256": "60d43f63fc7374ef401c92f90efe95f7824792cdf5135a5a606d655ac37e9725",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-4-9/60d43f63fc7374ef401c92f90efe95f7824792cdf5135a5a606d655ac37e9725",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-5-9",
+      "x": 5,
+      "z": 9,
+      "sha256": "100434da1a717fcb9f336df71a66e766040c1eddcffb70ff55ab11be4e48c472",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-5-9/100434da1a717fcb9f336df71a66e766040c1eddcffb70ff55ab11be4e48c472",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-6-9",
+      "x": 6,
+      "z": 9,
+      "sha256": "2c383712bb4199fdc1dc983cc3378a9f7878b9a852860a4686c5ad5af3e9e4c0",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-6-9/2c383712bb4199fdc1dc983cc3378a9f7878b9a852860a4686c5ad5af3e9e4c0",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-7-9",
+      "x": 7,
+      "z": 9,
+      "sha256": "50eae76fa1651660b3dd709973ad2f66fcde727bf345a4f180a32f33ef2d7f12",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-7-9/50eae76fa1651660b3dd709973ad2f66fcde727bf345a4f180a32f33ef2d7f12",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-8-9",
+      "x": 8,
+      "z": 9,
+      "sha256": "d3fea02bbb1d8e8ef7b8f09e17c617afbadba27861c72055eca6f6feb2bdd7a3",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-8-9/d3fea02bbb1d8e8ef7b8f09e17c617afbadba27861c72055eca6f6feb2bdd7a3",
+      "assetIds": [
+        "model-triangle"
+      ]
+    },
+    {
+      "chunkId": "c-9-9",
+      "x": 9,
+      "z": 9,
+      "sha256": "3d40c3c2d76a6b5fcd9974661d47188ba7cec0add50b7f46fe1b3fd36eb44774",
+      "byteSize": 225,
+      "url": "/api/v1/worlds/discovery-campus/chunks/c-9-9/3d40c3c2d76a6b5fcd9974661d47188ba7cec0add50b7f46fe1b3fd36eb44774",
+      "assetIds": [
+        "model-triangle"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "resourceId": "model-triangle",
+      "sha256": "18023c4b7bf43d906ad1038f48a0a10e5c3c62a32493852dede171ef3cd2ed0f",
+      "byteSize": 456,
+      "mediaType": "model/gltf+json",
+      "url": "/api/v1/worlds/discovery-campus/assets/18023c4b7bf43d906ad1038f48a0a10e5c3c62a32493852dede171ef3cd2ed0f"
+    }
+  ]
+}
