@@ -1,0 +1,12 @@
+{
+  "activity": {
+    "mode": "exploring",
+    "targetId": null,
+    "seatId": null
+  },
+  "lessonId": null,
+  "attemptId": null,
+  "matchId": null,
+  "lobbyId": null,
+  "revision": 1
+}

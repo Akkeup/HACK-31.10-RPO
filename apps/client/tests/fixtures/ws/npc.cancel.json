@@ -1,0 +1,8 @@
+{
+  "protocolVersion": "1.0.0",
+  "type": "npc.cancel",
+  "requestId": "44444444-4444-4444-8444-444444444444",
+  "payload": {
+    "targetRequestId": "55555555-5555-4555-8555-555555555555"
+  }
+}

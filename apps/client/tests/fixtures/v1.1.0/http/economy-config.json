@@ -1,0 +1,5 @@
+{
+  "initialBalanceAura": 100,
+  "maxBalanceAura": 1000000000,
+  "currency": "aura"
+}

@@ -1,0 +1,58 @@
+{
+  "revision": 1,
+  "values": {
+    "world": {
+      "worldId": "discovery-campus",
+      "worldRevision": 1,
+      "chunkSizeM": 32,
+      "grid": {
+        "minX": 0,
+        "maxX": 9,
+        "minZ": 0,
+        "maxZ": 9
+      },
+      "spawn": {
+        "x": 1,
+        "y": 0,
+        "z": 1
+      },
+      "timeOfDayHours": 12,
+      "weather": "clear",
+      "decorDensity": 0.5,
+      "interestRadiusChunks": 0,
+      "maxResidentChunks": 1
+    },
+    "character": {
+      "walkSpeedMps": 4,
+      "runMultiplier": 1.5,
+      "interactionRadiusM": 3,
+      "collisionRadiusM": 0.35,
+      "tickHz": 20,
+      "snapshotHz": 10,
+      "inputHz": 20,
+      "allowedActions": [
+        "talk",
+        "inspect"
+      ],
+      "maxInputSilenceMs": 250
+    },
+    "renderDefaults": {
+      "quality": "medium",
+      "drawDistanceM": 60,
+      "shadows": true,
+      "lod": true,
+      "pixelRatio": 1,
+      "exposure": 1,
+      "animationEnabled": true
+    },
+    "characterVisualDefaults": {
+      "playerModelId": "model-triangle",
+      "npcModelId": "model-triangle",
+      "modelScale": 1,
+      "animationRate": 1,
+      "showNames": true,
+      "materialStyle": "standard",
+      "interactionReaction": "nod"
+    }
+  }
+}

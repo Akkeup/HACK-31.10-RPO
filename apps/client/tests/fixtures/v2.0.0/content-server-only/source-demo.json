@@ -1,0 +1,12 @@
+{
+  "sourceId": "demo-source",
+  "title": "Авторский синтетический fixture Discovery",
+  "url": "https://discovery.invalid/demo",
+  "retrievedAt": "2026-10-31T09:00:00Z",
+  "revision": "demo-v1",
+  "license": "CC0-1.0",
+  "localPath": "fixtures/v2.0.0/resources/flag-demo.svg",
+  "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+  "status": "draft",
+  "synthetic": true
+}

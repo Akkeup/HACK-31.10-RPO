@@ -1,0 +1,1226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/1.1.0/server-message.schema.json",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/server.welcome"
+    },
+    {
+      "$ref": "#/$defs/world.interest"
+    },
+    {
+      "$ref": "#/$defs/world.snapshot"
+    },
+    {
+      "$ref": "#/$defs/config.changed"
+    },
+    {
+      "$ref": "#/$defs/npc.accepted"
+    },
+    {
+      "$ref": "#/$defs/npc.result"
+    },
+    {
+      "$ref": "#/$defs/npc.cancelled"
+    },
+    {
+      "$ref": "#/$defs/progress.updated"
+    },
+    {
+      "$ref": "#/$defs/server.pong"
+    },
+    {
+      "$ref": "#/$defs/server.error"
+    },
+    {
+      "$ref": "#/$defs/session.closed"
+    },
+    {
+      "$ref": "#/$defs/lesson.opened"
+    },
+    {
+      "$ref": "#/$defs/activity.changed"
+    },
+    {
+      "$ref": "#/$defs/quiz.state"
+    },
+    {
+      "$ref": "#/$defs/education.progress.updated"
+    },
+    {
+      "$ref": "#/$defs/competition.state"
+    },
+    {
+      "$ref": "#/$defs/competition.answer.accepted"
+    },
+    {
+      "$ref": "#/$defs/competition.round.closed"
+    },
+    {
+      "$ref": "#/$defs/competition.settled"
+    },
+    {
+      "$ref": "#/$defs/wallet.updated"
+    }
+  ],
+  "$defs": {
+    "server.welcome": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "server.welcome"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "connectionId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "serverInstanceId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "session": {
+              "$ref": "http.schema.json#/$defs/session"
+            },
+            "playerId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "configRevision": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "manifest": {
+              "$ref": "streaming.schema.json#/$defs/manifest"
+            },
+            "heartbeatIntervalMs": {
+              "const": 10000
+            },
+            "heartbeatTimeoutMs": {
+              "const": 30000
+            }
+          },
+          "required": [
+            "connectionId",
+            "serverInstanceId",
+            "session",
+            "playerId",
+            "configRevision",
+            "manifest",
+            "heartbeatIntervalMs",
+            "heartbeatTimeoutMs"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "world.interest": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "world.interest"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "streaming.schema.json#/$defs/interest"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "world.snapshot": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "world.snapshot"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "tick": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "interestRevision": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "configRevision": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "sessionStatus": {
+              "type": "string",
+              "enum": [
+                "waiting",
+                "active",
+                "paused"
+              ]
+            },
+            "players": {
+              "type": "array",
+              "items": {
+                "$ref": "entities.schema.json#/$defs/player"
+              },
+              "maxItems": 5
+            },
+            "npcs": {
+              "type": "array",
+              "items": {
+                "$ref": "entities.schema.json#/$defs/npc"
+              },
+              "maxItems": 50
+            },
+            "tables": {
+              "type": "array",
+              "items": {
+                "$ref": "competition.schema.json#/$defs/table"
+              },
+              "maxItems": 20
+            }
+          },
+          "required": [
+            "tick",
+            "interestRevision",
+            "configRevision",
+            "sessionStatus",
+            "players",
+            "npcs",
+            "tables"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "config.changed": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "config.changed"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "revision": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "effectiveTick": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "publicConfig": {
+              "$ref": "config.schema.json#/$defs/publicDocument"
+            }
+          },
+          "required": [
+            "revision",
+            "effectiveTick",
+            "publicConfig"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "npc.accepted": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "npc.accepted"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "interaction": {
+              "allOf": [
+                {
+                  "$ref": "interaction.schema.json"
+                },
+                {
+                  "properties": {
+                    "status": {
+                      "const": "pending"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "required": [
+            "interaction"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "npc.result": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "npc.result"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "interaction": {
+              "allOf": [
+                {
+                  "$ref": "interaction.schema.json"
+                },
+                {
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "completed",
+                        "failed",
+                        "cancelled"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "required": [
+            "interaction"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "npc.cancelled": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "npc.cancelled"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "interaction": {
+              "allOf": [
+                {
+                  "$ref": "interaction.schema.json"
+                },
+                {
+                  "properties": {
+                    "status": {
+                      "const": "cancelled"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          "required": [
+            "interaction"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "progress.updated": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "progress.updated"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "progress.schema.json"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "server.pong": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "server.pong"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "nonce": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "required": [
+            "nonce"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "server.error": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "server.error"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "error.schema.json"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "session.closed": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "session.closed"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string",
+              "enum": [
+                "empty",
+                "world_restarted",
+                "operator",
+                "left"
+              ]
+            }
+          },
+          "required": [
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "lesson.opened": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "lesson.opened"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "education.schema.json#/$defs/lesson"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "activity.changed": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "activity.changed"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "activity.schema.json#/$defs/own"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "quiz.state": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "quiz.state"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "education.schema.json#/$defs/attempt"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "education.progress.updated": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "education.progress.updated"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "education.schema.json#/$defs/progress"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "competition.state": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "competition.state"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "competition.schema.json#/$defs/state"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "competition.answer.accepted": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "competition.answer.accepted"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "matchId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "questionId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "optionId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "acceptedAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "matchId",
+            "questionId",
+            "optionId",
+            "acceptedAt"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "competition.round.closed": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "competition.round.closed"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "competition.schema.json#/$defs/roundResult"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "competition.settled": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "competition.settled"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "competition.schema.json#/$defs/settlement"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    },
+    "wallet.updated": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        },
+        "type": {
+          "const": "wallet.updated"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payload": {
+          "$ref": "wallet.schema.json#/$defs/balance"
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        },
+        "serverSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "serverTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload",
+        "serverSeq",
+        "serverTime"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

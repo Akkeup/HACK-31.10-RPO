@@ -1,0 +1,10 @@
+{
+  "protocolVersion": "1.0.0",
+  "type": "npc.interact",
+  "requestId": "55555555-5555-4555-8555-555555555555",
+  "payload": {
+    "npcId": "npc-guide",
+    "action": "talk",
+    "text": "Как начинается исследование?"
+  }
+}

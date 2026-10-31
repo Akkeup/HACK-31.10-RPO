@@ -1,0 +1,9 @@
+{
+  "quality": "medium",
+  "drawDistanceM": 60,
+  "shadows": true,
+  "lod": true,
+  "pixelRatio": 1,
+  "exposure": 1,
+  "animationEnabled": true
+}

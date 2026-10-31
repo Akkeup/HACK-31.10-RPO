@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/1.0.0/character-config.schema.json",
+  "type": "object",
+  "properties": {
+    "walkSpeedMps": {
+      "type": "number",
+      "minimum": 2,
+      "maximum": 8
+    },
+    "runMultiplier": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 2
+    },
+    "interactionRadiusM": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "collisionRadiusM": {
+      "type": "number",
+      "minimum": 0.2,
+      "maximum": 1
+    },
+    "tickHz": {
+      "const": 20
+    },
+    "snapshotHz": {
+      "const": 10
+    },
+    "inputHz": {
+      "const": 20
+    },
+    "allowedActions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "talk",
+          "inspect"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "maxItems": 2
+    },
+    "maxInputSilenceMs": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 500
+    }
+  },
+  "required": [
+    "walkSpeedMps",
+    "runMultiplier",
+    "interactionRadiusM",
+    "collisionRadiusM",
+    "tickHz",
+    "snapshotHz",
+    "inputHz",
+    "allowedActions",
+    "maxInputSilenceMs"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+  "protocolVersion": "1.1.0",
+  "type": "npc.result",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "interaction": {
+      "requestId": "55555555-5555-4555-8555-555555555555",
+      "npcId": "npc-guide",
+      "status": "completed",
+      "text": "Исследование начинается с наблюдения и проверки предположений.",
+      "source": "rules",
+      "knowledgeIds": [
+        "observation"
+      ],
+      "progressRevision": 2,
+      "error": null
+    }
+  },
+  "serverSeq": 6,
+  "serverTime": "2026-10-31T09:00:00Z"
+}

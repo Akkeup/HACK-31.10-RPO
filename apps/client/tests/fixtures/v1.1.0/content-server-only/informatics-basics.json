@@ -1,0 +1,177 @@
+{
+  "module": {
+    "moduleId": "informatics-basics",
+    "subject": "informatics",
+    "title": "Информатика: данные и алгоритмы",
+    "contentVersion": "v1",
+    "teacherId": "teacher-informatics",
+    "examinerId": "examiner-informatics"
+  },
+  "material": {
+    "module": {
+      "moduleId": "informatics-basics",
+      "subject": "informatics",
+      "title": "Информатика: данные и алгоритмы",
+      "contentVersion": "v1",
+      "teacherId": "teacher-informatics",
+      "examinerId": "examiner-informatics"
+    },
+    "sections": [
+      {
+        "heading": "Основные понятия",
+        "text": "Бит — двоичная единица со значением 0 или 1. Байт содержит 8 бит. Алгоритм — последовательность понятных шагов решения задачи. Ветвление выбирает действие по условию; цикл повторяет действия."
+      }
+    ],
+    "examples": [
+      "Бит принимает одно из двух значений: 0 или 1.",
+      "Байт состоит из восьми бит.",
+      "Алгоритм задаёт последовательность шагов решения задачи.",
+      "Ветвление позволяет выбрать действие в зависимости от условия.",
+      "Цикл предназначен для повторения действий."
+    ],
+    "keyPoints": [
+      "Бит принимает одно из двух значений: 0 или 1.",
+      "Байт состоит из восьми бит.",
+      "Алгоритм задаёт последовательность шагов решения задачи.",
+      "Ветвление позволяет выбрать действие в зависимости от условия.",
+      "Цикл предназначен для повторения действий."
+    ]
+  },
+  "questions": [
+    {
+      "question": {
+        "questionId": "informatics-basics-q1",
+        "prompt": "Как называется минимальная двоичная единица информации?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "Бит"
+          },
+          {
+            "optionId": "option-2",
+            "text": "Байт"
+          },
+          {
+            "optionId": "option-3",
+            "text": "Файл"
+          },
+          {
+            "optionId": "option-4",
+            "text": "Каталог"
+          }
+        ]
+      },
+      "correctOptionId": "option-1",
+      "explanation": "Бит принимает одно из двух значений: 0 или 1.",
+      "reviewTopic": "Информатика: данные и алгоритмы"
+    },
+    {
+      "question": {
+        "questionId": "informatics-basics-q2",
+        "prompt": "Сколько бит в одном байте?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "2"
+          },
+          {
+            "optionId": "option-2",
+            "text": "8"
+          },
+          {
+            "optionId": "option-3",
+            "text": "16"
+          },
+          {
+            "optionId": "option-4",
+            "text": "10"
+          }
+        ]
+      },
+      "correctOptionId": "option-2",
+      "explanation": "Байт состоит из восьми бит.",
+      "reviewTopic": "Информатика: данные и алгоритмы"
+    },
+    {
+      "question": {
+        "questionId": "informatics-basics-q3",
+        "prompt": "Что такое алгоритм?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "Любая картинка"
+          },
+          {
+            "optionId": "option-2",
+            "text": "Только компьютер"
+          },
+          {
+            "optionId": "option-3",
+            "text": "Последовательность понятных шагов решения задачи"
+          },
+          {
+            "optionId": "option-4",
+            "text": "Любая ошибка"
+          }
+        ]
+      },
+      "correctOptionId": "option-3",
+      "explanation": "Алгоритм задаёт последовательность шагов решения задачи.",
+      "reviewTopic": "Информатика: данные и алгоритмы"
+    },
+    {
+      "question": {
+        "questionId": "informatics-basics-q4",
+        "prompt": "Какая конструкция выбирает действие по условию?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "Комментарий"
+          },
+          {
+            "optionId": "option-2",
+            "text": "Имя файла"
+          },
+          {
+            "optionId": "option-3",
+            "text": "Пробел"
+          },
+          {
+            "optionId": "option-4",
+            "text": "Ветвление"
+          }
+        ]
+      },
+      "correctOptionId": "option-4",
+      "explanation": "Ветвление позволяет выбрать действие в зависимости от условия.",
+      "reviewTopic": "Информатика: данные и алгоритмы"
+    },
+    {
+      "question": {
+        "questionId": "informatics-basics-q5",
+        "prompt": "Какая конструкция повторяет действия?",
+        "options": [
+          {
+            "optionId": "option-1",
+            "text": "Цикл"
+          },
+          {
+            "optionId": "option-2",
+            "text": "Комментарий"
+          },
+          {
+            "optionId": "option-3",
+            "text": "Картинка"
+          },
+          {
+            "optionId": "option-4",
+            "text": "Название"
+          }
+        ]
+      },
+      "correctOptionId": "option-1",
+      "explanation": "Цикл предназначен для повторения действий.",
+      "reviewTopic": "Информатика: данные и алгоритмы"
+    }
+  ]
+}

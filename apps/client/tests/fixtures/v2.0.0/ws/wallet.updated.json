@@ -1,0 +1,13 @@
+{
+  "protocolVersion": "2.0.0",
+  "type": "wallet.updated",
+  "requestId": null,
+  "payload": {
+    "balanceAura": 100,
+    "reservedAura": 0,
+    "availableAura": 100,
+    "revision": 1
+  },
+  "serverSeq": 20,
+  "serverTime": "2026-10-31T09:00:00Z"
+}

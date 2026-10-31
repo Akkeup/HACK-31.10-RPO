@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/2.0.0/reading-room-config.schema.json",
+  "type": "object",
+  "properties": {
+    "roomId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+    },
+    "style": {
+      "type": "string",
+      "enum": [
+        "warm_reading_room"
+      ]
+    },
+    "shelves": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "shelfId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "subject": {
+            "type": "string",
+            "enum": [
+              "mathematics",
+              "informatics",
+              "history",
+              "geography_flags"
+            ]
+          },
+          "bookIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "minItems": 1,
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "shelfId",
+          "subject",
+          "bookIds"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 20
+    },
+    "notebooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "notebookId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "moduleId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "examinerId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "seatId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          }
+        },
+        "required": [
+          "notebookId",
+          "moduleId",
+          "examinerId",
+          "seatId"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 50
+    },
+    "competitionTableId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+    },
+    "assetSlots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slotId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "modelId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "placeholder": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "slotId",
+          "modelId",
+          "placeholder"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 100
+    }
+  },
+  "required": [
+    "roomId",
+    "style",
+    "shelves",
+    "notebooks",
+    "competitionTableId",
+    "assetSlots"
+  ],
+  "additionalProperties": false
+}

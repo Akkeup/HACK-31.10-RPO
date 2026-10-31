@@ -1,1 +1,1 @@
-# HACK-31.10-RPO - develop (итоговая версия проекта)
+# HACK-31.10-RPO - feature/front.01

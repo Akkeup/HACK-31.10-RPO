@@ -1,0 +1,9 @@
+{
+  "worldId": "discovery-campus",
+  "worldRevision": 1,
+  "totalWorldBytes": 23124,
+  "cacheBudgetBytes": 2312,
+  "accounting": "unique-uncompressed-resource-bytes",
+  "maxResourceBytes": 1048576,
+  "maxChunkBytes": 262144
+}

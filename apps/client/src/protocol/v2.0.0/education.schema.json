@@ -1,0 +1,755 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/2.0.0/education.schema.json",
+  "$defs": {
+    "module": {
+      "type": "object",
+      "properties": {
+        "moduleId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "subject": {
+          "type": "string",
+          "enum": [
+            "mathematics",
+            "informatics",
+            "history",
+            "geography_flags"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "contentVersion": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "teacherId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "examinerId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        }
+      },
+      "required": [
+        "moduleId",
+        "subject",
+        "title",
+        "contentVersion",
+        "teacherId",
+        "examinerId"
+      ],
+      "additionalProperties": false
+    },
+    "modules": {
+      "type": "object",
+      "properties": {
+        "modules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "moduleId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "subject": {
+                "type": "string",
+                "enum": [
+                  "mathematics",
+                  "informatics",
+                  "history",
+                  "geography_flags"
+                ]
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "contentVersion": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "teacherId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "examinerId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              }
+            },
+            "required": [
+              "moduleId",
+              "subject",
+              "title",
+              "contentVersion",
+              "teacherId",
+              "examinerId"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 4,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "modules"
+      ],
+      "additionalProperties": false
+    },
+    "material": {
+      "type": "object",
+      "properties": {
+        "module": {
+          "type": "object",
+          "properties": {
+            "moduleId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "subject": {
+              "type": "string",
+              "enum": [
+                "mathematics",
+                "informatics",
+                "history",
+                "geography_flags"
+              ]
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "contentVersion": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "teacherId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "examinerId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            }
+          },
+          "required": [
+            "moduleId",
+            "subject",
+            "title",
+            "contentVersion",
+            "teacherId",
+            "examinerId"
+          ],
+          "additionalProperties": false
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "heading": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              }
+            },
+            "required": [
+              "heading",
+              "text"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "examples": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "keyPoints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 1,
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "module",
+        "sections",
+        "examples",
+        "keyPoints"
+      ],
+      "additionalProperties": false
+    },
+    "question": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "prompt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "kind": {
+              "const": "single_choice"
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "optionId": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "optionId",
+                  "text"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 4,
+              "maxItems": 4
+            }
+          },
+          "required": [
+            "questionId",
+            "prompt",
+            "kind",
+            "options"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "prompt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "kind": {
+              "const": "numeric"
+            }
+          },
+          "required": [
+            "questionId",
+            "prompt",
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "prompt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "kind": {
+              "const": "short_text"
+            }
+          },
+          "required": [
+            "questionId",
+            "prompt",
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "prompt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "kind": {
+              "const": "explanation"
+            }
+          },
+          "required": [
+            "questionId",
+            "prompt",
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "prompt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "kind": {
+              "const": "flag_country"
+            },
+            "image": {
+              "type": "object",
+              "properties": {
+                "assetId": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "byteSize": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1048576
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^/api/v2/worlds/[a-z0-9_-]+/assets/[a-f0-9]{64}$"
+                },
+                "mediaType": {
+                  "type": "string",
+                  "enum": [
+                    "image/png",
+                    "image/jpeg",
+                    "image/svg+xml"
+                  ]
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4096
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4096
+                },
+                "alt": {
+                  "const": "Флаг страны для вопроса"
+                }
+              },
+              "required": [
+                "assetId",
+                "sha256",
+                "byteSize",
+                "url",
+                "mediaType",
+                "width",
+                "height",
+                "alt"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "questionId",
+            "prompt",
+            "kind",
+            "image"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "feedback": {
+      "type": "object",
+      "properties": {
+        "questionId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "submittedAnswer": {
+          "$ref": "answer.schema.json"
+        },
+        "correct": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expectedAnswer": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 1000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "evaluationStatus": {
+          "type": "string",
+          "enum": [
+            "correct",
+            "incorrect",
+            "feedback_only"
+          ]
+        }
+      },
+      "required": [
+        "questionId",
+        "submittedAnswer",
+        "correct",
+        "expectedAnswer",
+        "explanation",
+        "evaluationStatus"
+      ],
+      "additionalProperties": false
+    },
+    "attempt": {
+      "type": "object",
+      "properties": {
+        "attemptId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "moduleId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "contentVersion": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "npcId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "seatId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "feedback",
+            "completed",
+            "interrupted",
+            "suspended"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "questionCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "passScore": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "question": {
+          "anyOf": [
+            {
+              "$ref": "education.schema.json#/$defs/question"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "feedback": {
+          "anyOf": [
+            {
+              "$ref": "education.schema.json#/$defs/feedback"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "result": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "score": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 20
+                },
+                "maximumScore": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 20
+                },
+                "passed": {
+                  "type": "boolean"
+                },
+                "reviewTopics": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "maxItems": 20
+                }
+              },
+              "required": [
+                "score",
+                "maximumScore",
+                "passed",
+                "reviewTopics"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "interruptionReason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "left",
+                "grace_expired",
+                "server_restart"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scoredQuestionCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "suspendedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resumeState": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "active",
+                "feedback"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "attemptId",
+        "moduleId",
+        "contentVersion",
+        "npcId",
+        "seatId",
+        "status",
+        "revision",
+        "ordinal",
+        "questionCount",
+        "passScore",
+        "score",
+        "question",
+        "feedback",
+        "result",
+        "interruptionReason",
+        "scoredQuestionCount",
+        "suspendedAt",
+        "resumeState"
+      ],
+      "additionalProperties": false
+    },
+    "progress": {
+      "type": "object",
+      "properties": {
+        "playerId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "modules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "moduleId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "contentVersion": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "viewed": {
+                "type": "boolean"
+              },
+              "completedAttempts": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "bestScore": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 20
+              },
+              "maximumScore": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 20
+              },
+              "passed": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "moduleId",
+              "contentVersion",
+              "viewed",
+              "completedAttempts",
+              "bestScore",
+              "maximumScore",
+              "passed"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 100
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "playerId",
+        "revision",
+        "modules",
+        "updatedAt"
+      ],
+      "additionalProperties": false
+    },
+    "lesson": {
+      "type": "object",
+      "properties": {
+        "lessonId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "material": {
+          "$ref": "education.schema.json#/$defs/material"
+        }
+      },
+      "required": [
+        "lessonId",
+        "material"
+      ],
+      "additionalProperties": false
+    },
+    "attempts": {
+      "type": "object",
+      "properties": {
+        "attempts": {
+          "type": "array",
+          "items": {
+            "$ref": "education.schema.json#/$defs/attempt"
+          },
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "attempts"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

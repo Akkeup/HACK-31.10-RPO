@@ -1,0 +1,10 @@
+# Миграция 1.0 → 1.1
+
+1. Сохранить старые schemas/v1.0.0 без изменений; они присутствуют в архиве. Новые первичные форматы — schemas/v1.1.0. Выпуск 1.1 использует те же /api/v1 и discovery.v1, но выбирается по точной версии 1.1.0. Это согласованное расширение с явным выбором версии, не обещание принять новые поля старым клиентом.
+2. Bootstrap выдаёт protocolVersions=["1.1.0"]. Все HTTP /api запросы, кроме bootstrap и WS upgrade, передают X-Discovery-Protocol:1.1.0. При отсутствии/неподдерживаемой версии 409 VERSION_UNSUPPORTED; health не требует этот заголовок. Ticket и каждое WS message содержат protocolVersion=1.1.0. Сервер не объявляет поддержку 1.0, если не реализованы отдельные сериализаторы/правила для неё.
+3. В entities.player добавить activity, в NPC role/moduleId, в world.snapshot tables. Заменить bootstrap/health/ticket схемы на выбранную версию. Первое лицо — default клиента; серверный input формат сохраняется.
+4. Public config расширить firstPersonDefaults/gameplay; admin — economy. Опубликовать 3 учебных пакета и контент стола/стульев. Старые NPC dialogue не являются механизмом новой проверки.
+5. Добавить 12 client и 9 server типов событий, HTTP чтения/восстановление, хранилища attempts/lobbies/matches/wallet/ledger/escrow/idempotency/outbox. Клиент должен поддержать все обязательные типы объявленной версии.
+6. Старые generic knowledge progress и новый education progress раздельны; Aura начальный grant проводится один раз на существующего/нового пользователя уникальной миграцией, не по каждому login. До включения ставки проверить резерв/escrow и восстановление после аварии.
+7. fixtures в корне относятся к1.0; fixtures/v1.1.0 — к1.1. Файлы content-server-only и catalog.server-only запрещено включать в production frontend. Примеры ресурсов минимальные, художественная сцена поставляется отдельно.
+8. node tools/validate.cjs; node tools/verify-gameplay.cjs; node mock/demo.mjs. Затем реальная приёмка backend/браузера/Windows LAN. Старый ZIP не заменён: этот выпуск отдельный.

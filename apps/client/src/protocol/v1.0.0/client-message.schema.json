@@ -1,0 +1,370 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/1.0.0/client-message.schema.json",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/client.hello"
+    },
+    {
+      "$ref": "#/$defs/player.input"
+    },
+    {
+      "$ref": "#/$defs/npc.interact"
+    },
+    {
+      "$ref": "#/$defs/npc.cancel"
+    },
+    {
+      "$ref": "#/$defs/world.ready"
+    },
+    {
+      "$ref": "#/$defs/client.metrics"
+    },
+    {
+      "$ref": "#/$defs/client.ping"
+    }
+  ],
+  "$defs": {
+    "client.hello": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "client.hello"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "clientName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            }
+          },
+          "required": [
+            "clientName"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "player.input": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "player.input"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "inputSeq": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "moveX": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1
+            },
+            "moveZ": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1
+            },
+            "yawRad": {
+              "type": "number",
+              "minimum": -3.141593,
+              "maximum": 3.141593
+            },
+            "running": {
+              "type": "boolean"
+            },
+            "interestRevision": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "inputSeq",
+            "moveX",
+            "moveZ",
+            "yawRad",
+            "running",
+            "interestRevision"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "npc.interact": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "npc.interact"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "npcId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "action": {
+              "type": "string",
+              "enum": [
+                "talk",
+                "inspect"
+              ]
+            },
+            "text": {
+              "type": "string",
+              "maxLength": 2000
+            }
+          },
+          "required": [
+            "npcId",
+            "action",
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "npc.cancel": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "npc.cancel"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "targetRequestId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "targetRequestId"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "world.ready": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "world.ready"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "interestRevision": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "resourceHashes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "minItems": 1,
+              "maxItems": 125,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "interestRevision",
+            "resourceHashes"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "client.metrics": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "client.metrics"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "residentBytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "reservedBytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "budgetBytes": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "fps": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000
+            }
+          },
+          "required": [
+            "residentBytes",
+            "reservedBytes",
+            "budgetBytes",
+            "fps"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "client.ping": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "client.ping"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "nonce": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "required": [
+            "nonce"
+          ],
+          "additionalProperties": false
+        },
+        "extensions": {
+          "$ref": "common.schema.json#/$defs/extensions"
+        }
+      },
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "payload"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/1.0.0/npc-behavior-config.schema.json",
+  "type": "object",
+  "properties": {
+    "maxConcurrent": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2
+    },
+    "maxQueue": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "npcId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "personality": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "difficulty": {
+            "type": "string",
+            "enum": [
+              "simple",
+              "adaptive",
+              "advanced"
+            ]
+          },
+          "knowledgePackId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "memoryTurns": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 40
+          },
+          "memoryTtlHours": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 720
+          },
+          "provider": {
+            "type": "string",
+            "enum": [
+              "rules",
+              "ollama"
+            ]
+          },
+          "modelName": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "timeoutMs": {
+            "type": "integer",
+            "minimum": 500,
+            "maximum": 30000
+          },
+          "fallbackText": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "npcId",
+          "displayName",
+          "personality",
+          "subject",
+          "difficulty",
+          "knowledgePackId",
+          "memoryTurns",
+          "memoryTtlHours",
+          "provider",
+          "modelName",
+          "timeoutMs",
+          "fallbackText"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 50
+    }
+  },
+  "required": [
+    "maxConcurrent",
+    "maxQueue",
+    "profiles"
+  ],
+  "additionalProperties": false
+}

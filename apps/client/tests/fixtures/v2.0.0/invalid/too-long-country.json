@@ -1,0 +1,18 @@
+{
+  "countryId": "demo-country-a",
+  "nameRu": "Демо-страна А",
+  "descriptionSentences": [
+    "x",
+    "x",
+    "x",
+    "x",
+    "x"
+  ],
+  "factIds": [
+    "demo-fact-1",
+    "demo-fact-2",
+    "demo-fact-3"
+  ],
+  "contentVersion": "demo-v1",
+  "synthetic": true
+}

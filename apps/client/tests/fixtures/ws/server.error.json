@@ -1,0 +1,14 @@
+{
+  "protocolVersion": "1.0.0",
+  "type": "server.error",
+  "requestId": "55555555-5555-4555-8555-555555555555",
+  "payload": {
+    "code": "OUT_OF_RANGE",
+    "message": "NPC is outside interaction radius",
+    "retryable": false,
+    "requestId": "55555555-5555-4555-8555-555555555555",
+    "details": []
+  },
+  "serverSeq": 10,
+  "serverTime": "2026-10-31T09:00:00Z"
+}

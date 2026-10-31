@@ -1,0 +1,4041 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Discovery Protocol",
+    "version": "1.0.0",
+    "description": "Normative HTTP contract. Read docs/HTTP_API.md and PROTOCOL_RULES.md. All errors use one envelope. Session/world authorization applies per operation."
+  },
+  "servers": [
+    {
+      "url": "https://discovery.lan",
+      "description": "Deployment example; use actual trusted LAN origin"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/health/live": {
+      "get": {
+        "operationId": "live",
+        "summary": "Liveness without database requirement",
+        "responses": {
+          "200": {
+            "description": "Liveness without database requirement",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/http/$defs/health"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "security": []
+      }
+    },
+    "/health/ready": {
+      "get": {
+        "operationId": "ready",
+        "summary": "Ready: database, config, required assets available",
+        "responses": {
+          "200": {
+            "description": "Ready: database, config, required assets available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/http/$defs/health"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/bootstrap": {
+      "get": {
+        "operationId": "bootstrap",
+        "summary": "Protocol and offline capabilities",
+        "responses": {
+          "200": {
+            "description": "Protocol and offline capabilities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/http/$defs/bootstrap"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "operationId": "login",
+        "summary": "Local account login",
+        "responses": {
+          "200": {
+            "description": "Local account login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/http/$defs/loginResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/http/$defs/loginRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "logout",
+        "summary": "Revoke token, all its tickets and sockets",
+        "responses": {
+          "204": {
+            "description": "Revoke token, all its tickets and sockets"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "me",
+        "summary": "Current identity",
+        "responses": {
+          "200": {
+            "description": "Current identity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/http/$defs/me"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
+    "/api/v1/sessions": {
+      "get": {
+        "operationId": "listSessions",
+        "summary": "List joinable sessions, at most 100",
+        "responses": {
+          "200": {
+            "description": "List joinable sessions, at most 100",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/http/$defs/sessions"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createSession",
+        "summary": "Create and join a waiting session atomically",
+        "responses": {
+          "201": {
+            "description": "Create and join a waiting session atomically",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/http/$defs/session"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/http/$defs/createSession"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{sessionId}": {
+      "get": {
+        "operationId": "getSession",
+        "summary": "Session visible to authenticated players",
+        "responses": {
+          "200": {
+            "description": "Session visible to authenticated players",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/http/$defs/session"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/sessions/{sessionId}/members/me": {
+      "put": {
+        "operationId": "joinSession",
+        "summary": "Idempotently join session; no request body",
+        "responses": {
+          "200": {
+            "description": "Idempotently join session; no request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/http/$defs/session"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": ""
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "leaveSession",
+        "summary": "Leave and immediately release reserved slot",
+        "responses": {
+          "204": {
+            "description": "Leave and immediately release reserved slot"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/sessions/{sessionId}/ws-ticket": {
+      "post": {
+        "operationId": "issueTicket",
+        "summary": "Single-use ticket bound to identity, session, Origin, protocol",
+        "responses": {
+          "200": {
+            "description": "Single-use ticket bound to identity, session, Origin, protocol",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/http/$defs/ticketResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/http/$defs/ticketRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/sessions/{sessionId}/interactions/{requestId}": {
+      "get": {
+        "operationId": "getInteraction",
+        "summary": "Recover own pending or terminal interaction after reconnect",
+        "responses": {
+          "200": {
+            "description": "Recover own pending or terminal interaction after reconnect",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/interaction"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": ""
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/worlds/{worldId}/manifest": {
+      "get": {
+        "operationId": "getManifest",
+        "summary": "Summary only, never full resource catalog",
+        "responses": {
+          "200": {
+            "description": "Summary only, never full resource catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/streaming/$defs/manifest"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "worldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/worlds/{worldId}/config": {
+      "get": {
+        "operationId": "getPublicConfig",
+        "summary": "Public rules and visual defaults; no NPC memory or provider settings",
+        "responses": {
+          "200": {
+            "description": "Public rules and visual defaults; no NPC memory or provider settings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/config/$defs/publicDocument"
+                }
+              }
+            },
+            "headers": {
+              "ETag": {
+                "description": "Strong config ETag, e.g. \"config-1\"",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^\"config-[0-9]+\"$"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "worldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/worlds/{worldId}/progress/me": {
+      "get": {
+        "operationId": "getProgress",
+        "summary": "Own durable learning progress",
+        "responses": {
+          "200": {
+            "description": "Own durable learning progress",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/progress"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "worldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/worlds/{worldId}/config": {
+      "get": {
+        "operationId": "getAdminConfig",
+        "summary": "Admin only full editable configuration",
+        "responses": {
+          "200": {
+            "description": "Admin only full editable configuration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/config/$defs/adminDocument"
+                }
+              }
+            },
+            "headers": {
+              "ETag": {
+                "description": "Strong config ETag, e.g. \"config-1\"",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^\"config-[0-9]+\"$"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "worldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "description": ""
+          }
+        ]
+      },
+      "put": {
+        "operationId": "replaceAdminConfig",
+        "summary": "Admin only atomic replacement; compare If-Match",
+        "responses": {
+          "200": {
+            "description": "Admin only atomic replacement; compare If-Match",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/config/$defs/adminDocument"
+                }
+              }
+            },
+            "headers": {
+              "ETag": {
+                "description": "Strong config ETag, e.g. \"config-1\"",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^\"config-[0-9]+\"$"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "412": {
+            "$ref": "#/components/responses/Error"
+          },
+          "422": {
+            "$ref": "#/components/responses/Error"
+          },
+          "428": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          },
+          "413": {
+            "$ref": "#/components/responses/Error"
+          },
+          "415": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/config/$defs/adminValues"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "worldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "description": ""
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\"config-[0-9]+\"$"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/worlds/{worldId}/chunks/{chunkId}/{sha256}": {
+      "get": {
+        "operationId": "getChunk",
+        "summary": "Authorized current-interest immutable chunk JSON bytes",
+        "responses": {
+          "200": {
+            "description": "Authorized current-interest immutable chunk JSON bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/chunk"
+                }
+              }
+            },
+            "headers": {
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "ETag": {
+                "description": "Quoted lowercase SHA-256 of exact decoded entity bytes",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "worldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "description": ""
+          },
+          {
+            "name": "chunkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "description": ""
+          },
+          {
+            "name": "sha256",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": ""
+          },
+          {
+            "name": "X-Interest-Revision",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/worlds/{worldId}/assets/{sha256}": {
+      "get": {
+        "operationId": "getAsset",
+        "summary": "Authorized current-interest immutable asset bytes",
+        "responses": {
+          "200": {
+            "description": "Authorized current-interest immutable asset bytes",
+            "content": {
+              "model/gltf+json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "model/gltf-binary": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/ktx2": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "ETag": {
+                "description": "Quoted lowercase SHA-256 of exact decoded entity bytes",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "parameters": [
+          {
+            "name": "worldId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "description": ""
+          },
+          {
+            "name": "sha256",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "description": ""
+          },
+          {
+            "name": "X-Interest-Revision",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/ws": {
+      "get": {
+        "operationId": "upgradeWebSocket",
+        "summary": "WSS HTTP/1.1 upgrade; no bearer header; ticket authentication before 101",
+        "responses": {
+          "101": {
+            "description": "WSS HTTP/1.1 upgrade; no bearer header; ticket authentication before 101"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error"
+          },
+          "401": {
+            "$ref": "#/components/responses/Error"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error"
+          },
+          "409": {
+            "$ref": "#/components/responses/Error"
+          },
+          "426": {
+            "$ref": "#/components/responses/Error"
+          },
+          "429": {
+            "$ref": "#/components/responses/Error"
+          },
+          "500": {
+            "$ref": "#/components/responses/Error"
+          },
+          "503": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "name": "ticket",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_-]{32,128}$"
+            },
+            "description": ""
+          },
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": ""
+          },
+          {
+            "name": "Sec-WebSocket-Protocol",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "const": "discovery.v1"
+            },
+            "description": ""
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Opaque local server token; not JWT"
+      }
+    },
+    "responses": {
+      "Error": {
+        "description": "See docs/ERRORS.md for status/code mapping; all failures include requestId (nullable).",
+        "headers": {
+          "Retry-After": {
+            "schema": {
+              "type": "string"
+            },
+            "description": "Integer seconds for 429/503 when retryable"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "character-config": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "walkSpeedMps": {
+            "type": "number",
+            "minimum": 2,
+            "maximum": 8
+          },
+          "runMultiplier": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 2
+          },
+          "interactionRadiusM": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "collisionRadiusM": {
+            "type": "number",
+            "minimum": 0.2,
+            "maximum": 1
+          },
+          "tickHz": {
+            "const": 20
+          },
+          "snapshotHz": {
+            "const": 10
+          },
+          "inputHz": {
+            "const": 20
+          },
+          "allowedActions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "talk",
+                "inspect"
+              ]
+            },
+            "minItems": 1,
+            "uniqueItems": true,
+            "maxItems": 2
+          },
+          "maxInputSilenceMs": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 500
+          }
+        },
+        "required": [
+          "walkSpeedMps",
+          "runMultiplier",
+          "interactionRadiusM",
+          "collisionRadiusM",
+          "tickHz",
+          "snapshotHz",
+          "inputHz",
+          "allowedActions",
+          "maxInputSilenceMs"
+        ],
+        "additionalProperties": false
+      },
+      "character-visual-config": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "playerModelId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "npcModelId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "modelScale": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 5
+          },
+          "animationRate": {
+            "type": "number",
+            "minimum": 0.25,
+            "maximum": 3
+          },
+          "showNames": {
+            "type": "boolean"
+          },
+          "materialStyle": {
+            "type": "string",
+            "enum": [
+              "standard",
+              "flat"
+            ]
+          },
+          "interactionReaction": {
+            "type": "string",
+            "enum": [
+              "nod",
+              "wave",
+              "none"
+            ]
+          }
+        },
+        "required": [
+          "playerModelId",
+          "npcModelId",
+          "modelScale",
+          "animationRate",
+          "showNames",
+          "materialStyle",
+          "interactionReaction"
+        ],
+        "additionalProperties": false
+      },
+      "chunk": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "worldId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "worldRevision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "chunkId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "x": {
+            "type": "integer",
+            "minimum": -1000,
+            "maximum": 1000
+          },
+          "z": {
+            "type": "integer",
+            "minimum": -1000,
+            "maximum": 1000
+          },
+          "objects": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                },
+                "modelId": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                },
+                "position": {
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "type": "number",
+                      "minimum": -100000,
+                      "maximum": 100000
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": -10000,
+                      "maximum": 10000
+                    },
+                    "z": {
+                      "type": "number",
+                      "minimum": -100000,
+                      "maximum": 100000
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y",
+                    "z"
+                  ],
+                  "additionalProperties": false
+                },
+                "yawRad": {
+                  "type": "number",
+                  "minimum": -3.141593,
+                  "maximum": 3.141593
+                },
+                "scale": {
+                  "type": "number",
+                  "minimum": 0.1,
+                  "maximum": 5
+                },
+                "collidable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "modelId",
+                "position",
+                "yawRad",
+                "scale",
+                "collidable"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 1000
+          },
+          "npcIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "maxItems": 50,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "worldId",
+          "worldRevision",
+          "chunkId",
+          "x",
+          "z",
+          "objects",
+          "npcIds"
+        ],
+        "additionalProperties": false
+      },
+      "client-message": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/client-message/$defs/client.hello"
+          },
+          {
+            "$ref": "#/components/schemas/client-message/$defs/player.input"
+          },
+          {
+            "$ref": "#/components/schemas/client-message/$defs/npc.interact"
+          },
+          {
+            "$ref": "#/components/schemas/client-message/$defs/npc.cancel"
+          },
+          {
+            "$ref": "#/components/schemas/client-message/$defs/world.ready"
+          },
+          {
+            "$ref": "#/components/schemas/client-message/$defs/client.metrics"
+          },
+          {
+            "$ref": "#/components/schemas/client-message/$defs/client.ping"
+          }
+        ],
+        "$defs": {
+          "client.hello": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "client.hello"
+              },
+              "requestId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "clientName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
+                  }
+                },
+                "required": [
+                  "clientName"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          "player.input": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "player.input"
+              },
+              "requestId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "inputSeq": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "moveX": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                  },
+                  "moveZ": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                  },
+                  "yawRad": {
+                    "type": "number",
+                    "minimum": -3.141593,
+                    "maximum": 3.141593
+                  },
+                  "running": {
+                    "type": "boolean"
+                  },
+                  "interestRevision": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "inputSeq",
+                  "moveX",
+                  "moveZ",
+                  "yawRad",
+                  "running",
+                  "interestRevision"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          "npc.interact": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "npc.interact"
+              },
+              "requestId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "npcId": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "talk",
+                      "inspect"
+                    ]
+                  },
+                  "text": {
+                    "type": "string",
+                    "maxLength": 2000
+                  }
+                },
+                "required": [
+                  "npcId",
+                  "action",
+                  "text"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          "npc.cancel": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "npc.cancel"
+              },
+              "requestId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "targetRequestId": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                },
+                "required": [
+                  "targetRequestId"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          "world.ready": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "world.ready"
+              },
+              "requestId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "interestRevision": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "resourceHashes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "minItems": 1,
+                    "maxItems": 125,
+                    "uniqueItems": true
+                  }
+                },
+                "required": [
+                  "interestRevision",
+                  "resourceHashes"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          "client.metrics": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "client.metrics"
+              },
+              "requestId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "residentBytes": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "reservedBytes": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "budgetBytes": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "fps": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1000
+                  }
+                },
+                "required": [
+                  "residentBytes",
+                  "reservedBytes",
+                  "budgetBytes",
+                  "fps"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          "client.ping": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "client.ping"
+              },
+              "requestId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "nonce": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "required": [
+                  "nonce"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "common": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$defs": {
+          "uuid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "hash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "vec3": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -100000,
+                "maximum": 100000
+              },
+              "y": {
+                "type": "number",
+                "minimum": -10000,
+                "maximum": 10000
+              },
+              "z": {
+                "type": "number",
+                "minimum": -100000,
+                "maximum": 100000
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ],
+            "additionalProperties": false
+          },
+          "dateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "extensions": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^x-[a-z0-9_.-]+$"
+            },
+            "additionalProperties": true,
+            "maxProperties": 16
+          }
+        }
+      },
+      "config": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$defs": {
+          "publicWorld": {
+            "type": "object",
+            "properties": {
+              "worldId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "worldRevision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "chunkSizeM": {
+                "type": "integer",
+                "minimum": 16,
+                "maximum": 128
+              },
+              "grid": {
+                "type": "object",
+                "properties": {
+                  "minX": {
+                    "type": "integer",
+                    "minimum": -1000,
+                    "maximum": 1000
+                  },
+                  "maxX": {
+                    "type": "integer",
+                    "minimum": -1000,
+                    "maximum": 1000
+                  },
+                  "minZ": {
+                    "type": "integer",
+                    "minimum": -1000,
+                    "maximum": 1000
+                  },
+                  "maxZ": {
+                    "type": "integer",
+                    "minimum": -1000,
+                    "maximum": 1000
+                  }
+                },
+                "required": [
+                  "minX",
+                  "maxX",
+                  "minZ",
+                  "maxZ"
+                ],
+                "additionalProperties": false
+              },
+              "spawn": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -10000,
+                    "maximum": 10000
+                  },
+                  "z": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ],
+                "additionalProperties": false
+              },
+              "timeOfDayHours": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 24
+              },
+              "weather": {
+                "type": "string",
+                "enum": [
+                  "clear",
+                  "cloudy",
+                  "rain"
+                ]
+              },
+              "decorDensity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "interestRadiusChunks": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2
+              },
+              "maxResidentChunks": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 25
+              }
+            },
+            "required": [
+              "worldId",
+              "worldRevision",
+              "chunkSizeM",
+              "grid",
+              "spawn",
+              "timeOfDayHours",
+              "weather",
+              "decorDensity",
+              "interestRadiusChunks",
+              "maxResidentChunks"
+            ],
+            "additionalProperties": false
+          },
+          "publicValues": {
+            "type": "object",
+            "properties": {
+              "world": {
+                "$ref": "#/components/schemas/config/$defs/publicWorld"
+              },
+              "character": {
+                "$ref": "#/components/schemas/character-config"
+              },
+              "renderDefaults": {
+                "$ref": "#/components/schemas/render-config"
+              },
+              "characterVisualDefaults": {
+                "$ref": "#/components/schemas/character-visual-config"
+              }
+            },
+            "required": [
+              "world",
+              "character",
+              "renderDefaults",
+              "characterVisualDefaults"
+            ],
+            "additionalProperties": false
+          },
+          "adminValues": {
+            "type": "object",
+            "properties": {
+              "world": {
+                "$ref": "#/components/schemas/world-config"
+              },
+              "character": {
+                "$ref": "#/components/schemas/character-config"
+              },
+              "renderDefaults": {
+                "$ref": "#/components/schemas/render-config"
+              },
+              "characterVisualDefaults": {
+                "$ref": "#/components/schemas/character-visual-config"
+              },
+              "npcBehavior": {
+                "$ref": "#/components/schemas/npc-behavior-config"
+              }
+            },
+            "required": [
+              "world",
+              "character",
+              "renderDefaults",
+              "characterVisualDefaults",
+              "npcBehavior"
+            ],
+            "additionalProperties": false
+          },
+          "publicDocument": {
+            "type": "object",
+            "properties": {
+              "revision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "values": {
+                "$ref": "#/components/schemas/config/$defs/publicValues"
+              }
+            },
+            "required": [
+              "revision",
+              "values"
+            ],
+            "additionalProperties": false
+          },
+          "adminDocument": {
+            "type": "object",
+            "properties": {
+              "revision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "values": {
+                "$ref": "#/components/schemas/config/$defs/adminValues"
+              }
+            },
+            "required": [
+              "revision",
+              "values"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "entities": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$defs": {
+          "player": {
+            "type": "object",
+            "properties": {
+              "playerId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "displayName": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "position": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -10000,
+                    "maximum": 10000
+                  },
+                  "z": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ],
+                "additionalProperties": false
+              },
+              "yawRad": {
+                "type": "number",
+                "minimum": -3.141593,
+                "maximum": 3.141593
+              },
+              "connected": {
+                "type": "boolean"
+              },
+              "lastProcessedInputSeq": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "playerId",
+              "displayName",
+              "position",
+              "yawRad",
+              "connected",
+              "lastProcessedInputSeq"
+            ],
+            "additionalProperties": false
+          },
+          "npc": {
+            "type": "object",
+            "properties": {
+              "npcId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "displayName": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "position": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -10000,
+                    "maximum": 10000
+                  },
+                  "z": {
+                    "type": "number",
+                    "minimum": -100000,
+                    "maximum": 100000
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ],
+                "additionalProperties": false
+              },
+              "yawRad": {
+                "type": "number",
+                "minimum": -3.141593,
+                "maximum": 3.141593
+              },
+              "state": {
+                "type": "string",
+                "enum": [
+                  "idle",
+                  "talking",
+                  "walking"
+                ]
+              },
+              "subject": {
+                "type": "string",
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "npcId",
+              "displayName",
+              "position",
+              "yawRad",
+              "state",
+              "subject"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "error": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "INVALID_REQUEST",
+              "UNAUTHORIZED",
+              "TOKEN_EXPIRED",
+              "FORBIDDEN",
+              "NOT_FOUND",
+              "CONFLICT",
+              "SESSION_FULL",
+              "ALREADY_IN_SESSION",
+              "VERSION_UNSUPPORTED",
+              "RATE_LIMITED",
+              "STALE_INTEREST",
+              "OUT_OF_INTEREST",
+              "RESOURCE_TOO_LARGE",
+              "CONFIG_CONFLICT",
+              "RESTART_REQUIRED",
+              "NPC_BUSY",
+              "NPC_TIMEOUT",
+              "OUT_OF_RANGE",
+              "REQUEST_ID_REUSED",
+              "INTERNAL_ERROR",
+              "SERVICE_UNAVAILABLE",
+              "CANCELLED"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "retryable": {
+            "type": "boolean"
+          },
+          "requestId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                "reason": {
+                  "type": "string",
+                  "maxLength": 300
+                }
+              },
+              "required": [
+                "path",
+                "reason"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 20
+          },
+          "retryAfterMs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 60000
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "retryable",
+          "requestId",
+          "details"
+        ],
+        "additionalProperties": false
+      },
+      "http": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$defs": {
+          "bootstrap": {
+            "type": "object",
+            "properties": {
+              "protocolVersions": {
+                "type": "array",
+                "items": {
+                  "const": "1.0.0"
+                },
+                "minItems": 1,
+                "maxItems": 1
+              },
+              "serverInstanceId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "worldIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                },
+                "minItems": 1,
+                "maxItems": 10
+              },
+              "offline": {
+                "const": true
+              }
+            },
+            "required": [
+              "protocolVersions",
+              "serverInstanceId",
+              "worldIds",
+              "offline"
+            ],
+            "additionalProperties": false
+          },
+          "loginRequest": {
+            "type": "object",
+            "properties": {
+              "username": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "password": {
+                "type": "string",
+                "minLength": 8,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "username",
+              "password"
+            ],
+            "additionalProperties": false
+          },
+          "loginResponse": {
+            "type": "object",
+            "properties": {
+              "accessToken": {
+                "type": "string",
+                "minLength": 32,
+                "maxLength": 256
+              },
+              "tokenType": {
+                "const": "Bearer"
+              },
+              "expiresInSeconds": {
+                "const": 3600
+              },
+              "user": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "displayName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "player",
+                      "admin"
+                    ]
+                  }
+                },
+                "required": [
+                  "userId",
+                  "displayName",
+                  "role"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "accessToken",
+              "tokenType",
+              "expiresInSeconds",
+              "user"
+            ],
+            "additionalProperties": false
+          },
+          "me": {
+            "type": "object",
+            "properties": {
+              "userId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "displayName": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "player",
+                  "admin"
+                ]
+              }
+            },
+            "required": [
+              "userId",
+              "displayName",
+              "role"
+            ],
+            "additionalProperties": false
+          },
+          "createSession": {
+            "type": "object",
+            "properties": {
+              "worldId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              }
+            },
+            "required": [
+              "worldId"
+            ],
+            "additionalProperties": false
+          },
+          "session": {
+            "type": "object",
+            "properties": {
+              "sessionId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "worldId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "worldRevision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "waiting",
+                  "active",
+                  "paused",
+                  "closed"
+                ]
+              },
+              "maxPlayers": {
+                "const": 5
+              },
+              "players": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/entities/$defs/player"
+                },
+                "maxItems": 5
+              }
+            },
+            "required": [
+              "sessionId",
+              "worldId",
+              "worldRevision",
+              "status",
+              "maxPlayers",
+              "players"
+            ],
+            "additionalProperties": false
+          },
+          "sessions": {
+            "type": "object",
+            "properties": {
+              "sessions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/http/$defs/session"
+                },
+                "maxItems": 100
+              }
+            },
+            "required": [
+              "sessions"
+            ],
+            "additionalProperties": false
+          },
+          "ticketRequest": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              }
+            },
+            "required": [
+              "protocolVersion"
+            ],
+            "additionalProperties": false
+          },
+          "ticketResponse": {
+            "type": "object",
+            "properties": {
+              "ticket": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9_-]{32,128}$"
+              },
+              "expiresInSeconds": {
+                "const": 30
+              },
+              "wsPath": {
+                "const": "/api/v1/ws"
+              },
+              "subprotocol": {
+                "const": "discovery.v1"
+              }
+            },
+            "required": [
+              "ticket",
+              "expiresInSeconds",
+              "wsPath",
+              "subprotocol"
+            ],
+            "additionalProperties": false
+          },
+          "health": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "const": "ok"
+              },
+              "protocolVersion": {
+                "const": "1.0.0"
+              }
+            },
+            "required": [
+              "status",
+              "protocolVersion"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "interaction": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "npcId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "completed",
+              "cancelled",
+              "failed"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 4000
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "rules",
+              "ollama",
+              "fallback",
+              "none"
+            ]
+          },
+          "knowledgeIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "maxItems": 20,
+            "uniqueItems": true
+          },
+          "progressRevision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/error"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "requestId",
+          "npcId",
+          "status",
+          "text",
+          "source",
+          "knowledgeIds",
+          "progressRevision",
+          "error"
+        ],
+        "additionalProperties": false
+      },
+      "npc-behavior-config": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "maxConcurrent": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2
+          },
+          "maxQueue": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "profiles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "npcId": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                },
+                "displayName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "personality": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 500
+                },
+                "subject": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "difficulty": {
+                  "type": "string",
+                  "enum": [
+                    "simple",
+                    "adaptive",
+                    "advanced"
+                  ]
+                },
+                "knowledgePackId": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                },
+                "memoryTurns": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 40
+                },
+                "memoryTtlHours": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 720
+                },
+                "provider": {
+                  "type": "string",
+                  "enum": [
+                    "rules",
+                    "ollama"
+                  ]
+                },
+                "modelName": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "timeoutMs": {
+                  "type": "integer",
+                  "minimum": 500,
+                  "maximum": 30000
+                },
+                "fallbackText": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                }
+              },
+              "required": [
+                "npcId",
+                "displayName",
+                "personality",
+                "subject",
+                "difficulty",
+                "knowledgePackId",
+                "memoryTurns",
+                "memoryTtlHours",
+                "provider",
+                "modelName",
+                "timeoutMs",
+                "fallbackText"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 50
+          }
+        },
+        "required": [
+          "maxConcurrent",
+          "maxQueue",
+          "profiles"
+        ],
+        "additionalProperties": false
+      },
+      "progress": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "playerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "completedKnowledgeIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "maxItems": 1000,
+            "uniqueItems": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "playerId",
+          "revision",
+          "completedKnowledgeIds",
+          "updatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "render-config": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "quality": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "drawDistanceM": {
+            "type": "number",
+            "minimum": 30,
+            "maximum": 200
+          },
+          "shadows": {
+            "type": "boolean"
+          },
+          "lod": {
+            "type": "boolean"
+          },
+          "pixelRatio": {
+            "type": "number",
+            "minimum": 0.5,
+            "maximum": 2
+          },
+          "exposure": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 4
+          },
+          "animationEnabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "quality",
+          "drawDistanceM",
+          "shadows",
+          "lod",
+          "pixelRatio",
+          "exposure",
+          "animationEnabled"
+        ],
+        "additionalProperties": false
+      },
+      "server-message": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/server-message/$defs/server.welcome"
+          },
+          {
+            "$ref": "#/components/schemas/server-message/$defs/world.interest"
+          },
+          {
+            "$ref": "#/components/schemas/server-message/$defs/world.snapshot"
+          },
+          {
+            "$ref": "#/components/schemas/server-message/$defs/config.changed"
+          },
+          {
+            "$ref": "#/components/schemas/server-message/$defs/npc.accepted"
+          },
+          {
+            "$ref": "#/components/schemas/server-message/$defs/npc.result"
+          },
+          {
+            "$ref": "#/components/schemas/server-message/$defs/npc.cancelled"
+          },
+          {
+            "$ref": "#/components/schemas/server-message/$defs/progress.updated"
+          },
+          {
+            "$ref": "#/components/schemas/server-message/$defs/server.pong"
+          },
+          {
+            "$ref": "#/components/schemas/server-message/$defs/server.error"
+          },
+          {
+            "$ref": "#/components/schemas/server-message/$defs/session.closed"
+          }
+        ],
+        "$defs": {
+          "server.welcome": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "server.welcome"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "serverInstanceId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "session": {
+                    "$ref": "#/components/schemas/http/$defs/session"
+                  },
+                  "playerId": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "configRevision": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "manifest": {
+                    "$ref": "#/components/schemas/streaming/$defs/manifest"
+                  },
+                  "heartbeatIntervalMs": {
+                    "const": 10000
+                  },
+                  "heartbeatTimeoutMs": {
+                    "const": 30000
+                  }
+                },
+                "required": [
+                  "connectionId",
+                  "serverInstanceId",
+                  "session",
+                  "playerId",
+                  "configRevision",
+                  "manifest",
+                  "heartbeatIntervalMs",
+                  "heartbeatTimeoutMs"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "world.interest": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "world.interest"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "$ref": "#/components/schemas/streaming/$defs/interest"
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "world.snapshot": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "world.snapshot"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "tick": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "interestRevision": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "configRevision": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "sessionStatus": {
+                    "type": "string",
+                    "enum": [
+                      "waiting",
+                      "active",
+                      "paused"
+                    ]
+                  },
+                  "players": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/entities/$defs/player"
+                    },
+                    "maxItems": 5
+                  },
+                  "npcs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/entities/$defs/npc"
+                    },
+                    "maxItems": 50
+                  }
+                },
+                "required": [
+                  "tick",
+                  "interestRevision",
+                  "configRevision",
+                  "sessionStatus",
+                  "players",
+                  "npcs"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "config.changed": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "config.changed"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "revision": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991
+                  },
+                  "effectiveTick": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "publicConfig": {
+                    "$ref": "#/components/schemas/config/$defs/publicDocument"
+                  }
+                },
+                "required": [
+                  "revision",
+                  "effectiveTick",
+                  "publicConfig"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "npc.accepted": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "npc.accepted"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "interaction": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/interaction"
+                      },
+                      {
+                        "properties": {
+                          "status": {
+                            "const": "pending"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "interaction"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "npc.result": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "npc.result"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "interaction": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/interaction"
+                      },
+                      {
+                        "properties": {
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "completed",
+                              "failed",
+                              "cancelled"
+                            ]
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "interaction"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "npc.cancelled": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "npc.cancelled"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "interaction": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/interaction"
+                      },
+                      {
+                        "properties": {
+                          "status": {
+                            "const": "cancelled"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "interaction"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "progress.updated": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "progress.updated"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "$ref": "#/components/schemas/progress"
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "server.pong": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "server.pong"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "nonce": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "required": [
+                  "nonce"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "server.error": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "server.error"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "$ref": "#/components/schemas/error"
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          },
+          "session.closed": {
+            "type": "object",
+            "properties": {
+              "protocolVersion": {
+                "const": "1.0.0"
+              },
+              "type": {
+                "const": "session.closed"
+              },
+              "requestId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "payload": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "empty",
+                      "world_restarted",
+                      "operator",
+                      "left"
+                    ]
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              },
+              "extensions": {
+                "$ref": "#/components/schemas/common/$defs/extensions"
+              },
+              "serverSeq": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "serverTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "protocolVersion",
+              "type",
+              "requestId",
+              "payload",
+              "serverSeq",
+              "serverTime"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "streaming": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$defs": {
+          "asset": {
+            "type": "object",
+            "properties": {
+              "resourceId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "byteSize": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1048576
+              },
+              "mediaType": {
+                "type": "string",
+                "enum": [
+                  "model/gltf+json",
+                  "model/gltf-binary",
+                  "image/png",
+                  "image/jpeg",
+                  "image/ktx2",
+                  "application/octet-stream"
+                ]
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^/api/v1/worlds/[a-z0-9_-]+/assets/[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "resourceId",
+              "sha256",
+              "byteSize",
+              "mediaType",
+              "url"
+            ],
+            "additionalProperties": false
+          },
+          "chunkDescriptor": {
+            "type": "object",
+            "properties": {
+              "chunkId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "x": {
+                "type": "integer",
+                "minimum": -1000,
+                "maximum": 1000
+              },
+              "z": {
+                "type": "integer",
+                "minimum": -1000,
+                "maximum": 1000
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "byteSize": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 262144
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^/api/v1/worlds/[a-z0-9_-]+/chunks/[a-z0-9_-]+/[a-f0-9]{64}$"
+              },
+              "assetIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                },
+                "maxItems": 100,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "chunkId",
+              "x",
+              "z",
+              "sha256",
+              "byteSize",
+              "url",
+              "assetIds"
+            ],
+            "additionalProperties": false
+          },
+          "manifest": {
+            "type": "object",
+            "properties": {
+              "worldId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "worldRevision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "totalWorldBytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "cacheBudgetBytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "accounting": {
+                "const": "unique-uncompressed-resource-bytes"
+              },
+              "maxResourceBytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1048576
+              },
+              "maxChunkBytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 262144
+              }
+            },
+            "required": [
+              "worldId",
+              "worldRevision",
+              "totalWorldBytes",
+              "cacheBudgetBytes",
+              "accounting",
+              "maxResourceBytes",
+              "maxChunkBytes"
+            ],
+            "additionalProperties": false
+          },
+          "interest": {
+            "type": "object",
+            "properties": {
+              "worldRevision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "interestRevision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              "chunks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/streaming/$defs/chunkDescriptor"
+                },
+                "minItems": 1,
+                "maxItems": 25
+              },
+              "assets": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/streaming/$defs/asset"
+                },
+                "maxItems": 100
+              },
+              "requiredBytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "worldRevision",
+              "interestRevision",
+              "chunks",
+              "assets",
+              "requiredBytes"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "world-config": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "worldId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "worldRevision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "chunkSizeM": {
+            "type": "integer",
+            "minimum": 16,
+            "maximum": 128
+          },
+          "grid": {
+            "type": "object",
+            "properties": {
+              "minX": {
+                "type": "integer",
+                "minimum": -1000,
+                "maximum": 1000
+              },
+              "maxX": {
+                "type": "integer",
+                "minimum": -1000,
+                "maximum": 1000
+              },
+              "minZ": {
+                "type": "integer",
+                "minimum": -1000,
+                "maximum": 1000
+              },
+              "maxZ": {
+                "type": "integer",
+                "minimum": -1000,
+                "maximum": 1000
+              }
+            },
+            "required": [
+              "minX",
+              "maxX",
+              "minZ",
+              "maxZ"
+            ],
+            "additionalProperties": false
+          },
+          "spawn": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -100000,
+                "maximum": 100000
+              },
+              "y": {
+                "type": "number",
+                "minimum": -10000,
+                "maximum": 10000
+              },
+              "z": {
+                "type": "number",
+                "minimum": -100000,
+                "maximum": 100000
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ],
+            "additionalProperties": false
+          },
+          "activeChunkIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "minItems": 1,
+            "maxItems": 10000,
+            "uniqueItems": true
+          },
+          "placements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                },
+                "chunkId": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                },
+                "modelId": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+                },
+                "position": {
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "type": "number",
+                      "minimum": -100000,
+                      "maximum": 100000
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": -10000,
+                      "maximum": 10000
+                    },
+                    "z": {
+                      "type": "number",
+                      "minimum": -100000,
+                      "maximum": 100000
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y",
+                    "z"
+                  ],
+                  "additionalProperties": false
+                },
+                "yawRad": {
+                  "type": "number",
+                  "minimum": -3.141593,
+                  "maximum": 3.141593
+                },
+                "collidable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "chunkId",
+                "modelId",
+                "position",
+                "yawRad",
+                "collidable"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 10000
+          },
+          "npcIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "maxItems": 50,
+            "uniqueItems": true
+          },
+          "timeOfDayHours": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 24
+          },
+          "weather": {
+            "type": "string",
+            "enum": [
+              "clear",
+              "cloudy",
+              "rain"
+            ]
+          },
+          "decorDensity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "interestRadiusChunks": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          },
+          "maxResidentChunks": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 25
+          }
+        },
+        "required": [
+          "worldId",
+          "worldRevision",
+          "chunkSizeM",
+          "grid",
+          "spawn",
+          "activeChunkIds",
+          "placements",
+          "npcIds",
+          "timeOfDayHours",
+          "weather",
+          "decorDensity",
+          "interestRadiusChunks",
+          "maxResidentChunks"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

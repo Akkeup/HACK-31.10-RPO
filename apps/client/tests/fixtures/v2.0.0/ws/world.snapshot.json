@@ -1,0 +1,129 @@
+{
+  "protocolVersion": "2.0.0",
+  "type": "world.snapshot",
+  "requestId": null,
+  "payload": {
+    "tick": 2,
+    "interestRevision": 1,
+    "configRevision": 1,
+    "sessionStatus": "waiting",
+    "players": [
+      {
+        "playerId": "22222222-2222-4222-8222-222222222222",
+        "displayName": "Исследователь",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "yawRad": 0,
+        "connected": true,
+        "lastProcessedInputSeq": 0,
+        "activity": {
+          "mode": "exploring",
+          "targetId": null,
+          "seatId": null
+        }
+      }
+    ],
+    "npcs": [
+      {
+        "npcId": "teacher-mathematics",
+        "displayName": "Обучающий: Математика: основные операции",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 3
+        },
+        "yawRad": 0,
+        "state": "idle",
+        "subject": "Математика: основные операции",
+        "role": "teacher",
+        "moduleId": "math-basics"
+      },
+      {
+        "npcId": "examiner-mathematics",
+        "displayName": "Проверяющий: Математика: основные операции",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 6
+        },
+        "yawRad": 0,
+        "state": "idle",
+        "subject": "Математика: основные операции",
+        "role": "examiner",
+        "moduleId": "math-basics"
+      },
+      {
+        "npcId": "teacher-informatics",
+        "displayName": "Обучающий: Информатика: данные и алгоритмы",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 3
+        },
+        "yawRad": 0,
+        "state": "idle",
+        "subject": "Информатика: данные и алгоритмы",
+        "role": "teacher",
+        "moduleId": "informatics-basics"
+      },
+      {
+        "npcId": "examiner-informatics",
+        "displayName": "Проверяющий: Информатика: данные и алгоритмы",
+        "position": {
+          "x": 10,
+          "y": 0,
+          "z": 6
+        },
+        "yawRad": 0,
+        "state": "idle",
+        "subject": "Информатика: данные и алгоритмы",
+        "role": "examiner",
+        "moduleId": "informatics-basics"
+      },
+      {
+        "npcId": "teacher-history",
+        "displayName": "Обучающий: История: источники и хронология",
+        "position": {
+          "x": 17,
+          "y": 0,
+          "z": 3
+        },
+        "yawRad": 0,
+        "state": "idle",
+        "subject": "История: источники и хронология",
+        "role": "teacher",
+        "moduleId": "history-basics"
+      },
+      {
+        "npcId": "examiner-history",
+        "displayName": "Проверяющий: История: источники и хронология",
+        "position": {
+          "x": 17,
+          "y": 0,
+          "z": 6
+        },
+        "yawRad": 0,
+        "state": "idle",
+        "subject": "История: источники и хронология",
+        "role": "examiner",
+        "moduleId": "history-basics"
+      }
+    ],
+    "tables": [
+      {
+        "tableId": "competition-central",
+        "status": "available",
+        "lobbyId": null,
+        "matchId": null,
+        "subject": null,
+        "stakeAura": null,
+        "occupiedSeats": []
+      }
+    ]
+  },
+  "serverSeq": 3,
+  "serverTime": "2026-10-31T09:00:00Z"
+}

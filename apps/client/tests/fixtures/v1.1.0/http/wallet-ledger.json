@@ -1,0 +1,53 @@
+{
+  "entries": [
+    {
+      "entryId": "00000036-1234-4234-8234-000000000036",
+      "transactionId": "00000040-1234-4234-8234-000000000040",
+      "kind": "payout",
+      "amountAura": 20,
+      "reservedDeltaAura": 0,
+      "balanceAfterAura": 110,
+      "reservedAfterAura": 0,
+      "matchId": "0000000d-1234-4234-8234-00000000000d",
+      "lobbyId": "0000000c-1234-4234-8234-00000000000c",
+      "createdAt": "2026-10-31T09:00:00Z"
+    },
+    {
+      "entryId": "00000035-1234-4234-8234-000000000035",
+      "transactionId": "0000003f-1234-4234-8234-00000000003f",
+      "kind": "stake",
+      "amountAura": -10,
+      "reservedDeltaAura": -10,
+      "balanceAfterAura": 90,
+      "reservedAfterAura": 0,
+      "matchId": "0000000d-1234-4234-8234-00000000000d",
+      "lobbyId": "0000000c-1234-4234-8234-00000000000c",
+      "createdAt": "2026-10-31T09:00:00Z"
+    },
+    {
+      "entryId": "00000034-1234-4234-8234-000000000034",
+      "transactionId": "0000003e-1234-4234-8234-00000000003e",
+      "kind": "reserve",
+      "amountAura": 0,
+      "reservedDeltaAura": 10,
+      "balanceAfterAura": 100,
+      "reservedAfterAura": 10,
+      "matchId": null,
+      "lobbyId": "0000000c-1234-4234-8234-00000000000c",
+      "createdAt": "2026-10-31T09:00:00Z"
+    },
+    {
+      "entryId": "00000033-1234-4234-8234-000000000033",
+      "transactionId": "0000003d-1234-4234-8234-00000000003d",
+      "kind": "initial",
+      "amountAura": 100,
+      "reservedDeltaAura": 0,
+      "balanceAfterAura": 100,
+      "reservedAfterAura": 0,
+      "matchId": null,
+      "lobbyId": null,
+      "createdAt": "2026-10-31T09:00:00Z"
+    }
+  ],
+  "nextCursor": null
+}

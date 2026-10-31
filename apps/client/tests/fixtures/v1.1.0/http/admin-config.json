@@ -1,0 +1,425 @@
+{
+  "revision": 1,
+  "values": {
+    "world": {
+      "worldId": "discovery-campus",
+      "worldRevision": 1,
+      "chunkSizeM": 32,
+      "grid": {
+        "minX": 0,
+        "maxX": 9,
+        "minZ": 0,
+        "maxZ": 9
+      },
+      "spawn": {
+        "x": 1,
+        "y": 0,
+        "z": 1
+      },
+      "activeChunkIds": [
+        "c-0-0",
+        "c-1-0",
+        "c-2-0",
+        "c-3-0",
+        "c-4-0",
+        "c-5-0",
+        "c-6-0",
+        "c-7-0",
+        "c-8-0",
+        "c-9-0",
+        "c-0-1",
+        "c-1-1",
+        "c-2-1",
+        "c-3-1",
+        "c-4-1",
+        "c-5-1",
+        "c-6-1",
+        "c-7-1",
+        "c-8-1",
+        "c-9-1",
+        "c-0-2",
+        "c-1-2",
+        "c-2-2",
+        "c-3-2",
+        "c-4-2",
+        "c-5-2",
+        "c-6-2",
+        "c-7-2",
+        "c-8-2",
+        "c-9-2",
+        "c-0-3",
+        "c-1-3",
+        "c-2-3",
+        "c-3-3",
+        "c-4-3",
+        "c-5-3",
+        "c-6-3",
+        "c-7-3",
+        "c-8-3",
+        "c-9-3",
+        "c-0-4",
+        "c-1-4",
+        "c-2-4",
+        "c-3-4",
+        "c-4-4",
+        "c-5-4",
+        "c-6-4",
+        "c-7-4",
+        "c-8-4",
+        "c-9-4",
+        "c-0-5",
+        "c-1-5",
+        "c-2-5",
+        "c-3-5",
+        "c-4-5",
+        "c-5-5",
+        "c-6-5",
+        "c-7-5",
+        "c-8-5",
+        "c-9-5",
+        "c-0-6",
+        "c-1-6",
+        "c-2-6",
+        "c-3-6",
+        "c-4-6",
+        "c-5-6",
+        "c-6-6",
+        "c-7-6",
+        "c-8-6",
+        "c-9-6",
+        "c-0-7",
+        "c-1-7",
+        "c-2-7",
+        "c-3-7",
+        "c-4-7",
+        "c-5-7",
+        "c-6-7",
+        "c-7-7",
+        "c-8-7",
+        "c-9-7",
+        "c-0-8",
+        "c-1-8",
+        "c-2-8",
+        "c-3-8",
+        "c-4-8",
+        "c-5-8",
+        "c-6-8",
+        "c-7-8",
+        "c-8-8",
+        "c-9-8",
+        "c-0-9",
+        "c-1-9",
+        "c-2-9",
+        "c-3-9",
+        "c-4-9",
+        "c-5-9",
+        "c-6-9",
+        "c-7-9",
+        "c-8-9",
+        "c-9-9"
+      ],
+      "placements": [],
+      "npcIds": [
+        "teacher-mathematics",
+        "examiner-mathematics",
+        "teacher-informatics",
+        "examiner-informatics",
+        "teacher-history",
+        "examiner-history"
+      ],
+      "timeOfDayHours": 12,
+      "weather": "clear",
+      "decorDensity": 0.5,
+      "interestRadiusChunks": 0,
+      "maxResidentChunks": 1
+    },
+    "character": {
+      "walkSpeedMps": 4,
+      "runMultiplier": 1.5,
+      "interactionRadiusM": 3,
+      "collisionRadiusM": 0.35,
+      "tickHz": 20,
+      "snapshotHz": 10,
+      "inputHz": 20,
+      "allowedActions": [
+        "talk",
+        "inspect"
+      ],
+      "maxInputSilenceMs": 250
+    },
+    "renderDefaults": {
+      "quality": "medium",
+      "drawDistanceM": 60,
+      "shadows": true,
+      "lod": true,
+      "pixelRatio": 1,
+      "exposure": 1,
+      "animationEnabled": true
+    },
+    "characterVisualDefaults": {
+      "playerModelId": "model-triangle",
+      "npcModelId": "model-triangle",
+      "modelScale": 1,
+      "animationRate": 1,
+      "showNames": true,
+      "materialStyle": "standard",
+      "interactionReaction": "nod"
+    },
+    "npcBehavior": {
+      "maxConcurrent": 1,
+      "maxQueue": 4,
+      "profiles": [
+        {
+          "npcId": "teacher-mathematics",
+          "displayName": "Математика: основные операции",
+          "personality": "Спокойно объясняет и задаёт вопросы.",
+          "subject": "История открытий",
+          "difficulty": "adaptive",
+          "knowledgePackId": "discovery-basics",
+          "memoryTurns": 10,
+          "memoryTtlHours": 24,
+          "provider": "rules",
+          "modelName": "",
+          "timeoutMs": 5000,
+          "fallbackText": "Давай начнём с наблюдения за окружающим миром."
+        },
+        {
+          "npcId": "teacher-informatics",
+          "displayName": "Информатика: данные и алгоритмы",
+          "personality": "Спокойно объясняет и задаёт вопросы.",
+          "subject": "История открытий",
+          "difficulty": "adaptive",
+          "knowledgePackId": "discovery-basics",
+          "memoryTurns": 10,
+          "memoryTtlHours": 24,
+          "provider": "rules",
+          "modelName": "",
+          "timeoutMs": 5000,
+          "fallbackText": "Давай начнём с наблюдения за окружающим миром."
+        },
+        {
+          "npcId": "teacher-history",
+          "displayName": "История: источники и хронология",
+          "personality": "Спокойно объясняет и задаёт вопросы.",
+          "subject": "История открытий",
+          "difficulty": "adaptive",
+          "knowledgePackId": "discovery-basics",
+          "memoryTurns": 10,
+          "memoryTtlHours": 24,
+          "provider": "rules",
+          "modelName": "",
+          "timeoutMs": 5000,
+          "fallbackText": "Давай начнём с наблюдения за окружающим миром."
+        }
+      ]
+    },
+    "firstPersonDefaults": {
+      "mode": "first_person",
+      "standingEyeHeightM": 1.65,
+      "seatedEyeHeightM": 1.05,
+      "mouseSensitivity": 1,
+      "pitchMinRad": -1.4,
+      "pitchMaxRad": 1.4,
+      "seatTransitionMs": 350,
+      "crosshair": true
+    },
+    "gameplay": {
+      "education": {
+        "questionCount": 5,
+        "passScore": 4,
+        "reconnectGraceSeconds": 60,
+        "stations": [
+          {
+            "moduleId": "math-basics",
+            "teacherId": "teacher-mathematics",
+            "examinerId": "examiner-mathematics",
+            "teacherPosition": {
+              "x": 3,
+              "y": 0,
+              "z": 3
+            },
+            "examinerPosition": {
+              "x": 3,
+              "y": 0,
+              "z": 6
+            },
+            "examinerSeat": {
+              "seatId": "seat-math-basics",
+              "position": {
+                "x": 3,
+                "y": 0,
+                "z": 7
+              },
+              "yawRad": 0,
+              "exitPosition": {
+                "x": 3,
+                "y": 0,
+                "z": 8
+              }
+            }
+          },
+          {
+            "moduleId": "informatics-basics",
+            "teacherId": "teacher-informatics",
+            "examinerId": "examiner-informatics",
+            "teacherPosition": {
+              "x": 10,
+              "y": 0,
+              "z": 3
+            },
+            "examinerPosition": {
+              "x": 10,
+              "y": 0,
+              "z": 6
+            },
+            "examinerSeat": {
+              "seatId": "seat-informatics-basics",
+              "position": {
+                "x": 10,
+                "y": 0,
+                "z": 7
+              },
+              "yawRad": 0,
+              "exitPosition": {
+                "x": 10,
+                "y": 0,
+                "z": 8
+              }
+            }
+          },
+          {
+            "moduleId": "history-basics",
+            "teacherId": "teacher-history",
+            "examinerId": "examiner-history",
+            "teacherPosition": {
+              "x": 17,
+              "y": 0,
+              "z": 3
+            },
+            "examinerPosition": {
+              "x": 17,
+              "y": 0,
+              "z": 6
+            },
+            "examinerSeat": {
+              "seatId": "seat-history-basics",
+              "position": {
+                "x": 17,
+                "y": 0,
+                "z": 7
+              },
+              "yawRad": 0,
+              "exitPosition": {
+                "x": 17,
+                "y": 0,
+                "z": 8
+              }
+            }
+          }
+        ]
+      },
+      "competition": {
+        "minPlayers": 2,
+        "maxPlayers": 5,
+        "questionCount": 5,
+        "roundSeconds": 20,
+        "minStakeAura": 1,
+        "maxStakeAura": 1000,
+        "tiePolicy": "refund_all",
+        "tables": [
+          {
+            "tableId": "competition-central",
+            "position": {
+              "x": 16,
+              "y": 0,
+              "z": 16
+            },
+            "interactionRadiusM": 3,
+            "seats": [
+              {
+                "seatId": "competition-seat-1",
+                "position": {
+                  "x": 14,
+                  "y": 0,
+                  "z": 17
+                },
+                "yawRad": 0,
+                "exitPosition": {
+                  "x": 14,
+                  "y": 0,
+                  "z": 18
+                }
+              },
+              {
+                "seatId": "competition-seat-2",
+                "position": {
+                  "x": 15,
+                  "y": 0,
+                  "z": 17
+                },
+                "yawRad": 0,
+                "exitPosition": {
+                  "x": 15,
+                  "y": 0,
+                  "z": 18
+                }
+              },
+              {
+                "seatId": "competition-seat-3",
+                "position": {
+                  "x": 16,
+                  "y": 0,
+                  "z": 17
+                },
+                "yawRad": 0,
+                "exitPosition": {
+                  "x": 16,
+                  "y": 0,
+                  "z": 18
+                }
+              },
+              {
+                "seatId": "competition-seat-4",
+                "position": {
+                  "x": 17,
+                  "y": 0,
+                  "z": 17
+                },
+                "yawRad": 0,
+                "exitPosition": {
+                  "x": 17,
+                  "y": 0,
+                  "z": 18
+                }
+              },
+              {
+                "seatId": "competition-seat-5",
+                "position": {
+                  "x": 18,
+                  "y": 0,
+                  "z": 17
+                },
+                "yawRad": 0,
+                "exitPosition": {
+                  "x": 18,
+                  "y": 0,
+                  "z": 18
+                }
+              }
+            ],
+            "subjects": [
+              "mathematics",
+              "informatics",
+              "history"
+            ]
+          }
+        ]
+      }
+    },
+    "economy": {
+      "initialBalanceAura": 100,
+      "maxBalanceAura": 1000000000,
+      "currency": "aura"
+    }
+  }
+}

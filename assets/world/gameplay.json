@@ -1,0 +1,205 @@
+{
+  "firstPersonDefaults": {
+    "mode": "first_person",
+    "standingEyeHeightM": 1.65,
+    "seatedEyeHeightM": 1.51,
+    "mouseSensitivity": 1,
+    "pitchMinRad": -1.4,
+    "pitchMaxRad": 1.4,
+    "seatTransitionMs": 350,
+    "crosshair": true
+  },
+  "gameplay": {
+    "education": {
+      "questionCount": 5,
+      "passScore": 4,
+      "reconnectGraceSeconds": 60,
+      "stations": [
+        {
+          "moduleId": "math-basics",
+          "teacherId": "teacher-mathematics",
+          "examinerId": "examiner-mathematics",
+          "teacherPosition": {
+            "x": 86,
+            "y": 0,
+            "z": 82
+          },
+          "examinerPosition": {
+            "x": 89,
+            "y": 0,
+            "z": 89
+          },
+          "examinerSeat": {
+            "seatId": "seat-math-basics",
+            "position": {
+              "x": 89,
+              "y": 0,
+              "z": 90
+            },
+            "yawRad": 0,
+            "exitPosition": {
+              "x": 89,
+              "y": 0,
+              "z": 91
+            }
+          }
+        },
+        {
+          "moduleId": "informatics-basics",
+          "teacherId": "teacher-informatics",
+          "examinerId": "examiner-informatics",
+          "teacherPosition": {
+            "x": 89,
+            "y": 0,
+            "z": 82
+          },
+          "examinerPosition": {
+            "x": 89,
+            "y": 0,
+            "z": 89
+          },
+          "examinerSeat": {
+            "seatId": "seat-informatics-basics",
+            "position": {
+              "x": 89,
+              "y": 0,
+              "z": 90
+            },
+            "yawRad": 0,
+            "exitPosition": {
+              "x": 89,
+              "y": 0,
+              "z": 91
+            }
+          }
+        },
+        {
+          "moduleId": "history-basics",
+          "teacherId": "teacher-history",
+          "examinerId": "examiner-history",
+          "teacherPosition": {
+            "x": 92,
+            "y": 0,
+            "z": 82
+          },
+          "examinerPosition": {
+            "x": 89,
+            "y": 0,
+            "z": 89
+          },
+          "examinerSeat": {
+            "seatId": "seat-history-basics",
+            "position": {
+              "x": 89,
+              "y": 0,
+              "z": 90
+            },
+            "yawRad": 0,
+            "exitPosition": {
+              "x": 89,
+              "y": 0,
+              "z": 91
+            }
+          }
+        }
+      ]
+    },
+    "competition": {
+      "minPlayers": 2,
+      "maxPlayers": 5,
+      "questionCount": 5,
+      "roundSeconds": 20,
+      "minStakeAura": 1,
+      "maxStakeAura": 1000,
+      "tiePolicy": "refund_all",
+      "tables": [
+        {
+          "tableId": "competition-central",
+          "position": {
+            "x": 80,
+            "y": 0,
+            "z": 92
+          },
+          "interactionRadiusM": 4,
+          "seats": [
+            {
+              "seatId": "competition-seat-1",
+              "position": {
+                "x": 80.0,
+                "y": 0,
+                "z": 94.05
+              },
+              "yawRad": 0.0,
+              "exitPosition": {
+                "x": 80.0,
+                "y": 0,
+                "z": 95.4
+              }
+            },
+            {
+              "seatId": "competition-seat-2",
+              "position": {
+                "x": 81.9497,
+                "y": 0,
+                "z": 92.6335
+              },
+              "yawRad": 1.25664,
+              "exitPosition": {
+                "x": 83.2336,
+                "y": 0,
+                "z": 93.0507
+              }
+            },
+            {
+              "seatId": "competition-seat-3",
+              "position": {
+                "x": 81.205,
+                "y": 0,
+                "z": 90.3415
+              },
+              "yawRad": 2.51327,
+              "exitPosition": {
+                "x": 81.9985,
+                "y": 0,
+                "z": 89.2493
+              }
+            },
+            {
+              "seatId": "competition-seat-4",
+              "position": {
+                "x": 78.795,
+                "y": 0,
+                "z": 90.3415
+              },
+              "yawRad": -2.51328,
+              "exitPosition": {
+                "x": 78.0015,
+                "y": 0,
+                "z": 89.2493
+              }
+            },
+            {
+              "seatId": "competition-seat-5",
+              "position": {
+                "x": 78.0503,
+                "y": 0,
+                "z": 92.6335
+              },
+              "yawRad": -1.25664,
+              "exitPosition": {
+                "x": 76.7664,
+                "y": 0,
+                "z": 93.0507
+              }
+            }
+          ],
+          "subjects": [
+            "mathematics",
+            "informatics",
+            "history"
+          ]
+        }
+      ]
+    }
+  }
+}

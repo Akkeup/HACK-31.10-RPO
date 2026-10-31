@@ -1,0 +1,6 @@
+{
+  "questionId": "math-written-1",
+  "kind": "numeric",
+  "prompt": "Сколько будет 2 + 3?",
+  "answerKey": "5"
+}

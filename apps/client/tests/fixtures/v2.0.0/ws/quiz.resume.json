@@ -1,0 +1,9 @@
+{
+  "protocolVersion": "2.0.0",
+  "type": "quiz.resume",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "attemptId": "0000000a-1234-4234-8234-00000000000a",
+    "npcId": "examiner-mathematics"
+  }
+}

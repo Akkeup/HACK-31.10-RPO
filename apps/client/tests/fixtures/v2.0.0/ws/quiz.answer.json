@@ -1,0 +1,13 @@
+{
+  "protocolVersion": "2.0.0",
+  "type": "quiz.answer",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "attemptId": "0000000a-1234-4234-8234-00000000000a",
+    "questionId": "math-basics-q1",
+    "answer": {
+      "kind": "numeric",
+      "value": "5"
+    }
+  }
+}

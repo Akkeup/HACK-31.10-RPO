@@ -1,0 +1,109 @@
+{
+  "manifest": {
+    "worldId": "discovery-campus",
+    "worldRevision": 1,
+    "totalWorldBytes": 2976741,
+    "cacheBudgetBytes": 297674,
+    "accounting": "unique-uncompressed-resource-bytes",
+    "maxResourceBytes": 1048576,
+    "maxChunkBytes": 262144
+  },
+  "interest": {
+    "worldRevision": 1,
+    "interestRevision": 1,
+    "chunks": [
+      {
+        "chunkId": "c-2-2",
+        "x": 2,
+        "z": 2,
+        "sha256": "cb472a92b20bd8ba4ac9a3f08a3b8d8ca12af0a3b3e4264bbace69f10ddc1a32",
+        "byteSize": 3837,
+        "url": "/api/v2/worlds/discovery-campus/chunks/c-2-2/cb472a92b20bd8ba4ac9a3f08a3b8d8ca12af0a3b3e4264bbace69f10ddc1a32",
+        "assetIds": [
+          "terrain-2-2",
+          "reading-shelf",
+          "reading-book",
+          "reading-desk",
+          "reading-notebook",
+          "competition-chair",
+          "competition-table",
+          "explorer",
+          "demo-flag-01"
+        ]
+      }
+    ],
+    "assets": [
+      {
+        "resourceId": "explorer",
+        "sha256": "0de77610d961158bb971f03116deff3d5d6cb91dc2a5f27c7c6c2b706cef86ac",
+        "byteSize": 2752,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/0de77610d961158bb971f03116deff3d5d6cb91dc2a5f27c7c6c2b706cef86ac"
+      },
+      {
+        "resourceId": "reading-shelf",
+        "sha256": "92c783e84f0e4a2d60f23e31df1ceb64ce349f9f170dd204258f99f009e930e8",
+        "byteSize": 55012,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/92c783e84f0e4a2d60f23e31df1ceb64ce349f9f170dd204258f99f009e930e8"
+      },
+      {
+        "resourceId": "reading-book",
+        "sha256": "aaef82101763d8ba02edbf4aa389b127720e73b1e77db31fdd6c345bef277bb9",
+        "byteSize": 6296,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/aaef82101763d8ba02edbf4aa389b127720e73b1e77db31fdd6c345bef277bb9"
+      },
+      {
+        "resourceId": "reading-desk",
+        "sha256": "7062e3dd58e4efb77a1436c774fe277977cb708a5265900f7b546fe1189c8c7c",
+        "byteSize": 7760,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/7062e3dd58e4efb77a1436c774fe277977cb708a5265900f7b546fe1189c8c7c"
+      },
+      {
+        "resourceId": "reading-notebook",
+        "sha256": "c0d306f356dc1ed33b0df3671ecd656a673873188a2542bddef5324be1cc83b4",
+        "byteSize": 20784,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/c0d306f356dc1ed33b0df3671ecd656a673873188a2542bddef5324be1cc83b4"
+      },
+      {
+        "resourceId": "demo-flag-01",
+        "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+        "byteSize": 177,
+        "mediaType": "image/svg+xml",
+        "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8"
+      },
+      {
+        "resourceId": "competition-table",
+        "sha256": "c1ae7ebff3663a223b597559879e3e472888ba5306a84fc8434de0a333d896f2",
+        "byteSize": 7532,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/c1ae7ebff3663a223b597559879e3e472888ba5306a84fc8434de0a333d896f2"
+      },
+      {
+        "resourceId": "competition-chair",
+        "sha256": "d27087790d733ae2c75b54ca1b4270cc5490f4caf8a88851def315b1c0dbbb45",
+        "byteSize": 2972,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/d27087790d733ae2c75b54ca1b4270cc5490f4caf8a88851def315b1c0dbbb45"
+      },
+      {
+        "resourceId": "terrain-2-2",
+        "sha256": "9203d619cfc8fb1efa13c6fe6fb393ab17603191850336bef1c0dd668d3c5346",
+        "byteSize": 116928,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/9203d619cfc8fb1efa13c6fe6fb393ab17603191850336bef1c0dd668d3c5346"
+      }
+    ],
+    "requiredBytes": 224050
+  },
+  "flag": {
+    "resourceId": "demo-flag-01",
+    "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+    "byteSize": 177,
+    "mediaType": "image/svg+xml",
+    "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8"
+  }
+}

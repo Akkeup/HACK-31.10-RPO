@@ -1,0 +1,27 @@
+{
+  "protocolVersion": "2.0.0",
+  "type": "competition.round.closed",
+  "requestId": null,
+  "payload": {
+    "matchId": "0000000d-1234-4234-8234-00000000000d",
+    "ordinal": 1,
+    "questionId": "math-basics-q1",
+    "explanation": "Сложение объединяет количества: два и три дают пять.",
+    "scores": [
+      {
+        "playerId": "22222222-2222-4222-8222-222222222222",
+        "score": 1,
+        "correct": true
+      },
+      {
+        "playerId": "00000002-1234-4234-8234-000000000002",
+        "score": 0,
+        "correct": false
+      }
+    ],
+    "nextRoundStartsAt": "2026-10-31T09:00:23Z",
+    "expectedAnswer": "5"
+  },
+  "serverSeq": 18,
+  "serverTime": "2026-10-31T09:00:00Z"
+}

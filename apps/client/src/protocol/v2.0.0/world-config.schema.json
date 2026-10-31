@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/2.0.0/world-config.schema.json",
+  "type": "object",
+  "properties": {
+    "worldId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+    },
+    "worldRevision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "chunkSizeM": {
+      "type": "integer",
+      "minimum": 16,
+      "maximum": 128
+    },
+    "grid": {
+      "type": "object",
+      "properties": {
+        "minX": {
+          "type": "integer",
+          "minimum": -1000,
+          "maximum": 1000
+        },
+        "maxX": {
+          "type": "integer",
+          "minimum": -1000,
+          "maximum": 1000
+        },
+        "minZ": {
+          "type": "integer",
+          "minimum": -1000,
+          "maximum": 1000
+        },
+        "maxZ": {
+          "type": "integer",
+          "minimum": -1000,
+          "maximum": 1000
+        }
+      },
+      "required": [
+        "minX",
+        "maxX",
+        "minZ",
+        "maxZ"
+      ],
+      "additionalProperties": false
+    },
+    "spawn": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -100000,
+          "maximum": 100000
+        },
+        "y": {
+          "type": "number",
+          "minimum": -10000,
+          "maximum": 10000
+        },
+        "z": {
+          "type": "number",
+          "minimum": -100000,
+          "maximum": 100000
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "additionalProperties": false
+    },
+    "activeChunkIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+      },
+      "minItems": 1,
+      "maxItems": 10000,
+      "uniqueItems": true
+    },
+    "placements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "chunkId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "modelId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -100000,
+                "maximum": 100000
+              },
+              "y": {
+                "type": "number",
+                "minimum": -10000,
+                "maximum": 10000
+              },
+              "z": {
+                "type": "number",
+                "minimum": -100000,
+                "maximum": 100000
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ],
+            "additionalProperties": false
+          },
+          "yawRad": {
+            "type": "number",
+            "minimum": -3.141593,
+            "maximum": 3.141593
+          },
+          "collidable": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "chunkId",
+          "modelId",
+          "position",
+          "yawRad",
+          "collidable"
+        ],
+        "additionalProperties": false
+      },
+      "maxItems": 10000
+    },
+    "npcIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+      },
+      "maxItems": 50,
+      "uniqueItems": true
+    },
+    "timeOfDayHours": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 24
+    },
+    "weather": {
+      "type": "string",
+      "enum": [
+        "clear",
+        "cloudy",
+        "rain"
+      ]
+    },
+    "decorDensity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "interestRadiusChunks": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2
+    },
+    "maxResidentChunks": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 25
+    }
+  },
+  "required": [
+    "worldId",
+    "worldRevision",
+    "chunkSizeM",
+    "grid",
+    "spawn",
+    "activeChunkIds",
+    "placements",
+    "npcIds",
+    "timeOfDayHours",
+    "weather",
+    "decorDensity",
+    "interestRadiusChunks",
+    "maxResidentChunks"
+  ],
+  "additionalProperties": false
+}

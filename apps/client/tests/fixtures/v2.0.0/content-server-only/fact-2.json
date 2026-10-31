@@ -1,0 +1,10 @@
+{
+  "factId": "demo-fact-2",
+  "moduleId": "flags-demo",
+  "contentVersion": "demo-v1",
+  "text": "Её учебный флаг состоит из синей и жёлтой полос.",
+  "sourceIds": [
+    "demo-source"
+  ],
+  "status": "draft"
+}
