@@ -8,8 +8,9 @@ import {
 } from "./protocol.js";
 import { validateAdmin } from "../config/config.js";
 export class DiscoveryAdapter {
-  async enterLocation() {
-    throw new Error("Переход между кабинетами доступен в локальном демо-мире.");
+  async enterLocation(roomId) {
+    this.locationId = roomId;
+    return roomId;
   }
   #token;
   constructor({ mock = false } = {}) {

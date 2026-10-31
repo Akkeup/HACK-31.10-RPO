@@ -70,7 +70,7 @@ export class Game {
     this.sun.shadow.normalBias = 0.08;
     this.scene.add(this.ambient, this.sun, this.sun.target);
     this.locationId = ACADEMY_HUB;
-    this.academyArt = adapter.isMock ? new AcademyArt(this.scene) : null;
+    this.academyArt = new AcademyArt(this.scene);
     this.player = this.createActor("self", "Вы");
     this.player.position.copy(this.authoritative);
     this.player.visible = false;
@@ -186,11 +186,9 @@ export class Game {
     this.actors.delete(id);
   }
   async start() {
-    if (this.adapter.isMock) {
-      const { LocalArt } = await import("./local-art.js");
-      this.localArt = new LocalArt(this, this.onError);
-      this.localArt.preload();
-    }
+    const { LocalArt } = await import("./local-art.js");
+    this.localArt = new LocalArt(this, this.onError);
+    this.localArt.preload();
     return this.adapter.connect();
   }
   async enterLocation(roomId) {
