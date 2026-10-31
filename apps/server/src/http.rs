@@ -222,14 +222,25 @@ pub fn dispatch_http(
         if method == "GET" {
             let list = game.list_sessions();
             let arr = JsonValue::Array(list.iter().map(|s| s.to_json()).collect());
-            return HttpResponse::json(200, "OK", &arr);
+            let val = JsonValue::Object(vec![("sessions".to_string(), arr)]);
+            return HttpResponse::json(200, "OK", &val);
         } else if method == "POST" {
             let body_str = String::from_utf8_lossy(&req.body);
             let json = parse_json(&body_str).unwrap_or(JsonValue::Null);
             let world_id = json.get_str("worldId").unwrap_or("discovery-campus");
             match game.create_session(&user.user_id, &user.display_name, world_id) {
                 Ok(session) => return HttpResponse::json(201, "Created", &session.to_json()),
-                Err((status, code, msg)) => return HttpResponse::error(status, code, msg, false),
+                Err((status, code, msg)) => {
+                    let mut resp = HttpResponse::error(status, code, msg, false);
+                    if code == "ALREADY_IN_SESSION" {
+                        if let Some(existing) = game.get_user_session(&user.user_id) {
+                            let err = ErrorResponse::new(code, msg, false, None)
+                                .with_detail("sessionId", &existing);
+                            resp = HttpResponse::json(status, "Error", &err.to_json());
+                        }
+                    }
+                    return resp;
+                }
             }
         }
     }
@@ -258,7 +269,17 @@ pub fn dispatch_http(
             if method == "PUT" {
                 match game.join_session(&user.user_id, &user.display_name, session_id) {
                     Ok((sess, _)) => return HttpResponse::json(200, "OK", &sess.to_json()),
-                    Err((status, code, msg)) => return HttpResponse::error(status, code, msg, false),
+                    Err((status, code, msg)) => {
+                        let mut resp = HttpResponse::error(status, code, msg, false);
+                        if code == "ALREADY_IN_SESSION" {
+                            if let Some(existing) = game.get_user_session(&user.user_id) {
+                                let err = ErrorResponse::new(code, msg, false, None)
+                                    .with_detail("sessionId", &existing);
+                                resp = HttpResponse::json(status, "Error", &err.to_json());
+                            }
+                        }
+                        return resp;
+                    }
                 }
             } else if method == "DELETE" {
                 game.leave_session(&user.user_id, session_id);

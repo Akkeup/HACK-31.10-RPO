@@ -22,6 +22,7 @@ pub struct PlayerState {
     pub move_z: f64,
     pub running: bool,
     pub disconnect_time: Option<u64>,
+    pub conn_id: u64,
     pub activity_mode: String,
     pub activity_target_id: Option<String>,
     pub activity_seat_id: Option<String>,
@@ -69,14 +70,17 @@ impl Room {
     }
 
     pub fn join_player(&mut self, user_id: &str, display_name: &str) -> Result<String, (u16, &'static str, &'static str)> {
-        // If already in room, return existing playerId
+        // If already in room, check if player state still exists
         if let Some(player_id) = self.user_to_player.get(user_id) {
             if let Some(p) = self.players.get_mut(player_id) {
-                p.connected = true;
-                p.disconnect_time = None;
+                if !p.connected && p.disconnect_time.is_none() {
+                    p.disconnect_time = Some(Self::now_ms());
+                }
+                return Ok(player_id.clone());
             }
-            return Ok(player_id.clone());
         }
+        // If stale mapping existed without PlayerState, remove it
+        self.user_to_player.remove(user_id);
 
         // Check 5 player limit
         if self.players.len() >= 5 {
@@ -92,13 +96,14 @@ impl Room {
             y: 0.0,
             z: 15.0,
             yaw_rad: 0.0,
-            connected: true,
+            connected: false,
             last_input_time: Self::now_ms(),
             last_input_seq: 0,
             move_x: 0.0,
             move_z: 0.0,
             running: false,
-            disconnect_time: None,
+            disconnect_time: Some(Self::now_ms()),
+            conn_id: 0,
             activity_mode: "exploring".to_string(),
             activity_target_id: None,
             activity_seat_id: None,
@@ -109,12 +114,22 @@ impl Room {
         Ok(player_id)
     }
 
-    pub fn mark_disconnected(&mut self, player_id: &str) {
+    pub fn mark_connected(&mut self, player_id: &str, conn_id: u64) {
         if let Some(p) = self.players.get_mut(player_id) {
-            p.connected = false;
-            p.move_x = 0.0;
-            p.move_z = 0.0;
-            p.disconnect_time = Some(Self::now_ms());
+            p.connected = true;
+            p.conn_id = conn_id;
+            p.disconnect_time = None;
+        }
+    }
+
+    pub fn mark_disconnected(&mut self, player_id: &str, conn_id: u64) {
+        if let Some(p) = self.players.get_mut(player_id) {
+            if p.conn_id == conn_id || conn_id == 0 {
+                p.connected = false;
+                p.move_x = 0.0;
+                p.move_z = 0.0;
+                p.disconnect_time = Some(Self::now_ms());
+            }
         }
     }
 
@@ -145,23 +160,31 @@ impl Room {
         }
     }
 
-    pub fn tick_simulation(&mut self, walk_speed: f64, run_mul: f64, max_silence_ms: u64) {
+    pub fn tick_simulation(&mut self, walk_speed: f64, run_mul: f64, max_silence_ms: u64) -> Vec<String> {
         self.tick += 1;
         let is_active = self.get_status() == "active";
         let now = Self::now_ms();
         let dt = 1.0 / 20.0; // 20 Hz tick
 
-        // Clean up expired reservations (60s grace period)
+        // Clean up expired reservations (default 60s grace period, configurable via GRACE_PERIOD_MS)
+        let grace_ms = std::env::var("GRACE_PERIOD_MS").ok().and_then(|v| v.parse().ok()).unwrap_or(60_000);
+        let mut expired_user_ids = Vec::new();
         self.players.retain(|_, p| {
             if !p.connected {
                 if let Some(disc) = p.disconnect_time {
-                    if now.saturating_sub(disc) > 60_000 {
+                    if now.saturating_sub(disc) > grace_ms {
+                        expired_user_ids.push(p.user_id.clone());
                         return false;
                     }
                 }
             }
             true
         });
+
+        // Also clean up user_to_player mappings for expired users
+        for uid in &expired_user_ids {
+            self.user_to_player.remove(uid);
+        }
 
         for p in self.players.values_mut() {
             if !p.connected {
@@ -188,6 +211,7 @@ impl Room {
                 p.z = new_z;
             }
         }
+        expired_user_ids
     }
 }
 impl Room {
@@ -242,18 +266,25 @@ impl GameManager {
     }
 
     pub fn get_player_id_for_user(&self, user_id: &str) -> Option<String> {
+        let rooms = self.rooms.lock().unwrap();
         let user_map = self.user_session.lock().unwrap();
         let sess_id = user_map.get(user_id)?;
-        let rooms = self.rooms.lock().unwrap();
         let room = rooms.get(sess_id)?;
         room.user_to_player.get(user_id).cloned()
     }
 }
 impl GameManager {
     pub fn create_session(&self, user_id: &str, display_name: &str, world_id: &str) -> Result<SessionDto, (u16, &'static str, &'static str)> {
+        let mut rooms = self.rooms.lock().unwrap();
         let mut user_map = self.user_session.lock().unwrap();
+
         if let Some(existing_sess_id) = user_map.get(user_id) {
-            return Err((409, "ALREADY_IN_SESSION", "User already belongs to an active session"));
+            if let Some(room) = rooms.get(existing_sess_id) {
+                if room.user_to_player.contains_key(user_id) {
+                    return Err((409, "ALREADY_IN_SESSION", "User already belongs to an active session"));
+                }
+            }
+            user_map.remove(user_id);
         }
 
         let session_id = crate::auth::AuthService::generate_id();
@@ -262,19 +293,25 @@ impl GameManager {
 
         user_map.insert(user_id.to_string(), session_id.clone());
         let dto = room.to_dto();
-        self.rooms.lock().unwrap().insert(session_id, room);
+        rooms.insert(session_id, room);
         Ok(dto)
     }
 
     pub fn join_session(&self, user_id: &str, display_name: &str, session_id: &str) -> Result<(SessionDto, String), (u16, &'static str, &'static str)> {
+        let mut rooms = self.rooms.lock().unwrap();
         let mut user_map = self.user_session.lock().unwrap();
+
         if let Some(existing_sess_id) = user_map.get(user_id) {
             if existing_sess_id != session_id {
-                return Err((409, "ALREADY_IN_SESSION", "User already belongs to another session"));
+                if let Some(room) = rooms.get(existing_sess_id) {
+                    if room.user_to_player.contains_key(user_id) {
+                        return Err((409, "ALREADY_IN_SESSION", "User already belongs to another session"));
+                    }
+                }
+                user_map.remove(user_id);
             }
         }
 
-        let mut rooms = self.rooms.lock().unwrap();
         let room = rooms.get_mut(session_id).ok_or((404, "NOT_FOUND", "Session not found"))?;
         let player_id = room.join_player(user_id, display_name)?;
         user_map.insert(user_id.to_string(), session_id.to_string());
@@ -282,10 +319,10 @@ impl GameManager {
     }
 
     pub fn leave_session(&self, user_id: &str, session_id: &str) {
+        let mut rooms = self.rooms.lock().unwrap();
         let mut user_map = self.user_session.lock().unwrap();
         user_map.remove(user_id);
 
-        let mut rooms = self.rooms.lock().unwrap();
         if let Some(room) = rooms.get_mut(session_id) {
             room.remove_player(user_id);
             if room.players.is_empty() {
@@ -310,10 +347,17 @@ impl GameManager {
         }
     }
 
-    pub fn mark_disconnected(&self, session_id: &str, player_id: &str) {
+    pub fn mark_connected(&self, session_id: &str, player_id: &str, conn_id: u64) {
         let mut rooms = self.rooms.lock().unwrap();
         if let Some(room) = rooms.get_mut(session_id) {
-            room.mark_disconnected(player_id);
+            room.mark_connected(player_id, conn_id);
+        }
+    }
+
+    pub fn mark_disconnected(&self, session_id: &str, player_id: &str, conn_id: u64) {
+        let mut rooms = self.rooms.lock().unwrap();
+        if let Some(room) = rooms.get_mut(session_id) {
+            room.mark_disconnected(player_id, conn_id);
         }
     }
 
@@ -340,8 +384,21 @@ impl GameManager {
 
     pub fn tick_all(&self, walk_speed: f64, run_mul: f64, max_silence_ms: u64) {
         let mut rooms = self.rooms.lock().unwrap();
+        let mut all_expired_users = Vec::new();
         for room in rooms.values_mut() {
-            room.tick_simulation(walk_speed, run_mul, max_silence_ms);
+            let expired = room.tick_simulation(walk_speed, run_mul, max_silence_ms);
+            all_expired_users.extend(expired);
+        }
+
+        // Clean empty rooms
+        rooms.retain(|_, room| !room.players.is_empty());
+
+        // Consistently clean user_session for expired users (Strict lock order: rooms -> user_session)
+        if !all_expired_users.is_empty() {
+            let mut user_map = self.user_session.lock().unwrap();
+            for uid in all_expired_users {
+                user_map.remove(&uid);
+            }
         }
     }
 
@@ -367,9 +424,9 @@ impl GameManager {
     }
 
     pub fn update_player_activity(&self, user_id: &str, mode: &str, target_id: Option<String>, seat_id: Option<String>) {
+        let mut rooms = self.rooms.lock().unwrap();
         let user_map = self.user_session.lock().unwrap();
         if let Some(sess_id) = user_map.get(user_id) {
-            let mut rooms = self.rooms.lock().unwrap();
             if let Some(room) = rooms.get_mut(sess_id) {
                 if let Some(player_id) = room.user_to_player.get(user_id) {
                     if let Some(p) = room.players.get_mut(player_id) {

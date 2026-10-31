@@ -73,7 +73,7 @@ impl WsWriter {
 }
 
 pub struct WsBroadcaster {
-    clients: Mutex<HashMap<String, (String, Arc<Mutex<WsWriter>>)>>, // player_id -> (user_id, writer)
+    clients: Mutex<HashMap<String, (u64, String, Arc<Mutex<WsWriter>>)>>, // player_id -> (conn_id, user_id, writer)
 }
 
 impl WsBroadcaster {
@@ -81,19 +81,23 @@ impl WsBroadcaster {
         Self { clients: Mutex::new(HashMap::new()) }
     }
 
-    pub fn register(&self, player_id: &str, user_id: &str, writer: Arc<Mutex<WsWriter>>) {
+    pub fn register(&self, player_id: &str, conn_id: u64, user_id: &str, writer: Arc<Mutex<WsWriter>>) {
         let mut lock = self.clients.lock().unwrap();
-        lock.insert(player_id.to_string(), (user_id.to_string(), writer));
+        lock.insert(player_id.to_string(), (conn_id, user_id.to_string(), writer));
     }
 
-    pub fn unregister(&self, player_id: &str) {
+    pub fn unregister(&self, player_id: &str, conn_id: u64) {
         let mut lock = self.clients.lock().unwrap();
-        lock.remove(player_id);
+        if let Some((c_id, _, _)) = lock.get(player_id) {
+            if *c_id == conn_id || conn_id == 0 {
+                lock.remove(player_id);
+            }
+        }
     }
 
     pub fn send_to_player(&self, player_id: &str, msg_type: &str, req_id: Option<String>, payload: JsonValue) {
         let lock = self.clients.lock().unwrap();
-        if let Some((_, writer)) = lock.get(player_id) {
+        if let Some((_, _, writer)) = lock.get(player_id) {
             let mut w = writer.lock().unwrap();
             let _ = w.send_envelope(msg_type, req_id, payload);
         }
@@ -101,7 +105,7 @@ impl WsBroadcaster {
 
     pub fn send_to_user(&self, user_id: &str, msg_type: &str, req_id: Option<String>, payload: JsonValue) {
         let lock = self.clients.lock().unwrap();
-        for (_, (u_id, writer)) in lock.iter() {
+        for (_, (_, u_id, writer)) in lock.iter() {
             if u_id == user_id {
                 let mut w = writer.lock().unwrap();
                 let _ = w.send_envelope(msg_type, req_id.clone(), payload.clone());
@@ -112,7 +116,7 @@ impl WsBroadcaster {
     pub fn broadcast_to_players(&self, player_ids: &[String], msg_type: &str, payload: &JsonValue) {
         let lock = self.clients.lock().unwrap();
         for pid in player_ids {
-            if let Some((_, writer)) = lock.get(pid) {
+            if let Some((_, _, writer)) = lock.get(pid) {
                 let mut w = writer.lock().unwrap();
                 let _ = w.send_envelope(msg_type, None, payload.clone());
             }
@@ -213,6 +217,8 @@ pub fn rfc3339_now() -> String {
     let t = SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_secs();
     format!("{}-{:02}-{:02}T{:02}:{:02}:{:02}Z", 2026, 10, 31, (t / 3600) % 24, (t / 60) % 60, t % 60)
 }
+static NEXT_CONN_ID: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(1);
+
 pub fn run_ws_session(
     mut conn: WsConnection,
     ticket: WsTicket,
@@ -227,7 +233,9 @@ pub fn run_ws_session(
     broadcaster: Arc<WsBroadcaster>,
     instance_id: String,
 ) {
-    broadcaster.register(&player_id, &ticket.user_id, conn.writer.clone());
+    let conn_id = NEXT_CONN_ID.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+    broadcaster.register(&player_id, conn_id, &ticket.user_id, conn.writer.clone());
+    game.mark_connected(&ticket.session_id, &player_id, conn_id);
     let mut has_received_hello = false;
     let mut is_ready = false;
     let mut last_ping = SystemTime::now();
@@ -322,8 +330,8 @@ pub fn run_ws_session(
         }
     }
 
-    broadcaster.unregister(&player_id);
-    game.mark_disconnected(&ticket.session_id, &player_id);
+    broadcaster.unregister(&player_id, conn_id);
+    game.mark_disconnected(&ticket.session_id, &player_id, conn_id);
 }
 fn handle_hello(
     conn: &mut WsConnection,

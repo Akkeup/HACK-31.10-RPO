@@ -28,7 +28,12 @@ def main():
 
     # 2. Compile backend binary if needed
     server_bin = os.path.join(SERVER_DIR, "discovery-server.exe" if sys.platform == "win32" else "discovery-server")
-    if not os.path.exists(server_bin) or os.path.getmtime(os.path.join(SERVER_DIR, "src", "main.rs")) > os.path.getmtime(server_bin):
+    src_dir = os.path.join(SERVER_DIR, "src")
+    latest_src_mtime = max(
+        [os.path.getmtime(os.path.join(root, f)) for root, _, files in os.walk(src_dir) for f in files if f.endswith(".rs")],
+        default=0
+    )
+    if not os.path.exists(server_bin) or latest_src_mtime > os.path.getmtime(server_bin):
         print("[2/3] Compiling authoritative Rust backend server...")
         subprocess.check_call(["rustc", "--edition", "2021", "--crate-type", "bin", "-O", "-o", server_bin, "apps/server/src/main.rs"], cwd=ROOT_DIR)
     else:

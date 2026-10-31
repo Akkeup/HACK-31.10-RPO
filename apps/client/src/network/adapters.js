@@ -114,17 +114,72 @@ export class DiscoveryAdapter {
     validate("streaming", manifest, "manifest");
     this.manifest = manifest;
     if (sessionId) validate("common", sessionId, "uuid");
-    const { value: session } = sessionId
-      ? await this.request(`/api/v2/sessions/${sessionId}/members/me`, {
-          method: "PUT",
-        })
-      : await this.request("/api/v2/sessions", {
-          method: "POST",
-          body: { worldId },
-        });
+    let session;
+    if (sessionId) {
+      const res = await this.request(`/api/v2/sessions/${sessionId}/members/me`, {
+        method: "PUT",
+      });
+      session = res.value;
+    } else {
+      const storageKey = this.user?.userId ? `discovery:session:${this.user.userId}` : null;
+      let existingSessionId = storageKey && typeof localStorage !== "undefined"
+        ? localStorage.getItem(storageKey)
+        : null;
+
+      if (existingSessionId) {
+        try {
+          const res = await this.request(`/api/v2/sessions/${existingSessionId}/members/me`, {
+            method: "PUT",
+          });
+          session = res.value;
+        } catch {
+          if (storageKey && typeof localStorage !== "undefined") {
+            try { localStorage.removeItem(storageKey); } catch {}
+          }
+          existingSessionId = null;
+        }
+      }
+
+      if (!session) {
+        try {
+          const res = await this.request("/api/v2/sessions", {
+            method: "POST",
+            body: { worldId },
+          });
+          session = res.value;
+        } catch (err) {
+          if (err.code === "ALREADY_IN_SESSION") {
+            const sid = err.details?.find((d) => d.path === "sessionId")?.reason;
+            let targetSessionId = sid;
+            if (!targetSessionId) {
+              const sessions = await this.listSessions();
+              const found = sessions.find((s) =>
+                s.players?.some((p) => p.displayName === this.user?.displayName),
+              );
+              if (found) targetSessionId = found.sessionId;
+            }
+            if (targetSessionId) {
+              const res = await this.request(`/api/v2/sessions/${targetSessionId}/members/me`, {
+                method: "PUT",
+              });
+              session = res.value;
+            } else {
+              throw err;
+            }
+          } else {
+            throw err;
+          }
+        }
+      }
+    }
     validate("http", session, "session");
     this.session = session;
     this.sessionId = session.sessionId;
+    if (this.user?.userId && typeof localStorage !== "undefined") {
+      try {
+        localStorage.setItem(`discovery:session:${this.user.userId}`, session.sessionId);
+      } catch {}
+    }
     return { publicConfig, manifest, user: this.user };
   }
   async listSessions() {
@@ -548,11 +603,21 @@ export class DiscoveryAdapter {
   }
   async logout() {
     this.cancelPending();
-    await this.request(`/api/v2/sessions/${this.sessionId}/members/me`, {
-      method: "DELETE",
-    });
+    if (this.sessionId) {
+      try {
+        await this.request(`/api/v2/sessions/${this.sessionId}/members/me`, {
+          method: "DELETE",
+        });
+      } catch {}
+    }
+    if (this.user?.userId && typeof localStorage !== "undefined") {
+      try {
+        localStorage.removeItem(`discovery:session:${this.user.userId}`);
+      } catch {}
+    }
     await this.request("/api/v2/auth/logout", { method: "POST" });
     this.#token = undefined;
+    this.sessionId = undefined;
     this.close();
   }
   close() {
