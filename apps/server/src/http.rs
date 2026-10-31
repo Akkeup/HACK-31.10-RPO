@@ -523,10 +523,10 @@ pub fn dispatch_http(
     }
 
     // World Chunks
-    if path.contains("/chunks/") && method == "GET" {
+    if (path.starts_with("/api/v1/worlds/") || path.starts_with("/api/v2/worlds/")) && path.contains("/chunks/") && method == "GET" {
         let parts: Vec<&str> = path.split('/').collect();
-        let chunk_id = parts[5];
-        let sha256 = parts[6];
+        let chunk_id = parts.get(5).cloned().unwrap_or("");
+        let sha256 = parts.get(6).cloned().unwrap_or("");
         if let Some(bytes) = spatial.get_chunk_file(chunk_id, sha256) {
             let mut resp = HttpResponse::new(200, "OK");
             resp.headers.push(("Content-Type".to_string(), "application/json; charset=utf-8".to_string()));
@@ -537,7 +537,7 @@ pub fn dispatch_http(
     }
 
     // World Assets
-    if path.contains("/assets/") && method == "GET" {
+    if (path.starts_with("/api/v1/worlds/") || path.starts_with("/api/v2/worlds/")) && path.contains("/assets/") && method == "GET" {
         let parts: Vec<&str> = path.split('/').collect();
         let sha256 = parts.last().cloned().unwrap_or("");
         if let Some((bytes, media_type)) = spatial.get_asset_file(sha256) {
