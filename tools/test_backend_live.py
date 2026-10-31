@@ -112,3 +112,106 @@ try:
         d = json.loads(r.read())
         assert d["cacheBudgetBytes"] > 0
         assert d["totalWorldBytes"] >= d["cacheBudgetBytes"]
+
+    print("Testing Auth Login...")
+    login_req = urllib.request.Request("http://127.0.0.1:8089/api/v2/auth/login", data=b'{"username":"admin","password":"password"}', headers={"Content-Type":"application/json"})
+    with urllib.request.urlopen(login_req) as r:
+        assert r.status == 200
+        login_res = json.loads(r.read())
+        token = login_res["accessToken"]
+        user_id = login_res["user"]["userId"]
+
+    print("Testing Session Creation...")
+    sess_req = urllib.request.Request("http://127.0.0.1:8089/api/v2/sessions", data=b'{"worldId":"discovery-campus"}', headers={"Content-Type":"application/json", "Authorization": f"Bearer {token}"})
+    with urllib.request.urlopen(sess_req) as r:
+        assert r.status == 201
+        sess_res = json.loads(r.read())
+        sess_id = sess_res["sessionId"]
+
+    print("Testing WS Ticket 2.0.0...")
+    tkt_req = urllib.request.Request(f"http://127.0.0.1:8089/api/v2/sessions/{sess_id}/ws-ticket", data=b'{"protocolVersion":"2.0.0"}', headers={"Content-Type":"application/json", "Authorization": f"Bearer {token}"})
+    with urllib.request.urlopen(tkt_req) as r:
+        assert r.status == 200
+        tkt_res = json.loads(r.read())
+        ticket = tkt_res["ticket"]
+        assert tkt_res["subprotocol"] == "discovery.v2"
+        assert tkt_res["wsPath"] == "/api/v2/ws"
+
+    print("Testing WebSocket RFC 6455 Handshake & protocol 2.0.0...")
+    s = socket.create_connection(("127.0.0.1", 8089))
+    ws_key = base64.b64encode(os.urandom(16)).decode('utf-8')
+    handshake = (
+        f"GET /api/v2/ws?ticket={ticket} HTTP/1.1\r\n"
+        f"Host: 127.0.0.1:8089\r\n"
+        f"Upgrade: websocket\r\n"
+        f"Connection: Upgrade\r\n"
+        f"Sec-WebSocket-Key: {ws_key}\r\n"
+        f"Sec-WebSocket-Version: 13\r\n"
+        f"Sec-WebSocket-Protocol: discovery.v2\r\n\r\n"
+    )
+    s.sendall(handshake.encode('utf-8'))
+    resp_hdr = s.recv(1024).decode('utf-8')
+    assert "101 Switching Protocols" in resp_hdr
+    assert "Sec-WebSocket-Protocol: discovery.v2" in resp_hdr
+
+    def send_ws_frame(sock, text):
+        data = text.encode('utf-8')
+        length = len(data)
+        mask_key = os.urandom(4)
+        masked_data = bytes([b ^ mask_key[i % 4] for i, b in enumerate(data)])
+        if length < 126:
+            header = bytes([0x81, 0x80 | length]) + mask_key
+        else:
+            header = bytes([0x81, 0x80 | 126, (length >> 8) & 0xff, length & 0xff]) + mask_key
+        sock.sendall(header + masked_data)
+
+    def recv_ws_frame(sock):
+        hdr = sock.recv(2)
+        if not hdr: return None
+        length = hdr[1] & 0x7f
+        if length == 126:
+            ext = sock.recv(2)
+            length = (ext[0] << 8) | ext[1]
+        payload = sock.recv(length)
+        return json.loads(payload.decode('utf-8'))
+
+    print("Sending client.hello...")
+    send_ws_frame(s, '{"protocolVersion":"2.0.0","type":"client.hello","requestId":"req-1","payload":{}}')
+    welcome_msg = recv_ws_frame(s)
+    assert welcome_msg["type"] == "server.welcome"
+    assert welcome_msg["protocolVersion"] == "2.0.0"
+
+    interest_msg = recv_ws_frame(s)
+    assert interest_msg["type"] == "world.interest"
+
+    print("Sending library.open...")
+    send_ws_frame(s, '{"protocolVersion":"2.0.0","type":"library.open","requestId":"req-2","payload":{"bookId":"book-math-basics"}}')
+    lib_msg = recv_ws_frame(s)
+    assert lib_msg["type"] == "library.opened"
+    assert lib_msg["payload"]["material"]["module"]["moduleId"] == "math-basics"
+
+    print("Sending country.describe...")
+    send_ws_frame(s, '{"protocolVersion":"2.0.0","type":"country.describe","requestId":"req-3","payload":{"countryId":"country-jp","teacherId":"teacher-flags"}}')
+    country_msg = recv_ws_frame(s)
+    assert country_msg["type"] == "country.description"
+    assert country_msg["payload"]["countryId"] == "country-jp"
+
+    print("Sending competition.join...")
+    send_ws_frame(s, '{"protocolVersion":"2.0.0","type":"competition.join","requestId":"req-4","payload":{"tableId":"competition-central"}}')
+    comp_state = recv_ws_frame(s)
+    assert comp_state["type"] == "competition.state"
+    act_msg = recv_ws_frame(s)
+    assert act_msg["type"] == "activity.changed"
+    assert act_msg["payload"]["activity"]["mode"] == "seated_competition"
+
+    print("Sending client.ping...")
+    send_ws_frame(s, '{"protocolVersion":"2.0.0","type":"client.ping","requestId":"req-5","payload":{"nonce":"123"}}')
+    pong_msg = recv_ws_frame(s)
+    assert pong_msg["type"] == "server.pong"
+    assert pong_msg["payload"]["nonce"] == "123"
+
+    print("\n>>> ALL LIVE BACKEND CHECKS AND ENDPOINTS PASSED PERFECTLY! <<<")
+
+finally:
+    server_proc.terminate()
+    server_proc.kill()
