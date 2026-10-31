@@ -10,6 +10,7 @@ use crate::competition::CompetitionService;
 use crate::config::ConfigService;
 use crate::game::GameManager;
 use crate::json::{parse_json, JsonValue};
+use crate::knowledge::KnowledgeService;
 use crate::models::{ErrorResponse, TicketResponse};
 use crate::spatial::SpatialService;
 use crate::wallet::WalletService;
@@ -136,6 +137,7 @@ pub fn dispatch_http(
     ai: &Arc<NpcAiService>,
     wallet: &Arc<WalletService>,
     competition: &Arc<CompetitionService>,
+    knowledge: &Arc<KnowledgeService>,
     instance_id: &str,
 ) -> HttpResponse {
     let method = req.method.as_str();
@@ -433,10 +435,79 @@ pub fn dispatch_http(
 
     // Education Modules
     if path.ends_with("/education/modules") && method == "GET" {
-        let content = std::fs::read_to_string("assets/education/modules.json")
-            .or_else(|_| std::fs::read_to_string("discovery-protocol-1.1.0/fixtures/v1.1.0/http/modules.json"))
-            .unwrap_or_else(|_| "{\"modules\":[]}".to_string());
-        let val = parse_json(&content).unwrap_or(JsonValue::Null);
+        let val = knowledge.get_modules();
+        return HttpResponse::json(200, "OK", &val);
+    }
+
+    // Education Material
+    if path.contains("/education/modules/") && path.contains("/versions/") && method == "GET" {
+        let parts: Vec<&str> = path.split('/').collect();
+        if let Some(pos) = parts.iter().position(|&p| p == "modules") {
+            if parts.len() > pos + 3 && parts[pos + 2] == "versions" {
+                let mod_id = parts[pos + 1];
+                let ver = parts[pos + 3];
+                if let Some(mat) = knowledge.get_module_material(mod_id, ver) {
+                    return HttpResponse::json(200, "OK", &mat);
+                }
+            }
+        }
+        return HttpResponse::error(404, "NOT_FOUND", "Education material not found", false);
+    }
+
+    // Country Description for Teacher NPC
+    if path.contains("/countries/") && method == "GET" {
+        let parts: Vec<&str> = path.split('/').collect();
+        if let Some(pos) = parts.iter().position(|&p| p == "countries") {
+            if parts.len() > pos + 1 {
+                let country_id = parts[pos + 1];
+                if let Some(card) = knowledge.get_country_description(country_id) {
+                    return HttpResponse::json(200, "OK", &card);
+                }
+            }
+        }
+        return HttpResponse::error(404, "NOT_FOUND", "Country card not found", false);
+    }
+
+    // Library Books Index
+    if path.ends_with("/library/books") && method == "GET" {
+        let val = JsonValue::Object(vec![
+            ("books".to_string(), JsonValue::Array(vec![
+                JsonValue::Object(vec![
+                    ("bookId".to_string(), JsonValue::String("book-math".to_string())),
+                    ("shelfId".to_string(), JsonValue::String("shelf-math".to_string())),
+                    ("moduleId".to_string(), JsonValue::String("math-basics".to_string())),
+                    ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
+                    ("title".to_string(), JsonValue::String("Арифметика и базовые вычисления".to_string())),
+                ]),
+                JsonValue::Object(vec![
+                    ("bookId".to_string(), JsonValue::String("book-info".to_string())),
+                    ("shelfId".to_string(), JsonValue::String("shelf-informatics".to_string())),
+                    ("moduleId".to_string(), JsonValue::String("informatics-basics".to_string())),
+                    ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
+                    ("title".to_string(), JsonValue::String("Информатика и двоичные данные".to_string())),
+                ]),
+                JsonValue::Object(vec![
+                    ("bookId".to_string(), JsonValue::String("book-hist".to_string())),
+                    ("shelfId".to_string(), JsonValue::String("shelf-history".to_string())),
+                    ("moduleId".to_string(), JsonValue::String("history-basics".to_string())),
+                    ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
+                    ("title".to_string(), JsonValue::String("Исторические источники и хронология".to_string())),
+                ]),
+                JsonValue::Object(vec![
+                    ("bookId".to_string(), JsonValue::String("book-flags".to_string())),
+                    ("shelfId".to_string(), JsonValue::String("shelf-flags".to_string())),
+                    ("moduleId".to_string(), JsonValue::String("flags-basics".to_string())),
+                    ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
+                    ("title".to_string(), JsonValue::String("Атлас государственных флагов".to_string())),
+                ]),
+            ]))
+        ]);
+        return HttpResponse::json(200, "OK", &val);
+    }
+
+    // Quiz Attempts
+    if path.contains("/education/attempts") && method == "GET" {
+        let val = JsonValue::Array(Vec::new());
         return HttpResponse::json(200, "OK", &val);
     }
 
@@ -457,7 +528,7 @@ pub fn dispatch_http(
     // World Assets
     if path.contains("/assets/") && method == "GET" {
         let parts: Vec<&str> = path.split('/').collect();
-        let sha256 = parts[5];
+        let sha256 = parts.last().cloned().unwrap_or("");
         if let Some((bytes, media_type)) = spatial.get_asset_file(sha256) {
             let mut resp = HttpResponse::new(200, "OK");
             resp.headers.push(("Content-Type".to_string(), media_type.to_string()));

@@ -18,160 +18,920 @@
     },
     "sections": [
       {
-        "heading": "Основные понятия",
-        "text": "Сложение объединяет количества, вычитание находит остаток. Умножение можно понимать как сложение равных групп, деление — как разделение на равные группы. Умножение и деление выполняются раньше сложения и вычитания."
+        "heading": "Арифметика",
+        "text": "Основы сложения, вычитания, умножения и деления."
       }
     ],
     "examples": [
-      "Сложение объединяет количества: два и три дают пять.",
-      "Вычитание четырёх из семи оставляет три.",
-      "Три группы по четыре содержат двенадцать элементов.",
-      "При делении двенадцати на три равные группы в каждой будет четыре.",
-      "Сначала умножение: 3 × 4 = 12, затем 2 + 12 = 14."
+      "2 + 3 = 5"
     ],
     "keyPoints": [
-      "Сложение объединяет количества: два и три дают пять.",
-      "Вычитание четырёх из семи оставляет три.",
-      "Три группы по четыре содержат двенадцать элементов.",
-      "При делении двенадцати на три равные группы в каждой будет четыре.",
-      "Сначала умножение: 3 × 4 = 12, затем 2 + 12 = 14."
+      "Сначала умножение, затем сложение."
     ]
   },
   "questions": [
     {
       "question": {
-        "questionId": "math-basics-q1",
-        "prompt": "Сколько будет 2 + 3?",
+        "questionId": "math-q01",
+        "prompt": "Чему равна сумма чисел 25 и 17?",
+        "kind": "single_choice",
         "options": [
           {
-            "optionId": "option-1",
-            "text": "5"
+            "optionId": "opt-1",
+            "text": "42"
           },
           {
-            "optionId": "option-2",
-            "text": "4"
+            "optionId": "opt-2",
+            "text": "32"
           },
           {
-            "optionId": "option-3",
+            "optionId": "opt-3",
+            "text": "41"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "52"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-add",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-add"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "42"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Складываем десятки и единицы: 25 + 17 = 20 + 10 + 5 + 7 = 30 + 12 = 42.",
+      "difficulty": "basic",
+      "reviewTopic": "Сложение натуральных чисел"
+    },
+    {
+      "question": {
+        "questionId": "math-q02",
+        "prompt": "Чему равна разность 50 - 18?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "32"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "38"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "42"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "22"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-sub",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-sub"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "32"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Вычитаем из 50 число 18: 50 - 10 = 40, затем 40 - 8 = 32.",
+      "difficulty": "basic",
+      "reviewTopic": "Вычитание натуральных чисел"
+    },
+    {
+      "question": {
+        "questionId": "math-q03",
+        "prompt": "Чему равно произведение 7 × 8?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "54"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "56"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "64"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "48"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-mul",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-mul"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "56"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "По таблице умножения 7 × 8 = 56.",
+      "difficulty": "basic",
+      "reviewTopic": "Таблица умножения"
+    },
+    {
+      "question": {
+        "questionId": "math-q04",
+        "prompt": "Чему равен результат деления 72 : 9?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "7"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "8"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "9"
+          },
+          {
+            "optionId": "opt-4",
             "text": "6"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-div",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-div"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "8"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Деление 72 на 9 даёт 8, так как 8 × 9 = 72.",
+      "difficulty": "basic",
+      "reviewTopic": "Деление натуральных чисел"
+    },
+    {
+      "question": {
+        "questionId": "math-q05",
+        "prompt": "Вычислите значение выражения: 4 + 3 × 5",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "35"
           },
           {
-            "optionId": "option-4",
+            "optionId": "opt-2",
+            "text": "19"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "23"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "27"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-order",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-order"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "19"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Сначала выполняется умножение: 3 × 5 = 15, затем сложение: 4 + 15 = 19.",
+      "difficulty": "basic",
+      "reviewTopic": "Порядок действий"
+    },
+    {
+      "question": {
+        "questionId": "math-q06",
+        "prompt": "Вычислите значение выражения со скобками: (6 + 4) × 3",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "18"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "30"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "24"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "40"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-order-paren",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-order"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "30"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Сначала вычисляется значение в скобках: 6 + 4 = 10, затем умножение: 10 × 3 = 30.",
+      "difficulty": "basic",
+      "reviewTopic": "Скобки в выражениях"
+    },
+    {
+      "question": {
+        "questionId": "math-q07",
+        "prompt": "Чему равна сумма 148 + 0?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "0"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "148"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1480"
+          },
+          {
+            "optionId": "opt-4",
             "text": "1"
           }
         ]
       },
-      "correctOptionId": "option-1",
-      "explanation": "Сложение объединяет количества: два и три дают пять.",
-      "reviewTopic": "Математика: основные операции"
+      "questionFamilyId": "math-fam-zero-add",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-zero"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "148"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Прибавление нуля к любому числу не изменяет его значение: 148 + 0 = 148.",
+      "difficulty": "basic",
+      "reviewTopic": "Свойства нуля"
     },
     {
       "question": {
-        "questionId": "math-basics-q2",
-        "prompt": "Сколько будет 7 − 4?",
+        "questionId": "math-q08",
+        "prompt": "Чему равно произведение 45 × 0?",
+        "kind": "single_choice",
         "options": [
           {
-            "optionId": "option-1",
-            "text": "2"
+            "optionId": "opt-1",
+            "text": "45"
           },
           {
-            "optionId": "option-2",
-            "text": "3"
+            "optionId": "opt-2",
+            "text": "0"
           },
           {
-            "optionId": "option-3",
-            "text": "4"
+            "optionId": "opt-3",
+            "text": "1"
           },
           {
-            "optionId": "option-4",
-            "text": "11"
+            "optionId": "opt-4",
+            "text": "не определено"
           }
         ]
       },
-      "correctOptionId": "option-2",
-      "explanation": "Вычитание четырёх из семи оставляет три.",
-      "reviewTopic": "Математика: основные операции"
+      "questionFamilyId": "math-fam-zero-mul",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-zero"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "0"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Умножение любого числа на ноль даёт ноль.",
+      "difficulty": "basic",
+      "reviewTopic": "Умножение на ноль"
     },
     {
       "question": {
-        "questionId": "math-basics-q3",
-        "prompt": "Сколько будет 3 × 4?",
+        "questionId": "math-q09",
+        "prompt": "Чему равно произведение 37 × 1?",
+        "kind": "single_choice",
         "options": [
           {
-            "optionId": "option-1",
-            "text": "7"
+            "optionId": "opt-1",
+            "text": "1"
           },
           {
-            "optionId": "option-2",
-            "text": "10"
+            "optionId": "opt-2",
+            "text": "37"
           },
           {
-            "optionId": "option-3",
-            "text": "12"
+            "optionId": "opt-3",
+            "text": "38"
           },
           {
-            "optionId": "option-4",
-            "text": "14"
+            "optionId": "opt-4",
+            "text": "0"
           }
         ]
       },
-      "correctOptionId": "option-3",
-      "explanation": "Три группы по четыре содержат двенадцать элементов.",
-      "reviewTopic": "Математика: основные операции"
+      "questionFamilyId": "math-fam-one-mul",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-one"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "37"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При умножении любого числа на единицу получается то же самое число.",
+      "difficulty": "basic",
+      "reviewTopic": "Свойства единицы"
     },
     {
       "question": {
-        "questionId": "math-basics-q4",
-        "prompt": "Сколько будет 12 ÷ 3?",
+        "questionId": "math-q10",
+        "prompt": "Какое свойство отражает равенство: 12 + 35 = 35 + 12?",
+        "kind": "single_choice",
         "options": [
           {
-            "optionId": "option-1",
-            "text": "3"
+            "optionId": "opt-1",
+            "text": "Переместительное свойство"
           },
           {
-            "optionId": "option-2",
-            "text": "6"
+            "optionId": "opt-2",
+            "text": "Сочетательное свойство"
           },
           {
-            "optionId": "option-3",
-            "text": "9"
+            "optionId": "opt-3",
+            "text": "Распределительное свойство"
           },
           {
-            "optionId": "option-4",
-            "text": "4"
+            "optionId": "opt-4",
+            "text": "Деление с остатком"
           }
         ]
       },
-      "correctOptionId": "option-4",
-      "explanation": "При делении двенадцати на три равные группы в каждой будет четыре.",
-      "reviewTopic": "Математика: основные операции"
+      "questionFamilyId": "math-fam-comm",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-comm"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Переместительное свойство"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Переместительное свойство сложения гласит: от перестановки слагаемых сумма не меняется.",
+      "difficulty": "basic",
+      "reviewTopic": "Свойства сложения"
     },
     {
       "question": {
-        "questionId": "math-basics-q5",
-        "prompt": "Чему равно 2 + 3 × 4?",
+        "questionId": "math-q11",
+        "prompt": "Что происходит при попытке разделить число 15 на 0?",
+        "kind": "single_choice",
         "options": [
           {
-            "optionId": "option-1",
-            "text": "20"
+            "optionId": "opt-1",
+            "text": "Получается 0"
           },
           {
-            "optionId": "option-2",
-            "text": "14"
+            "optionId": "opt-2",
+            "text": "Получается 15"
           },
           {
-            "optionId": "option-3",
+            "optionId": "opt-3",
+            "text": "Деление на ноль невозможно"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Получается 1"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-div-zero",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-div"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "Деление на ноль невозможно"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В арифметике деление на ноль не определено, так как нет такого числа, которое при умножении на 0 дало бы 15.",
+      "difficulty": "basic",
+      "reviewTopic": "Деление на ноль"
+    },
+    {
+      "question": {
+        "questionId": "math-q12",
+        "prompt": "Чему равна разность 84 - 84?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "0"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "84"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "-1"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-sub-self",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-sub"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "0"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При вычитании числа из самого себя результат всегда равен нулю: a - a = 0.",
+      "difficulty": "basic",
+      "reviewTopic": "Вычитание одинаковых чисел"
+    },
+    {
+      "question": {
+        "questionId": "math-q13",
+        "prompt": "Чему равно произведение 16 × 10?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "106"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "160"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1600"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "26"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-mul-tens",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-mul"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "160"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При умножении натурального числа на 10 к нему справа приписывается один ноль: 16 × 10 = 160.",
+      "difficulty": "basic",
+      "reviewTopic": "Умножение на 10"
+    },
+    {
+      "question": {
+        "questionId": "math-q14",
+        "prompt": "Чему равен результат деления 240 : 10?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
             "text": "24"
           },
           {
-            "optionId": "option-4",
-            "text": "9"
+            "optionId": "opt-2",
+            "text": "2400"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "204"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "2.4"
           }
         ]
       },
-      "correctOptionId": "option-2",
-      "explanation": "Сначала умножение: 3 × 4 = 12, затем 2 + 12 = 14.",
-      "reviewTopic": "Математика: основные операции"
+      "questionFamilyId": "math-fam-div-tens",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-div"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "24"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При делении круглого числа на 10 у него убирается один ноль справа: 240 : 10 = 24.",
+      "difficulty": "basic",
+      "reviewTopic": "Деление на 10"
+    },
+    {
+      "question": {
+        "questionId": "math-q15",
+        "prompt": "Вычислите значение выражения: 20 - 2 × 6 + 4",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "112"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "12"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "16"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "4"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-order-complex",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-order"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "12"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Сначала умножение: 2 × 6 = 12. Затем действия слева направо: 20 - 12 = 8, и 8 + 4 = 12.",
+      "difficulty": "basic",
+      "reviewTopic": "Порядок нескольких операций"
+    },
+    {
+      "question": {
+        "questionId": "math-q16",
+        "prompt": "Чему равна сумма трёх чисел: 15 + 28 + 15?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "48"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "58"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "68"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "55"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-add-three",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-add",
+        "math-fact-comm"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "58"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Удобно сложить сначала 15 + 15 = 30, а затем 30 + 28 = 58.",
+      "difficulty": "basic",
+      "reviewTopic": "Группировка слагаемых"
+    },
+    {
+      "question": {
+        "questionId": "math-q17",
+        "prompt": "Чему равен остаток при делении 23 на 4?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "2"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "3"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "4"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-div-rem",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-div"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "3"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "23 = 4 × 5 + 3. Неполное частное равно 5, а остаток равен 3.",
+      "difficulty": "basic",
+      "reviewTopic": "Деление с остатком"
+    },
+    {
+      "question": {
+        "questionId": "math-q18",
+        "prompt": "Чему равен квадрат числа 9 (то есть 9 × 9)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "72"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "81"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "90"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "99"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-mul-square",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-mul"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "81"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Квадрат числа — это его умножение на самого себя: 9 × 9 = 81.",
+      "difficulty": "basic",
+      "reviewTopic": "Квадрат числа"
+    },
+    {
+      "question": {
+        "questionId": "math-q19",
+        "prompt": "Вычислите: 50 - (20 + 15)",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "45"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "15"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "25"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "35"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-sub-paren",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-order",
+        "math-fact-sub"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "15"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Сначала вычисляем значение в скобках: 20 + 15 = 35. Затем: 50 - 35 = 15.",
+      "difficulty": "basic",
+      "reviewTopic": "Вычитание суммы"
+    },
+    {
+      "question": {
+        "questionId": "math-q20",
+        "prompt": "Вычислите удобным способом: 5 × 17 × 2",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "170"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "85"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "340"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "150"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-mul-assoc",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-mul",
+        "math-fact-comm"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "170"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Удобно сгруппировать 5 × 2 = 10, а затем умножить на 17: 10 × 17 = 170.",
+      "difficulty": "basic",
+      "reviewTopic": "Сочетательное свойство умножения"
     }
   ]
 }

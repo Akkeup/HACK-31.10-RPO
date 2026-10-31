@@ -1,0 +1,663 @@
+{
+  "countries": [
+    {
+      "public": {
+        "countryId": "country-jp",
+        "nameRu": "Япония",
+        "descriptionSentences": [
+          "Япония — островное государство в Восточной Азии, расположенное в Тихом океане.",
+          "Столицей страны является город Токио.",
+          "Территория страны включает более четырнадцати тысяч островов, а высочайшей вершиной служит вулкан Фудзияма.",
+          "Государственный флаг представляет собой белое полотнище с красным кругом в центре."
+        ],
+        "factIds": [
+          "fact-jp-loc",
+          "fact-jp-cap",
+          "fact-jp-geo",
+          "fact-jp-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q17",
+      "acceptedNames": [
+        "Япония",
+        "Japan",
+        "Государство Япония"
+      ],
+      "capitalRu": "Токио",
+      "flagAssetId": "flag-asset-01",
+      "flagVisibleElements": "Белое прямоугольное полотнище с ярко-красным круглым диском в центре.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-fr",
+        "nameRu": "Франция",
+        "descriptionSentences": [
+          "Франция — государство в Западной Европе с выходом к Атлантическому океану и Средиземному морю.",
+          "Её столицей и крупнейшим историческим центром является Париж.",
+          "На территории страны расположены западные склоны Альп с вершиной Монблан.",
+          "Флаг страны состоит из трех вертикальных полос синего, белого и красного цвета."
+        ],
+        "factIds": [
+          "fact-fr-loc",
+          "fact-fr-cap",
+          "fact-fr-geo",
+          "fact-fr-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q142",
+      "acceptedNames": [
+        "Франция",
+        "France",
+        "Французская Республика"
+      ],
+      "capitalRu": "Париж",
+      "flagAssetId": "flag-asset-02",
+      "flagVisibleElements": "Три вертикальные полосы одинаковой ширины синего, белого и красного цветов.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-br",
+        "nameRu": "Бразилия",
+        "descriptionSentences": [
+          "Бразилия — крупнейшее государство Южной Америки, занимающее почти половину материка.",
+          "Официальной столицей государства является город Бразилиа.",
+          "Здесь протекает река Амазонка и раскинулся крупнейший в мире массив тропических дождевых лесов.",
+          "Флаг страны имеет зеленое поле с желтым ромбом и синим небесным кругом."
+        ],
+        "factIds": [
+          "fact-br-loc",
+          "fact-br-cap",
+          "fact-br-geo",
+          "fact-br-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q155",
+      "acceptedNames": [
+        "Бразилия",
+        "Brazil",
+        "Федеративная Республика Бразилия"
+      ],
+      "capitalRu": "Бразилиа",
+      "flagAssetId": "flag-asset-03",
+      "flagVisibleElements": "Зелёное полотнище с жёлтым ромбом в центре и синим кругом со звёздами и белой лентой.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-ca",
+        "nameRu": "Канада",
+        "descriptionSentences": [
+          "Канада — второе по площади государство мира, расположенное в Северной Америке.",
+          "Столицей страны является город Оттава.",
+          "Страна обладает самой протяженной береговой линией в мире и омывается тремя океанами.",
+          "На государственном флаге изображен красный одиннадцатиконечный кленовый лист на белом фоне."
+        ],
+        "factIds": [
+          "fact-ca-loc",
+          "fact-ca-cap",
+          "fact-ca-geo",
+          "fact-ca-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q16",
+      "acceptedNames": [
+        "Канада",
+        "Canada"
+      ],
+      "capitalRu": "Оттава",
+      "flagAssetId": "flag-asset-04",
+      "flagVisibleElements": "Две красные вертикальные полосы по краям, белый центральный квадрат с красным одиннадцатиконечным кленовым листом.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-de",
+        "nameRu": "Германия",
+        "descriptionSentences": [
+          "Германия — федеративное государство, расположенное в Центральной Европе.",
+          "Столицей и крупнейшим мегаполисом страны является Берлин.",
+          "Рельеф повышается с севера на юг от Северо-Германской низменности к отрогам Альп.",
+          "Флаг представляет собой горизонтальный триколор из черной, красной и золотой полос."
+        ],
+        "factIds": [
+          "fact-de-loc",
+          "fact-de-cap",
+          "fact-de-geo",
+          "fact-de-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q183",
+      "acceptedNames": [
+        "Германия",
+        "Germany",
+        "Федеративная Республика Германия"
+      ],
+      "capitalRu": "Берлин",
+      "flagAssetId": "flag-asset-05",
+      "flagVisibleElements": "Три горизонтальные равновеликие полосы чёрного, красного и золотистого (жёлтого) цветов.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-it",
+        "nameRu": "Италия",
+        "descriptionSentences": [
+          "Италия — государство на юге Европы, занимающее Апеннинский полуостров и острова Сицилия и Сардиния.",
+          "Её исторической столицей является Рим.",
+          "На территории страны расположены действующие вулканы Везувий и Этна.",
+          "Флаг государства состоит из трех вертикальных полос зеленого, белого и красного цветов."
+        ],
+        "factIds": [
+          "fact-it-loc",
+          "fact-it-cap",
+          "fact-it-geo",
+          "fact-it-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q38",
+      "acceptedNames": [
+        "Италия",
+        "Italy",
+        "Итальянская Республика"
+      ],
+      "capitalRu": "Рим",
+      "flagAssetId": "flag-asset-06",
+      "flagVisibleElements": "Три вертикальные полосы равной ширины: зелёная у древка, белая в центре и красная у свободного края.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-in",
+        "nameRu": "Индия",
+        "descriptionSentences": [
+          "Индия — крупное государство в Южной Азии, занимающее полуостров Индостан.",
+          "Столицей страны является Нью-Дели.",
+          "На севере страны возвышаются Гималаи, а по равнинам протекают священные реки Инд и Ганг.",
+          "Флаг представляет собой триколор с синим колесом из двадцати четырех спиц в центре."
+        ],
+        "factIds": [
+          "fact-in-loc",
+          "fact-in-cap",
+          "fact-in-geo",
+          "fact-in-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q668",
+      "acceptedNames": [
+        "Индия",
+        "India",
+        "Республика Индия"
+      ],
+      "capitalRu": "Нью-Дели",
+      "flagAssetId": "flag-asset-07",
+      "flagVisibleElements": "Три горизонтальные полосы шафранового, белого и зелёного цветов с синим колесом Ашока Чакра (24 спицы) в центре.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-eg",
+        "nameRu": "Египет",
+        "descriptionSentences": [
+          "Египет — трансконтинентальное государство на северо-востоке Африки и Синайском полуострове в Азии.",
+          "Столицей страны является древний город Каир.",
+          "Через всю территорию страны протекает река Нил, оазисы которой окружены пустынями Сахарой и Аравийской.",
+          "Флаг состоит из красной, белой и черной полос с золотым орлом в центре."
+        ],
+        "factIds": [
+          "fact-eg-loc",
+          "fact-eg-cap",
+          "fact-eg-geo",
+          "fact-eg-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q79",
+      "acceptedNames": [
+        "Египет",
+        "Egypt",
+        "Арабская Республика Египет"
+      ],
+      "capitalRu": "Каир",
+      "flagAssetId": "flag-asset-08",
+      "flagVisibleElements": "Три горизонтальные полосы красного, белого и чёрного цветов с золотым орлом Саладина на белой полосе.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-au",
+        "nameRu": "Австралия",
+        "descriptionSentences": [
+          "Австралия — государство, занимающее целый одноименный материк в Южном полушарии.",
+          "Столицей государства является специально построенный город Канберра.",
+          "Вдоль северо-восточного побережья тянется Большой Барьерный риф, крупнейший коралловый риф планеты.",
+          "На синем полотнище флага изображен британский флаг в углу и белые звезды Южного Креста."
+        ],
+        "factIds": [
+          "fact-au-loc",
+          "fact-au-cap",
+          "fact-au-geo",
+          "fact-au-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q408",
+      "acceptedNames": [
+        "Австралия",
+        "Australia",
+        "Австралийский Союз"
+      ],
+      "capitalRu": "Канберра",
+      "flagAssetId": "flag-asset-09",
+      "flagVisibleElements": "Синее полотнище с флагом Великобритании в левом верхнем углу, большой семиконечной звездой под ним и созвездием Южного Креста справа.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-gr",
+        "nameRu": "Греция",
+        "descriptionSentences": [
+          "Греция — государство на юге Балканского полуострова в Южной Европе.",
+          "Столицей страны и колыбелью античной демократии являются Афины.",
+          "Около двадцати процентов площади страны приходится на многочисленные острова в Эгейском и Ионическом морях.",
+          "Флаг состоит из девяти сине-белых полос и белого креста в левом верхнем углу."
+        ],
+        "factIds": [
+          "fact-gr-loc",
+          "fact-gr-cap",
+          "fact-gr-geo",
+          "fact-gr-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q41",
+      "acceptedNames": [
+        "Греция",
+        "Greece",
+        "Греческая Республика"
+      ],
+      "capitalRu": "Афины",
+      "flagAssetId": "flag-asset-10",
+      "flagVisibleElements": "Девять чередующихся синих и белых горизонтальных полос с белым равносторонним крестом в синем квадрате у древка.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-ar",
+        "nameRu": "Аргентина",
+        "descriptionSentences": [
+          "Аргентина — второе по площади государство Южной Америки, протянувшееся вдоль горной цепи Анд.",
+          "Её столицей служит портовый город Буэнос-Айрес.",
+          "На территории страны находится вершина Аконкагуа, высочайшая точка Западного полушария.",
+          "На флаге между двумя голубыми полосами расположено изображение золотого солнца."
+        ],
+        "factIds": [
+          "fact-ar-loc",
+          "fact-ar-cap",
+          "fact-ar-geo",
+          "fact-ar-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q414",
+      "acceptedNames": [
+        "Аргентина",
+        "Argentina",
+        "Аргентинская Республика"
+      ],
+      "capitalRu": "Буэнос-Айрес",
+      "flagAssetId": "flag-asset-11",
+      "flagVisibleElements": "Три горизонтальные полосы: светло-синяя, белая и светло-синяя, с золотистым Майским солнцем в центре белой полосы.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-se",
+        "nameRu": "Швеция",
+        "descriptionSentences": [
+          "Швеция — скандинавское государство на севере Европы, омываемое Балтийским морем.",
+          "Столицей государства является город Стокгольм, расположенный на четырнадцати островах.",
+          "Большую часть территории покрывают хвойные таежные леса и тысячи пресноводных озер.",
+          "Флаг страны синего цвета с характерным желтым скандинавским крестом."
+        ],
+        "factIds": [
+          "fact-se-loc",
+          "fact-se-cap",
+          "fact-se-geo",
+          "fact-se-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q34",
+      "acceptedNames": [
+        "Швеция",
+        "Sweden",
+        "Королевство Швеция"
+      ],
+      "capitalRu": "Стокгольм",
+      "flagAssetId": "flag-asset-12",
+      "flagVisibleElements": "Синее прямоугольное полотнище со скандинавским жёлтым крестом, смещённым влево к древку.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-ch",
+        "nameRu": "Швейцария",
+        "descriptionSentences": [
+          "Швейцария — альпийское государство в Центральной Европе, не имеющее выхода к морю.",
+          "Федеральным центром и фактической столицей Конфедерации является город Берн.",
+          "Значительную часть страны занимают Альпы и Юрские горы с живописными ледниками.",
+          "Государственный флаг имеет редкую квадратную форму с белым крестом на красном поле."
+        ],
+        "factIds": [
+          "fact-ch-loc",
+          "fact-ch-cap",
+          "fact-ch-geo",
+          "fact-ch-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q39",
+      "acceptedNames": [
+        "Швейцария",
+        "Switzerland",
+        "Швейцарская Конфедерация"
+      ],
+      "capitalRu": "Берн",
+      "flagAssetId": "flag-asset-13",
+      "flagVisibleElements": "Красное квадратное полотнище с белым прямым равносторонним крестом в центре.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-tr",
+        "nameRu": "Турция",
+        "descriptionSentences": [
+          "Турция — государство, расположенное одновременно в Юго-Западной Азии и Юго-Восточной Европе.",
+          "Официальной столицей государства является город Анкара.",
+          "Проливы Босфор и Дарданеллы соединяют Черное море со Средиземным через Мраморное море.",
+          "Флаг страны красного цвета с белым полумесяцем и пятиконечной звездой."
+        ],
+        "factIds": [
+          "fact-tr-loc",
+          "fact-tr-cap",
+          "fact-tr-geo",
+          "fact-tr-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q43",
+      "acceptedNames": [
+        "Турция",
+        "Turkey",
+        "Турецкая Республика"
+      ],
+      "capitalRu": "Анкара",
+      "flagAssetId": "flag-asset-14",
+      "flagVisibleElements": "Красное полотнище с белым полумесяцем и белой пятиконечной звездой в центре.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-kr",
+        "nameRu": "Республика Корея",
+        "descriptionSentences": [
+          "Республика Корея — государство в Восточной Азии, расположенное на юге Корейского полуострова.",
+          "Её столицей и крупнейшим городом является Сеул.",
+          "Около семидесяти процентов площади страны занимают живописные горные хребты и возвышенности.",
+          "На белом фоне флага изображен красно-синий символ гармонии и четыре черные триграммы."
+        ],
+        "factIds": [
+          "fact-kr-loc",
+          "fact-kr-cap",
+          "fact-kr-geo",
+          "fact-kr-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q884",
+      "acceptedNames": [
+        "Республика Корея",
+        "Южная Корея",
+        "South Korea"
+      ],
+      "capitalRu": "Сеул",
+      "flagAssetId": "flag-asset-15",
+      "flagVisibleElements": "Белое полотнище с красно-синим кругом тхэгык в центре и четырьмя чёрными триграммами по углам.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-mx",
+        "nameRu": "Мексика",
+        "descriptionSentences": [
+          "Мексика — государство в южной части Северной Америки, омываемое Тихим океаном и Мексиканским заливом.",
+          "Столицей страны является город Мехико, основанный на месте древнего Теночтитлана.",
+          "На территории страны протянулись горные цепи Восточной и Западной Сьерра-Мадре с вулканом Орисаба.",
+          "Флаг представляет собой зелено-бело-красный триколор с гербовым орлом на белой полосе."
+        ],
+        "factIds": [
+          "fact-mx-loc",
+          "fact-mx-cap",
+          "fact-mx-geo",
+          "fact-mx-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q96",
+      "acceptedNames": [
+        "Мексика",
+        "Mexico",
+        "Мексиканские Соединённые Штаты"
+      ],
+      "capitalRu": "Мехико",
+      "flagAssetId": "flag-asset-16",
+      "flagVisibleElements": "Три вертикальные полосы: зелёная, белая и красная, с государственным гербом (орёл на кактусе со змеёй) в центре.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-no",
+        "nameRu": "Норвегия",
+        "descriptionSentences": [
+          "Норвегия — северное европейское государство, занимающее западную часть Скандинавского полуострова.",
+          "Столицей королевства является город Осло на берегу Осло-фьорда.",
+          "Побережье страны изрезано тысячами глубоких живописных морских фьордов.",
+          "Флаг имеет красное поле с синим скандинавским крестом в белой окантовке."
+        ],
+        "factIds": [
+          "fact-no-loc",
+          "fact-no-cap",
+          "fact-no-geo",
+          "fact-no-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q20",
+      "acceptedNames": [
+        "Норвегия",
+        "Norway",
+        "Королевство Норвегия"
+      ],
+      "capitalRu": "Осло",
+      "flagAssetId": "flag-asset-17",
+      "flagVisibleElements": "Красное полотнище с тёмно-синим скандинавским крестом с белой каймой.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-fi",
+        "nameRu": "Финляндия",
+        "descriptionSentences": [
+          "Финляндия — государство в Северной Европе, омываемое Балтийским морем и его заливами.",
+          "Столицей государства является приморский город Хельсинки.",
+          "Страну часто называют краем тысячи озер, ведь на ее территории находится около ста восьмидесяти тысяч водоемов.",
+          "Флаг представляет собой белый прямоугольник с синим скандинавским крестом."
+        ],
+        "factIds": [
+          "fact-fi-loc",
+          "fact-fi-cap",
+          "fact-fi-geo",
+          "fact-fi-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q33",
+      "acceptedNames": [
+        "Финляндия",
+        "Finland",
+        "Финляндская Республика"
+      ],
+      "capitalRu": "Хельсинки",
+      "flagAssetId": "flag-asset-18",
+      "flagVisibleElements": "Белое прямоугольное полотнище с синим скандинавским крестом.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-es",
+        "nameRu": "Испания",
+        "descriptionSentences": [
+          "Испания — государство на юго-западе Европы, занимающее большую часть Пиренейского полуострова.",
+          "Столицей королевства является город Мадрид, расположенный в самом центре страны.",
+          "Значительную часть территории занимает обширное плоскогорье Месета и горные цепи Пиренеев.",
+          "Флаг состоит из красной, широкой желтой и красной полос с гербом со стороны древка."
+        ],
+        "factIds": [
+          "fact-es-loc",
+          "fact-es-cap",
+          "fact-es-geo",
+          "fact-es-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q29",
+      "acceptedNames": [
+        "Испания",
+        "Spain",
+        "Королевство Испания"
+      ],
+      "capitalRu": "Мадрид",
+      "flagAssetId": "flag-asset-19",
+      "flagVisibleElements": "Три горизонтальные полосы: красная, жёлтая (двойной ширины) и красная, с государственным гербом у древка.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    },
+    {
+      "public": {
+        "countryId": "country-kz",
+        "nameRu": "Казахстан",
+        "descriptionSentences": [
+          "Казахстан — крупнейшее государство Центральной Азии, не имеющее выхода к Мировому океану.",
+          "Столицей республики является город Астана на реке Ишим.",
+          "Большую часть территории занимают бескрайние степи, полупустыни и горные цепи Тянь-Шаня.",
+          "На лазурно-голубом полотнище флага сияет золотое солнце с парящим степным орлом."
+        ],
+        "factIds": [
+          "fact-kz-loc",
+          "fact-kz-cap",
+          "fact-kz-geo",
+          "fact-kz-flag"
+        ],
+        "contentVersion": "v1",
+        "synthetic": false
+      },
+      "wikidataId": "Q232",
+      "acceptedNames": [
+        "Казахстан",
+        "Kazakhstan",
+        "Республика Казахстан"
+      ],
+      "capitalRu": "Астана",
+      "flagAssetId": "flag-asset-20",
+      "flagVisibleElements": "Лазурно-голубое полотнище с золотым солнцем с 32 лучами, парящим степным беркутом в центре и национальным орнаментом у древка.",
+      "sourceIds": [
+        "source-wikidata-country-dump",
+        "source-wikimedia-commons-flags"
+      ]
+    }
+  ]
+}

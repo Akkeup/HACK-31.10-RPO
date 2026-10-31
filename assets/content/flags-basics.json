@@ -1,0 +1,1253 @@
+{
+  "module": {
+    "moduleId": "flags-basics",
+    "subject": "geography_flags",
+    "title": "География: страны и флаги",
+    "contentVersion": "v1",
+    "teacherId": "teacher-flags",
+    "examinerId": "examiner-flags"
+  },
+  "material": {
+    "module": {
+      "moduleId": "flags-basics",
+      "subject": "geography_flags",
+      "title": "География: страны и флаги",
+      "contentVersion": "v1",
+      "teacherId": "teacher-flags",
+      "examinerId": "examiner-flags"
+    },
+    "sections": [
+      {
+        "heading": "Страны и флаги",
+        "text": "Государственные флаги и географические сведения."
+      }
+    ],
+    "examples": [
+      "Белый флаг с красным кругом — Япония."
+    ],
+    "keyPoints": [
+      "Каждая страна имеет уникальный флаг."
+    ]
+  },
+  "questions": [
+    {
+      "question": {
+        "questionId": "flag-q01",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-01",
+          "sha256": "3f2a49ee7bb70bb53be2a3c182cd0bb7bff3c2acc6639b74fe8405e39a8565c5",
+          "byteSize": 190,
+          "url": "/api/v2/worlds/discovery-campus/assets/3f2a49ee7bb70bb53be2a3c182cd0bb7bff3c2acc6639b74fe8405e39a8565c5",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Япония"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Китай"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Республика Корея"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Вьетнам"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-jp",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-jp-loc",
+        "fact-jp-cap",
+        "fact-jp-geo",
+        "fact-jp-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Япония",
+          "Japan",
+          "Государство Япония"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Япония. Особенности полотнища: Белое прямоугольное полотнище с ярко-красным круглым диском в центре.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q02",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-02",
+          "sha256": "d9404fa8afc895bde34bd7115971be0388e7f33873bb03c05e966525bb98ed57",
+          "byteSize": 250,
+          "url": "/api/v2/worlds/discovery-campus/assets/d9404fa8afc895bde34bd7115971be0388e7f33873bb03c05e966525bb98ed57",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Франция"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Италия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Нидерланды"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Бельгия"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-fr",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-fr-loc",
+        "fact-fr-cap",
+        "fact-fr-geo",
+        "fact-fr-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Франция",
+          "France",
+          "Французская Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Франция. Особенности полотнища: Три вертикальные полосы одинаковой ширины синего, белого и красного цветов.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q03",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-03",
+          "sha256": "2167853db01b687cdb3863a6a15f1d2f2a77ded2987854db6267c47a9f77a47e",
+          "byteSize": 343,
+          "url": "/api/v2/worlds/discovery-campus/assets/2167853db01b687cdb3863a6a15f1d2f2a77ded2987854db6267c47a9f77a47e",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Бразилия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Аргентина"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Колумбия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Перу"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-br",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-br-loc",
+        "fact-br-cap",
+        "fact-br-geo",
+        "fact-br-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Бразилия",
+          "Brazil",
+          "Федеративная Республика Бразилия"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Бразилия. Особенности полотнища: Зелёное полотнище с жёлтым ромбом в центре и синим кругом со звёздами и белой лентой.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q04",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-04",
+          "sha256": "173c3ba072edcada576b6efb737014e4c802482f53f8c8d97085592e0f64172e",
+          "byteSize": 490,
+          "url": "/api/v2/worlds/discovery-campus/assets/173c3ba072edcada576b6efb737014e4c802482f53f8c8d97085592e0f64172e",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Канада"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "США"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Австралия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Великобритания"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-ca",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-ca-loc",
+        "fact-ca-cap",
+        "fact-ca-geo",
+        "fact-ca-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Канада",
+          "Canada"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Канада. Особенности полотнища: Две красные вертикальные полосы по краям, белый центральный квадрат с красным одиннадцатиконечным кленовым листом.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q05",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-05",
+          "sha256": "eae6c394f845a309c2a43f1cb0286b664edc1a1e5eff8453842db94c87e58d6d",
+          "byteSize": 255,
+          "url": "/api/v2/worlds/discovery-campus/assets/eae6c394f845a309c2a43f1cb0286b664edc1a1e5eff8453842db94c87e58d6d",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Германия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Бельгия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Австрия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Польша"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-de",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-de-loc",
+        "fact-de-cap",
+        "fact-de-geo",
+        "fact-de-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Германия",
+          "Germany",
+          "Федеративная Республика Германия"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Германия. Особенности полотнища: Три горизонтальные равновеликие полосы чёрного, красного и золотистого (жёлтого) цветов.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q06",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-06",
+          "sha256": "5315104c7b3ffc06483ecee87691ca0a76bbf52cc6a7e64275773f34e5ad9560",
+          "byteSize": 250,
+          "url": "/api/v2/worlds/discovery-campus/assets/5315104c7b3ffc06483ecee87691ca0a76bbf52cc6a7e64275773f34e5ad9560",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Италия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Мексика"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Ирландия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Венгрия"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-it",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-it-loc",
+        "fact-it-cap",
+        "fact-it-geo",
+        "fact-it-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Италия",
+          "Italy",
+          "Итальянская Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Италия. Особенности полотнища: Три вертикальные полосы равной ширины: зелёная у древка, белая в центре и красная у свободного края.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q07",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-07",
+          "sha256": "9ceab9c42e93a1ca1164d173b5c53934d162c89652a7440615d2f65b04e6d110",
+          "byteSize": 379,
+          "url": "/api/v2/worlds/discovery-campus/assets/9ceab9c42e93a1ca1164d173b5c53934d162c89652a7440615d2f65b04e6d110",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Индия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Пакистан"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Бангладеш"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Непал"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-in",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-in-loc",
+        "fact-in-cap",
+        "fact-in-geo",
+        "fact-in-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Индия",
+          "India",
+          "Республика Индия"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Индия. Особенности полотнища: Три горизонтальные полосы шафранового, белого и зелёного цветов с синим колесом Ашока Чакра (24 спицы) в центре.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q08",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-08",
+          "sha256": "b2c1a17664613eb1b5aefa28f1126f8e49f1614c97ef7ed533ca22fecf984bef",
+          "byteSize": 369,
+          "url": "/api/v2/worlds/discovery-campus/assets/b2c1a17664613eb1b5aefa28f1126f8e49f1614c97ef7ed533ca22fecf984bef",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Египет"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Ирак"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Сирия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Судан"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-eg",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-eg-loc",
+        "fact-eg-cap",
+        "fact-eg-geo",
+        "fact-eg-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Египет",
+          "Egypt",
+          "Арабская Республика Египет"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Египет. Особенности полотнища: Три горизонтальные полосы красного, белого и чёрного цветов с золотым орлом Саладина на белой полосе.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q09",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-09",
+          "sha256": "8565614f50b04698d897fb9304b8b6b78b5c75c9ad44c9be20923877d587b9c1",
+          "byteSize": 549,
+          "url": "/api/v2/worlds/discovery-campus/assets/8565614f50b04698d897fb9304b8b6b78b5c75c9ad44c9be20923877d587b9c1",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Австралия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Новая Зеландия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Великобритания"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Фиджи"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-au",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-au-loc",
+        "fact-au-cap",
+        "fact-au-geo",
+        "fact-au-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Австралия",
+          "Australia",
+          "Австралийский Союз"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Австралия. Особенности полотнища: Синее полотнище с флагом Великобритании в левом верхнем углу, большой семиконечной звездой под ним и созвездием Южного Креста справа.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q10",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-10",
+          "sha256": "118774b08e39aa0abbed4b2a1e6195c3dc4a1ecfcfdebd45f29b48ee17fe59a1",
+          "byteSize": 510,
+          "url": "/api/v2/worlds/discovery-campus/assets/118774b08e39aa0abbed4b2a1e6195c3dc4a1ecfcfdebd45f29b48ee17fe59a1",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Греция"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Кипр"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Финляндия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Израиль"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-gr",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-gr-loc",
+        "fact-gr-cap",
+        "fact-gr-geo",
+        "fact-gr-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Греция",
+          "Greece",
+          "Греческая Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Греция. Особенности полотнища: Девять чередующихся синих и белых горизонтальных полос с белым равносторонним крестом в синем квадрате у древка.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q11",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-11",
+          "sha256": "92bcb011cd2d428c6db9d4d2d1b87169d745e92c73884efaec3e86b9b3bc617f",
+          "byteSize": 379,
+          "url": "/api/v2/worlds/discovery-campus/assets/92bcb011cd2d428c6db9d4d2d1b87169d745e92c73884efaec3e86b9b3bc617f",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Аргентина"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Уругвай"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Парагвай"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Чили"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-ar",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-ar-loc",
+        "fact-ar-cap",
+        "fact-ar-geo",
+        "fact-ar-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Аргентина",
+          "Argentina",
+          "Аргентинская Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Аргентина. Особенности полотнища: Три горизонтальные полосы: светло-синяя, белая и светло-синяя, с золотистым Майским солнцем в центре белой полосы.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q12",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-12",
+          "sha256": "a98216b170ccd0870d8de0db187777810a5397eeaf7e7d9e5bf179dbd08b0c58",
+          "byteSize": 250,
+          "url": "/api/v2/worlds/discovery-campus/assets/a98216b170ccd0870d8de0db187777810a5397eeaf7e7d9e5bf179dbd08b0c58",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Швеция"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Норвегия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Финляндия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Дания"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-se",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-se-loc",
+        "fact-se-cap",
+        "fact-se-geo",
+        "fact-se-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Швеция",
+          "Sweden",
+          "Королевство Швеция"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Швеция. Особенности полотнища: Синее прямоугольное полотнище со скандинавским жёлтым крестом, смещённым влево к древку.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q13",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-13",
+          "sha256": "c04830c64f73b9cb4ec52a408a5803b406ea44688cf5b66ee650f9df9fd80f01",
+          "byteSize": 266,
+          "url": "/api/v2/worlds/discovery-campus/assets/c04830c64f73b9cb4ec52a408a5803b406ea44688cf5b66ee650f9df9fd80f01",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Швейцария"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Австрия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Дания"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Чехия"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-ch",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-ch-loc",
+        "fact-ch-cap",
+        "fact-ch-geo",
+        "fact-ch-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Швейцария",
+          "Switzerland",
+          "Швейцарская Конфедерация"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Швейцария. Особенности полотнища: Красное квадратное полотнище с белым прямым равносторонним крестом в центре.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q14",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-14",
+          "sha256": "e02391bb00afc7010348b2cb7bf858d9cbac41f307d3b1afc33799ea4256c400",
+          "byteSize": 354,
+          "url": "/api/v2/worlds/discovery-campus/assets/e02391bb00afc7010348b2cb7bf858d9cbac41f307d3b1afc33799ea4256c400",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Турция"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Азербайджан"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Тунис"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Греция"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-tr",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-tr-loc",
+        "fact-tr-cap",
+        "fact-tr-geo",
+        "fact-tr-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Турция",
+          "Turkey",
+          "Турецкая Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Турция. Особенности полотнища: Красное полотнище с белым полумесяцем и белой пятиконечной звездой в центре.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q15",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-15",
+          "sha256": "202bbb25568aafb4f9d48ba3f7c1143326e04063a05b188a835240afa9e05383",
+          "byteSize": 537,
+          "url": "/api/v2/worlds/discovery-campus/assets/202bbb25568aafb4f9d48ba3f7c1143326e04063a05b188a835240afa9e05383",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Республика Корея"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Япония"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Китай"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Монголия"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-kr",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-kr-loc",
+        "fact-kr-cap",
+        "fact-kr-geo",
+        "fact-kr-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Республика Корея",
+          "Южная Корея",
+          "South Korea"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Республика Корея. Особенности полотнища: Белое полотнище с красно-синим кругом тхэгык в центре и четырьмя чёрными триграммами по углам.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q16",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-16",
+          "sha256": "de671998d655b698b4258c7854e4ff60f08995fe0100e6a5cfd04f8c399ac651",
+          "byteSize": 355,
+          "url": "/api/v2/worlds/discovery-campus/assets/de671998d655b698b4258c7854e4ff60f08995fe0100e6a5cfd04f8c399ac651",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Мексика"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Италия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Гватемала"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Испания"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-mx",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-mx-loc",
+        "fact-mx-cap",
+        "fact-mx-geo",
+        "fact-mx-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Мексика",
+          "Mexico",
+          "Мексиканские Соединённые Штаты"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Мексика. Особенности полотнища: Три вертикальные полосы: зелёная, белая и красная, с государственным гербом (орёл на кактусе со змеёй) в центре.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q17",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-17",
+          "sha256": "20fbf778498830a74cbf39e4a5d78b1355b7b0112bd99f78a6258ae6dd2ab30b",
+          "byteSize": 358,
+          "url": "/api/v2/worlds/discovery-campus/assets/20fbf778498830a74cbf39e4a5d78b1355b7b0112bd99f78a6258ae6dd2ab30b",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Норвегия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Исландия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Швеция"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Дания"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-no",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-no-loc",
+        "fact-no-cap",
+        "fact-no-geo",
+        "fact-no-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Норвегия",
+          "Norway",
+          "Королевство Норвегия"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Норвегия. Особенности полотнища: Красное полотнище с тёмно-синим скандинавским крестом с белой каймой.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q18",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-18",
+          "sha256": "2a5e2f37d964cf12179a0296265d0a67563f1c93ad0b3cb4c45782ba0eab1e15",
+          "byteSize": 250,
+          "url": "/api/v2/worlds/discovery-campus/assets/2a5e2f37d964cf12179a0296265d0a67563f1c93ad0b3cb4c45782ba0eab1e15",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Финляндия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Швеция"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Греция"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Эстония"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-fi",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-fi-loc",
+        "fact-fi-cap",
+        "fact-fi-geo",
+        "fact-fi-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Финляндия",
+          "Finland",
+          "Финляндская Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Финляндия. Особенности полотнища: Белое прямоугольное полотнище с синим скандинавским крестом.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q19",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-19",
+          "sha256": "d624d9de7b8fd886787b2f99ca75b73d56f33bb8a22b728fa821ec3e6109d32e",
+          "byteSize": 360,
+          "url": "/api/v2/worlds/discovery-campus/assets/d624d9de7b8fd886787b2f99ca75b73d56f33bb8a22b728fa821ec3e6109d32e",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Испания"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Португалия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Франция"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Андорра"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-es",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-es-loc",
+        "fact-es-cap",
+        "fact-es-geo",
+        "fact-es-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Испания",
+          "Spain",
+          "Королевство Испания"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Испания. Особенности полотнища: Три горизонтальные полосы: красная, жёлтая (двойной ширины) и красная, с государственным гербом у древка.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q20",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-20",
+          "sha256": "d7dc002ce7bdbd1fb775fe27f40e629ee03049ab2702d036fdc5b6d153e16456",
+          "byteSize": 319,
+          "url": "/api/v2/worlds/discovery-campus/assets/d7dc002ce7bdbd1fb775fe27f40e629ee03049ab2702d036fdc5b6d153e16456",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Казахстан"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Узбекистан"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Кыргызстан"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Монголия"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-kz",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-kz-loc",
+        "fact-kz-cap",
+        "fact-kz-geo",
+        "fact-kz-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Казахстан",
+          "Kazakhstan",
+          "Республика Казахстан"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Казахстан. Особенности полотнища: Лазурно-голубое полотнище с золотым солнцем с 32 лучами, парящим степным беркутом в центре и национальным орнаментом у древка.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    }
+  ]
+}

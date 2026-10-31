@@ -221,3 +221,93 @@ impl NpcAiService {
         let _ = self.db.execute(&sql);
     }
 }
+
+// LLM Question Drafting and Country Teacher Generator
+impl NpcAiService {
+    pub fn build_country_teacher_prompt(country_name: &str, facts: &[&str], flag_visible: &str) -> String {
+        format!(
+            "Ты преподаватель читального зала. По COUNTRY_FACTS составь ровно 3–4 коротких предложения на русском, \
+максимум 80 слов. Назови страну/географическое положение; столицу только если однозначна в фактах; \
+добавь 1–2 подтверждённых факта. Флаг описывай только по переданной записи. \
+Не придумывай символику, статистику, даты. Если фактов мало, status=insufficient_data. \
+Верни JSON со свойствами: status, descriptionSentences, usedFactIds. Не добавляй списки и вступления.\n\n\
+COUNTRY_FACTS:\nСтрана: {}\nВидимый флаг: {}\nФакты:\n{}",
+            country_name, flag_visible, facts.join("\n")
+        )
+    }
+
+    pub fn validate_drafted_description(sentences: &[String]) -> Result<(), &'static str> {
+        if sentences.len() < 3 || sentences.len() > 4 {
+            return Err("INVALID_SENTENCE_COUNT");
+        }
+        let total_text = sentences.join(" ");
+        let words: Vec<&str> = total_text.split_whitespace().collect();
+        if words.len() > 80 {
+            return Err("EXCEEDED_80_WORDS");
+        }
+        for s in sentences {
+            if !s.ends_with('.') {
+                return Err("SENTENCE_MUST_END_WITH_PERIOD");
+            }
+            let inner = &s[..s.len() - 1];
+            if inner.contains('.') || inner.contains('!') || inner.contains('?') {
+                return Err("INTERNAL_SENTENCE_SPLIT_DETECTED");
+            }
+        }
+        Ok(())
+    }
+}
+
+impl NpcAiService {
+    pub fn call_ollama(&self, prompt: &str) -> Result<String, &'static str> {
+        use std::io::{Read, Write};
+        use std::net::TcpStream;
+        use std::time::Duration;
+
+        let host = std::env::var("OLLAMA_HOST").unwrap_or_else(|_| "127.0.0.1:11434".to_string());
+        let mut stream = TcpStream::connect_timeout(
+            &host.parse().map_err(|_| "OLLAMA_HOST_PARSE_ERROR")?,
+            Duration::from_millis(500),
+        ).map_err(|_| "OLLAMA_CONNECT_TIMEOUT")?;
+
+        stream.set_read_timeout(Some(Duration::from_secs(3))).ok();
+        stream.set_write_timeout(Some(Duration::from_secs(1))).ok();
+
+        let req_body = format!(
+            "{{\"model\":\"qwen2.5:3b\",\"prompt\":{},\"stream\":false,\"format\":\"json\"}}",
+            JsonValue::String(prompt.to_string()).to_string()
+        );
+        let http_req = format!(
+            "POST /api/generate HTTP/1.1\r\nHost: {}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{}",
+            host, req_body.len(), req_body
+        );
+
+        stream.write_all(http_req.as_bytes()).map_err(|_| "OLLAMA_WRITE_ERROR")?;
+        let mut resp = String::new();
+        stream.read_to_string(&mut resp).map_err(|_| "OLLAMA_READ_ERROR")?;
+
+        if let Some(pos) = resp.find("\r\n\r\n") {
+            let body = &resp[pos + 4..];
+            if let Ok(json) = parse_json(body) {
+                if let Some(ans) = json.get_str("response") {
+                    return Ok(ans.to_string());
+                }
+            }
+        }
+        Err("OLLAMA_EMPTY_RESPONSE")
+    }
+
+    pub fn validate_drafted_options(options: &[String], correct_idx: usize) -> Result<(), &'static str> {
+        if options.len() != 4 {
+            return Err("MUST_HAVE_EXACTLY_4_OPTIONS");
+        }
+        let set: HashSet<String> = options.iter().map(|s| s.trim().to_lowercase()).collect();
+        if set.len() != 4 {
+            return Err("DUPLICATE_OPTIONS_DETECTED");
+        }
+        if correct_idx >= options.len() {
+            return Err("CORRECT_OPTION_INDEX_OUT_OF_BOUNDS");
+        }
+        Ok(())
+    }
+}

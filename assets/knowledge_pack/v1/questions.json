@@ -1,0 +1,3950 @@
+{
+  "questions": [
+    {
+      "question": {
+        "questionId": "math-q01",
+        "prompt": "Чему равна сумма чисел 25 и 17?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "42"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "32"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "41"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "52"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-add",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-add"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "42"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Складываем десятки и единицы: 25 + 17 = 20 + 10 + 5 + 7 = 30 + 12 = 42.",
+      "difficulty": "basic",
+      "reviewTopic": "Сложение натуральных чисел"
+    },
+    {
+      "question": {
+        "questionId": "math-q02",
+        "prompt": "Чему равна разность 50 - 18?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "32"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "38"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "42"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "22"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-sub",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-sub"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "32"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Вычитаем из 50 число 18: 50 - 10 = 40, затем 40 - 8 = 32.",
+      "difficulty": "basic",
+      "reviewTopic": "Вычитание натуральных чисел"
+    },
+    {
+      "question": {
+        "questionId": "math-q03",
+        "prompt": "Чему равно произведение 7 × 8?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "54"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "56"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "64"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "48"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-mul",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-mul"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "56"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "По таблице умножения 7 × 8 = 56.",
+      "difficulty": "basic",
+      "reviewTopic": "Таблица умножения"
+    },
+    {
+      "question": {
+        "questionId": "math-q04",
+        "prompt": "Чему равен результат деления 72 : 9?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "7"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "8"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "9"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "6"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-div",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-div"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "8"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Деление 72 на 9 даёт 8, так как 8 × 9 = 72.",
+      "difficulty": "basic",
+      "reviewTopic": "Деление натуральных чисел"
+    },
+    {
+      "question": {
+        "questionId": "math-q05",
+        "prompt": "Вычислите значение выражения: 4 + 3 × 5",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "35"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "19"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "23"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "27"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-order",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-order"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "19"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Сначала выполняется умножение: 3 × 5 = 15, затем сложение: 4 + 15 = 19.",
+      "difficulty": "basic",
+      "reviewTopic": "Порядок действий"
+    },
+    {
+      "question": {
+        "questionId": "math-q06",
+        "prompt": "Вычислите значение выражения со скобками: (6 + 4) × 3",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "18"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "30"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "24"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "40"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-order-paren",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-order"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "30"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Сначала вычисляется значение в скобках: 6 + 4 = 10, затем умножение: 10 × 3 = 30.",
+      "difficulty": "basic",
+      "reviewTopic": "Скобки в выражениях"
+    },
+    {
+      "question": {
+        "questionId": "math-q07",
+        "prompt": "Чему равна сумма 148 + 0?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "0"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "148"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1480"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "1"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-zero-add",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-zero"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "148"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Прибавление нуля к любому числу не изменяет его значение: 148 + 0 = 148.",
+      "difficulty": "basic",
+      "reviewTopic": "Свойства нуля"
+    },
+    {
+      "question": {
+        "questionId": "math-q08",
+        "prompt": "Чему равно произведение 45 × 0?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "45"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "0"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "не определено"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-zero-mul",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-zero"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "0"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Умножение любого числа на ноль даёт ноль.",
+      "difficulty": "basic",
+      "reviewTopic": "Умножение на ноль"
+    },
+    {
+      "question": {
+        "questionId": "math-q09",
+        "prompt": "Чему равно произведение 37 × 1?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "37"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "38"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "0"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-one-mul",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-one"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "37"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При умножении любого числа на единицу получается то же самое число.",
+      "difficulty": "basic",
+      "reviewTopic": "Свойства единицы"
+    },
+    {
+      "question": {
+        "questionId": "math-q10",
+        "prompt": "Какое свойство отражает равенство: 12 + 35 = 35 + 12?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Переместительное свойство"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Сочетательное свойство"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Распределительное свойство"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Деление с остатком"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-comm",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-comm"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Переместительное свойство"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Переместительное свойство сложения гласит: от перестановки слагаемых сумма не меняется.",
+      "difficulty": "basic",
+      "reviewTopic": "Свойства сложения"
+    },
+    {
+      "question": {
+        "questionId": "math-q11",
+        "prompt": "Что происходит при попытке разделить число 15 на 0?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Получается 0"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Получается 15"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Деление на ноль невозможно"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Получается 1"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-div-zero",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-div"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "Деление на ноль невозможно"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В арифметике деление на ноль не определено, так как нет такого числа, которое при умножении на 0 дало бы 15.",
+      "difficulty": "basic",
+      "reviewTopic": "Деление на ноль"
+    },
+    {
+      "question": {
+        "questionId": "math-q12",
+        "prompt": "Чему равна разность 84 - 84?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "0"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "84"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "-1"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-sub-self",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-sub"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "0"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При вычитании числа из самого себя результат всегда равен нулю: a - a = 0.",
+      "difficulty": "basic",
+      "reviewTopic": "Вычитание одинаковых чисел"
+    },
+    {
+      "question": {
+        "questionId": "math-q13",
+        "prompt": "Чему равно произведение 16 × 10?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "106"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "160"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1600"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "26"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-mul-tens",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-mul"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "160"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При умножении натурального числа на 10 к нему справа приписывается один ноль: 16 × 10 = 160.",
+      "difficulty": "basic",
+      "reviewTopic": "Умножение на 10"
+    },
+    {
+      "question": {
+        "questionId": "math-q14",
+        "prompt": "Чему равен результат деления 240 : 10?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "24"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "2400"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "204"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "2.4"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-div-tens",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-div"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "24"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При делении круглого числа на 10 у него убирается один ноль справа: 240 : 10 = 24.",
+      "difficulty": "basic",
+      "reviewTopic": "Деление на 10"
+    },
+    {
+      "question": {
+        "questionId": "math-q15",
+        "prompt": "Вычислите значение выражения: 20 - 2 × 6 + 4",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "112"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "12"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "16"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "4"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-order-complex",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-order"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "12"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Сначала умножение: 2 × 6 = 12. Затем действия слева направо: 20 - 12 = 8, и 8 + 4 = 12.",
+      "difficulty": "basic",
+      "reviewTopic": "Порядок нескольких операций"
+    },
+    {
+      "question": {
+        "questionId": "math-q16",
+        "prompt": "Чему равна сумма трёх чисел: 15 + 28 + 15?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "48"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "58"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "68"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "55"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-add-three",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-add",
+        "math-fact-comm"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "58"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Удобно сложить сначала 15 + 15 = 30, а затем 30 + 28 = 58.",
+      "difficulty": "basic",
+      "reviewTopic": "Группировка слагаемых"
+    },
+    {
+      "question": {
+        "questionId": "math-q17",
+        "prompt": "Чему равен остаток при делении 23 на 4?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "2"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "3"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "4"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-div-rem",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-div"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "3"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "23 = 4 × 5 + 3. Неполное частное равно 5, а остаток равен 3.",
+      "difficulty": "basic",
+      "reviewTopic": "Деление с остатком"
+    },
+    {
+      "question": {
+        "questionId": "math-q18",
+        "prompt": "Чему равен квадрат числа 9 (то есть 9 × 9)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "72"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "81"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "90"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "99"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-mul-square",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-mul"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "81"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Квадрат числа — это его умножение на самого себя: 9 × 9 = 81.",
+      "difficulty": "basic",
+      "reviewTopic": "Квадрат числа"
+    },
+    {
+      "question": {
+        "questionId": "math-q19",
+        "prompt": "Вычислите: 50 - (20 + 15)",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "45"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "15"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "25"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "35"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-sub-paren",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-order",
+        "math-fact-sub"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "15"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Сначала вычисляем значение в скобках: 20 + 15 = 35. Затем: 50 - 35 = 15.",
+      "difficulty": "basic",
+      "reviewTopic": "Вычитание суммы"
+    },
+    {
+      "question": {
+        "questionId": "math-q20",
+        "prompt": "Вычислите удобным способом: 5 × 17 × 2",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "170"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "85"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "340"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "150"
+          }
+        ]
+      },
+      "questionFamilyId": "math-fam-mul-assoc",
+      "sourceIds": [
+        "source-math-arithmetic"
+      ],
+      "factIds": [
+        "math-fact-mul",
+        "math-fact-comm"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "170"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Удобно сгруппировать 5 × 2 = 10, а затем умножить на 17: 10 × 17 = 170.",
+      "difficulty": "basic",
+      "reviewTopic": "Сочетательное свойство умножения"
+    },
+    {
+      "question": {
+        "questionId": "info-q01",
+        "prompt": "Как называется наименьшая единица информации в компьютере, принимающая значение 0 или 1?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Бит"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Байт"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Пиксель"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Слово"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bit",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-base"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Бит"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Бит (от англ. binary digit — двоичный знак) является минимальной единицей измерения информации в компьютере.",
+      "difficulty": "basic",
+      "reviewTopic": "Единицы информации"
+    },
+    {
+      "question": {
+        "questionId": "info-q02",
+        "prompt": "Сколько бит содержится в одном байте?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "4"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "8"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "16"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "10"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-byte",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-byte"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "8"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В одном байте содержится ровно 8 бит. С помощью одного байта можно закодировать 256 различных состояний.",
+      "difficulty": "basic",
+      "reviewTopic": "Байты и биты"
+    },
+    {
+      "question": {
+        "questionId": "info-q03",
+        "prompt": "Какое десятичное число записано в двоичной системе как 101?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "3"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "5"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "6"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "7"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bin-val",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-weights"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "5"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В двоичном числе 101 крайняя единица весит 4, ноль весит 2, правая единица весит 1: 4 + 0 + 1 = 5.",
+      "difficulty": "basic",
+      "reviewTopic": "Перевод из двоичной системы"
+    },
+    {
+      "question": {
+        "questionId": "info-q04",
+        "prompt": "Как записывается десятичное число 4 в двоичной системе счисления?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "11"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "100"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "101"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "110"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bin-four",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-weights"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "100"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Веса разрядов: 4, 2, 1. Для числа 4 берём единицу в разряде четвёрок и нули в остальных: 100₂ = 4.",
+      "difficulty": "basic",
+      "reviewTopic": "Двоичная запись чисел"
+    },
+    {
+      "question": {
+        "questionId": "info-q05",
+        "prompt": "Для чего в информатике используется дополнительный бит чётности (parity bit)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Для ускорения передачи данных"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Для обнаружения ошибок при передаче данных"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Для шифрования паролей"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Для сжатия изображений"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-parity-concept",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-parity"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Для обнаружения ошибок при передаче данных"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Бит чётности позволяет проверить, не исказился ли отдельный бит данных во время передачи по каналу связи.",
+      "difficulty": "basic",
+      "reviewTopic": "Обнаружение ошибок и чётность"
+    },
+    {
+      "question": {
+        "questionId": "info-q06",
+        "prompt": "Какое главное условие необходимо для применения алгоритма бинарного поиска?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Список должен быть отсортирован"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Все числа должны быть чётными"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Список должен быть очень коротким"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Данные должны быть зашифрованы"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-binary-search",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-search"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Список должен быть отсортирован"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Бинарный поиск работает только на отсортированных данных, поскольку на каждом шаге отсекает ровно половину неподходящих вариантов.",
+      "difficulty": "basic",
+      "reviewTopic": "Бинарный поиск"
+    },
+    {
+      "question": {
+        "questionId": "info-q07",
+        "prompt": "Что в информатике называют алгоритмом?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Любую случайную последовательность чисел"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Точную пошаговую последовательность инструкций для решения задачи"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Компьютерную микросхему"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Сетевой кабель"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-algorithm-def",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-algorithm"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Точную пошаговую последовательность инструкций для решения задачи"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Алгоритм — это упорядоченный набор чётких правил или действий, приводящих к решению поставленной задачи.",
+      "difficulty": "basic",
+      "reviewTopic": "Понятие алгоритма"
+    },
+    {
+      "question": {
+        "questionId": "info-q08",
+        "prompt": "Как алгоритм сжатия серий (RLE) сожмёт строку 'AAAAABBB'?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "5A3B"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "A5B3"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "AB8"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "AABB"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-rle-compress",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-rle"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "5A3B"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Алгоритм RLE заменяет непрерывную серию повторяющихся символов на их количество и сам символ: 5 букв A и 3 буквы B дают '5A3B'.",
+      "difficulty": "basic",
+      "reviewTopic": "Сжатие данных"
+    },
+    {
+      "question": {
+        "questionId": "info-q09",
+        "prompt": "На каком базовом действии основана сортировка методом пузырька (Bubble Sort)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Попарное сравнение соседних элементов и обмен местами"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Случайная перестановка всех элементов"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Удаление всех нечётных чисел"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Перевод всех чисел в двоичный вид"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bubble-sort",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-sorting"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Попарное сравнение соседних элементов и обмен местами"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Сортировка пузырьком последовательно сравнивает соседние элементы и меняет их местами, если они расположены в неправильном порядке.",
+      "difficulty": "basic",
+      "reviewTopic": "Алгоритмы сортировки"
+    },
+    {
+      "question": {
+        "questionId": "info-q10",
+        "prompt": "Сколько различных значений можно закодировать цепочкой из 3 бит?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "3"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "6"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "8"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "16"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bin-eight",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-weights"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "8"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Каждый бит имеет 2 возможных состояния. Три бита дают 2³ = 2 × 2 × 2 = 8 различных комбинаций (от 000 до 111).",
+      "difficulty": "basic",
+      "reviewTopic": "Комбинаторика битов"
+    },
+    {
+      "question": {
+        "questionId": "info-q11",
+        "prompt": "Как называется мельчайшая неделимая точка растрового цифрового изображения?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Пиксель"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Вектор"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Дюйм"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Бит"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-pixel",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-base"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Пиксель"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Пиксель (от англ. picture element) — это наименьший элемент матрицы цифрового дисплея или растрового рисунка.",
+      "difficulty": "basic",
+      "reviewTopic": "Представление графики"
+    },
+    {
+      "question": {
+        "questionId": "info-q12",
+        "prompt": "Сколько сравнений в худшем случае потребуется линейному поиску в неотсортированном списке из N элементов?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "N"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "N / 2"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "N²"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-linear-search",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-search"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "N"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В худшем случае искомый элемент находится на самом последнем месте или отсутствует, поэтому придётся проверить все N элементов.",
+      "difficulty": "basic",
+      "reviewTopic": "Линейный поиск"
+    },
+    {
+      "question": {
+        "questionId": "info-q13",
+        "prompt": "В цепочке данных 1 0 1 1 0 количество единиц нечётно (три единицы). Какой бит чётности нужно добавить для схемы чётной проверки?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "0"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Любой"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "2"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-parity-odd",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-parity"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Чтобы общее число единиц стало чётным (четыре), бит чётности должен быть равен 1: 3 + 1 = 4.",
+      "difficulty": "basic",
+      "reviewTopic": "Расчёт бита чётности"
+    },
+    {
+      "question": {
+        "questionId": "info-q14",
+        "prompt": "Как компьютеры хранят текстовые буквы и знаки в своей памяти?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "В виде числовых кодов по таблице кодировки (например, ASCII или Unicode)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Как маленькие фотографии каждой буквы"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Только с помощью звуковых волн"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Текст сохраняется без изменений как краска на экране"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-ascii",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-byte"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "В виде числовых кодов по таблице кодировки (например, ASCII или Unicode)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Каждому символу алфавита ставится в соответствие числовой код (например, 'A' = 65), который затем сохраняется в двоичном виде.",
+      "difficulty": "basic",
+      "reviewTopic": "Кодирование текста"
+    },
+    {
+      "question": {
+        "questionId": "info-q15",
+        "prompt": "Чему равно значение двоичного числа 10 в десятичной системе?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "10"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "2"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "0"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bin-two",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-weights"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "2"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В числе 10₂ в разряде двоек стоит 1, а в разряде единиц — 0. Получаем 1 × 2 + 0 × 1 = 2.",
+      "difficulty": "basic",
+      "reviewTopic": "Двоичное число два"
+    },
+    {
+      "question": {
+        "questionId": "info-q16",
+        "prompt": "Из каких двух главных элементов состоит математический граф (компьютерная сеть)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Вершины (узлы) и рёбра (связи между ними)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Пиксели и байты"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Числитель и знаменатель"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Процессор и монитор"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-graph-net",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-algorithm"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Вершины (узлы) и рёбра (связи между ними)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Граф состоит из множества вершин (узлов сети или городов) и соединяющих их рёбер (каналов связи или дорог).",
+      "difficulty": "basic",
+      "reviewTopic": "Теория графов и сети"
+    },
+    {
+      "question": {
+        "questionId": "info-q17",
+        "prompt": "Как называется сжатие данных, при котором исходную информацию можно восстановить абсолютно без потерь?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Сжатие без потерь (lossless)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Сжатие с потерями (lossy)"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Удаление данных"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Форматирование"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-lossless",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-rle"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Сжатие без потерь (lossless)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При сжатии без потерь (lossless, например алгоритмы ZIP или PNG) исходный файл после распаковки бит-в-бит совпадает с оригиналом.",
+      "difficulty": "basic",
+      "reviewTopic": "Сжатие без потерь"
+    },
+    {
+      "question": {
+        "questionId": "info-q18",
+        "prompt": "Какое максимальное десятичное число можно записать с помощью 4 бит?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "4"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "8"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "15"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "16"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bin-fifteen",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-weights"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "15"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Четыре единицы 1111₂ равны 8 + 4 + 2 + 1 = 15. Всего комбинаций 16 (от 0 до 15).",
+      "difficulty": "basic",
+      "reviewTopic": "Диапазон чисел"
+    },
+    {
+      "question": {
+        "questionId": "info-q19",
+        "prompt": "Что делает элемент-компаратор в сети сортировки?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Сравнивает два числа и направляет меньшее по одному каналу, а большее — по другому"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Умножает число на 2"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Стирает нечётные числа"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Перезагружает компьютер"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-sort-net",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-sorting"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Сравнивает два числа и направляет меньшее по одному каналу, а большее — по другому"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Компаратор сравнивает два значения на входе и упорядочивает их на выходе (меньшее наверх, большее вниз).",
+      "difficulty": "basic",
+      "reviewTopic": "Сети сортировки"
+    },
+    {
+      "question": {
+        "questionId": "info-q20",
+        "prompt": "Как в алгоритмах называется конструкция, повторяющая выполнение одних и тех же действий, пока выполняется условие?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Ветвление"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Цикл"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Присваивание"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Комментарий"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-loop",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-algorithm"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Цикл"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Цикл позволяет многократно выполнять блок инструкций заданное число раз или до достижения определённого условия.",
+      "difficulty": "basic",
+      "reviewTopic": "Управляющие конструкции"
+    },
+    {
+      "question": {
+        "questionId": "hist-q01",
+        "prompt": "Что в исторической науке называют историческим источником?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Только современные учебники"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Любой памятник прошлого, созданный человеком и несущий информацию о событиях"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Только старинные монеты"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Художественные фильмы о войне"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-def",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-sources-def"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Любой памятник прошлого, созданный человеком и несущий информацию о событиях"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Исторический источник — это свидетельство прошлого, созданное человеком (документ, постройка, предмет быта, предание), по которому изучают историю.",
+      "difficulty": "basic",
+      "reviewTopic": "Понятие исторического источника"
+    },
+    {
+      "question": {
+        "questionId": "hist-q02",
+        "prompt": "К какому виду исторических источников относятся древние летописи и указы?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Письменные"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Вещественные"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Устные"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Этнографические"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-written",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Письменные"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Летописи, грамоты, законы и письма содержат текст, поэтому относятся к письменным историческим источникам.",
+      "difficulty": "basic",
+      "reviewTopic": "Виды источников"
+    },
+    {
+      "question": {
+        "questionId": "hist-q03",
+        "prompt": "К какому типу источников археологи относят глиняный кувшин, найденный при раскопках?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Вещественный"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Письменный"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Фольклорный"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Устный"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-material",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types",
+        "hist-fact-archaeology"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Вещественный"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Предметы быта, посуда, оружие и орудия труда относятся к вещественным (материальным) источникам.",
+      "difficulty": "basic",
+      "reviewTopic": "Вещественные источники"
+    },
+    {
+      "question": {
+        "questionId": "hist-q04",
+        "prompt": "Что отличает первичный исторический источник от вторичного?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Он создан очевидцем или участником во время происходивших событий"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Он написан обязательно на латинском языке"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Он опубликован в журнале в прошлом году"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Он обязательно сделан из золота"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-primary",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-primary"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Он создан очевидцем или участником во время происходивших событий"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Первичный источник создаётся современником событий непосредственно в эпоху их свершения, тогда как вторичный — анализ историка спустя время.",
+      "difficulty": "basic",
+      "reviewTopic": "Первичные источники"
+    },
+    {
+      "question": {
+        "questionId": "hist-q05",
+        "prompt": "Какая наука занимается установлением дат и хронологической последовательности событий прошлого?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Хронология"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Топография"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Нумизматика"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Геральдика"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-chrono-def",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-chronology-def"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Хронология"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Хронология — специальная историческая дисциплина, изучающая системы летосчисления и устанавливающая точные даты событий.",
+      "difficulty": "basic",
+      "reviewTopic": "Хронология"
+    },
+    {
+      "question": {
+        "questionId": "hist-q06",
+        "prompt": "Какой календарь был введён в Риме при Юлии Цезаре и стал известен как 'старый стиль'?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Григорианский"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Юлианский"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Лунный"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Майя"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-calendars",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-calendars"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Юлианский"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Юлианский календарь был разработан александрийскими астрономами во главе с Созигеном и введён Юлием Цезарем в 45 году до н.э.",
+      "difficulty": "basic",
+      "reviewTopic": "Календарные системы"
+    },
+    {
+      "question": {
+        "questionId": "hist-q07",
+        "prompt": "С какой целью в 1582 году папа римский Григорий XIII ввёл новый календарь?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Чтобы устранить накопившуюся ошибку в 10 дней и вернуть день весеннего равноденствия на 21 марта"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Чтобы сделать в году 10 месяцев"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Чтобы отменить високосные годы"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Чтобы переименовать дни недели"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-gregorian",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-calendars"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Чтобы устранить накопившуюся ошибку в 10 дней и вернуть день весеннего равноденствия на 21 марта"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Григорианский календарь скорректировал накапливавшееся отставание юлианского календаря от астрономического солнечного года.",
+      "difficulty": "basic",
+      "reviewTopic": "Григорианский календарь"
+    },
+    {
+      "question": {
+        "questionId": "hist-q08",
+        "prompt": "Какой научный метод датирования основан на измерении распада изотопа углерода-14 в органических остатках?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Радиоуглеродный анализ"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Дендрохронология"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Спектральный анализ"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Рентгенография"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-radiocarbon",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-dating"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Радиоуглеродный анализ"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Радиоуглеродное датирование измеряет остаточное содержание изотопа ¹⁴C в древесине, костях и других органических находках.",
+      "difficulty": "basic",
+      "reviewTopic": "Методы датирования"
+    },
+    {
+      "question": {
+        "questionId": "hist-q09",
+        "prompt": "По какому признаку метод дендрохронологии определяет точный возраст деревянных построек и предметов?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "По годичным кольцам деревьев"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "По цвету древесной коры"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "По глубине залегания в земле"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "По весу древесины"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-dendro",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-dating"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "По годичным кольцам деревьев"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Дендрохронология сопоставляет характерную толщину годичных колец деревьев с эталонной региональной шкалой.",
+      "difficulty": "basic",
+      "reviewTopic": "Дендрохронология"
+    },
+    {
+      "question": {
+        "questionId": "hist-q10",
+        "prompt": "К какому веку относится 1492 год (год плавания Колумба к берегам Америки)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "XIV век"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "XV век"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "XVI век"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "XVII век"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-century-calc",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "XV век"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "XV век длился с 1401 по 1500 год включительно. Следовательно, 1492 год относится к XV веку.",
+      "difficulty": "basic",
+      "reviewTopic": "Определение века по году"
+    },
+    {
+      "question": {
+        "questionId": "hist-q11",
+        "prompt": "Существует ли в традиционной исторической шкале летосчисления (наша эра / до нашей эры) нулевой год?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Да, между 1 годом до н.э. и 1 годом н.э."
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Нет, после 1 года до н.э. сразу наступает 1 год н.э."
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Да, нулевой год длился 100 дней"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Зависит от времени года"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-zero-year",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Нет, после 1 года до н.э. сразу наступает 1 год н.э."
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В исторической хронологии нулевого года нет: 1-й год до нашей эры непосредственно сменяется 1-м годом нашей эры.",
+      "difficulty": "basic",
+      "reviewTopic": "Летосчисление и отсутствие нулевого года"
+    },
+    {
+      "question": {
+        "questionId": "hist-q12",
+        "prompt": "Какая дисциплина изучает прошлое человечества путём раскопок вещественных памятников?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Археология"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Палеография"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Геология"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Антропология"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-archaeology",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-archaeology"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Археология"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Археология — наука, открывающая и изучающая материальные следы жизни людей древности (поселения, захоронения, орудия).",
+      "difficulty": "basic",
+      "reviewTopic": "Археология"
+    },
+    {
+      "question": {
+        "questionId": "hist-q13",
+        "prompt": "К какому виду исторических источников относятся передаваемые из поколения в поколение народные сказительные былины?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Устные (фольклорные)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Вещественные"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Письменные"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Архитектурные"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-oral-source",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Устные (фольклорные)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Устные источники сохраняют память о событиях в народных сказаниях, песнях, мифах и пословицах.",
+      "difficulty": "basic",
+      "reviewTopic": "Устные источники"
+    },
+    {
+      "question": {
+        "questionId": "hist-q14",
+        "prompt": "Как называется специальная историческая дисциплина, изучающая историю монетной чеканки и денежного обращения?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Нумизматика"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Сфрагистика"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Геральдика"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Генеалогия"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-numismatics",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Нумизматика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Нумизматика изучает старинные монеты, медали, клады и историю денежных систем разных эпох.",
+      "difficulty": "basic",
+      "reviewTopic": "Нумизматика"
+    },
+    {
+      "question": {
+        "questionId": "hist-q15",
+        "prompt": "Как называется специализированное учреждение, где хранятся и исследуются ценные исторические письменные документы?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Архив"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Лаборатория"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Амфитеатр"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Гербарий"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-archives",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-sources-def"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Архив"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Архивы собирают, систематизируют и надежно сохраняют рукописные и печатные документы государственных органов и граждан.",
+      "difficulty": "basic",
+      "reviewTopic": "Архивы"
+    },
+    {
+      "question": {
+        "questionId": "hist-q16",
+        "prompt": "Что включает в себя историческая критика источника перед признанием его данных достоверными?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Установление авторства, времени создания, подлинности и сопоставление с другими свидетельствами"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Проверку документа на орфографические ошибки"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Оценку стоимости продажи документа на аукционе"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Перевод текста исключительно на современный сленг"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-criticism",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-sources-def",
+        "hist-fact-primary"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Установление авторства, времени создания, подлинности и сопоставление с другими свидетельствами"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Критика источников (внешняя и внутренняя) позволяет выявить подделки, определить предвзятость автора и подтвердить достоверность фактов.",
+      "difficulty": "basic",
+      "reviewTopic": "Критика исторических источников"
+    },
+    {
+      "question": {
+        "questionId": "hist-q17",
+        "prompt": "Сколько лет составляет одно тысячелетие?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "100 лет"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "500 лет"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1000 лет"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "10 000 лет"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-millennium",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "1000 лет"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Одно тысячелетие (миллениум) равно ровно 10 векам или 1000 календарным годам.",
+      "difficulty": "basic",
+      "reviewTopic": "Единицы измерения времени"
+    },
+    {
+      "question": {
+        "questionId": "hist-q18",
+        "prompt": "Какая вспомогательная историческая дисциплина изучает гербы и государственные символы?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Геральдика"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Бонистика"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Эпиграфика"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Топонимика"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-heraldry",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Геральдика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Геральдика — наука о гербах, их происхождении, строении, правилах составления и значении символических элементов.",
+      "difficulty": "basic",
+      "reviewTopic": "Геральдика"
+    },
+    {
+      "question": {
+        "questionId": "hist-q19",
+        "prompt": "В каком порядке велся отсчет лет до нашей эры (до н.э.)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "В порядке убывания к 1 году н.э. (например: 500 г. до н.э., затем 499 г. до н.э.)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "В порядке возрастания, как и в нашей эре"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Случайным образом по указанию правителей"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Отсчет велся только по десятилетиям"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-bce-direction",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-chronology-def",
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "В порядке убывания к 1 году н.э. (например: 500 г. до н.э., затем 499 г. до н.э.)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При движении вперед во времени события до нашей эры приближаются к рубежу эр, поэтому число года уменьшается: 100 г. до н.э. был раньше, чем 50 г. до н.э.",
+      "difficulty": "basic",
+      "reviewTopic": "Счёт лет до нашей эры"
+    },
+    {
+      "question": {
+        "questionId": "hist-q20",
+        "prompt": "На каком принципе основан закон стратиграфии в археологии при определении относительного возраста находок?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "При ненарушенном залегании нижние слои почвы образовались раньше верхних"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Чем глубже слой, тем предметы в нем новее"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Все слои земли имеют одинаковый возраст"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Возраст определяется исключительно цветом глины"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-stratigraphy",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-dating",
+        "hist-fact-archaeology"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "При ненарушенном залегании нижние слои почвы образовались раньше верхних"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Закон суперпозиции гласит, что более глубокие геологические и культурные слои откладывались раньше тех, что лежат выше.",
+      "difficulty": "basic",
+      "reviewTopic": "Стратиграфия в археологии"
+    },
+    {
+      "question": {
+        "questionId": "flag-q01",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-01",
+          "sha256": "3f2a49ee7bb70bb53be2a3c182cd0bb7bff3c2acc6639b74fe8405e39a8565c5",
+          "byteSize": 190,
+          "url": "/api/v2/worlds/discovery-campus/assets/3f2a49ee7bb70bb53be2a3c182cd0bb7bff3c2acc6639b74fe8405e39a8565c5",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Япония"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Китай"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Республика Корея"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Вьетнам"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-jp",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-jp-loc",
+        "fact-jp-cap",
+        "fact-jp-geo",
+        "fact-jp-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Япония",
+          "Japan",
+          "Государство Япония"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Япония. Особенности полотнища: Белое прямоугольное полотнище с ярко-красным круглым диском в центре.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q02",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-02",
+          "sha256": "d9404fa8afc895bde34bd7115971be0388e7f33873bb03c05e966525bb98ed57",
+          "byteSize": 250,
+          "url": "/api/v2/worlds/discovery-campus/assets/d9404fa8afc895bde34bd7115971be0388e7f33873bb03c05e966525bb98ed57",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Франция"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Италия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Нидерланды"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Бельгия"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-fr",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-fr-loc",
+        "fact-fr-cap",
+        "fact-fr-geo",
+        "fact-fr-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Франция",
+          "France",
+          "Французская Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Франция. Особенности полотнища: Три вертикальные полосы одинаковой ширины синего, белого и красного цветов.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q03",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-03",
+          "sha256": "2167853db01b687cdb3863a6a15f1d2f2a77ded2987854db6267c47a9f77a47e",
+          "byteSize": 343,
+          "url": "/api/v2/worlds/discovery-campus/assets/2167853db01b687cdb3863a6a15f1d2f2a77ded2987854db6267c47a9f77a47e",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Бразилия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Аргентина"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Колумбия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Перу"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-br",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-br-loc",
+        "fact-br-cap",
+        "fact-br-geo",
+        "fact-br-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Бразилия",
+          "Brazil",
+          "Федеративная Республика Бразилия"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Бразилия. Особенности полотнища: Зелёное полотнище с жёлтым ромбом в центре и синим кругом со звёздами и белой лентой.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q04",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-04",
+          "sha256": "173c3ba072edcada576b6efb737014e4c802482f53f8c8d97085592e0f64172e",
+          "byteSize": 490,
+          "url": "/api/v2/worlds/discovery-campus/assets/173c3ba072edcada576b6efb737014e4c802482f53f8c8d97085592e0f64172e",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Канада"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "США"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Австралия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Великобритания"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-ca",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-ca-loc",
+        "fact-ca-cap",
+        "fact-ca-geo",
+        "fact-ca-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Канада",
+          "Canada"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Канада. Особенности полотнища: Две красные вертикальные полосы по краям, белый центральный квадрат с красным одиннадцатиконечным кленовым листом.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q05",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-05",
+          "sha256": "eae6c394f845a309c2a43f1cb0286b664edc1a1e5eff8453842db94c87e58d6d",
+          "byteSize": 255,
+          "url": "/api/v2/worlds/discovery-campus/assets/eae6c394f845a309c2a43f1cb0286b664edc1a1e5eff8453842db94c87e58d6d",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Германия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Бельгия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Австрия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Польша"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-de",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-de-loc",
+        "fact-de-cap",
+        "fact-de-geo",
+        "fact-de-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Германия",
+          "Germany",
+          "Федеративная Республика Германия"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Германия. Особенности полотнища: Три горизонтальные равновеликие полосы чёрного, красного и золотистого (жёлтого) цветов.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q06",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-06",
+          "sha256": "5315104c7b3ffc06483ecee87691ca0a76bbf52cc6a7e64275773f34e5ad9560",
+          "byteSize": 250,
+          "url": "/api/v2/worlds/discovery-campus/assets/5315104c7b3ffc06483ecee87691ca0a76bbf52cc6a7e64275773f34e5ad9560",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Италия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Мексика"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Ирландия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Венгрия"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-it",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-it-loc",
+        "fact-it-cap",
+        "fact-it-geo",
+        "fact-it-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Италия",
+          "Italy",
+          "Итальянская Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Италия. Особенности полотнища: Три вертикальные полосы равной ширины: зелёная у древка, белая в центре и красная у свободного края.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q07",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-07",
+          "sha256": "9ceab9c42e93a1ca1164d173b5c53934d162c89652a7440615d2f65b04e6d110",
+          "byteSize": 379,
+          "url": "/api/v2/worlds/discovery-campus/assets/9ceab9c42e93a1ca1164d173b5c53934d162c89652a7440615d2f65b04e6d110",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Индия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Пакистан"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Бангладеш"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Непал"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-in",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-in-loc",
+        "fact-in-cap",
+        "fact-in-geo",
+        "fact-in-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Индия",
+          "India",
+          "Республика Индия"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Индия. Особенности полотнища: Три горизонтальные полосы шафранового, белого и зелёного цветов с синим колесом Ашока Чакра (24 спицы) в центре.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q08",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-08",
+          "sha256": "b2c1a17664613eb1b5aefa28f1126f8e49f1614c97ef7ed533ca22fecf984bef",
+          "byteSize": 369,
+          "url": "/api/v2/worlds/discovery-campus/assets/b2c1a17664613eb1b5aefa28f1126f8e49f1614c97ef7ed533ca22fecf984bef",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Египет"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Ирак"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Сирия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Судан"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-eg",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-eg-loc",
+        "fact-eg-cap",
+        "fact-eg-geo",
+        "fact-eg-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Египет",
+          "Egypt",
+          "Арабская Республика Египет"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Египет. Особенности полотнища: Три горизонтальные полосы красного, белого и чёрного цветов с золотым орлом Саладина на белой полосе.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q09",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-09",
+          "sha256": "8565614f50b04698d897fb9304b8b6b78b5c75c9ad44c9be20923877d587b9c1",
+          "byteSize": 549,
+          "url": "/api/v2/worlds/discovery-campus/assets/8565614f50b04698d897fb9304b8b6b78b5c75c9ad44c9be20923877d587b9c1",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Австралия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Новая Зеландия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Великобритания"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Фиджи"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-au",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-au-loc",
+        "fact-au-cap",
+        "fact-au-geo",
+        "fact-au-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Австралия",
+          "Australia",
+          "Австралийский Союз"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Австралия. Особенности полотнища: Синее полотнище с флагом Великобритании в левом верхнем углу, большой семиконечной звездой под ним и созвездием Южного Креста справа.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q10",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-10",
+          "sha256": "118774b08e39aa0abbed4b2a1e6195c3dc4a1ecfcfdebd45f29b48ee17fe59a1",
+          "byteSize": 510,
+          "url": "/api/v2/worlds/discovery-campus/assets/118774b08e39aa0abbed4b2a1e6195c3dc4a1ecfcfdebd45f29b48ee17fe59a1",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Греция"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Кипр"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Финляндия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Израиль"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-gr",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-gr-loc",
+        "fact-gr-cap",
+        "fact-gr-geo",
+        "fact-gr-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Греция",
+          "Greece",
+          "Греческая Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Греция. Особенности полотнища: Девять чередующихся синих и белых горизонтальных полос с белым равносторонним крестом в синем квадрате у древка.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q11",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-11",
+          "sha256": "92bcb011cd2d428c6db9d4d2d1b87169d745e92c73884efaec3e86b9b3bc617f",
+          "byteSize": 379,
+          "url": "/api/v2/worlds/discovery-campus/assets/92bcb011cd2d428c6db9d4d2d1b87169d745e92c73884efaec3e86b9b3bc617f",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Аргентина"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Уругвай"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Парагвай"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Чили"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-ar",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-ar-loc",
+        "fact-ar-cap",
+        "fact-ar-geo",
+        "fact-ar-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Аргентина",
+          "Argentina",
+          "Аргентинская Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Аргентина. Особенности полотнища: Три горизонтальные полосы: светло-синяя, белая и светло-синяя, с золотистым Майским солнцем в центре белой полосы.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q12",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-12",
+          "sha256": "a98216b170ccd0870d8de0db187777810a5397eeaf7e7d9e5bf179dbd08b0c58",
+          "byteSize": 250,
+          "url": "/api/v2/worlds/discovery-campus/assets/a98216b170ccd0870d8de0db187777810a5397eeaf7e7d9e5bf179dbd08b0c58",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Швеция"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Норвегия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Финляндия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Дания"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-se",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-se-loc",
+        "fact-se-cap",
+        "fact-se-geo",
+        "fact-se-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Швеция",
+          "Sweden",
+          "Королевство Швеция"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Швеция. Особенности полотнища: Синее прямоугольное полотнище со скандинавским жёлтым крестом, смещённым влево к древку.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q13",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-13",
+          "sha256": "c04830c64f73b9cb4ec52a408a5803b406ea44688cf5b66ee650f9df9fd80f01",
+          "byteSize": 266,
+          "url": "/api/v2/worlds/discovery-campus/assets/c04830c64f73b9cb4ec52a408a5803b406ea44688cf5b66ee650f9df9fd80f01",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Швейцария"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Австрия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Дания"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Чехия"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-ch",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-ch-loc",
+        "fact-ch-cap",
+        "fact-ch-geo",
+        "fact-ch-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Швейцария",
+          "Switzerland",
+          "Швейцарская Конфедерация"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Швейцария. Особенности полотнища: Красное квадратное полотнище с белым прямым равносторонним крестом в центре.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q14",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-14",
+          "sha256": "e02391bb00afc7010348b2cb7bf858d9cbac41f307d3b1afc33799ea4256c400",
+          "byteSize": 354,
+          "url": "/api/v2/worlds/discovery-campus/assets/e02391bb00afc7010348b2cb7bf858d9cbac41f307d3b1afc33799ea4256c400",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Турция"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Азербайджан"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Тунис"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Греция"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-tr",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-tr-loc",
+        "fact-tr-cap",
+        "fact-tr-geo",
+        "fact-tr-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Турция",
+          "Turkey",
+          "Турецкая Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Турция. Особенности полотнища: Красное полотнище с белым полумесяцем и белой пятиконечной звездой в центре.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q15",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-15",
+          "sha256": "202bbb25568aafb4f9d48ba3f7c1143326e04063a05b188a835240afa9e05383",
+          "byteSize": 537,
+          "url": "/api/v2/worlds/discovery-campus/assets/202bbb25568aafb4f9d48ba3f7c1143326e04063a05b188a835240afa9e05383",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Республика Корея"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Япония"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Китай"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Монголия"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-kr",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-kr-loc",
+        "fact-kr-cap",
+        "fact-kr-geo",
+        "fact-kr-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Республика Корея",
+          "Южная Корея",
+          "South Korea"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Республика Корея. Особенности полотнища: Белое полотнище с красно-синим кругом тхэгык в центре и четырьмя чёрными триграммами по углам.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q16",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-16",
+          "sha256": "de671998d655b698b4258c7854e4ff60f08995fe0100e6a5cfd04f8c399ac651",
+          "byteSize": 355,
+          "url": "/api/v2/worlds/discovery-campus/assets/de671998d655b698b4258c7854e4ff60f08995fe0100e6a5cfd04f8c399ac651",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Мексика"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Италия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Гватемала"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Испания"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-mx",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-mx-loc",
+        "fact-mx-cap",
+        "fact-mx-geo",
+        "fact-mx-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Мексика",
+          "Mexico",
+          "Мексиканские Соединённые Штаты"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Мексика. Особенности полотнища: Три вертикальные полосы: зелёная, белая и красная, с государственным гербом (орёл на кактусе со змеёй) в центре.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q17",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-17",
+          "sha256": "20fbf778498830a74cbf39e4a5d78b1355b7b0112bd99f78a6258ae6dd2ab30b",
+          "byteSize": 358,
+          "url": "/api/v2/worlds/discovery-campus/assets/20fbf778498830a74cbf39e4a5d78b1355b7b0112bd99f78a6258ae6dd2ab30b",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Норвегия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Исландия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Швеция"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Дания"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-no",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-no-loc",
+        "fact-no-cap",
+        "fact-no-geo",
+        "fact-no-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Норвегия",
+          "Norway",
+          "Королевство Норвегия"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Норвегия. Особенности полотнища: Красное полотнище с тёмно-синим скандинавским крестом с белой каймой.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q18",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-18",
+          "sha256": "2a5e2f37d964cf12179a0296265d0a67563f1c93ad0b3cb4c45782ba0eab1e15",
+          "byteSize": 250,
+          "url": "/api/v2/worlds/discovery-campus/assets/2a5e2f37d964cf12179a0296265d0a67563f1c93ad0b3cb4c45782ba0eab1e15",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Финляндия"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Швеция"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Греция"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Эстония"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-fi",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-fi-loc",
+        "fact-fi-cap",
+        "fact-fi-geo",
+        "fact-fi-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Финляндия",
+          "Finland",
+          "Финляндская Республика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Финляндия. Особенности полотнища: Белое прямоугольное полотнище с синим скандинавским крестом.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q19",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-19",
+          "sha256": "d624d9de7b8fd886787b2f99ca75b73d56f33bb8a22b728fa821ec3e6109d32e",
+          "byteSize": 360,
+          "url": "/api/v2/worlds/discovery-campus/assets/d624d9de7b8fd886787b2f99ca75b73d56f33bb8a22b728fa821ec3e6109d32e",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Испания"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Португалия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Франция"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Андорра"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-es",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-es-loc",
+        "fact-es-cap",
+        "fact-es-geo",
+        "fact-es-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Испания",
+          "Spain",
+          "Королевство Испания"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Испания. Особенности полотнища: Три горизонтальные полосы: красная, жёлтая (двойной ширины) и красная, с государственным гербом у древка.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    },
+    {
+      "question": {
+        "questionId": "flag-q20",
+        "kind": "flag_country",
+        "prompt": "Какой стране принадлежит этот флаг?",
+        "image": {
+          "assetId": "flag-asset-20",
+          "sha256": "d7dc002ce7bdbd1fb775fe27f40e629ee03049ab2702d036fdc5b6d153e16456",
+          "byteSize": 319,
+          "url": "/api/v2/worlds/discovery-campus/assets/d7dc002ce7bdbd1fb775fe27f40e629ee03049ab2702d036fdc5b6d153e16456",
+          "mediaType": "image/svg+xml",
+          "width": 900,
+          "height": 600,
+          "alt": "Флаг страны для вопроса"
+        },
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Казахстан"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Узбекистан"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Кыргызстан"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Монголия"
+          }
+        ]
+      },
+      "questionFamilyId": "flag-fam-country-kz",
+      "sourceIds": [
+        "source-wikimedia-commons-flags",
+        "source-wikidata-country-dump"
+      ],
+      "factIds": [
+        "fact-kz-loc",
+        "fact-kz-cap",
+        "fact-kz-geo",
+        "fact-kz-flag"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Казахстан",
+          "Kazakhstan",
+          "Республика Казахстан"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Этот флаг принадлежит стране Казахстан. Особенности полотнища: Лазурно-голубое полотнище с золотым солнцем с 32 лучами, парящим степным беркутом в центре и национальным орнаментом у древка.",
+      "difficulty": "basic",
+      "reviewTopic": "Флаги государств мира"
+    }
+  ]
+}

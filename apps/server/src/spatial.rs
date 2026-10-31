@@ -154,12 +154,16 @@ impl SpatialService {
     }
 
     pub fn get_asset_file(&self, sha256: &str) -> Option<(&[u8], &str)> {
-        let asset = self.assets.get(sha256)?;
-        if let Some(bytes) = self.resource_files.get(sha256) {
-            return Some((bytes, &asset.media_type));
+        if let Some(asset) = self.assets.get(sha256) {
+            if let Some(bytes) = self.resource_files.get(sha256) {
+                return Some((bytes, &asset.media_type));
+            }
+            if let Some(bytes) = self.resource_files.get("triangle.gltf") {
+                return Some((bytes, &asset.media_type));
+            }
         }
-        if let Some(bytes) = self.resource_files.get("triangle.gltf") {
-            return Some((bytes, &asset.media_type));
+        if let Some(bytes) = self.resource_files.get(sha256) {
+            return Some((bytes, "image/svg+xml"));
         }
         None
     }

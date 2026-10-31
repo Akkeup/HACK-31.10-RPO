@@ -18,160 +18,941 @@
     },
     "sections": [
       {
-        "heading": "Основные понятия",
-        "text": "Исторические источники помогают изучать прошлое. Монета — вещественный источник. Хронология упорядочивает события во времени. XVIII век длится с 1701 по 1800 год. Сопоставление источников помогает проверить сведения."
+        "heading": "Источники",
+        "text": "Письменные и вещественные свидетельства прошлого."
       }
     ],
     "examples": [
-      "Исторические источники — свидетельства, на основе которых изучают прошлое.",
-      "Хронология описывает последовательность событий во времени.",
-      "XVIII век включает годы с 1701 по 1800.",
-      "Монета является материальным, то есть вещественным источником.",
-      "Сопоставление помогает проверять сведения и замечать противоречия."
+      "Летописи, монеты"
     ],
     "keyPoints": [
-      "Исторические источники — свидетельства, на основе которых изучают прошлое.",
-      "Хронология описывает последовательность событий во времени.",
-      "XVIII век включает годы с 1701 по 1800.",
-      "Монета является материальным, то есть вещественным источником.",
-      "Сопоставление помогает проверять сведения и замечать противоречия."
+      "Хронология изучает счет времени."
     ]
   },
   "questions": [
     {
       "question": {
-        "questionId": "history-basics-q1",
-        "prompt": "Что помогает изучать прошлое?",
+        "questionId": "hist-q01",
+        "prompt": "Что в исторической науке называют историческим источником?",
+        "kind": "single_choice",
         "options": [
           {
-            "optionId": "option-1",
-            "text": "Исторические источники"
+            "optionId": "opt-1",
+            "text": "Только современные учебники"
           },
           {
-            "optionId": "option-2",
-            "text": "Только прогнозы"
+            "optionId": "opt-2",
+            "text": "Любой памятник прошлого, созданный человеком и несущий информацию о событиях"
           },
           {
-            "optionId": "option-3",
-            "text": "Только будущие планы"
+            "optionId": "opt-3",
+            "text": "Только старинные монеты"
           },
           {
-            "optionId": "option-4",
-            "text": "Случайные числа"
+            "optionId": "opt-4",
+            "text": "Художественные фильмы о войне"
           }
         ]
       },
-      "correctOptionId": "option-1",
-      "explanation": "Исторические источники — свидетельства, на основе которых изучают прошлое.",
-      "reviewTopic": "История: источники и хронология"
+      "questionFamilyId": "hist-fam-source-def",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-sources-def"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Любой памятник прошлого, созданный человеком и несущий информацию о событиях"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Исторический источник — это свидетельство прошлого, созданное человеком (документ, постройка, предмет быта, предание), по которому изучают историю.",
+      "difficulty": "basic",
+      "reviewTopic": "Понятие исторического источника"
     },
     {
       "question": {
-        "questionId": "history-basics-q2",
-        "prompt": "Как называется расположение событий по времени?",
+        "questionId": "hist-q02",
+        "prompt": "К какому виду исторических источников относятся древние летописи и указы?",
+        "kind": "single_choice",
         "options": [
           {
-            "optionId": "option-1",
-            "text": "Геометрия"
+            "optionId": "opt-1",
+            "text": "Письменные"
           },
           {
-            "optionId": "option-2",
+            "optionId": "opt-2",
+            "text": "Вещественные"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Устные"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Этнографические"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-written",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Письменные"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Летописи, грамоты, законы и письма содержат текст, поэтому относятся к письменным историческим источникам.",
+      "difficulty": "basic",
+      "reviewTopic": "Виды источников"
+    },
+    {
+      "question": {
+        "questionId": "hist-q03",
+        "prompt": "К какому типу источников археологи относят глиняный кувшин, найденный при раскопках?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Вещественный"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Письменный"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Фольклорный"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Устный"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-material",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types",
+        "hist-fact-archaeology"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Вещественный"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Предметы быта, посуда, оружие и орудия труда относятся к вещественным (материальным) источникам.",
+      "difficulty": "basic",
+      "reviewTopic": "Вещественные источники"
+    },
+    {
+      "question": {
+        "questionId": "hist-q04",
+        "prompt": "Что отличает первичный исторический источник от вторичного?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Он создан очевидцем или участником во время происходивших событий"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Он написан обязательно на латинском языке"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Он опубликован в журнале в прошлом году"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Он обязательно сделан из золота"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-primary",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-primary"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Он создан очевидцем или участником во время происходивших событий"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Первичный источник создаётся современником событий непосредственно в эпоху их свершения, тогда как вторичный — анализ историка спустя время.",
+      "difficulty": "basic",
+      "reviewTopic": "Первичные источники"
+    },
+    {
+      "question": {
+        "questionId": "hist-q05",
+        "prompt": "Какая наука занимается установлением дат и хронологической последовательности событий прошлого?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
             "text": "Хронология"
           },
           {
-            "optionId": "option-3",
-            "text": "Орфография"
+            "optionId": "opt-2",
+            "text": "Топография"
           },
           {
-            "optionId": "option-4",
-            "text": "Алгоритм"
+            "optionId": "opt-3",
+            "text": "Нумизматика"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Геральдика"
           }
         ]
       },
-      "correctOptionId": "option-2",
-      "explanation": "Хронология описывает последовательность событий во времени.",
-      "reviewTopic": "История: источники и хронология"
+      "questionFamilyId": "hist-fam-chrono-def",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-chronology-def"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Хронология"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Хронология — специальная историческая дисциплина, изучающая системы летосчисления и устанавливающая точные даты событий.",
+      "difficulty": "basic",
+      "reviewTopic": "Хронология"
     },
     {
       "question": {
-        "questionId": "history-basics-q3",
-        "prompt": "К какому веку относится 1701 год?",
+        "questionId": "hist-q06",
+        "prompt": "Какой календарь был введён в Риме при Юлии Цезаре и стал известен как 'старый стиль'?",
+        "kind": "single_choice",
         "options": [
           {
-            "optionId": "option-1",
-            "text": "XVII"
+            "optionId": "opt-1",
+            "text": "Григорианский"
           },
           {
-            "optionId": "option-2",
-            "text": "XVI"
+            "optionId": "opt-2",
+            "text": "Юлианский"
           },
           {
-            "optionId": "option-3",
-            "text": "XVIII"
+            "optionId": "opt-3",
+            "text": "Лунный"
           },
           {
-            "optionId": "option-4",
-            "text": "XIX"
+            "optionId": "opt-4",
+            "text": "Майя"
           }
         ]
       },
-      "correctOptionId": "option-3",
-      "explanation": "XVIII век включает годы с 1701 по 1800.",
-      "reviewTopic": "История: источники и хронология"
+      "questionFamilyId": "hist-fam-calendars",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-calendars"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Юлианский"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Юлианский календарь был разработан александрийскими астрономами во главе с Созигеном и введён Юлием Цезарем в 45 году до н.э.",
+      "difficulty": "basic",
+      "reviewTopic": "Календарные системы"
     },
     {
       "question": {
-        "questionId": "history-basics-q4",
-        "prompt": "К какому типу источников относится древняя монета?",
+        "questionId": "hist-q07",
+        "prompt": "С какой целью в 1582 году папа римский Григорий XIII ввёл новый календарь?",
+        "kind": "single_choice",
         "options": [
           {
-            "optionId": "option-1",
-            "text": "Устный"
+            "optionId": "opt-1",
+            "text": "Чтобы устранить накопившуюся ошибку в 10 дней и вернуть день весеннего равноденствия на 21 марта"
           },
           {
-            "optionId": "option-2",
-            "text": "Будущий"
+            "optionId": "opt-2",
+            "text": "Чтобы сделать в году 10 месяцев"
           },
           {
-            "optionId": "option-3",
-            "text": "Метеорологический"
+            "optionId": "opt-3",
+            "text": "Чтобы отменить високосные годы"
           },
           {
-            "optionId": "option-4",
-            "text": "Вещественный"
+            "optionId": "opt-4",
+            "text": "Чтобы переименовать дни недели"
           }
         ]
       },
-      "correctOptionId": "option-4",
-      "explanation": "Монета является материальным, то есть вещественным источником.",
-      "reviewTopic": "История: источники и хронология"
+      "questionFamilyId": "hist-fam-gregorian",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-calendars"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Чтобы устранить накопившуюся ошибку в 10 дней и вернуть день весеннего равноденствия на 21 марта"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Григорианский календарь скорректировал накапливавшееся отставание юлианского календаря от астрономического солнечного года.",
+      "difficulty": "basic",
+      "reviewTopic": "Григорианский календарь"
     },
     {
       "question": {
-        "questionId": "history-basics-q5",
-        "prompt": "Зачем сопоставлять несколько источников?",
+        "questionId": "hist-q08",
+        "prompt": "Какой научный метод датирования основан на измерении распада изотопа углерода-14 в органических остатках?",
+        "kind": "single_choice",
         "options": [
           {
-            "optionId": "option-1",
-            "text": "Чтобы проверить и уточнить сведения"
+            "optionId": "opt-1",
+            "text": "Радиоуглеродный анализ"
           },
           {
-            "optionId": "option-2",
-            "text": "Чтобы убрать все даты"
+            "optionId": "opt-2",
+            "text": "Дендрохронология"
           },
           {
-            "optionId": "option-3",
-            "text": "Чтобы заменить факты догадками"
+            "optionId": "opt-3",
+            "text": "Спектральный анализ"
           },
           {
-            "optionId": "option-4",
-            "text": "Чтобы не читать источники"
+            "optionId": "opt-4",
+            "text": "Рентгенография"
           }
         ]
       },
-      "correctOptionId": "option-1",
-      "explanation": "Сопоставление помогает проверять сведения и замечать противоречия.",
-      "reviewTopic": "История: источники и хронология"
+      "questionFamilyId": "hist-fam-radiocarbon",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-dating"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Радиоуглеродный анализ"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Радиоуглеродное датирование измеряет остаточное содержание изотопа ¹⁴C в древесине, костях и других органических находках.",
+      "difficulty": "basic",
+      "reviewTopic": "Методы датирования"
+    },
+    {
+      "question": {
+        "questionId": "hist-q09",
+        "prompt": "По какому признаку метод дендрохронологии определяет точный возраст деревянных построек и предметов?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "По годичным кольцам деревьев"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "По цвету древесной коры"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "По глубине залегания в земле"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "По весу древесины"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-dendro",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-dating"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "По годичным кольцам деревьев"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Дендрохронология сопоставляет характерную толщину годичных колец деревьев с эталонной региональной шкалой.",
+      "difficulty": "basic",
+      "reviewTopic": "Дендрохронология"
+    },
+    {
+      "question": {
+        "questionId": "hist-q10",
+        "prompt": "К какому веку относится 1492 год (год плавания Колумба к берегам Америки)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "XIV век"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "XV век"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "XVI век"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "XVII век"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-century-calc",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "XV век"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "XV век длился с 1401 по 1500 год включительно. Следовательно, 1492 год относится к XV веку.",
+      "difficulty": "basic",
+      "reviewTopic": "Определение века по году"
+    },
+    {
+      "question": {
+        "questionId": "hist-q11",
+        "prompt": "Существует ли в традиционной исторической шкале летосчисления (наша эра / до нашей эры) нулевой год?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Да, между 1 годом до н.э. и 1 годом н.э."
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Нет, после 1 года до н.э. сразу наступает 1 год н.э."
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Да, нулевой год длился 100 дней"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Зависит от времени года"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-zero-year",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Нет, после 1 года до н.э. сразу наступает 1 год н.э."
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В исторической хронологии нулевого года нет: 1-й год до нашей эры непосредственно сменяется 1-м годом нашей эры.",
+      "difficulty": "basic",
+      "reviewTopic": "Летосчисление и отсутствие нулевого года"
+    },
+    {
+      "question": {
+        "questionId": "hist-q12",
+        "prompt": "Какая дисциплина изучает прошлое человечества путём раскопок вещественных памятников?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Археология"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Палеография"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Геология"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Антропология"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-archaeology",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-archaeology"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Археология"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Археология — наука, открывающая и изучающая материальные следы жизни людей древности (поселения, захоронения, орудия).",
+      "difficulty": "basic",
+      "reviewTopic": "Археология"
+    },
+    {
+      "question": {
+        "questionId": "hist-q13",
+        "prompt": "К какому виду исторических источников относятся передаваемые из поколения в поколение народные сказительные былины?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Устные (фольклорные)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Вещественные"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Письменные"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Архитектурные"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-oral-source",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Устные (фольклорные)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Устные источники сохраняют память о событиях в народных сказаниях, песнях, мифах и пословицах.",
+      "difficulty": "basic",
+      "reviewTopic": "Устные источники"
+    },
+    {
+      "question": {
+        "questionId": "hist-q14",
+        "prompt": "Как называется специальная историческая дисциплина, изучающая историю монетной чеканки и денежного обращения?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Нумизматика"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Сфрагистика"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Геральдика"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Генеалогия"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-numismatics",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Нумизматика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Нумизматика изучает старинные монеты, медали, клады и историю денежных систем разных эпох.",
+      "difficulty": "basic",
+      "reviewTopic": "Нумизматика"
+    },
+    {
+      "question": {
+        "questionId": "hist-q15",
+        "prompt": "Как называется специализированное учреждение, где хранятся и исследуются ценные исторические письменные документы?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Архив"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Лаборатория"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Амфитеатр"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Гербарий"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-archives",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-sources-def"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Архив"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Архивы собирают, систематизируют и надежно сохраняют рукописные и печатные документы государственных органов и граждан.",
+      "difficulty": "basic",
+      "reviewTopic": "Архивы"
+    },
+    {
+      "question": {
+        "questionId": "hist-q16",
+        "prompt": "Что включает в себя историческая критика источника перед признанием его данных достоверными?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Установление авторства, времени создания, подлинности и сопоставление с другими свидетельствами"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Проверку документа на орфографические ошибки"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Оценку стоимости продажи документа на аукционе"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Перевод текста исключительно на современный сленг"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-criticism",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-sources-def",
+        "hist-fact-primary"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Установление авторства, времени создания, подлинности и сопоставление с другими свидетельствами"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Критика источников (внешняя и внутренняя) позволяет выявить подделки, определить предвзятость автора и подтвердить достоверность фактов.",
+      "difficulty": "basic",
+      "reviewTopic": "Критика исторических источников"
+    },
+    {
+      "question": {
+        "questionId": "hist-q17",
+        "prompt": "Сколько лет составляет одно тысячелетие?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "100 лет"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "500 лет"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1000 лет"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "10 000 лет"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-millennium",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "1000 лет"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Одно тысячелетие (миллениум) равно ровно 10 векам или 1000 календарным годам.",
+      "difficulty": "basic",
+      "reviewTopic": "Единицы измерения времени"
+    },
+    {
+      "question": {
+        "questionId": "hist-q18",
+        "prompt": "Какая вспомогательная историческая дисциплина изучает гербы и государственные символы?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Геральдика"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Бонистика"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Эпиграфика"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Топонимика"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-heraldry",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Геральдика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Геральдика — наука о гербах, их происхождении, строении, правилах составления и значении символических элементов.",
+      "difficulty": "basic",
+      "reviewTopic": "Геральдика"
+    },
+    {
+      "question": {
+        "questionId": "hist-q19",
+        "prompt": "В каком порядке велся отсчет лет до нашей эры (до н.э.)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "В порядке убывания к 1 году н.э. (например: 500 г. до н.э., затем 499 г. до н.э.)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "В порядке возрастания, как и в нашей эре"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Случайным образом по указанию правителей"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Отсчет велся только по десятилетиям"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-bce-direction",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-chronology-def",
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "В порядке убывания к 1 году н.э. (например: 500 г. до н.э., затем 499 г. до н.э.)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При движении вперед во времени события до нашей эры приближаются к рубежу эр, поэтому число года уменьшается: 100 г. до н.э. был раньше, чем 50 г. до н.э.",
+      "difficulty": "basic",
+      "reviewTopic": "Счёт лет до нашей эры"
+    },
+    {
+      "question": {
+        "questionId": "hist-q20",
+        "prompt": "На каком принципе основан закон стратиграфии в археологии при определении относительного возраста находок?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "При ненарушенном залегании нижние слои почвы образовались раньше верхних"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Чем глубже слой, тем предметы в нем новее"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Все слои земли имеют одинаковый возраст"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Возраст определяется исключительно цветом глины"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-stratigraphy",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-dating",
+        "hist-fact-archaeology"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "При ненарушенном залегании нижние слои почвы образовались раньше верхних"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Закон суперпозиции гласит, что более глубокие геологические и культурные слои откладывались раньше тех, что лежат выше.",
+      "difficulty": "basic",
+      "reviewTopic": "Стратиграфия в археологии"
     }
   ]
 }

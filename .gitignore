@@ -29,3 +29,10 @@ package-lock.json
 .idea/
 .DS_Store
 Thumbs.db
+
+# LLM Models and Weights
+llm/
+
+# Python
+__pycache__/
+*.pyc

@@ -8,6 +8,7 @@ mod db;
 mod game;
 mod http;
 mod json;
+mod knowledge;
 mod models;
 mod sha;
 mod spatial;
@@ -25,6 +26,7 @@ use crate::config::ConfigService;
 use crate::db::DbPool;
 use crate::game::GameManager;
 use crate::http::{dispatch_http, read_http_request, HttpResponse};
+use crate::knowledge::KnowledgeService;
 use crate::spatial::SpatialService;
 use crate::wallet::WalletService;
 use crate::ws::{perform_ws_handshake, run_ws_session, WsBroadcaster};
@@ -50,6 +52,7 @@ fn main() {
     let game = Arc::new(GameManager::new(pool.clone()));
     let wallet = Arc::new(WalletService::new(pool.clone()));
     let competition = Arc::new(CompetitionService::new(pool.clone(), Arc::clone(&wallet)));
+    let knowledge = Arc::new(KnowledgeService::new(pool.clone()));
     let broadcaster = Arc::new(WsBroadcaster::new());
 
     let instance_id = AuthService::generate_id();
@@ -106,6 +109,7 @@ fn main() {
         let ai_c = Arc::clone(&ai);
         let wallet_c = Arc::clone(&wallet);
         let comp_c = Arc::clone(&competition);
+        let knowledge_c = Arc::clone(&knowledge);
         let bcast_c = Arc::clone(&broadcaster);
         let inst_c = instance_id.clone();
 
@@ -156,7 +160,7 @@ fn main() {
 
                 run_ws_session(conn, ticket, player_id, game_c, config_c, spatial_c, ai_c, wallet_c, comp_c, bcast_c, inst_c);
             } else {
-                let resp = dispatch_http(&req, &auth_c, &game_c, &config_c, &spatial_c, &ai_c, &wallet_c, &comp_c, &inst_c);
+                let resp = dispatch_http(&req, &auth_c, &game_c, &config_c, &spatial_c, &ai_c, &wallet_c, &comp_c, &knowledge_c, &inst_c);
                 let _ = resp.write_to(&mut stream);
             }
         });
