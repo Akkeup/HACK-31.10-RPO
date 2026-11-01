@@ -26,8 +26,7 @@ def load_env_file(path):
             k, v = line.split("=", 1)
             k = k.strip()
             v = v.strip().strip("'\"")
-            if k not in os.environ:
-                os.environ[k] = v
+            os.environ[k] = v
 
 def main():
     load_env_file(os.path.join(ROOT_DIR, ".env"))
