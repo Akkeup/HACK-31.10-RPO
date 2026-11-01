@@ -55,10 +55,22 @@ function hallWallColliders() {
   return segments;
 }
 
-function overlapsCollider(x, z, collider, radius = PLAYER_RADIUS) {
-  const dx = Math.max(Math.abs(x - collider.x) - collider.hx, 0);
-  const dz = Math.max(Math.abs(z - collider.z) - collider.hz, 0);
-  return dx * dx + dz * dz < radius * radius;
+function colliderSeparation(x, z, collider, radius = PLAYER_RADIUS) {
+  const dx = Math.abs(x - collider.x) - collider.hx;
+  const dz = Math.abs(z - collider.z) - collider.hz;
+  return (
+    Math.hypot(Math.max(dx, 0), Math.max(dz, 0)) +
+    Math.min(Math.max(dx, dz), 0) -
+    radius
+  );
+}
+
+export function blocksColliderMove(x, z, fromX, fromZ, collider) {
+  const next = colliderSeparation(x, z, collider);
+  if (next >= 0) return false;
+  const current = colliderSeparation(fromX, fromZ, collider);
+  // Allow motion parallel to a surface and outward from a restored overlap.
+  return current >= 0 || next < current - 1e-5;
 }
 export class Game {
   constructor(container, adapter, configs, onUpdate, onError) {
@@ -360,7 +372,7 @@ export class Game {
       for (const npc of this.npcs.values()) {
         npc.visualPatrol = null;
         npc.visualPatrolKey = null;
-        npc.root.visible = npc.role !== "teacher";
+        npc.root.visible = npc.role !== "teacher" || npc.id === "npc-guide";
       }
     }
   }
@@ -455,13 +467,11 @@ export class Game {
           this.seatTransitionUntil =
             performance.now() + this.configs.firstPerson.seatTransitionMs;
         }
-        if (this.locationId === ACADEMY_HUB) {
-          this.authoritative.set(
-            player.position.x,
-            player.position.y,
-            player.position.z,
-          );
-        }
+        this.authoritative.set(
+          player.position.x,
+          player.position.y,
+          player.position.z,
+        );
         continue;
       }
       ids.add(player.playerId);
@@ -573,7 +583,8 @@ export class Game {
           );
           actor.root.rotation.y = npc.yawRad;
         }
-        actor.root.visible = npc.role !== "teacher";
+        actor.root.visible =
+          npc.role !== "teacher" || npc.npcId === "npc-guide";
       }
       actor.buffer.push(
         [npc.position.x, npc.position.y, npc.position.z],
@@ -1154,30 +1165,48 @@ export class Game {
       const nextZ = originZ + z * speed * dt;
       if (currentRoom) {
         const b = currentRoom.bounds;
-        let x = Math.max(
+        const nextRoomX = Math.max(
           b.minX + PLAYER_RADIUS,
           Math.min(b.maxX - PLAYER_RADIUS, nextX),
         );
-        let z = originZ;
-        if (!currentRoom.colliders.some((col) => overlapsCollider(x, z, col)))
-          this.authoritative.x = x;
-        else x = originX;
-        z = Math.max(
+        let acceptedX = originX;
+        if (
+          !currentRoom.colliders.some((col) =>
+            blocksColliderMove(nextRoomX, originZ, originX, originZ, col),
+          )
+        )
+          acceptedX = nextRoomX;
+        const nextRoomZ = Math.max(
           b.minZ + PLAYER_RADIUS,
           Math.min(b.maxZ - PLAYER_RADIUS, nextZ),
         );
-        if (!currentRoom.colliders.some((col) => overlapsCollider(x, z, col)))
-          this.authoritative.z = z;
+        let acceptedZ = originZ;
+        if (
+          !currentRoom.colliders.some((col) =>
+            blocksColliderMove(acceptedX, nextRoomZ, acceptedX, originZ, col),
+          )
+        )
+          acceptedZ = nextRoomZ;
+        this.authoritative.set(acceptedX, this.authoritative.y, acceptedZ);
+        const travelled = Math.max(speed * dt, 1e-6);
+        x = (acceptedX - originX) / travelled;
+        z = (acceptedZ - originZ) / travelled;
       } else {
         if (this.locationId === ACADEMY_HUB) {
-          const blocked = (x, z) =>
-            this.shelfColliders.some((box) => overlapsCollider(x, z, box)) ||
-            this.hallWallColliders.some((box) => overlapsCollider(x, z, box));
+          const blocked = (x, z, fromX, fromZ) =>
+            this.shelfColliders.some((box) =>
+              blocksColliderMove(x, z, fromX, fromZ, box),
+            ) ||
+            this.hallWallColliders.some((box) =>
+              blocksColliderMove(x, z, fromX, fromZ, box),
+            );
           const tryX = originX + x * speed * dt;
-          if (!blocked(tryX, originZ))
+          if (!blocked(tryX, originZ, originX, originZ))
             this.authoritative.x = Math.max(0.5, Math.min(319.5, tryX));
           const tryZ = originZ + z * speed * dt;
-          if (!blocked(this.authoritative.x, tryZ))
+          if (
+            !blocked(this.authoritative.x, tryZ, this.authoritative.x, originZ)
+          )
             this.authoritative.z = Math.max(0.5, Math.min(319.5, tryZ));
           const travelled = Math.max(speed * dt, 1e-6);
           x = (this.authoritative.x - originX) / travelled;
@@ -1197,11 +1226,7 @@ export class Game {
     this.inputTimer += dt;
     if (this.inputTimer >= 0.05) {
       this.inputTimer %= 0.05;
-      if (currentRoom) {
-        this.adapter.sendInput([0, 0], this.yaw, false);
-      } else {
-        this.adapter.sendInput([x, z], this.yaw, running);
-      }
+      this.adapter.sendInput([x, z], this.yaw, running);
     }
     this.player.position.lerp(this.authoritative, 1 - Math.exp(-18 * dt));
     this.player.rotation.y = this.heading;
