@@ -770,6 +770,7 @@ export class UI {
       return;
     }
     this.dialogueNPC = id;
+    this.game.setNpcDialogueFrozen(id, true);
     this.returnFocus = document.activeElement;
     this.game.setBlocked(true, "dialogue");
     this.dialogueGeneration++;
@@ -794,6 +795,8 @@ export class UI {
     const open = !this.$("#dialogue-overlay").classList.contains("hidden");
     if (open) this.adapter.cancelPending();
     this.$("#dialogue-overlay").classList.add("hidden");
+    if (this.dialogueNPC) this.game?.setNpcDialogueFrozen(this.dialogueNPC, false);
+    this.dialogueNPC = null;
     this.dialogueGeneration++;
     this.busy = false;
     this.$("#dialogue-form button").disabled = false;
