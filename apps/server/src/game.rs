@@ -55,9 +55,9 @@ impl Room {
 
     pub fn get_status(&self) -> &'static str {
         let count = self.connected_count();
-        if count >= 2 {
+        if count >= 1 {
             "active"
-        } else if self.tick > 0 && count < 2 {
+        } else if self.tick > 0 && count < 1 {
             "paused"
         } else {
             "waiting"
@@ -92,9 +92,9 @@ impl Room {
             player_id: player_id.clone(),
             user_id: user_id.to_string(),
             display_name: display_name.to_string(),
-            x: 15.0,
+            x: 80.0,
             y: 0.0,
-            z: 15.0,
+            z: 92.0,
             yaw_rad: 0.0,
             connected: false,
             last_input_time: Self::now_ms(),
@@ -119,6 +119,8 @@ impl Room {
             p.connected = true;
             p.conn_id = conn_id;
             p.disconnect_time = None;
+            p.last_input_seq = 0;
+            p.last_input_time = Self::now_ms();
         }
     }
 
@@ -140,13 +142,18 @@ impl Room {
     }
 }
 impl Room {
-    pub fn handle_input(&mut self, player_id: &str, input_seq: u64, mut move_x: f64, mut move_z: f64, yaw_rad: f64, running: bool) {
+    pub fn handle_input(&mut self, player_id: &str, input_seq: u64, mut move_x: f64, mut move_z: f64, yaw_rad: f64, running: bool, walk_speed: f64, run_mul: f64) {
         if let Some(p) = self.players.get_mut(player_id) {
+            if input_seq < p.last_input_seq && p.last_input_seq > 50 {
+                p.last_input_seq = 0;
+            }
             if input_seq > p.last_input_seq {
+                let seq_diff = (input_seq - p.last_input_seq).min(5);
                 p.last_input_seq = input_seq;
                 p.yaw_rad = yaw_rad;
                 p.running = running;
                 p.last_input_time = Self::now_ms();
+                self.tick += 1;
 
                 // Prevent diagonal speed exploit by normalizing if length > 1
                 let len = (move_x * move_x + move_z * move_z).sqrt();
@@ -156,6 +163,13 @@ impl Room {
                 }
                 p.move_x = move_x;
                 p.move_z = move_z;
+
+                if move_x != 0.0 || move_z != 0.0 {
+                    let speed = if running { walk_speed * run_mul } else { walk_speed };
+                    let dt = 0.05 * (seq_diff as f64);
+                    p.x = (p.x + move_x * speed * dt).clamp(0.0, 319.9);
+                    p.z = (p.z + move_z * speed * dt).clamp(0.0, 319.9);
+                }
             }
         }
     }
@@ -197,19 +211,6 @@ impl Room {
                 p.move_z = 0.0;
             }
 
-            // In active session, simulate movement
-            if is_active && (p.move_x != 0.0 || p.move_z != 0.0) {
-                let speed = if p.running { walk_speed * run_mul } else { walk_speed };
-                let mut new_x = p.x + p.move_x * speed * dt;
-                let mut new_z = p.z + p.move_z * speed * dt;
-
-                // World boundary clamp: 0 to 320 meters (10 chunks of 32m)
-                new_x = new_x.clamp(0.0, 319.9);
-                new_z = new_z.clamp(0.0, 319.9);
-
-                p.x = new_x;
-                p.z = new_z;
-            }
         }
         expired_user_ids
     }
@@ -340,10 +341,10 @@ impl GameManager {
     }
 }
 impl GameManager {
-    pub fn handle_input(&self, session_id: &str, player_id: &str, input_seq: u64, move_x: f64, move_z: f64, yaw_rad: f64, running: bool) {
+    pub fn handle_input(&self, session_id: &str, player_id: &str, input_seq: u64, move_x: f64, move_z: f64, yaw_rad: f64, running: bool, walk_speed: f64, run_mul: f64) {
         let mut rooms = self.rooms.lock().unwrap();
         if let Some(room) = rooms.get_mut(session_id) {
-            room.handle_input(player_id, input_seq, move_x, move_z, yaw_rad, running);
+            room.handle_input(player_id, input_seq, move_x, move_z, yaw_rad, running, walk_speed, run_mul);
         }
     }
 
@@ -424,13 +425,18 @@ impl GameManager {
     }
 
     pub fn update_player_activity(&self, user_id: &str, mode: &str, target_id: Option<String>, seat_id: Option<String>) {
+        let valid_mode = match mode {
+            "reading" => "learning",
+            "exploring" | "learning" | "seated_quiz" | "seated_competition" => mode,
+            _ => "exploring",
+        };
         let mut rooms = self.rooms.lock().unwrap();
         let user_map = self.user_session.lock().unwrap();
         if let Some(sess_id) = user_map.get(user_id) {
             if let Some(room) = rooms.get_mut(sess_id) {
                 if let Some(player_id) = room.user_to_player.get(user_id) {
                     if let Some(p) = room.players.get_mut(player_id) {
-                        p.activity_mode = mode.to_string();
+                        p.activity_mode = valid_mode.to_string();
                         p.activity_target_id = target_id;
                         p.activity_seat_id = seat_id;
                     }

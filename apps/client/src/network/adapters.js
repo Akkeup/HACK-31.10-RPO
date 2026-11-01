@@ -254,8 +254,14 @@ export class DiscoveryAdapter {
         if (typeof e.data !== "string")
           throw Error("Binary WebSocket не поддерживается");
         const event = parseEvent(e.data);
-        if (event.serverSeq !== this.serverSeq + 1)
-          throw Error("Разрыв serverSeq — нужна полная синхронизация");
+        if (event.serverSeq <= this.serverSeq) {
+          return;
+        }
+        if (event.serverSeq > this.serverSeq + 1) {
+          console.warn(
+            `[adapters] serverSeq jump: expected ${this.serverSeq + 1}, got ${event.serverSeq}`,
+          );
+        }
         this.serverSeq = event.serverSeq;
         // Server UTC is corrected by the midpoint of a ping/pong round trip.
         if (event.type === "server.welcome")
@@ -676,7 +682,10 @@ export class DiscoveryAdapter {
   }
 }
 export async function createAdapter() {
-  if (import.meta.env.VITE_TRANSPORT === "mock") {
+  if (
+    import.meta.env.VITE_TRANSPORT === "mock" ||
+    (import.meta.env.DEV && import.meta.env.VITE_TRANSPORT !== "real")
+  ) {
     const { LocalMockAdapter } = await import("../../mock-v2/adapter.js");
     return new LocalMockAdapter();
   }

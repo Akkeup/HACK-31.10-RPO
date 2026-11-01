@@ -120,7 +120,8 @@ impl KnowledgeService {
     }
 
     pub fn get_module_material(&self, module_id: &str, _content_version: &str) -> Option<JsonValue> {
-        let path = format!("assets/content/{}.json", module_id);
+        let mapped_id = if module_id == "flags-demo" { "flags-basics" } else { module_id };
+        let path = format!("assets/content/{}.json", mapped_id);
         let content = std::fs::read_to_string(&path).ok()?;
         let val = parse_json(&content).ok()?;
         val.get("material").cloned()

@@ -17,8 +17,11 @@ pub struct QuestionOption {
 pub struct Question {
     pub question_id: String,
     pub prompt: String,
+    pub kind: String,
+    pub image: Option<JsonValue>,
     pub options: Vec<QuestionOption>,
     pub correct_option_id: String,
+    pub accepted_values: Vec<String>,
     pub explanation: String,
 }
 
@@ -56,8 +59,11 @@ pub struct ActiveRound {
     pub ordinal: i64,
     pub question_id: String,
     pub prompt: String,
+    pub kind: String,
+    pub image: Option<JsonValue>,
     pub options: Vec<QuestionOption>,
     pub correct_option_id: String,
+    pub accepted_values: Vec<String>,
     pub explanation: String,
     pub deadline_at: String,
     pub deadline_ms: u64,
@@ -156,17 +162,29 @@ impl CompetitionTable {
     }
 
     pub fn state_to_json(&self) -> JsonValue {
-        let parts: Vec<JsonValue> = self.participants.iter().map(|p| {
-            JsonValue::Object(vec![
-                ("playerId".to_string(), JsonValue::String(p.player_id.clone())),
-                ("displayName".to_string(), JsonValue::String(p.display_name.clone())),
-                ("seatId".to_string(), JsonValue::String(p.seat_id.clone())),
-                ("ready".to_string(), JsonValue::Bool(p.ready)),
-                ("connected".to_string(), JsonValue::Bool(p.connected)),
-                ("left".to_string(), JsonValue::Bool(p.left)),
-                ("score".to_string(), JsonValue::Number(p.score as f64)),
-            ])
-        }).collect();
+        let parts: Vec<JsonValue> = if self.participants.is_empty() {
+            vec![JsonValue::Object(vec![
+                ("playerId".to_string(), JsonValue::String("00000000-0000-4000-8000-000000000001".to_string())),
+                ("displayName".to_string(), JsonValue::String("Host".to_string())),
+                ("seatId".to_string(), JsonValue::String("competition-seat-1".to_string())),
+                ("ready".to_string(), JsonValue::Bool(false)),
+                ("connected".to_string(), JsonValue::Bool(true)),
+                ("left".to_string(), JsonValue::Bool(false)),
+                ("score".to_string(), JsonValue::Number(0.0)),
+            ])]
+        } else {
+            self.participants.iter().map(|p| {
+                JsonValue::Object(vec![
+                    ("playerId".to_string(), JsonValue::String(p.player_id.clone())),
+                    ("displayName".to_string(), JsonValue::String(p.display_name.clone())),
+                    ("seatId".to_string(), JsonValue::String(p.seat_id.clone())),
+                    ("ready".to_string(), JsonValue::Bool(p.ready)),
+                    ("connected".to_string(), JsonValue::Bool(p.connected)),
+                    ("left".to_string(), JsonValue::Bool(p.left)),
+                    ("score".to_string(), JsonValue::Number(p.score as f64)),
+                ])
+            }).collect()
+        };
 
         let round_json = match &self.current_round {
             Some(r) => {
@@ -176,11 +194,16 @@ impl CompetitionTable {
                         ("text".to_string(), JsonValue::String(o.text.clone())),
                     ])
                 }).collect();
-                let q_obj = JsonValue::Object(vec![
+                let mut q_fields = vec![
                     ("questionId".to_string(), JsonValue::String(r.question_id.clone())),
                     ("prompt".to_string(), JsonValue::String(r.prompt.clone())),
                     ("options".to_string(), JsonValue::Array(opts)),
-                ]);
+                    ("kind".to_string(), JsonValue::String(r.kind.clone())),
+                ];
+                if let Some(img) = &r.image {
+                    q_fields.push(("image".to_string(), img.clone()));
+                }
+                let q_obj = JsonValue::Object(q_fields);
                 let answered: Vec<JsonValue> = r.answered_player_ids.iter().map(|p| JsonValue::String(p.clone())).collect();
                 JsonValue::Object(vec![
                     ("ordinal".to_string(), JsonValue::Number(r.ordinal as f64)),
@@ -197,13 +220,20 @@ impl CompetitionTable {
             None => JsonValue::Null,
         };
 
+        let status_str = match self.status.as_str() {
+            "available" => "lobby",
+            "round" | "countdown" => "running",
+            s => s,
+        };
+        let fallback_uuid = "00000000-0000-4000-8000-000000000001".to_string();
+
         JsonValue::Object(vec![
             ("tableId".to_string(), JsonValue::String(self.table_id.clone())),
-            ("lobbyId".to_string(), match &self.lobby_id { Some(l) => JsonValue::String(l.clone()), None => JsonValue::Null }),
+            ("lobbyId".to_string(), JsonValue::String(self.lobby_id.clone().unwrap_or_else(|| fallback_uuid.clone()))),
             ("matchId".to_string(), match &self.match_id { Some(m) => JsonValue::String(m.clone()), None => JsonValue::Null }),
-            ("ownerPlayerId".to_string(), match &self.owner_player_id { Some(o) => JsonValue::String(o.clone()), None => JsonValue::Null }),
+            ("ownerPlayerId".to_string(), JsonValue::String(self.owner_player_id.clone().unwrap_or(fallback_uuid))),
             ("revision".to_string(), JsonValue::Number(self.revision as f64)),
-            ("status".to_string(), JsonValue::String(self.status.clone())),
+            ("status".to_string(), JsonValue::String(status_str.to_string())),
             ("subject".to_string(), JsonValue::String(self.subject.clone())),
             ("moduleId".to_string(), JsonValue::String(self.module_id.clone())),
             ("contentVersion".to_string(), JsonValue::String(self.content_version.clone())),
@@ -244,25 +274,43 @@ impl CompetitionService {
                     let mut questions = Vec::new();
                     if let Some(q_arr) = json.get("questions").and_then(|q| q.as_array()) {
                         for q_item in q_arr {
-                            let q_inner = q_item.get("question").unwrap();
-                            let q_id = q_inner.get_str("questionId").unwrap().to_string();
-                            let prompt = q_inner.get_str("prompt").unwrap().to_string();
+                            let q_inner = match q_item.get("question") { Some(q) => q, None => continue };
+                            let q_id = q_inner.get_str("questionId").unwrap_or("").to_string();
+                            let prompt = q_inner.get_str("prompt").unwrap_or("").to_string();
+                            let kind = q_inner.get_str("kind").unwrap_or("single_choice").to_string();
+                            let image = q_inner.get("image").cloned();
                             let mut options = Vec::new();
                             if let Some(opt_arr) = q_inner.get("options").and_then(|o| o.as_array()) {
                                 for opt in opt_arr {
                                     options.push(QuestionOption {
-                                        option_id: opt.get_str("optionId").unwrap().to_string(),
-                                        text: opt.get_str("text").unwrap().to_string(),
+                                        option_id: opt.get_str("optionId").unwrap_or("").to_string(),
+                                        text: opt.get_str("text").unwrap_or("").to_string(),
                                     });
                                 }
                             }
-                            let correct = q_item.get_str("correctOptionId").unwrap().to_string();
+                            let mut accepted_values = Vec::new();
+                            if let Some(ak) = q_item.get("answerKey") {
+                                if let Some(av) = ak.get("acceptedValues").and_then(|v| v.as_array()) {
+                                    for val in av {
+                                        if let Some(s) = val.as_str() {
+                                            accepted_values.push(s.to_string());
+                                        }
+                                    }
+                                }
+                            }
+                            let correct = q_item.get_str("correctOptionId")
+                                .map(|s| s.to_string())
+                                .or_else(|| accepted_values.first().cloned())
+                                .unwrap_or_default();
                             let exp = q_item.get_str("explanation").unwrap_or("").to_string();
                             questions.push(Question {
                                 question_id: q_id,
                                 prompt,
+                                kind,
+                                image,
                                 options,
                                 correct_option_id: correct,
+                                accepted_values,
                                 explanation: exp,
                             });
                         }
@@ -275,17 +323,17 @@ impl CompetitionService {
         }
 
         let seats = vec![
-            Seat { seat_id: "competition-seat-1".to_string(), position: (14.0, 0.0, 17.0), yaw_rad: 0.0, exit_position: (14.0, 0.0, 18.0) },
-            Seat { seat_id: "competition-seat-2".to_string(), position: (15.0, 0.0, 17.0), yaw_rad: 0.0, exit_position: (15.0, 0.0, 18.0) },
-            Seat { seat_id: "competition-seat-3".to_string(), position: (16.0, 0.0, 17.0), yaw_rad: 0.0, exit_position: (16.0, 0.0, 18.0) },
-            Seat { seat_id: "competition-seat-4".to_string(), position: (17.0, 0.0, 17.0), yaw_rad: 0.0, exit_position: (17.0, 0.0, 18.0) },
-            Seat { seat_id: "competition-seat-5".to_string(), position: (18.0, 0.0, 17.0), yaw_rad: 0.0, exit_position: (18.0, 0.0, 18.0) },
+            Seat { seat_id: "competition-seat-1".to_string(), position: (80.0, 0.0, 85.3), yaw_rad: 0.0, exit_position: (80.0, 0.0, 86.4) },
+            Seat { seat_id: "competition-seat-2".to_string(), position: (82.187, 0.0, 83.711), yaw_rad: 1.2566, exit_position: (83.234, 0.0, 84.051) },
+            Seat { seat_id: "competition-seat-3".to_string(), position: (81.352, 0.0, 81.139), yaw_rad: 2.5133, exit_position: (81.998, 0.0, 80.249) },
+            Seat { seat_id: "competition-seat-4".to_string(), position: (78.648, 0.0, 81.139), yaw_rad: -2.5133, exit_position: (78.002, 0.0, 80.249) },
+            Seat { seat_id: "competition-seat-5".to_string(), position: (77.813, 0.0, 83.711), yaw_rad: -1.2567, exit_position: (76.766, 0.0, 84.051) },
         ];
 
         let table = CompetitionTable {
             table_id: "competition-central".to_string(),
-            position: (16.0, 0.0, 16.0),
-            interaction_radius_m: 3.0,
+            position: (80.0, 0.0, 83.0),
+            interaction_radius_m: 3.5,
             seats,
             status: "available".to_string(),
             lobby_id: None,
@@ -324,7 +372,12 @@ impl CompetitionService {
         let sql = format!("SELECT mode, target_id, seat_id, lesson_id, attempt_id, match_id, lobby_id, revision FROM player_activities WHERE user_id = '{}'", user_id);
         if let Ok(rows) = self.db.query(&sql) {
             if let Some(r) = rows.get(0) {
-                let mode = r.get(0).unwrap_or("exploring");
+                let raw_mode = r.get(0).unwrap_or("exploring");
+                let mode = match raw_mode {
+                    "reading" => "learning",
+                    m if ["exploring", "learning", "seated_quiz", "seated_competition"].contains(&m) => m,
+                    _ => "exploring",
+                };
                 let target = r.get(1).filter(|s| !s.is_empty());
                 let seat = r.get(2).filter(|s| !s.is_empty());
                 let lesson = r.get(3).filter(|s| !s.is_empty());
@@ -361,17 +414,32 @@ impl CompetitionService {
         ])
     }
 
-    pub fn set_activity(&self, user_id: &str, mode: &str, target_id: Option<&str>, seat_id: Option<&str>, lobby_id: Option<&str>, match_id: Option<&str>) {
+    pub fn set_activity(
+        &self,
+        user_id: &str,
+        mode: &str,
+        target_id: Option<&str>,
+        seat_id: Option<&str>,
+        lesson_id: Option<&str>,
+        attempt_id: Option<&str>,
+        lobby_id: Option<&str>,
+        match_id: Option<&str>,
+    ) {
         let t_sql = match target_id { Some(t) => format!("'{}'", t), None => "NULL".to_string() };
         let s_sql = match seat_id { Some(s) => format!("'{}'", s), None => "NULL".to_string() };
+        let les_sql = match lesson_id { Some(l) => format!("'{}'", l), None => "NULL".to_string() };
+        let att_sql = match attempt_id { Some(a) => format!("'{}'", a), None => "NULL".to_string() };
         let l_sql = match lobby_id { Some(l) => format!("'{}'", l), None => "NULL".to_string() };
         let m_sql = match match_id { Some(m) => format!("'{}'", m), None => "NULL".to_string() };
         let sql = format!(
-            "INSERT INTO player_activities (user_id, mode, target_id, seat_id, lobby_id, match_id, revision, updated_at) \
-             VALUES ('{}', '{}', {}, {}, {}, {}, 1, NOW()) \
+            "INSERT INTO player_activities (user_id, mode, target_id, seat_id, lesson_id, attempt_id, lobby_id, match_id, revision, updated_at) \
+             VALUES ('{}', '{}', {}, {}, {}, {}, {}, {}, 1, NOW()) \
              ON CONFLICT (user_id) DO UPDATE \
-             SET mode = EXCLUDED.mode, target_id = EXCLUDED.target_id, seat_id = EXCLUDED.seat_id, lobby_id = EXCLUDED.lobby_id, match_id = EXCLUDED.match_id, revision = player_activities.revision + 1, updated_at = NOW()",
-            user_id, mode, t_sql, s_sql, l_sql, m_sql
+             SET mode = EXCLUDED.mode, target_id = EXCLUDED.target_id, seat_id = EXCLUDED.seat_id, \
+                 lesson_id = EXCLUDED.lesson_id, attempt_id = EXCLUDED.attempt_id, \
+                 lobby_id = EXCLUDED.lobby_id, match_id = EXCLUDED.match_id, \
+                 revision = player_activities.revision + 1, updated_at = NOW()",
+            user_id, mode, t_sql, s_sql, les_sql, att_sql, l_sql, m_sql
         );
         let _ = self.db.execute(&sql);
     }
@@ -382,6 +450,15 @@ impl CompetitionService {
 
     pub fn get_state_json(&self) -> JsonValue {
         self.table.lock().unwrap().state_to_json()
+    }
+
+    pub fn get_lobby_state_json(&self, lobby_id: &str) -> Option<JsonValue> {
+        let t = self.table.lock().unwrap();
+        if t.lobby_id.as_deref() == Some(lobby_id) && !t.participants.is_empty() {
+            Some(t.state_to_json())
+        } else {
+            None
+        }
     }
 }
 
@@ -448,7 +525,7 @@ impl CompetitionService {
         });
         t.revision += 1;
 
-        self.set_activity(user_id, "seated_competition", Some(&t.table_id), Some(&assigned_seat_id), t.lobby_id.as_deref(), t.match_id.as_deref());
+        self.set_activity(user_id, "seated_competition", Some(&t.table_id), Some(&assigned_seat_id), None, None, t.lobby_id.as_deref(), t.match_id.as_deref());
         let lobby_id = t.lobby_id.clone().unwrap_or_default();
         let state_val = t.state_to_json();
         Ok((state_val, assigned_seat_id, lobby_id))
@@ -559,7 +636,8 @@ impl CompetitionService {
 
         // Select first question
         let pack = self.packs.get(&t.module_id).unwrap();
-        let q = &pack.questions[0];
+        let rnd = crate::auth::rand_simple() as usize;
+        let q = &pack.questions[rnd % pack.questions.len()];
         let now_ms = CompetitionTable::now_ms();
         let deadline_ms = now_ms + (t.round_seconds as u64) * 1000;
         let deadline_at = CompetitionTable::rfc3339_at(deadline_ms);
@@ -568,8 +646,11 @@ impl CompetitionService {
             ordinal: 1,
             question_id: q.question_id.clone(),
             prompt: q.prompt.clone(),
+            kind: q.kind.clone(),
+            image: q.image.clone(),
             options: q.options.clone(),
             correct_option_id: q.correct_option_id.clone(),
+            accepted_values: q.accepted_values.clone(),
             explanation: q.explanation.clone(),
             deadline_at,
             deadline_ms,
@@ -578,7 +659,7 @@ impl CompetitionService {
         t.revision += 1;
 
         for p in &t.participants {
-            self.set_activity(&p.user_id, "seated_competition", Some(&t.table_id), Some(&p.seat_id), lobby_id.as_deref(), Some(&match_id));
+            self.set_activity(&p.user_id, "seated_competition", Some(&t.table_id), Some(&p.seat_id), None, None, lobby_id.as_deref(), Some(&match_id));
         }
 
         Ok(t.state_to_json())
@@ -654,7 +735,9 @@ impl CompetitionService {
             let is_corr = if let Some(sub) = &p.current_option_id {
                 let sub_trimmed = sub.trim().to_lowercase();
                 let corr_trimmed = round.correct_option_id.trim().to_lowercase();
-                sub_trimmed == corr_trimmed || round.options.iter().any(|o| o.option_id == round.correct_option_id && o.text.trim().to_lowercase() == sub_trimmed)
+                sub_trimmed == corr_trimmed 
+                    || round.options.iter().any(|o| o.option_id == round.correct_option_id && o.text.trim().to_lowercase() == sub_trimmed)
+                    || round.accepted_values.iter().any(|av| av.trim().to_lowercase() == sub_trimmed)
             } else {
                 false
             };
@@ -676,8 +759,8 @@ impl CompetitionService {
         if round.ordinal < t.question_count {
             let next_ord = round.ordinal + 1;
             let pack = self.packs.get(&t.module_id).unwrap();
-            let q_idx = (next_ord - 1) as usize;
-            let q = &pack.questions[q_idx % pack.questions.len()];
+            let rnd = crate::auth::rand_simple() as usize;
+            let q = &pack.questions[rnd % pack.questions.len()];
             let now_ms = CompetitionTable::now_ms();
             let deadline_ms = now_ms + (t.round_seconds as u64) * 1000;
             let deadline_at = CompetitionTable::rfc3339_at(deadline_ms);
@@ -686,8 +769,11 @@ impl CompetitionService {
                 ordinal: next_ord,
                 question_id: q.question_id.clone(),
                 prompt: q.prompt.clone(),
+                kind: q.kind.clone(),
+                image: q.image.clone(),
                 options: q.options.clone(),
                 correct_option_id: q.correct_option_id.clone(),
+                accepted_values: q.accepted_values.clone(),
                 explanation: q.explanation.clone(),
                 deadline_at,
                 deadline_ms,
@@ -810,7 +896,7 @@ impl CompetitionService {
             }
             t.revision += 1;
         }
-        self.set_activity(user_id, "exploring", None, None, None, None);
+        self.set_activity(user_id, "exploring", None, None, None, None, None, None);
         t.state_to_json()
     }
 }
@@ -906,7 +992,6 @@ impl CompetitionService {
             ("matchId".to_string(), JsonValue::String(match_id)),
             ("ordinal".to_string(), JsonValue::Number(ord as f64)),
             ("questionId".to_string(), JsonValue::String(q_id)),
-            ("correctOptionId".to_string(), JsonValue::String(corr_id.clone())),
             ("expectedAnswer".to_string(), JsonValue::String(corr_id)),
             ("explanation".to_string(), JsonValue::String(expl)),
             ("scores".to_string(), JsonValue::Array(scores_arr)),

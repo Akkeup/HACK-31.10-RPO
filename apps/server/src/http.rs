@@ -56,6 +56,9 @@ impl HttpResponse {
     pub fn write_to(&self, stream: &mut TcpStream) -> std::io::Result<()> {
         let mut hdr = format!("HTTP/1.1 {} {}\r\nContent-Length: {}\r\n", self.status, self.status_text, self.body.len());
         for (k, v) in &self.headers {
+            if k.eq_ignore_ascii_case("content-length") {
+                continue;
+            }
             hdr.push_str(&format!("{}: {}\r\n", k, v));
         }
         hdr.push_str("\r\n");
@@ -176,7 +179,7 @@ pub fn dispatch_http(
     }
 
     // Auth Login
-    if path == "/api/v1/auth/login" && method == "POST" {
+    if (path == "/api/v1/auth/login" || path == "/api/v2/auth/login") && method == "POST" {
         let body_str = String::from_utf8_lossy(&req.body);
         let json = match parse_json(&body_str) {
             Ok(v) => v,
@@ -191,14 +194,14 @@ pub fn dispatch_http(
     }
 
     // Auth Logout
-    if path == "/api/v1/auth/logout" && method == "POST" {
+    if (path == "/api/v1/auth/logout" || path == "/api/v2/auth/logout") && method == "POST" {
         let token = extract_bearer(req);
         let _ = auth.logout(&token);
         return HttpResponse::new(204, "No Content");
     }
 
     // Auth Me
-    if path == "/api/v1/auth/me" && method == "GET" {
+    if (path == "/api/v1/auth/me" || path == "/api/v2/auth/me") && method == "GET" {
         let token = extract_bearer(req);
         let user = match auth.validate_token(&token) {
             Ok(u) => u,
@@ -212,7 +215,7 @@ pub fn dispatch_http(
         return HttpResponse::json(200, "OK", &val);
     }
     // Sessions (List / Create)
-    if path == "/api/v1/sessions" {
+    if path == "/api/v1/sessions" || path == "/api/v2/sessions" {
         let token = extract_bearer(req);
         let user = match auth.validate_token(&token) {
             Ok(u) => u,
@@ -246,8 +249,13 @@ pub fn dispatch_http(
     }
 
     // Session Detail / Membership / Ticket
-    if path.starts_with("/api/v1/sessions/") {
-        let subpath = &path["/api/v1/sessions/".len()..];
+    if path.starts_with("/api/v1/sessions/") || path.starts_with("/api/v2/sessions/") {
+        let prefix_len = if path.starts_with("/api/v2/sessions/") {
+            "/api/v2/sessions/".len()
+        } else {
+            "/api/v1/sessions/".len()
+        };
+        let subpath = &path[prefix_len..];
         let mut segments = subpath.split('/');
         let session_id = segments.next().unwrap_or("");
         let action = segments.next();
@@ -423,7 +431,7 @@ pub fn dispatch_http(
     }
 
     // Activity
-    if path == "/api/v1/activity/me" && method == "GET" {
+    if (path == "/api/v1/activity/me" || path == "/api/v2/activity/me") && method == "GET" {
         let token = extract_bearer(req);
         let user = match auth.validate_token(&token) {
             Ok(u) => u,
@@ -444,17 +452,22 @@ pub fn dispatch_http(
         return HttpResponse::json(200, "OK", &tbl);
     }
 
-    if path.starts_with("/api/v1/competition/lobbies/") && method == "GET" {
+    if path.contains("/competition/lobbies/") && method == "GET" {
         let token = extract_bearer(req);
         let _ = match auth.validate_token(&token) {
             Ok(u) => u,
             Err((status, code, msg)) => return HttpResponse::error(status, code, msg, false),
         };
-        let st = competition.get_state_json();
-        return HttpResponse::json(200, "OK", &st);
+        let clean = path.split('?').next().unwrap_or(path);
+        let parts: Vec<&str> = clean.split('/').collect();
+        let lobby_id = parts.last().unwrap_or(&"");
+        if let Some(st) = competition.get_lobby_state_json(lobby_id) {
+            return HttpResponse::json(200, "OK", &st);
+        }
+        return HttpResponse::error(404, "NOT_FOUND", "Lobby not found", false);
     }
 
-    if path.starts_with("/api/v1/competition/matches/") && path.ends_with("/me") && method == "GET" {
+    if path.contains("/competition/matches/") && path.ends_with("/me") && method == "GET" {
         let token = extract_bearer(req);
         let user = match auth.validate_token(&token) {
             Ok(u) => u,
@@ -478,7 +491,10 @@ pub fn dispatch_http(
         let parts: Vec<&str> = path.split('/').collect();
         if let Some(pos) = parts.iter().position(|&p| p == "modules") {
             if parts.len() > pos + 3 && parts[pos + 2] == "versions" {
-                let mod_id = parts[pos + 1];
+                let mut mod_id = parts[pos + 1];
+                if mod_id == "flags-demo" {
+                    mod_id = "flags-basics";
+                }
                 let ver = parts[pos + 3];
                 if let Some(mat) = knowledge.get_module_material(mod_id, ver) {
                     return HttpResponse::json(200, "OK", &mat);
@@ -541,8 +557,18 @@ pub fn dispatch_http(
 
     // Quiz Attempts
     if path.contains("/education/attempts") && method == "GET" {
-        let val = JsonValue::Array(Vec::new());
-        return HttpResponse::json(200, "OK", &val);
+        let clean = path.split('?').next().unwrap_or(path);
+        if clean.ends_with("/attempts/me") || clean.ends_with("/attempts") {
+            let val = JsonValue::Object(vec![
+                ("attempts".to_string(), JsonValue::Array(Vec::new()))
+            ]);
+            return HttpResponse::json(200, "OK", &val);
+        } else {
+            let parts: Vec<&str> = clean.split('/').collect();
+            let attempt_id = parts.last().unwrap_or(&"");
+            let dto = crate::ws::get_quiz_attempt_dto(attempt_id);
+            return HttpResponse::json(200, "OK", &dto);
+        }
     }
 
     // World Chunks
@@ -604,7 +630,7 @@ pub fn dispatch_http(
                 };
                 let mut resp = HttpResponse::new(200, "OK");
                 resp.headers.push(("Content-Type".to_string(), content_type.to_string()));
-                resp.headers.push(("Content-Length".to_string(), bytes.len().to_string()));
+                resp.headers.push(("Cache-Control".to_string(), "no-cache, must-revalidate".to_string()));
                 resp.body = bytes;
                 return resp;
             }
@@ -614,7 +640,7 @@ pub fn dispatch_http(
             if let Ok(bytes) = std::fs::read(&index_path) {
                 let mut resp = HttpResponse::new(200, "OK");
                 resp.headers.push(("Content-Type".to_string(), "text/html; charset=utf-8".to_string()));
-                resp.headers.push(("Content-Length".to_string(), bytes.len().to_string()));
+                resp.headers.push(("Cache-Control".to_string(), "no-cache, must-revalidate".to_string()));
                 resp.body = bytes;
                 return resp;
             }

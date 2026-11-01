@@ -13,7 +13,7 @@ async function credentials(adapter, error) {
     };
   return new Promise((resolve) => {
     document.querySelector("#app").innerHTML =
-      '<main class="fatal"><h1>Добро пожаловать в Discovery</h1><p>Войдите в общий мир</p><p id="login-error" role="alert"></p><form id="login-form"><label class="select-label">Имя пользователя<input name="username" autocomplete="username" required maxlength="40"/></label><label class="select-label">Пароль<input name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128"/></label><label class="select-label">ID комнаты (пусто — создать)<input name="sessionId" placeholder="UUID комнаты" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/></label><button type="submit">Войти в мир</button></form></main>';
+      '<main class="fatal"><h1>Добро пожаловать в Discovery</h1><p>Локальный сервер · Protocol 2.0.0</p><p id="login-error" role="alert"></p><form id="login-form"><label class="select-label">Имя пользователя<input name="username" autocomplete="username" required maxlength="40" value="player1"/></label><label class="select-label">Пароль<input name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128" value="password123"/></label><label class="select-label">ID комнаты (пусто — создать)<input name="sessionId" placeholder="UUID комнаты" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/></label><button type="submit">Войти в мир</button></form></main>';
     document.querySelector("#login-error").textContent = error || "";
     document.querySelector("#login-form").onsubmit = (e) => {
       e.preventDefault();
@@ -81,6 +81,7 @@ async function start() {
     ui.setRole(adapter.role);
     ui.ready();
     ui.toggleSettings(false);
+    game.focusControls();
     if (import.meta.env.PROD && "serviceWorker" in navigator)
       navigator.serviceWorker
         .register("/sw.js")

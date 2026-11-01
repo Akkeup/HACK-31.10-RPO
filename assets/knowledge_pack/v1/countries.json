@@ -1,662 +1,4511 @@
 {
   "countries": [
     {
+      "countryId": "country-af",
       "public": {
-        "countryId": "country-jp",
-        "nameRu": "Япония",
+        "countryId": "country-af",
+        "nameRu": "Афганистан",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Япония — островное государство в Восточной Азии, расположенное в Тихом океане.",
-          "Столицей страны является город Токио.",
-          "Территория страны включает более четырнадцати тысяч островов, а высочайшей вершиной служит вулкан Фудзияма.",
-          "Государственный флаг представляет собой белое полотнище с красным кругом в центре."
+          "Афганистан — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Kabul.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Афганистан помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-jp-loc",
-          "fact-jp-cap",
-          "fact-jp-geo",
-          "fact-jp-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-af-loc",
+          "fact-af-cap"
+        ]
       },
-      "wikidataId": "Q17",
+      "flagAssetId": "flag-asset-af",
       "acceptedNames": [
-        "Япония",
-        "Japan",
-        "Государство Япония"
-      ],
-      "capitalRu": "Токио",
-      "flagAssetId": "flag-asset-01",
-      "flagVisibleElements": "Белое прямоугольное полотнище с ярко-красным круглым диском в центре.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Афганистан",
+        "Afghanistan"
       ]
     },
     {
+      "countryId": "country-ao",
       "public": {
-        "countryId": "country-fr",
-        "nameRu": "Франция",
+        "countryId": "country-ao",
+        "nameRu": "Ангола",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Франция — государство в Западной Европе с выходом к Атлантическому океану и Средиземному морю.",
-          "Её столицей и крупнейшим историческим центром является Париж.",
-          "На территории страны расположены западные склоны Альп с вершиной Монблан.",
-          "Флаг страны состоит из трех вертикальных полос синего, белого и красного цвета."
+          "Ангола — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Luanda.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Ангола помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-fr-loc",
-          "fact-fr-cap",
-          "fact-fr-geo",
-          "fact-fr-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-ao-loc",
+          "fact-ao-cap"
+        ]
       },
-      "wikidataId": "Q142",
+      "flagAssetId": "flag-asset-ao",
       "acceptedNames": [
-        "Франция",
-        "France",
-        "Французская Республика"
-      ],
-      "capitalRu": "Париж",
-      "flagAssetId": "flag-asset-02",
-      "flagVisibleElements": "Три вертикальные полосы одинаковой ширины синего, белого и красного цветов.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Ангола",
+        "Angola"
       ]
     },
     {
+      "countryId": "country-al",
       "public": {
-        "countryId": "country-br",
-        "nameRu": "Бразилия",
+        "countryId": "country-al",
+        "nameRu": "Албания",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Бразилия — крупнейшее государство Южной Америки, занимающее почти половину материка.",
-          "Официальной столицей государства является город Бразилиа.",
-          "Здесь протекает река Амазонка и раскинулся крупнейший в мире массив тропических дождевых лесов.",
-          "Флаг страны имеет зеленое поле с желтым ромбом и синим небесным кругом."
+          "Албания — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Tirana.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Албания помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-br-loc",
-          "fact-br-cap",
-          "fact-br-geo",
-          "fact-br-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-al-loc",
+          "fact-al-cap"
+        ]
       },
-      "wikidataId": "Q155",
+      "flagAssetId": "flag-asset-al",
       "acceptedNames": [
-        "Бразилия",
-        "Brazil",
-        "Федеративная Республика Бразилия"
-      ],
-      "capitalRu": "Бразилиа",
-      "flagAssetId": "flag-asset-03",
-      "flagVisibleElements": "Зелёное полотнище с жёлтым ромбом в центре и синим кругом со звёздами и белой лентой.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Албания",
+        "Albania"
       ]
     },
     {
+      "countryId": "country-ad",
       "public": {
-        "countryId": "country-ca",
-        "nameRu": "Канада",
+        "countryId": "country-ad",
+        "nameRu": "Андорра",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Канада — второе по площади государство мира, расположенное в Северной Америке.",
-          "Столицей страны является город Оттава.",
-          "Страна обладает самой протяженной береговой линией в мире и омывается тремя океанами.",
-          "На государственном флаге изображен красный одиннадцатиконечный кленовый лист на белом фоне."
+          "Андорра — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Andorra la Vella.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Андорра помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-ca-loc",
-          "fact-ca-cap",
-          "fact-ca-geo",
-          "fact-ca-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-ad-loc",
+          "fact-ad-cap"
+        ]
       },
-      "wikidataId": "Q16",
+      "flagAssetId": "flag-asset-ad",
       "acceptedNames": [
-        "Канада",
-        "Canada"
-      ],
-      "capitalRu": "Оттава",
-      "flagAssetId": "flag-asset-04",
-      "flagVisibleElements": "Две красные вертикальные полосы по краям, белый центральный квадрат с красным одиннадцатиконечным кленовым листом.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Андорра",
+        "Andorra"
       ]
     },
     {
+      "countryId": "country-ae",
       "public": {
-        "countryId": "country-de",
-        "nameRu": "Германия",
+        "countryId": "country-ae",
+        "nameRu": "Объединённые Арабские Эмираты",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Германия — федеративное государство, расположенное в Центральной Европе.",
-          "Столицей и крупнейшим мегаполисом страны является Берлин.",
-          "Рельеф повышается с севера на юг от Северо-Германской низменности к отрогам Альп.",
-          "Флаг представляет собой горизонтальный триколор из черной, красной и золотой полос."
+          "Объединённые Арабские Эмираты — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Abu Dhabi.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Объединённые Арабские Эмираты помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-de-loc",
-          "fact-de-cap",
-          "fact-de-geo",
-          "fact-de-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-ae-loc",
+          "fact-ae-cap"
+        ]
       },
-      "wikidataId": "Q183",
+      "flagAssetId": "flag-asset-ae",
       "acceptedNames": [
-        "Германия",
-        "Germany",
-        "Федеративная Республика Германия"
-      ],
-      "capitalRu": "Берлин",
-      "flagAssetId": "flag-asset-05",
-      "flagVisibleElements": "Три горизонтальные равновеликие полосы чёрного, красного и золотистого (жёлтого) цветов.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Объединённые Арабские Эмираты",
+        "United Arab Emirates"
       ]
     },
     {
-      "public": {
-        "countryId": "country-it",
-        "nameRu": "Италия",
-        "descriptionSentences": [
-          "Италия — государство на юге Европы, занимающее Апеннинский полуостров и острова Сицилия и Сардиния.",
-          "Её исторической столицей является Рим.",
-          "На территории страны расположены действующие вулканы Везувий и Этна.",
-          "Флаг государства состоит из трех вертикальных полос зеленого, белого и красного цветов."
-        ],
-        "factIds": [
-          "fact-it-loc",
-          "fact-it-cap",
-          "fact-it-geo",
-          "fact-it-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
-      },
-      "wikidataId": "Q38",
-      "acceptedNames": [
-        "Италия",
-        "Italy",
-        "Итальянская Республика"
-      ],
-      "capitalRu": "Рим",
-      "flagAssetId": "flag-asset-06",
-      "flagVisibleElements": "Три вертикальные полосы равной ширины: зелёная у древка, белая в центре и красная у свободного края.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
-      ]
-    },
-    {
-      "public": {
-        "countryId": "country-in",
-        "nameRu": "Индия",
-        "descriptionSentences": [
-          "Индия — крупное государство в Южной Азии, занимающее полуостров Индостан.",
-          "Столицей страны является Нью-Дели.",
-          "На севере страны возвышаются Гималаи, а по равнинам протекают священные реки Инд и Ганг.",
-          "Флаг представляет собой триколор с синим колесом из двадцати четырех спиц в центре."
-        ],
-        "factIds": [
-          "fact-in-loc",
-          "fact-in-cap",
-          "fact-in-geo",
-          "fact-in-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
-      },
-      "wikidataId": "Q668",
-      "acceptedNames": [
-        "Индия",
-        "India",
-        "Республика Индия"
-      ],
-      "capitalRu": "Нью-Дели",
-      "flagAssetId": "flag-asset-07",
-      "flagVisibleElements": "Три горизонтальные полосы шафранового, белого и зелёного цветов с синим колесом Ашока Чакра (24 спицы) в центре.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
-      ]
-    },
-    {
-      "public": {
-        "countryId": "country-eg",
-        "nameRu": "Египет",
-        "descriptionSentences": [
-          "Египет — трансконтинентальное государство на северо-востоке Африки и Синайском полуострове в Азии.",
-          "Столицей страны является древний город Каир.",
-          "Через всю территорию страны протекает река Нил, оазисы которой окружены пустынями Сахарой и Аравийской.",
-          "Флаг состоит из красной, белой и черной полос с золотым орлом в центре."
-        ],
-        "factIds": [
-          "fact-eg-loc",
-          "fact-eg-cap",
-          "fact-eg-geo",
-          "fact-eg-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
-      },
-      "wikidataId": "Q79",
-      "acceptedNames": [
-        "Египет",
-        "Egypt",
-        "Арабская Республика Египет"
-      ],
-      "capitalRu": "Каир",
-      "flagAssetId": "flag-asset-08",
-      "flagVisibleElements": "Три горизонтальные полосы красного, белого и чёрного цветов с золотым орлом Саладина на белой полосе.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
-      ]
-    },
-    {
-      "public": {
-        "countryId": "country-au",
-        "nameRu": "Австралия",
-        "descriptionSentences": [
-          "Австралия — государство, занимающее целый одноименный материк в Южном полушарии.",
-          "Столицей государства является специально построенный город Канберра.",
-          "Вдоль северо-восточного побережья тянется Большой Барьерный риф, крупнейший коралловый риф планеты.",
-          "На синем полотнище флага изображен британский флаг в углу и белые звезды Южного Креста."
-        ],
-        "factIds": [
-          "fact-au-loc",
-          "fact-au-cap",
-          "fact-au-geo",
-          "fact-au-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
-      },
-      "wikidataId": "Q408",
-      "acceptedNames": [
-        "Австралия",
-        "Australia",
-        "Австралийский Союз"
-      ],
-      "capitalRu": "Канберра",
-      "flagAssetId": "flag-asset-09",
-      "flagVisibleElements": "Синее полотнище с флагом Великобритании в левом верхнем углу, большой семиконечной звездой под ним и созвездием Южного Креста справа.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
-      ]
-    },
-    {
-      "public": {
-        "countryId": "country-gr",
-        "nameRu": "Греция",
-        "descriptionSentences": [
-          "Греция — государство на юге Балканского полуострова в Южной Европе.",
-          "Столицей страны и колыбелью античной демократии являются Афины.",
-          "Около двадцати процентов площади страны приходится на многочисленные острова в Эгейском и Ионическом морях.",
-          "Флаг состоит из девяти сине-белых полос и белого креста в левом верхнем углу."
-        ],
-        "factIds": [
-          "fact-gr-loc",
-          "fact-gr-cap",
-          "fact-gr-geo",
-          "fact-gr-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
-      },
-      "wikidataId": "Q41",
-      "acceptedNames": [
-        "Греция",
-        "Greece",
-        "Греческая Республика"
-      ],
-      "capitalRu": "Афины",
-      "flagAssetId": "flag-asset-10",
-      "flagVisibleElements": "Девять чередующихся синих и белых горизонтальных полос с белым равносторонним крестом в синем квадрате у древка.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
-      ]
-    },
-    {
+      "countryId": "country-ar",
       "public": {
         "countryId": "country-ar",
         "nameRu": "Аргентина",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Аргентина — второе по площади государство Южной Америки, протянувшееся вдоль горной цепи Анд.",
-          "Её столицей служит портовый город Буэнос-Айрес.",
-          "На территории страны находится вершина Аконкагуа, высочайшая точка Западного полушария.",
-          "На флаге между двумя голубыми полосами расположено изображение золотого солнца."
+          "Аргентина — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Buenos Aires.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Аргентина помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
           "fact-ar-loc",
-          "fact-ar-cap",
-          "fact-ar-geo",
-          "fact-ar-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-ar-cap"
+        ]
       },
-      "wikidataId": "Q414",
+      "flagAssetId": "flag-asset-ar",
       "acceptedNames": [
         "Аргентина",
-        "Argentina",
-        "Аргентинская Республика"
-      ],
-      "capitalRu": "Буэнос-Айрес",
-      "flagAssetId": "flag-asset-11",
-      "flagVisibleElements": "Три горизонтальные полосы: светло-синяя, белая и светло-синяя, с золотистым Майским солнцем в центре белой полосы.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Argentina"
       ]
     },
     {
+      "countryId": "country-am",
       "public": {
-        "countryId": "country-se",
-        "nameRu": "Швеция",
+        "countryId": "country-am",
+        "nameRu": "Армения",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Швеция — скандинавское государство на севере Европы, омываемое Балтийским морем.",
-          "Столицей государства является город Стокгольм, расположенный на четырнадцати островах.",
-          "Большую часть территории покрывают хвойные таежные леса и тысячи пресноводных озер.",
-          "Флаг страны синего цвета с характерным желтым скандинавским крестом."
+          "Армения — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Yerevan.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Армения помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-se-loc",
-          "fact-se-cap",
-          "fact-se-geo",
-          "fact-se-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-am-loc",
+          "fact-am-cap"
+        ]
       },
-      "wikidataId": "Q34",
+      "flagAssetId": "flag-asset-am",
       "acceptedNames": [
-        "Швеция",
-        "Sweden",
-        "Королевство Швеция"
-      ],
-      "capitalRu": "Стокгольм",
-      "flagAssetId": "flag-asset-12",
-      "flagVisibleElements": "Синее прямоугольное полотнище со скандинавским жёлтым крестом, смещённым влево к древку.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Армения",
+        "Armenia"
       ]
     },
     {
+      "countryId": "country-ag",
+      "public": {
+        "countryId": "country-ag",
+        "nameRu": "Антигуа и Барбуда",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Антигуа и Барбуда — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Saint John's.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Антигуа и Барбуда помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ag-loc",
+          "fact-ag-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ag",
+      "acceptedNames": [
+        "Антигуа и Барбуда",
+        "Antigua and Barbuda"
+      ]
+    },
+    {
+      "countryId": "country-au",
+      "public": {
+        "countryId": "country-au",
+        "nameRu": "Австралия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Австралия — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Canberra.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Австралия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-au-loc",
+          "fact-au-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-au",
+      "acceptedNames": [
+        "Австралия",
+        "Australia"
+      ]
+    },
+    {
+      "countryId": "country-at",
+      "public": {
+        "countryId": "country-at",
+        "nameRu": "Австрия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Австрия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Vienna.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Австрия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-at-loc",
+          "fact-at-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-at",
+      "acceptedNames": [
+        "Австрия",
+        "Austria"
+      ]
+    },
+    {
+      "countryId": "country-az",
+      "public": {
+        "countryId": "country-az",
+        "nameRu": "Азербайджан",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Азербайджан — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Baku.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Азербайджан помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-az-loc",
+          "fact-az-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-az",
+      "acceptedNames": [
+        "Азербайджан",
+        "Azerbaijan"
+      ]
+    },
+    {
+      "countryId": "country-bi",
+      "public": {
+        "countryId": "country-bi",
+        "nameRu": "Бурунди",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Бурунди — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Gitega.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Бурунди помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bi-loc",
+          "fact-bi-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bi",
+      "acceptedNames": [
+        "Бурунди",
+        "Burundi"
+      ]
+    },
+    {
+      "countryId": "country-be",
+      "public": {
+        "countryId": "country-be",
+        "nameRu": "Бельгия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Бельгия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Brussels.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Бельгия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-be-loc",
+          "fact-be-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-be",
+      "acceptedNames": [
+        "Бельгия",
+        "Belgium"
+      ]
+    },
+    {
+      "countryId": "country-bj",
+      "public": {
+        "countryId": "country-bj",
+        "nameRu": "Бенин",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Бенин — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Porto-Novo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Бенин помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bj-loc",
+          "fact-bj-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bj",
+      "acceptedNames": [
+        "Бенин",
+        "Benin"
+      ]
+    },
+    {
+      "countryId": "country-bf",
+      "public": {
+        "countryId": "country-bf",
+        "nameRu": "Буркина-Фасо",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Буркина-Фасо — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Ouagadougou.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Буркина-Фасо помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bf-loc",
+          "fact-bf-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bf",
+      "acceptedNames": [
+        "Буркина-Фасо",
+        "Burkina Faso"
+      ]
+    },
+    {
+      "countryId": "country-bd",
+      "public": {
+        "countryId": "country-bd",
+        "nameRu": "Бангладеш",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Бангладеш — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Dhaka.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Бангладеш помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bd-loc",
+          "fact-bd-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bd",
+      "acceptedNames": [
+        "Бангладеш",
+        "Bangladesh"
+      ]
+    },
+    {
+      "countryId": "country-bg",
+      "public": {
+        "countryId": "country-bg",
+        "nameRu": "Болгария",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Болгария — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Sofia.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Болгария помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bg-loc",
+          "fact-bg-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bg",
+      "acceptedNames": [
+        "Болгария",
+        "Bulgaria"
+      ]
+    },
+    {
+      "countryId": "country-bh",
+      "public": {
+        "countryId": "country-bh",
+        "nameRu": "Бахрейн",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Бахрейн — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Manama.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Бахрейн помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bh-loc",
+          "fact-bh-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bh",
+      "acceptedNames": [
+        "Бахрейн",
+        "Bahrain"
+      ]
+    },
+    {
+      "countryId": "country-bs",
+      "public": {
+        "countryId": "country-bs",
+        "nameRu": "Багамские Острова",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Багамские Острова — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Nassau.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Багамские Острова помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bs-loc",
+          "fact-bs-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bs",
+      "acceptedNames": [
+        "Багамские Острова",
+        "Bahamas"
+      ]
+    },
+    {
+      "countryId": "country-ba",
+      "public": {
+        "countryId": "country-ba",
+        "nameRu": "Босния и Герцеговина",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Босния и Герцеговина — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Sarajevo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Босния и Герцеговина помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ba-loc",
+          "fact-ba-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ba",
+      "acceptedNames": [
+        "Босния и Герцеговина",
+        "Bosnia and Herzegovina"
+      ]
+    },
+    {
+      "countryId": "country-by",
+      "public": {
+        "countryId": "country-by",
+        "nameRu": "Беларусь",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Беларусь — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Minsk.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Беларусь помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-by-loc",
+          "fact-by-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-by",
+      "acceptedNames": [
+        "Беларусь",
+        "Belarus"
+      ]
+    },
+    {
+      "countryId": "country-bz",
+      "public": {
+        "countryId": "country-bz",
+        "nameRu": "Белиз",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Белиз — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Belmopan.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Белиз помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bz-loc",
+          "fact-bz-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bz",
+      "acceptedNames": [
+        "Белиз",
+        "Belize"
+      ]
+    },
+    {
+      "countryId": "country-bo",
+      "public": {
+        "countryId": "country-bo",
+        "nameRu": "Боливия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Боливия — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Sucre.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Боливия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bo-loc",
+          "fact-bo-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bo",
+      "acceptedNames": [
+        "Боливия",
+        "Bolivia"
+      ]
+    },
+    {
+      "countryId": "country-br",
+      "public": {
+        "countryId": "country-br",
+        "nameRu": "Бразилия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Бразилия — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Brasília.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Бразилия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-br-loc",
+          "fact-br-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-br",
+      "acceptedNames": [
+        "Бразилия",
+        "Brazil"
+      ]
+    },
+    {
+      "countryId": "country-bb",
+      "public": {
+        "countryId": "country-bb",
+        "nameRu": "Барбадос",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Барбадос — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Bridgetown.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Барбадос помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bb-loc",
+          "fact-bb-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bb",
+      "acceptedNames": [
+        "Барбадос",
+        "Barbados"
+      ]
+    },
+    {
+      "countryId": "country-bn",
+      "public": {
+        "countryId": "country-bn",
+        "nameRu": "Бруней",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Бруней — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Bandar Seri Begawan.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Бруней помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bn-loc",
+          "fact-bn-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bn",
+      "acceptedNames": [
+        "Бруней",
+        "Brunei"
+      ]
+    },
+    {
+      "countryId": "country-bt",
+      "public": {
+        "countryId": "country-bt",
+        "nameRu": "Бутан",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Бутан — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Thimphu.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Бутан помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bt-loc",
+          "fact-bt-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bt",
+      "acceptedNames": [
+        "Бутан",
+        "Bhutan"
+      ]
+    },
+    {
+      "countryId": "country-bw",
+      "public": {
+        "countryId": "country-bw",
+        "nameRu": "Ботсвана",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Ботсвана — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Gaborone.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Ботсвана помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-bw-loc",
+          "fact-bw-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-bw",
+      "acceptedNames": [
+        "Ботсвана",
+        "Botswana"
+      ]
+    },
+    {
+      "countryId": "country-cf",
+      "public": {
+        "countryId": "country-cf",
+        "nameRu": "Центральноафриканская Республика",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Центральноафриканская Республика — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Bangui.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Центральноафриканская Республика помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-cf-loc",
+          "fact-cf-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-cf",
+      "acceptedNames": [
+        "Центральноафриканская Республика",
+        "Central African Republic"
+      ]
+    },
+    {
+      "countryId": "country-ca",
+      "public": {
+        "countryId": "country-ca",
+        "nameRu": "Канада",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Канада — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Ottawa.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Канада помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ca-loc",
+          "fact-ca-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ca",
+      "acceptedNames": [
+        "Канада",
+        "Canada"
+      ]
+    },
+    {
+      "countryId": "country-ch",
       "public": {
         "countryId": "country-ch",
         "nameRu": "Швейцария",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Швейцария — альпийское государство в Центральной Европе, не имеющее выхода к морю.",
-          "Федеральным центром и фактической столицей Конфедерации является город Берн.",
-          "Значительную часть страны занимают Альпы и Юрские горы с живописными ледниками.",
-          "Государственный флаг имеет редкую квадратную форму с белым крестом на красном поле."
+          "Швейцария — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Bern.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Швейцария помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
           "fact-ch-loc",
-          "fact-ch-cap",
-          "fact-ch-geo",
-          "fact-ch-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-ch-cap"
+        ]
       },
-      "wikidataId": "Q39",
+      "flagAssetId": "flag-asset-ch",
       "acceptedNames": [
         "Швейцария",
-        "Switzerland",
-        "Швейцарская Конфедерация"
-      ],
-      "capitalRu": "Берн",
-      "flagAssetId": "flag-asset-13",
-      "flagVisibleElements": "Красное квадратное полотнище с белым прямым равносторонним крестом в центре.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Switzerland"
       ]
     },
     {
+      "countryId": "country-cl",
       "public": {
-        "countryId": "country-tr",
-        "nameRu": "Турция",
+        "countryId": "country-cl",
+        "nameRu": "Чили",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Турция — государство, расположенное одновременно в Юго-Западной Азии и Юго-Восточной Европе.",
-          "Официальной столицей государства является город Анкара.",
-          "Проливы Босфор и Дарданеллы соединяют Черное море со Средиземным через Мраморное море.",
-          "Флаг страны красного цвета с белым полумесяцем и пятиконечной звездой."
+          "Чили — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Santiago.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Чили помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-tr-loc",
-          "fact-tr-cap",
-          "fact-tr-geo",
-          "fact-tr-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-cl-loc",
+          "fact-cl-cap"
+        ]
       },
-      "wikidataId": "Q43",
+      "flagAssetId": "flag-asset-cl",
       "acceptedNames": [
-        "Турция",
-        "Turkey",
-        "Турецкая Республика"
-      ],
-      "capitalRu": "Анкара",
-      "flagAssetId": "flag-asset-14",
-      "flagVisibleElements": "Красное полотнище с белым полумесяцем и белой пятиконечной звездой в центре.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Чили",
+        "Chile"
       ]
     },
     {
+      "countryId": "country-cn",
       "public": {
-        "countryId": "country-kr",
-        "nameRu": "Республика Корея",
+        "countryId": "country-cn",
+        "nameRu": "Китай",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Республика Корея — государство в Восточной Азии, расположенное на юге Корейского полуострова.",
-          "Её столицей и крупнейшим городом является Сеул.",
-          "Около семидесяти процентов площади страны занимают живописные горные хребты и возвышенности.",
-          "На белом фоне флага изображен красно-синий символ гармонии и четыре черные триграммы."
+          "Китай — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Beijing.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Китай помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-kr-loc",
-          "fact-kr-cap",
-          "fact-kr-geo",
-          "fact-kr-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-cn-loc",
+          "fact-cn-cap"
+        ]
       },
-      "wikidataId": "Q884",
+      "flagAssetId": "flag-asset-cn",
       "acceptedNames": [
-        "Республика Корея",
-        "Южная Корея",
-        "South Korea"
-      ],
-      "capitalRu": "Сеул",
-      "flagAssetId": "flag-asset-15",
-      "flagVisibleElements": "Белое полотнище с красно-синим кругом тхэгык в центре и четырьмя чёрными триграммами по углам.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Китай",
+        "China"
       ]
     },
     {
+      "countryId": "country-ci",
       "public": {
-        "countryId": "country-mx",
-        "nameRu": "Мексика",
+        "countryId": "country-ci",
+        "nameRu": "Кот-д’Ивуар",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Мексика — государство в южной части Северной Америки, омываемое Тихим океаном и Мексиканским заливом.",
-          "Столицей страны является город Мехико, основанный на месте древнего Теночтитлана.",
-          "На территории страны протянулись горные цепи Восточной и Западной Сьерра-Мадре с вулканом Орисаба.",
-          "Флаг представляет собой зелено-бело-красный триколор с гербовым орлом на белой полосе."
+          "Кот-д’Ивуар — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Yamoussoukro.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Кот-д’Ивуар помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-mx-loc",
-          "fact-mx-cap",
-          "fact-mx-geo",
-          "fact-mx-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-ci-loc",
+          "fact-ci-cap"
+        ]
       },
-      "wikidataId": "Q96",
+      "flagAssetId": "flag-asset-ci",
       "acceptedNames": [
-        "Мексика",
-        "Mexico",
-        "Мексиканские Соединённые Штаты"
-      ],
-      "capitalRu": "Мехико",
-      "flagAssetId": "flag-asset-16",
-      "flagVisibleElements": "Три вертикальные полосы: зелёная, белая и красная, с государственным гербом (орёл на кактусе со змеёй) в центре.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Кот-д’Ивуар",
+        "Ivory Coast"
       ]
     },
     {
+      "countryId": "country-cm",
       "public": {
-        "countryId": "country-no",
-        "nameRu": "Норвегия",
+        "countryId": "country-cm",
+        "nameRu": "Камерун",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Норвегия — северное европейское государство, занимающее западную часть Скандинавского полуострова.",
-          "Столицей королевства является город Осло на берегу Осло-фьорда.",
-          "Побережье страны изрезано тысячами глубоких живописных морских фьордов.",
-          "Флаг имеет красное поле с синим скандинавским крестом в белой окантовке."
+          "Камерун — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Yaoundé.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Камерун помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-no-loc",
-          "fact-no-cap",
-          "fact-no-geo",
-          "fact-no-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-cm-loc",
+          "fact-cm-cap"
+        ]
       },
-      "wikidataId": "Q20",
+      "flagAssetId": "flag-asset-cm",
       "acceptedNames": [
-        "Норвегия",
-        "Norway",
-        "Королевство Норвегия"
-      ],
-      "capitalRu": "Осло",
-      "flagAssetId": "flag-asset-17",
-      "flagVisibleElements": "Красное полотнище с тёмно-синим скандинавским крестом с белой каймой.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Камерун",
+        "Cameroon"
       ]
     },
     {
+      "countryId": "country-cd",
       "public": {
-        "countryId": "country-fi",
-        "nameRu": "Финляндия",
+        "countryId": "country-cd",
+        "nameRu": "Демократическая Республика Конго",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Финляндия — государство в Северной Европе, омываемое Балтийским морем и его заливами.",
-          "Столицей государства является приморский город Хельсинки.",
-          "Страну часто называют краем тысячи озер, ведь на ее территории находится около ста восьмидесяти тысяч водоемов.",
-          "Флаг представляет собой белый прямоугольник с синим скандинавским крестом."
+          "Демократическая Республика Конго — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Kinshasa.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Демократическая Республика Конго помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
-          "fact-fi-loc",
-          "fact-fi-cap",
-          "fact-fi-geo",
-          "fact-fi-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-cd-loc",
+          "fact-cd-cap"
+        ]
       },
-      "wikidataId": "Q33",
+      "flagAssetId": "flag-asset-cd",
       "acceptedNames": [
-        "Финляндия",
-        "Finland",
-        "Финляндская Республика"
-      ],
-      "capitalRu": "Хельсинки",
-      "flagAssetId": "flag-asset-18",
-      "flagVisibleElements": "Белое прямоугольное полотнище с синим скандинавским крестом.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Демократическая Республика Конго",
+        "DR Congo"
       ]
     },
     {
+      "countryId": "country-cg",
+      "public": {
+        "countryId": "country-cg",
+        "nameRu": "Республика Конго",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Республика Конго — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Brazzaville.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Республика Конго помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-cg-loc",
+          "fact-cg-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-cg",
+      "acceptedNames": [
+        "Республика Конго",
+        "Congo"
+      ]
+    },
+    {
+      "countryId": "country-co",
+      "public": {
+        "countryId": "country-co",
+        "nameRu": "Колумбия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Колумбия — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Bogotá.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Колумбия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-co-loc",
+          "fact-co-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-co",
+      "acceptedNames": [
+        "Колумбия",
+        "Colombia"
+      ]
+    },
+    {
+      "countryId": "country-km",
+      "public": {
+        "countryId": "country-km",
+        "nameRu": "Коморы",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Коморы — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Moroni.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Коморы помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-km-loc",
+          "fact-km-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-km",
+      "acceptedNames": [
+        "Коморы",
+        "Comoros"
+      ]
+    },
+    {
+      "countryId": "country-cv",
+      "public": {
+        "countryId": "country-cv",
+        "nameRu": "Кабо-Верде",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Кабо-Верде — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Praia.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Кабо-Верде помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-cv-loc",
+          "fact-cv-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-cv",
+      "acceptedNames": [
+        "Кабо-Верде",
+        "Cape Verde"
+      ]
+    },
+    {
+      "countryId": "country-cr",
+      "public": {
+        "countryId": "country-cr",
+        "nameRu": "Коста-Рика",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Коста-Рика — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является San José.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Коста-Рика помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-cr-loc",
+          "fact-cr-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-cr",
+      "acceptedNames": [
+        "Коста-Рика",
+        "Costa Rica"
+      ]
+    },
+    {
+      "countryId": "country-cu",
+      "public": {
+        "countryId": "country-cu",
+        "nameRu": "Куба",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Куба — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Havana.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Куба помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-cu-loc",
+          "fact-cu-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-cu",
+      "acceptedNames": [
+        "Куба",
+        "Cuba"
+      ]
+    },
+    {
+      "countryId": "country-cy",
+      "public": {
+        "countryId": "country-cy",
+        "nameRu": "Кипр",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Кипр — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Nicosia.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Кипр помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-cy-loc",
+          "fact-cy-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-cy",
+      "acceptedNames": [
+        "Кипр",
+        "Cyprus"
+      ]
+    },
+    {
+      "countryId": "country-cz",
+      "public": {
+        "countryId": "country-cz",
+        "nameRu": "Чехия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Чехия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Prague.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Чехия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-cz-loc",
+          "fact-cz-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-cz",
+      "acceptedNames": [
+        "Чехия",
+        "Czechia"
+      ]
+    },
+    {
+      "countryId": "country-de",
+      "public": {
+        "countryId": "country-de",
+        "nameRu": "Германия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Германия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Berlin.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Германия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-de-loc",
+          "fact-de-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-de",
+      "acceptedNames": [
+        "Германия",
+        "Germany"
+      ]
+    },
+    {
+      "countryId": "country-dj",
+      "public": {
+        "countryId": "country-dj",
+        "nameRu": "Джибути",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Джибути — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Djibouti.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Джибути помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-dj-loc",
+          "fact-dj-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-dj",
+      "acceptedNames": [
+        "Джибути",
+        "Djibouti"
+      ]
+    },
+    {
+      "countryId": "country-dm",
+      "public": {
+        "countryId": "country-dm",
+        "nameRu": "Доминика",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Доминика — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Roseau.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Доминика помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-dm-loc",
+          "fact-dm-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-dm",
+      "acceptedNames": [
+        "Доминика",
+        "Dominica"
+      ]
+    },
+    {
+      "countryId": "country-dk",
+      "public": {
+        "countryId": "country-dk",
+        "nameRu": "Дания",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Дания — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Copenhagen.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Дания помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-dk-loc",
+          "fact-dk-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-dk",
+      "acceptedNames": [
+        "Дания",
+        "Denmark"
+      ]
+    },
+    {
+      "countryId": "country-do",
+      "public": {
+        "countryId": "country-do",
+        "nameRu": "Доминиканская Республика",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Доминиканская Республика — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Santo Domingo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Доминиканская Республика помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-do-loc",
+          "fact-do-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-do",
+      "acceptedNames": [
+        "Доминиканская Республика",
+        "Dominican Republic"
+      ]
+    },
+    {
+      "countryId": "country-dz",
+      "public": {
+        "countryId": "country-dz",
+        "nameRu": "Алжир",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Алжир — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Algiers.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Алжир помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-dz-loc",
+          "fact-dz-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-dz",
+      "acceptedNames": [
+        "Алжир",
+        "Algeria"
+      ]
+    },
+    {
+      "countryId": "country-ec",
+      "public": {
+        "countryId": "country-ec",
+        "nameRu": "Эквадор",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Эквадор — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Quito.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Эквадор помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ec-loc",
+          "fact-ec-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ec",
+      "acceptedNames": [
+        "Эквадор",
+        "Ecuador"
+      ]
+    },
+    {
+      "countryId": "country-eg",
+      "public": {
+        "countryId": "country-eg",
+        "nameRu": "Египет",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Египет — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Cairo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Египет помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-eg-loc",
+          "fact-eg-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-eg",
+      "acceptedNames": [
+        "Египет",
+        "Egypt"
+      ]
+    },
+    {
+      "countryId": "country-er",
+      "public": {
+        "countryId": "country-er",
+        "nameRu": "Эритрея",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Эритрея — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Asmara.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Эритрея помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-er-loc",
+          "fact-er-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-er",
+      "acceptedNames": [
+        "Эритрея",
+        "Eritrea"
+      ]
+    },
+    {
+      "countryId": "country-es",
       "public": {
         "countryId": "country-es",
         "nameRu": "Испания",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Испания — государство на юго-западе Европы, занимающее большую часть Пиренейского полуострова.",
-          "Столицей королевства является город Мадрид, расположенный в самом центре страны.",
-          "Значительную часть территории занимает обширное плоскогорье Месета и горные цепи Пиренеев.",
-          "Флаг состоит из красной, широкой желтой и красной полос с гербом со стороны древка."
+          "Испания — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Madrid.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Испания помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
           "fact-es-loc",
-          "fact-es-cap",
-          "fact-es-geo",
-          "fact-es-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-es-cap"
+        ]
       },
-      "wikidataId": "Q29",
+      "flagAssetId": "flag-asset-es",
       "acceptedNames": [
         "Испания",
-        "Spain",
-        "Королевство Испания"
-      ],
-      "capitalRu": "Мадрид",
-      "flagAssetId": "flag-asset-19",
-      "flagVisibleElements": "Три горизонтальные полосы: красная, жёлтая (двойной ширины) и красная, с государственным гербом у древка.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Spain"
       ]
     },
     {
+      "countryId": "country-ee",
+      "public": {
+        "countryId": "country-ee",
+        "nameRu": "Эстония",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Эстония — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Tallinn.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Эстония помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ee-loc",
+          "fact-ee-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ee",
+      "acceptedNames": [
+        "Эстония",
+        "Estonia"
+      ]
+    },
+    {
+      "countryId": "country-et",
+      "public": {
+        "countryId": "country-et",
+        "nameRu": "Эфиопия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Эфиопия — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Addis Ababa.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Эфиопия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-et-loc",
+          "fact-et-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-et",
+      "acceptedNames": [
+        "Эфиопия",
+        "Ethiopia"
+      ]
+    },
+    {
+      "countryId": "country-fi",
+      "public": {
+        "countryId": "country-fi",
+        "nameRu": "Финляндия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Финляндия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Helsinki.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Финляндия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-fi-loc",
+          "fact-fi-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-fi",
+      "acceptedNames": [
+        "Финляндия",
+        "Finland"
+      ]
+    },
+    {
+      "countryId": "country-fj",
+      "public": {
+        "countryId": "country-fj",
+        "nameRu": "Фиджи",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Фиджи — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Suva.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Фиджи помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-fj-loc",
+          "fact-fj-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-fj",
+      "acceptedNames": [
+        "Фиджи",
+        "Fiji"
+      ]
+    },
+    {
+      "countryId": "country-fr",
+      "public": {
+        "countryId": "country-fr",
+        "nameRu": "Франция",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Франция — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Paris.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Франция помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-fr-loc",
+          "fact-fr-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-fr",
+      "acceptedNames": [
+        "Франция",
+        "France"
+      ]
+    },
+    {
+      "countryId": "country-fm",
+      "public": {
+        "countryId": "country-fm",
+        "nameRu": "Федеративные Штаты Микронезии",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Федеративные Штаты Микронезии — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Palikir.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Федеративные Штаты Микронезии помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-fm-loc",
+          "fact-fm-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-fm",
+      "acceptedNames": [
+        "Федеративные Штаты Микронезии",
+        "Micronesia"
+      ]
+    },
+    {
+      "countryId": "country-ga",
+      "public": {
+        "countryId": "country-ga",
+        "nameRu": "Габон",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Габон — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Libreville.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Габон помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ga-loc",
+          "fact-ga-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ga",
+      "acceptedNames": [
+        "Габон",
+        "Gabon"
+      ]
+    },
+    {
+      "countryId": "country-gb",
+      "public": {
+        "countryId": "country-gb",
+        "nameRu": "Великобритания",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Великобритания — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является London.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Великобритания помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-gb-loc",
+          "fact-gb-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-gb",
+      "acceptedNames": [
+        "Великобритания",
+        "United Kingdom"
+      ]
+    },
+    {
+      "countryId": "country-ge",
+      "public": {
+        "countryId": "country-ge",
+        "nameRu": "Грузия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Грузия — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Tbilisi.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Грузия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ge-loc",
+          "fact-ge-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ge",
+      "acceptedNames": [
+        "Грузия",
+        "Georgia"
+      ]
+    },
+    {
+      "countryId": "country-gh",
+      "public": {
+        "countryId": "country-gh",
+        "nameRu": "Гана",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Гана — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Accra.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Гана помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-gh-loc",
+          "fact-gh-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-gh",
+      "acceptedNames": [
+        "Гана",
+        "Ghana"
+      ]
+    },
+    {
+      "countryId": "country-gn",
+      "public": {
+        "countryId": "country-gn",
+        "nameRu": "Гвинея",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Гвинея — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Conakry.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Гвинея помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-gn-loc",
+          "fact-gn-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-gn",
+      "acceptedNames": [
+        "Гвинея",
+        "Guinea"
+      ]
+    },
+    {
+      "countryId": "country-gm",
+      "public": {
+        "countryId": "country-gm",
+        "nameRu": "Гамбия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Гамбия — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Banjul.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Гамбия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-gm-loc",
+          "fact-gm-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-gm",
+      "acceptedNames": [
+        "Гамбия",
+        "Gambia"
+      ]
+    },
+    {
+      "countryId": "country-gw",
+      "public": {
+        "countryId": "country-gw",
+        "nameRu": "Гвинея-Бисау",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Гвинея-Бисау — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Bissau.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Гвинея-Бисау помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-gw-loc",
+          "fact-gw-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-gw",
+      "acceptedNames": [
+        "Гвинея-Бисау",
+        "Guinea-Bissau"
+      ]
+    },
+    {
+      "countryId": "country-gq",
+      "public": {
+        "countryId": "country-gq",
+        "nameRu": "Экваториальная Гвинея",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Экваториальная Гвинея — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Ciudad de la Paz.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Экваториальная Гвинея помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-gq-loc",
+          "fact-gq-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-gq",
+      "acceptedNames": [
+        "Экваториальная Гвинея",
+        "Equatorial Guinea"
+      ]
+    },
+    {
+      "countryId": "country-gr",
+      "public": {
+        "countryId": "country-gr",
+        "nameRu": "Греция",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Греция — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Athens.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Греция помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-gr-loc",
+          "fact-gr-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-gr",
+      "acceptedNames": [
+        "Греция",
+        "Greece"
+      ]
+    },
+    {
+      "countryId": "country-gd",
+      "public": {
+        "countryId": "country-gd",
+        "nameRu": "Гренада",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Гренада — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является St. George's.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Гренада помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-gd-loc",
+          "fact-gd-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-gd",
+      "acceptedNames": [
+        "Гренада",
+        "Grenada"
+      ]
+    },
+    {
+      "countryId": "country-gt",
+      "public": {
+        "countryId": "country-gt",
+        "nameRu": "Гватемала",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Гватемала — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Guatemala City.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Гватемала помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-gt-loc",
+          "fact-gt-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-gt",
+      "acceptedNames": [
+        "Гватемала",
+        "Guatemala"
+      ]
+    },
+    {
+      "countryId": "country-gy",
+      "public": {
+        "countryId": "country-gy",
+        "nameRu": "Гайана",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Гайана — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Georgetown.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Гайана помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-gy-loc",
+          "fact-gy-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-gy",
+      "acceptedNames": [
+        "Гайана",
+        "Guyana"
+      ]
+    },
+    {
+      "countryId": "country-hn",
+      "public": {
+        "countryId": "country-hn",
+        "nameRu": "Гондурас",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Гондурас — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Tegucigalpa.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Гондурас помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-hn-loc",
+          "fact-hn-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-hn",
+      "acceptedNames": [
+        "Гондурас",
+        "Honduras"
+      ]
+    },
+    {
+      "countryId": "country-hr",
+      "public": {
+        "countryId": "country-hr",
+        "nameRu": "Хорватия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Хорватия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Zagreb.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Хорватия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-hr-loc",
+          "fact-hr-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-hr",
+      "acceptedNames": [
+        "Хорватия",
+        "Croatia"
+      ]
+    },
+    {
+      "countryId": "country-ht",
+      "public": {
+        "countryId": "country-ht",
+        "nameRu": "Гаити",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Гаити — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Port-au-Prince.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Гаити помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ht-loc",
+          "fact-ht-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ht",
+      "acceptedNames": [
+        "Гаити",
+        "Haiti"
+      ]
+    },
+    {
+      "countryId": "country-hu",
+      "public": {
+        "countryId": "country-hu",
+        "nameRu": "Венгрия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Венгрия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Budapest.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Венгрия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-hu-loc",
+          "fact-hu-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-hu",
+      "acceptedNames": [
+        "Венгрия",
+        "Hungary"
+      ]
+    },
+    {
+      "countryId": "country-id",
+      "public": {
+        "countryId": "country-id",
+        "nameRu": "Индонезия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Индонезия — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Jakarta.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Индонезия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-id-loc",
+          "fact-id-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-id",
+      "acceptedNames": [
+        "Индонезия",
+        "Indonesia"
+      ]
+    },
+    {
+      "countryId": "country-in",
+      "public": {
+        "countryId": "country-in",
+        "nameRu": "Индия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Индия — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является New Delhi.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Индия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-in-loc",
+          "fact-in-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-in",
+      "acceptedNames": [
+        "Индия",
+        "India"
+      ]
+    },
+    {
+      "countryId": "country-ie",
+      "public": {
+        "countryId": "country-ie",
+        "nameRu": "Ирландия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Ирландия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Dublin.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Ирландия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ie-loc",
+          "fact-ie-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ie",
+      "acceptedNames": [
+        "Ирландия",
+        "Ireland"
+      ]
+    },
+    {
+      "countryId": "country-ir",
+      "public": {
+        "countryId": "country-ir",
+        "nameRu": "Иран",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Иран — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Tehran.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Иран помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ir-loc",
+          "fact-ir-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ir",
+      "acceptedNames": [
+        "Иран",
+        "Iran"
+      ]
+    },
+    {
+      "countryId": "country-iq",
+      "public": {
+        "countryId": "country-iq",
+        "nameRu": "Ирак",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Ирак — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Baghdad.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Ирак помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-iq-loc",
+          "fact-iq-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-iq",
+      "acceptedNames": [
+        "Ирак",
+        "Iraq"
+      ]
+    },
+    {
+      "countryId": "country-is",
+      "public": {
+        "countryId": "country-is",
+        "nameRu": "Исландия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Исландия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Reykjavik.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Исландия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-is-loc",
+          "fact-is-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-is",
+      "acceptedNames": [
+        "Исландия",
+        "Iceland"
+      ]
+    },
+    {
+      "countryId": "country-il",
+      "public": {
+        "countryId": "country-il",
+        "nameRu": "Израиль",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Израиль — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Jerusalem.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Израиль помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-il-loc",
+          "fact-il-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-il",
+      "acceptedNames": [
+        "Израиль",
+        "Israel"
+      ]
+    },
+    {
+      "countryId": "country-it",
+      "public": {
+        "countryId": "country-it",
+        "nameRu": "Италия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Италия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Rome.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Италия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-it-loc",
+          "fact-it-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-it",
+      "acceptedNames": [
+        "Италия",
+        "Italy"
+      ]
+    },
+    {
+      "countryId": "country-jm",
+      "public": {
+        "countryId": "country-jm",
+        "nameRu": "Ямайка",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Ямайка — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Kingston.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Ямайка помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-jm-loc",
+          "fact-jm-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-jm",
+      "acceptedNames": [
+        "Ямайка",
+        "Jamaica"
+      ]
+    },
+    {
+      "countryId": "country-jo",
+      "public": {
+        "countryId": "country-jo",
+        "nameRu": "Иордания",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Иордания — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Amman.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Иордания помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-jo-loc",
+          "fact-jo-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-jo",
+      "acceptedNames": [
+        "Иордания",
+        "Jordan"
+      ]
+    },
+    {
+      "countryId": "country-jp",
+      "public": {
+        "countryId": "country-jp",
+        "nameRu": "Япония",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Япония — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Tokyo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Япония помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-jp-loc",
+          "fact-jp-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-jp",
+      "acceptedNames": [
+        "Япония",
+        "Japan"
+      ]
+    },
+    {
+      "countryId": "country-kz",
       "public": {
         "countryId": "country-kz",
         "nameRu": "Казахстан",
+        "contentVersion": "v1",
         "descriptionSentences": [
-          "Казахстан — крупнейшее государство Центральной Азии, не имеющее выхода к Мировому океану.",
-          "Столицей республики является город Астана на реке Ишим.",
-          "Большую часть территории занимают бескрайние степи, полупустыни и горные цепи Тянь-Шаня.",
-          "На лазурно-голубом полотнище флага сияет золотое солнце с парящим степным орлом."
+          "Казахстан — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Astana.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Казахстан помогает лучше понимать мировую географию и культуру."
         ],
         "factIds": [
           "fact-kz-loc",
-          "fact-kz-cap",
-          "fact-kz-geo",
-          "fact-kz-flag"
-        ],
-        "contentVersion": "v1",
-        "synthetic": false
+          "fact-kz-cap"
+        ]
       },
-      "wikidataId": "Q232",
+      "flagAssetId": "flag-asset-kz",
       "acceptedNames": [
         "Казахстан",
-        "Kazakhstan",
-        "Республика Казахстан"
-      ],
-      "capitalRu": "Астана",
-      "flagAssetId": "flag-asset-20",
-      "flagVisibleElements": "Лазурно-голубое полотнище с золотым солнцем с 32 лучами, парящим степным беркутом в центре и национальным орнаментом у древка.",
-      "sourceIds": [
-        "source-wikidata-country-dump",
-        "source-wikimedia-commons-flags"
+        "Kazakhstan"
+      ]
+    },
+    {
+      "countryId": "country-ke",
+      "public": {
+        "countryId": "country-ke",
+        "nameRu": "Кения",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Кения — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Nairobi.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Кения помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ke-loc",
+          "fact-ke-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ke",
+      "acceptedNames": [
+        "Кения",
+        "Kenya"
+      ]
+    },
+    {
+      "countryId": "country-kg",
+      "public": {
+        "countryId": "country-kg",
+        "nameRu": "Киргизия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Киргизия — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Bishkek.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Киргизия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-kg-loc",
+          "fact-kg-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-kg",
+      "acceptedNames": [
+        "Киргизия",
+        "Kyrgyzstan"
+      ]
+    },
+    {
+      "countryId": "country-kh",
+      "public": {
+        "countryId": "country-kh",
+        "nameRu": "Камбоджа",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Камбоджа — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Phnom Penh.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Камбоджа помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-kh-loc",
+          "fact-kh-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-kh",
+      "acceptedNames": [
+        "Камбоджа",
+        "Cambodia"
+      ]
+    },
+    {
+      "countryId": "country-ki",
+      "public": {
+        "countryId": "country-ki",
+        "nameRu": "Кирибати",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Кирибати — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является South Tarawa.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Кирибати помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ki-loc",
+          "fact-ki-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ki",
+      "acceptedNames": [
+        "Кирибати",
+        "Kiribati"
+      ]
+    },
+    {
+      "countryId": "country-kn",
+      "public": {
+        "countryId": "country-kn",
+        "nameRu": "Сент-Китс и Невис",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сент-Китс и Невис — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Basseterre.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сент-Китс и Невис помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-kn-loc",
+          "fact-kn-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-kn",
+      "acceptedNames": [
+        "Сент-Китс и Невис",
+        "Saint Kitts and Nevis"
+      ]
+    },
+    {
+      "countryId": "country-kr",
+      "public": {
+        "countryId": "country-kr",
+        "nameRu": "Южная Корея",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Южная Корея — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Seoul.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Южная Корея помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-kr-loc",
+          "fact-kr-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-kr",
+      "acceptedNames": [
+        "Южная Корея",
+        "South Korea"
+      ]
+    },
+    {
+      "countryId": "country-kw",
+      "public": {
+        "countryId": "country-kw",
+        "nameRu": "Кувейт",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Кувейт — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Kuwait City.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Кувейт помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-kw-loc",
+          "fact-kw-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-kw",
+      "acceptedNames": [
+        "Кувейт",
+        "Kuwait"
+      ]
+    },
+    {
+      "countryId": "country-la",
+      "public": {
+        "countryId": "country-la",
+        "nameRu": "Лаос",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Лаос — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Vientiane.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Лаос помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-la-loc",
+          "fact-la-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-la",
+      "acceptedNames": [
+        "Лаос",
+        "Laos"
+      ]
+    },
+    {
+      "countryId": "country-lb",
+      "public": {
+        "countryId": "country-lb",
+        "nameRu": "Ливан",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Ливан — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Beirut.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Ливан помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-lb-loc",
+          "fact-lb-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-lb",
+      "acceptedNames": [
+        "Ливан",
+        "Lebanon"
+      ]
+    },
+    {
+      "countryId": "country-lr",
+      "public": {
+        "countryId": "country-lr",
+        "nameRu": "Либерия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Либерия — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Monrovia.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Либерия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-lr-loc",
+          "fact-lr-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-lr",
+      "acceptedNames": [
+        "Либерия",
+        "Liberia"
+      ]
+    },
+    {
+      "countryId": "country-ly",
+      "public": {
+        "countryId": "country-ly",
+        "nameRu": "Ливия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Ливия — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Tripoli.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Ливия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ly-loc",
+          "fact-ly-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ly",
+      "acceptedNames": [
+        "Ливия",
+        "Libya"
+      ]
+    },
+    {
+      "countryId": "country-lc",
+      "public": {
+        "countryId": "country-lc",
+        "nameRu": "Сент-Люсия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сент-Люсия — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Castries.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сент-Люсия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-lc-loc",
+          "fact-lc-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-lc",
+      "acceptedNames": [
+        "Сент-Люсия",
+        "Saint Lucia"
+      ]
+    },
+    {
+      "countryId": "country-li",
+      "public": {
+        "countryId": "country-li",
+        "nameRu": "Лихтенштейн",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Лихтенштейн — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Vaduz.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Лихтенштейн помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-li-loc",
+          "fact-li-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-li",
+      "acceptedNames": [
+        "Лихтенштейн",
+        "Liechtenstein"
+      ]
+    },
+    {
+      "countryId": "country-lk",
+      "public": {
+        "countryId": "country-lk",
+        "nameRu": "Шри-Ланка",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Шри-Ланка — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Colombo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Шри-Ланка помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-lk-loc",
+          "fact-lk-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-lk",
+      "acceptedNames": [
+        "Шри-Ланка",
+        "Sri Lanka"
+      ]
+    },
+    {
+      "countryId": "country-ls",
+      "public": {
+        "countryId": "country-ls",
+        "nameRu": "Лесото",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Лесото — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Maseru.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Лесото помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ls-loc",
+          "fact-ls-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ls",
+      "acceptedNames": [
+        "Лесото",
+        "Lesotho"
+      ]
+    },
+    {
+      "countryId": "country-lt",
+      "public": {
+        "countryId": "country-lt",
+        "nameRu": "Литва",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Литва — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Vilnius.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Литва помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-lt-loc",
+          "fact-lt-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-lt",
+      "acceptedNames": [
+        "Литва",
+        "Lithuania"
+      ]
+    },
+    {
+      "countryId": "country-lu",
+      "public": {
+        "countryId": "country-lu",
+        "nameRu": "Люксембург",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Люксембург — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Luxembourg.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Люксембург помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-lu-loc",
+          "fact-lu-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-lu",
+      "acceptedNames": [
+        "Люксембург",
+        "Luxembourg"
+      ]
+    },
+    {
+      "countryId": "country-lv",
+      "public": {
+        "countryId": "country-lv",
+        "nameRu": "Латвия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Латвия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Riga.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Латвия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-lv-loc",
+          "fact-lv-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-lv",
+      "acceptedNames": [
+        "Латвия",
+        "Latvia"
+      ]
+    },
+    {
+      "countryId": "country-ma",
+      "public": {
+        "countryId": "country-ma",
+        "nameRu": "Марокко",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Марокко — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Rabat.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Марокко помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ma-loc",
+          "fact-ma-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ma",
+      "acceptedNames": [
+        "Марокко",
+        "Morocco"
+      ]
+    },
+    {
+      "countryId": "country-mc",
+      "public": {
+        "countryId": "country-mc",
+        "nameRu": "Монако",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Монако — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Monaco.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Монако помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mc-loc",
+          "fact-mc-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mc",
+      "acceptedNames": [
+        "Монако",
+        "Monaco"
+      ]
+    },
+    {
+      "countryId": "country-md",
+      "public": {
+        "countryId": "country-md",
+        "nameRu": "Молдавия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Молдавия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Chișinău.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Молдавия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-md-loc",
+          "fact-md-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-md",
+      "acceptedNames": [
+        "Молдавия",
+        "Moldova"
+      ]
+    },
+    {
+      "countryId": "country-mg",
+      "public": {
+        "countryId": "country-mg",
+        "nameRu": "Мадагаскар",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Мадагаскар — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Antananarivo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Мадагаскар помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mg-loc",
+          "fact-mg-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mg",
+      "acceptedNames": [
+        "Мадагаскар",
+        "Madagascar"
+      ]
+    },
+    {
+      "countryId": "country-mv",
+      "public": {
+        "countryId": "country-mv",
+        "nameRu": "Мальдивы",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Мальдивы — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Malé.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Мальдивы помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mv-loc",
+          "fact-mv-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mv",
+      "acceptedNames": [
+        "Мальдивы",
+        "Maldives"
+      ]
+    },
+    {
+      "countryId": "country-mx",
+      "public": {
+        "countryId": "country-mx",
+        "nameRu": "Мексика",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Мексика — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Mexico City.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Мексика помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mx-loc",
+          "fact-mx-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mx",
+      "acceptedNames": [
+        "Мексика",
+        "Mexico"
+      ]
+    },
+    {
+      "countryId": "country-mh",
+      "public": {
+        "countryId": "country-mh",
+        "nameRu": "Маршалловы Острова",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Маршалловы Острова — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Majuro.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Маршалловы Острова помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mh-loc",
+          "fact-mh-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mh",
+      "acceptedNames": [
+        "Маршалловы Острова",
+        "Marshall Islands"
+      ]
+    },
+    {
+      "countryId": "country-mk",
+      "public": {
+        "countryId": "country-mk",
+        "nameRu": "Северная Македония",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Северная Македония — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Skopje.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Северная Македония помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mk-loc",
+          "fact-mk-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mk",
+      "acceptedNames": [
+        "Северная Македония",
+        "North Macedonia"
+      ]
+    },
+    {
+      "countryId": "country-ml",
+      "public": {
+        "countryId": "country-ml",
+        "nameRu": "Мали",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Мали — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Bamako.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Мали помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ml-loc",
+          "fact-ml-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ml",
+      "acceptedNames": [
+        "Мали",
+        "Mali"
+      ]
+    },
+    {
+      "countryId": "country-mt",
+      "public": {
+        "countryId": "country-mt",
+        "nameRu": "Мальта",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Мальта — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Valletta.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Мальта помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mt-loc",
+          "fact-mt-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mt",
+      "acceptedNames": [
+        "Мальта",
+        "Malta"
+      ]
+    },
+    {
+      "countryId": "country-mm",
+      "public": {
+        "countryId": "country-mm",
+        "nameRu": "Мьянма",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Мьянма — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Naypyidaw.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Мьянма помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mm-loc",
+          "fact-mm-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mm",
+      "acceptedNames": [
+        "Мьянма",
+        "Myanmar"
+      ]
+    },
+    {
+      "countryId": "country-me",
+      "public": {
+        "countryId": "country-me",
+        "nameRu": "Черногория",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Черногория — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Podgorica.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Черногория помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-me-loc",
+          "fact-me-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-me",
+      "acceptedNames": [
+        "Черногория",
+        "Montenegro"
+      ]
+    },
+    {
+      "countryId": "country-mn",
+      "public": {
+        "countryId": "country-mn",
+        "nameRu": "Монголия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Монголия — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Ulan Bator.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Монголия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mn-loc",
+          "fact-mn-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mn",
+      "acceptedNames": [
+        "Монголия",
+        "Mongolia"
+      ]
+    },
+    {
+      "countryId": "country-mz",
+      "public": {
+        "countryId": "country-mz",
+        "nameRu": "Мозамбик",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Мозамбик — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Maputo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Мозамбик помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mz-loc",
+          "fact-mz-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mz",
+      "acceptedNames": [
+        "Мозамбик",
+        "Mozambique"
+      ]
+    },
+    {
+      "countryId": "country-mr",
+      "public": {
+        "countryId": "country-mr",
+        "nameRu": "Мавритания",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Мавритания — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Nouakchott.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Мавритания помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mr-loc",
+          "fact-mr-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mr",
+      "acceptedNames": [
+        "Мавритания",
+        "Mauritania"
+      ]
+    },
+    {
+      "countryId": "country-mu",
+      "public": {
+        "countryId": "country-mu",
+        "nameRu": "Маврикий",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Маврикий — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Port Louis.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Маврикий помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mu-loc",
+          "fact-mu-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mu",
+      "acceptedNames": [
+        "Маврикий",
+        "Mauritius"
+      ]
+    },
+    {
+      "countryId": "country-mw",
+      "public": {
+        "countryId": "country-mw",
+        "nameRu": "Малави",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Малави — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Lilongwe.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Малави помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-mw-loc",
+          "fact-mw-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-mw",
+      "acceptedNames": [
+        "Малави",
+        "Malawi"
+      ]
+    },
+    {
+      "countryId": "country-my",
+      "public": {
+        "countryId": "country-my",
+        "nameRu": "Малайзия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Малайзия — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Kuala Lumpur.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Малайзия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-my-loc",
+          "fact-my-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-my",
+      "acceptedNames": [
+        "Малайзия",
+        "Malaysia"
+      ]
+    },
+    {
+      "countryId": "country-na",
+      "public": {
+        "countryId": "country-na",
+        "nameRu": "Намибия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Намибия — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Windhoek.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Намибия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-na-loc",
+          "fact-na-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-na",
+      "acceptedNames": [
+        "Намибия",
+        "Namibia"
+      ]
+    },
+    {
+      "countryId": "country-ne",
+      "public": {
+        "countryId": "country-ne",
+        "nameRu": "Нигер",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Нигер — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Niamey.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Нигер помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ne-loc",
+          "fact-ne-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ne",
+      "acceptedNames": [
+        "Нигер",
+        "Niger"
+      ]
+    },
+    {
+      "countryId": "country-ng",
+      "public": {
+        "countryId": "country-ng",
+        "nameRu": "Нигерия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Нигерия — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Abuja.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Нигерия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ng-loc",
+          "fact-ng-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ng",
+      "acceptedNames": [
+        "Нигерия",
+        "Nigeria"
+      ]
+    },
+    {
+      "countryId": "country-ni",
+      "public": {
+        "countryId": "country-ni",
+        "nameRu": "Никарагуа",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Никарагуа — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Managua.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Никарагуа помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ni-loc",
+          "fact-ni-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ni",
+      "acceptedNames": [
+        "Никарагуа",
+        "Nicaragua"
+      ]
+    },
+    {
+      "countryId": "country-nl",
+      "public": {
+        "countryId": "country-nl",
+        "nameRu": "Нидерланды",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Нидерланды — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Amsterdam.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Нидерланды помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-nl-loc",
+          "fact-nl-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-nl",
+      "acceptedNames": [
+        "Нидерланды",
+        "Netherlands"
+      ]
+    },
+    {
+      "countryId": "country-no",
+      "public": {
+        "countryId": "country-no",
+        "nameRu": "Норвегия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Норвегия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Oslo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Норвегия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-no-loc",
+          "fact-no-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-no",
+      "acceptedNames": [
+        "Норвегия",
+        "Norway"
+      ]
+    },
+    {
+      "countryId": "country-np",
+      "public": {
+        "countryId": "country-np",
+        "nameRu": "Непал",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Непал — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Kathmandu.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Непал помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-np-loc",
+          "fact-np-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-np",
+      "acceptedNames": [
+        "Непал",
+        "Nepal"
+      ]
+    },
+    {
+      "countryId": "country-nr",
+      "public": {
+        "countryId": "country-nr",
+        "nameRu": "Науру",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Науру — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Yaren.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Науру помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-nr-loc",
+          "fact-nr-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-nr",
+      "acceptedNames": [
+        "Науру",
+        "Nauru"
+      ]
+    },
+    {
+      "countryId": "country-nz",
+      "public": {
+        "countryId": "country-nz",
+        "nameRu": "Новая Зеландия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Новая Зеландия — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Wellington.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Новая Зеландия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-nz-loc",
+          "fact-nz-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-nz",
+      "acceptedNames": [
+        "Новая Зеландия",
+        "New Zealand"
+      ]
+    },
+    {
+      "countryId": "country-om",
+      "public": {
+        "countryId": "country-om",
+        "nameRu": "Оман",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Оман — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Muscat.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Оман помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-om-loc",
+          "fact-om-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-om",
+      "acceptedNames": [
+        "Оман",
+        "Oman"
+      ]
+    },
+    {
+      "countryId": "country-pk",
+      "public": {
+        "countryId": "country-pk",
+        "nameRu": "Пакистан",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Пакистан — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Islamabad.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Пакистан помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-pk-loc",
+          "fact-pk-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-pk",
+      "acceptedNames": [
+        "Пакистан",
+        "Pakistan"
+      ]
+    },
+    {
+      "countryId": "country-pa",
+      "public": {
+        "countryId": "country-pa",
+        "nameRu": "Панама",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Панама — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Panama City.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Панама помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-pa-loc",
+          "fact-pa-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-pa",
+      "acceptedNames": [
+        "Панама",
+        "Panama"
+      ]
+    },
+    {
+      "countryId": "country-pe",
+      "public": {
+        "countryId": "country-pe",
+        "nameRu": "Перу",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Перу — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Lima.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Перу помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-pe-loc",
+          "fact-pe-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-pe",
+      "acceptedNames": [
+        "Перу",
+        "Peru"
+      ]
+    },
+    {
+      "countryId": "country-ph",
+      "public": {
+        "countryId": "country-ph",
+        "nameRu": "Филиппины",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Филиппины — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Manila.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Филиппины помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ph-loc",
+          "fact-ph-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ph",
+      "acceptedNames": [
+        "Филиппины",
+        "Philippines"
+      ]
+    },
+    {
+      "countryId": "country-pw",
+      "public": {
+        "countryId": "country-pw",
+        "nameRu": "Палау",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Палау — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Ngerulmud.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Палау помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-pw-loc",
+          "fact-pw-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-pw",
+      "acceptedNames": [
+        "Палау",
+        "Palau"
+      ]
+    },
+    {
+      "countryId": "country-pg",
+      "public": {
+        "countryId": "country-pg",
+        "nameRu": "Папуа — Новая Гвинея",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Папуа — Новая Гвинея — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Port Moresby.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Папуа — Новая Гвинея помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-pg-loc",
+          "fact-pg-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-pg",
+      "acceptedNames": [
+        "Папуа — Новая Гвинея",
+        "Papua New Guinea"
+      ]
+    },
+    {
+      "countryId": "country-pl",
+      "public": {
+        "countryId": "country-pl",
+        "nameRu": "Польша",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Польша — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Warsaw.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Польша помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-pl-loc",
+          "fact-pl-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-pl",
+      "acceptedNames": [
+        "Польша",
+        "Poland"
+      ]
+    },
+    {
+      "countryId": "country-kp",
+      "public": {
+        "countryId": "country-kp",
+        "nameRu": "Северная Корея",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Северная Корея — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Pyongyang.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Северная Корея помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-kp-loc",
+          "fact-kp-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-kp",
+      "acceptedNames": [
+        "Северная Корея",
+        "North Korea"
+      ]
+    },
+    {
+      "countryId": "country-pt",
+      "public": {
+        "countryId": "country-pt",
+        "nameRu": "Португалия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Португалия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Lisbon.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Португалия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-pt-loc",
+          "fact-pt-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-pt",
+      "acceptedNames": [
+        "Португалия",
+        "Portugal"
+      ]
+    },
+    {
+      "countryId": "country-py",
+      "public": {
+        "countryId": "country-py",
+        "nameRu": "Парагвай",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Парагвай — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Asunción.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Парагвай помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-py-loc",
+          "fact-py-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-py",
+      "acceptedNames": [
+        "Парагвай",
+        "Paraguay"
+      ]
+    },
+    {
+      "countryId": "country-ps",
+      "public": {
+        "countryId": "country-ps",
+        "nameRu": "Палестина",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Палестина — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Ramallah.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Палестина помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ps-loc",
+          "fact-ps-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ps",
+      "acceptedNames": [
+        "Палестина",
+        "Palestine"
+      ]
+    },
+    {
+      "countryId": "country-qa",
+      "public": {
+        "countryId": "country-qa",
+        "nameRu": "Катар",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Катар — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Doha.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Катар помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-qa-loc",
+          "fact-qa-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-qa",
+      "acceptedNames": [
+        "Катар",
+        "Qatar"
+      ]
+    },
+    {
+      "countryId": "country-ro",
+      "public": {
+        "countryId": "country-ro",
+        "nameRu": "Румыния",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Румыния — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Bucharest.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Румыния помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ro-loc",
+          "fact-ro-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ro",
+      "acceptedNames": [
+        "Румыния",
+        "Romania"
+      ]
+    },
+    {
+      "countryId": "country-ru",
+      "public": {
+        "countryId": "country-ru",
+        "nameRu": "Россия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Россия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Moscow.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Россия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ru-loc",
+          "fact-ru-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ru",
+      "acceptedNames": [
+        "Россия",
+        "Russia"
+      ]
+    },
+    {
+      "countryId": "country-rw",
+      "public": {
+        "countryId": "country-rw",
+        "nameRu": "Руанда",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Руанда — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Kigali.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Руанда помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-rw-loc",
+          "fact-rw-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-rw",
+      "acceptedNames": [
+        "Руанда",
+        "Rwanda"
+      ]
+    },
+    {
+      "countryId": "country-sa",
+      "public": {
+        "countryId": "country-sa",
+        "nameRu": "Саудовская Аравия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Саудовская Аравия — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Riyadh.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Саудовская Аравия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sa-loc",
+          "fact-sa-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sa",
+      "acceptedNames": [
+        "Саудовская Аравия",
+        "Saudi Arabia"
+      ]
+    },
+    {
+      "countryId": "country-sd",
+      "public": {
+        "countryId": "country-sd",
+        "nameRu": "Судан",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Судан — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Khartoum.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Судан помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sd-loc",
+          "fact-sd-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sd",
+      "acceptedNames": [
+        "Судан",
+        "Sudan"
+      ]
+    },
+    {
+      "countryId": "country-sn",
+      "public": {
+        "countryId": "country-sn",
+        "nameRu": "Сенегал",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сенегал — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Dakar.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сенегал помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sn-loc",
+          "fact-sn-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sn",
+      "acceptedNames": [
+        "Сенегал",
+        "Senegal"
+      ]
+    },
+    {
+      "countryId": "country-sg",
+      "public": {
+        "countryId": "country-sg",
+        "nameRu": "Сингапур",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сингапур — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Singapore.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сингапур помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sg-loc",
+          "fact-sg-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sg",
+      "acceptedNames": [
+        "Сингапур",
+        "Singapore"
+      ]
+    },
+    {
+      "countryId": "country-sb",
+      "public": {
+        "countryId": "country-sb",
+        "nameRu": "Соломоновы Острова",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Соломоновы Острова — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Honiara.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Соломоновы Острова помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sb-loc",
+          "fact-sb-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sb",
+      "acceptedNames": [
+        "Соломоновы Острова",
+        "Solomon Islands"
+      ]
+    },
+    {
+      "countryId": "country-sl",
+      "public": {
+        "countryId": "country-sl",
+        "nameRu": "Сьерра-Леоне",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сьерра-Леоне — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Freetown.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сьерра-Леоне помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sl-loc",
+          "fact-sl-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sl",
+      "acceptedNames": [
+        "Сьерра-Леоне",
+        "Sierra Leone"
+      ]
+    },
+    {
+      "countryId": "country-sv",
+      "public": {
+        "countryId": "country-sv",
+        "nameRu": "Сальвадор",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сальвадор — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является San Salvador.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сальвадор помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sv-loc",
+          "fact-sv-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sv",
+      "acceptedNames": [
+        "Сальвадор",
+        "El Salvador"
+      ]
+    },
+    {
+      "countryId": "country-sm",
+      "public": {
+        "countryId": "country-sm",
+        "nameRu": "Сан-Марино",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сан-Марино — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является City of San Marino.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сан-Марино помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sm-loc",
+          "fact-sm-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sm",
+      "acceptedNames": [
+        "Сан-Марино",
+        "San Marino"
+      ]
+    },
+    {
+      "countryId": "country-so",
+      "public": {
+        "countryId": "country-so",
+        "nameRu": "Сомали",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сомали — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Mogadishu.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сомали помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-so-loc",
+          "fact-so-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-so",
+      "acceptedNames": [
+        "Сомали",
+        "Somalia"
+      ]
+    },
+    {
+      "countryId": "country-rs",
+      "public": {
+        "countryId": "country-rs",
+        "nameRu": "Сербия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сербия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Belgrade.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сербия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-rs-loc",
+          "fact-rs-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-rs",
+      "acceptedNames": [
+        "Сербия",
+        "Serbia"
+      ]
+    },
+    {
+      "countryId": "country-ss",
+      "public": {
+        "countryId": "country-ss",
+        "nameRu": "Южный Судан",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Южный Судан — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Juba.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Южный Судан помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ss-loc",
+          "fact-ss-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ss",
+      "acceptedNames": [
+        "Южный Судан",
+        "South Sudan"
+      ]
+    },
+    {
+      "countryId": "country-st",
+      "public": {
+        "countryId": "country-st",
+        "nameRu": "Сан-Томе и Принсипи",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сан-Томе и Принсипи — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является São Tomé.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сан-Томе и Принсипи помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-st-loc",
+          "fact-st-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-st",
+      "acceptedNames": [
+        "Сан-Томе и Принсипи",
+        "São Tomé and Príncipe"
+      ]
+    },
+    {
+      "countryId": "country-sr",
+      "public": {
+        "countryId": "country-sr",
+        "nameRu": "Суринам",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Суринам — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Paramaribo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Суринам помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sr-loc",
+          "fact-sr-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sr",
+      "acceptedNames": [
+        "Суринам",
+        "Suriname"
+      ]
+    },
+    {
+      "countryId": "country-sk",
+      "public": {
+        "countryId": "country-sk",
+        "nameRu": "Словакия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Словакия — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Bratislava.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Словакия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sk-loc",
+          "fact-sk-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sk",
+      "acceptedNames": [
+        "Словакия",
+        "Slovakia"
+      ]
+    },
+    {
+      "countryId": "country-si",
+      "public": {
+        "countryId": "country-si",
+        "nameRu": "Словения",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Словения — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Ljubljana.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Словения помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-si-loc",
+          "fact-si-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-si",
+      "acceptedNames": [
+        "Словения",
+        "Slovenia"
+      ]
+    },
+    {
+      "countryId": "country-se",
+      "public": {
+        "countryId": "country-se",
+        "nameRu": "Швеция",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Швеция — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Stockholm.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Швеция помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-se-loc",
+          "fact-se-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-se",
+      "acceptedNames": [
+        "Швеция",
+        "Sweden"
+      ]
+    },
+    {
+      "countryId": "country-sz",
+      "public": {
+        "countryId": "country-sz",
+        "nameRu": "Эсватини",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Эсватини — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Lobamba.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Эсватини помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sz-loc",
+          "fact-sz-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sz",
+      "acceptedNames": [
+        "Эсватини",
+        "Eswatini"
+      ]
+    },
+    {
+      "countryId": "country-sc",
+      "public": {
+        "countryId": "country-sc",
+        "nameRu": "Сейшельские Острова",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сейшельские Острова — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Victoria.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сейшельские Острова помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sc-loc",
+          "fact-sc-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sc",
+      "acceptedNames": [
+        "Сейшельские Острова",
+        "Seychelles"
+      ]
+    },
+    {
+      "countryId": "country-sy",
+      "public": {
+        "countryId": "country-sy",
+        "nameRu": "Сирия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сирия — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Damascus.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сирия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-sy-loc",
+          "fact-sy-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-sy",
+      "acceptedNames": [
+        "Сирия",
+        "Syria"
+      ]
+    },
+    {
+      "countryId": "country-td",
+      "public": {
+        "countryId": "country-td",
+        "nameRu": "Чад",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Чад — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является N'Djamena.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Чад помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-td-loc",
+          "fact-td-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-td",
+      "acceptedNames": [
+        "Чад",
+        "Chad"
+      ]
+    },
+    {
+      "countryId": "country-tg",
+      "public": {
+        "countryId": "country-tg",
+        "nameRu": "Того",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Того — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Lomé.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Того помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-tg-loc",
+          "fact-tg-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-tg",
+      "acceptedNames": [
+        "Того",
+        "Togo"
+      ]
+    },
+    {
+      "countryId": "country-th",
+      "public": {
+        "countryId": "country-th",
+        "nameRu": "Таиланд",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Таиланд — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Bangkok.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Таиланд помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-th-loc",
+          "fact-th-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-th",
+      "acceptedNames": [
+        "Таиланд",
+        "Thailand"
+      ]
+    },
+    {
+      "countryId": "country-tj",
+      "public": {
+        "countryId": "country-tj",
+        "nameRu": "Таджикистан",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Таджикистан — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Dushanbe.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Таджикистан помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-tj-loc",
+          "fact-tj-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-tj",
+      "acceptedNames": [
+        "Таджикистан",
+        "Tajikistan"
+      ]
+    },
+    {
+      "countryId": "country-tm",
+      "public": {
+        "countryId": "country-tm",
+        "nameRu": "Туркмения",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Туркмения — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Ashgabat.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Туркмения помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-tm-loc",
+          "fact-tm-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-tm",
+      "acceptedNames": [
+        "Туркмения",
+        "Turkmenistan"
+      ]
+    },
+    {
+      "countryId": "country-tl",
+      "public": {
+        "countryId": "country-tl",
+        "nameRu": "Восточный Тимор",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Восточный Тимор — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Dili.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Восточный Тимор помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-tl-loc",
+          "fact-tl-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-tl",
+      "acceptedNames": [
+        "Восточный Тимор",
+        "Timor-Leste"
+      ]
+    },
+    {
+      "countryId": "country-to",
+      "public": {
+        "countryId": "country-to",
+        "nameRu": "Тонга",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Тонга — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Nuku'alofa.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Тонга помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-to-loc",
+          "fact-to-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-to",
+      "acceptedNames": [
+        "Тонга",
+        "Tonga"
+      ]
+    },
+    {
+      "countryId": "country-tt",
+      "public": {
+        "countryId": "country-tt",
+        "nameRu": "Тринидад и Тобаго",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Тринидад и Тобаго — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Port of Spain.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Тринидад и Тобаго помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-tt-loc",
+          "fact-tt-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-tt",
+      "acceptedNames": [
+        "Тринидад и Тобаго",
+        "Trinidad and Tobago"
+      ]
+    },
+    {
+      "countryId": "country-tn",
+      "public": {
+        "countryId": "country-tn",
+        "nameRu": "Тунис",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Тунис — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Tunis.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Тунис помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-tn-loc",
+          "fact-tn-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-tn",
+      "acceptedNames": [
+        "Тунис",
+        "Tunisia"
+      ]
+    },
+    {
+      "countryId": "country-tr",
+      "public": {
+        "countryId": "country-tr",
+        "nameRu": "Турция",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Турция — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Ankara.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Турция помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-tr-loc",
+          "fact-tr-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-tr",
+      "acceptedNames": [
+        "Турция",
+        "Türkiye"
+      ]
+    },
+    {
+      "countryId": "country-tv",
+      "public": {
+        "countryId": "country-tv",
+        "nameRu": "Тувалу",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Тувалу — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Funafuti.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Тувалу помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-tv-loc",
+          "fact-tv-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-tv",
+      "acceptedNames": [
+        "Тувалу",
+        "Tuvalu"
+      ]
+    },
+    {
+      "countryId": "country-tw",
+      "public": {
+        "countryId": "country-tw",
+        "nameRu": "Тайвань",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Тайвань — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Taipei.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Тайвань помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-tw-loc",
+          "fact-tw-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-tw",
+      "acceptedNames": [
+        "Тайвань",
+        "Taiwan"
+      ]
+    },
+    {
+      "countryId": "country-tz",
+      "public": {
+        "countryId": "country-tz",
+        "nameRu": "Танзания",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Танзания — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Dodoma.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Танзания помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-tz-loc",
+          "fact-tz-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-tz",
+      "acceptedNames": [
+        "Танзания",
+        "Tanzania"
+      ]
+    },
+    {
+      "countryId": "country-ug",
+      "public": {
+        "countryId": "country-ug",
+        "nameRu": "Уганда",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Уганда — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Kampala.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Уганда помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ug-loc",
+          "fact-ug-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ug",
+      "acceptedNames": [
+        "Уганда",
+        "Uganda"
+      ]
+    },
+    {
+      "countryId": "country-ua",
+      "public": {
+        "countryId": "country-ua",
+        "nameRu": "Украина",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Украина — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Kyiv.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Украина помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ua-loc",
+          "fact-ua-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ua",
+      "acceptedNames": [
+        "Украина",
+        "Ukraine"
+      ]
+    },
+    {
+      "countryId": "country-uy",
+      "public": {
+        "countryId": "country-uy",
+        "nameRu": "Уругвай",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Уругвай — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Montevideo.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Уругвай помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-uy-loc",
+          "fact-uy-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-uy",
+      "acceptedNames": [
+        "Уругвай",
+        "Uruguay"
+      ]
+    },
+    {
+      "countryId": "country-us",
+      "public": {
+        "countryId": "country-us",
+        "nameRu": "Соединённые Штаты Америки",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Соединённые Штаты Америки — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Washington D.C..",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Соединённые Штаты Америки помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-us-loc",
+          "fact-us-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-us",
+      "acceptedNames": [
+        "Соединённые Штаты Америки",
+        "United States"
+      ]
+    },
+    {
+      "countryId": "country-uz",
+      "public": {
+        "countryId": "country-uz",
+        "nameRu": "Узбекистан",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Узбекистан — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Tashkent.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Узбекистан помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-uz-loc",
+          "fact-uz-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-uz",
+      "acceptedNames": [
+        "Узбекистан",
+        "Uzbekistan"
+      ]
+    },
+    {
+      "countryId": "country-va",
+      "public": {
+        "countryId": "country-va",
+        "nameRu": "Ватикан",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Ватикан — суверенное государство, расположенное в регионе Europe.",
+          "Столицей государства является Vatican City.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Ватикан помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-va-loc",
+          "fact-va-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-va",
+      "acceptedNames": [
+        "Ватикан",
+        "Vatican City"
+      ]
+    },
+    {
+      "countryId": "country-vc",
+      "public": {
+        "countryId": "country-vc",
+        "nameRu": "Сент-Винсент и Гренадины",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Сент-Винсент и Гренадины — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Kingstown.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Сент-Винсент и Гренадины помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-vc-loc",
+          "fact-vc-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-vc",
+      "acceptedNames": [
+        "Сент-Винсент и Гренадины",
+        "Saint Vincent and the Grenadines"
+      ]
+    },
+    {
+      "countryId": "country-ve",
+      "public": {
+        "countryId": "country-ve",
+        "nameRu": "Венесуэла",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Венесуэла — суверенное государство, расположенное в регионе Americas.",
+          "Столицей государства является Caracas.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Венесуэла помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ve-loc",
+          "fact-ve-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ve",
+      "acceptedNames": [
+        "Венесуэла",
+        "Venezuela"
+      ]
+    },
+    {
+      "countryId": "country-vn",
+      "public": {
+        "countryId": "country-vn",
+        "nameRu": "Вьетнам",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Вьетнам — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Hanoi.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Вьетнам помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-vn-loc",
+          "fact-vn-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-vn",
+      "acceptedNames": [
+        "Вьетнам",
+        "Vietnam"
+      ]
+    },
+    {
+      "countryId": "country-vu",
+      "public": {
+        "countryId": "country-vu",
+        "nameRu": "Вануату",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Вануату — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Port Vila.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Вануату помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-vu-loc",
+          "fact-vu-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-vu",
+      "acceptedNames": [
+        "Вануату",
+        "Vanuatu"
+      ]
+    },
+    {
+      "countryId": "country-ws",
+      "public": {
+        "countryId": "country-ws",
+        "nameRu": "Самоа",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Самоа — суверенное государство, расположенное в регионе Oceania.",
+          "Столицей государства является Apia.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Самоа помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ws-loc",
+          "fact-ws-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ws",
+      "acceptedNames": [
+        "Самоа",
+        "Samoa"
+      ]
+    },
+    {
+      "countryId": "country-ye",
+      "public": {
+        "countryId": "country-ye",
+        "nameRu": "Йемен",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Йемен — суверенное государство, расположенное в регионе Asia.",
+          "Столицей государства является Sana'a.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Йемен помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-ye-loc",
+          "fact-ye-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-ye",
+      "acceptedNames": [
+        "Йемен",
+        "Yemen"
+      ]
+    },
+    {
+      "countryId": "country-za",
+      "public": {
+        "countryId": "country-za",
+        "nameRu": "Южно-Африканская Республика",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Южно-Африканская Республика — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Pretoria.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Южно-Африканская Республика помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-za-loc",
+          "fact-za-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-za",
+      "acceptedNames": [
+        "Южно-Африканская Республика",
+        "South Africa"
+      ]
+    },
+    {
+      "countryId": "country-zm",
+      "public": {
+        "countryId": "country-zm",
+        "nameRu": "Замбия",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Замбия — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Lusaka.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Замбия помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-zm-loc",
+          "fact-zm-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-zm",
+      "acceptedNames": [
+        "Замбия",
+        "Zambia"
+      ]
+    },
+    {
+      "countryId": "country-zw",
+      "public": {
+        "countryId": "country-zw",
+        "nameRu": "Зимбабве",
+        "contentVersion": "v1",
+        "descriptionSentences": [
+          "Зимбабве — суверенное государство, расположенное в регионе Africa.",
+          "Столицей государства является Harare.",
+          "Государственный флаг страны официально утвержден и используется на международных мероприятиях.",
+          "Изучение символики Зимбабве помогает лучше понимать мировую географию и культуру."
+        ],
+        "factIds": [
+          "fact-zw-loc",
+          "fact-zw-cap"
+        ]
+      },
+      "flagAssetId": "flag-asset-zw",
+      "acceptedNames": [
+        "Зимбабве",
+        "Zimbabwe"
       ]
     }
   ]

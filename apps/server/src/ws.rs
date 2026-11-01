@@ -250,6 +250,7 @@ pub fn run_ws_session(
         };
 
         if opcode == 8 { // Close frame
+            conn.write_close(1000, "Normal closure");
             break;
         } else if opcode == 9 { // Ping
             let _ = conn.write_frame(10, &payload);
@@ -294,7 +295,7 @@ pub fn run_ws_session(
             send_snapshot(&mut conn, &ticket, &game, &config, &competition);
         } else if msg_type == "player.input" {
             if let Some(p) = payload_obj {
-                handle_input(&game, &ticket.session_id, &player_id, p);
+                handle_input(&game, &ticket.session_id, &player_id, p, &config);
                 send_snapshot(&mut conn, &ticket, &game, &config, &competition);
             }
         } else if msg_type == "npc.interact" {
@@ -309,6 +310,14 @@ pub fn run_ws_session(
             handle_lesson_open(&conn, req_id, payload_obj, &knowledge, &game, &competition, &ticket.user_id);
         } else if msg_type == "lesson.close" {
             handle_lesson_close(&conn, req_id, &game, &competition, &ticket.user_id);
+        } else if msg_type == "quiz.start" || msg_type == "quiz.resume" {
+            handle_quiz_start(&conn, req_id, payload_obj, &knowledge, &game, &competition, &ticket.user_id);
+        } else if msg_type == "quiz.answer" {
+            handle_quiz_answer(&conn, req_id, payload_obj);
+        } else if msg_type == "quiz.next" {
+            handle_quiz_next(&conn, req_id, payload_obj);
+        } else if msg_type == "quiz.leave" || msg_type == "quiz.abandon" {
+            handle_quiz_leave(&conn, req_id, payload_obj, &game, &competition, &ticket.user_id, msg_type == "quiz.abandon");
         } else if msg_type == "competition.join" {
             handle_competition_join(&conn, &ticket, &player_id, req_id, payload_obj, &game, &competition, &broadcaster);
         } else if msg_type == "competition.configure" {
@@ -361,7 +370,7 @@ fn handle_hello(
     let _ = conn.writer.lock().unwrap().send_envelope("server.welcome", req_id, welcome_payload);
 
     // Send world.interest
-    let (px, _, pz) = game.get_player_pos(&ticket.session_id, player_id).unwrap_or((1.0, 0.0, 1.0));
+    let (px, _, pz) = game.get_player_pos(&ticket.session_id, player_id).unwrap_or((80.0, 0.0, 92.0));
     let interest = spatial.compute_interest(px, pz, 1);
     let _ = conn.writer.lock().unwrap().send_envelope("world.interest", None, interest.to_json());
 }
@@ -377,14 +386,64 @@ fn send_snapshot(
         let npcs = vec![
             NpcDto {
                 npc_id: "npc-guide".to_string(),
-                display_name: "Проводник".to_string(),
-                position: PositionDto { x: 2.0, y: 0.0, z: 1.0 },
+                display_name: "София".to_string(),
+                position: PositionDto { x: 83.0, y: 0.0, z: 90.0 },
                 yaw_rad: 0.0,
                 state: "idle".to_string(),
                 subject: "История открытий".to_string(),
                 role: "teacher".to_string(),
                 module_id: "history-basics".to_string(),
-            }
+            },
+            NpcDto {
+                npc_id: "examiner-mathematics".to_string(),
+                display_name: "Экзаменатор".to_string(),
+                position: PositionDto { x: 80.0, y: 0.0, z: 87.0 },
+                yaw_rad: 0.0,
+                state: "idle".to_string(),
+                subject: "Выбор темы".to_string(),
+                role: "examiner".to_string(),
+                module_id: "math-basics".to_string(),
+            },
+            NpcDto {
+                npc_id: "teacher-mathematics".to_string(),
+                display_name: "Преподаватель математики".to_string(),
+                position: PositionDto { x: 70.7, y: 0.0, z: 69.0 },
+                yaw_rad: 0.0,
+                state: "idle".to_string(),
+                subject: "Математика".to_string(),
+                role: "teacher".to_string(),
+                module_id: "math-basics".to_string(),
+            },
+            NpcDto {
+                npc_id: "teacher-informatics".to_string(),
+                display_name: "Преподаватель информатики".to_string(),
+                position: PositionDto { x: 77.7, y: 0.0, z: 69.0 },
+                yaw_rad: 0.0,
+                state: "idle".to_string(),
+                subject: "Информатика".to_string(),
+                role: "teacher".to_string(),
+                module_id: "informatics-basics".to_string(),
+            },
+            NpcDto {
+                npc_id: "teacher-history".to_string(),
+                display_name: "Преподаватель истории".to_string(),
+                position: PositionDto { x: 84.7, y: 0.0, z: 69.0 },
+                yaw_rad: 0.0,
+                state: "idle".to_string(),
+                subject: "История".to_string(),
+                role: "teacher".to_string(),
+                module_id: "history-basics".to_string(),
+            },
+            NpcDto {
+                npc_id: "teacher-flags".to_string(),
+                display_name: "Преподаватель географии".to_string(),
+                position: PositionDto { x: 91.7, y: 0.0, z: 69.0 },
+                yaw_rad: 0.0,
+                state: "idle".to_string(),
+                subject: "Флаги мира".to_string(),
+                role: "teacher".to_string(),
+                module_id: "flags-demo".to_string(),
+            },
         ];
         let tables = vec![competition.table_summary_to_json()];
         let snapshot_payload = JsonValue::Object(vec![
@@ -401,13 +460,14 @@ fn send_snapshot(
 }
 
 
-fn handle_input(game: &Arc<GameManager>, session_id: &str, player_id: &str, payload: &JsonValue) {
+fn handle_input(game: &Arc<GameManager>, session_id: &str, player_id: &str, payload: &JsonValue, config: &Arc<ConfigService>) {
     let seq = payload.get_i64("inputSeq").unwrap_or(0) as u64;
     let mx = payload.get_f64("moveX").unwrap_or(0.0);
     let mz = payload.get_f64("moveZ").unwrap_or(0.0);
     let yaw = payload.get_f64("yawRad").unwrap_or(0.0);
     let run = payload.get_bool("running").unwrap_or(false);
-    game.handle_input(session_id, player_id, seq, mx, mz, yaw, run);
+    let (walk_speed, run_mul, _) = config.get_character_speed();
+    game.handle_input(session_id, player_id, seq, mx, mz, yaw, run, walk_speed, run_mul);
 }
 
 fn handle_npc_interact(
@@ -429,9 +489,17 @@ fn handle_npc_interact(
     let action = p.get_str("action").unwrap_or("");
     let text = p.get_str("text").unwrap_or("");
 
-    // Range check: NPC position is (1, 0, 2)
-    let (px, _, pz) = game.get_player_pos(&ticket.session_id, player_id).unwrap_or((1.0, 0.0, 1.0));
-    let dist = ((px - 1.0).powi(2) + (pz - 2.0).powi(2)).sqrt();
+    // Range check
+    let (npc_x, npc_z) = match npc_id {
+        "examiner-mathematics" | "examiner-informatics" | "examiner-history" | "examiner-flags" => (80.0, 87.0),
+        "teacher-mathematics" => (70.7, 69.0),
+        "teacher-informatics" => (77.7, 69.0),
+        "teacher-history" => (84.7, 69.0),
+        "teacher-flags" => (91.7, 69.0),
+        _ => (83.0, 90.0), // Sofia
+    };
+    let (px, _, pz) = game.get_player_pos(&ticket.session_id, player_id).unwrap_or((80.0, 0.0, 92.0));
+    let dist = ((px - npc_x).powi(2) + (pz - npc_z).powi(2)).sqrt();
     let (_, _, max_dist) = config.get_character_speed();
 
     if dist > max_dist {
@@ -553,6 +621,7 @@ fn handle_competition_configure(
 
     match competition.configure_lobby(player_id, subject, stake, exp_rev) {
         Ok(state_val) => {
+            let _ = conn.writer.lock().unwrap().send_envelope("competition.state", req_id, state_val.clone());
             let participants = competition.get_participant_player_ids();
             broadcaster.broadcast_to_players(&participants, "competition.state", &state_val);
             for (pid, uid) in competition.get_participant_user_ids() {
@@ -589,6 +658,7 @@ fn handle_competition_ready(
 
     match competition.set_ready(&ticket.user_id, player_id, ready, exp_rev) {
         Ok((state_val, wallet_dto)) => {
+            let _ = conn.writer.lock().unwrap().send_envelope("competition.state", req_id, state_val.clone());
             let participants = competition.get_participant_player_ids();
             broadcaster.broadcast_to_players(&participants, "competition.state", &state_val);
             let _ = conn.writer.lock().unwrap().send_envelope("wallet.updated", None, wallet_dto.to_json());
@@ -623,6 +693,7 @@ fn handle_competition_start(
 
     match competition.start_match(player_id, exp_rev) {
         Ok(state_val) => {
+            let _ = conn.writer.lock().unwrap().send_envelope("competition.state", req_id, state_val.clone());
             let participants = competition.get_participant_player_ids();
             broadcaster.broadcast_to_players(&participants, "competition.state", &state_val);
             for (pid, uid) in competition.get_participant_user_ids() {
@@ -675,7 +746,6 @@ fn handle_competition_answer(
                 ("questionId".to_string(), JsonValue::String(question_id.to_string())),
                 ("answer".to_string(), ans_dto),
                 ("acceptedAt".to_string(), JsonValue::String(rfc3339_now())),
-                ("optionId".to_string(), JsonValue::String(answer_val.to_string())),
             ]);
             let _ = conn.writer.lock().unwrap().send_envelope("competition.answer.accepted", req_id, acc_payload);
 
@@ -758,13 +828,27 @@ fn handle_library_open(
     };
     let material = knowledge.get_module_material(module_id, "v1").unwrap_or(JsonValue::Null);
     let lesson_id = AuthService::generate_id();
-    game.update_player_activity(user_id, "reading", Some(book_id.to_string()), None);
-    competition.set_activity(user_id, "reading", Some(book_id), None, None, None);
+    game.update_player_activity(user_id, "learning", Some(book_id.to_string()), None);
+    competition.set_activity(user_id, "learning", Some(book_id), None, Some(&lesson_id), None, None, None);
     let resp_payload = JsonValue::Object(vec![
-        ("lessonId".to_string(), JsonValue::String(lesson_id)),
+        ("lessonId".to_string(), JsonValue::String(lesson_id.clone())),
         ("material".to_string(), material),
     ]);
     let _ = conn.writer.lock().unwrap().send_envelope("library.opened", req_id, resp_payload);
+
+    let act_payload = JsonValue::Object(vec![
+        ("activity".to_string(), JsonValue::Object(vec![
+            ("mode".to_string(), JsonValue::String("learning".to_string())),
+            ("targetId".to_string(), JsonValue::String(book_id.to_string())),
+            ("seatId".to_string(), JsonValue::Null),
+        ])),
+        ("lessonId".to_string(), JsonValue::String(lesson_id)),
+        ("attemptId".to_string(), JsonValue::Null),
+        ("matchId".to_string(), JsonValue::Null),
+        ("lobbyId".to_string(), JsonValue::Null),
+        ("revision".to_string(), JsonValue::Number(2.0)),
+    ]);
+    let _ = conn.writer.lock().unwrap().send_envelope("activity.changed", None, act_payload);
 }
 
 fn handle_country_describe(
@@ -801,12 +885,26 @@ fn handle_lesson_open(
     let material = knowledge.get_module_material(module_id, "v1").unwrap_or(JsonValue::Null);
     let lesson_id = AuthService::generate_id();
     game.update_player_activity(user_id, "learning", Some(npc_id.to_string()), None);
-    competition.set_activity(user_id, "learning", Some(npc_id), None, None, None);
+    competition.set_activity(user_id, "learning", Some(npc_id), None, Some(&lesson_id), None, None, None);
     let resp_payload = JsonValue::Object(vec![
-        ("lessonId".to_string(), JsonValue::String(lesson_id)),
+        ("lessonId".to_string(), JsonValue::String(lesson_id.clone())),
         ("material".to_string(), material),
     ]);
     let _ = conn.writer.lock().unwrap().send_envelope("lesson.opened", req_id, resp_payload);
+
+    let act_payload = JsonValue::Object(vec![
+        ("activity".to_string(), JsonValue::Object(vec![
+            ("mode".to_string(), JsonValue::String("learning".to_string())),
+            ("targetId".to_string(), JsonValue::String(npc_id.to_string())),
+            ("seatId".to_string(), JsonValue::Null),
+        ])),
+        ("lessonId".to_string(), JsonValue::String(lesson_id)),
+        ("attemptId".to_string(), JsonValue::Null),
+        ("matchId".to_string(), JsonValue::Null),
+        ("lobbyId".to_string(), JsonValue::Null),
+        ("revision".to_string(), JsonValue::Number(2.0)),
+    ]);
+    let _ = conn.writer.lock().unwrap().send_envelope("activity.changed", None, act_payload);
 }
 
 fn handle_lesson_close(
@@ -817,7 +915,7 @@ fn handle_lesson_close(
     user_id: &str,
 ) {
     game.update_player_activity(user_id, "exploring", None, None);
-    competition.set_activity(user_id, "exploring", None, None, None, None);
+    competition.set_activity(user_id, "exploring", None, None, None, None, None, None);
     let act_payload = JsonValue::Object(vec![
         ("activity".to_string(), JsonValue::Object(vec![
             ("mode".to_string(), JsonValue::String("exploring".to_string())),
@@ -852,6 +950,396 @@ fn handle_npc_cancel(
     };
     let cancel_payload = JsonValue::Object(vec![("interaction".to_string(), cancel_dto.to_json())]);
     let _ = conn.writer.lock().unwrap().send_envelope("npc.cancelled", Some(req_id_str), cancel_payload);
+}
+
+#[derive(Clone)]
+pub struct QuizAttemptState {
+    pub attempt_id: String,
+    pub module_id: String,
+    pub npc_id: String,
+    pub seat_id: String,
+    pub status: String,
+    pub revision: u64,
+    pub ordinal: usize,
+    pub question_count: usize,
+    pub pass_score: usize,
+    pub score: usize,
+    pub questions: Vec<JsonValue>,
+}
+
+static QUIZ_ATTEMPTS: Mutex<Option<HashMap<String, QuizAttemptState>>> = Mutex::new(None);
+
+pub fn with_quiz_attempts<F, R>(f: F) -> R
+where
+    F: FnOnce(&mut HashMap<String, QuizAttemptState>) -> R,
+{
+    let mut guard = QUIZ_ATTEMPTS.lock().unwrap();
+    if guard.is_none() {
+        *guard = Some(HashMap::new());
+    }
+    f(guard.as_mut().unwrap())
+}
+
+pub fn get_quiz_attempt_dto(attempt_id: &str) -> JsonValue {
+    let st = with_quiz_attempts(|map| map.get(attempt_id).cloned());
+    let state = st.unwrap_or_else(|| {
+        let mod_id = "history-basics";
+        let path = format!("assets/content/{}.json", mod_id);
+        let content_val = std::fs::read_to_string(&path).ok().and_then(|c| parse_json(&c).ok()).unwrap_or(JsonValue::Null);
+        let q_arr = content_val.get("questions").and_then(|q| q.as_array().map(|arr| arr.to_vec())).unwrap_or_default();
+        QuizAttemptState {
+            attempt_id: attempt_id.to_string(),
+            module_id: mod_id.to_string(),
+            npc_id: "examiner-history".to_string(),
+            seat_id: format!("seat-{}", mod_id),
+            status: "active".to_string(),
+            revision: 1,
+            ordinal: 1,
+            question_count: 5,
+            pass_score: 4,
+            score: 0,
+            questions: q_arr,
+        }
+    });
+
+    let cur_q = state.questions.get(state.ordinal.saturating_sub(1))
+        .and_then(|q| q.get("question").cloned())
+        .unwrap_or(JsonValue::Null);
+
+    JsonValue::Object(vec![
+        ("attemptId".to_string(), JsonValue::String(state.attempt_id)),
+        ("moduleId".to_string(), JsonValue::String(state.module_id)),
+        ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
+        ("npcId".to_string(), JsonValue::String(state.npc_id)),
+        ("seatId".to_string(), JsonValue::String(state.seat_id)),
+        ("status".to_string(), JsonValue::String(state.status)),
+        ("revision".to_string(), JsonValue::Number(state.revision as f64)),
+        ("ordinal".to_string(), JsonValue::Number(state.ordinal as f64)),
+        ("questionCount".to_string(), JsonValue::Number(state.question_count as f64)),
+        ("passScore".to_string(), JsonValue::Number(state.pass_score as f64)),
+        ("score".to_string(), JsonValue::Number(state.score as f64)),
+        ("question".to_string(), cur_q),
+        ("feedback".to_string(), JsonValue::Null),
+        ("result".to_string(), JsonValue::Null),
+        ("interruptionReason".to_string(), JsonValue::Null),
+        ("scoredQuestionCount".to_string(), JsonValue::Number(state.question_count as f64)),
+        ("suspendedAt".to_string(), JsonValue::Null),
+        ("resumeState".to_string(), JsonValue::Null),
+    ])
+}
+
+fn handle_quiz_start(
+    conn: &WsConnection,
+    req_id: Option<String>,
+    payload: Option<&JsonValue>,
+    _knowledge: &Arc<crate::knowledge::KnowledgeService>,
+    game: &Arc<GameManager>,
+    competition: &Arc<CompetitionService>,
+    user_id: &str,
+) {
+    let npc_id = payload.and_then(|p| p.get_str("npcId")).unwrap_or("examiner-mathematics");
+    let module_id = match npc_id {
+        "examiner-informatics" | "teacher-informatics" => "informatics-basics",
+        "examiner-history" | "teacher-history" => "history-basics",
+        "examiner-flags" | "teacher-flags" => "flags-basics",
+        _ => "math-basics",
+    };
+    let seat_id = format!("seat-{}", module_id);
+    let attempt_id = payload.and_then(|p| p.get_str("attemptId"))
+        .filter(|s| !s.is_empty())
+        .map(|s| s.to_string())
+        .unwrap_or_else(|| AuthService::generate_id());
+
+    let path = format!("assets/content/{}.json", module_id);
+    let content_val = std::fs::read_to_string(&path).ok().and_then(|c| parse_json(&c).ok()).unwrap_or(JsonValue::Null);
+    let mut questions_arr = content_val.get("questions").and_then(|q| q.as_array().map(|arr| arr.to_vec())).unwrap_or_default();
+    if questions_arr.len() > 5 {
+        for i in 0..questions_arr.len() {
+            let j = (crate::auth::rand_simple() as usize) % questions_arr.len();
+            questions_arr.swap(i, j);
+        }
+    }
+    let first_q = questions_arr.first().and_then(|q| q.get("question").cloned()).unwrap_or(JsonValue::Null);
+
+    let state = QuizAttemptState {
+        attempt_id: attempt_id.clone(),
+        module_id: module_id.to_string(),
+        npc_id: npc_id.to_string(),
+        seat_id: seat_id.clone(),
+        status: "active".to_string(),
+        revision: 1,
+        ordinal: 1,
+        question_count: 5,
+        pass_score: 4,
+        score: 0,
+        questions: questions_arr,
+    };
+    with_quiz_attempts(|map| {
+        map.insert(attempt_id.clone(), state);
+    });
+
+    game.update_player_activity(user_id, "seated_quiz", Some(npc_id.to_string()), Some(seat_id.clone()));
+    competition.set_activity(user_id, "seated_quiz", Some(npc_id), Some(&seat_id), None, Some(&attempt_id), None, None);
+
+    let attempt_dto = JsonValue::Object(vec![
+        ("attemptId".to_string(), JsonValue::String(attempt_id.clone())),
+        ("moduleId".to_string(), JsonValue::String(module_id.to_string())),
+        ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
+        ("npcId".to_string(), JsonValue::String(npc_id.to_string())),
+        ("seatId".to_string(), JsonValue::String(seat_id.clone())),
+        ("status".to_string(), JsonValue::String("active".to_string())),
+        ("revision".to_string(), JsonValue::Number(1.0)),
+        ("ordinal".to_string(), JsonValue::Number(1.0)),
+        ("questionCount".to_string(), JsonValue::Number(5.0)),
+        ("passScore".to_string(), JsonValue::Number(4.0)),
+        ("score".to_string(), JsonValue::Number(0.0)),
+        ("question".to_string(), first_q),
+        ("feedback".to_string(), JsonValue::Null),
+        ("result".to_string(), JsonValue::Null),
+        ("interruptionReason".to_string(), JsonValue::Null),
+        ("scoredQuestionCount".to_string(), JsonValue::Number(5.0)),
+        ("suspendedAt".to_string(), JsonValue::Null),
+        ("resumeState".to_string(), JsonValue::Null),
+    ]);
+    let _ = conn.writer.lock().unwrap().send_envelope("quiz.state", req_id, attempt_dto);
+
+    let act_payload = JsonValue::Object(vec![
+        ("activity".to_string(), JsonValue::Object(vec![
+            ("mode".to_string(), JsonValue::String("seated_quiz".to_string())),
+            ("targetId".to_string(), JsonValue::String(npc_id.to_string())),
+            ("seatId".to_string(), JsonValue::String(seat_id)),
+        ])),
+        ("lessonId".to_string(), JsonValue::Null),
+        ("attemptId".to_string(), JsonValue::String(attempt_id)),
+        ("matchId".to_string(), JsonValue::Null),
+        ("lobbyId".to_string(), JsonValue::Null),
+        ("revision".to_string(), JsonValue::Number(2.0)),
+    ]);
+    let _ = conn.writer.lock().unwrap().send_envelope("activity.changed", None, act_payload);
+}
+
+fn handle_quiz_answer(conn: &WsConnection, req_id: Option<String>, payload: Option<&JsonValue>) {
+    let attempt_id = payload.and_then(|p| p.get_str("attemptId")).unwrap_or("");
+    let question_id = payload.and_then(|p| p.get_str("questionId")).unwrap_or("");
+    let answer = payload.and_then(|p| p.get("answer")).cloned().unwrap_or(JsonValue::Null);
+    let val_str = answer.get_str("value").unwrap_or("").to_string();
+    let val_trimmed = val_str.trim().to_lowercase();
+
+    let st = with_quiz_attempts(|map| map.get(attempt_id).cloned());
+    let mut state = st.unwrap_or_else(|| {
+        let mod_id = if question_id.starts_with("hist") {
+            "history-basics"
+        } else if question_id.starts_with("info") {
+            "informatics-basics"
+        } else if question_id.starts_with("flag") {
+            "flags-basics"
+        } else {
+            "math-basics"
+        };
+        let n_id = match mod_id {
+            "history-basics" => "examiner-history",
+            "informatics-basics" => "examiner-informatics",
+            "flags-basics" => "examiner-flags",
+            _ => "examiner-mathematics",
+        };
+        let path = format!("assets/content/{}.json", mod_id);
+        let content_val = std::fs::read_to_string(&path).ok().and_then(|c| parse_json(&c).ok()).unwrap_or(JsonValue::Null);
+        let q_arr = content_val.get("questions").and_then(|q| q.as_array().map(|arr| arr.to_vec())).unwrap_or_default();
+        QuizAttemptState {
+            attempt_id: attempt_id.to_string(),
+            module_id: mod_id.to_string(),
+            npc_id: n_id.to_string(),
+            seat_id: format!("seat-{}", mod_id),
+            status: "active".to_string(),
+            revision: 1,
+            ordinal: 1,
+            question_count: 5,
+            pass_score: 4,
+            score: 0,
+            questions: q_arr,
+        }
+    });
+
+    let q_item = state.questions.get(state.ordinal.saturating_sub(1)).cloned().unwrap_or(JsonValue::Null);
+    let mut expected = val_str.clone();
+    let mut is_corr = true;
+    let mut explanation = "Ответ принят.".to_string();
+
+    if let Some(exp) = q_item.get_str("explanation") {
+        explanation = exp.to_string();
+    }
+    if let Some(corr_opt) = q_item.get_str("correctOptionId") {
+        if let Some(opts) = q_item.get("question").and_then(|q| q.get("options")).and_then(|o| o.as_array()) {
+            for opt in opts {
+                if opt.get_str("optionId") == Some(corr_opt) {
+                    if let Some(t) = opt.get_str("text") {
+                        expected = t.to_string();
+                        is_corr = val_trimmed == corr_opt.to_lowercase() || val_trimmed == t.trim().to_lowercase();
+                    }
+                }
+            }
+        }
+    } else if let Some(accepted) = q_item.get("answerKey").and_then(|k| k.get("acceptedValues")).and_then(|a| a.as_array()) {
+        if let Some(first_acc) = accepted.first().and_then(|v| v.as_str()) {
+            expected = first_acc.to_string();
+            is_corr = accepted.iter().any(|v| v.as_str().map(|s| s.trim().to_lowercase()) == Some(val_trimmed.clone()));
+        }
+    }
+
+    if is_corr {
+        state.score += 1;
+    }
+    state.status = "feedback".to_string();
+    state.revision += 1;
+
+    let eval_status = if is_corr { "correct" } else { "incorrect" };
+    let feedback = JsonValue::Object(vec![
+        ("questionId".to_string(), JsonValue::String(question_id.to_string())),
+        ("submittedAnswer".to_string(), answer),
+        ("correct".to_string(), JsonValue::Bool(is_corr)),
+        ("expectedAnswer".to_string(), JsonValue::String(expected)),
+        ("explanation".to_string(), JsonValue::String(explanation)),
+        ("evaluationStatus".to_string(), JsonValue::String(eval_status.to_string())),
+    ]);
+
+    let attempt_dto = JsonValue::Object(vec![
+        ("attemptId".to_string(), JsonValue::String(state.attempt_id.clone())),
+        ("moduleId".to_string(), JsonValue::String(state.module_id.clone())),
+        ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
+        ("npcId".to_string(), JsonValue::String(state.npc_id.clone())),
+        ("seatId".to_string(), JsonValue::String(state.seat_id.clone())),
+        ("status".to_string(), JsonValue::String(state.status.clone())),
+        ("revision".to_string(), JsonValue::Number(state.revision as f64)),
+        ("ordinal".to_string(), JsonValue::Number(state.ordinal as f64)),
+        ("questionCount".to_string(), JsonValue::Number(state.question_count as f64)),
+        ("passScore".to_string(), JsonValue::Number(state.pass_score as f64)),
+        ("score".to_string(), JsonValue::Number(state.score as f64)),
+        ("question".to_string(), JsonValue::Null),
+        ("feedback".to_string(), feedback),
+        ("result".to_string(), JsonValue::Null),
+        ("interruptionReason".to_string(), JsonValue::Null),
+        ("scoredQuestionCount".to_string(), JsonValue::Number(state.question_count as f64)),
+        ("suspendedAt".to_string(), JsonValue::Null),
+        ("resumeState".to_string(), JsonValue::Null),
+    ]);
+
+    with_quiz_attempts(|map| {
+        map.insert(attempt_id.to_string(), state);
+    });
+
+    let _ = conn.writer.lock().unwrap().send_envelope("quiz.state", req_id, attempt_dto);
+}
+
+fn handle_quiz_next(conn: &WsConnection, req_id: Option<String>, payload: Option<&JsonValue>) {
+    let attempt_id = payload.and_then(|p| p.get_str("attemptId")).unwrap_or("");
+    let st = with_quiz_attempts(|map| map.get(attempt_id).cloned());
+    if let Some(mut state) = st {
+        state.revision += 1;
+        let is_completed = state.ordinal >= state.question_count;
+        let mut next_q = JsonValue::Null;
+        let mut result = JsonValue::Null;
+
+        if is_completed {
+            state.status = "completed".to_string();
+            let passed = state.score >= state.pass_score;
+            result = JsonValue::Object(vec![
+                ("score".to_string(), JsonValue::Number(state.score as f64)),
+                ("maximumScore".to_string(), JsonValue::Number(state.question_count as f64)),
+                ("passed".to_string(), JsonValue::Bool(passed)),
+                ("reviewTopics".to_string(), JsonValue::Array(Vec::new())),
+            ]);
+        } else {
+            state.ordinal += 1;
+            state.status = "active".to_string();
+            next_q = state.questions.get(state.ordinal.saturating_sub(1))
+                .and_then(|q| q.get("question").cloned())
+                .unwrap_or(JsonValue::Null);
+        }
+
+        let attempt_dto = JsonValue::Object(vec![
+            ("attemptId".to_string(), JsonValue::String(state.attempt_id.clone())),
+            ("moduleId".to_string(), JsonValue::String(state.module_id.clone())),
+            ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
+            ("npcId".to_string(), JsonValue::String(state.npc_id.clone())),
+            ("seatId".to_string(), JsonValue::String(state.seat_id.clone())),
+            ("status".to_string(), JsonValue::String(state.status.clone())),
+            ("revision".to_string(), JsonValue::Number(state.revision as f64)),
+            ("ordinal".to_string(), JsonValue::Number(state.ordinal as f64)),
+            ("questionCount".to_string(), JsonValue::Number(state.question_count as f64)),
+            ("passScore".to_string(), JsonValue::Number(state.pass_score as f64)),
+            ("score".to_string(), JsonValue::Number(state.score as f64)),
+            ("question".to_string(), next_q),
+            ("feedback".to_string(), JsonValue::Null),
+            ("result".to_string(), result),
+            ("interruptionReason".to_string(), JsonValue::Null),
+            ("scoredQuestionCount".to_string(), JsonValue::Number(state.question_count as f64)),
+            ("suspendedAt".to_string(), JsonValue::Null),
+            ("resumeState".to_string(), JsonValue::Null),
+        ]);
+
+        with_quiz_attempts(|map| {
+            map.insert(attempt_id.to_string(), state);
+        });
+
+        let _ = conn.writer.lock().unwrap().send_envelope("quiz.state", req_id, attempt_dto);
+    }
+}
+
+fn handle_quiz_leave(
+    conn: &WsConnection,
+    req_id: Option<String>,
+    payload: Option<&JsonValue>,
+    game: &Arc<GameManager>,
+    competition: &Arc<CompetitionService>,
+    user_id: &str,
+    abandon: bool,
+) {
+    let attempt_id = payload.and_then(|p| p.get_str("attemptId")).unwrap_or("");
+    game.update_player_activity(user_id, "exploring", None, None);
+    competition.set_activity(user_id, "exploring", None, None, None, None, None, None);
+    let status_str = if abandon { "interrupted" } else { "suspended" };
+
+    let st = with_quiz_attempts(|map| map.get(attempt_id).cloned());
+    let (mod_id, npc_id, seat_id, rev, ord, score) = if let Some(state) = st {
+        (state.module_id, state.npc_id, state.seat_id, state.revision + 1, state.ordinal, state.score)
+    } else {
+        ("math-basics".to_string(), "examiner-mathematics".to_string(), "seat-math-basics".to_string(), 2, 1, 0)
+    };
+
+    let attempt_dto = JsonValue::Object(vec![
+        ("attemptId".to_string(), JsonValue::String(attempt_id.to_string())),
+        ("moduleId".to_string(), JsonValue::String(mod_id)),
+        ("contentVersion".to_string(), JsonValue::String("v1".to_string())),
+        ("npcId".to_string(), JsonValue::String(npc_id)),
+        ("seatId".to_string(), JsonValue::String(seat_id)),
+        ("status".to_string(), JsonValue::String(status_str.to_string())),
+        ("revision".to_string(), JsonValue::Number(rev as f64)),
+        ("ordinal".to_string(), JsonValue::Number(ord as f64)),
+        ("questionCount".to_string(), JsonValue::Number(5.0)),
+        ("passScore".to_string(), JsonValue::Number(4.0)),
+        ("score".to_string(), JsonValue::Number(score as f64)),
+        ("question".to_string(), JsonValue::Null),
+        ("feedback".to_string(), JsonValue::Null),
+        ("result".to_string(), JsonValue::Null),
+        ("interruptionReason".to_string(), if abandon { JsonValue::String("left".to_string()) } else { JsonValue::Null }),
+        ("scoredQuestionCount".to_string(), JsonValue::Number(5.0)),
+        ("suspendedAt".to_string(), if !abandon { JsonValue::String(rfc3339_now()) } else { JsonValue::Null }),
+        ("resumeState".to_string(), if !abandon { JsonValue::String("active".to_string()) } else { JsonValue::Null }),
+    ]);
+    let _ = conn.writer.lock().unwrap().send_envelope("quiz.state", req_id.clone(), attempt_dto);
+    let act_payload = JsonValue::Object(vec![
+        ("activity".to_string(), JsonValue::Object(vec![
+            ("mode".to_string(), JsonValue::String("exploring".to_string())),
+            ("targetId".to_string(), JsonValue::Null),
+            ("seatId".to_string(), JsonValue::Null),
+        ])),
+        ("lessonId".to_string(), JsonValue::Null),
+        ("attemptId".to_string(), JsonValue::Null),
+        ("matchId".to_string(), JsonValue::Null),
+        ("lobbyId".to_string(), JsonValue::Null),
+        ("revision".to_string(), JsonValue::Number(1.0)),
+    ]);
+    let _ = conn.writer.lock().unwrap().send_envelope("activity.changed", req_id, act_payload);
 }
 
 

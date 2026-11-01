@@ -20,7 +20,13 @@ def main():
     print("========================================")
 
     # 1. Build frontend if needed
-    if not os.path.exists(os.path.join(DIST_DIR, "index.html")):
+    src_dir_client = os.path.join(CLIENT_DIR, "src")
+    dist_index = os.path.join(DIST_DIR, "index.html")
+    latest_client_src_mtime = max(
+        [os.path.getmtime(os.path.join(root, f)) for root, _, files in os.walk(src_dir_client) for f in files],
+        default=0
+    )
+    if not os.path.exists(dist_index) or latest_client_src_mtime > os.path.getmtime(dist_index):
         print("[1/3] Building frontend client with Vite...")
         subprocess.check_call(["npm", "run", "build"], cwd=CLIENT_DIR, shell=(sys.platform == "win32"))
     else:
@@ -41,8 +47,18 @@ def main():
 
     # 3. Launch unified server
     port = os.environ.get("PORT", "8080")
-    print(f"[3/3] Starting Discovery Game Server on http://localhost:{port} ...")
+    print(f"[3/3] Starting Discovery Game Server on port {port} (0.0.0.0) ...")
     print("      Serving Three.js 3D world, WebSockets, and REST API from single server.")
+    print("      Доступные адреса для подключения:")
+    print(f"      • Локально:    http://localhost:{port}")
+    try:
+        import socket
+        hostname = socket.gethostname()
+        for ip in socket.gethostbyname_ex(hostname)[2]:
+            if not ip.startswith("127."):
+                print(f"      • По сети LAN: http://{ip}:{port}")
+    except Exception:
+        pass
 
     env = os.environ.copy()
     env["PORT"] = port
@@ -56,6 +72,12 @@ def main():
     import threading
     threading.Thread(target=open_browser, daemon=True).start()
 
+    ai_server_proc = None
+    ai_server_script = os.path.join(ROOT_DIR, "services", "ai", "server.py")
+    if os.path.exists(ai_server_script):
+        print("[LLM] Starting local Qwen2.5-3B-Instruct AI service on port 11434...")
+        ai_server_proc = subprocess.Popen([sys.executable, ai_server_script], cwd=ROOT_DIR)
+
     try:
         proc = subprocess.Popen([server_bin], env=env, cwd=ROOT_DIR)
         proc.wait()
@@ -63,6 +85,9 @@ def main():
         print("\nStopping Discovery server...")
         proc.terminate()
         proc.wait()
+        if ai_server_proc:
+            ai_server_proc.terminate()
+            ai_server_proc.wait()
 
 if __name__ == "__main__":
     main()

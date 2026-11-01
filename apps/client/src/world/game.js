@@ -136,7 +136,7 @@ export class Game {
   }
   hydrateActors() {
     for (const [owner, root] of this.actors) {
-      const id = owner.startsWith("npc:")
+      let id = owner.startsWith("npc:")
         ? this.configs.characterVisual.npcModelId
         : this.configs.characterVisual.playerModelId;
       if (root.userData.modelId === id && root.userData.body) {
@@ -151,7 +151,14 @@ export class Game {
         detachInstance(root.userData.body);
         this.resources.ledger.releaseOwner("actor:" + owner);
       }
-      const body = this.resources.instantiate(id, "actor:" + owner);
+      let body = this.resources.instantiate(id, "actor:" + owner);
+      if (!body) {
+        id = "explorer";
+        body = this.resources.instantiate(id, "actor:" + owner);
+        if (body && !owner.startsWith("npc:")) {
+          this.configs.characterVisual.playerModelId = "explorer";
+        }
+      }
       root.userData.modelId = body ? id : null;
       root.userData.body = body;
       if (body) {
@@ -168,11 +175,6 @@ export class Game {
           if (n.isMesh) n.castShadow = true;
         });
         root.add(body);
-      } else if (this.resources.assets && !this.missingModelWarned) {
-        this.missingModelWarned = true;
-        this.onError(
-          "Выбранная модель недоступна в текущем interest. Выберите разрешённую модель.",
-        );
       }
     }
     this.localArt?.applyActors();
@@ -199,19 +201,13 @@ export class Game {
   }
   async enterLocation(roomId) {
     if (!this.academyArt || this.activity.mode !== "exploring") return;
+    const previousLocation = this.locationId;
     await this.adapter.enterLocation(roomId);
     this.locationId = roomId;
     this.academyArt.setLocation(roomId);
     const room = roomById(roomId);
-    const at = room
-      ? room.entry
-      : ACADEMY_ROOMS.find(
-          (item) =>
-            Math.hypot(
-              this.authoritative.x - item.hubReturn.x,
-              this.authoritative.z - item.hubReturn.z,
-            ) < 3,
-        )?.hubReturn;
+    const prevRoom = roomById(previousLocation);
+    const at = room ? room.entry : (prevRoom?.hubReturn || ACADEMY_ROOMS[0].hubReturn);
     if (at) {
       this.authoritative.set(at.x, 0, at.z);
       this.player.position.copy(this.authoritative);
@@ -226,8 +222,31 @@ export class Game {
     this.keys.clear();
     this.walkTarget = null;
     document.exitPointerLock?.();
+    this.syncNpcPlacement();
     this.syncReadingLabels();
     this.applyWorld();
+  }
+  syncNpcPlacement() {
+    const currentRoom = roomById(this.locationId);
+    if (currentRoom) {
+      for (const [id, npc] of this.npcs) {
+        if (id === currentRoom.teacherId) {
+          npc.root.position.set(currentRoom.teacherPosition.x, currentRoom.teacherPosition.y, currentRoom.teacherPosition.z);
+          npc.baseYaw = 0;
+          npc.root.visible = true;
+        } else if (npc.role === "examiner") {
+          npc.root.position.set(currentRoom.examinerPosition.x, currentRoom.examinerPosition.y, currentRoom.examinerPosition.z);
+          npc.baseYaw = 0;
+          npc.root.visible = true;
+        } else {
+          npc.root.visible = false;
+        }
+      }
+    } else {
+      for (const npc of this.npcs.values()) {
+        npc.root.visible = true;
+      }
+    }
   }
   onEvent(event) {
     const p = event.payload;
@@ -305,11 +324,13 @@ export class Game {
           this.seatTransitionUntil =
             performance.now() + this.configs.firstPerson.seatTransitionMs;
         }
-        this.authoritative.set(
-          player.position.x,
-          player.position.y,
-          player.position.z,
-        );
+        if (this.locationId === ACADEMY_HUB) {
+          this.authoritative.set(
+            player.position.x,
+            player.position.y,
+            player.position.z,
+          );
+        }
         continue;
       }
       ids.add(player.playerId);
@@ -351,32 +372,54 @@ export class Game {
           : source;
       npcIds.add(npc.npcId);
       let actor = this.npcs.get(npc.npcId);
+      const currentRoom = roomById(this.locationId);
       if (!actor) {
+        const initialYaw = currentRoom ? 0 : npc.yawRad;
+        const root = this.createActor("npc:" + npc.npcId, npc.displayName);
+        root.rotation.y = initialYaw;
         actor = {
           id: npc.npcId,
           name: npc.displayName,
           title: npc.subject,
-          root: this.createActor("npc:" + npc.npcId, npc.displayName),
+          role: npc.role,
+          root,
           buffer: new SnapshotBuffer(),
+          baseYaw: initialYaw,
         };
         this.npcs.set(npc.npcId, actor);
       }
-      if (
-        !actor.buffer.frames.length ||
-        actor.root.position.distanceTo(
-          new THREE.Vector3(npc.position.x, npc.position.y, npc.position.z),
-        ) > 8
-      ) {
-        actor.buffer = new SnapshotBuffer();
-        actor.root.position.set(npc.position.x, npc.position.y, npc.position.z);
-        actor.root.rotation.y = npc.yawRad;
+      if (currentRoom) {
+        actor.baseYaw = 0;
+        if (npc.npcId === currentRoom.teacherId) {
+          actor.root.position.set(currentRoom.teacherPosition.x, currentRoom.teacherPosition.y, currentRoom.teacherPosition.z);
+          actor.root.visible = true;
+        } else if (npc.role === "examiner") {
+          actor.root.position.set(currentRoom.examinerPosition.x, currentRoom.examinerPosition.y, currentRoom.examinerPosition.z);
+          actor.root.visible = true;
+        } else {
+          actor.root.position.set(npc.position.x, npc.position.y, npc.position.z);
+          actor.root.visible = false;
+        }
+      } else {
+        actor.baseYaw = npc.yawRad;
+        if (
+          !actor.buffer.frames.length ||
+          actor.root.position.distanceTo(
+            new THREE.Vector3(npc.position.x, npc.position.y, npc.position.z),
+          ) > 8
+        ) {
+          actor.buffer = new SnapshotBuffer();
+          actor.root.position.set(npc.position.x, npc.position.y, npc.position.z);
+          actor.root.rotation.y = npc.yawRad;
+        }
+        actor.buffer.push(
+          [npc.position.x, npc.position.y, npc.position.z],
+          npc.yawRad,
+          performance.now(),
+          p.tick,
+        );
+        actor.root.visible = true;
       }
-      actor.buffer.push(
-        [npc.position.x, npc.position.y, npc.position.z],
-        npc.yawRad,
-        performance.now(),
-        p.tick,
-      );
       actor.root.userData.npcProfile = {
         npcId: npc.npcId,
         role: npc.role,
@@ -414,6 +457,7 @@ export class Game {
       (e) => {
         if (
           this.inputBlocked ||
+          e.target.closest?.("input,select,textarea,[contenteditable=true]") ||
           (document.pointerLockElement !== canvas &&
             document.activeElement !== canvas)
         )
@@ -428,6 +472,8 @@ export class Game {
             "ArrowDown",
             "ArrowLeft",
             "ArrowRight",
+            "ShiftLeft",
+            "ShiftRight",
           ].includes(e.code)
         ) {
           e.preventDefault();
@@ -464,8 +510,10 @@ export class Game {
     canvas.addEventListener(
       "click",
       () => {
-        if (!this.inputBlocked)
+        if (!this.inputBlocked) {
+          canvas.focus?.();
           canvas.requestPointerLock?.()?.catch?.(() => {});
+        }
       },
       { signal },
     );
@@ -672,7 +720,9 @@ export class Game {
       });
   }
   getNearby() {
+    const maxDist = Math.max(3.5, this.configs?.character?.interactionRadiusM || 3.0);
     const room = roomById(this.locationId);
+    const camDir = this.camera.getWorldDirection(new THREE.Vector3());
     const portal = room
       ? {
           id: "exit-" + room.roomId,
@@ -692,36 +742,36 @@ export class Game {
             Math.hypot(
               item.position.x - this.player.position.x,
               item.position.z - this.player.position.z,
-            ) < 3.2,
+            ) <= maxDist,
         );
     if (portal) {
       const distance = Math.hypot(
         portal.position.x - this.player.position.x,
         portal.position.z - this.player.position.z,
       );
-      const direction = new THREE.Vector3(
-        portal.position.x,
-        1.5,
-        portal.position.z,
-      )
-        .sub(this.camera.position)
-        .normalize();
-      if (
-        distance <= 3.2 &&
-        direction.dot(this.camera.getWorldDirection(new THREE.Vector3())) > 0.45
-      )
+      const toDoor2D = new THREE.Vector2(
+        portal.position.x - this.player.position.x,
+        portal.position.z - this.player.position.z,
+      ).normalize();
+      const camDir2D = new THREE.Vector2(camDir.x, camDir.z).normalize();
+      const dot = toDoor2D.dot(camDir2D);
+      if (distance <= maxDist && (dot > 0.2 || distance < 2.2))
         return { ...portal, distance };
     }
     let nearest = null;
     for (const npc of this.npcs.values()) {
-      const distance = npc.root.position.distanceTo(this.player.position);
+      if (!npc.root.visible) continue;
+      const distance = Math.hypot(
+        npc.root.position.x - this.player.position.x,
+        npc.root.position.z - this.player.position.z,
+      );
+      if (distance > maxDist) continue;
       const toward = npc.root.position
         .clone()
         .add(new THREE.Vector3(0, 1, 0))
         .sub(this.camera.position)
         .normalize();
-      const aimed =
-        toward.dot(this.camera.getWorldDirection(new THREE.Vector3())) > 0.75;
+      const aimed = toward.dot(camDir) > 0.35 || distance < 2.0;
       if (aimed && (!nearest || distance < nearest.distance))
         nearest = {
           id: npc.id,
@@ -737,14 +787,18 @@ export class Game {
         object.kind === "shelf"
           ? closestShelfPoint(object, this.player.position)
           : object.position;
-      const pos = new THREE.Vector3(point.x, point.y, point.z);
-      const distance = pos.distanceTo(this.player.position);
-      pos.y = object.kind === "shelf" ? 1.5 : 0.95;
+      const distance = Math.hypot(
+        point.x - this.player.position.x,
+        point.z - this.player.position.z,
+      );
+      if (distance > maxDist) continue;
+      const pos = new THREE.Vector3(
+        point.x,
+        object.kind === "shelf" ? 1.5 : 0.95,
+        point.z,
+      );
       const aimed =
-        pos
-          .sub(this.camera.position)
-          .normalize()
-          .dot(this.camera.getWorldDirection(new THREE.Vector3())) > 0.65;
+        pos.sub(this.camera.position).normalize().dot(camDir) > 0.35 || distance < 2.0;
       if (aimed && (!nearest || distance < nearest.distance))
         nearest = { ...object, distance };
     }
@@ -845,8 +899,7 @@ export class Game {
       z = 0;
     if (
       !this.inputBlocked &&
-      (document.pointerLockElement === this.renderer.domElement ||
-        document.activeElement === this.renderer.domElement) &&
+      !document.activeElement?.closest?.("input,select,textarea,[contenteditable=true]") &&
       this.activity.mode === "exploring" &&
       this.adapter.ready
     ) {
@@ -869,15 +922,45 @@ export class Game {
       }
     }
     const length = Math.hypot(x, z);
+    const running = Boolean(this.keys.has("ShiftLeft") || this.keys.has("ShiftRight"));
+    const currentRoom = roomById(this.locationId);
     if (length) {
       x /= length;
       z /= length;
       this.heading = Math.atan2(x, z);
+      const speed = running
+        ? this.configs.character.walkSpeedMps * this.configs.character.runMultiplier
+        : this.configs.character.walkSpeedMps;
+      const nextX = this.authoritative.x + x * speed * dt;
+      const nextZ = this.authoritative.z + z * speed * dt;
+      if (currentRoom) {
+        let blocked = false;
+        const b = currentRoom.bounds;
+        const clampedX = Math.max(b.minX, Math.min(b.maxX, nextX));
+        const clampedZ = Math.max(b.minZ, Math.min(b.maxZ, nextZ));
+        for (const col of currentRoom.colliders) {
+          if (Math.abs(clampedX - col.x) < col.hx && Math.abs(clampedZ - col.z) < col.hz) {
+            blocked = true;
+            break;
+          }
+        }
+        if (!blocked) {
+          this.authoritative.x = clampedX;
+          this.authoritative.z = clampedZ;
+        }
+      } else {
+        this.authoritative.x = Math.max(0.5, Math.min(319.5, nextX));
+        this.authoritative.z = Math.max(0.5, Math.min(319.5, nextZ));
+      }
     }
     this.inputTimer += dt;
     if (this.inputTimer >= 0.05) {
       this.inputTimer %= 0.05;
-      this.adapter.sendInput([x, z], this.yaw, false);
+      if (currentRoom) {
+        this.adapter.sendInput([0, 0], this.yaw, false);
+      } else {
+        this.adapter.sendInput([x, z], this.yaw, running);
+      }
     }
     this.player.position.lerp(this.authoritative, 1 - Math.exp(-18 * dt));
     this.player.rotation.y = this.heading;
@@ -885,18 +968,20 @@ export class Game {
       const root = npc.root,
         pose = npc.buffer.sample(now);
       const previous = root.position.clone();
-      if (pose) root.position.fromArray(pose.position);
+      if (pose && !roomById(this.locationId)) root.position.fromArray(pose.position);
       root.userData.moveSpeed =
         dt > 0 ? Math.min(2, previous.distanceTo(root.position) / dt) : 0;
-      let target = pose?.heading ?? root.rotation.y;
+      let target = pose?.heading ?? npc.baseYaw ?? root.rotation.y;
       const dx = this.player.position.x - root.position.x,
         dz = this.player.position.z - root.position.z;
+      const dist = Math.hypot(dx, dz);
       if (
-        npc.state !== "walking" &&
-        Math.hypot(dx, dz) <= 3.2 &&
-        npc.role === "teacher"
-      )
+        dist <= 3.8 &&
+        ["teacher", "examiner"].includes(npc.role) &&
+        npc.id !== "npc-guide"
+      ) {
         target = Math.atan2(dx, dz);
+      }
       const difference = Math.atan2(
         Math.sin(target - root.rotation.y),
         Math.cos(target - root.rotation.y),

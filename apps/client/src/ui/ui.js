@@ -358,12 +358,11 @@ export class UI {
       if (
         e.code === "KeyE" &&
         !e.repeat &&
-        (this.education?.open || this.education?.hasActivity) &&
+        this.education?.open &&
         !e.target.closest?.("input,textarea,select,[contenteditable=true]")
       ) {
         e.preventDefault();
-        if (this.education.open) this.education.dismiss();
-        else this.education.show();
+        this.education.dismiss();
         return;
       }
       if (
@@ -375,11 +374,13 @@ export class UI {
         e.preventDefault();
         return;
       }
+      const maxRadius = Math.max(3.5, this.configs?.character?.interactionRadiusM || 3.0);
       if (
         e.code === "KeyE" &&
         !e.repeat &&
         !e.target.closest?.("input,textarea,select") &&
-        this.nearest?.distance <= this.configs.character.interactionRadiusM &&
+        this.nearest &&
+        this.nearest.distance <= maxRadius &&
         $("#info-overlay").classList.contains("hidden")
       )
         this.nearest.kind === "door"
@@ -670,9 +671,10 @@ export class UI {
       String(Math.floor(time)).padStart(2, "0") +
       ":" +
       (time % 1 ? "30" : "00");
+    const maxRadius = Math.max(3.5, this.configs?.character?.interactionRadiusM || 3.0);
     const nearby =
       this.nearest &&
-      this.nearest.distance <= this.configs.character.interactionRadiusM;
+      this.nearest.distance <= maxRadius;
     this.$("#nearby").classList.toggle("hidden", !nearby);
     this.$("#nearby-name").textContent = this.nearest?.name || "";
     this.$("#talk-nearby").innerHTML =
@@ -732,7 +734,7 @@ export class UI {
       this.approaching &&
       this.nearest &&
       this.approaching === this.nearest.id &&
-      this.nearest.distance <= this.configs.character.interactionRadiusM * 0.95
+      this.nearest.distance <= maxRadius
     ) {
       this.approaching = null;
       this.openDialogue(this.nearest.id);

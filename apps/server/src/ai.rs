@@ -86,7 +86,18 @@ impl NpcAiService {
         }
 
         // 2. Select response text and candidate knowledge ID
-        let (reply_text, source, candidate_k_id) = if let Some(item) = matched_item {
+        let mut llm_res: Option<String> = None;
+        if !text.trim().is_empty() {
+            if let Ok(resp) = self.call_ollama(text) {
+                if !resp.trim().is_empty() {
+                    llm_res = Some(resp);
+                }
+            }
+        }
+
+        let (reply_text, source, candidate_k_id) = if let Some(llm_text) = llm_res {
+            (llm_text, "ollama".to_string(), matched_item.map(|i| i.reward_knowledge_id.clone()))
+        } else if let Some(item) = matched_item {
             let use_advanced = match difficulty {
                 "advanced" => true,
                 "simple" => false,
@@ -267,11 +278,11 @@ impl NpcAiService {
         let host = std::env::var("OLLAMA_HOST").unwrap_or_else(|_| "127.0.0.1:11434".to_string());
         let mut stream = TcpStream::connect_timeout(
             &host.parse().map_err(|_| "OLLAMA_HOST_PARSE_ERROR")?,
-            Duration::from_millis(500),
+            Duration::from_millis(1000),
         ).map_err(|_| "OLLAMA_CONNECT_TIMEOUT")?;
 
-        stream.set_read_timeout(Some(Duration::from_secs(3))).ok();
-        stream.set_write_timeout(Some(Duration::from_secs(1))).ok();
+        stream.set_read_timeout(Some(Duration::from_secs(12))).ok();
+        stream.set_write_timeout(Some(Duration::from_secs(2))).ok();
 
         let req_body = format!(
             "{{\"model\":\"qwen2.5:3b\",\"prompt\":{},\"stream\":false,\"format\":\"json\"}}",

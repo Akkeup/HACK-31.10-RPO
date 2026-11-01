@@ -34,11 +34,9 @@ export class EducationUI {
     );
     this.off = adapter.onEvent((e) => this.event(e));
     this.offStatus = adapter.onStatus((s) => {
-      if (s !== "connected") {
-        this.online = false;
-        this.generation++;
-        this.render();
-      }
+      this.online = s === "connected" && Boolean(this.adapter.ready);
+      this.generation++;
+      this.render();
     });
     this.measure = document.createElement("canvas").getContext("2d");
     this.measure.font = "16px system-ui";
@@ -138,62 +136,65 @@ export class EducationUI {
   }
   async recover() {
     const generation = ++this.generation;
-    this.online = false;
+    this.online = Boolean(this.adapter.ready) && this.adapter.lastStatus === "connected";
     this.render();
-    const own = await this.adapter.getActivity();
-    const { attempts } = await this.adapter.gameplayGet(
-      "/api/v2/education/attempts/me?status=suspended",
-      "education",
-      "attempts",
-    );
-    let attempt, lesson;
-    if (own.attemptId && own.activity.mode === "seated_quiz")
-      attempt = await this.adapter.gameplayGet(
-        "/api/v2/education/attempts/" + own.attemptId,
+    try {
+      const own = await this.adapter.getActivity();
+      const { attempts } = await this.adapter.gameplayGet(
+        "/api/v2/education/attempts/me?status=suspended",
         "education",
-        "attempt",
+        "attempts",
       );
-    if (own.lessonId) {
-      const { modules } = await this.adapter.gameplayGet(
-        `/api/v2/worlds/${this.adapter.worldId}/education/modules`,
-        "education",
-        "modules",
-      );
-      const station = this.game.configs.gameplay.education.stations.find(
-        (s) => s.teacherId === own.activity.targetId,
-      );
-      let module = modules.find((m) => m.moduleId === station?.moduleId);
-      if (!module) {
-        const { books } = await this.adapter.gameplayGet(
-          `/api/v2/worlds/${this.adapter.worldId}/library/books`,
-          "knowledge",
-          "books",
+      let attempt, lesson;
+      if (own.attemptId && own.activity.mode === "seated_quiz")
+        attempt = await this.adapter.gameplayGet(
+          "/api/v2/education/attempts/" + own.attemptId,
+          "education",
+          "attempt",
         );
-        const book = books.find((b) => b.bookId === own.activity.targetId);
-        module = modules.find((m) => m.moduleId === book?.moduleId);
+      if (own.lessonId) {
+        const { modules } = await this.adapter.gameplayGet(
+          `/api/v2/worlds/${this.adapter.worldId}/education/modules`,
+          "education",
+          "modules",
+        );
+        const station = this.game.configs.gameplay.education.stations.find(
+          (s) => s.teacherId === own.activity.targetId,
+        );
+        let module = modules.find((m) => m.moduleId === station?.moduleId || (station?.moduleId === "flags-demo" && m.moduleId === "flags-basics"));
+        if (!module) {
+          const { books } = await this.adapter.gameplayGet(
+            `/api/v2/worlds/${this.adapter.worldId}/library/books`,
+            "knowledge",
+            "books",
+          );
+          const book = books.find((b) => b.bookId === own.activity.targetId);
+          module = modules.find((m) => m.moduleId === book?.moduleId);
+        }
+        if (module)
+          lesson = {
+            lessonId: own.lessonId,
+            material: await this.adapter.gameplayGet(
+              `/api/v2/worlds/${this.adapter.worldId}/education/modules/${module.moduleId}/versions/${module.contentVersion}`,
+              "education",
+              "material",
+            ),
+          };
       }
-      if (module)
-        lesson = {
-          lessonId: own.lessonId,
-          material: await this.adapter.gameplayGet(
-            `/api/v2/worlds/${this.adapter.worldId}/education/modules/${module.moduleId}/versions/${module.contentVersion}`,
-            "education",
-            "material",
-          ),
-        };
+      if (generation !== this.generation) return;
+      this.resumables = attempts;
+      this.activity = own;
+      if (lesson) this.setLesson(lesson);
+      if (attempt) {
+        this.attempt = attempt;
+        this.lesson = null;
+      }
+    } finally {
+      this.online = Boolean(this.adapter.ready) && this.adapter.lastStatus === "connected";
+      if (this.hasActivity && (this.lesson || this.attempt)) this.show();
+      else if (this.open && !this.chooser && !this.shelf && !this.lesson && !this.attempt) this.hide();
+      this.render();
     }
-    if (generation !== this.generation) return;
-    this.resumables = attempts;
-    this.activity = own;
-    if (lesson) this.setLesson(lesson);
-    if (attempt) {
-      this.attempt = attempt;
-      this.lesson = null;
-    }
-    this.online = this.adapter.ready && this.adapter.lastStatus === "connected";
-    if (this.hasActivity) this.show();
-    else if (this.open && !this.chooser && !this.shelf) this.hide();
-    this.render();
   }
   async loadChoices(stations) {
     this.attempt = null;
@@ -228,8 +229,11 @@ export class EducationUI {
     }
   }
   async openObject(object) {
+    if (!this.online && this.adapter.ready && this.adapter.lastStatus === "connected") {
+      this.online = true;
+    }
     if (this.busy || !this.online) return;
-    if (this.hasActivity) {
+    if (this.hasActivity && (this.lesson || this.attempt)) {
       this.show();
       return;
     }
@@ -266,8 +270,11 @@ export class EducationUI {
     }
   }
   async openNPC(npc) {
+    if (!this.online && this.adapter.ready && this.adapter.lastStatus === "connected") {
+      this.online = true;
+    }
     if (this.busy || !this.online) return;
-    if (this.hasActivity) {
+    if (this.hasActivity && (this.lesson || this.attempt)) {
       this.show();
       return;
     }
@@ -334,11 +341,18 @@ export class EducationUI {
     this.generation++;
     const lessonId = this.activity?.lessonId || this.lesson?.lessonId,
       attemptId = this.activity?.attemptId || this.attempt?.attemptId;
-    const ok = lessonId
-      ? await this.send("lesson.close", { lessonId }, ["activity.changed"])
-      : attemptId
-        ? await this.send("quiz.leave", { attemptId }, ["activity.changed"])
-        : true;
+    let ok = true;
+    if (lessonId) {
+      ok = await this.send("lesson.close", { lessonId }, ["activity.changed"]);
+    } else if (attemptId) {
+      ok = await this.send("quiz.leave", { attemptId }, ["activity.changed"]);
+    } else if (this.hasActivity) {
+      ok = await this.send("lesson.close", { lessonId: "00000000-0000-0000-0000-000000000000" }, ["activity.changed"]).catch(() => true);
+    }
+    this.lesson = null;
+    this.attempt = null;
+    this.chooser = null;
+    this.shelf = null;
     if (ok) this.hide();
     else {
       this.closing = false;
@@ -543,7 +557,7 @@ export class EducationUI {
     }
     updatePanel(
       this.root,
-      `<header><div><span class="eyebrow">DISCOVERY / ЧИТАЛЬНЫЙ ЗАЛ ${this.adapter.isMock ? "· ДЕМО" : ""}</span><h2>${l ? "Изучение" : this.shelf ? "Библиотека" : this.chooser ? "Тетрадь" : "Проверка знаний"}</h2></div><button data-education="hide" ${this.closing || this.closeRequested ? "disabled" : ""}>${this.closing ? "Сохраняем…" : a ? "Встать и сохранить" : "Вернуться в зал"} ×</button></header>${!this.online ? '<p role="status">Восстанавливаем состояние…</p>' : ""}<div class="competition-body">${this.error ? `<p class="competition-error" role="alert">${safe(this.error)}</p><button data-education="retry" ${d}>Обновить состояние</button>` : ""}${content}</div><footer><span>Esc — меню · E — вернуться в зал${a ? " · незавершённая попытка сохранится" : ""}</span></footer>`,
+      `<header><div><span class="eyebrow">DISCOVERY / ЧИТАЛЬНЫЙ ЗАЛ ${this.adapter.isMock ? "· ДЕМО" : ""}</span><h2>${l ? "Изучение" : this.shelf ? "Библиотека" : this.chooser ? "Тетрадь" : a ? "Проверка знаний" : "Изучение"}</h2></div><button data-education="hide" ${this.closing || this.closeRequested ? "disabled" : ""}>${this.closing ? "Сохраняем…" : a ? "Встать и сохранить" : "Вернуться в зал"} ×</button></header>${!this.online ? '<p role="status">Восстанавливаем состояние…</p>' : ""}<div class="competition-body">${this.error ? `<p class="competition-error" role="alert">${safe(this.error)}</p><button data-education="retry" ${d}>Обновить состояние</button>` : ""}${content}</div><footer><span>Esc — меню · E — вернуться в зал${a ? " · незавершённая попытка сохранится" : ""}</span></footer>`,
     );
   }
   dispose() {

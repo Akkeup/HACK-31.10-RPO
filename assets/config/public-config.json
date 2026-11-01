@@ -12,15 +12,15 @@
         "maxZ": 9
       },
       "spawn": {
-        "x": 1,
+        "x": 80,
         "y": 0,
-        "z": 1
+        "z": 92
       },
-      "timeOfDayHours": 12,
+      "timeOfDayHours": 14,
       "weather": "clear",
-      "decorDensity": 0.5,
+      "decorDensity": 0.4,
       "interestRadiusChunks": 0,
-      "maxResidentChunks": 1
+      "maxResidentChunks": 4
     },
     "character": {
       "walkSpeedMps": 4,
@@ -30,10 +30,7 @@
       "tickHz": 20,
       "snapshotHz": 10,
       "inputHz": 20,
-      "allowedActions": [
-        "talk",
-        "inspect"
-      ],
+      "allowedActions": ["talk", "inspect"],
       "maxInputSilenceMs": 250
     },
     "renderDefaults": {
@@ -46,8 +43,8 @@
       "animationEnabled": true
     },
     "characterVisualDefaults": {
-      "playerModelId": "model-triangle",
-      "npcModelId": "model-triangle",
+      "playerModelId": "explorer",
+      "npcModelId": "explorer",
       "modelScale": 1,
       "animationRate": 1,
       "showNames": true,
@@ -57,7 +54,7 @@
     "firstPersonDefaults": {
       "mode": "first_person",
       "standingEyeHeightM": 1.65,
-      "seatedEyeHeightM": 1.05,
+      "seatedEyeHeightM": 1.51,
       "mouseSensitivity": 1,
       "pitchMinRad": -1.4,
       "pitchMaxRad": 1.4,
@@ -75,27 +72,27 @@
             "teacherId": "teacher-mathematics",
             "examinerId": "examiner-mathematics",
             "teacherPosition": {
-              "x": 3,
+              "x": 70.7,
               "y": 0,
-              "z": 3
+              "z": 69
             },
             "examinerPosition": {
-              "x": 3,
+              "x": 80,
               "y": 0,
-              "z": 6
+              "z": 87
             },
             "examinerSeat": {
               "seatId": "seat-math-basics",
               "position": {
-                "x": 3,
+                "x": 69,
                 "y": 0,
-                "z": 7
+                "z": 76
               },
               "yawRad": 0,
               "exitPosition": {
-                "x": 3,
+                "x": 69,
                 "y": 0,
-                "z": 8
+                "z": 78
               }
             }
           },
@@ -104,27 +101,27 @@
             "teacherId": "teacher-informatics",
             "examinerId": "examiner-informatics",
             "teacherPosition": {
-              "x": 10,
+              "x": 77.7,
               "y": 0,
-              "z": 3
+              "z": 69
             },
             "examinerPosition": {
-              "x": 10,
+              "x": 80,
               "y": 0,
-              "z": 6
+              "z": 87
             },
             "examinerSeat": {
               "seatId": "seat-informatics-basics",
               "position": {
-                "x": 10,
+                "x": 76,
                 "y": 0,
-                "z": 7
+                "z": 76
               },
               "yawRad": 0,
               "exitPosition": {
-                "x": 10,
+                "x": 76,
                 "y": 0,
-                "z": 8
+                "z": 78
               }
             }
           },
@@ -133,27 +130,27 @@
             "teacherId": "teacher-history",
             "examinerId": "examiner-history",
             "teacherPosition": {
-              "x": 17,
+              "x": 84.7,
               "y": 0,
-              "z": 3
+              "z": 69
             },
             "examinerPosition": {
-              "x": 17,
+              "x": 80,
               "y": 0,
-              "z": 6
+              "z": 87
             },
             "examinerSeat": {
               "seatId": "seat-history-basics",
               "position": {
-                "x": 17,
+                "x": 83,
                 "y": 0,
-                "z": 7
+                "z": 76
               },
               "yawRad": 0,
               "exitPosition": {
-                "x": 17,
+                "x": 83,
                 "y": 0,
-                "z": 8
+                "z": 78
               }
             }
           },
@@ -162,27 +159,27 @@
             "teacherId": "teacher-flags",
             "examinerId": "examiner-flags",
             "teacherPosition": {
-              "x": 25,
+              "x": 91.7,
               "y": 0,
-              "z": 3
+              "z": 69
             },
             "examinerPosition": {
-              "x": 25,
+              "x": 80,
               "y": 0,
-              "z": 6
+              "z": 87
             },
             "examinerSeat": {
               "seatId": "seat-flags-demo",
               "position": {
-                "x": 25,
+                "x": 90,
                 "y": 0,
-                "z": 7
+                "z": 76
               },
               "yawRad": 0,
               "exitPosition": {
-                "x": 25,
+                "x": 90,
                 "y": 0,
-                "z": 8
+                "z": 78
               }
             }
           }
@@ -200,80 +197,80 @@
           {
             "tableId": "competition-central",
             "position": {
-              "x": 16,
+              "x": 80,
               "y": 0,
-              "z": 16
+              "z": 83
             },
-            "interactionRadiusM": 3,
+            "interactionRadiusM": 3.5,
             "seats": [
               {
                 "seatId": "competition-seat-1",
                 "position": {
-                  "x": 14,
+                  "x": 80.0,
                   "y": 0,
-                  "z": 17
+                  "z": 85.3
                 },
-                "yawRad": 0,
+                "yawRad": 0.0,
                 "exitPosition": {
-                  "x": 14,
+                  "x": 80.0,
                   "y": 0,
-                  "z": 18
+                  "z": 86.4
                 }
               },
               {
                 "seatId": "competition-seat-2",
                 "position": {
-                  "x": 15,
+                  "x": 82.187,
                   "y": 0,
-                  "z": 17
+                  "z": 83.711
                 },
-                "yawRad": 0,
+                "yawRad": 1.2566,
                 "exitPosition": {
-                  "x": 15,
+                  "x": 83.234,
                   "y": 0,
-                  "z": 18
+                  "z": 84.051
                 }
               },
               {
                 "seatId": "competition-seat-3",
                 "position": {
-                  "x": 16,
+                  "x": 81.352,
                   "y": 0,
-                  "z": 17
+                  "z": 81.139
                 },
-                "yawRad": 0,
+                "yawRad": 2.5133,
                 "exitPosition": {
-                  "x": 16,
+                  "x": 81.998,
                   "y": 0,
-                  "z": 18
+                  "z": 80.249
                 }
               },
               {
                 "seatId": "competition-seat-4",
                 "position": {
-                  "x": 17,
+                  "x": 78.648,
                   "y": 0,
-                  "z": 17
+                  "z": 81.139
                 },
-                "yawRad": 0,
+                "yawRad": -2.5133,
                 "exitPosition": {
-                  "x": 17,
+                  "x": 78.002,
                   "y": 0,
-                  "z": 18
+                  "z": 80.249
                 }
               },
               {
                 "seatId": "competition-seat-5",
                 "position": {
-                  "x": 18,
+                  "x": 77.813,
                   "y": 0,
-                  "z": 17
+                  "z": 83.711
                 },
-                "yawRad": 0,
+                "yawRad": -1.2567,
                 "exitPosition": {
-                  "x": 18,
+                  "x": 76.766,
                   "y": 0,
-                  "z": 18
+                  "z": 84.051
                 }
               }
             ],
@@ -350,42 +347,42 @@
       "assetSlots": [
         {
           "slotId": "shelf",
-          "modelId": "model-triangle",
-          "placeholder": true
+          "modelId": "reading-shelf",
+          "placeholder": false
         },
         {
           "slotId": "book",
-          "modelId": "model-triangle",
+          "modelId": "reading-book",
           "placeholder": true
         },
         {
           "slotId": "desk",
-          "modelId": "model-triangle",
-          "placeholder": true
+          "modelId": "reading-desk",
+          "placeholder": false
         },
         {
           "slotId": "chair",
-          "modelId": "model-triangle",
+          "modelId": "competition-chair",
           "placeholder": true
         },
         {
           "slotId": "notebook",
-          "modelId": "model-triangle",
+          "modelId": "reading-notebook",
           "placeholder": true
         },
         {
           "slotId": "round-table",
-          "modelId": "model-triangle",
-          "placeholder": true
+          "modelId": "competition-table",
+          "placeholder": false
         },
         {
           "slotId": "npc",
-          "modelId": "model-triangle",
+          "modelId": "explorer",
           "placeholder": true
         },
         {
           "slotId": "player",
-          "modelId": "model-triangle",
+          "modelId": "explorer",
           "placeholder": true
         }
       ]

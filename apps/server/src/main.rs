@@ -44,6 +44,7 @@ fn main() {
 
     let pool = DbPool::new(&db_host, db_port, &db_user, &db_pass, &db_name);
     println!("Connected to PostgreSQL 18 at {}:{}", db_host, db_port);
+    let _ = pool.execute("UPDATE player_activities SET mode = 'exploring', target_id = NULL, seat_id = NULL, lesson_id = NULL, attempt_id = NULL, match_id = NULL, lobby_id = NULL WHERE mode != 'exploring'");
 
     let auth = Arc::new(AuthService::new(pool.clone()));
     let config = Arc::new(ConfigService::new(pool.clone()));
