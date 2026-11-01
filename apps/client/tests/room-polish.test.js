@@ -94,7 +94,7 @@ test("room shelf opens its lesson via the v2 library contract, including after t
   }
 });
 
-test("procedural gait is stable at rest, alternates legs and restores the bind pose", () => {
+test("reference gait is stable at rest, alternates legs and restores the bind pose", () => {
   const model = new THREE.Group();
   for (const name of [
     "LeftUpLeg",
