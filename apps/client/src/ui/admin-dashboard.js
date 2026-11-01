@@ -59,6 +59,14 @@ export class AdminDashboard {
     `;
   }
 
+  get isAdmin() {
+    return (
+      this.adapter?.role === "admin" ||
+      this.adapter?.user?.role === "admin" ||
+      this.adapter?.user?.username === "admin"
+    );
+  }
+
   bindEvents() {
     this.container.querySelector("#admin-close-btn").onclick = () => this.toggle(false);
 
@@ -73,9 +81,10 @@ export class AdminDashboard {
       };
     });
 
-    // Close on Escape
+    // Close on Escape, toggle on Backquote / F12 only for admin users
     window.addEventListener("keydown", (e) => {
       if (e.code === "Backquote" || e.code === "F12") {
+        if (!this.isAdmin) return;
         if (!e.ctrlKey && !e.altKey && !e.metaKey) {
           e.preventDefault();
           this.toggle(!this.visible);
@@ -87,6 +96,11 @@ export class AdminDashboard {
   }
 
   toggle(show = !this.visible) {
+    if (!this.isAdmin) {
+      this.visible = false;
+      this.container.classList.add("hidden");
+      return;
+    }
     this.visible = show;
     if (this.visible) {
       this.container.classList.remove("hidden");
@@ -472,7 +486,6 @@ export class AdminDashboard {
               <option value="idle">idle (Покой)</option>
               <option value="walking">walking (Ходьба)</option>
               <option value="talking">talking (Разговор)</option>
-              <option value="frozen">frozen (Заморозка)</option>
             </select>
           </div>
         </div>

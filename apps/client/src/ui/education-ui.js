@@ -402,12 +402,12 @@ export class EducationUI {
             ...this.game.resources.image(question.image, "education:flag"),
             hash,
           };
-        } catch (e) {
-          this.error = e.message;
+        } catch {
+          this.game.resources.loadImage?.(question.image);
         }
       }
     }
-    return this.flagHandle?.url;
+    return this.flagHandle?.url || question?.image?.url || null;
   }
   async action(e) {
     const b = e.target.closest("[data-education]");

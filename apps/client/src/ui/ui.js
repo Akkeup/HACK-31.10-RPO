@@ -57,6 +57,10 @@ export class UI {
     this.competition = new CompetitionUI(this, game, this.adapter);
     this.education = new EducationUI(this, game, this.adapter);
     this.adminDashboard = new AdminDashboard(this, game, this.adapter);
+    const adminToggleBtn = document.querySelector("#admin-toggle");
+    if (adminToggleBtn && !this.adminDashboard.isAdmin) {
+      adminToggleBtn.style.display = "none";
+    }
     if (this.adapter.isMock && this.adapter.demoScenario) {
       const demo = document.createElement("details");
       demo.className = "demo-tools";
@@ -160,7 +164,11 @@ export class UI {
     $("#close-settings").onclick = () => this.toggleSettings(false);
     $("#settings-toggle").onclick = () =>
       this.toggleSettings($("#settings").classList.contains("hidden"));
-    $("#admin-toggle").onclick = () => this.adminDashboard?.toggle();
+    $("#admin-toggle").onclick = () => {
+      if (this.adminDashboard?.isAdmin) {
+        this.adminDashboard.toggle();
+      }
+    };
     $("#world-nav").onclick = () => {
       $("#info-overlay").classList.add("hidden");
       this.game?.setBlocked(false, "info");
@@ -746,18 +754,40 @@ export class UI {
     this.$("#dialogue-name").textContent = npc.name;
     this.$("#dialogue-title").textContent = npc.title;
     this.$("#messages").innerHTML = "";
-    this.dialogueHistory = [];
-    this.dialogueCard = 0;
+
+    this.dialogueHistories ||= new Map();
+    const storageKey = `discovery_dialogue_${this.adapter?.userId ? this.adapter.userId + "_" : ""}${id}`;
+    let saved = this.dialogueHistories.get(id);
+    if (!saved || saved.length === 0) {
+      try {
+        const stored = localStorage.getItem(storageKey) || localStorage.getItem(`discovery_dialogue_${id}`);
+        if (stored) {
+          saved = JSON.parse(stored);
+        }
+      } catch (_) {}
+    }
+
+    if (saved && saved.length > 0) {
+      this.dialogueHistory = [...saved];
+      this.dialogueHistories.set(id, this.dialogueHistory);
+      this.dialogueCard = Infinity;
+      this.renderDialogueCards();
+    } else {
+      this.dialogueHistory = [];
+      this.dialogueHistories.set(id, this.dialogueHistory);
+      this.dialogueCard = 0;
+      this.appendMessage(
+        `Привет! Я ${npc.name}. Моя тема — ${npc.title.toLowerCase()}. Какой вопрос исследуем?`,
+        false,
+      );
+    }
+
     this.$("#dialogue-overlay").classList.remove("hidden");
     this.$("#dialogue-input").focus();
     const reaction = this.configs.characterVisual.interactionReaction;
     if (this.game.player.userData.body && reaction !== "none")
       this.game.player.userData.body.rotation.z =
         reaction === "wave" ? 0.15 : 0.07;
-    this.appendMessage(
-      `Привет! Я ${npc.name}. Моя тема — ${npc.title.toLowerCase()}. Какой вопрос исследуем?`,
-      false,
-    );
   }
   closeDialogue() {
     if (!this.$("#dialogue-overlay")) return;
@@ -781,6 +811,14 @@ export class UI {
       text:
         typeof text === "string" ? text : "Сервер вернул некорректный ответ",
     });
+    if (this.dialogueNPC) {
+      this.dialogueHistories ||= new Map();
+      this.dialogueHistories.set(this.dialogueNPC, this.dialogueHistory);
+      try {
+        const storageKey = `discovery_dialogue_${this.adapter?.userId ? this.adapter.userId + "_" : ""}${this.dialogueNPC}`;
+        localStorage.setItem(storageKey, JSON.stringify(this.dialogueHistory));
+      } catch (_) {}
+    }
     this.dialogueCard = Infinity;
     this.renderDialogueCards();
   }

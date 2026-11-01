@@ -1,6 +1,7 @@
 // ai.rs: Local Adaptive NPC AI and Knowledge System
 
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
+use std::sync::Mutex;
 use crate::db::DbPool;
 use crate::json::{parse_json, JsonValue};
 use crate::models::{InteractionDto, ProgressDto};
@@ -18,6 +19,7 @@ pub struct KnowledgeItem {
 pub struct NpcAiService {
     db: DbPool,
     knowledge_items: Vec<KnowledgeItem>,
+    memory_cache: Mutex<HashMap<(String, String), Vec<(String, String)>>>,
 }
 
 impl NpcAiService {
@@ -47,7 +49,39 @@ impl NpcAiService {
         Self {
             db,
             knowledge_items: items,
+            memory_cache: Mutex::new(HashMap::new()),
         }
+    }
+
+    pub fn get_conversation_history(&self, user_id: &str, npc_id: &str) -> Vec<(String, String)> {
+        let key = (user_id.to_string(), npc_id.to_string());
+        {
+            let cache = self.memory_cache.lock().unwrap();
+            if let Some(history) = cache.get(&key) {
+                if !history.is_empty() {
+                    return history.clone();
+                }
+            }
+        }
+
+        let mut db_history = Vec::new();
+        let sql = format!(
+            "SELECT role, content FROM npc_memories WHERE user_id = '{}' AND npc_id = '{}' ORDER BY turn_index ASC, id ASC LIMIT 50",
+            user_id, npc_id
+        );
+        if let Ok(rows) = self.db.query(&sql) {
+            for row in rows {
+                let role = row.get(0).unwrap_or("user").to_string();
+                let content = row.get(1).unwrap_or("").to_string();
+                if !content.is_empty() {
+                    db_history.push((role, content));
+                }
+            }
+        }
+
+        let mut cache = self.memory_cache.lock().unwrap();
+        cache.insert(key, db_history.clone());
+        db_history
     }
 }
 impl NpcAiService {
@@ -88,7 +122,8 @@ impl NpcAiService {
         // 2. Select response text and candidate knowledge ID
         let mut llm_res: Option<String> = None;
         if !text.trim().is_empty() {
-            if let Ok(resp) = self.call_ollama(text) {
+            let history = self.get_conversation_history(user_id, npc_id);
+            if let Ok(resp) = self.call_ollama_with_history(text, &history) {
                 if !resp.trim().is_empty() {
                     llm_res = Some(resp);
                 }
@@ -160,13 +195,26 @@ impl NpcAiService {
         );
         let _ = self.db.execute(&sql);
 
+        // Ensure history is loaded in cache
+        let _ = self.get_conversation_history(user_id, npc_id);
+
+        let (turn_user, turn_npc) = {
+            let mut cache = self.memory_cache.lock().unwrap();
+            let key = (user_id.to_string(), npc_id.to_string());
+            let entry = cache.entry(key).or_insert_with(Vec::new);
+            entry.push(("user".to_string(), input_text.to_string()));
+            entry.push(("npc".to_string(), interaction.text.to_string()));
+            let total = entry.len();
+            (total.saturating_sub(1) as i32, total as i32)
+        };
+
         // Record turn in npc_memories
         let mem_sql = format!(
             "INSERT INTO npc_memories (user_id, world_id, npc_id, turn_index, role, content, created_at) \
-             VALUES ('{}', 'discovery-campus', '{}', 1, 'user', '{}', NOW()), \
-                    ('{}', 'discovery-campus', '{}', 2, 'npc', '{}', NOW())",
-            user_id, npc_id, input_text.replace("'", "''"),
-            user_id, npc_id, interaction.text.replace("'", "''")
+             VALUES ('{}', 'discovery-campus', '{}', {}, 'user', '{}', NOW()), \
+                    ('{}', 'discovery-campus', '{}', {}, 'npc', '{}', NOW())",
+            user_id, npc_id, turn_user, input_text.replace("'", "''"),
+            user_id, npc_id, turn_npc, interaction.text.replace("'", "''")
         );
         let _ = self.db.execute(&mem_sql);
     }
@@ -271,6 +319,10 @@ COUNTRY_FACTS:\nСтрана: {}\nВидимый флаг: {}\nФакты:\n{}",
 
 impl NpcAiService {
     pub fn call_ollama(&self, prompt: &str) -> Result<String, &'static str> {
+        self.call_ollama_with_history(prompt, &[])
+    }
+
+    pub fn call_ollama_with_history(&self, prompt: &str, history: &[(String, String)]) -> Result<String, &'static str> {
         use std::io::{Read, Write};
         use std::net::TcpStream;
         use std::time::Duration;
@@ -278,16 +330,59 @@ impl NpcAiService {
         let host = std::env::var("OLLAMA_HOST").unwrap_or_else(|_| "127.0.0.1:11434".to_string());
         let mut stream = TcpStream::connect_timeout(
             &host.parse().map_err(|_| "OLLAMA_HOST_PARSE_ERROR")?,
-            Duration::from_millis(1000),
+            Duration::from_millis(1500),
         ).map_err(|_| "OLLAMA_CONNECT_TIMEOUT")?;
 
-        stream.set_read_timeout(Some(Duration::from_secs(12))).ok();
-        stream.set_write_timeout(Some(Duration::from_secs(2))).ok();
+        stream.set_read_timeout(Some(Duration::from_secs(20))).ok();
+        stream.set_write_timeout(Some(Duration::from_secs(3))).ok();
 
-        let req_body = format!(
-            "{{\"model\":\"qwen2.5:3b\",\"prompt\":{},\"stream\":false,\"format\":\"json\"}}",
-            JsonValue::String(prompt.to_string()).to_string()
-        );
+        let mut messages_arr = Vec::new();
+        messages_arr.push(JsonValue::Object(vec![
+            ("role".to_string(), JsonValue::String("system".to_string())),
+            ("content".to_string(), JsonValue::String(
+                "Ты преподаватель в академии Discovery (София — Хранительница знаний). Отвечай исключительно на грамотном русском языке. Ответ должен быть понятным, полезным и естественным (2-4 предложения). Всегда помни контекст предыдущего общения с пользователем, его имя, вопросы и всё, что обсуждалось ранее до того, как вы разошлись. Категорически запрещено использовать китайский язык или иероглифы.".to_string()
+            )),
+        ]));
+
+        let history_slice = if history.len() > 30 {
+            &history[history.len() - 30..]
+        } else {
+            history
+        };
+
+        for (role, content) in history_slice {
+            let r = if role == "user" { "user" } else { "assistant" };
+            messages_arr.push(JsonValue::Object(vec![
+                ("role".to_string(), JsonValue::String(r.to_string())),
+                ("content".to_string(), JsonValue::String(content.clone())),
+            ]));
+        }
+
+        messages_arr.push(JsonValue::Object(vec![
+            ("role".to_string(), JsonValue::String("user".to_string())),
+            ("content".to_string(), JsonValue::String(prompt.to_string())),
+        ]));
+
+        let mut prompt_with_context = String::new();
+        if !history_slice.is_empty() {
+            prompt_with_context.push_str("История предыдущего разговора:\n");
+            for (role, content) in history_slice {
+                let speaker = if role == "user" { "Пользователь" } else { "София" };
+                prompt_with_context.push_str(&format!("{}: {}\n", speaker, content));
+            }
+            prompt_with_context.push_str(&format!("Пользователь: {}\nСофия:", prompt));
+        } else {
+            prompt_with_context.push_str(prompt);
+        }
+
+        let req_json = JsonValue::Object(vec![
+            ("model".to_string(), JsonValue::String("qwen2.5:3b".to_string())),
+            ("prompt".to_string(), JsonValue::String(prompt_with_context)),
+            ("messages".to_string(), JsonValue::Array(messages_arr)),
+            ("stream".to_string(), JsonValue::Bool(false)),
+        ]);
+        let req_body = req_json.to_string();
+
         let http_req = format!(
             "POST /api/generate HTTP/1.1\r\nHost: {}\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{}",
             host, req_body.len(), req_body

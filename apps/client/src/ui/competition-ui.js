@@ -266,7 +266,7 @@ export class CompetitionUI {
         if (this.flagHandle?.hash !== hash) {
           this.flagHandle?.release();
           this.flagHandle = null;
-          if (hash)
+          if (hash) {
             try {
               this.flagHandle = {
                 ...this.game.resources.image(
@@ -275,11 +275,13 @@ export class CompetitionUI {
                 ),
                 hash,
               };
-            } catch (error) {
-              this.ui.toast(error.message);
+            } catch {
+              this.game.resources.loadImage?.(r.question.image);
             }
+          }
         }
-        body = `<div class="competition-round"><span>${subjects[s.subject]} · Вопрос ${r?.ordinal || "—"} / ${s.questionCount}</span><strong data-deadline="${s.round ? Date.parse(s.round.deadlineAt) : 0}"></strong></div>${r ? `<h3>${html(r.question.prompt)}</h3>${answerControls(r.question, { scope: "competition", disabled: !enabled || accepted || !!result || !s.round || row?.left, value: this.answerDrafts.get(r.question.questionId) || "", imageUrl: this.flagHandle?.url })}` : ""}<p class="answer-status" role="status">${!s.round ? "Раунд закрыт. Ждём следующего вопроса…" : accepted ? "Ответ принят, ждём остальных" : c.pending ? "Отправляем ответ. Ждём подтверждения…" : "Отправьте один ответ до окончания времени."}</p>${result ? `<div class="round-explanation"><b>Ожидаемый ответ: ${html(r?.question.options?.find((o) => o.optionId === result.expectedAnswer)?.text || result.expectedAnswer)}</b><p>${html(result.explanation)}</p></div>${people}` : ""}<div class="competition-actions"><button data-competition="leave" ${disabled}>F — Встать</button></div>`;
+        const flagImgUrl = this.flagHandle?.url || r?.question.image?.url || null;
+        body = `<div class="competition-round"><span>${subjects[s.subject]} · Вопрос ${r?.ordinal || "—"} / ${s.questionCount}</span><strong data-deadline="${s.round ? Date.parse(s.round.deadlineAt) : 0}"></strong></div>${r ? `<h3>${html(r.question.prompt)}</h3>${answerControls(r.question, { scope: "competition", disabled: !enabled || accepted || !!result || !s.round || row?.left, value: this.answerDrafts.get(r.question.questionId) || "", imageUrl: flagImgUrl })}` : ""}<p class="answer-status" role="status">${!s.round ? "Раунд закрыт. Ждём следующего вопроса…" : accepted ? "Ответ принят, ждём остальных" : c.pending ? "Отправляем ответ. Ждём подтверждения…" : "Отправьте один ответ до окончания времени."}</p>${result ? `<div class="round-explanation"><b>Ожидаемый ответ: ${html(r?.question.options?.find((o) => o.optionId === result.expectedAnswer)?.text || result.expectedAnswer)}</b><p>${html(result.explanation)}</p></div>${people}` : ""}<div class="competition-actions"><button data-competition="leave" ${disabled}>F — Встать</button></div>`;
       } else {
         const settled = s.settlement || c.settlement,
           payout = settled?.payouts.find((p) => p.playerId === me),

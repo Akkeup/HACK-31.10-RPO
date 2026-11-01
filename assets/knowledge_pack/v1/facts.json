@@ -1144,6 +1144,270 @@
         "source-wikimedia-commons-flags"
       ],
       "status": "published"
+    },
+    {
+      "factId": "math-fact-primes",
+      "moduleId": "math-basics",
+      "contentVersion": "v1",
+      "conceptId": "primes",
+      "text": "Простым называется натуральное число больше 1, делящееся только на 1 и само себя.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "math-fact-fractions",
+      "moduleId": "math-basics",
+      "contentVersion": "v1",
+      "conceptId": "fractions",
+      "text": "Обыкновенная дробь выражает часть единицы. Приведение к общему знаменателю позволяет складывать дроби.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "math-fact-percent",
+      "moduleId": "math-basics",
+      "contentVersion": "v1",
+      "conceptId": "percentages",
+      "text": "Один процент (1%) — это одна сотая часть величины. 20% соответствует умножению на 0.2.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "math-fact-powers",
+      "moduleId": "math-basics",
+      "contentVersion": "v1",
+      "conceptId": "powers_roots",
+      "text": "Возведение в степень — повторное умножение числа на себя. Число в степени 0 равно единице.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "math-fact-geometry",
+      "moduleId": "math-basics",
+      "contentVersion": "v1",
+      "conceptId": "geometry",
+      "text": "Сумма углов треугольника равна 180°. Площадь прямоугольника равна произведению сторон S = a × b.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "math-fact-equations",
+      "moduleId": "math-basics",
+      "contentVersion": "v1",
+      "conceptId": "linear_equations",
+      "text": "Линейное уравнение ax + b = c решается переносом слагаемых с изменением знака: x = (c - b) / a.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "math-fact-divisibility",
+      "moduleId": "math-basics",
+      "contentVersion": "v1",
+      "conceptId": "divisibility",
+      "text": "Число делится на 3, если сумма его цифр делится на 3. Число делится на 5, если оканчивается на 0 или 5.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "math-fact-pythagoras",
+      "moduleId": "math-basics",
+      "contentVersion": "v1",
+      "conceptId": "pythagorean_theorem",
+      "text": "В прямоугольном треугольнике квадрат длины гипотенузы равен сумме квадратов длин катетов: c² = a² + b².",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "info-fact-units",
+      "moduleId": "informatics-basics",
+      "contentVersion": "v1",
+      "conceptId": "information_units",
+      "text": "1 Байт = 8 Бит. 1 Килобайт = 1024 Байта. 1 Мегабайт = 1024 Килобайта.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "info-fact-logic",
+      "moduleId": "informatics-basics",
+      "contentVersion": "v1",
+      "conceptId": "boolean_logic",
+      "text": "Логическое И (AND) истинно только когда оба операнда истинны. XOR истинен при разных значениях операндов.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "info-fact-datastruct",
+      "moduleId": "informatics-basics",
+      "contentVersion": "v1",
+      "conceptId": "data_structures",
+      "text": "Стек работает по правилу LIFO (последний пришел — первый ушел). Очередь работает по правилу FIFO.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "info-fact-algorithms",
+      "moduleId": "informatics-basics",
+      "contentVersion": "v1",
+      "conceptId": "algorithms_complexity",
+      "text": "Бинарный поиск в отсортированном массиве имеет логарифмическую сложность O(log n).",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "info-fact-hardware",
+      "moduleId": "informatics-basics",
+      "contentVersion": "v1",
+      "conceptId": "computer_hardware",
+      "text": "CPU выполняет машинные команды, а оперативная память RAM является быстрой энергозависимой памятью.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "info-fact-networks",
+      "moduleId": "informatics-basics",
+      "contentVersion": "v1",
+      "conceptId": "computer_networks",
+      "text": "Служба DNS преобразует доменные имена в IP-адреса. IPv4 использует 32-битные адреса, а IPv6 — 128-битные.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "info-fact-security",
+      "moduleId": "informatics-basics",
+      "contentVersion": "v1",
+      "conceptId": "cybersecurity_crypto",
+      "text": "HTTPS обеспечивает защиту веб-трафика шифрованием TLS. Хэш-функция SHA-256 вычисляет дайджест в 256 бит.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "info-fact-databases",
+      "moduleId": "informatics-basics",
+      "contentVersion": "v1",
+      "conceptId": "relational_databases",
+      "text": "Реляционные базы данных состоят из таблиц. Первичный ключ (Primary Key) обеспечивает уникальность каждой строки.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "hist-fact-ancient",
+      "moduleId": "history-basics",
+      "contentVersion": "v1",
+      "conceptId": "ancient_world",
+      "text": "Законы царя Хаммурапи — один из древнейших правовых памятников Месопотамии (около 1750 г. до н.э.).",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "hist-fact-rus",
+      "moduleId": "history-basics",
+      "contentVersion": "v1",
+      "conceptId": "medieval_rus",
+      "text": "Крещение Руси произошло в 988 г. при князе Владимире. «Русская Правда» — первый письменный свод законов Руси.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "hist-fact-kalka-kulikovo",
+      "moduleId": "history-basics",
+      "contentVersion": "v1",
+      "conceptId": "kulikovo_battle",
+      "text": "В 1380 г. войско Дмитрия Донского одержало победу на Куликовом поле, положив начало освобождению Руси.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "hist-fact-discoveries",
+      "moduleId": "history-basics",
+      "contentVersion": "v1",
+      "conceptId": "great_discoveries",
+      "text": "В 1492 г. Колумб достиг Америки, а экспедиция Магеллана (1519–1522 гг.) совершила первое кругосветное плавание.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "hist-fact-gutenberg",
+      "moduleId": "history-basics",
+      "contentVersion": "v1",
+      "conceptId": "printing_press",
+      "text": "Иоганн Гутенберг в середине XV века создал европейский печатный станок с наборными металлическими литерами.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "hist-fact-peter-empire",
+      "moduleId": "history-basics",
+      "contentVersion": "v1",
+      "conceptId": "peter_great",
+      "text": "Петр I основал Санкт-Петербург в 1703 году и провел масштабную модернизацию государства, провозгласив империю.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "hist-fact-modern",
+      "moduleId": "history-basics",
+      "contentVersion": "v1",
+      "conceptId": "space_era",
+      "text": "12 апреля 1961 года Юрий Гагарин на корабле «Восток-1» совершил первый в истории человечества орбитальный полет в космос.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
+    },
+    {
+      "factId": "hist-fact-sources",
+      "moduleId": "history-basics",
+      "contentVersion": "v1",
+      "conceptId": "historical_sources",
+      "text": "Нумизматика изучает монеты, сфрагистика — печати, а геральдика исследует историю и символику гербов.",
+      "sourceIds": [
+        "source-verified-knowledge"
+      ],
+      "status": "published"
     }
   ]
 }

@@ -12,9 +12,10 @@ export function answerControls(
   { scope, disabled = false, value = "", imageUrl = null } = {},
 ) {
   const d = disabled ? "disabled" : "";
+  const img = imageUrl || question?.image?.url;
   const image =
-    question.kind === "flag_country"
-      ? `<div class="flag-question">${imageUrl ? `<img src="${safe(imageUrl)}" alt="Флаг страны для вопроса" width="${question.image.width}" height="${question.image.height}">` : '<p role="status">Загружаем флаг…</p>'}</div>`
+    question.kind === "flag_country" || question?.image
+      ? `<div class="flag-question">${img ? `<img src="${safe(img)}" alt="Флаг страны для вопроса" width="${question.image?.width || 900}" height="${question.image?.height || 600}">` : '<p role="status">Загружаем флаг…</p>'}</div>`
       : "";
   if (question.kind === "single_choice" || (question.options && question.options.length))
     return `${image}<div class="competition-options">${question.options.map((o) => `<button data-${scope}="answer" data-option="${safe(o.optionId)}" ${d}>${safe(o.text)}</button>`).join("")}</div>`;
