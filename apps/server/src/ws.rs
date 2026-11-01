@@ -865,6 +865,18 @@ fn handle_competition_leave(
     broadcaster: &Arc<WsBroadcaster>,
     game: &Arc<GameManager>,
 ) {
+    // Move the player to the configured clear exit point before releasing the
+    // seat. The next authoritative world snapshot then restores walking and
+    // prevents the avatar from remaining wedged in the chair/table footprint.
+    let activity = competition.get_activity(&ticket.user_id);
+    if let Some(seat_id) = activity
+        .get("activity")
+        .and_then(|value| value.get_str("seatId"))
+    {
+        if let Some((_, yaw, exit)) = competition.get_seat_info(seat_id) {
+            game.set_player_pos(&ticket.session_id, player_id, exit.0, exit.1, exit.2, yaw);
+        }
+    }
     let state_val = competition.leave_table(&ticket.user_id, player_id);
     game.update_player_activity(&ticket.user_id, "exploring", None, None);
 

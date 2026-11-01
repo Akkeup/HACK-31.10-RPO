@@ -428,6 +428,16 @@ export class Game {
   }
   onEvent(event) {
     const p = event.payload;
+    if (event.type === "activity.changed" && p.activity) {
+      if (JSON.stringify(this.activity) !== JSON.stringify(p.activity)) {
+        this.activity = p.activity;
+        this.keys.clear();
+        this.walkTarget = null;
+        this.seatTransitionUntil =
+          performance.now() + this.configs.firstPerson.seatTransitionMs;
+      }
+      return;
+    }
     if (event.type === "server.welcome") {
       this.adapter.playerId = p.playerId;
       const self = p.session.players.find((v) => v.playerId === p.playerId);

@@ -585,8 +585,18 @@ impl GameManager {
         let z = row.get(2)?.parse().ok()?;
         let yaw = row.get(3)?.parse().ok()?;
         let location_id = row.get(4).unwrap_or("reading-room-main");
-        let allowed = location_id == "reading-room-main" || ["room-mathematics", "room-informatics", "room-history", "room-geography"].contains(&location_id);
-        allowed.then(|| (x, y, z, yaw, location_id.to_string()))
+        // Ignore checkpoints from old builds or admin-edited spawns that are
+        // outside the current academy. Otherwise the client opens at scenery
+        // coordinates while still claiming to be in the reading room.
+        let in_location = match location_id {
+            "reading-room-main" => (65.5..=94.5).contains(&x) && (65.5..=94.5).contains(&z),
+            "room-mathematics" => (65.95..=72.05).contains(&x) && (52.1..=65.55).contains(&z),
+            "room-informatics" => (72.95..=79.05).contains(&x) && (52.1..=65.55).contains(&z),
+            "room-history" => (79.95..=86.05).contains(&x) && (52.1..=65.55).contains(&z),
+            "room-geography" => (86.95..=93.05).contains(&x) && (52.1..=65.55).contains(&z),
+            _ => false,
+        };
+        in_location.then(|| (x, y, z, yaw, location_id.to_string()))
     }
 
     pub fn tick_all(&self, default_walk_speed: f64, default_run_mul: f64, max_silence_ms: u64) {
