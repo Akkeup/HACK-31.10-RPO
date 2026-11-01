@@ -126,13 +126,16 @@ impl Room {
         }
 
         let player_id = crate::auth::AuthService::generate_id();
+        let spawn_idx = self.players.len();
+        let spawn_offsets = [(0.0, 0.0), (2.0, 0.0), (-2.0, 0.0), (0.0, 2.0), (0.0, -2.0)];
+        let (ox, oz) = spawn_offsets[spawn_idx % spawn_offsets.len()];
         let player = PlayerState {
             player_id: player_id.clone(),
             user_id: user_id.to_string(),
             display_name: display_name.to_string(),
-            x: 80.0,
+            x: 80.0 + ox,
             y: 0.0,
-            z: 92.0,
+            z: 92.0 + oz,
             yaw_rad: 0.0,
             connected: false,
             last_input_time: Self::now_ms(),
@@ -367,9 +370,22 @@ impl GameManager {
         let mut user_map = self.user_session.lock().unwrap();
 
         if let Some(existing_sess_id) = user_map.get(user_id) {
-            if let Some(room) = rooms.get(existing_sess_id) {
-                if room.user_to_player.contains_key(user_id) {
-                    return Err((409, "ALREADY_IN_SESSION", "User already belongs to an active session"));
+            let is_connected = rooms.get(existing_sess_id)
+                .map(|r| {
+                    r.user_to_player.get(user_id)
+                        .and_then(|pid| r.players.get(pid))
+                        .map(|p| p.connected)
+                        .unwrap_or(false)
+                })
+                .unwrap_or(false);
+            if is_connected {
+                return Err((409, "ALREADY_IN_SESSION", "User already belongs to an active session"));
+            }
+            let old_sid = existing_sess_id.clone();
+            if let Some(old_room) = rooms.get_mut(&old_sid) {
+                old_room.remove_player(user_id);
+                if old_room.players.is_empty() {
+                    rooms.remove(&old_sid);
                 }
             }
             user_map.remove(user_id);
@@ -398,9 +414,22 @@ impl GameManager {
 
         if let Some(existing_sess_id) = user_map.get(user_id) {
             if existing_sess_id != session_id {
-                if let Some(room) = rooms.get(existing_sess_id) {
-                    if room.user_to_player.contains_key(user_id) {
-                        return Err((409, "ALREADY_IN_SESSION", "User already belongs to another session"));
+                let is_connected = rooms.get(existing_sess_id)
+                    .map(|r| {
+                        r.user_to_player.get(user_id)
+                            .and_then(|pid| r.players.get(pid))
+                            .map(|p| p.connected)
+                            .unwrap_or(false)
+                    })
+                    .unwrap_or(false);
+                if is_connected {
+                    return Err((409, "ALREADY_IN_SESSION", "User already belongs to another session"));
+                }
+                let old_sid = existing_sess_id.clone();
+                if let Some(old_room) = rooms.get_mut(&old_sid) {
+                    old_room.remove_player(user_id);
+                    if old_room.players.is_empty() {
+                        rooms.remove(&old_sid);
                     }
                 }
                 user_map.remove(user_id);

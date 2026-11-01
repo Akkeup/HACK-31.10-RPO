@@ -104,8 +104,7 @@ def main():
                     "width": 900,
                     "height": 600,
                     "alt": "Флаг страны для вопроса"
-                },
-                "options": options
+                }
             },
             "questionFamilyId": qfam,
             "sourceIds": ["source-wikimedia-commons-flags", "source-wikidata-country-dump"],

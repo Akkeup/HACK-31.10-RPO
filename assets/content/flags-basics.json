@@ -51,25 +51,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Италия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Кабо-Верде"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Лесото"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Афганистан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-af",
       "sourceIds": [
@@ -104,25 +86,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Киргизия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Марокко"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Багамские Острова"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Ангола"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ao",
       "sourceIds": [
@@ -157,25 +121,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Албания"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сингапур"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Джибути"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Боливия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-al",
       "sourceIds": [
@@ -210,25 +156,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Андорра"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Никарагуа"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Намибия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Кирибати"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ad",
       "sourceIds": [
@@ -263,25 +191,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Великобритания"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Объединённые Арабские Эмираты"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Буркина-Фасо"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Мали"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ae",
       "sourceIds": [
@@ -316,25 +226,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Гаити"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Аргентина"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Доминиканская Республика"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Великобритания"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ar",
       "sourceIds": [
@@ -369,25 +261,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Армения"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Бурунди"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Северная Корея"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Барбадос"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-am",
       "sourceIds": [
@@ -422,25 +296,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Литва"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Антигуа и Барбуда"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Суринам"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Никарагуа"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ag",
       "sourceIds": [
@@ -475,25 +331,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Нидерланды"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Австралия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Зимбабве"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Алжир"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-au",
       "sourceIds": [
@@ -528,25 +366,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Лесото"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Бахрейн"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Австрия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Нидерланды"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-at",
       "sourceIds": [
@@ -581,25 +401,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Кипр"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Нигер"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Азербайджан"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сербия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-az",
       "sourceIds": [
@@ -634,25 +436,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бурунди"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Таджикистан"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Греция"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Индия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bi",
       "sourceIds": [
@@ -687,25 +471,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Черногория"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Китай"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Бельгия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Центральноафриканская Республика"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-be",
       "sourceIds": [
@@ -740,25 +506,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Армения"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Бенин"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Черногория"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Маврикий"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bj",
       "sourceIds": [
@@ -793,25 +541,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сент-Китс и Невис"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Киргизия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Буркина-Фасо"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Эсватини"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bf",
       "sourceIds": [
@@ -846,25 +576,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Египет"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Гренада"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Бангладеш"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Нигерия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bd",
       "sourceIds": [
@@ -899,25 +611,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сан-Марино"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Болгария"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Чад"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Филиппины"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bg",
       "sourceIds": [
@@ -952,25 +646,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бахрейн"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Марокко"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сент-Винсент и Гренадины"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Коста-Рика"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bh",
       "sourceIds": [
@@ -1005,25 +681,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Южный Судан"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Армения"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Нидерланды"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Багамские Острова"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bs",
       "sourceIds": [
@@ -1058,25 +716,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Багамские Острова"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Никарагуа"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Босния и Герцеговина"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Фиджи"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ba",
       "sourceIds": [
@@ -1111,25 +751,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Лихтенштейн"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Дания"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Беларусь"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Лесото"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-by",
       "sourceIds": [
@@ -1164,25 +786,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Вануату"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Белиз"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Соломоновы Острова"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Швеция"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bz",
       "sourceIds": [
@@ -1217,25 +821,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Лихтенштейн"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Мадагаскар"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Боливия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Тунис"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bo",
       "sourceIds": [
@@ -1270,25 +856,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бразилия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Коста-Рика"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сьерра-Леоне"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Бельгия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-br",
       "sourceIds": [
@@ -1323,25 +891,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Барбадос"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Ирландия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Ботсвана"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Нигер"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bb",
       "sourceIds": [
@@ -1376,25 +926,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Португалия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Бруней"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Палестина"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Кипр"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bn",
       "sourceIds": [
@@ -1429,25 +961,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бутан"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Гвинея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Таджикистан"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Люксембург"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bt",
       "sourceIds": [
@@ -1482,25 +996,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Колумбия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Люксембург"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Ботсвана"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Швейцария"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-bw",
       "sourceIds": [
@@ -1535,25 +1031,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Йемен"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Центральноафриканская Республика"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Ливан"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Бельгия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cf",
       "sourceIds": [
@@ -1588,25 +1066,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сирия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Канада"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Либерия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Италия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ca",
       "sourceIds": [
@@ -1641,25 +1101,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Швейцария"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Норвегия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Индия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Болгария"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ch",
       "sourceIds": [
@@ -1694,25 +1136,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Нидерланды"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сент-Винсент и Гренадины"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Чили"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Нигерия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cl",
       "sourceIds": [
@@ -1747,25 +1171,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Китай"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Кипр"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Ботсвана"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Болгария"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cn",
       "sourceIds": [
@@ -1800,25 +1206,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Либерия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Киргизия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Кот-д’Ивуар"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Замбия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ci",
       "sourceIds": [
@@ -1853,25 +1241,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Иордания"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Чад"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Индонезия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Камерун"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cm",
       "sourceIds": [
@@ -1906,25 +1276,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Нигер"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Турция"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Демократическая Республика Конго"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Йемен"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cd",
       "sourceIds": [
@@ -1959,25 +1311,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Исландия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Республика Конго"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гвинея"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Парагвай"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cg",
       "sourceIds": [
@@ -2012,25 +1346,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Шри-Ланка"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Гвинея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Южно-Африканская Республика"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Колумбия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-co",
       "sourceIds": [
@@ -2065,25 +1381,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бенин"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Оман"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Коморы"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Таиланд"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-km",
       "sourceIds": [
@@ -2118,25 +1416,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Кабо-Верде"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Новая Зеландия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Тувалу"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Гвинея-Бисау"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cv",
       "sourceIds": [
@@ -2171,25 +1451,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Молдавия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Коста-Рика"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Босния и Герцеговина"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Того"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cr",
       "sourceIds": [
@@ -2224,25 +1486,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Чад"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Бурунди"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Куба"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Марокко"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cu",
       "sourceIds": [
@@ -2277,25 +1521,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бразилия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Германия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Кипр"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Ватикан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cy",
       "sourceIds": [
@@ -2330,25 +1556,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Лесото"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Чехия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Турция"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Малайзия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-cz",
       "sourceIds": [
@@ -2383,25 +1591,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Португалия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Лесото"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Венгрия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Германия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-de",
       "sourceIds": [
@@ -2436,25 +1626,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Исландия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Никарагуа"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Джибути"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Финляндия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-dj",
       "sourceIds": [
@@ -2489,25 +1661,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Соединённые Штаты Америки"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Доминика"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Руанда"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Великобритания"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-dm",
       "sourceIds": [
@@ -2542,25 +1696,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бруней"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Северная Корея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Дания"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Джибути"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-dk",
       "sourceIds": [
@@ -2595,25 +1731,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Доминиканская Республика"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Танзания"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сент-Люсия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Мальта"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-do",
       "sourceIds": [
@@ -2648,25 +1766,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Суринам"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Южный Судан"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гамбия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Алжир"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-dz",
       "sourceIds": [
@@ -2701,25 +1801,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Эритрея"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Эквадор"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Австралия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Тринидад и Тобаго"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ec",
       "sourceIds": [
@@ -2754,25 +1836,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Гренада"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Афганистан"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Египет"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Палестина"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-eg",
       "sourceIds": [
@@ -2807,25 +1871,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Северная Корея"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Эритрея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Южная Корея"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Кипр"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-er",
       "sourceIds": [
@@ -2860,25 +1906,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Таджикистан"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Норвегия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Белиз"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Испания"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-es",
       "sourceIds": [
@@ -2913,25 +1941,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Ливан"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сенегал"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Эстония"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Никарагуа"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ee",
       "sourceIds": [
@@ -2966,25 +1976,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Эфиопия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сент-Люсия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Коморы"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Ботсвана"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-et",
       "sourceIds": [
@@ -3019,25 +2011,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Финляндия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Буркина-Фасо"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Белиз"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Парагвай"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-fi",
       "sourceIds": [
@@ -3072,25 +2046,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Фиджи"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Самоа"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Эритрея"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Бельгия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-fj",
       "sourceIds": [
@@ -3125,25 +2081,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Мексика"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Франция"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Барбадос"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Панама"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-fr",
       "sourceIds": [
@@ -3178,25 +2116,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Федеративные Штаты Микронезии"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Того"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Узбекистан"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Афганистан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-fm",
       "sourceIds": [
@@ -3231,25 +2151,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Камерун"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Габон"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Суринам"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сейшельские Острова"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ga",
       "sourceIds": [
@@ -3284,25 +2186,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Тайвань"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Непал"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Южная Корея"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Великобритания"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-gb",
       "sourceIds": [
@@ -3337,25 +2221,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Словения"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Монако"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Хорватия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Грузия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ge",
       "sourceIds": [
@@ -3390,25 +2256,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Швеция"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Мадагаскар"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Объединённые Арабские Эмираты"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Гана"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-gh",
       "sourceIds": [
@@ -3443,25 +2291,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Тунис"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Ливия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гвинея"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сан-Марино"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-gn",
       "sourceIds": [
@@ -3496,25 +2326,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Руанда"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Киргизия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сан-Марино"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Гамбия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-gm",
       "sourceIds": [
@@ -3549,25 +2361,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Гвинея-Бисау"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Йемен"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Уганда"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Эстония"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-gw",
       "sourceIds": [
@@ -3602,25 +2396,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Марокко"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Кот-д’Ивуар"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Экваториальная Гвинея"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Нигер"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-gq",
       "sourceIds": [
@@ -3655,25 +2431,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Австрия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Оман"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Греция"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Босния и Герцеговина"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-gr",
       "sourceIds": [
@@ -3708,25 +2466,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Чехия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Таджикистан"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Вьетнам"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Гренада"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-gd",
       "sourceIds": [
@@ -3761,25 +2501,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Черногория"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Гватемала"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Грузия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сенегал"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-gt",
       "sourceIds": [
@@ -3814,25 +2536,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Турция"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Ямайка"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гайана"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Филиппины"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-gy",
       "sourceIds": [
@@ -3867,25 +2571,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Словакия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Уганда"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гондурас"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Мальдивы"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-hn",
       "sourceIds": [
@@ -3920,25 +2606,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Хорватия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сингапур"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Дания"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Германия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-hr",
       "sourceIds": [
@@ -3973,25 +2641,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Вануату"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Гаити"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Марокко"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Бразилия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ht",
       "sourceIds": [
@@ -4026,25 +2676,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Южный Судан"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Венгрия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гвинея-Бисау"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Россия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-hu",
       "sourceIds": [
@@ -4079,25 +2711,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Марокко"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Таиланд"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Федеративные Штаты Микронезии"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Индонезия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-id",
       "sourceIds": [
@@ -4132,25 +2746,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Индия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Исландия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Тринидад и Тобаго"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Самоа"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-in",
       "sourceIds": [
@@ -4185,25 +2781,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Южная Корея"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сербия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Ирландия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Киргизия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ie",
       "sourceIds": [
@@ -4238,25 +2816,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Австрия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Китай"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Самоа"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Иран"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ir",
       "sourceIds": [
@@ -4291,25 +2851,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сирия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Ирак"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гвинея-Бисау"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Тонга"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-iq",
       "sourceIds": [
@@ -4344,25 +2886,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Буркина-Фасо"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Танзания"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Исландия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Панама"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-is",
       "sourceIds": [
@@ -4397,25 +2921,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Израиль"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Ангола"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Албания"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Люксембург"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-il",
       "sourceIds": [
@@ -4450,25 +2956,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Вануату"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Объединённые Арабские Эмираты"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Италия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Литва"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-it",
       "sourceIds": [
@@ -4503,25 +2991,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бразилия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Ирак"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Ямайка"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Нидерланды"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-jm",
       "sourceIds": [
@@ -4556,25 +3026,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Иордания"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Экваториальная Гвинея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Суринам"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Дания"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-jo",
       "sourceIds": [
@@ -4609,25 +3061,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Монако"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сейшельские Острова"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Эквадор"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Япония"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-jp",
       "sourceIds": [
@@ -4662,25 +3096,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Филиппины"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Вануату"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Кипр"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Казахстан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-kz",
       "sourceIds": [
@@ -4715,25 +3131,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Белиз"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Шри-Ланка"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Кения"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Япония"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ke",
       "sourceIds": [
@@ -4768,25 +3166,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Оман"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Киргизия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Экваториальная Гвинея"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Эквадор"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-kg",
       "sourceIds": [
@@ -4821,25 +3201,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Малави"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Камбоджа"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Тунис"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Камерун"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-kh",
       "sourceIds": [
@@ -4874,25 +3236,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Йемен"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Оман"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Кирибати"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Таиланд"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ki",
       "sourceIds": [
@@ -4927,25 +3271,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Китай"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Иран"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сент-Китс и Невис"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Армения"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-kn",
       "sourceIds": [
@@ -4980,25 +3306,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Экваториальная Гвинея"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Новая Зеландия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Южная Корея"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Барбадос"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-kr",
       "sourceIds": [
@@ -5033,25 +3341,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Япония"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Алжир"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Кувейт"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Эфиопия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-kw",
       "sourceIds": [
@@ -5086,25 +3376,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Того"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Гвинея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Лаос"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Тринидад и Тобаго"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-la",
       "sourceIds": [
@@ -5139,25 +3411,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Эквадор"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Латвия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Ливан"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Южная Корея"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-lb",
       "sourceIds": [
@@ -5192,25 +3446,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Индонезия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Либерия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Аргентина"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Ирак"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-lr",
       "sourceIds": [
@@ -5245,25 +3481,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бруней"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Ливия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Нигер"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сенегал"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ly",
       "sourceIds": [
@@ -5298,25 +3516,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Катар"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сент-Люсия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сент-Винсент и Гренадины"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Казахстан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-lc",
       "sourceIds": [
@@ -5351,25 +3551,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Франция"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Куба"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Лихтенштейн"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Кот-д’Ивуар"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-li",
       "sourceIds": [
@@ -5404,25 +3586,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Шри-Ланка"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Джибути"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Мадагаскар"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Израиль"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-lk",
       "sourceIds": [
@@ -5457,25 +3621,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Нидерланды"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Албания"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Лесото"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Лихтенштейн"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ls",
       "sourceIds": [
@@ -5510,25 +3656,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Чад"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Мальдивы"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Литва"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Канада"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-lt",
       "sourceIds": [
@@ -5563,25 +3691,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Люксембург"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Мальдивы"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Зимбабве"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Казахстан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-lu",
       "sourceIds": [
@@ -5616,25 +3726,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Латвия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Тувалу"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Джибути"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Доминика"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-lv",
       "sourceIds": [
@@ -5669,25 +3761,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Албания"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Мексика"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Марокко"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Оман"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ma",
       "sourceIds": [
@@ -5722,25 +3796,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сент-Винсент и Гренадины"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Монако"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Республика Конго"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сейшельские Острова"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mc",
       "sourceIds": [
@@ -5775,25 +3831,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сенегал"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Молдавия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Мозамбик"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Франция"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-md",
       "sourceIds": [
@@ -5828,25 +3866,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Замбия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Германия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Мадагаскар"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Северная Корея"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mg",
       "sourceIds": [
@@ -5881,25 +3901,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Палау"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Мальдивы"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сербия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Вануату"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mv",
       "sourceIds": [
@@ -5934,25 +3936,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Кот-д’Ивуар"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Израиль"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Мексика"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Бангладеш"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mx",
       "sourceIds": [
@@ -5987,25 +3971,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Тувалу"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Нигерия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Камерун"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Маршалловы Острова"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mh",
       "sourceIds": [
@@ -6040,25 +4006,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Гондурас"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Алжир"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Габон"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Северная Македония"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mk",
       "sourceIds": [
@@ -6093,25 +4041,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Мали"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Северная Македония"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Ливия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Чехия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ml",
       "sourceIds": [
@@ -6146,25 +4076,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Барбадос"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Мальта"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Коста-Рика"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Канада"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mt",
       "sourceIds": [
@@ -6199,25 +4111,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Мьянма"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Черногория"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Бенин"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Эсватини"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mm",
       "sourceIds": [
@@ -6252,25 +4146,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сент-Китс и Невис"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Зимбабве"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Черногория"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Лихтенштейн"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-me",
       "sourceIds": [
@@ -6305,25 +4181,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Фиджи"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Монголия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гана"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Канада"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mn",
       "sourceIds": [
@@ -6358,25 +4216,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Мозамбик"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Доминиканская Республика"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Буркина-Фасо"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Эстония"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mz",
       "sourceIds": [
@@ -6411,25 +4251,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Мавритания"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Эстония"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Зимбабве"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Норвегия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mr",
       "sourceIds": [
@@ -6464,25 +4286,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Маврикий"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Чехия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гаити"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Уругвай"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mu",
       "sourceIds": [
@@ -6517,25 +4321,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Афганистан"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Малави"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гаити"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Камбоджа"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-mw",
       "sourceIds": [
@@ -6570,25 +4356,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Демократическая Республика Конго"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Руанда"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Малайзия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Уганда"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-my",
       "sourceIds": [
@@ -6623,25 +4391,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Швеция"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Исландия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Намибия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Багамские Острова"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-na",
       "sourceIds": [
@@ -6676,25 +4426,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Кирибати"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Нигер"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Боливия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Япония"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ne",
       "sourceIds": [
@@ -6729,25 +4461,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сербия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Эсватини"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Нигерия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Греция"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ng",
       "sourceIds": [
@@ -6782,25 +4496,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сент-Винсент и Гренадины"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сент-Китс и Невис"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Никарагуа"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Белиз"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ni",
       "sourceIds": [
@@ -6835,25 +4531,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Непал"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сенегал"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Тринидад и Тобаго"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Нидерланды"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-nl",
       "sourceIds": [
@@ -6888,25 +4566,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бельгия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Норвегия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Самоа"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Албания"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-no",
       "sourceIds": [
@@ -6941,25 +4601,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Непал"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Таджикистан"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гватемала"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Камерун"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-np",
       "sourceIds": [
@@ -6994,25 +4636,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Ватикан"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Либерия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Науру"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Лихтенштейн"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-nr",
       "sourceIds": [
@@ -7047,25 +4671,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Алжир"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Новая Зеландия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гренада"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Тунис"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-nz",
       "sourceIds": [
@@ -7100,25 +4706,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Папуа — Новая Гвинея"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Колумбия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Оман"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Бахрейн"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-om",
       "sourceIds": [
@@ -7153,25 +4741,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Руанда"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Новая Зеландия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Пакистан"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сан-Томе и Принсипи"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-pk",
       "sourceIds": [
@@ -7206,25 +4776,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бенин"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Чад"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Панама"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Германия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-pa",
       "sourceIds": [
@@ -7259,25 +4811,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Кения"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Перу"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Соединённые Штаты Америки"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Бенин"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-pe",
       "sourceIds": [
@@ -7312,25 +4846,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Шри-Ланка"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сирия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Филиппины"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Йемен"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ph",
       "sourceIds": [
@@ -7365,25 +4881,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Туркмения"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Федеративные Штаты Микронезии"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Палау"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Эстония"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-pw",
       "sourceIds": [
@@ -7418,25 +4916,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Алжир"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Папуа — Новая Гвинея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Нигер"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Судан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-pg",
       "sourceIds": [
@@ -7471,25 +4951,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Великобритания"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Доминика"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Камерун"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Польша"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-pl",
       "sourceIds": [
@@ -7524,25 +4986,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Хорватия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Северная Корея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Иордания"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Австралия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-kp",
       "sourceIds": [
@@ -7577,25 +5021,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Йемен"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Вануату"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Португалия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Соединённые Штаты Америки"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-pt",
       "sourceIds": [
@@ -7630,25 +5056,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Парагвай"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Германия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Туркмения"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Румыния"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-py",
       "sourceIds": [
@@ -7683,25 +5091,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сомали"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Эритрея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Палестина"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сингапур"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ps",
       "sourceIds": [
@@ -7736,25 +5126,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Лаос"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Узбекистан"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Катар"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Джибути"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-qa",
       "sourceIds": [
@@ -7789,25 +5161,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сейшельские Острова"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Киргизия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Эстония"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Румыния"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ro",
       "sourceIds": [
@@ -7842,25 +5196,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Южная Корея"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Узбекистан"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Россия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Кувейт"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ru",
       "sourceIds": [
@@ -7895,25 +5231,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Кирибати"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Судан"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Таджикистан"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Руанда"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-rw",
       "sourceIds": [
@@ -7948,25 +5266,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бруней"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Чад"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Индонезия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Саудовская Аравия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sa",
       "sourceIds": [
@@ -8001,25 +5301,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Тайвань"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Доминика"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Болгария"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Судан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sd",
       "sourceIds": [
@@ -8054,25 +5336,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Эстония"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Суринам"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сенегал"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Египет"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sn",
       "sourceIds": [
@@ -8107,25 +5371,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Новая Зеландия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Науру"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сингапур"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Турция"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sg",
       "sourceIds": [
@@ -8160,25 +5406,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Кот-д’Ивуар"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Андорра"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Соломоновы Острова"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Швейцария"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sb",
       "sourceIds": [
@@ -8213,25 +5441,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Бруней"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Люксембург"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Мьянма"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сьерра-Леоне"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sl",
       "sourceIds": [
@@ -8266,25 +5476,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Барбадос"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сальвадор"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Мали"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Самоа"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sv",
       "sourceIds": [
@@ -8319,25 +5511,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Венгрия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Босния и Герцеговина"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сан-Марино"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Филиппины"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sm",
       "sourceIds": [
@@ -8372,25 +5546,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Республика Конго"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Гвинея-Бисау"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сомали"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Кувейт"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-so",
       "sourceIds": [
@@ -8425,25 +5581,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Швейцария"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Боливия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сербия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Финляндия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-rs",
       "sourceIds": [
@@ -8478,25 +5616,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Южный Судан"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Индонезия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Либерия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Ливия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ss",
       "sourceIds": [
@@ -8531,25 +5651,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сан-Томе и Принсипи"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Индия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Гана"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Гондурас"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-st",
       "sourceIds": [
@@ -8584,25 +5686,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Хорватия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Самоа"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Суринам"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Черногория"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sr",
       "sourceIds": [
@@ -8637,25 +5721,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Азербайджан"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сомали"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Словакия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Колумбия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sk",
       "sourceIds": [
@@ -8690,25 +5756,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Словения"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сенегал"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Черногория"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Андорра"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-si",
       "sourceIds": [
@@ -8743,25 +5791,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Северная Корея"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Швеция"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Малайзия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Колумбия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-se",
       "sourceIds": [
@@ -8796,25 +5826,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Гвинея-Бисау"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Фиджи"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сьерра-Леоне"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Эсватини"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sz",
       "sourceIds": [
@@ -8849,25 +5861,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Южная Корея"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Литва"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Марокко"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сейшельские Острова"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sc",
       "sourceIds": [
@@ -8902,25 +5896,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сомали"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Северная Македония"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Камбоджа"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сирия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-sy",
       "sourceIds": [
@@ -8955,25 +5931,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Танзания"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Кипр"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Объединённые Арабские Эмираты"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Чад"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-td",
       "sourceIds": [
@@ -9008,25 +5966,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Науру"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Того"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Новая Зеландия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Южный Судан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-tg",
       "sourceIds": [
@@ -9061,25 +6001,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Науру"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Северная Корея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Венгрия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Таиланд"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-th",
       "sourceIds": [
@@ -9114,25 +6036,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Египет"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Вануату"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Белиз"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Таджикистан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-tj",
       "sourceIds": [
@@ -9167,25 +6071,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Туркмения"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Хорватия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Болгария"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Мальта"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-tm",
       "sourceIds": [
@@ -9220,25 +6106,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Ирландия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Восточный Тимор"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Мексика"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Мьянма"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-tl",
       "sourceIds": [
@@ -9273,25 +6141,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Доминика"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Тонга"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Бутан"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Судан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-to",
       "sourceIds": [
@@ -9326,25 +6176,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сент-Китс и Невис"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Колумбия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Тринидад и Тобаго"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Бахрейн"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-tt",
       "sourceIds": [
@@ -9379,25 +6211,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Сент-Люсия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Лесото"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Тунис"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Мавритания"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-tn",
       "sourceIds": [
@@ -9432,25 +6246,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Таджикистан"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Малайзия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Турция"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Ямайка"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-tr",
       "sourceIds": [
@@ -9485,25 +6281,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Экваториальная Гвинея"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Литва"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Норвегия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Тувалу"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-tv",
       "sourceIds": [
@@ -9538,25 +6316,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Киргизия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Индия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сан-Марино"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Тайвань"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-tw",
       "sourceIds": [
@@ -9591,25 +6351,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Боливия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Танзания"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Восточный Тимор"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Малайзия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-tz",
       "sourceIds": [
@@ -9644,25 +6386,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Уганда"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Сан-Томе и Принсипи"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Грузия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Киргизия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ug",
       "sourceIds": [
@@ -9697,25 +6421,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Ирак"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Кабо-Верде"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Украина"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Испания"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ua",
       "sourceIds": [
@@ -9750,25 +6456,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Лесото"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Уругвай"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Армения"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Гайана"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-uy",
       "sourceIds": [
@@ -9803,25 +6491,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Маврикий"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Киргизия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Соединённые Штаты Америки"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Нигер"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-us",
       "sourceIds": [
@@ -9856,25 +6526,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Панама"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Узбекистан"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Демократическая Республика Конго"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Италия"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-uz",
       "sourceIds": [
@@ -9909,25 +6561,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Объединённые Арабские Эмираты"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Северная Корея"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сейшельские Острова"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Ватикан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-va",
       "sourceIds": [
@@ -9962,25 +6596,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Объединённые Арабские Эмираты"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Соломоновы Острова"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Чехия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Сент-Винсент и Гренадины"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-vc",
       "sourceIds": [
@@ -10015,25 +6631,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Палау"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Венесуэла"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Тувалу"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Мозамбик"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ve",
       "sourceIds": [
@@ -10068,25 +6666,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Китай"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Гренада"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Вьетнам"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Польша"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-vn",
       "sourceIds": [
@@ -10121,25 +6701,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Перу"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Словения"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Пакистан"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Вануату"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-vu",
       "sourceIds": [
@@ -10174,25 +6736,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Словакия"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Соломоновы Острова"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Буркина-Фасо"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Самоа"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ws",
       "sourceIds": [
@@ -10227,25 +6771,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Йемен"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Ватикан"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Сент-Люсия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Тунис"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-ye",
       "sourceIds": [
@@ -10280,25 +6806,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Южно-Африканская Республика"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Австрия"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Афганистан"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Вьетнам"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-za",
       "sourceIds": [
@@ -10333,25 +6841,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Куба"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Эквадор"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Замбия"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Судан"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-zm",
       "sourceIds": [
@@ -10386,25 +6876,7 @@
           "width": 900,
           "height": 600,
           "alt": "Флаг страны для вопроса"
-        },
-        "options": [
-          {
-            "optionId": "opt-1",
-            "text": "Турция"
-          },
-          {
-            "optionId": "opt-2",
-            "text": "Зимбабве"
-          },
-          {
-            "optionId": "opt-3",
-            "text": "Коморы"
-          },
-          {
-            "optionId": "opt-4",
-            "text": "Мали"
-          }
-        ]
+        }
       },
       "questionFamilyId": "flag-fam-zw",
       "sourceIds": [

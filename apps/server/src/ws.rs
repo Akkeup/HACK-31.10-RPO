@@ -918,18 +918,7 @@ fn handle_library_open(
     ]);
     let _ = conn.writer.lock().unwrap().send_envelope("library.opened", req_id, resp_payload);
 
-    let act_payload = JsonValue::Object(vec![
-        ("activity".to_string(), JsonValue::Object(vec![
-            ("mode".to_string(), JsonValue::String("learning".to_string())),
-            ("targetId".to_string(), JsonValue::String(book_id.to_string())),
-            ("seatId".to_string(), JsonValue::Null),
-        ])),
-        ("lessonId".to_string(), JsonValue::String(lesson_id)),
-        ("attemptId".to_string(), JsonValue::Null),
-        ("matchId".to_string(), JsonValue::Null),
-        ("lobbyId".to_string(), JsonValue::Null),
-        ("revision".to_string(), JsonValue::Number(2.0)),
-    ]);
+    let act_payload = competition.get_activity(user_id);
     let _ = conn.writer.lock().unwrap().send_envelope("activity.changed", None, act_payload);
 }
 
@@ -974,18 +963,7 @@ fn handle_lesson_open(
     ]);
     let _ = conn.writer.lock().unwrap().send_envelope("lesson.opened", req_id, resp_payload);
 
-    let act_payload = JsonValue::Object(vec![
-        ("activity".to_string(), JsonValue::Object(vec![
-            ("mode".to_string(), JsonValue::String("learning".to_string())),
-            ("targetId".to_string(), JsonValue::String(npc_id.to_string())),
-            ("seatId".to_string(), JsonValue::Null),
-        ])),
-        ("lessonId".to_string(), JsonValue::String(lesson_id)),
-        ("attemptId".to_string(), JsonValue::Null),
-        ("matchId".to_string(), JsonValue::Null),
-        ("lobbyId".to_string(), JsonValue::Null),
-        ("revision".to_string(), JsonValue::Number(2.0)),
-    ]);
+    let act_payload = competition.get_activity(user_id);
     let _ = conn.writer.lock().unwrap().send_envelope("activity.changed", None, act_payload);
 }
 
@@ -998,18 +976,7 @@ fn handle_lesson_close(
 ) {
     game.update_player_activity(user_id, "exploring", None, None);
     competition.set_activity(user_id, "exploring", None, None, None, None, None, None);
-    let act_payload = JsonValue::Object(vec![
-        ("activity".to_string(), JsonValue::Object(vec![
-            ("mode".to_string(), JsonValue::String("exploring".to_string())),
-            ("targetId".to_string(), JsonValue::Null),
-            ("seatId".to_string(), JsonValue::Null),
-        ])),
-        ("lessonId".to_string(), JsonValue::Null),
-        ("attemptId".to_string(), JsonValue::Null),
-        ("matchId".to_string(), JsonValue::Null),
-        ("lobbyId".to_string(), JsonValue::Null),
-        ("revision".to_string(), JsonValue::Number(1.0)),
-    ]);
+    let act_payload = competition.get_activity(user_id);
     let _ = conn.writer.lock().unwrap().send_envelope("activity.changed", req_id, act_payload);
 }
 
@@ -1110,6 +1077,16 @@ pub fn get_quiz_attempt_dto(attempt_id: &str) -> JsonValue {
     ])
 }
 
+fn sanitize_question(mut q: JsonValue) -> JsonValue {
+    if let JsonValue::Object(ref mut fields) = q {
+        let is_single = fields.iter().any(|(k, v)| k == "kind" && v.as_str() == Some("single_choice"));
+        if !is_single {
+            fields.retain(|(k, _)| k != "options");
+        }
+    }
+    q
+}
+
 fn handle_quiz_start(
     conn: &WsConnection,
     req_id: Option<String>,
@@ -1132,8 +1109,20 @@ fn handle_quiz_start(
         .map(|s| s.to_string())
         .unwrap_or_else(|| AuthService::generate_id());
 
-    let path = format!("assets/content/{}.json", module_id);
-    let content_val = std::fs::read_to_string(&path).ok().and_then(|c| parse_json(&c).ok()).unwrap_or(JsonValue::Null);
+    let candidates = [
+        format!("assets/content/{}.json", module_id),
+        format!("../assets/content/{}.json", module_id),
+        format!("../../assets/content/{}.json", module_id),
+    ];
+    let mut content_val = JsonValue::Null;
+    for path in &candidates {
+        if let Ok(c) = std::fs::read_to_string(path) {
+            if let Ok(val) = parse_json(&c) {
+                content_val = val;
+                break;
+            }
+        }
+    }
     let mut questions_arr = content_val.get("questions").and_then(|q| q.as_array().map(|arr| arr.to_vec())).unwrap_or_default();
     if questions_arr.len() > 5 {
         for i in 0..questions_arr.len() {
@@ -1141,7 +1130,7 @@ fn handle_quiz_start(
             questions_arr.swap(i, j);
         }
     }
-    let first_q = questions_arr.first().and_then(|q| q.get("question").cloned()).unwrap_or(JsonValue::Null);
+    let first_q = sanitize_question(questions_arr.first().and_then(|q| q.get("question").cloned()).unwrap_or(JsonValue::Null));
 
     let state = QuizAttemptState {
         attempt_id: attempt_id.clone(),
@@ -1185,18 +1174,7 @@ fn handle_quiz_start(
     ]);
     let _ = conn.writer.lock().unwrap().send_envelope("quiz.state", req_id, attempt_dto);
 
-    let act_payload = JsonValue::Object(vec![
-        ("activity".to_string(), JsonValue::Object(vec![
-            ("mode".to_string(), JsonValue::String("seated_quiz".to_string())),
-            ("targetId".to_string(), JsonValue::String(npc_id.to_string())),
-            ("seatId".to_string(), JsonValue::String(seat_id)),
-        ])),
-        ("lessonId".to_string(), JsonValue::Null),
-        ("attemptId".to_string(), JsonValue::String(attempt_id)),
-        ("matchId".to_string(), JsonValue::Null),
-        ("lobbyId".to_string(), JsonValue::Null),
-        ("revision".to_string(), JsonValue::Number(2.0)),
-    ]);
+    let act_payload = competition.get_activity(user_id);
     let _ = conn.writer.lock().unwrap().send_envelope("activity.changed", None, act_payload);
 }
 
@@ -1333,9 +1311,9 @@ fn handle_quiz_next(conn: &WsConnection, req_id: Option<String>, payload: Option
         } else {
             state.ordinal += 1;
             state.status = "active".to_string();
-            next_q = state.questions.get(state.ordinal.saturating_sub(1))
+            next_q = sanitize_question(state.questions.get(state.ordinal.saturating_sub(1))
                 .and_then(|q| q.get("question").cloned())
-                .unwrap_or(JsonValue::Null);
+                .unwrap_or(JsonValue::Null));
         }
 
         let attempt_dto = JsonValue::Object(vec![
@@ -1409,18 +1387,7 @@ fn handle_quiz_leave(
         ("resumeState".to_string(), if !abandon { JsonValue::String("active".to_string()) } else { JsonValue::Null }),
     ]);
     let _ = conn.writer.lock().unwrap().send_envelope("quiz.state", req_id.clone(), attempt_dto);
-    let act_payload = JsonValue::Object(vec![
-        ("activity".to_string(), JsonValue::Object(vec![
-            ("mode".to_string(), JsonValue::String("exploring".to_string())),
-            ("targetId".to_string(), JsonValue::Null),
-            ("seatId".to_string(), JsonValue::Null),
-        ])),
-        ("lessonId".to_string(), JsonValue::Null),
-        ("attemptId".to_string(), JsonValue::Null),
-        ("matchId".to_string(), JsonValue::Null),
-        ("lobbyId".to_string(), JsonValue::Null),
-        ("revision".to_string(), JsonValue::Number(1.0)),
-    ]);
+    let act_payload = competition.get_activity(user_id);
     let _ = conn.writer.lock().unwrap().send_envelope("activity.changed", req_id, act_payload);
 }
 

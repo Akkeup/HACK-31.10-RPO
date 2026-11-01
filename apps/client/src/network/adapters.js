@@ -188,15 +188,25 @@ export class DiscoveryAdapter {
         try {
           const listRes = await this.request("/api/v2/sessions", { method: "GET" });
           const allSessions = listRes.value?.sessions || listRes.sessions || [];
-          const openSession = allSessions.find(
-            (s) =>
-              s.worldId === worldId &&
-              (s.status?.toLowerCase() === "active" ||
-                s.status?.toLowerCase() === "waiting" ||
-                s.status === "ACTIVE" ||
-                s.status === "WAITING_FOR_PLAYERS") &&
-              (s.players?.length || 0) < (s.maxPlayers || 5),
-          );
+          const sortedSessions = [...allSessions]
+            .filter(
+              (s) =>
+                s.worldId === worldId &&
+                (s.players?.length || 0) < (s.maxPlayers || 5) &&
+                (s.status?.toLowerCase() === "active" ||
+                  s.status?.toLowerCase() === "waiting" ||
+                  s.status?.toLowerCase() === "paused" ||
+                  s.status === "ACTIVE" ||
+                  s.status === "WAITING_FOR_PLAYERS"),
+            )
+            .sort((a, b) => {
+              const aConn = a.players?.filter((p) => p.connected).length || 0;
+              const bConn = b.players?.filter((p) => p.connected).length || 0;
+              if (bConn !== aConn) return bConn - aConn;
+              return (b.players?.length || 0) - (a.players?.length || 0);
+            });
+
+          const openSession = sortedSessions[0];
           if (openSession?.sessionId) {
             const joinRes = await this.request(
               `/api/v2/sessions/${openSession.sessionId}/members/me`,

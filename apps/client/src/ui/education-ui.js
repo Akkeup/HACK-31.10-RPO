@@ -294,9 +294,22 @@ export class EducationUI {
     this.chooser = null;
     this.opening = true;
     this.show();
-    await this.send("lesson.open", { npcId: npc.id }, ["lesson.opened"]);
-    this.opening = false;
-    if (!this.lesson && !this.hasActivity) this.hide();
+    this.busy = true;
+    this.render();
+    try {
+      const res = await this.adapter.execute("lesson.open", { npcId: npc.id }, ["lesson.opened"]);
+      if (res && res.material) {
+        this.setLesson(res);
+      }
+    } catch (e) {
+      this.error = e.message;
+      this.ui.toast(e.message);
+    } finally {
+      this.busy = false;
+      this.opening = false;
+      this.render();
+    }
+    if (!this.lesson) this.hide();
   }
   async send(type, payload, replies) {
     this.busy = true;
@@ -417,10 +430,23 @@ export class EducationUI {
     }
     if (action === "book") {
       this.opening = true;
-      await this.send("library.open", { bookId: b.dataset.book }, [
-        "library.opened",
-      ]);
-      this.opening = false;
+      this.busy = true;
+      this.render();
+      try {
+        const res = await this.adapter.execute("library.open", { bookId: b.dataset.book }, [
+          "library.opened",
+        ]);
+        if (res && res.material) {
+          this.setLesson(res);
+        }
+      } catch (e) {
+        this.error = e.message;
+        this.ui.toast(e.message);
+      } finally {
+        this.busy = false;
+        this.opening = false;
+        this.render();
+      }
       return;
     }
     if (action === "country" && this.adapter.isMock) {

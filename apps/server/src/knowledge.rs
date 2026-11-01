@@ -121,10 +121,22 @@ impl KnowledgeService {
 
     pub fn get_module_material(&self, module_id: &str, _content_version: &str) -> Option<JsonValue> {
         let mapped_id = if module_id == "flags-demo" { "flags-basics" } else { module_id };
-        let path = format!("assets/content/{}.json", mapped_id);
-        let content = std::fs::read_to_string(&path).ok()?;
-        let val = parse_json(&content).ok()?;
-        val.get("material").cloned()
+        let candidates = [
+            format!("assets/content/{}.json", mapped_id),
+            format!("../assets/content/{}.json", mapped_id),
+            format!("../../assets/content/{}.json", mapped_id),
+        ];
+        for path in &candidates {
+            if let Ok(content) = std::fs::read_to_string(path) {
+                if let Ok(val) = parse_json(&content) {
+                    if let Some(mat) = val.get("material") {
+                        return Some(mat.clone());
+                    }
+                    break;
+                }
+            }
+        }
+        None
     }
 }
 
@@ -136,9 +148,14 @@ impl KnowledgeService {
         }
 
         let mut questions = Vec::new();
-        let path = format!("assets/content/{}.json", module_id);
-        if let Ok(content) = std::fs::read_to_string(&path) {
-            if let Ok(val) = parse_json(&content) {
+        let candidates = [
+            format!("assets/content/{}.json", module_id),
+            format!("../assets/content/{}.json", module_id),
+            format!("../../assets/content/{}.json", module_id),
+        ];
+        for path in &candidates {
+            if let Ok(content) = std::fs::read_to_string(path) {
+                if let Ok(val) = parse_json(&content) {
                 if let Some(q_arr) = val.get("questions").and_then(|q| q.as_array()) {
                     for item in q_arr {
                         let q_inner = match item.get("question") { Some(q) => q, None => continue };
@@ -175,9 +192,11 @@ impl KnowledgeService {
                             accepted_values: acc_vals, explanation: exp, flag_asset_sha: flag_sha,
                         });
                     }
+                    break;
                 }
             }
         }
+    }
         guard.insert(module_id.to_string(), questions.clone());
         questions
     }

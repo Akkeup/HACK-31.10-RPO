@@ -197,9 +197,11 @@ impl CompetitionTable {
                 let mut q_fields = vec![
                     ("questionId".to_string(), JsonValue::String(r.question_id.clone())),
                     ("prompt".to_string(), JsonValue::String(r.prompt.clone())),
-                    ("options".to_string(), JsonValue::Array(opts)),
                     ("kind".to_string(), JsonValue::String(r.kind.clone())),
                 ];
+                if r.kind == "single_choice" {
+                    q_fields.push(("options".to_string(), JsonValue::Array(opts)));
+                }
                 if let Some(img) = &r.image {
                     q_fields.push(("image".to_string(), img.clone()));
                 }
