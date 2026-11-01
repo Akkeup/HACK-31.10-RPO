@@ -1,6 +1,7 @@
 import { readingCards } from "./reading-cards.js";
 import { EducationUI } from "./education-ui.js";
 import { CompetitionUI } from "./competition-ui.js";
+import { AdminDashboard } from "./admin-dashboard.js";
 import { icon } from "./icons.js";
 import {
   ACADEMY_HUB,
@@ -41,7 +42,7 @@ export class UI {
  <main class="discovery"><header class="topbar"><a class="brand" href="./" aria-label="Discovery — главная"><span class="brand-mark">${icon("compass")}</span>discovery<span class="brand-dot">®</span></a><span class="header-divider"></span><span class="edition">МИР, ПОЛНЫЙ ОТКРЫТИЙ</span><nav class="main-nav" aria-label="Навигация"><button class="nav-item" id="home-nav">Главная</button><button class="nav-item" id="examples-nav">Примеры</button><button class="nav-item selected" id="world-nav">${icon("world")} Академия</button><button class="nav-item" id="teachers-nav">Преподаватели</button><button class="nav-item" id="journal">${icon("book")} Дневник</button></nav><div class="header-right"><span class="connection" id="connection"><i></i> Подключение</span><button class="icon-btn" id="help" aria-label="Как играть">${icon("help")}</button><button class="profile" id="profile" aria-label="Профиль исследователя"><span>И</span><span class="profile-label">Исследователь<small id="role-label">Локальный сеанс</small></span>${icon("chevron")}</button></div></header>
  <div id="world" class="world-viewport"></div>
  <div class="world-heading"><div class="eyebrow"><span class="live-dot"></span> DISCOVERY ACADEMY <span> / </span> ${this.adapter.previewProfile ? "ДЕМО · 4 МЕСТА" : "PROTOCOL 2.0"}</div><h1 id="location-title">Читальный зал<span id="location-subtitle">Выберите кабинет или откройте книгу.</span></h1><div class="region-meta">${icon("pin")} <span id="location-meta">Четыре кабинета · Демо</span> <span class="meta-dot">·</span> <span id="world-time">15:00</span></div></div><div class="route-guide hidden" id="route-guide"></div>
- <div class="left-tools"><button class="tool active" id="map-toggle" aria-label="Показать карту" title="Карта кампуса">${icon("world")}</button><button class="tool" id="npc-tool" aria-label="Найти собеседника" title="Познакомиться с Софией">${icon("chat")}</button><span></span><button class="tool" id="settings-toggle" aria-label="Показать настройки" title="Настройки мира">${icon("settings")}</button></div>
+ <div class="left-tools"><button class="tool active" id="map-toggle" aria-label="Показать карту" title="Карта кампуса">${icon("world")}</button><button class="tool" id="npc-tool" aria-label="Найти собеседника" title="Познакомиться с Софией">${icon("chat")}</button><button class="tool" id="admin-toggle" aria-label="Панель администратора" title="Панель администратора Вселенной [~]">${icon("spark")}</button><span></span><button class="tool" id="settings-toggle" aria-label="Показать настройки" title="Настройки мира">${icon("settings")}</button></div>
 
  <aside class="quest-card" id="quest"><div class="quest-top"><span class="quest-icon">${icon("spark")}</span><span>СЛЕДУЮЩИЙ ШАГ</span></div><h2>Начните исследование</h2><p>Откройте каталог преподавателей и выберите кабинет.</p><button id="meet-npc">Найти Софию ${icon("arrow")}</button><div class="quest-progress"><i></i><i></i><i></i></div></aside>
  <div class="controls-hint"><div><kbd>W</kbd><span class="keys-bottom"><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span></div><span>Движение</span><b></b><span class="mouse-symbol">↔</span><span>Камера</span><b></b><kbd>E</kbd><span>Взаимодействие</span></div>
@@ -59,6 +60,7 @@ export class UI {
     this.game = game;
     this.competition = new CompetitionUI(this, game, this.adapter);
     this.education = new EducationUI(this, game, this.adapter);
+    this.adminDashboard = new AdminDashboard(this, game, this.adapter);
     if (this.adapter.isMock && this.adapter.demoScenario) {
       const demo = document.createElement("details");
       demo.className = "demo-tools";
@@ -178,6 +180,7 @@ export class UI {
     $("#close-settings").onclick = () => this.toggleSettings(false);
     $("#settings-toggle").onclick = () =>
       this.toggleSettings($("#settings").classList.contains("hidden"));
+    $("#admin-toggle").onclick = () => this.adminDashboard?.toggle();
     $("#world-nav").onclick = () => {
       $("#info-overlay").classList.add("hidden");
       this.game?.setBlocked(false, "info");

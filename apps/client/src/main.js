@@ -13,8 +13,10 @@ async function credentials(adapter, error) {
       sessionId: import.meta.env.VITE_SESSION_ID || undefined,
     };
   return new Promise((resolve) => {
+    const seedUsers = ["player1", "player2", "player3", "player4", "player5"];
+    const defaultUser = seedUsers[Math.floor(Math.random() * seedUsers.length)];
     document.querySelector("#app").innerHTML =
-      '<main class="fatal"><h1>Добро пожаловать в Discovery</h1><p>Локальный сервер · Protocol 2.0.0</p><p id="login-error" role="alert"></p><form id="login-form"><label class="select-label">Имя пользователя<input name="username" autocomplete="username" required maxlength="40" value="player2"/></label><label class="select-label">Пароль<input name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128" value="password"/></label><label class="select-label">ID комнаты (пусто — создать)<input name="sessionId" placeholder="UUID комнаты" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/></label><button type="submit">Войти в мир</button></form></main>';
+      `<main class="fatal"><h1>Добро пожаловать в Discovery</h1><p>Локальный сервер · Protocol 2.0.0</p><p id="login-error" role="alert"></p><form id="login-form"><label class="select-label">Имя пользователя (player1 … player5)<input name="username" autocomplete="username" required maxlength="40" value="${defaultUser}"/></label><label class="select-label">Пароль<input name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128" value="password"/></label><label class="select-label">ID комнаты (пусто — общая комната)<input name="sessionId" placeholder="UUID комнаты (пусто — общая)" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/></label><button type="submit">Войти в мир</button></form></main>`;
     document.querySelector("#login-error").textContent = error || "";
     document.querySelector("#login-form").onsubmit = (e) => {
       e.preventDefault();

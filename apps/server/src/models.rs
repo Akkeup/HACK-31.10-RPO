@@ -401,3 +401,40 @@ pub fn make_server_envelope(
         ("payload".to_string(), payload),
     ])
 }
+
+#[derive(Debug, Clone, Default)]
+pub struct ClientTelemetryDto {
+    pub fps: f64,
+    pub fps_low_1pct: f64,
+    pub frame_time_ms: f64,
+    pub ping_rtt_ms: f64,
+    pub jitter_ms: f64,
+    pub rendered_entities: u32,
+    pub active_draw_calls: u32,
+    pub triangles: u32,
+    pub heap_memory_mb: f64,
+    pub uptime_sec: u64,
+    pub rx_bitrate_kbps: f64,
+    pub tx_bitrate_kbps: f64,
+    pub location_id: String,
+}
+
+impl ClientTelemetryDto {
+    pub fn to_json(&self) -> JsonValue {
+        JsonValue::Object(vec![
+            ("fps".to_string(), JsonValue::Number(self.fps)),
+            ("fpsLow1Pct".to_string(), JsonValue::Number(self.fps_low_1pct)),
+            ("frameTimeMs".to_string(), JsonValue::Number(self.frame_time_ms)),
+            ("pingRttMs".to_string(), JsonValue::Number(self.ping_rtt_ms)),
+            ("jitterMs".to_string(), JsonValue::Number(self.jitter_ms)),
+            ("renderedEntities".to_string(), JsonValue::Number(self.rendered_entities as f64)),
+            ("activeDrawCalls".to_string(), JsonValue::Number(self.active_draw_calls as f64)),
+            ("triangles".to_string(), JsonValue::Number(self.triangles as f64)),
+            ("heapMemoryMb".to_string(), JsonValue::Number(self.heap_memory_mb)),
+            ("uptimeSec".to_string(), JsonValue::Number(self.uptime_sec as f64)),
+            ("rxBitrateKbps".to_string(), JsonValue::Number(self.rx_bitrate_kbps)),
+            ("txBitrateKbps".to_string(), JsonValue::Number(self.tx_bitrate_kbps)),
+            ("locationId".to_string(), JsonValue::String(self.location_id.clone())),
+        ])
+    }
+}

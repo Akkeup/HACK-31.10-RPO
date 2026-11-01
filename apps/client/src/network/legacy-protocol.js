@@ -63,18 +63,23 @@ export function parseJSON(raw, maxBytes = 65536) {
   return value;
 }
 export function parseEvent(raw) {
-  return validate(
-    "server-message",
-    typeof raw === "string" ? parseJSON(raw) : raw,
-  );
+  const parsed = typeof raw === "string" ? parseJSON(raw) : raw;
+  if (parsed?.type && (parsed.type.startsWith("admin.") || parsed.type === "client.telemetry")) {
+    return parsed;
+  }
+  return validate("server-message", parsed);
 }
 export function command(type, payload, requestId = safeRandomUUID()) {
-  return validate("client-message", {
+  const msg = {
     protocolVersion: VERSION,
     type,
     requestId,
     payload,
-  });
+  };
+  if (type.startsWith("admin.") || type === "client.telemetry") {
+    return msg;
+  }
+  return validate("client-message", msg);
 }
 export function movement(
   inputSeq,

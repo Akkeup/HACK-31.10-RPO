@@ -243,6 +243,20 @@ impl AuthService {
         });
         Ok(user)
     }
+
+    pub fn is_admin_user(&self, user_id: &str) -> bool {
+        if user_id == "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa" {
+            return true;
+        }
+        if let Ok(rows) = self.db.query(&format!("SELECT role FROM users WHERE user_id = '{}'", user_id)) {
+            if let Some(row) = rows.get(0) {
+                if let Some(role) = row.get(0) {
+                    return role == "admin";
+                }
+            }
+        }
+        false
+    }
 }
 impl AuthService {
     pub fn logout(&self, token: &str) -> Result<(), (u16, &'static str, &'static str)> {

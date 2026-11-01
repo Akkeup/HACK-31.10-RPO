@@ -1,6 +1,6 @@
 // ws.rs: RFC 6455 WebSocket Transport and Application Event Loop
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use std::io::{Read, Write};
 use std::net::TcpStream;
 use std::sync::{Arc, Mutex};
@@ -9,7 +9,7 @@ use crate::ai::NpcAiService;
 use crate::auth::{AuthService, User, WsTicket};
 use crate::competition::CompetitionService;
 use crate::config::ConfigService;
-use crate::game::GameManager;
+use crate::game::{GameManager, Room};
 use crate::json::{parse_json, JsonValue};
 use crate::models::*;
 use crate::sha::{base64_encode, sha1_bytes, sha256_hex};
@@ -74,11 +74,15 @@ impl WsWriter {
 
 pub struct WsBroadcaster {
     clients: Mutex<HashMap<String, (u64, String, Arc<Mutex<WsWriter>>)>>, // player_id -> (conn_id, user_id, writer)
+    admin_subs: Mutex<HashSet<String>>,
 }
 
 impl WsBroadcaster {
     pub fn new() -> Self {
-        Self { clients: Mutex::new(HashMap::new()) }
+        Self {
+            clients: Mutex::new(HashMap::new()),
+            admin_subs: Mutex::new(HashSet::new()),
+        }
     }
 
     pub fn register(&self, player_id: &str, conn_id: u64, user_id: &str, writer: Arc<Mutex<WsWriter>>) {
@@ -91,6 +95,40 @@ impl WsBroadcaster {
         if let Some((c_id, _, _)) = lock.get(player_id) {
             if *c_id == conn_id || conn_id == 0 {
                 lock.remove(player_id);
+            }
+        }
+        let mut subs = self.admin_subs.lock().unwrap();
+        subs.remove(player_id);
+    }
+
+    pub fn subscribe_admin(&self, player_id: &str) {
+        let mut subs = self.admin_subs.lock().unwrap();
+        subs.insert(player_id.to_string());
+    }
+
+    pub fn unsubscribe_admin(&self, player_id: &str) {
+        let mut subs = self.admin_subs.lock().unwrap();
+        subs.remove(player_id);
+    }
+
+    pub fn broadcast_admin_telemetry(&self, game: &GameManager) {
+        let subs = self.admin_subs.lock().unwrap();
+        if subs.is_empty() {
+            return;
+        }
+        let server_metrics = game.get_server_telemetry();
+        let clients_metrics = game.get_all_client_telemetry();
+        let npcs_admin = game.get_all_npcs_admin();
+        let payload = JsonValue::Object(vec![
+            ("server".to_string(), server_metrics),
+            ("clients".to_string(), JsonValue::Array(clients_metrics)),
+            ("npcs".to_string(), JsonValue::Array(npcs_admin)),
+        ]);
+        let lock = self.clients.lock().unwrap();
+        for pid in subs.iter() {
+            if let Some((_, _, writer)) = lock.get(pid) {
+                let mut w = writer.lock().unwrap();
+                let _ = w.send_envelope("admin.telemetry.snapshot", None, payload.clone());
             }
         }
     }
@@ -223,6 +261,7 @@ pub fn run_ws_session(
     mut conn: WsConnection,
     ticket: WsTicket,
     player_id: String,
+    auth: Arc<AuthService>,
     game: Arc<GameManager>,
     config: Arc<ConfigService>,
     spatial: Arc<SpatialService>,
@@ -336,6 +375,88 @@ pub fn run_ws_session(
             let nonce = payload_obj.and_then(|p| p.get_str("nonce")).unwrap_or("0");
             let pong = JsonValue::Object(vec![("nonce".to_string(), JsonValue::String(nonce.to_string()))]);
             let _ = conn.write_json(&make_server_envelope(&ticket.protocol_version, "server.pong", req_id, seq, &rfc3339_now(), pong));
+        } else if msg_type == "client.telemetry" {
+            if let Some(p) = payload_obj {
+                let dto = ClientTelemetryDto {
+                    fps: p.get_f64("fps").unwrap_or(0.0),
+                    fps_low_1pct: p.get_f64("fpsLow1Pct").unwrap_or(0.0),
+                    frame_time_ms: p.get_f64("frameTimeMs").unwrap_or(0.0),
+                    ping_rtt_ms: p.get_f64("pingRttMs").unwrap_or(0.0),
+                    jitter_ms: p.get_f64("jitterMs").unwrap_or(0.0),
+                    rendered_entities: p.get_i64("renderedEntities").unwrap_or(0) as u32,
+                    active_draw_calls: p.get_i64("activeDrawCalls").unwrap_or(0) as u32,
+                    triangles: p.get_i64("triangles").unwrap_or(0) as u32,
+                    heap_memory_mb: p.get_f64("heapMemoryMb").unwrap_or(0.0),
+                    uptime_sec: p.get_i64("uptimeSec").unwrap_or(0) as u64,
+                    rx_bitrate_kbps: p.get_f64("rxBitrateKbps").unwrap_or(0.0),
+                    tx_bitrate_kbps: p.get_f64("txBitrateKbps").unwrap_or(0.0),
+                    location_id: p.get_str("locationId").unwrap_or("reading-room-main").to_string(),
+                };
+                game.record_client_telemetry(&ticket.session_id, &player_id, dto);
+            }
+        } else if msg_type == "admin.telemetry.subscribe" {
+            if auth.is_admin_user(&ticket.user_id) {
+                broadcaster.subscribe_admin(&player_id);
+                broadcaster.broadcast_admin_telemetry(&game);
+            }
+        } else if msg_type == "admin.universe.control" {
+            if auth.is_admin_user(&ticket.user_id) {
+                if let Some(p) = payload_obj {
+                    let action = p.get_str("action").unwrap_or("");
+                    match action {
+                        "pause" => game.set_simulation_paused(true),
+                        "resume" => game.set_simulation_paused(false),
+                        "step" => game.step_simulation_tick(),
+                        "setTimeScale" => {
+                            if let Some(scale) = p.get_f64("timeScale") {
+                                game.set_simulation_time_scale(scale);
+                            }
+                        }
+                        "setEnvironment" => {
+                            let ws = p.get_f64("walkSpeedMps");
+                            let rm = p.get_f64("runMultiplier");
+                            let rad = p.get_f64("interactionRadiusM");
+                            let grav = p.get_f64("gravity");
+                            let tod = p.get_str("timeOfDay").map(|s| s.to_string());
+                            game.set_environment(ws, rm, rad, grav, tod);
+                        }
+                        "resetUniverse" => game.reset_universe(),
+                        _ => {}
+                    }
+                    broadcaster.broadcast_admin_telemetry(&game);
+                }
+            }
+        } else if msg_type == "admin.agent.override" {
+            if auth.is_admin_user(&ticket.user_id) {
+                if let Some(p) = payload_obj {
+                    let npc_id = p.get_str("npcId").unwrap_or("");
+                    let mode = p.get_str("controlMode");
+                    let prompt = p.get_str("personalityPrompt");
+                    let speed = p.get_f64("speedMultiplier");
+                    game.override_npc(npc_id, mode, prompt, speed);
+                    broadcaster.broadcast_admin_telemetry(&game);
+                    send_snapshot(&mut conn, &player_id, &ticket, &game, &config, &competition, &broadcaster);
+                }
+            }
+        } else if msg_type == "admin.agent.command" {
+            if auth.is_admin_user(&ticket.user_id) {
+                if let Some(p) = payload_obj {
+                    let npc_id = p.get_str("npcId").unwrap_or("");
+                    let cmd = p.get_str("command").unwrap_or("");
+                    let target = p.get("target");
+                    let tx = target.and_then(|t| t.get_f64("x"));
+                    let ty = target.and_then(|t| t.get_f64("y"));
+                    let tz = target.and_then(|t| t.get_f64("z"));
+                    let state = p.get_str("state");
+                    if cmd == "delete" {
+                        game.delete_npc(npc_id);
+                    } else {
+                        game.command_npc(npc_id, cmd, tx, ty, tz, state);
+                    }
+                    broadcaster.broadcast_admin_telemetry(&game);
+                    send_snapshot(&mut conn, &player_id, &ticket, &game, &config, &competition, &broadcaster);
+                }
+            }
         }
     }
 
@@ -385,68 +506,7 @@ fn send_snapshot(
     broadcaster: &Arc<WsBroadcaster>,
 ) {
     if let Some((tick, status, players)) = game.get_room_snapshot(&ticket.session_id) {
-        let npcs = vec![
-            NpcDto {
-                npc_id: "npc-guide".to_string(),
-                display_name: "София".to_string(),
-                position: PositionDto { x: 83.0, y: 0.0, z: 90.0 },
-                yaw_rad: 0.0,
-                state: "idle".to_string(),
-                subject: "История открытий".to_string(),
-                role: "teacher".to_string(),
-                module_id: "history-basics".to_string(),
-            },
-            NpcDto {
-                npc_id: "examiner-mathematics".to_string(),
-                display_name: "Экзаменатор".to_string(),
-                position: PositionDto { x: 80.0, y: 0.0, z: 87.0 },
-                yaw_rad: 0.0,
-                state: "idle".to_string(),
-                subject: "Выбор темы".to_string(),
-                role: "examiner".to_string(),
-                module_id: "math-basics".to_string(),
-            },
-            NpcDto {
-                npc_id: "teacher-mathematics".to_string(),
-                display_name: "Преподаватель математики".to_string(),
-                position: PositionDto { x: 70.7, y: 0.0, z: 69.0 },
-                yaw_rad: 0.0,
-                state: "idle".to_string(),
-                subject: "Математика".to_string(),
-                role: "teacher".to_string(),
-                module_id: "math-basics".to_string(),
-            },
-            NpcDto {
-                npc_id: "teacher-informatics".to_string(),
-                display_name: "Преподаватель информатики".to_string(),
-                position: PositionDto { x: 77.7, y: 0.0, z: 69.0 },
-                yaw_rad: 0.0,
-                state: "idle".to_string(),
-                subject: "Информатика".to_string(),
-                role: "teacher".to_string(),
-                module_id: "informatics-basics".to_string(),
-            },
-            NpcDto {
-                npc_id: "teacher-history".to_string(),
-                display_name: "Преподаватель истории".to_string(),
-                position: PositionDto { x: 84.7, y: 0.0, z: 69.0 },
-                yaw_rad: 0.0,
-                state: "idle".to_string(),
-                subject: "История".to_string(),
-                role: "teacher".to_string(),
-                module_id: "history-basics".to_string(),
-            },
-            NpcDto {
-                npc_id: "teacher-flags".to_string(),
-                display_name: "Преподаватель географии".to_string(),
-                position: PositionDto { x: 91.7, y: 0.0, z: 69.0 },
-                yaw_rad: 0.0,
-                state: "idle".to_string(),
-                subject: "Флаги мира".to_string(),
-                role: "teacher".to_string(),
-                module_id: "flags-demo".to_string(),
-            },
-        ];
+        let npcs = game.get_all_npcs_dto();
         let tables = vec![competition.table_summary_to_json()];
         let snapshot_payload = JsonValue::Object(vec![
             ("tick".to_string(), JsonValue::Number(tick as f64)),
@@ -533,8 +593,20 @@ fn handle_npc_interact(
     let _ = conn.writer.lock().unwrap().send_envelope("npc.accepted", Some(req_id_str.clone()), acc_payload);
 
     // 2. Process interaction
+    {
+        let mut npcs = game.npcs.lock().unwrap();
+        if let Some(n) = npcs.get_mut(npc_id) {
+            n.decision_log.push((Room::now_ms(), format!("Вопрос от {}: \"{}\"", player_id, text)));
+        }
+    }
     let cur_prog = ai.get_progress(&ticket.user_id);
     let result = ai.process_interaction(&ticket.user_id, &ticket.session_id, &req_id_str, npc_id, action, text, &cur_prog, "adaptive", "Давай начнём с наблюдения за окружающим миром.");
+    {
+        let mut npcs = game.npcs.lock().unwrap();
+        if let Some(n) = npcs.get_mut(npc_id) {
+            n.decision_log.push((Room::now_ms(), format!("Ответ ({}): \"{}\"", result.source, result.text)));
+        }
+    }
     for k in &result.knowledge_ids {
         ai.update_progress(&ticket.user_id, result.progress_revision, k);
     }

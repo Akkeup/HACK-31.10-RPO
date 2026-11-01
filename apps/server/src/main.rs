@@ -67,10 +67,22 @@ fn main() {
     let bcast_tick = Arc::clone(&broadcaster);
     let wallet_tick = Arc::clone(&wallet);
     thread::spawn(move || {
+        let mut telemetry_ticks = 0u64;
         loop {
-            thread::sleep(Duration::from_millis(50));
+            let scale = {
+                let sim = game_tick.simulation.lock().unwrap();
+                sim.time_scale
+            };
+            let sleep_ms = ((50.0 / scale).max(5.0).min(500.0)) as u64;
+            thread::sleep(Duration::from_millis(sleep_ms));
             let (walk_speed, run_mul, _) = config_tick.get_character_speed();
             game_tick.tick_all(walk_speed, run_mul, 250);
+
+            telemetry_ticks += 1;
+            if telemetry_ticks >= (20.0 * scale).max(5.0) as u64 {
+                telemetry_ticks = 0;
+                bcast_tick.broadcast_admin_telemetry(&game_tick);
+            }
 
             let (round_closed, settled) = comp_tick.tick_timer();
             if round_closed {
@@ -163,7 +175,7 @@ fn main() {
                     Err(_) => return,
                 };
 
-                run_ws_session(conn, ticket, player_id, game_c, config_c, spatial_c, ai_c, wallet_c, comp_c, knowledge_c, bcast_c, inst_c);
+                run_ws_session(conn, ticket, player_id, auth_c, game_c, config_c, spatial_c, ai_c, wallet_c, comp_c, knowledge_c, bcast_c, inst_c);
             } else {
                 let mut resp = dispatch_http(&req, &auth_c, &game_c, &config_c, &spatial_c, &ai_c, &wallet_c, &comp_c, &knowledge_c, &inst_c);
                 crate::http::apply_cors_headers(&mut resp, &req);

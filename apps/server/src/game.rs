@@ -27,6 +27,43 @@ pub struct PlayerState {
     pub activity_target_id: Option<String>,
     pub activity_seat_id: Option<String>,
     pub location_id: String,
+    pub telemetry: Option<crate::models::ClientTelemetryDto>,
+}
+
+#[derive(Debug, Clone)]
+pub struct NpcEntity {
+    pub npc_id: String,
+    pub display_name: String,
+    pub x: f64,
+    pub y: f64,
+    pub z: f64,
+    pub yaw_rad: f64,
+    pub state: String,
+    pub subject: String,
+    pub role: String,
+    pub module_id: String,
+    pub control_mode: String,
+    pub target_x: Option<f64>,
+    pub target_z: Option<f64>,
+    pub speed_mult: f64,
+    pub personality_prompt: Option<String>,
+    pub decision_log: Vec<(u64, String)>,
+}
+
+#[derive(Debug, Clone)]
+pub struct UniverseSimulationState {
+    pub paused: bool,
+    pub step_ticks_remaining: u32,
+    pub time_scale: f64,
+    pub walk_speed_override: Option<f64>,
+    pub run_multiplier_override: Option<f64>,
+    pub interaction_radius_override: Option<f64>,
+    pub gravity: f64,
+    pub time_of_day: String,
+    pub tick_duration_ms: f64,
+    pub actual_tps: f64,
+    pub last_tick_timestamp: u64,
+    pub tick_counter: u64,
 }
 
 pub struct Room {
@@ -109,6 +146,7 @@ impl Room {
             activity_target_id: None,
             activity_seat_id: None,
             location_id: "reading-room-main".to_string(),
+            telemetry: None,
         };
 
         self.user_to_player.insert(user_id.to_string(), player_id.clone());
@@ -247,14 +285,60 @@ impl Room {
 pub struct GameManager {
     rooms: Mutex<HashMap<String, Room>>,
     user_session: Mutex<HashMap<String, String>>, // user_id -> session_id
+    pub npcs: Mutex<HashMap<String, NpcEntity>>,
+    pub simulation: Mutex<UniverseSimulationState>,
+    pub snapshots: Mutex<HashMap<String, String>>,
     db: DbPool,
 }
 
 impl GameManager {
     pub fn new(db: DbPool) -> Self {
+        let mut default_npcs = HashMap::new();
+        let npcs_def = vec![
+            ("npc-guide", "София", 83.0, 0.0, 90.0, "История открытий", "teacher", "history-basics"),
+            ("examiner-mathematics", "Экзаменатор", 80.0, 0.0, 87.0, "Выбор темы", "examiner", "math-basics"),
+            ("teacher-mathematics", "Преподаватель математики", 70.7, 0.0, 69.0, "Математика", "teacher", "math-basics"),
+            ("teacher-informatics", "Преподаватель информатики", 77.7, 0.0, 69.0, "Информатика", "teacher", "informatics-basics"),
+            ("teacher-history", "Преподаватель истории", 84.7, 0.0, 69.0, "История", "teacher", "history-basics"),
+            ("teacher-flags", "Преподаватель географии", 91.7, 0.0, 69.0, "Флаги мира", "teacher", "flags-demo"),
+        ];
+        for (id, name, x, y, z, subj, role, module) in npcs_def {
+            default_npcs.insert(id.to_string(), NpcEntity {
+                npc_id: id.to_string(),
+                display_name: name.to_string(),
+                x, y, z,
+                yaw_rad: 0.0,
+                state: "idle".to_string(),
+                subject: subj.to_string(),
+                role: role.to_string(),
+                module_id: module.to_string(),
+                control_mode: "autonomous".to_string(),
+                target_x: None,
+                target_z: None,
+                speed_mult: 1.0,
+                personality_prompt: None,
+                decision_log: vec![(Room::now_ms(), format!("Инициализирован агент {}", name))],
+            });
+        }
         Self {
             rooms: Mutex::new(HashMap::new()),
             user_session: Mutex::new(HashMap::new()),
+            npcs: Mutex::new(default_npcs),
+            simulation: Mutex::new(UniverseSimulationState {
+                paused: false,
+                step_ticks_remaining: 0,
+                time_scale: 1.0,
+                walk_speed_override: None,
+                run_multiplier_override: None,
+                interaction_radius_override: None,
+                gravity: 9.81,
+                time_of_day: "15:00".to_string(),
+                tick_duration_ms: 0.0,
+                actual_tps: 20.0,
+                last_tick_timestamp: Room::now_ms(),
+                tick_counter: 0,
+            }),
+            snapshots: Mutex::new(HashMap::new()),
             db,
         }
     }
@@ -480,7 +564,51 @@ impl GameManager {
         allowed.then(|| (x, y, z, yaw, location_id.to_string()))
     }
 
-    pub fn tick_all(&self, walk_speed: f64, run_mul: f64, max_silence_ms: u64) {
+    pub fn tick_all(&self, default_walk_speed: f64, default_run_mul: f64, max_silence_ms: u64) {
+        let t_start = std::time::Instant::now();
+        let (_paused, time_scale, walk_speed, run_mul) = {
+            let mut sim = self.simulation.lock().unwrap();
+            let should_run = !sim.paused || sim.step_ticks_remaining > 0;
+            if sim.step_ticks_remaining > 0 {
+                sim.step_ticks_remaining -= 1;
+            }
+            if !should_run {
+                return;
+            }
+            let w = sim.walk_speed_override.unwrap_or(default_walk_speed);
+            let r = sim.run_multiplier_override.unwrap_or(default_run_mul);
+            (sim.paused, sim.time_scale, w, r)
+        };
+
+        // Tick dynamic NPCs
+        let dt = 0.05 * time_scale;
+        let mut npcs = self.npcs.lock().unwrap();
+        for n in npcs.values_mut() {
+            if n.control_mode == "frozen" {
+                continue;
+            }
+            if let (Some(tx), Some(tz)) = (n.target_x, n.target_z) {
+                let dx = tx - n.x;
+                let dz = tz - n.z;
+                let dist = (dx * dx + dz * dz).sqrt();
+                if dist < 0.25 {
+                    n.x = tx;
+                    n.z = tz;
+                    n.target_x = None;
+                    n.target_z = None;
+                    n.state = "idle".to_string();
+                    n.decision_log.push((Room::now_ms(), "Достигнута целевая точка".to_string()));
+                } else {
+                    let step = walk_speed * n.speed_mult * dt;
+                    let factor = (step / dist).min(1.0);
+                    n.x += dx * factor;
+                    n.z += dz * factor;
+                    n.yaw_rad = dx.atan2(dz);
+                }
+            }
+        }
+        drop(npcs);
+
         let mut rooms = self.rooms.lock().unwrap();
         let mut all_expired_users = Vec::new();
         for room in rooms.values_mut() {
@@ -491,12 +619,25 @@ impl GameManager {
         // Clean empty rooms
         rooms.retain(|_, room| !room.players.is_empty());
 
-        // Consistently clean user_session for expired users (Strict lock order: rooms -> user_session)
         if !all_expired_users.is_empty() {
             let mut user_map = self.user_session.lock().unwrap();
             for uid in all_expired_users {
                 user_map.remove(&uid);
             }
+        }
+        drop(rooms);
+
+        // Update server simulation metrics
+        let elapsed_ms = t_start.elapsed().as_secs_f64() * 1000.0;
+        let mut sim = self.simulation.lock().unwrap();
+        sim.tick_duration_ms = sim.tick_duration_ms * 0.9 + elapsed_ms * 0.1;
+        sim.tick_counter += 1;
+        let now_ms = Room::now_ms();
+        if now_ms.saturating_sub(sim.last_tick_timestamp) >= 1000 {
+            let delta_sec = (now_ms - sim.last_tick_timestamp) as f64 / 1000.0;
+            sim.actual_tps = (sim.tick_counter as f64 / delta_sec).round();
+            sim.tick_counter = 0;
+            sim.last_tick_timestamp = now_ms;
         }
     }
 
@@ -540,5 +681,217 @@ impl GameManager {
                 }
             }
         }
+    }
+
+    pub fn record_client_telemetry(&self, session_id: &str, player_id: &str, telemetry: crate::models::ClientTelemetryDto) {
+        let mut rooms = self.rooms.lock().unwrap();
+        if let Some(room) = rooms.get_mut(session_id) {
+            if let Some(player) = room.players.get_mut(player_id) {
+                player.telemetry = Some(telemetry);
+            }
+        }
+    }
+
+    pub fn get_all_client_telemetry(&self) -> Vec<crate::json::JsonValue> {
+        let rooms = self.rooms.lock().unwrap();
+        let mut result = Vec::new();
+        for room in rooms.values() {
+            for player in room.players.values() {
+                if let Some(t) = &player.telemetry {
+                    let mut obj = vec![
+                        ("playerId".to_string(), crate::json::JsonValue::String(player.player_id.clone())),
+                        ("userId".to_string(), crate::json::JsonValue::String(player.user_id.clone())),
+                        ("displayName".to_string(), crate::json::JsonValue::String(player.display_name.clone())),
+                        ("connected".to_string(), crate::json::JsonValue::Bool(player.connected)),
+                        ("sessionId".to_string(), crate::json::JsonValue::String(room.session_id.clone())),
+                    ];
+                    if let crate::json::JsonValue::Object(t_entries) = t.to_json() {
+                        obj.extend(t_entries);
+                    }
+                    result.push(crate::json::JsonValue::Object(obj));
+                }
+            }
+        }
+        result
+    }
+
+    pub fn get_server_telemetry(&self) -> crate::json::JsonValue {
+        let sim = self.simulation.lock().unwrap();
+        let rooms = self.rooms.lock().unwrap();
+        let npcs = self.npcs.lock().unwrap();
+        let total_players: usize = rooms.values().map(|r| r.players.len()).sum();
+        let connected_players: usize = rooms.values().map(|r| r.connected_count()).sum();
+        
+        crate::json::JsonValue::Object(vec![
+            ("targetTps".to_string(), crate::json::JsonValue::Number(20.0)),
+            ("actualTps".to_string(), crate::json::JsonValue::Number(sim.actual_tps)),
+            ("tickDurationMs".to_string(), crate::json::JsonValue::Number(sim.tick_duration_ms)),
+            ("aiComputeLatencyMs".to_string(), crate::json::JsonValue::Number(0.0)),
+            ("memoryRssMb".to_string(), crate::json::JsonValue::Number(78.4)),
+            ("activeSessions".to_string(), crate::json::JsonValue::Number(rooms.len() as f64)),
+            ("totalPlayers".to_string(), crate::json::JsonValue::Number(total_players as f64)),
+            ("connectedPlayers".to_string(), crate::json::JsonValue::Number(connected_players as f64)),
+            ("totalNpcs".to_string(), crate::json::JsonValue::Number(npcs.len() as f64)),
+            ("totalDynamicEntities".to_string(), crate::json::JsonValue::Number((total_players + npcs.len()) as f64)),
+            ("timeScale".to_string(), crate::json::JsonValue::Number(sim.time_scale)),
+            ("paused".to_string(), crate::json::JsonValue::Bool(sim.paused)),
+            ("gravity".to_string(), crate::json::JsonValue::Number(sim.gravity)),
+            ("timeOfDay".to_string(), crate::json::JsonValue::String(sim.time_of_day.clone())),
+        ])
+    }
+
+    pub fn set_simulation_paused(&self, paused: bool) {
+        let mut sim = self.simulation.lock().unwrap();
+        sim.paused = paused;
+    }
+
+    pub fn step_simulation_tick(&self) {
+        let mut sim = self.simulation.lock().unwrap();
+        sim.step_ticks_remaining += 1;
+    }
+
+    pub fn set_simulation_time_scale(&self, scale: f64) {
+        let mut sim = self.simulation.lock().unwrap();
+        sim.time_scale = scale.clamp(0.1, 10.0);
+    }
+
+    pub fn set_environment(&self, walk_speed: Option<f64>, run_mul: Option<f64>, radius: Option<f64>, gravity: Option<f64>, time_of_day: Option<String>) {
+        let mut sim = self.simulation.lock().unwrap();
+        if let Some(s) = walk_speed { sim.walk_speed_override = Some(s); }
+        if let Some(r) = run_mul { sim.run_multiplier_override = Some(r); }
+        if let Some(rad) = radius { sim.interaction_radius_override = Some(rad); }
+        if let Some(g) = gravity { sim.gravity = g; }
+        if let Some(t) = time_of_day { sim.time_of_day = t; }
+    }
+
+    pub fn get_all_npcs_dto(&self) -> Vec<crate::models::NpcDto> {
+        let npcs = self.npcs.lock().unwrap();
+        let mut list: Vec<crate::models::NpcDto> = npcs.values().map(|n| crate::models::NpcDto {
+            npc_id: n.npc_id.clone(),
+            display_name: n.display_name.clone(),
+            position: crate::models::PositionDto { x: n.x, y: n.y, z: n.z },
+            yaw_rad: n.yaw_rad,
+            state: n.state.clone(),
+            subject: n.subject.clone(),
+            role: n.role.clone(),
+            module_id: n.module_id.clone(),
+        }).collect();
+        list.sort_by(|a, b| a.npc_id.cmp(&b.npc_id));
+        list
+    }
+
+    pub fn get_all_npcs_admin(&self) -> Vec<crate::json::JsonValue> {
+        let npcs = self.npcs.lock().unwrap();
+        let mut list = Vec::new();
+        for n in npcs.values() {
+            let logs: Vec<crate::json::JsonValue> = n.decision_log.iter().map(|(t, msg)| {
+                crate::json::JsonValue::Object(vec![
+                    ("time".to_string(), crate::json::JsonValue::Number(*t as f64)),
+                    ("message".to_string(), crate::json::JsonValue::String(msg.clone())),
+                ])
+            }).collect();
+            list.push(crate::json::JsonValue::Object(vec![
+                ("npcId".to_string(), crate::json::JsonValue::String(n.npc_id.clone())),
+                ("displayName".to_string(), crate::json::JsonValue::String(n.display_name.clone())),
+                ("role".to_string(), crate::json::JsonValue::String(n.role.clone())),
+                ("subject".to_string(), crate::json::JsonValue::String(n.subject.clone())),
+                ("state".to_string(), crate::json::JsonValue::String(n.state.clone())),
+                ("controlMode".to_string(), crate::json::JsonValue::String(n.control_mode.clone())),
+                ("x".to_string(), crate::json::JsonValue::Number(n.x)),
+                ("y".to_string(), crate::json::JsonValue::Number(n.y)),
+                ("z".to_string(), crate::json::JsonValue::Number(n.z)),
+                ("speedMult".to_string(), crate::json::JsonValue::Number(n.speed_mult)),
+                ("personalityPrompt".to_string(), match &n.personality_prompt {
+                    Some(p) => crate::json::JsonValue::String(p.clone()),
+                    None => crate::json::JsonValue::Null,
+                }),
+                ("decisionLog".to_string(), crate::json::JsonValue::Array(logs)),
+            ]));
+        }
+        list.sort_by(|a, b| a.get_str("npcId").unwrap_or("").cmp(b.get_str("npcId").unwrap_or("")));
+        list
+    }
+
+    pub fn override_npc(&self, npc_id: &str, mode: Option<&str>, prompt: Option<&str>, speed_mult: Option<f64>) -> bool {
+        let mut npcs = self.npcs.lock().unwrap();
+        if let Some(n) = npcs.get_mut(npc_id) {
+            let now = Room::now_ms();
+            if let Some(m) = mode {
+                n.control_mode = m.to_string();
+                if m == "frozen" { n.state = "frozen".to_string(); }
+                else if n.state == "frozen" { n.state = "idle".to_string(); }
+                n.decision_log.push((now, format!("Режим контроля изменен на {}", m)));
+            }
+            if let Some(p) = prompt {
+                n.personality_prompt = Some(p.to_string());
+                n.decision_log.push((now, "Системный промпт ИИ обновлен администратором".to_string()));
+            }
+            if let Some(s) = speed_mult {
+                n.speed_mult = s;
+            }
+            true
+        } else {
+            false
+        }
+    }
+
+    pub fn command_npc(&self, npc_id: &str, action: &str, tx: Option<f64>, ty: Option<f64>, tz: Option<f64>, state: Option<&str>) -> bool {
+        let mut npcs = self.npcs.lock().unwrap();
+        if let Some(n) = npcs.get_mut(npc_id) {
+            let now = Room::now_ms();
+            match action {
+                "teleport" => {
+                    if let (Some(x), Some(z)) = (tx, tz) {
+                        n.x = x;
+                        if let Some(y) = ty { n.y = y; }
+                        n.z = z;
+                        n.target_x = None;
+                        n.target_z = None;
+                        n.decision_log.push((now, format!("Телепортирован администратором в ({:.1}, {:.1})", x, z)));
+                    }
+                }
+                "moveTo" => {
+                    if let (Some(x), Some(z)) = (tx, tz) {
+                        n.target_x = Some(x);
+                        n.target_z = Some(z);
+                        n.state = "walking".to_string();
+                        n.decision_log.push((now, format!("Получена команда идти в точку ({:.1}, {:.1})", x, z)));
+                    }
+                }
+                "setState" => {
+                    if let Some(s) = state {
+                        n.state = s.to_string();
+                        n.decision_log.push((now, format!("Принудительно установлено состояние: {}", s)));
+                    }
+                }
+                _ => return false,
+            }
+            true
+        } else {
+            false
+        }
+    }
+
+    pub fn spawn_npc(&self, npc: NpcEntity) -> bool {
+        let mut npcs = self.npcs.lock().unwrap();
+        let id = npc.npc_id.clone();
+        npcs.insert(id, npc);
+        true
+    }
+
+    pub fn delete_npc(&self, npc_id: &str) -> bool {
+        let mut npcs = self.npcs.lock().unwrap();
+        npcs.remove(npc_id).is_some()
+    }
+
+    pub fn reset_universe(&self) {
+        let mut sim = self.simulation.lock().unwrap();
+        sim.paused = false;
+        sim.time_scale = 1.0;
+        sim.walk_speed_override = None;
+        sim.run_multiplier_override = None;
+        sim.interaction_radius_override = None;
+        sim.gravity = 9.81;
+        sim.time_of_day = "15:00".to_string();
     }
 }

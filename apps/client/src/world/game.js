@@ -29,6 +29,9 @@ export class Game {
     this.metricsTimer = 0;
     this.frames = 0;
     this.frameTime = 0;
+    this.frameDeltas = [];
+    this.fpsLow1Pct = 60;
+    this.currentFrameTimeMs = 16.6;
     this.lastTick = -1;
     this.yaw = 0;
     this.pitch = 0;
@@ -384,6 +387,12 @@ export class Game {
           ),
           buffer: new SnapshotBuffer(),
         };
+        other.root.position.set(
+          player.position.x,
+          player.position.y,
+          player.position.z,
+        );
+        other.root.rotation.y = player.yawRad;
         this.others.set(player.playerId, other);
         this.hydrateActors();
         this.localArt?.applyActors();
@@ -1161,11 +1170,25 @@ export class Game {
     this.metricsTimer += dt;
     this.frames++;
     this.frameTime += elapsed;
+    this.currentFrameTimeMs = Math.round(elapsed * 1000 * 10) / 10;
+    this.frameDeltas.push(elapsed);
+    if (this.frameDeltas.length > 120) this.frameDeltas.shift();
     if (this.statsTimer > 0.4) {
       this.fps = Math.round(this.frames / this.frameTime);
+      if (this.frameDeltas.length > 10) {
+        const sorted = [...this.frameDeltas].sort((a, b) => a - b);
+        const idx = Math.floor(sorted.length * 0.99);
+        const worstDelta = sorted[Math.min(idx, sorted.length - 1)];
+        this.fpsLow1Pct = worstDelta > 0 ? Math.round(1 / worstDelta) : this.fps;
+      }
       const r = this.resources.metrics;
+      const net = this.adapter.getNetworkStats?.() || {};
       this.onUpdate({
         fps: this.fps,
+        fpsLow1Pct: this.fpsLow1Pct,
+        frameTimeMs: this.currentFrameTimeMs,
+        pingRttMs: net.pingRttMs || 0,
+        jitterMs: net.jitterMs || 0,
         calls: this.renderer.info.render.calls,
         triangles: this.renderer.info.render.triangles,
         position: this.player.position.toArray(),
@@ -1227,6 +1250,23 @@ export class Game {
           fps: Math.min(240, Math.max(0, this.fps || 0)),
         }),
       );
+      const net = this.adapter.getNetworkStats?.() || {};
+      const heapBytes = (typeof performance !== "undefined" && performance.memory?.usedJSHeapSize) || 0;
+      this.adapter.sendClientTelemetry?.({
+        fps: Math.min(240, Math.max(0, this.fps || 0)),
+        fpsLow1Pct: Math.min(240, Math.max(0, this.fpsLow1Pct || 0)),
+        frameTimeMs: this.currentFrameTimeMs || 16.6,
+        pingRttMs: net.pingRttMs || 0,
+        jitterMs: net.jitterMs || 0,
+        renderedEntities: this.actors.size + (this.others.size || 0),
+        activeDrawCalls: this.renderer.info.render.calls || 0,
+        triangles: this.renderer.info.render.triangles || 0,
+        heapMemoryMb: Math.round((heapBytes / 1048576) * 10) / 10,
+        uptimeSec: net.uptimeSec || 0,
+        rxBitrateKbps: net.rxKbps || 0,
+        txBitrateKbps: net.txKbps || 0,
+        locationId: this.locationId || "reading-room-main",
+      });
       if (r.physical > 200 * 1048576 && this.renderer.getPixelRatio() > 0.75) {
         this.renderer.setPixelRatio(0.75);
         this.onError("Снижено разрешение: давление на память ресурсов.");

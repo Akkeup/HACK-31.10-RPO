@@ -28,10 +28,17 @@ export class DiscoveryAdapter {
     this.listeners = new Set();
     this.readyListeners = new Set();
     this.statusListeners = new Set();
+    this.adminListeners = new Set();
     this.pending = new Map();
     this.commands = new Map();
     this.clockOffsetMs = 0;
     this.pingSent = new Map();
+    this.pingRttMs = 0;
+    this.jitterMs = 0;
+    this.lastRtt = 0;
+    this.rxBytes = 0;
+    this.txBytes = 0;
+    this.connectedAt = Date.now();
     this.role = "player";
     this.closed = false;
     this.ready = false;
@@ -184,7 +191,10 @@ export class DiscoveryAdapter {
           const openSession = allSessions.find(
             (s) =>
               s.worldId === worldId &&
-              (s.status === "ACTIVE" || s.status === "WAITING_FOR_PLAYERS") &&
+              (s.status?.toLowerCase() === "active" ||
+                s.status?.toLowerCase() === "waiting" ||
+                s.status === "ACTIVE" ||
+                s.status === "WAITING_FOR_PLAYERS") &&
               (s.players?.length || 0) < (s.maxPlayers || 5),
           );
           if (openSession?.sessionId) {
@@ -279,6 +289,7 @@ export class DiscoveryAdapter {
       try {
         if (typeof e.data !== "string")
           throw Error("Binary WebSocket не поддерживается");
+        this.rxBytes += e.data.length;
         const event = parseEvent(e.data);
         if (event.serverSeq <= this.serverSeq) {
           return;
@@ -295,11 +306,19 @@ export class DiscoveryAdapter {
         if (event.type === "server.pong") {
           const sent = this.pingSent.get(event.payload.nonce);
           if (sent !== undefined) {
+            const now = Date.now();
+            const rtt = Math.max(0, now - sent);
+            const prev = this.pingRttMs || rtt;
+            this.jitterMs = Math.round(Math.abs(rtt - prev) * 10) / 10;
+            this.pingRttMs = rtt;
             const sample =
-              Date.parse(event.serverTime) - (sent + Date.now()) / 2;
+              Date.parse(event.serverTime) - (sent + now) / 2;
             this.clockOffsetMs = this.clockOffsetMs * 0.5 + sample * 0.5;
             this.pingSent.delete(event.payload.nonce);
           }
+        }
+        if (event.type === "admin.telemetry.snapshot") {
+          for (const fn of this.adminListeners) fn(event.payload);
         }
         const waiting = this.commands.get(event.requestId);
         if (
@@ -433,12 +452,47 @@ export class DiscoveryAdapter {
     this.send(command("client.ping", { nonce }));
   }
   send(packet) {
-    validate("client-message", packet);
+    if (!packet.type?.startsWith("admin.") && packet.type !== "client.telemetry") {
+      validate("client-message", packet);
+    }
     if (
       this.socket?.readyState === WebSocket.OPEN &&
       this.socket.bufferedAmount < 256 * 1024
-    )
-      this.socket.send(JSON.stringify(packet));
+    ) {
+      const data = JSON.stringify(packet);
+      this.txBytes += data.length;
+      this.socket.send(data);
+    }
+  }
+  onAdminTelemetry(fn) {
+    this.adminListeners.add(fn);
+    return () => this.adminListeners.delete(fn);
+  }
+  subscribeAdminTelemetry(fn) {
+    if (fn) this.adminListeners.add(fn);
+    this.send(command("admin.telemetry.subscribe", { subscribe: true }));
+  }
+  sendAdminUniverseControl(payload) {
+    this.send(command("admin.universe.control", payload));
+  }
+  sendAdminAgentOverride(payload) {
+    this.send(command("admin.agent.override", payload));
+  }
+  sendAdminAgentCommand(payload) {
+    this.send(command("admin.agent.command", payload));
+  }
+  sendClientTelemetry(payload) {
+    this.send(command("client.telemetry", payload));
+  }
+  getNetworkStats() {
+    const elapsedSec = Math.max(1, (Date.now() - this.connectedAt) / 1000);
+    return {
+      pingRttMs: this.pingRttMs,
+      jitterMs: this.jitterMs,
+      rxKbps: Math.round(((this.rxBytes * 8) / elapsedSec / 1024) * 10) / 10,
+      txKbps: Math.round(((this.txBytes * 8) / elapsedSec / 1024) * 10) / 10,
+      uptimeSec: Math.round(elapsedSec),
+    };
   }
   sendInput(input, yawRad, running = false) {
     if (!this.ready || !this.interest) return;
