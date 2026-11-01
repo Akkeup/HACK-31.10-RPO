@@ -237,12 +237,28 @@ export class Game {
     const npc = this.npcs.get(id);
     if (frozen) {
       this.localDialogNpcIds.add(id);
-      if (npc && !this.localDialogAnchors.has(id))
+      if (npc && !this.localDialogAnchors.has(id)) {
         this.localDialogAnchors.set(id, npc.root.position.clone());
+      }
+      const clock =
+        this.serverTime +
+        (performance.now() - this.serverTimeReceivedAt) / 1000;
+      if (npc?.visualPatrol) {
+        npc.visualPatrol.freeze(clock);
+        npc.dialogFrozen = true;
+      }
     } else {
       this.localDialogNpcIds.delete(id);
       this.localDialogAnchors.delete(id);
-      if (npc) npc.dialogAnchor = null;
+      const clock =
+        this.serverTime +
+        (performance.now() - this.serverTimeReceivedAt) / 1000;
+      if (npc) {
+        if (npc.dialogFrozen) npc.visualPatrol?.resume(clock);
+        npc.dialogFrozen = false;
+        npc.dialogAnchor = null;
+        npc.root.userData.moveSpeed = 0;
+      }
     }
   }
   setActorName(root, name) {
@@ -684,7 +700,7 @@ export class Game {
               : npc.position
           : npc.position;
         this.ensureNpcVisualPatrol(actor, npc, currentRoom, visualPosition);
-      } else {
+      } else if (!this.localDialogNpcIds.has(npc.npcId)) {
         actor.visualPatrol = null;
         actor.visualPatrolKey = null;
       }
@@ -1349,6 +1365,7 @@ export class Game {
       const dialogTarget = this.localDialogNpcIds.has(npc.id)
         ? { x: this.authoritative.x, z: this.authoritative.z }
         : this.dialogTargets.get(npc.id);
+      const dialogueFrozen = this.localDialogNpcIds.has(npc.id);
       const previous = root.position.clone();
       const patrolClock =
         this.serverTime + (now - this.serverTimeReceivedAt) / 1000;
@@ -1360,10 +1377,10 @@ export class Game {
           )
         : null;
       if (localPatrol) {
-        if (dialogTarget && !npc.dialogFrozen) {
+        if ((dialogueFrozen || dialogTarget) && !npc.dialogFrozen) {
           localPatrol.freeze(patrolClock);
           npc.dialogFrozen = true;
-        } else if (!dialogTarget && npc.dialogFrozen) {
+        } else if (!dialogueFrozen && !dialogTarget && npc.dialogFrozen) {
           localPatrol.resume(patrolClock);
           npc.dialogFrozen = false;
         }
@@ -1384,14 +1401,19 @@ export class Game {
         npc.dialogAnchor = null;
         root.position.fromArray(pose.position);
       }
-      const measuredSpeed =
-        dt > 0 ? Math.min(2, previous.distanceTo(root.position) / dt) : 0;
-      root.userData.moveSpeed = THREE.MathUtils.damp(
-        root.userData.moveSpeed || 0,
-        measuredSpeed,
-        measuredSpeed > (root.userData.moveSpeed || 0) ? 9 : 5,
-        dt,
-      );
+      const measuredSpeed = dialogueFrozen
+        ? 0
+        : dt > 0
+          ? Math.min(2, previous.distanceTo(root.position) / dt)
+          : 0;
+      root.userData.moveSpeed = dialogueFrozen
+        ? 0
+        : THREE.MathUtils.damp(
+            root.userData.moveSpeed || 0,
+            measuredSpeed,
+            measuredSpeed > (root.userData.moveSpeed || 0) ? 9 : 5,
+            dt,
+          );
       let target;
       if (dialogTarget) {
         target = Math.atan2(
@@ -1475,8 +1497,11 @@ export class Game {
         const body = actor.userData.body;
         if (!body && !actor.userData.localArt) continue;
         const seated = actor.userData.seated;
-        const moving =
-          id === "self" ? length : actor.userData.moveSpeed > 0.025;
+        const dialogueFrozen =
+          actor.userData.actorKind === "npc" &&
+          this.localDialogNpcIds.has(actor.userData.npcProfile?.npcId);
+        const moving = !dialogueFrozen &&
+          (id === "self" ? length : actor.userData.moveSpeed > 0.025);
         if (
           this.localArt?.updateActor(
             actor,
@@ -1490,6 +1515,7 @@ export class Game {
         }
         if (
           actor.userData.mixer &&
+          !dialogueFrozen &&
           !actor.userData.seated &&
           this.configs.render.animationEnabled
         ) {
