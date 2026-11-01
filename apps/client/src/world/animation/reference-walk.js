@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import walk from "./polyfork-walk.json" with { type: "json" };
+import idle from "./polyfork-idle.json" with { type: "json" };
 import { heldClip } from "./polyfork-carry.js";
 
 // The reference viewer plays this clip at 1x. At the academy's 1.1m/s patrol
@@ -7,6 +8,14 @@ import { heldClip } from "./polyfork-carry.js";
 export const REFERENCE_WALK_SPEED = 1.1;
 
 export function referenceWalk(model) {
+  return referenceClip(model, "Walk", walk);
+}
+
+export function referenceIdle(model) {
+  return referenceClip(model, "Idle", idle);
+}
+
+function referenceClip(model, name, data) {
   const bones = new Map();
   model.traverse((node) => {
     if (node.isBone) bones.set(node.name, node);
@@ -19,7 +28,7 @@ export function referenceWalk(model) {
       break;
     }
   }
-  const source = heldClip(walk, "Walk", carry);
+  const source = heldClip(data, name, carry);
   const tracks = [];
   for (const [name, values] of Object.entries(source.tracks)) {
     // The reference viewer drives 20 body bones; its toe joints stay at rest.
@@ -42,5 +51,5 @@ export function referenceWalk(model) {
       new THREE.VectorKeyframeTrack("Hips.position", source.times, values),
     );
   }
-  return new THREE.AnimationClip("Polyfork Walk", -1, tracks);
+  return new THREE.AnimationClip("Polyfork " + name, -1, tracks);
 }

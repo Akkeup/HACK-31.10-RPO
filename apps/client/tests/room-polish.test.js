@@ -94,7 +94,7 @@ test("room shelf opens its lesson via the v2 library contract, including after t
   }
 });
 
-test("reference gait is stable at rest, alternates legs and restores the bind pose", () => {
+test("reference gait alternates legs and restores the bind pose when animation is off", () => {
   const model = new THREE.Group();
   for (const name of [
     "LeftUpLeg",
@@ -109,14 +109,14 @@ test("reference gait is stable at rest, alternates legs and restores the bind po
     model.add(bone);
   }
   const gait = new HumanoidGait(model);
-  for (let i = 0; i < 120; i++) gait.update("idle", 0, 1 / 60);
+  for (let i = 0; i < 120; i++) gait.update("idle", 0, 1 / 60, false);
   for (const { bone, rest } of gait.joints.values())
     assert.ok(bone.quaternion.equals(rest));
   for (let i = 0; i < 20; i++) gait.update("walking", 1.1, 1 / 60);
   const left = model.getObjectByName("LeftUpLeg").rotation.x;
   const right = model.getObjectByName("RightUpLeg").rotation.x;
   assert.ok(Math.abs(left) > 0.05 && left * right < 0);
-  for (let i = 0; i < 240; i++) gait.update("idle", 0, 1 / 60);
+  for (let i = 0; i < 240; i++) gait.update("idle", 0, 1 / 60, false);
   for (const { bone, rest } of gait.joints.values())
     assert.ok(bone.quaternion.angleTo(rest) < 1e-6);
   assert.deepEqual(model.position.toArray(), [0, 0, 0]);

@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import {
   referenceWalk,
+  referenceIdle,
   REFERENCE_WALK_SPEED,
 } from "./animation/reference-walk.js";
 
@@ -13,11 +14,13 @@ export class HumanoidGait {
     this.origin = model.position.clone();
     this.seated = 0;
     this.time = 0;
+    this.idleTime = 0;
     this.weight = 0;
+    this.idleWeight = 0;
     this.joints = new Map();
     const clip = referenceWalk(model);
     this.duration = clip.duration;
-    this.bindings = clip.tracks.map((track) => {
+    const bind = (track) => {
       const [name, property] = track.name.split(".");
       const bone = model.getObjectByName(name);
       if (!this.joints.has(name))
@@ -27,7 +30,11 @@ export class HumanoidGait {
           position: bone.position.clone(),
         });
       return { bone, property, sample: track.createInterpolant() };
-    });
+    };
+    this.bindings = clip.tracks.map(bind);
+    const idle = referenceIdle(model);
+    this.idleDuration = idle.duration;
+    this.idleBindings = idle.tracks.map(bind);
     this.sitting = new Map();
     for (const [name, joint] of this.joints) {
       const angle = name.endsWith("UpLeg")
@@ -67,13 +74,20 @@ export class HumanoidGait {
     this.weight = enabled
       ? THREE.MathUtils.damp(this.weight, walking ? 1 : 0, 12, dt)
       : 0;
+    this.idleWeight = enabled
+      ? THREE.MathUtils.damp(this.idleWeight, sitting ? 0 : 1, 12, dt)
+      : 0;
     if (this.weight < 1e-5) this.weight = 0;
     if (1 - this.weight < 1e-5) this.weight = 1;
+    if (this.idleWeight < 1e-5) this.idleWeight = 0;
+    if (1 - this.idleWeight < 1e-5) this.idleWeight = 1;
     if (this.seated < 1e-5) this.seated = 0;
     if (1 - this.seated < 1e-5) this.seated = 1;
     if (walking && this.duration > 0)
       this.time =
         (this.time + (dt * speed) / REFERENCE_WALK_SPEED) % this.duration;
+    if (enabled && !sitting && this.idleDuration > 0)
+      this.idleTime = (this.idleTime + dt) % this.idleDuration;
 
     for (const joint of this.joints.values()) {
       joint.bone.quaternion.copy(joint.rest);
@@ -82,23 +96,27 @@ export class HumanoidGait {
     // Same quaternion slerp / linear hip interpolation as AnimationMixer.
     // Direct sampling keeps idle/sitting blends independent of previous poses
     // and allocates nothing inside the animation loop.
-    if (this.weight)
-      for (const binding of this.bindings) {
-        const values = binding.sample.evaluate(this.time);
-        if (binding.property === "quaternion")
-          binding.bone.quaternion.slerp(
-            this.rotation.fromArray(values),
-            this.weight,
-          );
-        else
-          binding.bone.position.lerp(
-            this.position.fromArray(values),
-            this.weight,
-          );
-      }
+    if (this.weight < 1)
+      this.sample(this.idleBindings, this.idleTime, this.idleWeight);
+    this.sample(this.bindings, this.time, this.weight);
     if (this.seated)
-      for (const [name, pose] of this.sitting)
-        this.joints.get(name).bone.quaternion.slerp(pose, this.seated);
+      for (const [name, joint] of this.joints) {
+        joint.bone.quaternion.slerp(
+          this.sitting.get(name) || joint.rest,
+          this.seated,
+        );
+        joint.bone.position.lerp(joint.position, this.seated);
+      }
     this.model.position.y = this.origin.y - 0.43 * this.seated;
+  }
+
+  sample(bindings, time, weight) {
+    if (!weight) return;
+    for (const binding of bindings) {
+      const values = binding.sample.evaluate(time);
+      if (binding.property === "quaternion")
+        binding.bone.quaternion.slerp(this.rotation.fromArray(values), weight);
+      else binding.bone.position.lerp(this.position.fromArray(values), weight);
+    }
   }
 }

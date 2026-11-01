@@ -8,6 +8,7 @@ import { HumanoidGait } from "../src/world/humanoid-gait.js";
 import { LocalArt } from "../src/world/local-art.js";
 import config from "../src/config/local-art.json" with { type: "json" };
 import walk from "../src/world/animation/polyfork-walk.json" with { type: "json" };
+import idle from "../src/world/animation/polyfork-idle.json" with { type: "json" };
 
 const keys = [
   "player",
@@ -152,11 +153,11 @@ test("reference Walk has the same pose and cadence at 30, 60 and 144 FPS", async
   assert.ok(Math.abs(gait.time - (1 % gait.duration)) < 1e-12);
 });
 
-test("reference animation returns every bone to rest and respects animation-off and sitting", async () => {
+test("reference animation respects animation-off and sitting", async () => {
   const model = await actor("player");
   const gait = new HumanoidGait(model);
   for (let i = 0; i < 120; i++) gait.update("walking", 1.1, 1 / 60);
-  for (let i = 0; i < 120; i++) gait.update("idle", 0, 1 / 60);
+  for (let i = 0; i < 120; i++) gait.update("idle", 0, 1 / 60, false);
   for (const joint of gait.joints.values()) {
     near(joint.bone.quaternion.toArray(), joint.rest.toArray());
     near(joint.bone.position.toArray(), joint.position.toArray());
@@ -174,4 +175,123 @@ test("reference animation returns every bone to rest and respects animation-off 
   ]);
   gait.update("idle", 0, 1 / 60, false);
   near(model.position.toArray(), gait.origin.toArray());
+});
+
+test("reference Idle preserves the original 299 samples from the same viewer", () => {
+  assert.equal(
+    createHash("sha256").update(JSON.stringify(idle)).digest("hex"),
+    "845b6f42143cb5f64eed7a32c64d43c1dfaa6ba8452af9bfcdda3ea39e1bf9a3",
+  );
+  assert.equal(idle.times.length, 299);
+  assert.equal(idle.times.at(-1), 9.9333);
+});
+
+test("Idle reproduces the reference on all seven assets without moving world coordinates", async () => {
+  for (const key of keys) {
+    const model = await actor(key);
+    const root = new THREE.Group();
+    root.position.set(80, 0, 84);
+    root.add(model);
+    const gait = new HumanoidGait(model);
+    const reference = model.clone(true);
+    const bodyBones = [
+      "Hips",
+      "Spine",
+      "Spine1",
+      "Spine2",
+      "Neck",
+      "Head",
+      "LeftUpLeg",
+      "LeftLeg",
+      "LeftFoot",
+      "RightUpLeg",
+      "RightLeg",
+      "RightFoot",
+    ];
+    const tracks = bodyBones.map(
+      (name) =>
+        new THREE.QuaternionKeyframeTrack(
+          name + ".quaternion",
+          idle.times,
+          idle.tracks[name],
+        ),
+    );
+    const hip = model.getObjectByName("Hips").position.clone();
+    tracks.push(
+      new THREE.VectorKeyframeTrack(
+        "Hips.position",
+        idle.times,
+        idle.hips.map(
+          (value, i) => hip.getComponent(i % 3) + (value * hip.y) / 0.95,
+        ),
+      ),
+    );
+    const mixer = new THREE.AnimationMixer(reference);
+    mixer
+      .clipAction(new THREE.AnimationClip("reference Idle", -1, tracks))
+      .play();
+    gait.idleWeight = 1;
+    for (const time of [0, 0.517, 2, 4.21, 6.9, 9.91]) {
+      gait.idleTime = time;
+      gait.update("idle", 0, 0);
+      mixer.setTime(time);
+      for (const name of bodyBones)
+        near(
+          model.getObjectByName(name).quaternion.toArray(),
+          reference.getObjectByName(name).quaternion.toArray(),
+        );
+      near(
+        model.getObjectByName("Hips").position.toArray(),
+        reference.getObjectByName("Hips").position.toArray(),
+      );
+      near(root.position.toArray(), [80, 0, 84]);
+      near(model.position.toArray(), gait.origin.toArray());
+    }
+    mixer.stopAllAction();
+    mixer.uncacheRoot(reference);
+  }
+});
+
+test("stopping crossfades into Idle, while seated and animation-off poses remain still", async () => {
+  const model = await actor("player");
+  const gait = new HumanoidGait(model);
+  for (let i = 0; i < 120; i++) gait.update("walking", 1.1, 1 / 60);
+  const previous = [...gait.joints.values()].map(({ bone }) =>
+    bone.quaternion.clone().normalize(),
+  );
+  for (let i = 0; i < 90; i++) {
+    gait.update("idle", 0, 1 / 60);
+    [...gait.joints.values()].forEach(({ bone }, index) => {
+      const next = bone.quaternion.clone().normalize();
+      assert.ok(
+        previous[index].angleTo(next) < 0.4,
+        "no pose jump at the walk/idle transition",
+      );
+      previous[index].copy(next);
+    });
+  }
+  assert.equal(gait.weight, 0);
+  const oldHead = model.getObjectByName("Head").quaternion.clone();
+  for (let i = 0; i < 90; i++) gait.update("idle", 0, 1 / 60);
+  assert.ok(
+    oldHead.angleTo(
+      model.getObjectByName("Head").quaternion.clone().normalize(),
+    ) > 0.01,
+  );
+  for (let i = 0; i < 180; i++) gait.update("sitting", 0, 1 / 60);
+  const seated = [...gait.joints.values()].map(({ bone }) => [
+    ...bone.quaternion.toArray(),
+    ...bone.position.toArray(),
+  ]);
+  const idleTime = gait.idleTime;
+  for (let i = 0; i < 90; i++) gait.update("sitting", 0, 1 / 60);
+  assert.equal(gait.idleTime, idleTime);
+  [...gait.joints.values()].forEach(({ bone }, i) =>
+    near([...bone.quaternion.toArray(), ...bone.position.toArray()], seated[i]),
+  );
+  gait.update("idle", 0, 1 / 60, false);
+  for (const joint of gait.joints.values()) {
+    near(joint.bone.quaternion.toArray(), joint.rest.toArray());
+    near(joint.bone.position.toArray(), joint.position.toArray());
+  }
 });
