@@ -3,6 +3,7 @@ tools/tls_proxy.py: Lightweight standard-library TLS terminator for Discovery.
 Proxies HTTPS and WSS (WebSocket Secure) connections to internal HTTP/WS backend.
 """
 import ssl
+import time
 import socket
 import threading
 
@@ -39,10 +40,17 @@ def _handle_connection(raw_client, client_addr, target_host, target_port, ssl_co
             pass
         return
 
-    try:
-        backend_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        backend_sock.connect((target_host, target_port))
-    except Exception as e:
+    backend_sock = None
+    for _ in range(30):
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.connect((target_host, target_port))
+            backend_sock = s
+            break
+        except Exception:
+            time.sleep(0.08)
+
+    if not backend_sock:
         try:
             ssl_client.close()
         except Exception:
