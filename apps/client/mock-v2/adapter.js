@@ -552,7 +552,7 @@ export class LocalMockAdapter extends DiscoveryAdapter {
           if (current) {
             if (current.moduleId !== b.moduleId)
               this.fail("OUT_OF_RANGE", "Полка находится в другом кабинете.");
-            this.near({ x: current.center.x - 4.75, z: current.center.z + 1 });
+            this.near({ x: current.center.x - 1.175, z: current.center.z + 1.1 });
           } else {
             const shelf = this.publicConfig.values.readingRoom.shelves.find(
               (s) => s.bookIds.includes(b.bookId),

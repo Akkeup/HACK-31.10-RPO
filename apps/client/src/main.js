@@ -110,6 +110,10 @@ async function start() {
         const { roomById } = await import("./world/academy-locations.js");
         const room = roomById(roomId);
         if (room) {
+          // Wait until the current streamed interest has been decoded.  Without
+          // this, a dev deep link could replace the location while the hall
+          // chunk was being rebuilt and leave a permanent loading overlay.
+          await game.resources.chain;
           adapter.user.player.position = {
             x: room.door.x,
             y: 0,

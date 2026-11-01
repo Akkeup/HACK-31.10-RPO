@@ -136,7 +136,7 @@ test('room movement stops at walls and configured desks', async () => {
     const room = ACADEMY_ROOMS[0];
     move(a, room.door);
     await a.enterLocation(room.roomId);
-    move(a, { x: room.center.x, y: 0, z: 75 });
+    move(a, { x: room.center.x, y: 0, z: room.bounds.minZ + 2 });
     for (let i = 0; i < 60; i++) { a.inputs = [0, -1]; a.lastInputAt = a.now(); a.advance(50); }
     assert.equal(a.user.player.position.z, room.bounds.minZ);
     move(a, { x: room.center.x, y: 0, z: room.notebook.z });

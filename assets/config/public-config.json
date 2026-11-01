@@ -72,27 +72,27 @@
             "teacherId": "teacher-mathematics",
             "examinerId": "examiner-mathematics",
             "teacherPosition": {
-              "x": 70.7,
+              "x": 71.3,
               "y": 0,
-              "z": 69
+              "z": 55.5
             },
             "examinerPosition": {
-              "x": 80,
+              "x": 71.3,
               "y": 0,
-              "z": 87
+              "z": 57.5
             },
             "examinerSeat": {
               "seatId": "seat-math-basics",
               "position": {
-                "x": 69,
+                "x": 69.575,
                 "y": 0,
-                "z": 76
+                "z": 58.15
               },
               "yawRad": 0,
               "exitPosition": {
                 "x": 69,
                 "y": 0,
-                "z": 78
+                "z": 60.1
               }
             }
           },
@@ -101,27 +101,27 @@
             "teacherId": "teacher-informatics",
             "examinerId": "examiner-informatics",
             "teacherPosition": {
-              "x": 77.7,
+              "x": 78.3,
               "y": 0,
-              "z": 69
+              "z": 55.5
             },
             "examinerPosition": {
-              "x": 80,
+              "x": 78.3,
               "y": 0,
-              "z": 87
+              "z": 57.5
             },
             "examinerSeat": {
               "seatId": "seat-informatics-basics",
               "position": {
-                "x": 76,
+                "x": 76.575,
                 "y": 0,
-                "z": 76
+                "z": 58.15
               },
               "yawRad": 0,
               "exitPosition": {
                 "x": 76,
                 "y": 0,
-                "z": 78
+                "z": 60.1
               }
             }
           },
@@ -130,27 +130,27 @@
             "teacherId": "teacher-history",
             "examinerId": "examiner-history",
             "teacherPosition": {
-              "x": 84.7,
+              "x": 85.3,
               "y": 0,
-              "z": 69
+              "z": 55.5
             },
             "examinerPosition": {
-              "x": 80,
+              "x": 85.3,
               "y": 0,
-              "z": 87
+              "z": 57.5
             },
             "examinerSeat": {
               "seatId": "seat-history-basics",
               "position": {
-                "x": 83,
+                "x": 83.575,
                 "y": 0,
-                "z": 76
+                "z": 58.15
               },
               "yawRad": 0,
               "exitPosition": {
                 "x": 83,
                 "y": 0,
-                "z": 78
+                "z": 60.1
               }
             }
           },
@@ -159,27 +159,27 @@
             "teacherId": "teacher-flags",
             "examinerId": "examiner-flags",
             "teacherPosition": {
-              "x": 91.7,
+              "x": 92.3,
               "y": 0,
-              "z": 69
+              "z": 55.5
             },
             "examinerPosition": {
-              "x": 80,
+              "x": 92.3,
               "y": 0,
-              "z": 87
+              "z": 57.5
             },
             "examinerSeat": {
               "seatId": "seat-flags-demo",
               "position": {
-                "x": 90,
+                "x": 90.575,
                 "y": 0,
-                "z": 76
+                "z": 58.15
               },
               "yawRad": 0,
               "exitPosition": {
                 "x": 90,
                 "y": 0,
-                "z": 78
+                "z": 60.1
               }
             }
           }

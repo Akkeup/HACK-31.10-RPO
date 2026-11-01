@@ -232,6 +232,16 @@ export class Game {
     this.syncReadingLabels();
     this.applyWorld();
   }
+  updateLocationFromPosition() {
+    const room = roomByPosition(this.authoritative);
+    const next = room?.roomId || ACADEMY_HUB;
+    if (next === this.locationId) return;
+    this.locationId = next;
+    this.academyArt?.setLocation(next);
+    this.syncNpcPlacement();
+    this.syncReadingLabels();
+    this.applyWorld();
+  }
   syncNpcPlacement() {
     const currentRoom = roomById(this.locationId);
     if (currentRoom) {
@@ -343,13 +353,16 @@ export class Game {
           this.seatTransitionUntil =
             performance.now() + this.configs.firstPerson.seatTransitionMs;
         }
-        if (this.locationId === ACADEMY_HUB) {
-          this.authoritative.set(
-            player.position.x,
-            player.position.y,
-            player.position.z,
-          );
-        }
+        // Both mock and real transport accept movement input in classroom zones.
+        // Retain local prediction, correcting only meaningful server divergence so
+        // regular snapshots cannot pull a walking player back every 100 ms.
+        const serverPosition = new THREE.Vector3(
+          player.position.x,
+          player.position.y,
+          player.position.z,
+        );
+        if (this.authoritative.distanceTo(serverPosition) > 0.42)
+          this.authoritative.copy(serverPosition);
         continue;
       }
       ids.add(player.playerId);
@@ -699,9 +712,9 @@ export class Game {
                 kind: "shelf",
                 name: `Полка · ${current.subject}`,
                 position: {
-                  x: current.center.x - 4.75,
+                  x: current.center.x - 1.175,
                   y: 0,
-                  z: current.center.z + 1,
+                  z: current.center.z + 1.1,
                 },
                 shelf,
               },
@@ -894,8 +907,7 @@ export class Game {
         (root) =>
           (root.visible =
             !root.userData.presentationHidden &&
-            this.modelsVisible !== false &&
-            this.locationId === ACADEMY_HUB),
+            this.modelsVisible !== false),
       );
     this.scene.traverse((node) => {
       if (node.name.startsWith("lod-far")) node.visible = false;
@@ -976,14 +988,13 @@ export class Game {
         this.authoritative.z = Math.max(0.5, Math.min(319.5, nextZ));
       }
     }
+    // Zone membership follows the continuous world coordinates.  Doors do not
+    // replace the scene or rewrite the player's position.
+    this.updateLocationFromPosition();
     this.inputTimer += dt;
     if (this.inputTimer >= 0.05) {
       this.inputTimer %= 0.05;
-      if (currentRoom) {
-        this.adapter.sendInput([0, 0], this.yaw, false);
-      } else {
-        this.adapter.sendInput([x, z], this.yaw, running);
-      }
+      this.adapter.sendInput([x, z], this.yaw, running);
     }
     this.player.position.lerp(this.authoritative, 1 - Math.exp(-18 * dt));
     this.player.rotation.y = this.heading;

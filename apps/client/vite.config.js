@@ -38,27 +38,31 @@ export default defineConfig(({ mode }) => {
       });
 
     if (transport === "real") return;
-    const data = JSON.parse(
-      await readFile(resolve("mock-v2/published.json"), "utf8"),
-    );
-    const resources = new Map(
-      [...data.interest.chunks, ...data.interest.assets].map((d) => {
-        const ext = d.chunkId
-          ? "json"
-          : d.mediaType === "image/svg+xml"
-            ? "svg"
-            : "glb";
-        return [
-          `/demo/resources/${d.sha256}.${ext}`,
-          {
-            name: d.sha256 + "." + ext,
-            type: d.chunkId ? "application/json" : d.mediaType,
-          },
-        ];
-      }),
-    );
     server.middlewares.use(async (req, res, next) => {
       const pathname = new URL(req.url, "http://local").pathname;
+      if (!pathname.startsWith("/demo/resources/")) return next();
+      // The publisher changes content-addressed hashes. Reload this small
+      // manifest per request so an already running dev server can never serve
+      // Vite's HTML fallback for a newly published world resource.
+      const data = JSON.parse(
+        await readFile(resolve("mock-v2/published.json"), "utf8"),
+      );
+      const resources = new Map(
+        [...data.interest.chunks, ...data.interest.assets].map((d) => {
+          const ext = d.chunkId
+            ? "json"
+            : d.mediaType === "image/svg+xml"
+              ? "svg"
+              : "glb";
+          return [
+            `/demo/resources/${d.sha256}.${ext}`,
+            {
+              name: d.sha256 + "." + ext,
+              type: d.chunkId ? "application/json" : d.mediaType,
+            },
+          ];
+        }),
+      );
       const resource = resources.get(pathname);
       if (!resource) return next();
       try {
@@ -116,7 +120,7 @@ export default defineConfig(({ mode }) => {
                 protocolVersion: "2.0.0",
                 mode: "demo",
                 productionMultiplayer: false,
-                previewProfile: "competition-four-seat-draft",
+                previewProfile: "competition-five-seat-demo",
               }),
             });
           }

@@ -45,7 +45,7 @@ test("all room patrols walk at 1.1m/s, avoid furniture and stop near a learner",
               Math.abs(motion.position.z - c.z) >= c.hz + 0.25,
           );
       }
-      assert.ok(walked > 25);
+      assert.ok(walked > 12);
       const stopped = { ...motion.position };
       for (let i = 0; i < 40; i++) motion.tick(0.05, stopped, false);
       assert.deepEqual(motion.position, stopped);
@@ -71,7 +71,7 @@ test("each classroom has a 2x2 pupil grid with one notebook, solid desks and a c
     assert.equal(new Set(desks.map(({ x, z }) => `${x},${z}`)).size, 4);
     const interactive = desks.filter((desk) => desk.study);
     assert.equal(interactive.length, 1);
-    assert.equal(room.notebook.x, room.center.x + interactive[0].x);
+    assert.equal(room.notebook.x, room.center.x + interactive[0].x * 0.5);
     assert.equal(room.notebook.z, room.center.z + interactive[0].z);
     const objects = Game.prototype.readingObjects.call({
       locationId: room.roomId,
@@ -85,7 +85,7 @@ test("each classroom has a 2x2 pupil grid with one notebook, solid desks and a c
       assert.ok(
         room.colliders.some(
           (box) =>
-            box.x === room.center.x + desk.x &&
+            box.x === room.center.x + desk.x * 0.5 &&
             box.z === room.center.z + desk.z,
         ),
       );

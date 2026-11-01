@@ -412,10 +412,10 @@ impl GameManager {
     ) -> Result<(String, PositionDto), (u16, &'static str, &'static str)> {
         const HUB: &str = "reading-room-main";
         const ROOMS: [(&str, f64, f64, f64); 4] = [
-            ("room-mathematics", 69.0, 66.35, 120.0),
-            ("room-informatics", 76.0, 66.35, 152.0),
-            ("room-history", 83.0, 66.35, 184.0),
-            ("room-geography", 90.0, 66.35, 216.0),
+            ("room-mathematics", 69.0, 66.35, 69.0),
+            ("room-informatics", 76.0, 66.35, 76.0),
+            ("room-history", 83.0, 66.35, 83.0),
+            ("room-geography", 90.0, 66.35, 90.0),
         ];
 
         let mut rooms = self.rooms.lock().unwrap();
@@ -433,11 +433,11 @@ impl GameManager {
             let current = ROOMS.iter().find(|(id, _, _, _)| *id == player.location_id)
                 .ok_or((409, "ACTIVITY_CONFLICT", "Unknown current location"))?;
             let &(_, door_x, _, center_x) = current;
-            let exit_z = 85.55;
+            let exit_z = 64.9;
             if (player.x - center_x).hypot(player.z - exit_z) > 4.0 {
                 return Err((403, "FORBIDDEN", "Move to the classroom exit first"));
             }
-            (HUB.to_string(), door_x, 68.1, std::f64::consts::PI)
+            (HUB.to_string(), door_x, 66.7, std::f64::consts::PI)
         } else if let Some(&(id, door_x, door_z, center_x)) = target {
             if player.location_id != HUB {
                 return Err((409, "ACTIVITY_CONFLICT", "Leave the current classroom first"));
@@ -445,7 +445,7 @@ impl GameManager {
             if (player.x - door_x).hypot(player.z - door_z) > 4.0 {
                 return Err((403, "FORBIDDEN", "Move to the classroom door first"));
             }
-            (id.to_string(), center_x, 84.5, 0.0)
+            (id.to_string(), center_x, 64.1, 0.0)
         } else {
             return Err((422, "INVALID_REQUEST", "Unknown roomId"));
         };

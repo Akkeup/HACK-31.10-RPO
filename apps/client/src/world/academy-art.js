@@ -213,6 +213,9 @@ export class AcademyArt {
     for (const y of [0.8, 2.27])
       this.box(leaf, 0, y, -0.095, 2.18, 1.12, 0.04, 0x987450);
     this.box(leaf, -0.9, 1.4, -0.17, 0.27, 0.045, 0.08, 0xc4a15e);
+    // Move the content right while the group origin stays on the left hinge.
+    for (const child of leaf.children) child.position.x += 1.3;
+    leaf.position.x = -1.3;
     door.add(leaf);
     const fallback = [...leaf.children];
     for (const x of [-1.13, 1.13])
@@ -221,7 +224,7 @@ export class AcademyArt {
     this.modelSlots.push({
       key: "door",
       group: leaf,
-      x: 0,
+      x: 1.3,
       z: 0,
       rotationY: Math.PI,
       placeholder: fallback,
@@ -255,6 +258,9 @@ export class AcademyArt {
     for (const x of [-0.52, 0.52])
       this.box(leaf, x, 1.92, 0.005, 0.78, 1.46, 0.025, 0xc5b891);
     this.cylinder(leaf, 0.78, 1.45, 0.13, 0.055, 0.055, 0.035, 0xc5a464);
+    // Fallback and imported leaves share the same left-side hinge pivot.
+    for (const child of leaf.children) child.position.x += 1.05;
+    leaf.position.x = -1.05;
     group.add(leaf);
     const fallback = [...leaf.children];
     for (const x of [-1.13, 1.13])
@@ -263,7 +269,7 @@ export class AcademyArt {
     this.modelSlots.push({
       key: "door",
       group: leaf,
-      x: 0,
+      x: 1.05,
       z: 0,
       placeholder: fallback,
     });
@@ -746,6 +752,10 @@ export class AcademyArt {
   buildRoom(room) {
     const group = new THREE.Group();
     group.name = room.roomId;
+    // Compact classrooms sit directly behind the four hub doors.  The existing
+    // authored room kit remains reusable while its X footprint matches the
+    // 7m door cadence instead of overlapping adjacent classrooms.
+    group.scale.x = (room.size?.width || 13.2) / 13.2;
     this.wallShell(group, room);
     this.board(group, room);
     this.topicPanel(group, room);
