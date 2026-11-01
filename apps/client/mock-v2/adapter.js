@@ -418,13 +418,11 @@ export class LocalMockAdapter extends DiscoveryAdapter {
         this.fail("ACTIVITY_CONFLICT", "Сначала выйдите из кабинета.");
       this.near(room.door, 3.2);
       this.locationId = room.roomId;
-      this.user.player.position = clone(room.entry);
     } else if (roomId === ACADEMY_HUB) {
       const current = roomById(this.locationId);
       if (!current) return;
       this.near(current.exit, 3.2);
       this.locationId = ACADEMY_HUB;
-      this.user.player.position = clone(current.hubReturn);
     } else this.fail("NOT_FOUND", "Кабинет не найден.");
     this.inputs = [0, 0];
     this.tickCount++;

@@ -15,6 +15,7 @@ import { AcademyArt } from "./academy-art.js";
 import { matchesShelf, closestShelfPoint } from "./shelf-layout.js";
 import { NpcVisualPatrol } from "./npc-visual-patrol.js";
 import { actorPhase } from "./actor-seed.js";
+import { CompetitionArt } from "./competition-art.js";
 
 const PLAYER_RADIUS = 0.32;
 const HALL_DOOR_WALL_Z = 65.65;
@@ -146,6 +147,11 @@ export class Game {
     this.scene.add(this.ambient, this.sun, this.sun.target);
     this.locationId = ACADEMY_HUB;
     this.academyArt = new AcademyArt(this.scene);
+    this.academyArt.setLocation(this.locationId, this.authoritative);
+    this.competitionArt = new CompetitionArt(
+      this.scene,
+      configs.gameplay?.competition?.tables || [],
+    );
     this.player = this.createActor("self", "Вы");
     this.player.position.copy(this.authoritative);
     this.player.visible = false;
@@ -342,32 +348,45 @@ export class Game {
   }
   async enterLocation(roomId) {
     if (!this.academyArt || this.activity.mode !== "exploring") return;
-    const previousLocation = this.locationId;
-    const transition = await this.adapter.enterLocation(roomId);
-    this.locationId = roomId;
-    this.academyArt.setLocation(roomId);
-    const room = roomById(roomId);
-    const prevRoom = roomById(previousLocation);
-    const at =
-      transition?.position ||
-      (room ? room.entry : prevRoom?.hubReturn || ACADEMY_ROOMS[0].hubReturn);
-    if (at) {
-      this.authoritative.set(at.x, 0, at.z);
-      this.player.position.copy(this.authoritative);
-      this.camera.position.set(
-        at.x,
-        this.configs.firstPerson.standingEyeHeightM,
-        at.z,
+    if (this.zoneTransition) return this.zoneTransition;
+    this.zoneTransition = this.adapter
+      .enterLocation(roomId)
+      .then(() => {
+        this.locationId = roomId;
+        this.academyArt.setLocation(roomId, this.authoritative);
+        this.syncNpcPlacement();
+        this.syncReadingLabels();
+        this.applyWorld();
+      })
+      .catch((error) => this.onError(error))
+      .finally(() => {
+        this.zoneTransition = null;
+      });
+    return this.zoneTransition;
+  }
+  updateLocationFromPosition() {
+    if (this.zoneTransition || !this.adapter.ready) return;
+    const inside = roomByPosition(this.authoritative);
+    const next = inside?.roomId || ACADEMY_HUB;
+    if (next !== this.locationId) this.enterLocation(next);
+  }
+  updateZoneRendering(dt) {
+    this.zoneVisualTimer = (this.zoneVisualTimer || 0) + dt;
+    if (this.zoneVisualTimer < 0.15) return;
+    this.zoneVisualTimer = 0;
+    this.academyArt?.setLocation(this.locationId, this.authoritative);
+    for (const room of ACADEMY_ROOMS) {
+      const distance = Math.hypot(
+        this.authoritative.x - room.door.x,
+        this.authoritative.z - 65.5,
       );
+      if (this.locationId === room.roomId || distance < 8)
+        this.localArt?.prefetchRoom?.(room.roomId);
+      else if (distance > 14) {
+        this.localArt?.releaseRoom?.(room.roomId);
+        this.academyArt?.disposeRoom(room.roomId);
+      }
     }
-    this.yaw = room ? 0 : Math.PI;
-    this.pitch = 0;
-    this.keys.clear();
-    this.walkTarget = null;
-    document.exitPointerLock?.();
-    this.syncNpcPlacement();
-    this.syncReadingLabels();
-    this.applyWorld();
   }
   syncNpcPlacement() {
     const currentRoom = roomById(this.locationId);
@@ -431,6 +450,14 @@ export class Game {
       this.resources.accept(p);
       return;
     }
+    if (event.type === "competition.state") {
+      this.competitionArt?.syncState(p);
+      return;
+    }
+    if (event.type === "competition.settled") {
+      this.competitionArt?.settle(p);
+      return;
+    }
     if (event.type === "config.changed") {
       this.pendingConfig = p;
       return;
@@ -467,6 +494,7 @@ export class Game {
         .finally(() => (this.refreshingConfig = null));
     }
     this.tables = p.tables;
+    this.competitionArt?.sync(p.tables);
     this.syncTableLabels();
     const ids = new Set();
     this.dialogTargets.clear();
@@ -1126,7 +1154,7 @@ export class Game {
     );
     this.sun.target.position.set(focus.x, 0, focus.z);
     this.sun.target.updateMatrixWorld();
-    this.academyArt?.setLocation(this.locationId);
+    this.academyArt?.setLocation(this.locationId, this.authoritative);
     for (const { roots } of this.resources?.roots.values() || [])
       roots.forEach(
         (root) =>
@@ -1214,9 +1242,14 @@ export class Game {
           )
         )
           acceptedX = nextRoomX;
+        const atDoor =
+          Math.abs(originX - currentRoom.door.x) < 1.05 &&
+          this.academyArt?.canPass(currentRoom, this.authoritative);
+        const roomMaxZ = b.maxZ - PLAYER_RADIUS;
+        const exitMaxZ = atDoor ? b.maxZ + 0.5 : roomMaxZ;
         const nextRoomZ = Math.max(
           b.minZ + PLAYER_RADIUS,
-          Math.min(b.maxZ - PLAYER_RADIUS, nextZ),
+          Math.min(exitMaxZ, nextZ),
         );
         let acceptedZ = originZ;
         if (
@@ -1242,7 +1275,17 @@ export class Game {
           if (!blocked(tryX, originZ, originX, originZ))
             this.authoritative.x = Math.max(0.5, Math.min(319.5, tryX));
           const tryZ = originZ + z * speed * dt;
+          const crossedDoorPlane =
+            (originZ - HALL_DOOR_WALL_Z) * (tryZ - HALL_DOOR_WALL_Z) <= 0;
+          const door = ACADEMY_ROOMS.find(
+            (room) => Math.abs(this.authoritative.x - room.door.x) < 1.05,
+          );
+          const doorClosed =
+            crossedDoorPlane &&
+            door &&
+            !this.academyArt?.canPass(door, this.authoritative);
           if (
+            !doorClosed &&
             !blocked(this.authoritative.x, tryZ, this.authoritative.x, originZ)
           )
             this.authoritative.z = Math.max(0.5, Math.min(319.5, tryZ));
@@ -1261,6 +1304,8 @@ export class Game {
         }
       }
     }
+    this.updateLocationFromPosition();
+    this.updateZoneRendering(dt);
     this.inputTimer += dt;
     if (this.inputTimer >= 0.05) {
       this.inputTimer %= 0.05;
@@ -1268,6 +1313,8 @@ export class Game {
     }
     this.player.position.lerp(this.authoritative, 1 - Math.exp(-18 * dt));
     this.player.rotation.y = this.heading;
+    this.academyArt?.updateDoors(this.authoritative, dt);
+    this.competitionArt?.update(dt);
     for (const npc of this.npcs.values()) {
       const root = npc.root,
         pose = npc.buffer.sample(now);
@@ -1586,6 +1633,7 @@ export class Game {
     await this.resources.dispose();
     this.localArt?.dispose();
     this.academyArt?.dispose();
+    this.competitionArt?.dispose();
     for (const [id, actor] of this.actors) this.removeActor(id, actor);
     this.sun.shadow.dispose();
     this.renderer.dispose();

@@ -125,7 +125,7 @@ async function start() {
           adapter.user.player.position = {
             x: room.door.x,
             y: 0,
-            z: room.door.z + 1.6,
+            z: 65.2,
           };
           adapter.tickCount++;
           adapter.snapshot();

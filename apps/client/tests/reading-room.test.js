@@ -110,9 +110,10 @@ test('each academy door leads to its configured teacher, existing quiz and safe 
     a.onEvent((event) => { if (event.type === 'world.snapshot') snapshots.push(event.payload); });
     for (const room of ACADEMY_ROOMS) {
       move(a, room.door);
+      const doorwayPosition = { ...a.user.player.position };
       await a.enterLocation(room.roomId);
       assert.equal(a.locationId, room.roomId);
-      assert.deepEqual(a.user.player.position, room.entry);
+      assert.deepEqual(a.user.player.position, doorwayPosition);
       const npcIds = snapshots.at(-1).npcs.map((npc) => npc.npcId);
       assert.deepEqual(npcIds.sort(), [room.teacherId, room.examinerId].sort());
       move(a, room.examinerSeat.position);
@@ -121,9 +122,10 @@ test('each academy door leads to its configured teacher, existing quiz and safe 
       await assert.rejects(a.enterLocation(ACADEMY_HUB), { code: 'ACTIVITY_CONFLICT' });
       await send(a, 'quiz.leave', { attemptId: attempt.attemptId }, ['activity.changed']);
       move(a, room.exit);
+      const exitPosition = { ...a.user.player.position };
       await a.enterLocation(ACADEMY_HUB);
       assert.equal(a.locationId, ACADEMY_HUB);
-      assert.deepEqual(a.user.player.position, room.hubReturn);
+      assert.deepEqual(a.user.player.position, exitPosition);
       assert.deepEqual(snapshots.at(-1).npcs.map((npc) => npc.npcId), ['npc-guide']);
     }
     await assert.rejects(a.enterLocation(ACADEMY_ROOMS[0].roomId), { code: 'OUT_OF_RANGE' });
@@ -136,8 +138,8 @@ test('room movement stops at walls and configured desks', async () => {
     const room = ACADEMY_ROOMS[0];
     move(a, room.door);
     await a.enterLocation(room.roomId);
-    move(a, { x: room.center.x, y: 0, z: 75 });
-    for (let i = 0; i < 60; i++) { a.inputs = [0, -1]; a.lastInputAt = a.now(); a.advance(50); }
+    move(a, { x: room.center.x, y: 0, z: room.bounds.maxZ });
+    for (let i = 0; i < 90; i++) { a.inputs = [0, -1]; a.lastInputAt = a.now(); a.advance(50); }
     assert.equal(a.user.player.position.z, room.bounds.minZ);
     move(a, { x: room.center.x, y: 0, z: room.notebook.z });
     for (let i = 0; i < 30; i++) { a.inputs = [1, 0]; a.lastInputAt = a.now(); a.advance(50); }

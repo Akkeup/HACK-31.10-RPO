@@ -114,6 +114,11 @@ export class LocalArt {
     for (const chunk of this.game.resources.roots.values()) {
       for (const root of chunk.roots) {
         const id = root.userData.placement?.modelId;
+        if (["competition-table", "competition-chair"].includes(id)) {
+          root.userData.presentationHidden = true;
+          root.visible = false;
+          continue;
+        }
         if (
           id === "terrain-2-2" &&
           (!root.userData.flatStudyProps ||

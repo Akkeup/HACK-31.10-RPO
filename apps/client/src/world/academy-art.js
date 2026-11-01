@@ -4,7 +4,7 @@ import { textTexture } from "./visuals.js";
 
 // Art is anchored to the wall surfaces, independently of interaction points.
 const HALL_DOOR_WALL_Z = 65.5;
-const ROOM_EXIT_WALL_Z = 6.5;
+const ROOM_EXIT_WALL_Z = 6.8;
 
 // Local mock scenery. Room IDs and education contracts live in academy-locations;
 // this module only creates removable art and never grades or changes state.
@@ -16,6 +16,7 @@ export class AcademyArt {
     this.groups = new Map();
     this.textures = new Set();
     this.modelSlots = [];
+    this.doorStates = new Map();
     this.portals = new THREE.Group();
     scene.add(this.portals);
     for (const x of [67.3, 92.7])
@@ -70,10 +71,8 @@ export class AcademyArt {
         });
     for (const room of ACADEMY_ROOMS) {
       this.addPortal(room);
-      const group = this.buildRoom(room);
-      group.visible = false;
-      scene.add(group);
-      this.groups.set(room.roomId, group);
+      // Classroom geometry and sign textures are created only when a player
+      // approaches the door, never for all four rooms during initial load.
     }
   }
   material(color, options = {}) {
@@ -203,28 +202,42 @@ export class AcademyArt {
     const door = new THREE.Group();
     door.name = "exit-door";
     door.position.set(0, 0, ROOM_EXIT_WALL_Z);
-    this.box(door, 0, 1.58, 0, 2.6, 3.16, 0.16, 0x7e6249);
+    const leaf = new THREE.Group();
+    leaf.name = "door-leaf";
+    this.box(leaf, 0, 1.58, 0, 2.6, 3.16, 0.16, 0x7e6249);
     for (const x of [-1.4, 1.4])
       this.box(door, x, 1.65, 0, 0.17, 3.3, 0.28, 0x5d4939);
     this.box(door, 0, 3.25, 0, 2.98, 0.18, 0.28, 0x5d4939);
     for (const y of [0.8, 2.27])
-      this.box(door, 0, y, -0.095, 2.18, 1.12, 0.04, 0x987450);
-    this.box(door, -0.9, 1.4, -0.17, 0.27, 0.045, 0.08, 0xc4a15e);
-    const fallback = [...door.children];
+      this.box(leaf, 0, y, -0.095, 2.18, 1.12, 0.04, 0x987450);
+    this.box(leaf, -0.9, 1.4, -0.17, 0.27, 0.045, 0.08, 0xc4a15e);
+    // Move the content right while the group origin stays on the left hinge.
+    for (const child of leaf.children) child.position.x += 1.3;
+    leaf.position.x = -1.3;
+    door.add(leaf);
+    const fallback = [...leaf.children];
     for (const x of [-1.13, 1.13])
       this.box(door, x, 1.5, 0, 0.86, 3, 0.23, 0xe6dac3);
     this.box(door, 0, 3.13, 0, 3.1, 0.38, 0.23, 0xe6dac3);
     this.modelSlots.push({
       key: "door",
-      group: door,
-      x: 0,
+      group: leaf,
+      x: 1.3,
       z: 0,
       rotationY: Math.PI,
       placeholder: fallback,
     });
+    door.userData.doorLeaf = leaf;
+    door.userData.roomId = ACADEMY_HUB;
+    this.doorStates.set(ACADEMY_HUB, {
+      leaf,
+      angle: 0,
+      target: 0,
+      phase: "CLOSED",
+    });
     const plaque = this.sign(
       door,
-      "E · В читальный зал",
+      "В читальный зал",
       0,
       3.14,
       -0.13,
@@ -241,21 +254,30 @@ export class AcademyArt {
     this.box(group, 1.22, 1.65, 0, 0.18, 3.3, 0.27, 0x806146);
     this.box(group, 0, 3.26, 0, 2.6, 0.18, 0.3, 0x806146);
     this.box(group, 0, 0.04, 0.18, 2.3, 0.08, 0.58, 0xb79569);
-    this.box(group, 0, 1.56, -0.14, 2.1, 2.95, 0.12, room.accent);
-    this.box(group, 0, 1.55, -0.065, 1.9, 2.73, 0.025, 0x907a5c);
+    const leaf = new THREE.Group();
+    leaf.name = "door-leaf";
+    this.box(leaf, 0, 1.56, -0.14, 2.1, 2.95, 0.12, room.accent);
+    // Do not place an opaque panel behind the animated door leaf.
     for (const x of [-0.52, 0.52])
-      this.box(group, x, 1.92, 0.005, 0.78, 1.46, 0.025, 0xc5b891);
-    this.cylinder(group, 0.78, 1.45, 0.13, 0.055, 0.055, 0.035, 0xc5a464);
-    const fallback = [...group.children];
+      this.box(leaf, x, 1.92, 0.005, 0.78, 1.46, 0.025, 0xc5b891);
+    this.cylinder(leaf, 0.78, 1.45, 0.13, 0.055, 0.055, 0.035, 0xc5a464);
+    // Fallback and imported leaves share the same left-side hinge pivot.
+    for (const child of leaf.children) child.position.x += 1.05;
+    leaf.position.x = -1.05;
+    group.add(leaf);
+    const fallback = [...leaf.children];
     for (const x of [-1.13, 1.13])
-      this.box(group, x, 1.5, 0, 0.86, 3, 0.24, 0xe9dec9);
+      this.box(group, x, 1.5, 0, 0.16, 3, 0.24, 0xe9dec9);
     this.box(group, 0, 3.13, 0, 3.1, 0.38, 0.24, 0xe9dec9);
-    this.modelSlots.push({
-      key: "door",
-      group,
-      x: 0,
-      z: 0,
-      placeholder: fallback,
+    // Use the hinge-aligned procedural leaf. Imported GLB also contains a frame,
+    // producing the tall black obstruction shown in the reference screenshot.
+    group.userData.doorLeaf = leaf;
+    group.userData.roomId = room.roomId;
+    this.doorStates.set(room.roomId, {
+      leaf,
+      angle: 0,
+      target: 0,
+      phase: "CLOSED",
     });
     this.sign(
       group,
@@ -274,8 +296,19 @@ export class AcademyArt {
       oak = 0x9a7959,
       trim = 0x735b45;
     group.position.set(c.x, 0, c.z);
-    this.box(group, 0, -0.12, 0, 13.2, 0.24, 13.2, 0xcdb899);
-    for (let i = -6; i <= 6; i++)
+    const halfW = room.size.width / 2;
+    const halfD = room.size.depth / 2;
+    this.box(
+      group,
+      0,
+      -0.12,
+      0,
+      room.size.width,
+      0.24,
+      room.size.depth,
+      0xcdb899,
+    );
+    for (let i = -3; i <= 3; i++)
       this.box(
         group,
         i,
@@ -283,17 +316,26 @@ export class AcademyArt {
         0,
         0.96,
         0.024,
-        12.85,
+        room.size.depth - 0.15,
         i % 3 ? 0xc8a982 : 0xd3b58e,
       );
-    this.box(group, 0, 4.48, 0, 13.2, 0.2, 13.2, 0xe8dec8);
+    this.box(
+      group,
+      0,
+      4.48,
+      0,
+      room.size.width,
+      0.2,
+      room.size.depth,
+      0xe8dec8,
+    );
     const beamStart = group.children.length;
-    for (const p of [-6.3, -3.2, 0, 3.2, 6.3]) {
-      this.box(group, p, 4.34, 0, 0.14, 0.2, 13, trim);
-      this.box(group, 0, 4.34, p, 13, 0.2, 0.14, trim);
-    }
+    for (const x of [-3.1, 0, 3.1])
+      this.box(group, x, 4.34, 0, 0.12, 0.2, room.size.depth - 0.3, trim);
+    for (const z of [-6.4, -3.2, 0, 3.2, 6.4])
+      this.box(group, 0, 4.34, z, room.size.width - 0.25, 0.2, 0.12, trim);
     const beams = group.children.slice(beamStart);
-    for (const x of [-4.8, -1.6, 1.6, 4.8])
+    for (const x of [-1.6, 1.6])
       for (const z of [-4.8, -1.6, 1.6, 4.8])
         this.modelSlots.push({
           key: "ceiling",
@@ -302,23 +344,43 @@ export class AcademyArt {
           y: 4.23,
           z,
           scale: [3.2 / 3, 1, 3.2 / 3],
-          placeholder: x === -4.8 && z === -4.8 ? beams : [],
+          placeholder: x === -1.6 && z === -4.8 ? beams : [],
         });
-    for (const z of [-6.5, 6.5]) {
-      if (z < 0) this.box(group, 0, 2.18, z, 13.1, 4.36, 0.22, stone);
+    for (const z of [-halfD, halfD]) {
+      if (z < 0)
+        this.box(group, 0, 2.18, z, room.size.width - 0.1, 4.36, 0.22, stone);
       else {
-        this.box(group, -4.05, 2.18, z, 5, 4.36, 0.22, stone);
-        this.box(group, 4.05, 2.18, z, 5, 4.36, 0.22, stone);
-        this.box(group, 0, 3.81, z, 3.15, 1.08, 0.22, stone);
+        const side = (room.size.width - 2.45) / 2;
+        this.box(group, -(halfW + 1.225) / 2, 2.18, z, side, 4.36, 0.22, stone);
+        this.box(group, (halfW + 1.225) / 2, 2.18, z, side, 4.36, 0.22, stone);
+        this.box(group, 0, 3.81, z, 2.45, 1.08, 0.22, stone);
       }
       if (z < 0) {
-        this.box(group, 0, 0.38, z + 0.16, 13, 0.72, 0.08, oak);
-        this.box(group, 0, 0.76, z + 0.2, 13, 0.075, 0.1, trim);
+        this.box(
+          group,
+          0,
+          0.38,
+          z + 0.16,
+          room.size.width - 0.1,
+          0.72,
+          0.08,
+          oak,
+        );
+        this.box(
+          group,
+          0,
+          0.76,
+          z + 0.2,
+          room.size.width - 0.1,
+          0.075,
+          0.1,
+          trim,
+        );
       } else {
         this.wallSkirting(
           group,
-          -6.5,
-          6.5,
+          -halfW,
+          halfW,
           z - 0.16,
           [0],
           0.72,
@@ -328,9 +390,18 @@ export class AcademyArt {
         );
       }
     }
-    for (const x of [-6.5, 6.5]) {
-      this.box(group, x, 2.18, 0, 0.22, 4.36, 13.1, stone);
-      this.box(group, x + (x < 0 ? 0.16 : -0.16), 0.38, 0, 0.08, 0.72, 13, oak);
+    for (const x of [-halfW, halfW]) {
+      this.box(group, x, 2.18, 0, 0.22, 4.36, room.size.depth - 0.1, stone);
+      this.box(
+        group,
+        x + (x < 0 ? 0.16 : -0.16),
+        0.38,
+        0,
+        0.08,
+        0.72,
+        room.size.depth - 0.2,
+        oak,
+      );
       for (const z of [-4.7, 0, 4.7]) {
         this.box(
           group,
@@ -355,7 +426,7 @@ export class AcademyArt {
       }
     }
     // Arched interior windows share the warm oak and pale stone palette.
-    for (const x of [-6.33, 6.33])
+    for (const x of [-halfW + 0.17, halfW - 0.17])
       for (const z of [-2.35, 2.35]) {
         const ix = x + (x < 0 ? 0.12 : -0.12);
         this.box(group, ix, 2.4, z, 0.03, 2.35, 1.8, 0xb9d8cd, {
@@ -426,22 +497,23 @@ export class AcademyArt {
           oak,
         );
       }
-    for (const x of [-5.8, 5.8])
-      for (const z of [-5.8, 5.8]) {
+    for (const x of [-halfW + 0.45, halfW - 0.45])
+      for (const z of [-halfD + 0.7, halfD - 0.7]) {
         this.cylinder(group, x, 2.13, z, 0.23, 0.25, 4.23, 0xd9c8a8, 10);
         this.box(group, x, 0.18, z, 0.72, 0.32, 0.72, trim);
         this.box(group, x, 4.2, z, 0.72, 0.28, 0.72, trim);
       }
     this.sign(
       group,
-      "ВЫХОД В ЧИТАЛЬНЫЙ ЗАЛ",
+      "В ЧИТАЛЬНЫЙ ЗАЛ",
       0,
       3.75,
-      ROOM_EXIT_WALL_Z - 0.125,
-      3.2,
-      0.45,
+      ROOM_EXIT_WALL_Z - 0.12,
+      2.9,
+      0.42,
     ).rotation.y = Math.PI;
-    this.exitDoor(group);
+    // The hallway portal is the single shared door on both sides of this wall.
+    // A second room-local door would remain closed and obscure the opened passage.
     for (const z of [-2.2, 2.2]) {
       this.cylinder(group, 0, 4.08, z, 0.45, 0.32, 0.14, 0x76654f, 16);
       this.cylinder(group, 0, 3.93, z, 0.34, 0.34, 0.14, 0xffe5ab, 16);
@@ -586,9 +658,9 @@ export class AcademyArt {
       for (let i = 0; i < 3; i++)
         this.box(
           group,
-          3.25 + i * 0.62,
+          1.35 + i * 0.52,
           2.8,
-          -6.04,
+          -6.61,
           0.55,
           0.34,
           0.03,
@@ -727,12 +799,16 @@ export class AcademyArt {
       new THREE.PlaneGeometry(2.3, 2.3),
       new THREE.MeshBasicMaterial({ map: texture, toneMapped: false }),
     );
-    panel.position.set(4.15, 2.35, -6.045);
+    panel.position.set(2.05, 2.35, -6.61);
     group.add(panel);
   }
   buildRoom(room) {
     const group = new THREE.Group();
     group.name = room.roomId;
+    // Compact classrooms sit directly behind the four hub doors.  The existing
+    // authored room kit remains reusable while its X footprint matches the
+    // 7m door cadence instead of overlapping adjacent classrooms.
+    // Never scale the entire room: scale would deform furniture and NPC anchors.
     this.wallShell(group, room);
     this.board(group, room);
     this.topicPanel(group, room);
@@ -770,7 +846,7 @@ export class AcademyArt {
           ...(room.exhibit === "computers" ? { y: 0.865 } : {}),
         });
     }
-    for (const x of [-5, 5]) {
+    for (const x of [-2.5, 2.5]) {
       const first = group.children.length;
       this.cylinder(group, x, 0.38, 4.7, 0.45, 0.52, 0.74, 0x927254, 9);
       const plant = new THREE.Mesh(
@@ -789,14 +865,79 @@ export class AcademyArt {
     }
     return group;
   }
-  setLocation(id) {
-    this.portals.visible = id === ACADEMY_HUB;
-    for (const [roomId, group] of this.groups) group.visible = roomId === id;
+  ensureRoom(roomId) {
+    let group = this.groups.get(roomId);
+    if (group) return group;
+    const room = ACADEMY_ROOMS.find((item) => item.roomId === roomId);
+    if (!room) return null;
+    group = this.buildRoom(room);
+    group.visible = false;
+    this.scene.add(group);
+    this.groups.set(roomId, group);
+    return group;
+  }
+  setLocation(id, position = null) {
+    // Construct an actual, geometrically sound room BEFORE the door opens.
+    this.portals.visible = true;
+    for (const room of ACADEMY_ROOMS) {
+      const nearby =
+        position &&
+        Math.hypot(position.x - room.door.x, position.z - HALL_DOOR_WALL_Z) < 8;
+      const visible = room.roomId === id || Boolean(nearby);
+      const group = visible
+        ? this.ensureRoom(room.roomId)
+        : this.groups.get(room.roomId);
+      if (group) group.visible = visible;
+    }
+  }
+  updateDoors(position, dt) {
+    if (!position) return;
+    for (const room of ACADEMY_ROOMS) {
+      const distance = Math.hypot(
+        position.x - room.door.x,
+        position.z - HALL_DOOR_WALL_Z,
+      );
+      const state = this.doorStates.get(room.roomId);
+      // A door opens automatically when the player approaches from either side.
+      if (distance < 2.65 && state.target === 0) this.openDoor(room.roomId);
+      if (distance > 3.5 && state.target !== 0) this.closeDoor(room.roomId);
+    }
+    this.update(dt);
+  }
+  canPass(room, position) {
+    const state = this.doorStates.get(room.roomId);
+    return Boolean(
+      state && state.angle > 1.12 && Math.abs(position.x - room.door.x) < 1.02,
+    );
+  }
+  openDoor(roomId) {
+    const state = this.doorStates.get(roomId);
+    if (!state) return;
+    state.target = Math.PI / 2;
+    state.phase = "OPENING";
+  }
+  closeDoor(roomId) {
+    const state = this.doorStates.get(roomId);
+    if (!state) return;
+    state.target = 0;
+    state.phase = "CLOSING";
+  }
+  update(dt) {
+    for (const state of this.doorStates.values()) {
+      const distance = state.target - state.angle;
+      if (Math.abs(distance) < 0.01) {
+        state.angle = state.target;
+        state.phase = state.target ? "OPEN" : "CLOSED";
+      } else {
+        state.angle += distance * (1 - Math.exp(-dt * 8));
+      }
+      state.leaf.rotation.y = state.angle;
+    }
   }
   applyModel(key, makeInstance) {
     if (key === "ceiling") return this.applyCeiling(makeInstance);
     for (const slot of this.modelSlots.filter(
-      (item) => item.key === key && !item.model,
+      (item) => item.key === key && !item.model && item.group.visible,
     )) {
       const model = makeInstance();
       if (!model) continue;
@@ -816,7 +957,7 @@ export class AcademyArt {
   applyCeiling(makeInstance) {
     const groups = new Set(
       this.modelSlots
-        .filter((s) => s.key === "ceiling" && !s.model)
+        .filter((s) => s.key === "ceiling" && !s.model && s.group.visible)
         .map((s) => s.group),
     );
     for (const group of groups) {
@@ -853,6 +994,53 @@ export class AcademyArt {
       }
     }
   }
+  releaseRoomModels(roomId) {
+    const group = this.groups.get(roomId);
+    if (!group) return;
+    const models = new Set();
+    for (const slot of this.modelSlots) {
+      if (slot.group !== group || !slot.model) continue;
+      models.add(slot.model);
+      slot.model = null;
+      for (const fallback of slot.placeholder || []) fallback.visible = true;
+    }
+    for (const model of models) {
+      model.traverse((node) => {
+        if (node.isInstancedMesh) node.dispose();
+      });
+      model.removeFromParent();
+    }
+  }
+
+  disposeRoom(roomId) {
+    const group = this.groups.get(roomId);
+    if (!group) return;
+    this.releaseRoomModels(roomId);
+    const sharedMaterials = new Set(this.materials.values());
+    const disposedGeometries = new Set();
+    group.traverse((node) => {
+      if (!node.isMesh) return;
+      if (
+        node.geometry !== this.geometry &&
+        !disposedGeometries.has(node.geometry)
+      ) {
+        disposedGeometries.add(node.geometry);
+        node.geometry.dispose();
+      }
+      for (const material of [node.material].flat()) {
+        if (!material || sharedMaterials.has(material)) continue;
+        if (material.map) {
+          material.map.dispose();
+          this.textures.delete(material.map);
+        }
+        material.dispose();
+      }
+    });
+    this.modelSlots = this.modelSlots.filter((slot) => slot.group !== group);
+    group.removeFromParent();
+    this.groups.delete(roomId);
+  }
+
   dispose() {
     for (const group of [this.portals, ...this.groups.values()])
       group.traverse((node) => {
@@ -875,5 +1063,6 @@ export class AcademyArt {
     this.materials.clear();
     for (const texture of this.textures) texture.dispose();
     this.textures.clear();
+    this.doorStates.clear();
   }
 }

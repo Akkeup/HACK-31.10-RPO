@@ -3,11 +3,7 @@ import { EducationUI } from "./education-ui.js";
 import { CompetitionUI } from "./competition-ui.js";
 import { AdminDashboard } from "./admin-dashboard.js";
 import { icon } from "./icons.js";
-import {
-  ACADEMY_HUB,
-  ACADEMY_ROOMS,
-  roomById,
-} from "../world/academy-locations.js";
+import { ACADEMY_ROOMS, roomById } from "../world/academy-locations.js";
 import {
   presets,
   validateConfig,
@@ -150,22 +146,6 @@ export class UI {
       `${room.number} · ${room.subject} — дверь на северной стене`;
     this.$("#route-guide").classList.remove("hidden");
     this.toast(`Кабинет ${room.number} отмечен. Идите к северной стене.`);
-  }
-  async usePortal(portal) {
-    if (!portal?.roomId) return;
-    try {
-      this.game.setBlocked(true, "transition");
-      this.$("#world").classList.add("location-transition");
-      await new Promise((resolve) => setTimeout(resolve, 180));
-      await this.game.enterLocation(portal.roomId);
-      this.$("#route-guide").classList.add("hidden");
-    } catch (error) {
-      this.toast(error.message);
-    } finally {
-      this.$("#world").classList.remove("location-transition");
-      this.game.setBlocked(false, "transition");
-      this.game.focusControls();
-    }
   }
   bind() {
     const $ = (s) => document.querySelector(s);
@@ -383,12 +363,11 @@ export class UI {
         !e.repeat &&
         !e.target.closest?.("input,textarea,select") &&
         this.nearest &&
+        this.nearest.kind !== "door" &&
         this.nearest.distance <= maxRadius &&
         $("#info-overlay").classList.contains("hidden")
       )
-        this.nearest.kind === "door"
-          ? this.usePortal(this.nearest)
-          : this.openDialogue(this.nearest.id);
+        this.openDialogue(this.nearest.id);
     });
     for (const id of ["dialogue-overlay", "info-overlay"])
       $("#" + id).addEventListener("keydown", (e) => {
@@ -681,14 +660,12 @@ export class UI {
     this.$("#nearby").classList.toggle("hidden", !nearby);
     this.$("#nearby-name").textContent = this.nearest?.name || "";
     this.$("#talk-nearby").innerHTML =
-      "<kbd>E</kbd> " +
+      this.nearest?.kind === "door"
+        ? "Пройдите через открытую дверь"
+        : "<kbd>E</kbd> " +
       (this.nearest?.kind === "shelf"
         ? "Выбрать книгу"
-        : this.nearest?.kind === "door"
-          ? this.nearest.roomId === ACADEMY_HUB
-            ? "Выйти"
-            : "Войти"
-          : this.nearest?.kind === "notebook"
+        : this.nearest?.kind === "notebook"
             ? "Начать проверку"
             : this.nearest?.role === "examiner"
               ? "Выбрать тему"
@@ -750,14 +727,6 @@ export class UI {
   async openDialogue(id) {
     if (!id || !this.$("#dialogue-overlay").classList.contains("hidden"))
       return;
-    const door =
-      this.nearest?.kind === "door" && this.nearest.id === id
-        ? this.nearest
-        : null;
-    if (door) {
-      await this.usePortal(door);
-      return;
-    }
     const object = this.game.readingObjects().find((o) => o.id === id);
     if (object) {
       await this.education.openObject(object);
