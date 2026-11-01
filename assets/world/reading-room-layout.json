@@ -379,7 +379,7 @@
       "position": {
         "x": 80,
         "y": 0,
-        "z": 85.3
+        "z": 84.05
       },
       "yawRad": 0,
       "collidable": true
@@ -389,11 +389,11 @@
       "chunkId": "c-2-2",
       "modelId": "competition-chair",
       "position": {
-        "x": 82.187,
+        "x": 81.35,
         "y": 0,
-        "z": 83.711
+        "z": 83
       },
-      "yawRad": 1.2566,
+      "yawRad": 1.5707963267948966,
       "collidable": true
     },
     {
@@ -401,11 +401,11 @@
       "chunkId": "c-2-2",
       "modelId": "competition-chair",
       "position": {
-        "x": 81.352,
+        "x": 80,
         "y": 0,
-        "z": 81.139
+        "z": 81.95
       },
-      "yawRad": 2.5133,
+      "yawRad": 3.141592653589793,
       "collidable": true
     },
     {
@@ -413,23 +413,11 @@
       "chunkId": "c-2-2",
       "modelId": "competition-chair",
       "position": {
-        "x": 78.648,
+        "x": 78.65,
         "y": 0,
-        "z": 81.139
+        "z": 83
       },
-      "yawRad": -2.5133,
-      "collidable": true
-    },
-    {
-      "id": "competition-seat-5",
-      "chunkId": "c-2-2",
-      "modelId": "competition-chair",
-      "position": {
-        "x": 77.813,
-        "y": 0,
-        "z": 83.711
-      },
-      "yawRad": -1.2567,
+      "yawRad": -1.5707963267948966,
       "collidable": true
     }
   ]

@@ -2162,7 +2162,7 @@ fieldset {
 }
 .world-heading {
   padding: 12px 30px 17px 0;
-  background: linear-gradient(90deg, rgb(246 242 228 / 83%), rgb(246 242 228 / 38%) 65%, transparent);
+  background: transparent;
   border-radius: 0 18px 18px 0;
   text-shadow: 0 1px 3px #eae5d6;
 }

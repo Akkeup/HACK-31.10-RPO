@@ -2,11 +2,10 @@
 import { DiscoveryAdapter } from "../src/network/adapters.js";
 import {
   command,
-  parseEvent,
   safeDigestSha256,
   safeRandomUUID,
-  validate,
 } from "../src/network/protocol.js";
+import { validate, parseEvent, previewProfile } from "./four-seat-contract.js";
 import { RoomNpcMotion } from "./npc-motion.js";
 import { moveWithCollisions, hubCollisionBoxes } from "./collision.js";
 import { HallPatrol } from "./hall-patrol.js";
@@ -42,6 +41,7 @@ export class LocalMockAdapter extends DiscoveryAdapter {
     this.tickCount = 0;
     this.scenario = "win";
     this.botCount = 1;
+    this.previewProfile = previewProfile;
     this.botTimers = new Set();
     this.inputs = [0, 0];
     this.locationId = ACADEMY_HUB;
@@ -830,6 +830,13 @@ export class LocalMockAdapter extends DiscoveryAdapter {
     const { value } = await this.request(path);
     return validate(schema, value, definition);
   }
+  async getPublicConfig() {
+    const { value } = await this.request(
+      `/api/v2/worlds/${this.worldId}/config`,
+    );
+    this.publicConfig = validate("config", value, "publicDocument");
+    return this.publicConfig;
+  }
   async request(path) {
     await new Promise((r) => setTimeout(r, this.latency));
     let value;
@@ -932,7 +939,10 @@ export class LocalMockAdapter extends DiscoveryAdapter {
     if (this.user.player.activity.mode !== "exploring")
       throw Error("Сначала встаньте из-за стола.");
     this.scenario = scenario;
-    this.botCount = Math.min(4, Math.max(1, count - 1));
+    this.botCount = Math.min(
+      this.publicConfig.values.gameplay.competition.maxPlayers - 1,
+      Math.max(1, count - 1),
+    );
     for (const l of this.competition.lobbies.values()) {
       if (l.state.status === "running") this.competition.settle(l, "operator");
       for (const b of this.bots)

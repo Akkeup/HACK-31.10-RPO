@@ -450,7 +450,16 @@ export class AcademyArt {
       group.add(light);
     }
   }
-  desk(group, x, z, accent, width = 2.2, study = false, subject = "") {
+  desk(
+    group,
+    x,
+    z,
+    accent,
+    width = 2.2,
+    study = false,
+    subject = "",
+    student = study,
+  ) {
     const deskStart = group.children.length;
     const top = this.box(group, x, 0.84, z, width, 0.11, 1.2, 0xb99168);
     this.box(group, x, 0.64, z - 0.43, width - 0.22, 0.34, 0.14, 0x765b46);
@@ -459,6 +468,9 @@ export class AcademyArt {
         this.box(group, x + dx, 0.4, z + dz, 0.1, 0.8, 0.1, 0x765b46);
     if (study) {
       this.paintDesk(top, subject);
+      top.userData.notebookSurface = true;
+    }
+    if (student) {
       // Reuse the supplied desk without its equipment; keep the flush notebook surface.
       this.modelSlots.push({
         key: "study-desk",
@@ -467,7 +479,7 @@ export class AcademyArt {
         z,
         placeholder: group.children
           .slice(deskStart)
-          .filter((mesh) => mesh !== top),
+          .filter((mesh) => !study || mesh !== top),
       });
       const first = group.children.length;
       this.box(group, x, 0.45, z + 1.05, 0.62, 0.1, 0.62, 0x806148);
@@ -735,8 +747,9 @@ export class AcademyArt {
           object.width,
           object.study,
           room.subject,
+          object.student,
         );
-        if (room.exhibit === "computers" && !object.study)
+        if (room.exhibit === "computers" && !object.student)
           this.modelSlots.push({
             key: "computer-desk",
             group,
@@ -757,20 +770,20 @@ export class AcademyArt {
           ...(room.exhibit === "computers" ? { y: 0.865 } : {}),
         });
     }
-    for (const x of [-2.4, 2.4]) {
+    for (const x of [-5, 5]) {
       const first = group.children.length;
-      this.cylinder(group, x, 0.38, 3.5, 0.45, 0.52, 0.74, 0x927254, 9);
+      this.cylinder(group, x, 0.38, 4.7, 0.45, 0.52, 0.74, 0x927254, 9);
       const plant = new THREE.Mesh(
         new THREE.IcosahedronGeometry(0.53, 1),
         this.material(0x688b70),
       );
-      plant.position.set(x, 1.04, 3.5);
+      plant.position.set(x, 1.04, 4.7);
       group.add(plant);
       this.modelSlots.push({
         key: "planter",
         group,
         x,
-        z: 3.5,
+        z: 4.7,
         placeholder: group.children.slice(first),
       });
     }

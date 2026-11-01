@@ -55,6 +55,54 @@ test("all room patrols walk at 1.1m/s, avoid furniture and stop near a learner",
     }
 });
 
+test("each classroom has a 2x2 pupil grid with one notebook, solid desks and a clear entry", () => {
+  for (const room of ACADEMY_ROOMS) {
+    const desks = room.objects.filter((object) => object.student);
+    assert.equal(desks.length, 4);
+    const columns = [...new Set(desks.map((desk) => desk.x))].sort(
+      (a, b) => a - b,
+    );
+    const rows = [...new Set(desks.map((desk) => desk.z))].sort(
+      (a, b) => a - b,
+    );
+    assert.equal(columns.length, 2);
+    assert.equal(rows.length, 2);
+    assert.equal(columns[1] - columns[0], rows[1] - rows[0]);
+    assert.equal(new Set(desks.map(({ x, z }) => `${x},${z}`)).size, 4);
+    const interactive = desks.filter((desk) => desk.study);
+    assert.equal(interactive.length, 1);
+    assert.equal(room.notebook.x, room.center.x + interactive[0].x);
+    assert.equal(room.notebook.z, room.center.z + interactive[0].z);
+    const objects = Game.prototype.readingObjects.call({
+      locationId: room.roomId,
+      configs: { readingRoom: { shelves: [] } },
+    });
+    assert.equal(
+      objects.filter((object) => object.kind === "notebook").length,
+      1,
+    );
+    for (const desk of desks)
+      assert.ok(
+        room.colliders.some(
+          (box) =>
+            box.x === room.center.x + desk.x &&
+            box.z === room.center.z + desk.z,
+        ),
+      );
+    for (const point of [
+      room.entry,
+      room.exit,
+      room.examinerSeat.position,
+      room.examinerSeat.exitPosition,
+    ])
+      for (const box of room.colliders)
+        assert.ok(
+          Math.abs(point.x - box.x) >= box.hx ||
+            Math.abs(point.z - box.z) >= box.hz,
+        );
+  }
+});
+
 test("room shelf opens its lesson via the v2 library contract, including after teacher patrol", async () => {
   const a = new LocalMockAdapter({ storage: null, latency: 0 });
   try {

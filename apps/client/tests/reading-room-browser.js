@@ -9,6 +9,12 @@ export async function runRoomChecks({ game, adapter }) {
     report.checks.push(name);
   };
   try {
+    const readyDeadline = performance.now() + 15000;
+    while (!adapter.ready) {
+      if (performance.now() > readyDeadline)
+        throw Error("Timed out waiting for world.ready");
+      await pause(100);
+    }
     const canvas = game.renderer.domElement;
     let shortcuts = 0;
     const shortcut = (event) => {
@@ -111,6 +117,60 @@ export async function runRoomChecks({ game, adapter }) {
       game.npcs.get("npc-guide")?.root.userData.localArt?.model,
       "Sophia uses the supplied GLB",
     );
+    const table = adapter.publicConfig.values.gameplay.competition.tables[0];
+    const worldRoots = [...game.resources.roots.values()].flatMap(
+      (chunk) => chunk.roots,
+    );
+    const tableRoot = worldRoots.find(
+      (root) => root.userData.placement?.id === table.tableId,
+    );
+    const chairs = worldRoots.filter(
+      (root) => root.userData.placement?.modelId === "competition-chair",
+    );
+    check(
+      table.seats.length === 4 && chairs.length === 4,
+      "four-seat draft: exactly four confirmed seats and chairs",
+    );
+    check(
+      tableRoot && !tableRoot.userData.localArt,
+      "gaming table comes from the budgeted chunk without a second model",
+    );
+    const tableSize = new THREE.Box3()
+      .setFromObject(tableRoot)
+      .getSize(new THREE.Vector3());
+    check(
+      Math.abs(tableSize.x - 1.8) < 0.01 && Math.abs(tableSize.z - 1.2) < 0.01,
+      "supplied rectangular table has its native dimensions",
+    );
+    await adapter.demoScenario("win", 4);
+    adapter.user.player.position = {
+      ...table.position,
+      z: table.position.z + 2.5,
+    };
+    await adapter.execute("competition.join", { tableId: table.tableId }, [
+      "competition.state",
+    ]);
+    await pause(1000);
+    const lobby = adapter.competition.lobbies.get(table.tableId);
+    check(
+      lobby.state.participants.length === 4,
+      "four virtual players occupy four authoritative seats",
+    );
+    check(
+      [...game.others.values()].filter((other) => other.root.userData.seated)
+        .length === 3,
+      "three other seated avatars are rendered around the table",
+    );
+    check(
+      Math.abs(
+        game.camera.position.y - game.configs.firstPerson.seatedEyeHeightM,
+      ) < 0.05,
+      "seated camera reaches configured eye height",
+    );
+    await adapter.execute("competition.leave", { tableId: table.tableId }, [
+      "activity.changed",
+    ]);
+    await adapter.demoScenario("win", 2);
     for (const room of ACADEMY_ROOMS) {
       if (game.locationId !== ACADEMY_HUB) {
         const old = ACADEMY_ROOMS.find((r) => r.roomId === game.locationId);
@@ -128,8 +188,8 @@ export async function runRoomChecks({ game, adapter }) {
       const slots = game.academyArt.modelSlots.filter((s) => s.group === group);
       check(
         slots.filter((s) => s.key === "shelf").length === 1 &&
-          slots.filter((s) => s.key === "chair").length === 1,
-        room.roomId + ": one shelf and chair",
+          slots.filter((s) => s.key === "chair").length === 4,
+        room.roomId + ": one shelf and four pupil chairs",
       );
       const exit = group.getObjectByName("exit-door");
       check(
@@ -157,9 +217,14 @@ export async function runRoomChecks({ game, adapter }) {
           "one supplied computer desk replaces its fallback",
         );
       check(
-        slots.filter((s) => s.key === "study-desk" && s.model).length === 1,
+        slots.filter((s) => s.key === "study-desk" && s.model).length === 4,
         room.roomId +
-          ": clean study desk reuses the supplied desk without equipment",
+          ": four pupil desks reuse the supplied desk without equipment",
+      );
+      check(
+        group.children.filter((node) => node.userData.notebookSurface)
+          .length === 1,
+        room.roomId + ": only one desktop has a notebook",
       );
       const objects = game.readingObjects();
       check(

@@ -60,7 +60,7 @@ export class CompetitionUI {
     if (seated) this.hint.textContent = "E — панель соревнования · F — встать";
     else if (this.table) {
       const s = this.table.summary;
-      this.hint.textContent = `E — занять место · Соревнование · ${s?.occupiedSeats.length || 0}/5 · ${s?.status === "running" ? "Идёт матч" : s?.status === "lobby" ? "Лобби" : "Свободен"}${s?.subject ? " · " + subjects[s.subject] + " · " + s.stakeAura + " ауры" : ""}`;
+      this.hint.textContent = `E — занять место · Соревнование · ${s?.occupiedSeats.length || 0}/${this.table.seats.length} · ${s?.status === "running" ? "Идёт матч" : s?.status === "lobby" ? "Лобби" : "Свободен"}${s?.subject ? " · " + subjects[s.subject] + " · " + s.stakeAura + " ауры" : ""}`;
     }
   }
   interact() {
@@ -302,7 +302,7 @@ export class CompetitionUI {
     }
     updatePanel(
       this.root,
-      `<header><div><span class="eyebrow">DISCOVERY / ОБЩИЙ СТОЛ ${this.adapter.isMock ? "· ДЕМО" : ""}</span><h2>Соревнование <small>до 5 игроков</small></h2></div><div class="competition-header-actions"><button data-competition="leave" ${disabled}>F — Встать</button><button data-competition="hide" aria-label="Свернуть панель">Свернуть</button></div></header><div class="competition-wallet">${wallet}</div>${!c.online ? '<p class="connection-warning" role="status">Восстанавливаем соединение и фактическое состояние… Ответы и ставки заблокированы.</p>' : ""}${c.error ? `<p class="competition-error" role="alert">${html(c.error)}</p>` : ""}<div class="competition-body">${body}</div><footer><span>${this.adapter.isMock ? "Демо · виртуальные участники и тестовая аура" : "Сервер Discovery"} · подтверждённое состояние адаптера</span><button data-competition="recover" ${c.pending ? "disabled" : ""}>Обновить состояние</button></footer>`,
+      `<header><div><span class="eyebrow">DISCOVERY / ОБЩИЙ СТОЛ ${this.adapter.isMock ? "· ДЕМО" : ""}</span><h2>Соревнование <small>до ${this.game.configs.gameplay.competition.maxPlayers} игроков</small></h2></div><div class="competition-header-actions"><button data-competition="leave" ${disabled}>F — Встать</button><button data-competition="hide" aria-label="Свернуть панель">Свернуть</button></div></header><div class="competition-wallet">${wallet}</div>${!c.online ? '<p class="connection-warning" role="status">Восстанавливаем соединение и фактическое состояние… Ответы и ставки заблокированы.</p>' : ""}${c.error ? `<p class="competition-error" role="alert">${html(c.error)}</p>` : ""}<div class="competition-body">${body}</div><footer><span>${this.adapter.isMock ? "Демо · виртуальные участники и тестовая аура" : "Сервер Discovery"} · подтверждённое состояние адаптера</span><button data-competition="recover" ${c.pending ? "disabled" : ""}>Обновить состояние</button></footer>`,
     );
     this.updateClock();
   }

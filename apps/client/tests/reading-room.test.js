@@ -69,7 +69,7 @@ async function lobby(a,scenario='win',count=2){await a.demoScenario(scenario,cou
 const conditions=l=>({tableId:l.state.tableId,lobbyId:l.state.lobbyId,expectedRevision:l.state.revision});
 for(const outcome of ['win','loss','draw','cancelled'])test('v2 competition demo: '+outcome+', five tagged rounds, private answers and confirmed wallet',async()=>{
  const a=await setup();try{
-   const l=await lobby(a,outcome==='cancelled'?'win':outcome,outcome==='draw'?5:2);
+   const l=await lobby(a,outcome==='cancelled'?'win':outcome,outcome==='draw'?4:2);
    await send(a,'competition.configure',{...conditions(l),subject:'mathematics',stakeAura:10},['competition.state']);
    await send(a,'competition.ready',{...conditions(l),ready:true},['competition.state']);assert.equal(a.user.wallet.reservedAura,10);
    await send(a,'competition.start',conditions(l),['competition.state']);assert.equal(a.user.wallet.balanceAura,90);
@@ -139,7 +139,7 @@ test('room movement stops at walls and configured desks', async () => {
     move(a, { x: room.center.x, y: 0, z: 75 });
     for (let i = 0; i < 60; i++) { a.inputs = [0, -1]; a.lastInputAt = a.now(); a.advance(50); }
     assert.equal(a.user.player.position.z, room.bounds.minZ);
-    move(a, { x: room.center.x + 1.7, y: 0, z: room.center.z - 0.95 });
+    move(a, { x: room.center.x, y: 0, z: room.notebook.z });
     for (let i = 0; i < 30; i++) { a.inputs = [1, 0]; a.lastInputAt = a.now(); a.advance(50); }
     const desk = room.colliders[1];
     assert.ok(Math.abs(a.user.player.position.x - desk.x) >= desk.hx);

@@ -58,8 +58,8 @@
     "hiddenNodes": ["dressing"]
   },
   "round-table": {
-    "path": "/assets/models/furniture/round-table.glb",
-    "available": true,
+    "path": "/assets/models/furniture/gaming-table.glb",
+    "available": false,
     "scale": 1,
     "rotationY": 0,
     "offset": [0, 0, 0]

@@ -23,14 +23,14 @@ export function hubCollisionBoxes(objects = [], includeChairs = false) {
           hx: shelf
             ? scale * (cos + sin / 2) + 0.35
             : o.modelId === "competition-table"
-              ? 1.8
+              ? scale * (cos * 0.9 + sin * 0.6) + 0.25
               : o.modelId === "competition-chair"
                 ? 0.65
                 : 1.45,
           hz: shelf
             ? scale * (sin + cos / 2) + 0.35
             : o.modelId === "competition-table"
-              ? 1.8
+              ? scale * (sin * 0.9 + cos * 0.6) + 0.25
               : o.modelId === "competition-chair"
                 ? 0.65
                 : 0.85,

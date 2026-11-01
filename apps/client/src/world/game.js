@@ -503,7 +503,10 @@ export class Game {
           c.z === Math.floor(t.position.z / 32),
       );
       if (present && !this.tableLabels.has(t.tableId)) {
-        const label = nameTag("Соревнование · 5 мест");
+        const count = t.seats.length;
+        const label = nameTag(
+          `Соревнование · ${count} ${count < 5 ? "места" : "мест"}`,
+        );
         label.position.set(t.position.x, 2.4, t.position.z);
         this.scene.add(label);
         this.tableLabels.set(t.tableId, label);

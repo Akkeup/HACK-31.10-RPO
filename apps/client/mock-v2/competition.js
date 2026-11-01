@@ -217,7 +217,7 @@ export class CompetitionServer {
     const seat = layout.seats.find(
       (s) => !l.state.participants.some((p) => p.seatId === s.seatId),
     );
-    if (!seat) this.fail("SEAT_OCCUPIED", "Все пять мест заняты");
+    if (!seat) this.fail("SEAT_OCCUPIED", "Все места за столом заняты");
     l.members.set(user.player.playerId, user);
     l.state.participants.push({
       playerId: user.player.playerId,

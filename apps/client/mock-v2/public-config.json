@@ -187,7 +187,7 @@
       },
       "competition": {
         "minPlayers": 2,
-        "maxPlayers": 5,
+        "maxPlayers": 4,
         "questionCount": 5,
         "roundSeconds": 20,
         "minStakeAura": 1,
@@ -206,71 +206,57 @@
               {
                 "seatId": "competition-seat-1",
                 "position": {
-                  "x": 80.0,
+                  "x": 80,
                   "y": 0,
-                  "z": 85.3
+                  "z": 84.05
                 },
-                "yawRad": 0.0,
+                "yawRad": 0,
                 "exitPosition": {
-                  "x": 80.0,
+                  "x": 80,
                   "y": 0,
-                  "z": 86.4
+                  "z": 85.4
                 }
               },
               {
                 "seatId": "competition-seat-2",
                 "position": {
-                  "x": 82.187,
+                  "x": 81.35,
                   "y": 0,
-                  "z": 83.711
+                  "z": 83
                 },
-                "yawRad": 1.2566,
+                "yawRad": 1.5707963267948966,
                 "exitPosition": {
-                  "x": 83.234,
+                  "x": 82.55,
                   "y": 0,
-                  "z": 84.051
+                  "z": 83
                 }
               },
               {
                 "seatId": "competition-seat-3",
                 "position": {
-                  "x": 81.352,
+                  "x": 80,
                   "y": 0,
-                  "z": 81.139
+                  "z": 81.95
                 },
-                "yawRad": 2.5133,
+                "yawRad": 3.141592653589793,
                 "exitPosition": {
-                  "x": 81.998,
+                  "x": 80,
                   "y": 0,
-                  "z": 80.249
+                  "z": 80.6
                 }
               },
               {
                 "seatId": "competition-seat-4",
                 "position": {
-                  "x": 78.648,
+                  "x": 78.65,
                   "y": 0,
-                  "z": 81.139
+                  "z": 83
                 },
-                "yawRad": -2.5133,
+                "yawRad": -1.5707963267948966,
                 "exitPosition": {
-                  "x": 78.002,
+                  "x": 77.45,
                   "y": 0,
-                  "z": 80.249
-                }
-              },
-              {
-                "seatId": "competition-seat-5",
-                "position": {
-                  "x": 77.813,
-                  "y": 0,
-                  "z": 83.711
-                },
-                "yawRad": -1.2567,
-                "exitPosition": {
-                  "x": 76.766,
-                  "y": 0,
-                  "z": 84.051
+                  "z": 83
                 }
               }
             ],

@@ -116,6 +116,7 @@ export default defineConfig(({ mode }) => {
                 protocolVersion: "2.0.0",
                 mode: "demo",
                 productionMultiplayer: false,
+                previewProfile: "competition-four-seat-draft",
               }),
             });
           }

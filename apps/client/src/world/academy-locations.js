@@ -1,6 +1,15 @@
 // Local academy layout. Room metadata is deliberately outside strict Protocol 2.0.0 payloads.
 export const ACADEMY_HUB = "reading-room-main";
 
+// Four pupil desks, in two equal rows/columns. Only the front-right desk
+// carries the notebook; the teacher's existing demonstration table is separate.
+const STUDENT_DESKS = [
+  { x: 2, z: -1, study: true },
+  { x: -2, z: -1, study: false },
+  { x: -2, z: 3, study: false },
+  { x: 2, z: 3, study: false },
+];
+
 export const ACADEMY_ROOMS = [
   {
     roomId: "room-mathematics",
@@ -75,15 +84,15 @@ export const ACADEMY_ROOMS = [
   entry: { x: room.center.x, y: 0, z: 84.5 },
   exit: { x: room.center.x, y: 0, z: 85.55 },
   hubReturn: { x: room.door.x, y: 0, z: 68.1 },
-  teacherPosition: { x: room.center.x - 2.5, y: 0, z: 78.1 },
+  teacherPosition: { x: room.center.x - 0.3, y: 0, z: 78.1 },
   examinerPosition: { x: room.center.x + 3.6, y: 0, z: 77.85 },
   examinerSeat: {
     seatId: `seat-${room.moduleId}`,
-    position: { x: room.center.x + 3.4, y: 0, z: 80.1 },
+    position: { x: room.center.x + 2, y: 0, z: 80.05 },
     yawRad: Math.PI,
-    exitPosition: { x: room.center.x + 1.7, y: 0, z: 81.5 },
+    exitPosition: { x: room.center.x + 0.3, y: 0, z: 81.5 },
   },
-  notebook: { x: room.center.x + 3.4, y: 0.9, z: 79.05 },
+  notebook: { x: room.center.x + 2, y: 0.9, z: 79 },
   bounds: {
     minX: room.center.x - 6.15,
     maxX: room.center.x + 6.15,
@@ -92,16 +101,21 @@ export const ACADEMY_ROOMS = [
   },
   objects: [
     { kind: "desk", x: -2.5, z: -3.3, width: 2.3 },
-    { kind: "desk", x: 3.4, z: -0.95, width: 2.1, study: true },
+    ...STUDENT_DESKS.map((desk) => ({
+      kind: "desk",
+      width: 2.1,
+      student: true,
+      ...desk,
+    })),
     { kind: "shelf", x: -4.75, z: 1 },
     { kind: "lamp", x: -3.25, z: -3.4, y: 0.9 },
   ],
-  // A clear loop in front of the teacher desk; never crosses a seat or bookshelf.
+  // Patrol through the middle aisle, away from pupil desks, chairs and shelves.
   teacherRoute: [
-    [-2.5, -1.9],
-    [-0.6, -1.9],
-    [-0.6, 1.8],
-    [-2.5, 1.8],
+    [-0.3, -1.9],
+    [0.3, -1.9],
+    [0.3, 1.8],
+    [-0.3, 1.8],
   ],
   examinerRoute: [
     [3.6, -2.15],
@@ -112,7 +126,12 @@ export const ACADEMY_ROOMS = [
   ],
   colliders: [
     { x: room.center.x - 2.5, z: 76.7, hx: 1.4, hz: 0.85 },
-    { x: room.center.x + 3.4, z: 79.05, hx: 1.3, hz: 0.85 },
+    ...STUDENT_DESKS.map((desk) => ({
+      x: room.center.x + desk.x,
+      z: room.center.z + desk.z,
+      hx: 1.3,
+      hz: 0.85,
+    })),
     { x: room.center.x - 4.75, z: 81, hx: 1.25, hz: 0.6 },
   ],
 }));

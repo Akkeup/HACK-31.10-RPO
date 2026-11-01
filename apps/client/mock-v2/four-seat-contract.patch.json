@@ -1,0 +1,52 @@
+{
+  "profile": "competition-four-seat-draft",
+  "baseProtocolVersion": "2.0.0",
+  "scope": "in-process mock only; pending protocol release",
+  "changes": [
+    {
+      "schema": "gameplay-config.schema.json",
+      "path": "/properties/competition/properties/maxPlayers/const",
+      "value": 4
+    },
+    {
+      "schema": "gameplay-config.schema.json",
+      "path": "/properties/competition/properties/tables/items/properties/seats/minItems",
+      "value": 4
+    },
+    {
+      "schema": "gameplay-config.schema.json",
+      "path": "/properties/competition/properties/tables/items/properties/seats/maxItems",
+      "value": 4
+    },
+    {
+      "schema": "competition.schema.json",
+      "path": "/$defs/state/properties/participants/maxItems",
+      "value": 4
+    },
+    {
+      "schema": "competition.schema.json",
+      "path": "/$defs/state/properties/settlement/anyOf/0/properties/payouts/maxItems",
+      "value": 4
+    },
+    {
+      "schema": "competition.schema.json",
+      "path": "/$defs/table/properties/occupiedSeats/maxItems",
+      "value": 4
+    },
+    {
+      "schema": "competition.schema.json",
+      "path": "/$defs/round/properties/answeredPlayerIds/maxItems",
+      "value": 4
+    },
+    {
+      "schema": "competition.schema.json",
+      "path": "/$defs/roundResult/properties/scores/maxItems",
+      "value": 4
+    },
+    {
+      "schema": "competition.schema.json",
+      "path": "/$defs/settlement/properties/payouts/maxItems",
+      "value": 4
+    }
+  ]
+}

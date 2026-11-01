@@ -50,11 +50,13 @@ if (mock) {
   );
   assert.equal(marker.protocolVersion, "2.0.0");
   assert.equal(marker.productionMultiplayer, false);
+  assert.equal(marker.previewProfile, "competition-four-seat-draft");
   assert.ok(await exists("demo/resources"), "Missing demo resources");
 } else {
   assert.ok(!(await exists("demo")), "Demo resources in real build");
   for (const privateText of [
     "discovery-basics",
+    "competition-four-seat-draft",
     "discovery:reading-room:demo:2.0.0:v1",
     "Сложение объединяет количества: два и три дают пять.",
     "Ветвление позволяет выбрать действие в зависимости от условия.",
@@ -65,5 +67,5 @@ if (mock) {
     );
 }
 console.log(
-  `PASS ${mock ? "mock" : "real"}: v2-only wire schemas; shell-only precache; no legacy/QA/full catalog; demo data isolated by build mode.`,
+  `PASS ${mock ? "mock: four-seat draft isolated from released network validation" : "real: released v2-only wire schemas"}; shell-only precache; no legacy/QA/full catalog; demo data isolated by build mode.`,
 );

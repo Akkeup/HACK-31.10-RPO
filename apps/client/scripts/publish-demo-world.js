@@ -104,7 +104,7 @@ await asset(
   "competition-table",
   await readFile(
     new URL(
-      "../apps/client/public/assets/models/furniture/round-table.glb",
+      "../apps/client/public/assets/models/furniture/gaming-table.glb",
       root,
     ),
   ),
@@ -281,7 +281,8 @@ for (const chunk of chunks) {
     );
 }
 await writeFile(
-  new URL("world/catalog.server-only.json", root),
+  // The four-seat draft must never replace the catalog loaded by the Rust v2 server.
+  new URL("world/catalog.four-seat-draft.server-only.json", root),
   JSON.stringify({ manifest, chunks, assets }, null, 2),
 );
 console.log(
