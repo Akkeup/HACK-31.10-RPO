@@ -55,10 +55,22 @@ function hallWallColliders() {
   return segments;
 }
 
-function overlapsCollider(x, z, collider, radius = PLAYER_RADIUS) {
-  const dx = Math.max(Math.abs(x - collider.x) - collider.hx, 0);
-  const dz = Math.max(Math.abs(z - collider.z) - collider.hz, 0);
-  return dx * dx + dz * dz < radius * radius;
+function colliderSeparation(x, z, collider, radius = PLAYER_RADIUS) {
+  const dx = Math.abs(x - collider.x) - collider.hx;
+  const dz = Math.abs(z - collider.z) - collider.hz;
+  return (
+    Math.hypot(Math.max(dx, 0), Math.max(dz, 0)) +
+    Math.min(Math.max(dx, dz), 0) -
+    radius
+  );
+}
+
+export function blocksColliderMove(x, z, fromX, fromZ, collider) {
+  const next = colliderSeparation(x, z, collider);
+  if (next >= 0) return false;
+  const current = colliderSeparation(fromX, fromZ, collider);
+  // Allow motion parallel to a surface and outward from a restored overlap.
+  return current >= 0 || next < current - 1e-5;
 }
 export class Game {
   constructor(container, adapter, configs, onUpdate, onError) {
@@ -71,6 +83,7 @@ export class Game {
     this.others = new Map();
     this.npcs = new Map();
     this.actors = new Map();
+    this.ambientStudents = new Map();
     this.authoritative = new THREE.Vector3(
       ...Object.values(configs.world.spawn),
     );
@@ -95,6 +108,7 @@ export class Game {
     this.shelfColliders = [];
     this.hallWallColliders = hallWallColliders();
     this.dialogTargets = new Map();
+    this.localDialogNpcIds = new Set();
     this.elevation = 0.8;
     this.distance = 0;
     this.abort = new AbortController();
@@ -152,6 +166,7 @@ export class Game {
         this.onError(error);
       },
     });
+    this.createAmbientStudents();
     this.chunks = this.resources;
     this.unsub = adapter.onEvent((event) => this.onEvent(event));
     this.unsubStatus = adapter.onStatus((status) => {
@@ -186,6 +201,33 @@ export class Game {
     this.scene.add(root);
     this.actors.set(id, root);
     return root;
+  }
+  createAmbientStudents() {
+    const routes = [
+      [[68.2, 70.8], [72.8, 70.5], [76.1, 73.2], [74.9, 78.5], [69.2, 79.1]],
+      [[84.2, 70.5], [90.8, 71.2], [91.4, 76.2], [86.1, 79.3], [83.7, 75.4]],
+      [[68.1, 86.2], [70.4, 90.5], [75.1, 91.3], [76.2, 87.9], [73.4, 85.1]],
+      [[84.4, 85.2], [89.8, 84.1], [92.1, 88.3], [90.6, 92.1], [85.7, 92.5]],
+    ];
+    routes.forEach((route, index) => {
+      const id = `player:ambient-student-${index + 1}`;
+      const root = this.createActor(id, "Ученик");
+      root.userData.ambientStudent = true;
+      root.userData.tag.visible = this.configs.characterVisual.showNames;
+      const points = route.map(([x, z]) => ({ x, z }));
+      const phase = actorPhase(id);
+      root.userData.visualPatrol = new NpcVisualPatrol(points, {
+        speed: 0.48 + phase * 0.2,
+        phase,
+        initialPause: 1.5 + phase * 2.5,
+        pause: 1.8 + actorPhase(`${id}:pause`) * 2.2,
+      });
+      this.ambientStudents.set(id, root);
+    });
+  }
+  setNpcDialogueFrozen(id, frozen) {
+    if (frozen) this.localDialogNpcIds.add(id);
+    else this.localDialogNpcIds.delete(id);
   }
   setActorName(root, name) {
     const cleanName = String(name || "Игрок")
@@ -360,7 +402,7 @@ export class Game {
       for (const npc of this.npcs.values()) {
         npc.visualPatrol = null;
         npc.visualPatrolKey = null;
-        npc.root.visible = npc.role !== "teacher";
+        npc.root.visible = npc.role !== "teacher" || npc.id === "npc-guide";
       }
     }
   }
@@ -455,13 +497,11 @@ export class Game {
           this.seatTransitionUntil =
             performance.now() + this.configs.firstPerson.seatTransitionMs;
         }
-        if (this.locationId === ACADEMY_HUB) {
-          this.authoritative.set(
-            player.position.x,
-            player.position.y,
-            player.position.z,
-          );
-        }
+        this.authoritative.set(
+          player.position.x,
+          player.position.y,
+          player.position.z,
+        );
         continue;
       }
       ids.add(player.playerId);
@@ -573,7 +613,8 @@ export class Game {
           );
           actor.root.rotation.y = npc.yawRad;
         }
-        actor.root.visible = npc.role !== "teacher";
+        actor.root.visible =
+          npc.role !== "teacher" || npc.npcId === "npc-guide";
       }
       actor.buffer.push(
         [npc.position.x, npc.position.y, npc.position.z],
@@ -628,14 +669,22 @@ export class Game {
         z: room.center.z + z,
       }));
     } else {
-      const radius = npc.npcId === "npc-guide" ? 0.95 : 0.65;
+      // Hall NPCs follow broad, asymmetric paths instead of circling one spot.
+      const radius = npc.npcId === "npc-guide" ? 4.1 : 2.8;
+      const clampX = (x) => Math.max(68.5, Math.min(91.5, x));
+      const clampZ = (z) => Math.max(69.5, Math.min(91.5, z));
       points = [
-        { x: anchor.x, z: anchor.z },
-        { x: anchor.x, z: anchor.z - radius },
-        { x: anchor.x + radius, z: anchor.z },
-        { x: anchor.x, z: anchor.z + radius },
-        { x: anchor.x - radius, z: anchor.z },
-      ];
+        [0, 0],
+        [0.58, -0.82],
+        [1.05, -0.12],
+        [0.62, 0.88],
+        [-0.22, 1.06],
+        [-1.02, 0.54],
+        [-0.88, -0.48],
+      ].map(([x, z]) => ({
+        x: clampX(anchor.x + x * radius),
+        z: clampZ(anchor.z + z * radius),
+      }));
     }
     const phase = actorPhase(npc.npcId);
     actor.visualPatrol = new NpcVisualPatrol(points, {
@@ -1154,30 +1203,48 @@ export class Game {
       const nextZ = originZ + z * speed * dt;
       if (currentRoom) {
         const b = currentRoom.bounds;
-        let x = Math.max(
+        const nextRoomX = Math.max(
           b.minX + PLAYER_RADIUS,
           Math.min(b.maxX - PLAYER_RADIUS, nextX),
         );
-        let z = originZ;
-        if (!currentRoom.colliders.some((col) => overlapsCollider(x, z, col)))
-          this.authoritative.x = x;
-        else x = originX;
-        z = Math.max(
+        let acceptedX = originX;
+        if (
+          !currentRoom.colliders.some((col) =>
+            blocksColliderMove(nextRoomX, originZ, originX, originZ, col),
+          )
+        )
+          acceptedX = nextRoomX;
+        const nextRoomZ = Math.max(
           b.minZ + PLAYER_RADIUS,
           Math.min(b.maxZ - PLAYER_RADIUS, nextZ),
         );
-        if (!currentRoom.colliders.some((col) => overlapsCollider(x, z, col)))
-          this.authoritative.z = z;
+        let acceptedZ = originZ;
+        if (
+          !currentRoom.colliders.some((col) =>
+            blocksColliderMove(acceptedX, nextRoomZ, acceptedX, originZ, col),
+          )
+        )
+          acceptedZ = nextRoomZ;
+        this.authoritative.set(acceptedX, this.authoritative.y, acceptedZ);
+        const travelled = Math.max(speed * dt, 1e-6);
+        x = (acceptedX - originX) / travelled;
+        z = (acceptedZ - originZ) / travelled;
       } else {
         if (this.locationId === ACADEMY_HUB) {
-          const blocked = (x, z) =>
-            this.shelfColliders.some((box) => overlapsCollider(x, z, box)) ||
-            this.hallWallColliders.some((box) => overlapsCollider(x, z, box));
+          const blocked = (x, z, fromX, fromZ) =>
+            this.shelfColliders.some((box) =>
+              blocksColliderMove(x, z, fromX, fromZ, box),
+            ) ||
+            this.hallWallColliders.some((box) =>
+              blocksColliderMove(x, z, fromX, fromZ, box),
+            );
           const tryX = originX + x * speed * dt;
-          if (!blocked(tryX, originZ))
+          if (!blocked(tryX, originZ, originX, originZ))
             this.authoritative.x = Math.max(0.5, Math.min(319.5, tryX));
           const tryZ = originZ + z * speed * dt;
-          if (!blocked(this.authoritative.x, tryZ))
+          if (
+            !blocked(this.authoritative.x, tryZ, this.authoritative.x, originZ)
+          )
             this.authoritative.z = Math.max(0.5, Math.min(319.5, tryZ));
           const travelled = Math.max(speed * dt, 1e-6);
           x = (this.authoritative.x - originX) / travelled;
@@ -1197,26 +1264,35 @@ export class Game {
     this.inputTimer += dt;
     if (this.inputTimer >= 0.05) {
       this.inputTimer %= 0.05;
-      if (currentRoom) {
-        this.adapter.sendInput([0, 0], this.yaw, false);
-      } else {
-        this.adapter.sendInput([x, z], this.yaw, running);
-      }
+      this.adapter.sendInput([x, z], this.yaw, running);
     }
     this.player.position.lerp(this.authoritative, 1 - Math.exp(-18 * dt));
     this.player.rotation.y = this.heading;
     for (const npc of this.npcs.values()) {
       const root = npc.root,
         pose = npc.buffer.sample(now);
-      const dialogTarget = this.dialogTargets.get(npc.id);
+      const dialogTarget = this.localDialogNpcIds.has(npc.id)
+        ? { x: this.authoritative.x, z: this.authoritative.z }
+        : this.dialogTargets.get(npc.id);
       const previous = root.position.clone();
+      const patrolClock =
+        this.serverTime + (now - this.serverTimeReceivedAt) / 1000;
       const localPatrol =
         !this.adapter.isMock && npc.state === "idle" && npc.visualPatrol;
       const patrolPose = localPatrol
         ? localPatrol.sample(
-            this.serverTime + (now - this.serverTimeReceivedAt) / 1000,
+            patrolClock,
           )
         : null;
+      if (localPatrol) {
+        if (dialogTarget && !npc.dialogFrozen) {
+          localPatrol.freeze(patrolClock);
+          npc.dialogFrozen = true;
+        } else if (!dialogTarget && npc.dialogFrozen) {
+          localPatrol.resume(patrolClock);
+          npc.dialogFrozen = false;
+        }
+      }
       if (dialogTarget) {
         if (!npc.dialogAnchor) npc.dialogAnchor = root.position.clone();
         root.position.copy(npc.dialogAnchor);
@@ -1227,8 +1303,14 @@ export class Game {
         npc.dialogAnchor = null;
         root.position.fromArray(pose.position);
       }
-      root.userData.moveSpeed =
+      const measuredSpeed =
         dt > 0 ? Math.min(2, previous.distanceTo(root.position) / dt) : 0;
+      root.userData.moveSpeed = THREE.MathUtils.damp(
+        root.userData.moveSpeed || 0,
+        measuredSpeed,
+        measuredSpeed > (root.userData.moveSpeed || 0) ? 9 : 5,
+        dt,
+      );
       let target;
       if (dialogTarget) {
         target = Math.atan2(
@@ -1259,15 +1341,46 @@ export class Game {
       );
       root.rotation.y += difference * (1 - Math.exp(-6 * dt));
     }
+    const ambientClock =
+      this.serverTime + (now - this.serverTimeReceivedAt) / 1000;
+    for (const [id, root] of this.ambientStudents) {
+      const visible = this.locationId === ACADEMY_HUB;
+      root.visible = visible;
+      if (!visible) continue;
+      const previous = root.position.clone();
+      const motion = root.userData.visualPatrol.sample(ambientClock);
+      if (motion) {
+        root.position.copy(motion.position);
+        const delta = Math.atan2(
+          Math.sin(motion.heading - root.rotation.y),
+          Math.cos(motion.heading - root.rotation.y),
+        );
+        root.rotation.y += delta * (1 - Math.exp(-5 * dt));
+        const measured =
+          dt > 0 ? Math.min(1.5, previous.distanceTo(root.position) / dt) : 0;
+        root.userData.moveSpeed = THREE.MathUtils.damp(
+          root.userData.moveSpeed || 0,
+          measured,
+          measured > (root.userData.moveSpeed || 0) ? 8 : 4,
+          dt,
+        );
+      }
+    }
     for (const other of this.others.values()) {
       const pose = other.buffer.sample(now);
       if (pose) {
         const previous = other.root.position.clone();
         other.root.position.fromArray(pose.position);
-        other.root.userData.moveSpeed =
+        const measured =
           dt > 0
             ? Math.min(6, previous.distanceTo(other.root.position) / dt)
             : 0;
+        other.root.userData.moveSpeed = THREE.MathUtils.damp(
+          other.root.userData.moveSpeed || 0,
+          measured,
+          measured > (other.root.userData.moveSpeed || 0) ? 10 : 5,
+          dt,
+        );
         const target = pose.heading + Math.PI;
         const difference = Math.atan2(
           Math.sin(target - other.root.rotation.y),

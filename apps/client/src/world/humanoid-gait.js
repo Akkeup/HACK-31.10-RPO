@@ -15,6 +15,8 @@ export class HumanoidGait {
     this.origin = model.position.clone();
     this.seated = 0;
     const phase = identity ? actorPhase(identity) : 0;
+    // Small stable per-character cadence differences make a crowd feel less synchronized.
+    this.speedScale = identity ? 0.92 + phase * 0.16 : 1;
     this.time = 0;
     this.idleTime = 0;
     this.weight = 0;
@@ -89,7 +91,8 @@ export class HumanoidGait {
     if (1 - this.seated < 1e-5) this.seated = 1;
     if (walking && this.duration > 0)
       this.time =
-        (this.time + (dt * speed) / REFERENCE_WALK_SPEED) % this.duration;
+        (this.time + (dt * speed * this.speedScale) / REFERENCE_WALK_SPEED) %
+        this.duration;
     if (enabled && !sitting && this.idleDuration > 0)
       this.idleTime = (this.idleTime + dt) % this.idleDuration;
 
