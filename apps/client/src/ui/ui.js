@@ -61,6 +61,10 @@ export class UI {
     this.competition = new CompetitionUI(this, game, this.adapter);
     this.education = new EducationUI(this, game, this.adapter);
     this.adminDashboard = new AdminDashboard(this, game, this.adapter);
+    const adminToggleBtn = document.querySelector("#admin-toggle");
+    if (adminToggleBtn && !this.adminDashboard.isAdmin) {
+      adminToggleBtn.style.display = "none";
+    }
     if (this.adapter.isMock && this.adapter.demoScenario) {
       const demo = document.createElement("details");
       demo.className = "demo-tools";
@@ -180,7 +184,11 @@ export class UI {
     $("#close-settings").onclick = () => this.toggleSettings(false);
     $("#settings-toggle").onclick = () =>
       this.toggleSettings($("#settings").classList.contains("hidden"));
-    $("#admin-toggle").onclick = () => this.adminDashboard?.toggle();
+    $("#admin-toggle").onclick = () => {
+      if (this.adminDashboard?.isAdmin) {
+        this.adminDashboard.toggle();
+      }
+    };
     $("#world-nav").onclick = () => {
       $("#info-overlay").classList.add("hidden");
       this.game?.setBlocked(false, "info");
