@@ -138,3 +138,10 @@ export const ACADEMY_ROOMS = [
 
 export const roomById = (id) =>
   ACADEMY_ROOMS.find((room) => room.roomId === id);
+
+export const roomByPosition = ({ x, z }) =>
+  ACADEMY_ROOMS.find(
+    (room) =>
+      x >= room.bounds.minX && x <= room.bounds.maxX &&
+      z >= room.bounds.minZ && z <= room.bounds.maxZ,
+  );

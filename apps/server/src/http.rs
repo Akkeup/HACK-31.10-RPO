@@ -153,7 +153,17 @@ pub fn dispatch_http(
     let path = norm_path.as_str();
 
     // Health
-    if raw_path == "/health/live" || raw_path == "/health/ready" || path == "/health/live" || path == "/health/ready" {
+    if raw_path == "/health/live" || path == "/health/live" {
+        let val = JsonValue::Object(vec![
+            ("status".to_string(), JsonValue::String("pass".to_string())),
+            ("version".to_string(), JsonValue::String("2.0.0".to_string())),
+        ]);
+        return HttpResponse::json(200, "OK", &val);
+    }
+    if raw_path == "/health/ready" || path == "/health/ready" {
+        if !config.database_ready() {
+            return HttpResponse::error(503, "DEPENDENCY_UNAVAILABLE", "PostgreSQL is not ready", true);
+        }
         let val = JsonValue::Object(vec![
             ("status".to_string(), JsonValue::String("pass".to_string())),
             ("version".to_string(), JsonValue::String("2.0.0".to_string())),
@@ -292,6 +302,26 @@ pub fn dispatch_http(
             } else if method == "DELETE" {
                 game.leave_session(&user.user_id, session_id);
                 return HttpResponse::new(204, "No Content");
+            }
+        }
+
+        if action == Some("location") && method == "PUT" {
+            let body = match parse_json(&String::from_utf8_lossy(&req.body)) {
+                Ok(value) => value,
+                Err(_) => return HttpResponse::error(400, "INVALID_REQUEST", "Invalid JSON", false),
+            };
+            let room_id = match body.get_str("roomId") {
+                Some(value) if value.len() <= 64 && value.bytes().all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b == b'-') => value,
+                _ => return HttpResponse::error(422, "INVALID_REQUEST", "Invalid roomId", false),
+            };
+            match game.transition_location(session_id, &user.user_id, room_id) {
+                Ok((accepted_room_id, position)) => {
+                    return HttpResponse::json(200, "OK", &JsonValue::Object(vec![
+                        ("roomId".to_string(), JsonValue::String(accepted_room_id)),
+                        ("position".to_string(), position.to_json()),
+                    ]));
+                }
+                Err((status, code, message)) => return HttpResponse::error(status, code, message, false),
             }
         }
 

@@ -1,6 +1,7 @@
 import "./styles.css";
 import { loadLocal } from "./config/config.js";
 import { createAdapter } from "./network/adapters.js";
+import { normalizeUsername } from "./network/login.js";
 import { Game } from "./world/game.js";
 import { UI } from "./ui/ui.js";
 let game;
@@ -13,17 +14,16 @@ async function credentials(adapter, error) {
     };
   return new Promise((resolve) => {
     document.querySelector("#app").innerHTML =
-      '<main class="fatal"><h1>Добро пожаловать в Discovery</h1><p>Локальный сервер · Protocol 2.0.0</p><p id="login-error" role="alert"></p><form id="login-form"><label class="select-label">Имя пользователя<input name="username" autocomplete="username" required maxlength="40" value="player1"/></label><label class="select-label">Пароль<input name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128" value="password123"/></label><label class="select-label">ID комнаты (пусто — создать)<input name="sessionId" placeholder="UUID комнаты" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/></label><button type="submit">Войти в мир</button></form></main>';
+      '<main class="fatal"><h1>Добро пожаловать в Discovery</h1><p>Локальный сервер · Protocol 2.0.0</p><p id="login-error" role="alert"></p><form id="login-form"><label class="select-label">Имя пользователя<input name="username" autocomplete="username" required maxlength="40" value="player2"/></label><label class="select-label">Пароль<input name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128" value="password"/></label><label class="select-label">ID комнаты (пусто — создать)<input name="sessionId" placeholder="UUID комнаты" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/></label><button type="submit">Войти в мир</button></form></main>';
     document.querySelector("#login-error").textContent = error || "";
     document.querySelector("#login-form").onsubmit = (e) => {
       e.preventDefault();
       const data = new FormData(e.currentTarget);
       const values = {
-        username: String(data.get("username")),
+        username: normalizeUsername(data.get("username")),
         password: String(data.get("password")),
         sessionId: String(data.get("sessionId")) || undefined,
       };
-      e.currentTarget.reset();
       resolve(values);
     };
   });
@@ -38,7 +38,13 @@ async function start() {
       try {
         initialized = await adapter.initialize(login);
       } catch (error) {
-        if (adapter.isMock || error.status !== 401) throw error;
+        if (adapter.isMock || error.status !== 401) {
+          if (error.code === "INVALID_REQUEST")
+            throw Error(
+              "Сервер вернул конфигурацию, несовместимую с Protocol 2.0.0. Обновите backend и перезапустите приложение.",
+            );
+          throw error;
+        }
         loginError = "Не удалось войти. Проверьте имя пользователя и пароль.";
       } finally {
         login.password = "";

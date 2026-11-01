@@ -86,7 +86,10 @@ test("HTTP adapter rejects v1 and non-API destinations before fetch; v2 sends ve
     calls = [];
   globalThis.fetch = async (path, options) => {
     calls.push({ path, options });
-    return new Response("{}", { status: 200 });
+    const body = String(path).endsWith("/location")
+      ? { roomId: "room-mathematics", position: { x: 120, y: 0, z: 84.5 } }
+      : {};
+    return new Response(JSON.stringify(body), { status: 200 });
   };
   const adapter = new DiscoveryAdapter();
   try {
@@ -103,8 +106,11 @@ test("HTTP adapter rejects v1 and non-API destinations before fetch; v2 sends ve
     assert.equal(calls.length, 1);
     assert.equal(calls[0].options.headers["X-Discovery-Protocol"], "2.0.0");
     assert.equal(calls[0].options.cache, "no-store");
-    await assert.rejects(adapter.enterLocation("room-math"), /только в демо/);
-    assert.equal(adapter.locationId, undefined);
+    adapter.sessionId = "11111111-1111-4111-8111-111111111111";
+    const transition = await adapter.enterLocation("room-mathematics");
+    assert.equal(transition.roomId, "room-mathematics");
+    assert.equal(adapter.locationId, "room-mathematics");
+    assert.equal(calls.at(-1).path, "/api/v2/sessions/11111111-1111-4111-8111-111111111111/location");
   } finally {
     globalThis.fetch = saved;
     adapter.close();

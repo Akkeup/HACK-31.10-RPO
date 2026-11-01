@@ -5,7 +5,7 @@ import { selectNpcAppearance } from "./npc-appearance.js";
 import { SnapshotBuffer } from "../network/interpolation.js";
 import { examinerGroups } from "../gameplay/education.js";
 import { command } from "../network/protocol.js";
-import { ACADEMY_HUB, ACADEMY_ROOMS, roomById } from "./academy-locations.js";
+import { ACADEMY_HUB, ACADEMY_ROOMS, roomById, roomByPosition } from "./academy-locations.js";
 import { AcademyArt } from "./academy-art.js";
 import { matchesShelf, closestShelfPoint } from "./shelf-layout.js";
 export class Game {
@@ -202,12 +202,12 @@ export class Game {
   async enterLocation(roomId) {
     if (!this.academyArt || this.activity.mode !== "exploring") return;
     const previousLocation = this.locationId;
-    await this.adapter.enterLocation(roomId);
+    const transition = await this.adapter.enterLocation(roomId);
     this.locationId = roomId;
     this.academyArt.setLocation(roomId);
     const room = roomById(roomId);
     const prevRoom = roomById(previousLocation);
-    const at = room ? room.entry : (prevRoom?.hubReturn || ACADEMY_ROOMS[0].hubReturn);
+    const at = transition?.position || (room ? room.entry : (prevRoom?.hubReturn || ACADEMY_ROOMS[0].hubReturn));
     if (at) {
       this.authoritative.set(at.x, 0, at.z);
       this.player.position.copy(this.authoritative);
@@ -260,6 +260,10 @@ export class Game {
           self.position.z,
         );
         this.player.position.copy(this.authoritative);
+        const restoredRoom = roomByPosition(self.position);
+        this.locationId = restoredRoom?.roomId || ACADEMY_HUB;
+        this.academyArt?.setLocation(this.locationId);
+        this.syncNpcPlacement();
       }
       this.lastTick = -1;
       return;

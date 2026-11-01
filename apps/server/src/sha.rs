@@ -1,6 +1,12 @@
 // sha.rs: SHA-256 and SHA-1 pure Rust implementations for Discovery Server
 
 pub fn sha256_hex(data: &[u8]) -> String {
+    sha256_bytes(data).iter().map(|b| format!("{:02x}", b)).collect()
+}
+
+/// Raw SHA-256 is kept private to the server-side password KDF.  The network
+/// protocol continues to expose hexadecimal SHA-256 values only.
+pub fn sha256_bytes(data: &[u8]) -> [u8; 32] {
     let mut h = [
         0x6a09e667u32, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
         0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19,
@@ -54,9 +60,9 @@ pub fn sha256_hex(data: &[u8]) -> String {
         h[6] = h[6].wrapping_add(g); h[7] = h[7].wrapping_add(hh);
     }
 
-    let mut out = String::with_capacity(64);
-    for val in h {
-        out.push_str(&format!("{:08x}", val));
+    let mut out = [0u8; 32];
+    for (i, val) in h.iter().enumerate() {
+        out[i * 4..i * 4 + 4].copy_from_slice(&val.to_be_bytes());
     }
     out
 }

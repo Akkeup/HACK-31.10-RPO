@@ -26,6 +26,7 @@ pub struct PlayerState {
     pub activity_mode: String,
     pub activity_target_id: Option<String>,
     pub activity_seat_id: Option<String>,
+    pub location_id: String,
 }
 
 pub struct Room {
@@ -107,6 +108,7 @@ impl Room {
             activity_mode: "exploring".to_string(),
             activity_target_id: None,
             activity_seat_id: None,
+            location_id: "reading-room-main".to_string(),
         };
 
         self.user_to_player.insert(user_id.to_string(), player_id.clone());
@@ -276,6 +278,7 @@ impl GameManager {
 }
 impl GameManager {
     pub fn create_session(&self, user_id: &str, display_name: &str, world_id: &str) -> Result<SessionDto, (u16, &'static str, &'static str)> {
+        let checkpoint = self.load_checkpoint(user_id);
         let mut rooms = self.rooms.lock().unwrap();
         let mut user_map = self.user_session.lock().unwrap();
 
@@ -290,7 +293,13 @@ impl GameManager {
 
         let session_id = crate::auth::AuthService::generate_id();
         let mut room = Room::new(&session_id, world_id, 1);
-        room.join_player(user_id, display_name)?;
+        let player_id = room.join_player(user_id, display_name)?;
+        if let Some((x, y, z, yaw, location_id)) = checkpoint {
+            if let Some(player) = room.players.get_mut(&player_id) {
+                player.x = x; player.y = y; player.z = z; player.yaw_rad = yaw;
+                player.location_id = location_id;
+            }
+        }
 
         user_map.insert(user_id.to_string(), session_id.clone());
         let dto = room.to_dto();
@@ -299,6 +308,7 @@ impl GameManager {
     }
 
     pub fn join_session(&self, user_id: &str, display_name: &str, session_id: &str) -> Result<(SessionDto, String), (u16, &'static str, &'static str)> {
+        let checkpoint = self.load_checkpoint(user_id);
         let mut rooms = self.rooms.lock().unwrap();
         let mut user_map = self.user_session.lock().unwrap();
 
@@ -315,6 +325,12 @@ impl GameManager {
 
         let room = rooms.get_mut(session_id).ok_or((404, "NOT_FOUND", "Session not found"))?;
         let player_id = room.join_player(user_id, display_name)?;
+        if let Some((x, y, z, yaw, location_id)) = checkpoint {
+            if let Some(player) = room.players.get_mut(&player_id) {
+                player.x = x; player.y = y; player.z = z; player.yaw_rad = yaw;
+                player.location_id = location_id;
+            }
+        }
         user_map.insert(user_id.to_string(), session_id.to_string());
         Ok((room.to_dto(), player_id))
     }
@@ -381,6 +397,87 @@ impl GameManager {
                 p.move_z = 0.0;
             }
         }
+    }
+
+    // Room transitions are authoritative: a browser can request a destination,
+    // but the server only accepts a door-to-room or room-to-hub transition from
+    // the correct interaction area.  This keeps the single Three.js scene in
+    // sync with multiplayer coordinates without introducing an undeclared WS
+    // message type.
+    pub fn transition_location(
+        &self,
+        session_id: &str,
+        user_id: &str,
+        requested_room_id: &str,
+    ) -> Result<(String, PositionDto), (u16, &'static str, &'static str)> {
+        const HUB: &str = "reading-room-main";
+        const ROOMS: [(&str, f64, f64, f64); 4] = [
+            ("room-mathematics", 69.0, 66.35, 120.0),
+            ("room-informatics", 76.0, 66.35, 152.0),
+            ("room-history", 83.0, 66.35, 184.0),
+            ("room-geography", 90.0, 66.35, 216.0),
+        ];
+
+        let mut rooms = self.rooms.lock().unwrap();
+        let room = rooms.get_mut(session_id).ok_or((404, "NOT_FOUND", "Session not found"))?;
+        let player_id = room.user_to_player.get(user_id)
+            .cloned().ok_or((403, "FORBIDDEN", "Session membership required"))?;
+        let player = room.players.get_mut(&player_id)
+            .ok_or((403, "FORBIDDEN", "Session membership required"))?;
+
+        let target = ROOMS.iter().find(|(id, _, _, _)| *id == requested_room_id);
+        let (next_location, x, z, yaw) = if requested_room_id == HUB {
+            if player.location_id == HUB {
+                return Ok((HUB.to_string(), PositionDto { x: player.x, y: player.y, z: player.z }));
+            }
+            let current = ROOMS.iter().find(|(id, _, _, _)| *id == player.location_id)
+                .ok_or((409, "ACTIVITY_CONFLICT", "Unknown current location"))?;
+            let &(_, door_x, _, center_x) = current;
+            let exit_z = 85.55;
+            if (player.x - center_x).hypot(player.z - exit_z) > 4.0 {
+                return Err((403, "FORBIDDEN", "Move to the classroom exit first"));
+            }
+            (HUB.to_string(), door_x, 68.1, std::f64::consts::PI)
+        } else if let Some(&(id, door_x, door_z, center_x)) = target {
+            if player.location_id != HUB {
+                return Err((409, "ACTIVITY_CONFLICT", "Leave the current classroom first"));
+            }
+            if (player.x - door_x).hypot(player.z - door_z) > 4.0 {
+                return Err((403, "FORBIDDEN", "Move to the classroom door first"));
+            }
+            (id.to_string(), center_x, 84.5, 0.0)
+        } else {
+            return Err((422, "INVALID_REQUEST", "Unknown roomId"));
+        };
+
+        player.location_id = next_location.clone();
+        player.x = x;
+        player.y = 0.0;
+        player.z = z;
+        player.yaw_rad = yaw;
+        player.move_x = 0.0;
+        player.move_z = 0.0;
+        let _ = self.db.execute(&format!(
+            "INSERT INTO player_checkpoints (user_id, world_id, x, y, z, yaw_rad, location_id, updated_at) \
+             VALUES ('{}', 'discovery-campus', {}, {}, {}, {}, '{}', NOW()) \
+             ON CONFLICT (user_id, world_id) DO UPDATE SET x = EXCLUDED.x, y = EXCLUDED.y, z = EXCLUDED.z, yaw_rad = EXCLUDED.yaw_rad, location_id = EXCLUDED.location_id, updated_at = NOW()",
+            user_id, x, 0.0, z, yaw, next_location
+        ));
+        Ok((next_location, PositionDto { x, y: 0.0, z }))
+    }
+
+    fn load_checkpoint(&self, user_id: &str) -> Option<(f64, f64, f64, f64, String)> {
+        let row = self.db.query(&format!(
+            "SELECT x, y, z, yaw_rad, location_id FROM player_checkpoints WHERE user_id = '{}' AND world_id = 'discovery-campus'",
+            user_id,
+        )).ok()?.into_iter().next()?;
+        let x = row.get(0)?.parse().ok()?;
+        let y = row.get(1)?.parse().ok()?;
+        let z = row.get(2)?.parse().ok()?;
+        let yaw = row.get(3)?.parse().ok()?;
+        let location_id = row.get(4).unwrap_or("reading-room-main");
+        let allowed = location_id == "reading-room-main" || ["room-mathematics", "room-informatics", "room-history", "room-geography"].contains(&location_id);
+        allowed.then(|| (x, y, z, yaw, location_id.to_string()))
     }
 
     pub fn tick_all(&self, walk_speed: f64, run_mul: f64, max_silence_ms: u64) {

@@ -208,4 +208,8 @@ impl DbPool {
             }
         }
     }
+
+    pub fn is_ready(&self) -> bool {
+        self.query("SELECT 1").is_ok()
+    }
 }

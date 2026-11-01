@@ -12,9 +12,15 @@ import {
 import { validateAdmin } from "../config/config.js";
 export class DiscoveryAdapter {
   async enterLocation(roomId) {
-    throw Error(
-      "Переход между кабинетами пока доступен только в демо: в Protocol 2.0.0 нет команды смены локации.",
+    if (!this.sessionId) throw Error("Сначала подключитесь к игровой сессии");
+    const { value } = await this.request(
+      `/api/v2/sessions/${this.sessionId}/location`,
+      { method: "PUT", body: { roomId }, maxBytes: 16384 },
     );
+    if (!value || value.roomId !== roomId || !value.position)
+      throw Error("Сервер не подтвердил переход в кабинет");
+    this.locationId = roomId;
+    return value;
   }
   #token;
   constructor({ mock = false } = {}) {

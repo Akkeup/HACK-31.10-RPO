@@ -8,6 +8,7 @@ import sys
 import time
 import subprocess
 import webbrowser
+import shutil
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 CLIENT_DIR = os.path.join(ROOT_DIR, "apps", "client")
@@ -18,6 +19,11 @@ def main():
     print("========================================")
     print("   DISCOVERY UNIFIED RUNNER (v2.0.0)   ")
     print("========================================")
+
+    if not shutil.which("npm"):
+        raise SystemExit("npm не найден. Установите Node.js 22 LTS или используйте docker compose up --build.")
+    if not shutil.which("rustc"):
+        raise SystemExit("rustc не найден. Установите Rust 1.85+ или используйте docker compose up --build.")
 
     # 1. Build frontend if needed
     src_dir_client = os.path.join(CLIENT_DIR, "src")

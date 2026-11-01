@@ -4,6 +4,24 @@ use std::sync::{Arc, RwLock};
 use crate::db::DbPool;
 use crate::json::{parse_json, JsonValue};
 
+fn unwrap_values(mut document: JsonValue) -> JsonValue {
+    while let Some(values) = document.get("values") { document = values.clone(); }
+    document
+}
+
+// A v1 configuration in PostgreSQL must never be spliced into a v2 response:
+// the client validates the entire document and would otherwise fail only after
+// an otherwise successful login.  Keep a complete published local fallback.
+fn is_complete_public_v2(value: &JsonValue) -> bool {
+    let required = ["world", "character", "renderDefaults", "characterVisualDefaults", "firstPersonDefaults", "gameplay", "readingRoom"];
+    if required.iter().any(|key| value.get(key).is_none()) { return false; }
+    let stations = value.get("gameplay").and_then(|v| v.get("education"))
+        .and_then(|v| v.get("stations")).and_then(|v| v.as_array());
+    let asset_slots = value.get("readingRoom").and_then(|v| v.get("assetSlots")).and_then(|v| v.as_array());
+    stations.map(|items| items.len() >= 4).unwrap_or(false)
+        && asset_slots.map(|items| !items.is_empty()).unwrap_or(false)
+}
+
 pub struct ConfigState {
     pub revision: u64,
     pub admin_values: JsonValue,
@@ -20,17 +38,16 @@ impl ConfigService {
         let admin_content = std::fs::read_to_string("assets/config/admin-config.json")
             .or_else(|_| std::fs::read_to_string("apps/client/tests/fixtures/v2.0.0/http/admin-config.json"))
             .unwrap_or_else(|_| "{}".to_string());
-        let mut admin_values = parse_json(&admin_content).unwrap_or(JsonValue::Null);
-        while let Some(inner) = admin_values.get("values") {
-            admin_values = inner.clone();
-        }
+        let admin_values = unwrap_values(parse_json(&admin_content).unwrap_or(JsonValue::Null));
 
         let public_content = std::fs::read_to_string("assets/config/public-config.json")
             .or_else(|_| std::fs::read_to_string("apps/client/tests/fixtures/v2.0.0/http/public-config.json"))
             .unwrap_or_else(|_| "{}".to_string());
-        let mut public_values = parse_json(&public_content).unwrap_or(JsonValue::Null);
-        while let Some(inner) = public_values.get("values") {
-            public_values = inner.clone();
+        let mut public_values = unwrap_values(parse_json(&public_content).unwrap_or(JsonValue::Null));
+        if !is_complete_public_v2(&public_values) {
+            let fixture = std::fs::read_to_string("apps/client/tests/fixtures/v2.0.0/http/public-config.json")
+                .unwrap_or_else(|_| "{}".to_string());
+            public_values = unwrap_values(parse_json(&fixture).unwrap_or(JsonValue::Null));
         }
 
         let mut revision = 1u64;
@@ -57,6 +74,10 @@ impl ConfigService {
 impl ConfigService {
     pub fn get_revision(&self) -> u64 {
         self.state.read().unwrap().revision
+    }
+
+    pub fn database_ready(&self) -> bool {
+        self.db.is_ready()
     }
 
     pub fn get_etag(&self) -> String {
