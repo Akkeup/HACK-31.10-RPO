@@ -348,6 +348,8 @@ export class Game {
           buffer: new SnapshotBuffer(),
         };
         this.others.set(player.playerId, other);
+        this.hydrateActors();
+        this.localArt?.applyActors();
       }
       other.root.userData.seated = player.activity.mode.startsWith("seated_");
       other.buffer.push(
@@ -391,6 +393,8 @@ export class Game {
           baseYaw: initialYaw,
         };
         this.npcs.set(npc.npcId, actor);
+        this.hydrateActors();
+        this.localArt?.applyActors();
       }
       if (currentRoom) {
         actor.baseYaw = 0;
@@ -1012,7 +1016,7 @@ export class Game {
     {
       for (const [id, actor] of this.actors) {
         const body = actor.userData.body;
-        if (!body) continue;
+        if (!body && !actor.userData.localArt) continue;
         const seated = actor.userData.seated;
         const moving =
           id === "self" ? length : actor.userData.moveSpeed > 0.025;
@@ -1037,20 +1041,22 @@ export class Game {
           );
           continue;
         }
-        body.position.y = seated ? -0.4 : 0;
-        for (const [index, name] of ["left_leg", "right_leg"].entries()) {
-          const leg = body.getObjectByName(name);
-          if (leg) {
-            leg.position.y = seated ? 0.85 : 0.44;
-            leg.position.z = seated ? -0.28 : 0;
-            leg.rotation.x = seated
-              ? -Math.PI / 2
-              : moving && this.configs.render.animationEnabled
-                ? Math.sin(
-                    now * 0.009 * this.configs.characterVisual.animationRate +
-                      index * Math.PI,
-                  ) * 0.35
-                : 0;
+        if (body) {
+          body.position.y = seated ? -0.4 : 0;
+          for (const [index, name] of ["left_leg", "right_leg"].entries()) {
+            const leg = body.getObjectByName(name);
+            if (leg) {
+              leg.position.y = seated ? 0.85 : 0.44;
+              leg.position.z = seated ? -0.28 : 0;
+              leg.rotation.x = seated
+                ? -Math.PI / 2
+                : moving && this.configs.render.animationEnabled
+                  ? Math.sin(
+                      now * 0.009 * this.configs.characterVisual.animationRate +
+                        index * Math.PI,
+                    ) * 0.35
+                  : 0;
+            }
           }
         }
         actor.userData.tag.position.y = seated ? 2.1 : 2.55;

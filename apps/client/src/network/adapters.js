@@ -177,6 +177,26 @@ export class DiscoveryAdapter {
         }
       }
 
+      if (!session && !existingSessionId) {
+        try {
+          const listRes = await this.request("/api/v2/sessions", { method: "GET" });
+          const allSessions = listRes.value?.sessions || listRes.sessions || [];
+          const openSession = allSessions.find(
+            (s) =>
+              s.worldId === worldId &&
+              (s.status === "ACTIVE" || s.status === "WAITING_FOR_PLAYERS") &&
+              (s.players?.length || 0) < (s.maxPlayers || 5),
+          );
+          if (openSession?.sessionId) {
+            const joinRes = await this.request(
+              `/api/v2/sessions/${openSession.sessionId}/members/me`,
+              { method: "PUT" },
+            );
+            session = joinRes.value;
+          }
+        } catch (_) {}
+      }
+
       if (!session) {
         try {
           const res = await this.request("/api/v2/sessions", {

@@ -292,11 +292,11 @@ pub fn run_ws_session(
             handle_hello(&mut conn, &ticket, &player_id, &instance_id, &game, &config, &spatial, req_id);
         } else if msg_type == "world.ready" {
             is_ready = true;
-            send_snapshot(&mut conn, &ticket, &game, &config, &competition);
+            send_snapshot(&mut conn, &player_id, &ticket, &game, &config, &competition, &broadcaster);
         } else if msg_type == "player.input" {
             if let Some(p) = payload_obj {
                 handle_input(&game, &ticket.session_id, &player_id, p, &config);
-                send_snapshot(&mut conn, &ticket, &game, &config, &competition);
+                send_snapshot(&mut conn, &player_id, &ticket, &game, &config, &competition, &broadcaster);
             }
         } else if msg_type == "npc.interact" {
             handle_npc_interact(&mut conn, &ticket, &player_id, req_id, payload_obj, &game, &ai, &config);
@@ -377,10 +377,12 @@ fn handle_hello(
 
 fn send_snapshot(
     conn: &mut WsConnection,
+    player_id: &str,
     ticket: &WsTicket,
     game: &Arc<GameManager>,
     config: &Arc<ConfigService>,
     competition: &Arc<CompetitionService>,
+    broadcaster: &Arc<WsBroadcaster>,
 ) {
     if let Some((tick, status, players)) = game.get_room_snapshot(&ticket.session_id) {
         let npcs = vec![
@@ -451,10 +453,18 @@ fn send_snapshot(
             ("interestRevision".to_string(), JsonValue::Number(1.0)),
             ("configRevision".to_string(), JsonValue::Number(config.get_revision() as f64)),
             ("sessionStatus".to_string(), JsonValue::String(status)),
-            ("players".to_string(), JsonValue::Array(players.into_iter().map(|p| p.to_json()).collect())),
+            ("players".to_string(), JsonValue::Array(players.iter().map(|p| p.to_json()).collect())),
             ("npcs".to_string(), JsonValue::Array(npcs.into_iter().map(|n| n.to_json()).collect())),
             ("tables".to_string(), JsonValue::Array(tables)),
         ]);
+        let other_pids: Vec<String> = players
+            .iter()
+            .filter(|p| p.player_id != player_id)
+            .map(|p| p.player_id.clone())
+            .collect();
+        if !other_pids.is_empty() {
+            broadcaster.broadcast_to_players(&other_pids, "world.snapshot", &snapshot_payload);
+        }
         let _ = conn.writer.lock().unwrap().send_envelope("world.snapshot", None, snapshot_payload);
     }
 }

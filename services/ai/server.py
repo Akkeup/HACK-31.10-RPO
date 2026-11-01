@@ -17,9 +17,7 @@ kwargs = {"low_cpu_mem_usage": True}
 if torch.cuda.is_available():
     from transformers import BitsAndBytesConfig
     kwargs["quantization_config"] = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_compute_dtype=torch.bfloat16,
-        bnb_4bit_quant_type="nf4",
+        load_in_8bit=True,
     )
     kwargs["device_map"] = "auto"
 else:
@@ -27,7 +25,7 @@ else:
 
 model = AutoModelForCausalLM.from_pretrained(MODEL_PATH, **kwargs)
 model.eval()
-print(f"Qwen2.5-3B-Instruct model loaded on {DEVICE} (4-bit GPU) successfully.")
+print(f"Qwen2.5-3B-Instruct model loaded on {DEVICE} (8-bit GPU) successfully.")
 
 class OllamaHandler(BaseHTTPRequestHandler):
     def do_GET(self):

@@ -81,8 +81,21 @@ def main():
     ai_server_proc = None
     ai_server_script = os.path.join(ROOT_DIR, "services", "ai", "server.py")
     if os.path.exists(ai_server_script):
-        print("[LLM] Starting local Qwen2.5-3B-Instruct AI service on port 11434...")
-        ai_server_proc = subprocess.Popen([sys.executable, ai_server_script], cwd=ROOT_DIR)
+        already_running = False
+        try:
+            s_check = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s_check.settimeout(0.5)
+            s_check.connect(("127.0.0.1", 11434))
+            s_check.close()
+            already_running = True
+        except Exception:
+            pass
+
+        if already_running:
+            print("[LLM] Local Qwen2.5-3B-Instruct AI service is already running on port 11434.")
+        else:
+            print("[LLM] Starting local Qwen2.5-3B-Instruct AI service on port 11434...")
+            ai_server_proc = subprocess.Popen([sys.executable, ai_server_script], cwd=ROOT_DIR)
 
     try:
         proc = subprocess.Popen([server_bin], env=env, cwd=ROOT_DIR)
