@@ -4,15 +4,17 @@ import {
   referenceIdle,
   REFERENCE_WALK_SPEED,
 } from "./animation/reference-walk.js";
+import { actorPhase } from "./actor-seed.js";
 
 // Exact reference keyframes, sampled locally on each independent skeleton.
 // Only visual bones move: world position, navigation and collisions stay server-owned.
 // Authored GLB animations still take priority in LocalArt.
 export class HumanoidGait {
-  constructor(model) {
+  constructor(model, identity = "") {
     this.model = model;
     this.origin = model.position.clone();
     this.seated = 0;
+    const phase = identity ? actorPhase(identity) : 0;
     this.time = 0;
     this.idleTime = 0;
     this.weight = 0;
@@ -20,6 +22,7 @@ export class HumanoidGait {
     this.joints = new Map();
     const clip = referenceWalk(model);
     this.duration = clip.duration;
+    this.time = this.duration * phase;
     const bind = (track) => {
       const [name, property] = track.name.split(".");
       const bone = model.getObjectByName(name);
@@ -34,6 +37,7 @@ export class HumanoidGait {
     this.bindings = clip.tracks.map(bind);
     const idle = referenceIdle(model);
     this.idleDuration = idle.duration;
+    this.idleTime = this.idleDuration * phase;
     this.idleBindings = idle.tracks.map(bind);
     this.sitting = new Map();
     for (const [name, joint] of this.joints) {

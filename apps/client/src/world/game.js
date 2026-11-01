@@ -5,10 +5,61 @@ import { selectNpcAppearance } from "./npc-appearance.js";
 import { SnapshotBuffer } from "../network/interpolation.js";
 import { examinerGroups } from "../gameplay/education.js";
 import { command } from "../network/protocol.js";
-import { ACADEMY_HUB, ACADEMY_ROOMS, roomById, roomByPosition } from "./academy-locations.js";
+import {
+  ACADEMY_HUB,
+  ACADEMY_ROOMS,
+  roomById,
+  roomByPosition,
+} from "./academy-locations.js";
 import { AcademyArt } from "./academy-art.js";
 import { matchesShelf, closestShelfPoint } from "./shelf-layout.js";
 import { NpcVisualPatrol } from "./npc-visual-patrol.js";
+import { actorPhase } from "./actor-seed.js";
+
+const PLAYER_RADIUS = 0.32;
+const HALL_DOOR_WALL_Z = 65.65;
+const HALL_DOOR_WALL_LEFT = 65.5;
+const HALL_DOOR_WALL_RIGHT = 94.5;
+const HALL_DOOR_HALF_WIDTH = 0.72;
+
+function hallWallColliders() {
+  const doors = ACADEMY_ROOMS.map((room) => room.door.x).sort((a, b) => a - b);
+  const segments = [];
+  let start = HALL_DOOR_WALL_LEFT;
+  for (const doorX of doors) {
+    const end = doorX - HALL_DOOR_HALF_WIDTH;
+    if (end > start)
+      segments.push({
+        x: (start + end) / 2,
+        z: HALL_DOOR_WALL_Z,
+        hx: (end - start) / 2,
+        hz: 0.18,
+      });
+    start = doorX + HALL_DOOR_HALF_WIDTH;
+  }
+  if (HALL_DOOR_WALL_RIGHT > start)
+    segments.push({
+      x: (start + HALL_DOOR_WALL_RIGHT) / 2,
+      z: HALL_DOOR_WALL_Z,
+      hx: (HALL_DOOR_WALL_RIGHT - start) / 2,
+      hz: 0.18,
+    });
+  // The rear opening is visibly filled by AcademyArt; close the rest of that wall too.
+  segments.push(
+    { x: (65.5 + 78.35) / 2, z: 94.5, hx: (78.35 - 65.5) / 2, hz: 0.2 },
+    { x: (81.65 + 94.5) / 2, z: 94.5, hx: (94.5 - 81.65) / 2, hz: 0.2 },
+    { x: 80, z: 94.5, hx: 1.65, hz: 0.2 },
+    { x: 65.5, z: 80, hx: 0.2, hz: 14.5 },
+    { x: 94.5, z: 80, hx: 0.2, hz: 14.5 },
+  );
+  return segments;
+}
+
+function overlapsCollider(x, z, collider, radius = PLAYER_RADIUS) {
+  const dx = Math.max(Math.abs(x - collider.x) - collider.hx, 0);
+  const dz = Math.max(Math.abs(z - collider.z) - collider.hz, 0);
+  return dx * dx + dz * dz < radius * radius;
+}
 export class Game {
   constructor(container, adapter, configs, onUpdate, onError) {
     this.container = container;
@@ -42,6 +93,8 @@ export class Game {
     this.tableLabels = new Map();
     this.readingLabels = new Map();
     this.shelfColliders = [];
+    this.hallWallColliders = hallWallColliders();
+    this.dialogTargets = new Map();
     this.elevation = 0.8;
     this.distance = 0;
     this.abort = new AbortController();
@@ -123,6 +176,7 @@ export class Game {
     const tag = nameTag(name);
     root.add(tag);
     root.userData = {
+      actorId: id,
       tag,
       body: null,
       modelId: null,
@@ -134,7 +188,9 @@ export class Game {
     return root;
   }
   setActorName(root, name) {
-    const cleanName = String(name || "Игрок").trim().slice(0, 40);
+    const cleanName = String(name || "Игрок")
+      .trim()
+      .slice(0, 40);
     if (root.userData.displayName === cleanName) return;
     if (root.userData.tag) disposeObject(root.userData.tag);
     const tag = nameTag(cleanName);
@@ -250,7 +306,9 @@ export class Game {
     this.academyArt.setLocation(roomId);
     const room = roomById(roomId);
     const prevRoom = roomById(previousLocation);
-    const at = transition?.position || (room ? room.entry : (prevRoom?.hubReturn || ACADEMY_ROOMS[0].hubReturn));
+    const at =
+      transition?.position ||
+      (room ? room.entry : prevRoom?.hubReturn || ACADEMY_ROOMS[0].hubReturn);
     if (at) {
       this.authoritative.set(at.x, 0, at.z);
       this.player.position.copy(this.authoritative);
@@ -274,13 +332,21 @@ export class Game {
     if (currentRoom) {
       for (const [id, npc] of this.npcs) {
         if (id === currentRoom.teacherId) {
-          npc.root.position.set(currentRoom.teacherPosition.x, currentRoom.teacherPosition.y, currentRoom.teacherPosition.z);
+          npc.root.position.set(
+            currentRoom.teacherPosition.x,
+            currentRoom.teacherPosition.y,
+            currentRoom.teacherPosition.z,
+          );
           npc.baseYaw = 0;
           npc.visualPatrol = null;
           npc.visualPatrolKey = null;
           npc.root.visible = true;
         } else if (npc.role === "examiner") {
-          npc.root.position.set(currentRoom.examinerPosition.x, currentRoom.examinerPosition.y, currentRoom.examinerPosition.z);
+          npc.root.position.set(
+            currentRoom.examinerPosition.x,
+            currentRoom.examinerPosition.y,
+            currentRoom.examinerPosition.z,
+          );
           npc.baseYaw = 0;
           npc.visualPatrol = null;
           npc.visualPatrolKey = null;
@@ -294,7 +360,7 @@ export class Game {
       for (const npc of this.npcs.values()) {
         npc.visualPatrol = null;
         npc.visualPatrolKey = null;
-        npc.root.visible = true;
+        npc.root.visible = npc.role !== "teacher";
       }
     }
   }
@@ -361,6 +427,15 @@ export class Game {
     this.tables = p.tables;
     this.syncTableLabels();
     const ids = new Set();
+    this.dialogTargets.clear();
+    for (const player of p.players) {
+      if (player.activity?.mode === "learning" && player.activity.targetId) {
+        this.dialogTargets.set(player.activity.targetId, {
+          x: player.position.x,
+          z: player.position.z,
+        });
+      }
+    }
     for (const player of p.players) {
       if (player.playerId === this.adapter.playerId) {
         if (JSON.stringify(this.activity) !== JSON.stringify(player.activity)) {
@@ -459,15 +534,27 @@ export class Game {
         actor.baseYaw = 0;
         if (npc.npcId === currentRoom.teacherId) {
           if (!actor.visualPatrol || this.adapter.isMock)
-            actor.root.position.set(currentRoom.teacherPosition.x, currentRoom.teacherPosition.y, currentRoom.teacherPosition.z);
+            actor.root.position.set(
+              currentRoom.teacherPosition.x,
+              currentRoom.teacherPosition.y,
+              currentRoom.teacherPosition.z,
+            );
           actor.root.visible = true;
         } else if (npc.role === "examiner") {
           if (!actor.visualPatrol || this.adapter.isMock)
-            actor.root.position.set(currentRoom.examinerPosition.x, currentRoom.examinerPosition.y, currentRoom.examinerPosition.z);
+            actor.root.position.set(
+              currentRoom.examinerPosition.x,
+              currentRoom.examinerPosition.y,
+              currentRoom.examinerPosition.z,
+            );
           actor.root.visible = true;
         } else {
           if (!actor.visualPatrol || this.adapter.isMock)
-            actor.root.position.set(npc.position.x, npc.position.y, npc.position.z);
+            actor.root.position.set(
+              npc.position.x,
+              npc.position.y,
+              npc.position.z,
+            );
           actor.root.visible = false;
         }
       } else {
@@ -479,10 +566,14 @@ export class Game {
           ) > 8
         ) {
           actor.buffer = new SnapshotBuffer();
-          actor.root.position.set(npc.position.x, npc.position.y, npc.position.z);
+          actor.root.position.set(
+            npc.position.x,
+            npc.position.y,
+            npc.position.z,
+          );
           actor.root.rotation.y = npc.yawRad;
         }
-        actor.root.visible = true;
+        actor.root.visible = npc.role !== "teacher";
       }
       actor.buffer.push(
         [npc.position.x, npc.position.y, npc.position.z],
@@ -546,7 +637,13 @@ export class Game {
         { x: anchor.x - radius, z: anchor.z },
       ];
     }
-    actor.visualPatrol = new NpcVisualPatrol(points);
+    const phase = actorPhase(npc.npcId);
+    actor.visualPatrol = new NpcVisualPatrol(points, {
+      speed: 0.68 + phase * 0.3,
+      phase,
+      initialPause: 0.35 + actorPhase(`${npc.npcId}:start`) * 1.25,
+      pause: 1.05 + actorPhase(`${npc.npcId}:pause`) * 1.35,
+    });
     actor.visualPatrolKey = key;
   }
   applyPublicConfig(doc) {
@@ -831,7 +928,10 @@ export class Game {
       });
   }
   getNearby() {
-    const maxDist = Math.max(3.5, this.configs?.character?.interactionRadiusM || 3.0);
+    const maxDist = Math.max(
+      3.5,
+      this.configs?.character?.interactionRadiusM || 3.0,
+    );
     const room = roomById(this.locationId);
     const camDir = this.camera.getWorldDirection(new THREE.Vector3());
     const portal = room
@@ -909,7 +1009,8 @@ export class Game {
         point.z,
       );
       const aimed =
-        pos.sub(this.camera.position).normalize().dot(camDir) > 0.35 || distance < 2.0;
+        pos.sub(this.camera.position).normalize().dot(camDir) > 0.35 ||
+        distance < 2.0;
       if (aimed && (!nearest || distance < nearest.distance))
         nearest = { ...object, distance };
     }
@@ -1010,7 +1111,9 @@ export class Game {
       z = 0;
     if (
       !this.inputBlocked &&
-      !document.activeElement?.closest?.("input,select,textarea,[contenteditable=true]") &&
+      !document.activeElement?.closest?.(
+        "input,select,textarea,[contenteditable=true]",
+      ) &&
       this.activity.mode === "exploring" &&
       this.adapter.ready
     ) {
@@ -1033,73 +1136,62 @@ export class Game {
       }
     }
     const length = Math.hypot(x, z);
-    const running = Boolean(this.keys.has("ShiftLeft") || this.keys.has("ShiftRight"));
+    const running = Boolean(
+      this.keys.has("ShiftLeft") || this.keys.has("ShiftRight"),
+    );
     const currentRoom = roomById(this.locationId);
     if (length) {
       x /= length;
       z /= length;
       this.heading = Math.atan2(x, z);
       const speed = running
-        ? this.configs.character.walkSpeedMps * this.configs.character.runMultiplier
+        ? this.configs.character.walkSpeedMps *
+          this.configs.character.runMultiplier
         : this.configs.character.walkSpeedMps;
       const originX = this.authoritative.x;
       const originZ = this.authoritative.z;
       const nextX = originX + x * speed * dt;
       const nextZ = originZ + z * speed * dt;
       if (currentRoom) {
-        let blocked = false;
         const b = currentRoom.bounds;
-        const clampedX = Math.max(b.minX, Math.min(b.maxX, nextX));
-        const clampedZ = Math.max(b.minZ, Math.min(b.maxZ, nextZ));
-        for (const col of currentRoom.colliders) {
-          if (Math.abs(clampedX - col.x) < col.hx && Math.abs(clampedZ - col.z) < col.hz) {
-            blocked = true;
-            break;
-          }
-        }
-        if (!blocked) {
-          this.authoritative.x = clampedX;
-          this.authoritative.z = clampedZ;
-        }
+        let x = Math.max(
+          b.minX + PLAYER_RADIUS,
+          Math.min(b.maxX - PLAYER_RADIUS, nextX),
+        );
+        let z = originZ;
+        if (!currentRoom.colliders.some((col) => overlapsCollider(x, z, col)))
+          this.authoritative.x = x;
+        else x = originX;
+        z = Math.max(
+          b.minZ + PLAYER_RADIUS,
+          Math.min(b.maxZ - PLAYER_RADIUS, nextZ),
+        );
+        if (!currentRoom.colliders.some((col) => overlapsCollider(x, z, col)))
+          this.authoritative.z = z;
       } else {
         if (this.locationId === ACADEMY_HUB) {
-          const start = { x: originX, z: originZ };
-          const lookAhead = Math.max(dt, 0.1) * speed;
-          const end = {
-            x: start.x + x * lookAhead,
-            z: start.z + z * lookAhead,
-          };
-          const blocked = (point, axis) =>
-            this.shelfColliders.some((box) => {
-              const inside =
-                (at) =>
-                  Math.abs(at.x - box.x) < box.hx &&
-                  Math.abs(at.z - box.z) < box.hz;
-              if (!inside(point)) return false;
-              if (!inside(start)) return true;
-              const center = axis === "x" ? box.x : box.z;
-              return (
-                Math.abs(point[axis] - center) <=
-                Math.abs(start[axis] - center)
-              );
-            });
-          if (blocked(end, "x")) {
-            const tryX = { x: end.x, z: start.z };
-            if (blocked(tryX, "x")) x = 0;
-          }
-          if (blocked(end, "z")) {
-            const tryZ = { x: start.x, z: end.z };
-            if (blocked(tryZ, "z")) z = 0;
-          }
+          const blocked = (x, z) =>
+            this.shelfColliders.some((box) => overlapsCollider(x, z, box)) ||
+            this.hallWallColliders.some((box) => overlapsCollider(x, z, box));
+          const tryX = originX + x * speed * dt;
+          if (!blocked(tryX, originZ))
+            this.authoritative.x = Math.max(0.5, Math.min(319.5, tryX));
+          const tryZ = originZ + z * speed * dt;
+          if (!blocked(this.authoritative.x, tryZ))
+            this.authoritative.z = Math.max(0.5, Math.min(319.5, tryZ));
+          const travelled = Math.max(speed * dt, 1e-6);
+          x = (this.authoritative.x - originX) / travelled;
+          z = (this.authoritative.z - originZ) / travelled;
+        } else {
+          this.authoritative.x = Math.max(
+            0.5,
+            Math.min(319.5, originX + x * speed * dt),
+          );
+          this.authoritative.z = Math.max(
+            0.5,
+            Math.min(319.5, originZ + z * speed * dt),
+          );
         }
-        this.authoritative.x = Math.max(
-          0.5,
-          Math.min(319.5, originX + x * speed * dt),
-        );
-        this.authoritative.z = Math.max(
-          0.5,
-          Math.min(319.5, originZ + z * speed * dt),
-        );
       }
     }
     this.inputTimer += dt;
@@ -1116,6 +1208,7 @@ export class Game {
     for (const npc of this.npcs.values()) {
       const root = npc.root,
         pose = npc.buffer.sample(now);
+      const dialogTarget = this.dialogTargets.get(npc.id);
       const previous = root.position.clone();
       const localPatrol =
         !this.adapter.isMock && npc.state === "idle" && npc.visualPatrol;
@@ -1124,20 +1217,34 @@ export class Game {
             this.serverTime + (now - this.serverTimeReceivedAt) / 1000,
           )
         : null;
-      if (localPatrol) {
+      if (dialogTarget) {
+        if (!npc.dialogAnchor) npc.dialogAnchor = root.position.clone();
+        root.position.copy(npc.dialogAnchor);
+      } else if (localPatrol) {
+        npc.dialogAnchor = null;
         if (patrolPose) root.position.copy(patrolPose.position);
       } else if (pose && (this.adapter.isMock || npc.state !== "idle")) {
+        npc.dialogAnchor = null;
         root.position.fromArray(pose.position);
       }
       root.userData.moveSpeed =
         dt > 0 ? Math.min(2, previous.distanceTo(root.position) / dt) : 0;
-      let target = patrolPose?.state === "walking"
-        ? patrolPose.heading
-        : pose?.heading ?? npc.baseYaw ?? root.rotation.y;
+      let target;
+      if (dialogTarget) {
+        target = Math.atan2(
+          dialogTarget.x - root.position.x,
+          dialogTarget.z - root.position.z,
+        );
+      } else if (patrolPose?.state === "walking") {
+        target = patrolPose.heading;
+      } else {
+        target = pose?.heading ?? npc.baseYaw ?? root.rotation.y;
+      }
       const dx = this.player.position.x - root.position.x,
         dz = this.player.position.z - root.position.z;
       const dist = Math.hypot(dx, dz);
       if (
+        !dialogTarget &&
         npc.state !== "walking" &&
         patrolPose?.state !== "walking" &&
         dist <= 3.8 &&
@@ -1250,7 +1357,8 @@ export class Game {
         const sorted = [...this.frameDeltas].sort((a, b) => a - b);
         const idx = Math.floor(sorted.length * 0.99);
         const worstDelta = sorted[Math.min(idx, sorted.length - 1)];
-        this.fpsLow1Pct = worstDelta > 0 ? Math.round(1 / worstDelta) : this.fps;
+        this.fpsLow1Pct =
+          worstDelta > 0 ? Math.round(1 / worstDelta) : this.fps;
       }
       const r = this.resources.metrics;
       const net = this.adapter.getNetworkStats?.() || {};
@@ -1322,7 +1430,10 @@ export class Game {
         }),
       );
       const net = this.adapter.getNetworkStats?.() || {};
-      const heapBytes = (typeof performance !== "undefined" && performance.memory?.usedJSHeapSize) || 0;
+      const heapBytes =
+        (typeof performance !== "undefined" &&
+          performance.memory?.usedJSHeapSize) ||
+        0;
       this.adapter.sendClientTelemetry?.({
         fps: Math.min(240, Math.max(0, this.fps || 0)),
         fpsLow1Pct: Math.min(240, Math.max(0, this.fpsLow1Pct || 0)),

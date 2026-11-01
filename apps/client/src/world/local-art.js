@@ -195,7 +195,7 @@ export class LocalArt {
           mixer: clips.length ? new THREE.AnimationMixer(model) : null,
           clips,
           action: null,
-          gait: new HumanoidGait(model),
+          gait: new HumanoidGait(model, root.userData.actorId),
         };
         this.actorInstances.add(root);
       }
