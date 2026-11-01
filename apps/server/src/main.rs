@@ -95,7 +95,10 @@ fn main() {
     });
     let bind_addr = format!("{}:{}", host, port);
     let listener = TcpListener::bind(&bind_addr).expect("Failed to bind TCP listener");
-    println!("Listening for HTTP/WSS connections on http://{}", bind_addr);
+    let use_https = std::env::var("USE_HTTPS").map(|v| v == "true" || v == "1").unwrap_or(false);
+    let proto = if use_https { "https" } else { "http" };
+    let ws_proto = if use_https { "wss" } else { "ws" };
+    println!("Listening for {}/{} connections on {}://{}", proto.to_uppercase(), ws_proto.to_uppercase(), proto, bind_addr);
 
     for stream_res in listener.incoming() {
         let mut stream = match stream_res {
@@ -162,7 +165,8 @@ fn main() {
 
                 run_ws_session(conn, ticket, player_id, game_c, config_c, spatial_c, ai_c, wallet_c, comp_c, knowledge_c, bcast_c, inst_c);
             } else {
-                let resp = dispatch_http(&req, &auth_c, &game_c, &config_c, &spatial_c, &ai_c, &wallet_c, &comp_c, &knowledge_c, &inst_c);
+                let mut resp = dispatch_http(&req, &auth_c, &game_c, &config_c, &spatial_c, &ai_c, &wallet_c, &comp_c, &knowledge_c, &inst_c);
+                crate::http::apply_cors_headers(&mut resp, &req);
                 let _ = resp.write_to(&mut stream);
             }
         });

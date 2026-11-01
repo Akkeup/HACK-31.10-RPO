@@ -69,6 +69,35 @@ impl HttpResponse {
         stream.flush()
     }
 }
+
+pub fn is_allowed_origin(origin: &str) -> bool {
+    let lower = origin.to_lowercase();
+    lower.starts_with("http://localhost") ||
+    lower.starts_with("https://localhost") ||
+    lower.starts_with("http://127.0.0.1") ||
+    lower.starts_with("https://127.0.0.1") ||
+    lower.starts_with("http://192.168.") ||
+    lower.starts_with("https://192.168.") ||
+    lower.starts_with("http://172.") ||
+    lower.starts_with("https://172.") ||
+    lower.starts_with("http://10.") ||
+    lower.starts_with("https://10.") ||
+    lower.starts_with("http://26.") ||
+    lower.starts_with("https://26.")
+}
+
+pub fn apply_cors_headers(resp: &mut HttpResponse, req: &HttpRequest) {
+    if let Some(origin) = req.headers.get("origin") {
+        if is_allowed_origin(origin) {
+            resp.headers.push(("Access-Control-Allow-Origin".to_string(), origin.clone()));
+            resp.headers.push(("Access-Control-Allow-Methods".to_string(), "GET, POST, PUT, DELETE, OPTIONS, HEAD".to_string()));
+            resp.headers.push(("Access-Control-Allow-Headers".to_string(), "Content-Type, Authorization, Upgrade, Connection, Sec-WebSocket-Key, Sec-WebSocket-Version, Sec-WebSocket-Protocol, X-Requested-With".to_string()));
+            resp.headers.push(("Access-Control-Allow-Credentials".to_string(), "true".to_string()));
+            resp.headers.push(("Access-Control-Max-Age".to_string(), "86400".to_string()));
+        }
+    }
+}
+
 pub fn read_http_request(stream: &mut TcpStream) -> Result<HttpRequest, String> {
     let mut buf = [0u8; 4096];
     let n = stream.read(&mut buf).map_err(|e| e.to_string())?;
@@ -151,6 +180,13 @@ pub fn dispatch_http(
         raw_path.to_string()
     };
     let path = norm_path.as_str();
+
+    // CORS Preflight
+    if method == "OPTIONS" {
+        let mut resp = HttpResponse::new(204, "No Content");
+        apply_cors_headers(&mut resp, req);
+        return resp;
+    }
 
     // Health
     if raw_path == "/health/live" || path == "/health/live" {

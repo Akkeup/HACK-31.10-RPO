@@ -15,7 +15,22 @@ CLIENT_DIR = os.path.join(ROOT_DIR, "apps", "client")
 SERVER_DIR = os.path.join(ROOT_DIR, "apps", "server")
 DIST_DIR = os.path.join(CLIENT_DIR, "dist")
 
+def load_env_file(path):
+    if not os.path.exists(path):
+        return
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            k, v = line.split("=", 1)
+            k = k.strip()
+            v = v.strip().strip("'\"")
+            if k not in os.environ:
+                os.environ[k] = v
+
 def main():
+    load_env_file(os.path.join(ROOT_DIR, ".env"))
     print("========================================")
     print("   DISCOVERY UNIFIED RUNNER (v2.0.0)   ")
     print("========================================")
@@ -53,27 +68,52 @@ def main():
 
     # 3. Launch unified server
     port = os.environ.get("PORT", "8080")
-    print(f"[3/3] Starting Discovery Game Server on port {port} (0.0.0.0) ...")
+    use_https = os.environ.get("USE_HTTPS", "").lower() in ("true", "1", "yes")
+    scheme = "https" if use_https else "http"
+    ws_scheme = "wss" if use_https else "ws"
+
+    print(f"[3/3] Starting Discovery Game Server ({scheme.upper()}/{ws_scheme.upper()}) on port {port} (0.0.0.0) ...")
     print("      Serving Three.js 3D world, WebSockets, and REST API from single server.")
     print("      Доступные адреса для подключения:")
-    print(f"      • Локально:    http://localhost:{port}")
+    print(f"      • Локально:    {scheme}://localhost:{port}")
     try:
         import socket
         hostname = socket.gethostname()
         for ip in socket.gethostbyname_ex(hostname)[2]:
             if not ip.startswith("127."):
-                print(f"      • По сети LAN: http://{ip}:{port}")
+                print(f"      • По сети LAN: {scheme}://{ip}:{port}")
     except Exception:
         pass
 
     env = os.environ.copy()
-    env["PORT"] = port
-    env["HOST"] = "0.0.0.0"
+    if use_https:
+        cert_file = os.environ.get("SSL_CERT_PATH", os.path.join(ROOT_DIR, "certs", "cert.pem"))
+        key_file = os.environ.get("SSL_KEY_PATH", os.path.join(ROOT_DIR, "certs", "key.pem"))
+        if not os.path.exists(cert_file) or not os.path.exists(key_file):
+            print("[HTTPS] Certificate files not found. Auto-generating in certs/ ...")
+            subprocess.check_call([sys.executable, os.path.join(ROOT_DIR, "certs", "generate_certs.py")])
+
+        from tools.tls_proxy import run_tls_proxy
+        internal_port = int(port) + 10000
+        env["PORT"] = str(internal_port)
+        env["HOST"] = "127.0.0.1"
+        env["USE_HTTPS"] = "true"
+
+        import threading
+        proxy_thread = threading.Thread(
+            target=run_tls_proxy,
+            args=("0.0.0.0", int(port), "127.0.0.1", internal_port, cert_file, key_file),
+            daemon=True
+        )
+        proxy_thread.start()
+    else:
+        env["PORT"] = port
+        env["HOST"] = "0.0.0.0"
 
     # Open browser after a brief delay
     def open_browser():
         time.sleep(1.0)
-        webbrowser.open(f"http://localhost:{port}")
+        webbrowser.open(f"{scheme}://localhost:{port}")
 
     import threading
     threading.Thread(target=open_browser, daemon=True).start()

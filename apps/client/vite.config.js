@@ -142,6 +142,7 @@ export default defineConfig(({ mode }) => {
                 target: env.DISCOVERY_BACKEND_URL,
                 ws: true,
                 changeOrigin: false,
+                secure: false,
               },
             },
           }

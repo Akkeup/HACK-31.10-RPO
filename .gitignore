@@ -36,3 +36,9 @@ llm/
 # Python
 __pycache__/
 *.pyc
+
+certs/*.pem
+certs/*.key
+certs/*.crt
+certs/*.csr
+scratch/

@@ -289,7 +289,9 @@ impl AuthService {
         }
         if let Some(origin) = client_origin {
             if !origin.is_empty() && !ticket.origin.is_empty() && origin != ticket.origin {
-                return Err((403, "FORBIDDEN", "Origin mismatch"));
+                if !crate::http::is_allowed_origin(origin) || !crate::http::is_allowed_origin(&ticket.origin) {
+                    return Err((403, "FORBIDDEN", "Origin mismatch"));
+                }
             }
         }
         Ok(ticket)
