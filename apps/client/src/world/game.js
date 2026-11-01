@@ -82,6 +82,7 @@ export class Game {
     this.onError = onError;
     this.keys = new Set();
     this.others = new Map();
+    this.sharedPlayerPositions = [];
     this.npcs = new Map();
     this.actors = new Map();
     this.ambientStudents = new Map();
@@ -494,6 +495,10 @@ export class Game {
         .finally(() => (this.refreshingConfig = null));
     }
     this.tables = p.tables;
+    this.sharedPlayerPositions = p.players.map((player) => ({
+      x: player.position.x,
+      z: player.position.z,
+    }));
     this.competitionArt?.sync(p.tables);
     this.syncTableLabels();
     const ids = new Set();
@@ -1313,7 +1318,11 @@ export class Game {
     }
     this.player.position.lerp(this.authoritative, 1 - Math.exp(-18 * dt));
     this.player.rotation.y = this.heading;
-    this.academyArt?.updateDoors(this.authoritative, dt);
+    this.academyArt?.updateDoors(
+      this.authoritative,
+      dt,
+      this.sharedPlayerPositions,
+    );
     this.competitionArt?.update(dt);
     for (const npc of this.npcs.values()) {
       const root = npc.root,

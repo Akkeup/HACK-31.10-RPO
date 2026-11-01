@@ -890,17 +890,23 @@ export class AcademyArt {
       if (group) group.visible = visible;
     }
   }
-  updateDoors(position, dt) {
-    if (!position) return;
+  updateDoors(position, dt, sharedPlayerPositions = []) {
+    const players = [position, ...sharedPlayerPositions].filter(Boolean);
     for (const room of ACADEMY_ROOMS) {
-      const distance = Math.hypot(
-        position.x - room.door.x,
-        position.z - HALL_DOOR_WALL_Z,
+      const nearest = Math.min(
+        Infinity,
+        ...players.map((player) =>
+          Math.hypot(
+            player.x - room.door.x,
+            player.z - HALL_DOOR_WALL_Z,
+          ),
+        ),
       );
       const state = this.doorStates.get(room.roomId);
-      // A door opens automatically when the player approaches from either side.
-      if (distance < 2.65 && state.target === 0) this.openDoor(room.roomId);
-      if (distance > 3.5 && state.target !== 0) this.closeDoor(room.roomId);
+      // Evaluate the shared snapshot on every client so a nearby player opens
+      // the same doorway for everyone, including players on the other side.
+      if (nearest < 2.65 && state.target === 0) this.openDoor(room.roomId);
+      if (nearest > 3.5 && state.target !== 0) this.closeDoor(room.roomId);
     }
     this.update(dt);
   }

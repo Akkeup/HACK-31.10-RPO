@@ -114,8 +114,6 @@ export const ACADEMY_ROOMS = [
       student: true,
       ...desk,
     })),
-    { kind: "shelf", x: -2.35, z: 1.1 },
-    { kind: "lamp", x: -2.25, z: -3.15, y: 0.9 },
   ],
   // Patrol through the middle aisle, away from pupil desks, chairs and shelves.
   teacherRoute: [
