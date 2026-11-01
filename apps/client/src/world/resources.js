@@ -539,10 +539,43 @@ export class WorldResources {
     root.userData.animations = record.animations || [];
     return root;
   }
+  async loadImage(descriptor) {
+    if (!descriptor?.sha256 || !descriptor?.url) return;
+    if (!this.loadingImages) this.loadingImages = new Set();
+    if (this.loadingImages.has(descriptor.sha256)) return;
+    this.loadingImages.add(descriptor.sha256);
+    try {
+      this.ledger.reserve(descriptor);
+      let buffer;
+      try {
+        if (this.adapter?.fetchResource) {
+          buffer = await this.adapter.fetchResource(descriptor, 1, new AbortController().signal);
+        }
+      } catch {
+        // Fallback to direct fetch
+      }
+      if (!buffer) {
+        const resp = await fetch(descriptor.url);
+        if (resp.ok) {
+          buffer = new Uint8Array(await resp.arrayBuffer());
+        }
+      }
+      if (buffer && buffer.byteLength === descriptor.byteSize) {
+        this.ledger.commit(descriptor.sha256, buffer);
+        this.onUpdate?.();
+      }
+    } catch {
+      this.ledger.fail(descriptor.sha256);
+    } finally {
+      this.loadingImages.delete(descriptor.sha256);
+    }
+  }
   image(descriptor, owner) {
     const record = this.ledger.records.get(descriptor.sha256);
-    if (!record?.buffer || record.descriptor.byteSize !== descriptor.byteSize)
+    if (!record?.buffer || record.descriptor.byteSize !== descriptor.byteSize) {
+      this.loadImage(descriptor);
       throw Error("Флаг ещё загружается.");
+    }
     const bytes = descriptor.width * descriptor.height * 4 * 1.34;
     if (this.ledger.physicalBytes + bytes > this.ledger.physicalLimit)
       throw Error("RESOURCE_TOO_LARGE: flag image");

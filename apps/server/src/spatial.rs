@@ -77,7 +77,7 @@ impl SpatialService {
         }
         let mut resource_files = HashMap::new();
         // Pre-load all available resources from fixtures/resources/
-        let res_dirs = &["assets/world/resources", "assets/world/resources/chunks", "discovery-protocol-2.0.0/fixtures/resources"];
+        let res_dirs = &["assets/world/resources", "assets/world/resources/flags", "assets/world/resources/chunks", "discovery-protocol-2.0.0/fixtures/resources"];
         for dir in res_dirs {
             if let Ok(entries) = std::fs::read_dir(dir) {
                 for entry in entries.flatten() {
