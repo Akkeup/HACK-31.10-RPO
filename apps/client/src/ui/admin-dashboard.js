@@ -486,7 +486,6 @@ export class AdminDashboard {
               <option value="idle">idle (Покой)</option>
               <option value="walking">walking (Ходьба)</option>
               <option value="talking">talking (Разговор)</option>
-              <option value="frozen">frozen (Заморозка)</option>
             </select>
           </div>
         </div>

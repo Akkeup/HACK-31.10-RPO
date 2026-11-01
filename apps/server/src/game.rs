@@ -795,15 +795,27 @@ impl GameManager {
 
     pub fn get_all_npcs_dto(&self) -> Vec<crate::models::NpcDto> {
         let npcs = self.npcs.lock().unwrap();
-        let mut list: Vec<crate::models::NpcDto> = npcs.values().map(|n| crate::models::NpcDto {
-            npc_id: n.npc_id.clone(),
-            display_name: n.display_name.clone(),
-            position: crate::models::PositionDto { x: n.x, y: n.y, z: n.z },
-            yaw_rad: n.yaw_rad,
-            state: n.state.clone(),
-            subject: n.subject.clone(),
-            role: n.role.clone(),
-            module_id: n.module_id.clone(),
+        let mut list: Vec<crate::models::NpcDto> = npcs.values().map(|n| {
+            let safe_state = match n.state.as_str() {
+                "walking" => "walking",
+                "talking" => "talking",
+                _ => "idle",
+            };
+            let safe_role = match n.role.as_str() {
+                "examiner" => "examiner",
+                _ => "teacher",
+            };
+            let safe_yaw = n.yaw_rad.clamp(-3.141592, 3.141592);
+            crate::models::NpcDto {
+                npc_id: n.npc_id.clone(),
+                display_name: n.display_name.clone(),
+                position: crate::models::PositionDto { x: n.x, y: n.y, z: n.z },
+                yaw_rad: safe_yaw,
+                state: safe_state.to_string(),
+                subject: n.subject.clone(),
+                role: safe_role.to_string(),
+                module_id: n.module_id.clone(),
+            }
         }).collect();
         list.sort_by(|a, b| a.npc_id.cmp(&b.npc_id));
         list
@@ -847,8 +859,13 @@ impl GameManager {
             let now = Room::now_ms();
             if let Some(m) = mode {
                 n.control_mode = m.to_string();
-                if m == "frozen" { n.state = "frozen".to_string(); }
-                else if n.state == "frozen" { n.state = "idle".to_string(); }
+                if m == "frozen" {
+                    n.state = "idle".to_string();
+                    n.target_x = None;
+                    n.target_z = None;
+                } else if n.state == "frozen" {
+                    n.state = "idle".to_string();
+                }
                 n.decision_log.push((now, format!("Режим контроля изменен на {}", m)));
             }
             if let Some(p) = prompt {
@@ -889,8 +906,13 @@ impl GameManager {
                 }
                 "setState" => {
                     if let Some(s) = state {
-                        n.state = s.to_string();
-                        n.decision_log.push((now, format!("Принудительно установлено состояние: {}", s)));
+                        let safe_s = match s {
+                            "walking" => "walking",
+                            "talking" => "talking",
+                            _ => "idle",
+                        };
+                        n.state = safe_s.to_string();
+                        n.decision_log.push((now, format!("Принудительно установлено состояние: {}", safe_s)));
                     }
                 }
                 _ => return false,

@@ -40,35 +40,65 @@ class OllamaHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
     def do_POST(self):
-        if self.path == "/api/generate":
+        if self.path in ("/api/generate", "/api/chat"):
             content_length = int(self.headers.get("Content-Length", 0))
             body = self.rfile.read(content_length).decode("utf-8")
             try:
                 req = json.loads(body)
             except Exception:
                 req = {}
-            raw_prompt = req.get("prompt", "")
-            system_msg = "Ты преподаватель в академии Discovery. Отвечай исключительно на грамотном русском языке. Ответ должен быть кратким, полезным и дружелюбным (2-3 предложения). Категорически запрещено использовать китайский язык или иероглифы."
-            messages = [
-                {"role": "system", "content": system_msg},
-                {"role": "user", "content": raw_prompt}
-            ]
-            chat = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-            inputs = tokenizer(chat, return_tensors="pt").to(model.device)
-            with torch.no_grad():
-                outputs = model.generate(
-                    **inputs,
-                    max_new_tokens=120,
-                    do_sample=True,
-                    temperature=0.7,
-                    top_p=0.9,
-                    repetition_penalty=1.1,
-                    pad_token_id=tokenizer.eos_token_id,
-                )
-            generated = tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True).strip()
+
+            system_msg = (
+                "Ты преподаватель в академии Discovery (София — Хранительница знаний). "
+                "Отвечай исключительно на грамотном русском языке. "
+                "Ответ должен быть понятным, полезным и дружелюбным (2-4 предложения). "
+                "Обязательно помни всю историю общения с учеником, его имя, предпочтения и то, о чём вы говорили ранее до того, как отошли или завершили прошлый разговор. "
+                "Категорически запрещено использовать китайский язык или иероглифы."
+            )
+
+            req_messages = req.get("messages")
+            if req_messages and isinstance(req_messages, list) and len(req_messages) > 0:
+                messages = []
+                has_system = False
+                for m in req_messages:
+                    r = m.get("role", "user")
+                    if r in ("npc", "bot"):
+                        r = "assistant"
+                    if r == "system":
+                        has_system = True
+                    messages.append({"role": r, "content": m.get("content", "")})
+                if not has_system:
+                    messages.insert(0, {"role": "system", "content": system_msg})
+            else:
+                raw_prompt = req.get("prompt", "")
+                messages = [
+                    {"role": "system", "content": system_msg},
+                    {"role": "user", "content": raw_prompt}
+                ]
+
+            try:
+                chat = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+                inputs = tokenizer(chat, return_tensors="pt", truncation=True, max_length=4096).to(model.device)
+                max_new = int(req.get("max_tokens", req.get("max_new_tokens", 256)))
+                with torch.no_grad():
+                    outputs = model.generate(
+                        **inputs,
+                        max_new_tokens=max_new,
+                        do_sample=True,
+                        temperature=0.7,
+                        top_p=0.9,
+                        repetition_penalty=1.1,
+                        pad_token_id=tokenizer.eos_token_id,
+                    )
+                generated = tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True).strip()
+            except Exception as e:
+                print(f"[LLM] Error during generation: {e}", file=sys.stderr)
+                generated = "Я помню наш предыдущий разговор. Давайте продолжим наше исследование!"
+
             resp = {
                 "model": "qwen2.5:3b",
                 "response": generated,
+                "message": {"role": "assistant", "content": generated},
                 "done": True
             }
             self.send_response(200)

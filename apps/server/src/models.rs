@@ -180,11 +180,12 @@ pub struct PlayerDto {
 
 impl PlayerDto {
     pub fn to_json(&self) -> JsonValue {
+        let safe_yaw = self.yaw_rad.clamp(-3.141592, 3.141592);
         JsonValue::Object(vec![
             ("playerId".to_string(), JsonValue::String(self.player_id.clone())),
             ("displayName".to_string(), JsonValue::String(self.display_name.clone())),
             ("position".to_string(), self.position.to_json()),
-            ("yawRad".to_string(), JsonValue::Number(self.yaw_rad)),
+            ("yawRad".to_string(), JsonValue::Number(safe_yaw)),
             ("connected".to_string(), JsonValue::Bool(self.connected)),
             ("lastProcessedInputSeq".to_string(), JsonValue::Number(self.last_processed_input_seq as f64)),
             ("activity".to_string(), self.activity.to_json()),
@@ -206,14 +207,24 @@ pub struct NpcDto {
 
 impl NpcDto {
     pub fn to_json(&self) -> JsonValue {
+        let safe_state = match self.state.as_str() {
+            "walking" => "walking",
+            "talking" => "talking",
+            _ => "idle",
+        };
+        let safe_role = match self.role.as_str() {
+            "examiner" => "examiner",
+            _ => "teacher",
+        };
+        let safe_yaw = self.yaw_rad.clamp(-3.141592, 3.141592);
         JsonValue::Object(vec![
             ("npcId".to_string(), JsonValue::String(self.npc_id.clone())),
             ("displayName".to_string(), JsonValue::String(self.display_name.clone())),
             ("position".to_string(), self.position.to_json()),
-            ("yawRad".to_string(), JsonValue::Number(self.yaw_rad)),
-            ("state".to_string(), JsonValue::String(self.state.clone())),
+            ("yawRad".to_string(), JsonValue::Number(safe_yaw)),
+            ("state".to_string(), JsonValue::String(safe_state.to_string())),
             ("subject".to_string(), JsonValue::String(self.subject.clone())),
-            ("role".to_string(), JsonValue::String(self.role.clone())),
+            ("role".to_string(), JsonValue::String(safe_role.to_string())),
             ("moduleId".to_string(), JsonValue::String(self.module_id.clone())),
         ])
     }
