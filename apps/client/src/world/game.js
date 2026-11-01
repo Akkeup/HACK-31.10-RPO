@@ -111,6 +111,7 @@ export class Game {
     this.hallWallColliders = hallWallColliders();
     this.dialogTargets = new Map();
     this.localDialogNpcIds = new Set();
+    this.localDialogAnchors = new Map();
     this.elevation = 0.8;
     this.distance = 0;
     this.abort = new AbortController();
@@ -233,8 +234,16 @@ export class Game {
     });
   }
   setNpcDialogueFrozen(id, frozen) {
-    if (frozen) this.localDialogNpcIds.add(id);
-    else this.localDialogNpcIds.delete(id);
+    const npc = this.npcs.get(id);
+    if (frozen) {
+      this.localDialogNpcIds.add(id);
+      if (npc && !this.localDialogAnchors.has(id))
+        this.localDialogAnchors.set(id, npc.root.position.clone());
+    } else {
+      this.localDialogNpcIds.delete(id);
+      this.localDialogAnchors.delete(id);
+      if (npc) npc.dialogAnchor = null;
+    }
   }
   setActorName(root, name) {
     const cleanName = String(name || "Игрок")
@@ -644,9 +653,9 @@ export class Game {
         actor.baseYaw = npc.yawRad;
         if (
           !actor.buffer.frames.length ||
-          actor.root.position.distanceTo(
+          (!this.localDialogNpcIds.has(npc.npcId) && actor.root.position.distanceTo(
             new THREE.Vector3(npc.position.x, npc.position.y, npc.position.z),
-          ) > 8
+          ) > 8)
         ) {
           actor.buffer = new SnapshotBuffer();
           actor.root.position.set(
@@ -1360,8 +1369,14 @@ export class Game {
         }
       }
       if (dialogTarget) {
-        if (!npc.dialogAnchor) npc.dialogAnchor = root.position.clone();
-        root.position.copy(npc.dialogAnchor);
+        if (this.localDialogNpcIds.has(npc.id)) {
+          if (!this.localDialogAnchors.has(npc.id))
+            this.localDialogAnchors.set(npc.id, root.position.clone());
+          root.position.copy(this.localDialogAnchors.get(npc.id));
+        } else {
+          if (!npc.dialogAnchor) npc.dialogAnchor = root.position.clone();
+          root.position.copy(npc.dialogAnchor);
+        }
       } else if (localPatrol) {
         npc.dialogAnchor = null;
         if (patrolPose) root.position.copy(patrolPose.position);

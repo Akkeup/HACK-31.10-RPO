@@ -908,10 +908,6 @@ impl CompetitionService {
         let t = self.table.lock().unwrap();
         let p = t.participants.iter().find(|p| p.player_id == player_id)?;
         let state_val = t.state_to_json();
-        let selected_opt = match &p.current_option_id {
-            Some(o) => JsonValue::String(o.clone()),
-            None => JsonValue::Null,
-        };
         let submitted_ans = match &p.current_option_id {
             Some(o) => JsonValue::Object(vec![
                 ("kind".to_string(), JsonValue::String("single_choice".to_string())),
@@ -923,7 +919,6 @@ impl CompetitionService {
 
         Some(JsonValue::Object(vec![
             ("state".to_string(), state_val),
-            ("selectedOptionId".to_string(), selected_opt),
             ("submittedAnswer".to_string(), submitted_ans),
             ("answerAccepted".to_string(), JsonValue::Bool(ans_acc)),
         ]))
