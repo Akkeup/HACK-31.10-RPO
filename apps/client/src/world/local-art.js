@@ -89,6 +89,19 @@ export class LocalArt {
       if (node.isMesh) {
         node.castShadow = true;
         node.receiveShadow = !node.isSkinnedMesh;
+        if (key === "shelf") {
+          const materials = Array.isArray(node.material)
+            ? node.material
+            : [node.material];
+          for (const material of materials) {
+            if (!material) continue;
+            material.transparent = false;
+            material.opacity = 1;
+            material.alphaTest = 0;
+            material.depthWrite = true;
+            material.needsUpdate = true;
+          }
+        }
       }
     });
     model.updateMatrixWorld(true);

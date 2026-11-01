@@ -35,6 +35,7 @@ export class Game {
     this.activity = { mode: "exploring", targetId: null, seatId: null };
     this.tableLabels = new Map();
     this.readingLabels = new Map();
+    this.shelfColliders = [];
     this.elevation = 0.8;
     this.distance = 0;
     this.abort = new AbortController();
@@ -76,8 +77,12 @@ export class Game {
     this.player.position.copy(this.authoritative);
     this.player.visible = false;
     this.resources = new WorldResources(adapter, this.scene, {
-      beforeChange: () => this.clearModels(),
+      beforeChange: () => {
+        this.clearModels();
+        this.shelfColliders = [];
+      },
       onLoaded: () => {
+        this.refreshShelfColliders();
         this.localArt?.applyWorld();
         this.hydrateActors();
         this.syncReadingLabels();
@@ -116,10 +121,22 @@ export class Game {
       body: null,
       modelId: null,
       actorKind: id === "self" || id.startsWith("player:") ? "player" : "npc",
+      displayName: name,
     };
     this.scene.add(root);
     this.actors.set(id, root);
     return root;
+  }
+  setActorName(root, name) {
+    const cleanName = String(name || "Игрок").trim().slice(0, 40);
+    if (root.userData.displayName === cleanName) return;
+    if (root.userData.tag) disposeObject(root.userData.tag);
+    const tag = nameTag(cleanName);
+    tag.position.y = root.userData.seated ? 2.1 : 2.55;
+    tag.visible = this.configs.characterVisual.showNames;
+    root.add(tag);
+    root.userData.tag = tag;
+    root.userData.displayName = cleanName;
   }
   clearModels() {
     for (const [owner, root] of this.actors) {
@@ -179,6 +196,26 @@ export class Game {
     }
     this.localArt?.applyActors();
     this.applyCharacter();
+  }
+  refreshShelfColliders() {
+    this.shelfColliders = [...(this.resources?.roots.values() || [])]
+      .flatMap((chunk) => chunk.roots)
+      .map((root) => root.userData.placement)
+      .filter(
+        (placement) =>
+          placement?.collidable && placement.modelId === "reading-shelf",
+      )
+      .map((placement) => {
+        const scale = placement.scale ?? 1;
+        const c = Math.abs(Math.cos(placement.yawRad));
+        const s = Math.abs(Math.sin(placement.yawRad));
+        return {
+          x: placement.position.x,
+          z: placement.position.z,
+          hx: scale * (c + s / 2) + 0.35,
+          hz: scale * (s + c / 2) + 0.35,
+        };
+      });
   }
   removeActor(id, root) {
     this.localArt?.releaseActor(root);
@@ -351,6 +388,7 @@ export class Game {
         this.hydrateActors();
         this.localArt?.applyActors();
       }
+      this.setActorName(other.root, player.displayName);
       other.root.userData.seated = player.activity.mode.startsWith("seated_");
       other.buffer.push(
         [player.position.x, player.position.y, player.position.z],
@@ -939,8 +977,10 @@ export class Game {
       const speed = running
         ? this.configs.character.walkSpeedMps * this.configs.character.runMultiplier
         : this.configs.character.walkSpeedMps;
-      const nextX = this.authoritative.x + x * speed * dt;
-      const nextZ = this.authoritative.z + z * speed * dt;
+      const originX = this.authoritative.x;
+      const originZ = this.authoritative.z;
+      const nextX = originX + x * speed * dt;
+      const nextZ = originZ + z * speed * dt;
       if (currentRoom) {
         let blocked = false;
         const b = currentRoom.bounds;
@@ -957,8 +997,44 @@ export class Game {
           this.authoritative.z = clampedZ;
         }
       } else {
-        this.authoritative.x = Math.max(0.5, Math.min(319.5, nextX));
-        this.authoritative.z = Math.max(0.5, Math.min(319.5, nextZ));
+        if (this.locationId === ACADEMY_HUB) {
+          const start = { x: originX, z: originZ };
+          const lookAhead = Math.max(dt, 0.1) * speed;
+          const end = {
+            x: start.x + x * lookAhead,
+            z: start.z + z * lookAhead,
+          };
+          const blocked = (point, axis) =>
+            this.shelfColliders.some((box) => {
+              const inside =
+                (at) =>
+                  Math.abs(at.x - box.x) < box.hx &&
+                  Math.abs(at.z - box.z) < box.hz;
+              if (!inside(point)) return false;
+              if (!inside(start)) return true;
+              const center = axis === "x" ? box.x : box.z;
+              return (
+                Math.abs(point[axis] - center) <=
+                Math.abs(start[axis] - center)
+              );
+            });
+          if (blocked(end, "x")) {
+            const tryX = { x: end.x, z: start.z };
+            if (blocked(tryX, "x")) x = 0;
+          }
+          if (blocked(end, "z")) {
+            const tryZ = { x: start.x, z: end.z };
+            if (blocked(tryZ, "z")) z = 0;
+          }
+        }
+        this.authoritative.x = Math.max(
+          0.5,
+          Math.min(319.5, originX + x * speed * dt),
+        );
+        this.authoritative.z = Math.max(
+          0.5,
+          Math.min(319.5, originZ + z * speed * dt),
+        );
       }
     }
     this.inputTimer += dt;

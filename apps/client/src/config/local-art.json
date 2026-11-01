@@ -79,7 +79,7 @@
     "offset": [0, 0, 0]
   },
   "player": {
-    "path": "/assets/models/pack-2/player.glb",
+    "path": "/assets/models/characters/player-backpack.glb",
     "available": true,
     "scale": 1,
     "rotationY": 0,
