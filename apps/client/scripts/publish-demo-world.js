@@ -281,7 +281,8 @@ for (const chunk of chunks) {
     );
 }
 await writeFile(
-  // The four-seat draft must never replace the catalog loaded by the Rust v2 server.
+  // Keep the historical filename for the in-process demo catalog; its current
+  // payload follows the five-seat config and never replaces the Rust v2 catalog.
   new URL("world/catalog.four-seat-draft.server-only.json", root),
   JSON.stringify({ manifest, chunks, assets }, null, 2),
 );

@@ -187,7 +187,7 @@
       },
       "competition": {
         "minPlayers": 2,
-        "maxPlayers": 4,
+        "maxPlayers": 5,
         "questionCount": 5,
         "roundSeconds": 20,
         "minStakeAura": 1,
@@ -257,6 +257,20 @@
                   "x": 77.45,
                   "y": 0,
                   "z": 83
+                }
+              },
+              {
+                "seatId": "competition-seat-5",
+                "position": {
+                  "x": 77.813,
+                  "y": 0,
+                  "z": 83.711
+                },
+                "yawRad": -1.2567,
+                "exitPosition": {
+                  "x": 76.766,
+                  "y": 0,
+                  "z": 84.051
                 }
               }
             ],

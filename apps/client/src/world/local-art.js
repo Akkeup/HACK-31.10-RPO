@@ -101,6 +101,13 @@ export class LocalArt {
     for (const chunk of this.game.resources.roots.values()) {
       for (const root of chunk.roots) {
         const id = root.userData.placement?.modelId;
+        if (id === "competition-table") {
+          // The competition surface is rendered by CompetitionArt so the streamed
+          // placeholder can never produce a duplicate or a card/blackjack prop.
+          root.userData.presentationHidden = true;
+          root.visible = false;
+          continue;
+        }
         if (
           id === "terrain-2-2" &&
           (!root.userData.flatStudyProps ||

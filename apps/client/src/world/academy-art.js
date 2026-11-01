@@ -16,6 +16,7 @@ export class AcademyArt {
     this.groups = new Map();
     this.textures = new Set();
     this.modelSlots = [];
+    this.doorStates = new Map();
     this.portals = new THREE.Group();
     scene.add(this.portals);
     for (const x of [67.3, 92.7])
@@ -203,25 +204,31 @@ export class AcademyArt {
     const door = new THREE.Group();
     door.name = "exit-door";
     door.position.set(0, 0, ROOM_EXIT_WALL_Z);
-    this.box(door, 0, 1.58, 0, 2.6, 3.16, 0.16, 0x7e6249);
+    const leaf = new THREE.Group();
+    leaf.name = "door-leaf";
+    this.box(leaf, 0, 1.58, 0, 2.6, 3.16, 0.16, 0x7e6249);
     for (const x of [-1.4, 1.4])
       this.box(door, x, 1.65, 0, 0.17, 3.3, 0.28, 0x5d4939);
     this.box(door, 0, 3.25, 0, 2.98, 0.18, 0.28, 0x5d4939);
     for (const y of [0.8, 2.27])
-      this.box(door, 0, y, -0.095, 2.18, 1.12, 0.04, 0x987450);
-    this.box(door, -0.9, 1.4, -0.17, 0.27, 0.045, 0.08, 0xc4a15e);
-    const fallback = [...door.children];
+      this.box(leaf, 0, y, -0.095, 2.18, 1.12, 0.04, 0x987450);
+    this.box(leaf, -0.9, 1.4, -0.17, 0.27, 0.045, 0.08, 0xc4a15e);
+    door.add(leaf);
+    const fallback = [...leaf.children];
     for (const x of [-1.13, 1.13])
       this.box(door, x, 1.5, 0, 0.86, 3, 0.23, 0xe6dac3);
     this.box(door, 0, 3.13, 0, 3.1, 0.38, 0.23, 0xe6dac3);
     this.modelSlots.push({
       key: "door",
-      group: door,
+      group: leaf,
       x: 0,
       z: 0,
       rotationY: Math.PI,
       placeholder: fallback,
     });
+    door.userData.doorLeaf = leaf;
+    door.userData.roomId = ACADEMY_HUB;
+    this.doorStates.set(ACADEMY_HUB, { leaf, angle: 0, target: 0, phase: "CLOSED" });
     const plaque = this.sign(
       door,
       "E · В читальный зал",
@@ -241,22 +248,28 @@ export class AcademyArt {
     this.box(group, 1.22, 1.65, 0, 0.18, 3.3, 0.27, 0x806146);
     this.box(group, 0, 3.26, 0, 2.6, 0.18, 0.3, 0x806146);
     this.box(group, 0, 0.04, 0.18, 2.3, 0.08, 0.58, 0xb79569);
-    this.box(group, 0, 1.56, -0.14, 2.1, 2.95, 0.12, room.accent);
+    const leaf = new THREE.Group();
+    leaf.name = "door-leaf";
+    this.box(leaf, 0, 1.56, -0.14, 2.1, 2.95, 0.12, room.accent);
     this.box(group, 0, 1.55, -0.065, 1.9, 2.73, 0.025, 0x907a5c);
     for (const x of [-0.52, 0.52])
-      this.box(group, x, 1.92, 0.005, 0.78, 1.46, 0.025, 0xc5b891);
-    this.cylinder(group, 0.78, 1.45, 0.13, 0.055, 0.055, 0.035, 0xc5a464);
-    const fallback = [...group.children];
+      this.box(leaf, x, 1.92, 0.005, 0.78, 1.46, 0.025, 0xc5b891);
+    this.cylinder(leaf, 0.78, 1.45, 0.13, 0.055, 0.055, 0.035, 0xc5a464);
+    group.add(leaf);
+    const fallback = [...leaf.children];
     for (const x of [-1.13, 1.13])
       this.box(group, x, 1.5, 0, 0.86, 3, 0.24, 0xe9dec9);
     this.box(group, 0, 3.13, 0, 3.1, 0.38, 0.24, 0xe9dec9);
     this.modelSlots.push({
       key: "door",
-      group,
+      group: leaf,
       x: 0,
       z: 0,
       placeholder: fallback,
     });
+    group.userData.doorLeaf = leaf;
+    group.userData.roomId = room.roomId;
+    this.doorStates.set(room.roomId, { leaf, angle: 0, target: 0, phase: "CLOSED" });
     this.sign(
       group,
       `${room.number} · ${room.subject}`,
@@ -790,8 +803,34 @@ export class AcademyArt {
     return group;
   }
   setLocation(id) {
-    this.portals.visible = id === ACADEMY_HUB;
-    for (const [roomId, group] of this.groups) group.visible = roomId === id;
+    // Rooms and doors remain in one persistent scene. Visibility is left to the
+    // renderer/fog instead of replacing the world with a teleporting room shell.
+    this.portals.visible = true;
+    for (const group of this.groups.values()) group.visible = true;
+  }
+  openDoor(roomId) {
+    const state = this.doorStates.get(roomId);
+    if (!state) return;
+    state.target = Math.PI / 2;
+    state.phase = "OPENING";
+  }
+  closeDoor(roomId) {
+    const state = this.doorStates.get(roomId);
+    if (!state) return;
+    state.target = 0;
+    state.phase = "CLOSING";
+  }
+  update(dt) {
+    for (const state of this.doorStates.values()) {
+      const distance = state.target - state.angle;
+      if (Math.abs(distance) < 0.01) {
+        state.angle = state.target;
+        state.phase = state.target ? "OPEN" : "CLOSED";
+      } else {
+        state.angle += distance * (1 - Math.exp(-dt * 8));
+      }
+      state.leaf.rotation.y = state.angle;
+    }
   }
   applyModel(key, makeInstance) {
     if (key === "ceiling") return this.applyCeiling(makeInstance);
@@ -875,5 +914,6 @@ export class AcademyArt {
     this.materials.clear();
     for (const texture of this.textures) texture.dispose();
     this.textures.clear();
+    this.doorStates.clear();
   }
 }

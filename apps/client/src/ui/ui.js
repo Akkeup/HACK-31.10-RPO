@@ -153,14 +153,13 @@ export class UI {
     if (!portal?.roomId) return;
     try {
       this.game.setBlocked(true, "transition");
-      this.$("#world").classList.add("location-transition");
-      await new Promise((resolve) => setTimeout(resolve, 180));
+      this.game.academyArt?.openDoor(portal.roomId);
+      await new Promise((resolve) => setTimeout(resolve, 120));
       await this.game.enterLocation(portal.roomId);
       this.$("#route-guide").classList.add("hidden");
     } catch (error) {
       this.toast(error.message);
     } finally {
-      this.$("#world").classList.remove("location-transition");
       this.game.setBlocked(false, "transition");
       this.game.focusControls();
     }

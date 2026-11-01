@@ -419,6 +419,18 @@
       },
       "yawRad": -1.5707963267948966,
       "collidable": true
+    },
+    {
+      "id": "competition-seat-5",
+      "chunkId": "c-2-2",
+      "modelId": "competition-chair",
+      "position": {
+        "x": 77.813,
+        "y": 0,
+        "z": 83.711
+      },
+      "yawRad": -1.2567,
+      "collidable": true
     }
   ]
 }

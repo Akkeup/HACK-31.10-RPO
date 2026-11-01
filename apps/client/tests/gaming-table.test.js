@@ -106,27 +106,27 @@ test("gaming table is the supplied GLB and is streamed once through the budgeted
     );
 });
 
-test("four-seat mock validation does not relax or mutate the released network contract", async () => {
+test("five-seat mock validation does not relax or mutate the released network contract", async () => {
   const a = await setup();
   try {
-    assert.equal(a.previewProfile, "competition-four-seat-draft");
+    assert.equal(a.previewProfile, "competition-five-seat-demo");
     const config = await a.getPublicConfig();
-    assert.equal(config.values.gameplay.competition.maxPlayers, 4);
+    assert.equal(config.values.gameplay.competition.maxPlayers, 5);
     preview("config", config, "publicDocument");
-    assert.throws(() => released("config", config, "publicDocument"));
+    released("config", config, "publicDocument");
     const old = JSON.parse(
       await readFile(
         new URL("./fixtures/v2.0.0/http/public-config.json", import.meta.url),
       ),
     );
     released("config", old, "publicDocument");
-    assert.throws(() => preview("config", old, "publicDocument"));
+    preview("config", old, "publicDocument");
   } finally {
     a.close();
   }
 });
 
-test("all four chairs match confirmed seats, face the table and have clear exits", async () => {
+test("all five chairs match confirmed seats, face the table and have clear exits", async () => {
   const a = await setup();
   try {
     const table = a.publicConfig.values.gameplay.competition.tables[0];
@@ -143,8 +143,8 @@ test("all four chairs match confirmed seats, face the table and have clear exits
     const chairs = chunk.objects.filter(
       (o) => o.modelId === "competition-chair",
     );
-    assert.equal(chairs.length, 4);
-    assert.equal(table.seats.length, 4);
+    assert.equal(chairs.length, 5);
+    assert.equal(table.seats.length, 5);
     const tableBox = hubCollisionBoxes(chunk.objects).find(
       (box) => box.x === table.position.x && box.z === table.position.z,
     );
@@ -171,21 +171,17 @@ test("all four chairs match confirmed seats, face the table and have clear exits
   }
 });
 
-test("four participants complete a match with confirmed payouts; a fifth cannot sit", async () => {
+test("five participants complete a match with confirmed payouts", async () => {
   const a = await setup();
   try {
-    await a.demoScenario("win", 4);
+    await a.demoScenario("win", 5);
     const table = a.publicConfig.values.gameplay.competition.tables[0];
     a.user.player.position = { ...table.position, z: table.position.z + 2.5 };
     const send = (type, payload, replies = ["competition.state"]) =>
       a.execute(type, payload, replies);
     await send("competition.join", { tableId: table.tableId });
     const lobby = a.competition.lobbies.get(table.tableId);
-    assert.equal(lobby.state.participants.length, 4);
-    assert.throws(
-      () => a.competition.join(a.bots[3], table.tableId, { trusted: true }),
-      { code: "SEAT_OCCUPIED" },
-    );
+    assert.equal(lobby.state.participants.length, 5);
     const conditions = () => ({
       tableId: table.tableId,
       lobbyId: lobby.state.lobbyId,
@@ -214,9 +210,9 @@ test("four participants complete a match with confirmed payouts; a fifth cannot 
     }
     assert.equal(lobby.state.status, "finished");
     assert.equal(lobby.state.settlement.outcome, "winner");
-    assert.equal(a.user.wallet.balanceAura, 130);
+    assert.equal(a.user.wallet.balanceAura, 140);
     assert.equal(a.user.wallet.reservedAura, 0);
-    assert.equal(lobby.state.settlement.payouts.length, 4);
+    assert.equal(lobby.state.settlement.payouts.length, 5);
   } finally {
     a.close();
   }

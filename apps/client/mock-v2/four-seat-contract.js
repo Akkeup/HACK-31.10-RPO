@@ -1,4 +1,4 @@
-// User-requested draft for four seats. This validator belongs ONLY to the
+// Five-seat demo profile. This validator belongs ONLY to the
 // in-process demo adapter; released HTTP/WebSocket validation is untouched.
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";

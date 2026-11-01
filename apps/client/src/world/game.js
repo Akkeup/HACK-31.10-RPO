@@ -7,6 +7,7 @@ import { examinerGroups } from "../gameplay/education.js";
 import { command } from "../network/protocol.js";
 import { ACADEMY_HUB, ACADEMY_ROOMS, roomById, roomByPosition } from "./academy-locations.js";
 import { AcademyArt } from "./academy-art.js";
+import { CompetitionArt } from "./competition-art.js";
 import { matchesShelf, closestShelfPoint } from "./shelf-layout.js";
 export class Game {
   constructor(container, adapter, configs, onUpdate, onError) {
@@ -72,6 +73,10 @@ export class Game {
     this.scene.add(this.ambient, this.sun, this.sun.target);
     this.locationId = ACADEMY_HUB;
     this.academyArt = new AcademyArt(this.scene);
+    this.competitionArt = new CompetitionArt(
+      this.scene,
+      configs.gameplay?.competition?.tables || [],
+    );
     this.player = this.createActor("self", "Вы");
     this.player.position.copy(this.authoritative);
     this.player.visible = false;
@@ -210,12 +215,13 @@ export class Game {
     const at = transition?.position || (room ? room.entry : (prevRoom?.hubReturn || ACADEMY_ROOMS[0].hubReturn));
     if (at) {
       this.authoritative.set(at.x, 0, at.z);
-      this.player.position.copy(this.authoritative);
-      this.camera.position.set(
-        at.x,
-        this.configs.firstPerson.standingEyeHeightM,
-        at.z,
-      );
+      // Keep the existing player/camera pose while the authoritative location
+      // is accepted. The normal critically-damped interpolation now carries the
+      // player through the open doorway instead of flashing/teleporting the view.
+      if (!previousLocation || previousLocation === roomId) {
+        this.player.position.copy(this.authoritative);
+        this.camera.position.set(at.x, this.configs.firstPerson.standingEyeHeightM, at.z);
+      }
     }
     this.yaw = room ? 0 : Math.PI;
     this.pitch = 0;
@@ -281,6 +287,14 @@ export class Game {
       this.onProgress?.(p);
       return;
     }
+    if (event.type === "competition.state") {
+      this.competitionArt?.syncState(p);
+      return;
+    }
+    if (event.type === "competition.settled") {
+      this.competitionArt?.settle(p);
+      return;
+    }
     if (event.type !== "world.snapshot" || p.tick <= this.lastTick) return;
     this.lastTick = p.tick;
     if (this.pendingConfig && p.tick >= this.pendingConfig.effectiveTick) {
@@ -307,6 +321,7 @@ export class Game {
         .finally(() => (this.refreshingConfig = null));
     }
     this.tables = p.tables;
+    this.competitionArt?.sync(this.tables);
     this.syncTableLabels();
     const ids = new Set();
     for (const player of p.players) {
@@ -972,6 +987,8 @@ export class Game {
     }
     this.player.position.lerp(this.authoritative, 1 - Math.exp(-18 * dt));
     this.player.rotation.y = this.heading;
+    this.academyArt?.update(dt);
+    this.competitionArt?.update(dt);
     for (const npc of this.npcs.values()) {
       const root = npc.root,
         pose = npc.buffer.sample(now);
@@ -1175,6 +1192,7 @@ export class Game {
     await this.resources.dispose();
     this.localArt?.dispose();
     this.academyArt?.dispose();
+    this.competitionArt?.dispose();
     for (const [id, actor] of this.actors) this.removeActor(id, actor);
     this.sun.shadow.dispose();
     this.renderer.dispose();
