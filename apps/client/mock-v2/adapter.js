@@ -8,6 +8,10 @@ import {
   validate,
 } from "../src/network/protocol.js";
 import { RoomNpcMotion } from "./npc-motion.js";
+import { moveWithCollisions, hubCollisionBoxes } from "./collision.js";
+import { HallPatrol } from "./hall-patrol.js";
+import hallPatrols from "./hall-patrols.json" with { type: "json" };
+import { matchesShelf, closestShelfPoint } from "../src/world/shelf-layout.js";
 import { CompetitionServer } from "./competition.js";
 import { makePacks, grade, materials } from "./questions.js";
 import publicConfig from "./public-config.json" with { type: "json" };
@@ -103,6 +107,16 @@ export class LocalMockAdapter extends DiscoveryAdapter {
         activity: exploring(),
       },
     }));
+    this.guideMotion = new HallPatrol(hallPatrols.guide, hallPatrols, 0.5);
+    this.botMotion = this.bots.map((bot, i) => {
+      const patrol = new HallPatrol(
+        hallPatrols.players[i],
+        hallPatrols,
+        i * 0.7,
+      );
+      bot.player.position = patrol.position;
+      return patrol;
+    });
     this.connection = { user: this.user, hello: true, ready: false };
     this.user.connection = this.connection;
     this.competition = new CompetitionServer({
@@ -313,42 +327,10 @@ export class LocalMockAdapter extends DiscoveryAdapter {
         ),
       };
       // Demo collision bounds belong to the adapter, never local graphics settings.
-      const blocked = (v) =>
-        room
-          ? room.colliders.some(
-              (o) => Math.abs(v.x - o.x) < o.hx && Math.abs(v.z - o.z) < o.hz,
-            )
-          : [
-              ...[72, 88].flatMap((x) =>
-                [83, 88].map((z) => ({ x, z, hx: 1.2, hz: 0.65 })),
-              ),
-              { x: 74, z: 90.5, hx: 2.4, hz: 0.55 },
-            ].some(
-              (o) =>
-                Math.abs(v.x - o.x) < o.hx + 0.25 &&
-                Math.abs(v.z - o.z) < o.hz + 0.25,
-            ) ||
-            this.interestObjects?.some(
-              (o) =>
-                o.collidable &&
-                o.modelId !== "competition-chair" &&
-                Math.abs(v.x - o.position.x) <
-                  (o.modelId === "competition-table"
-                    ? 1.8
-                    : o.modelId === "reading-shelf" && Math.abs(o.yawRad) > 1
-                      ? 0.5 * o.scale + 0.35
-                      : 1.45) &&
-                Math.abs(v.z - o.position.z) <
-                  (o.modelId === "reading-shelf"
-                    ? Math.abs(o.yawRad) > 1
-                      ? o.scale + 0.35
-                      : 0.65
-                    : o.modelId === "competition-table"
-                      ? 1.8
-                      : 0.85),
-            );
-      if (!blocked({ ...pos, z: p.position.z })) p.position.x = pos.x;
-      if (!blocked({ ...pos, x: p.position.x })) p.position.z = pos.z;
+      const boxes = room
+        ? room.colliders
+        : hubCollisionBoxes(this.interestObjects);
+      moveWithCollisions(p.position, pos, boxes);
     }
     const currentRoom = roomById(this.locationId);
     if (currentRoom)
@@ -356,6 +338,19 @@ export class LocalMockAdapter extends DiscoveryAdapter {
         this.npcMotion
           .get(currentRoom[role + "Id"])
           .tick(0.05, p.position, p.activity.mode !== "exploring");
+    const hallBoxes = hubCollisionBoxes(this.interestObjects, true);
+    this.guideMotion.tick(0.05, p.position, false, hallBoxes);
+    this.bots.forEach((bot, i) => {
+      const patrol = this.botMotion[i];
+      const occupied = bot.player.activity.mode !== "exploring";
+      if (!occupied) patrol.adopt(bot.player.position);
+      patrol.tick(0.05, p.position, occupied, hallBoxes);
+      if (!occupied) {
+        // Player snapshots carry camera yaw (-Z); NPC patrol headings face +Z.
+        const yaw = patrol.yawRad + Math.PI;
+        bot.player.yawRad = Math.atan2(Math.sin(yaw), Math.cos(yaw));
+      }
+    });
     this.competition.tick();
     this.botAnswers();
     if (this.tickCount % 2 === 0) this.snapshot();
@@ -374,9 +369,9 @@ export class LocalMockAdapter extends DiscoveryAdapter {
               {
                 npcId: "npc-guide",
                 displayName: "София · Проводник",
-                position: { x: 83, y: 0, z: 90 },
-                yawRad: 0,
-                state: "idle",
+                position: clone(this.guideMotion.position),
+                yawRad: this.guideMotion.yawRad,
+                state: this.guideMotion.state,
                 subject: "Читальный зал · Демо",
                 role: "teacher",
                 moduleId: "math-basics",
@@ -562,9 +557,22 @@ export class LocalMockAdapter extends DiscoveryAdapter {
             const shelf = this.publicConfig.values.readingRoom.shelves.find(
               (s) => s.bookIds.includes(b.bookId),
             );
-            this.near(
-              this.interestObjects.find((o) => o.id === shelf.shelfId).position,
-            );
+            const points = this.interestObjects
+              .filter((o) => matchesShelf(o, shelf.shelfId))
+              .map((o) => closestShelfPoint(o, this.user.player.position))
+              .sort(
+                (a, b) =>
+                  Math.hypot(
+                    a.x - this.user.player.position.x,
+                    a.z - this.user.player.position.z,
+                  ) -
+                  Math.hypot(
+                    b.x - this.user.player.position.x,
+                    b.z - this.user.player.position.z,
+                  ),
+              );
+            if (!points.length) this.fail("NOT_FOUND", "Стеллаж не загружен.");
+            this.near(points[0]);
           }
         }
       } else {
@@ -763,7 +771,7 @@ export class LocalMockAdapter extends DiscoveryAdapter {
     if (m.type === "npc.interact") {
       if (p.npcId !== "npc-guide")
         this.fail("NOT_FOUND", "Собеседник недоступен.");
-      this.near({ x: 83, z: 90 });
+      this.near(this.guideMotion.position);
       reply("npc.result", {
         interaction: {
           requestId: id,

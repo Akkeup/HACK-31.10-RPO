@@ -50,6 +50,7 @@ export class LocalArt {
                 "study-desk",
                 "board",
                 "ceiling",
+                "planter",
               ].includes(key)
             )
               this.game.academyArt?.applyModel(key, () => this.instance(key));
@@ -100,13 +101,29 @@ export class LocalArt {
     for (const chunk of this.game.resources.roots.values()) {
       for (const root of chunk.roots) {
         const id = root.userData.placement?.modelId;
-        if (id === "terrain-2-2" && !root.userData.flatStudyProps) {
+        if (
+          id === "terrain-2-2" &&
+          (!root.userData.flatStudyProps ||
+            (this.templates.has("planter") && !root.userData.plantersReplaced))
+        ) {
           // Replace raised paper props and the old wall trim crossing door openings.
           root.updateMatrixWorld(true);
           const matrix = new THREE.Matrix4(),
             at = new THREE.Vector3();
           root.traverse((node) => {
-            if (!node.isInstancedMesh) return;
+            if (!node.isInstancedMesh) {
+              if (node.isMesh && this.templates.has("planter")) {
+                node.getWorldPosition(at);
+                if (
+                  [67.3, 92.7].some((x) => Math.abs(x - at.x) < 0.01) &&
+                  [68, 91].some((z) => Math.abs(z - at.z) < 0.01) &&
+                  at.y > 0.2 &&
+                  at.y < 1.1
+                )
+                  node.visible = false;
+              }
+              return;
+            }
             for (let i = 0; i < node.count; i++) {
               node.getMatrixAt(i, matrix);
               at.setFromMatrixPosition(
@@ -121,12 +138,19 @@ export class LocalArt {
                 Math.abs(at.x - 80) < 0.01 &&
                 Math.abs(at.z - 65.65) < 0.01 &&
                 [0.38, 0.79].some((y) => Math.abs(y - at.y) < 0.01);
-              if (raisedPaper || doorWallTrim)
+              const oldPlanter =
+                this.templates.has("planter") &&
+                [67.3, 92.7].some((x) => Math.abs(x - at.x) < 0.01) &&
+                [68, 91].some((z) => Math.abs(z - at.z) < 0.01) &&
+                at.y > 0.2 &&
+                at.y < 1.1;
+              if (raisedPaper || doorWallTrim || oldPlanter)
                 node.setMatrixAt(i, new THREE.Matrix4().makeScale(0, 0, 0));
             }
             node.instanceMatrix.needsUpdate = true;
           });
           root.userData.flatStudyProps = true;
+          root.userData.plantersReplaced = this.templates.has("planter");
         }
         if (["reading-book", "reading-notebook"].includes(id)) {
           root.userData.presentationHidden = true;

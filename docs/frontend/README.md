@@ -2,6 +2,24 @@
 
 [Новые модели и аватары участников LAN](assets-pack-2.md).
 
+Переход на реальный сервер: [проверка backend и блокеры](backend-readiness-2026-11-01.md),
+[HTTPS/WSS и сертификаты](tls.md). Текущие backend-блокеры не позволяют
+объявить проект готовым к публичному запуску.
+
+Из `apps/client`:
+
+```sh
+npm run build:real
+npm run build:mock
+npm run check:release
+npm run check:backend
+```
+
+`check:release` проверяет клиентские тесты и обе изолированные сборки.
+`check:backend` — отдельная живая проверка API/WS; ошибки и пропущенные
+авторизованные проверки дают ненулевой exit code. Успех первого не означает
+успех второго. Нужные переменные окружения описаны в проверке backend.
+
 Активный клиент: JavaScript ES Modules, Three.js, Vite. Контракт —
 **Discovery Protocol 2.0.0**, HTTP `/api/v2`, WebSocket `discovery.v2`,
 `protocolVersion: "2.0.0"`. Автоматического перехода на 1.x нет.

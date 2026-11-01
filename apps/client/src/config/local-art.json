@@ -34,6 +34,14 @@
     "rotationY": 0,
     "offset": [0, 0, 0]
   },
+  "planter": {
+    "path": "/assets/models/furniture/campus-planter-box.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0],
+    "hiddenNodes": ["coffee-cup"]
+  },
   "shelf": {
     "path": "/assets/models/furniture/bookshelf.glb",
     "available": true,

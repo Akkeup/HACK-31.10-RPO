@@ -1,0 +1,15 @@
+# Set DISCOVERY_CLIENT_ROOT to the real build's absolute directory.
+# Resolve discovery.home.arpa to the server's LAN IP on every participant PC.
+discovery.home.arpa {
+    tls internal
+    header /sw.js Cache-Control "no-store"
+    header /index.html Cache-Control "no-cache"
+    @backend path /api/v2/* /health/*
+    handle @backend {
+        reverse_proxy 127.0.0.1:8080
+    }
+    handle {
+        root * {$DISCOVERY_CLIENT_ROOT}
+        file_server
+    }
+}

@@ -7,6 +7,7 @@ import { examinerGroups } from "../gameplay/education.js";
 import { command } from "../network/protocol.js";
 import { ACADEMY_HUB, ACADEMY_ROOMS, roomById } from "./academy-locations.js";
 import { AcademyArt } from "./academy-art.js";
+import { matchesShelf, closestShelfPoint } from "./shelf-layout.js";
 export class Game {
   constructor(container, adapter, configs, onUpdate, onError) {
     this.container = container;
@@ -412,8 +413,9 @@ export class Game {
       "keydown",
       (e) => {
         if (
-          e.target.closest?.("input,select,textarea,button") ||
-          this.inputBlocked
+          this.inputBlocked ||
+          (document.pointerLockElement !== canvas &&
+            document.activeElement !== canvas)
         )
           return;
         if (
@@ -429,15 +431,24 @@ export class Game {
           ].includes(e.code)
         ) {
           e.preventDefault();
+          // Consume physical WASD keys before page/extension shortcuts such as D.
+          e.stopImmediatePropagation();
           this.keys.add(e.code);
           this.walkTarget = null;
         }
       },
-      { signal },
+      { signal, capture: true },
     );
-    window.addEventListener("keyup", (e) => this.keys.delete(e.code), {
-      signal,
-    });
+    window.addEventListener(
+      "keyup",
+      (e) => {
+        if (this.keys.delete(e.code)) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      },
+      { signal, capture: true },
+    );
     window.addEventListener("blur", () => this.keys.clear(), { signal });
     document.addEventListener(
       "visibilitychange",
@@ -561,7 +572,12 @@ export class Game {
   syncReadingLabels() {
     for (const label of this.readingLabels.values()) disposeObject(label);
     this.readingLabels.clear();
+    const labelledShelves = new Set();
     for (const object of this.readingObjects()) {
+      if (object.kind === "shelf") {
+        if (labelledShelves.has(object.shelf.shelfId)) continue;
+        labelledShelves.add(object.shelf.shelfId);
+      }
       const station = this.configs.gameplay.education.stations.find(
         (s) => s.moduleId === object.notebook?.moduleId,
       );
@@ -578,7 +594,7 @@ export class Game {
       const tag = nameTag(name);
       tag.position.set(
         object.position.x,
-        object.kind === "shelf" ? 2.2 : 1.12,
+        object.kind === "shelf" ? 1.85 * (object.scale ?? 1) + 0.35 : 1.12,
         object.position.z,
       );
       this.scene.add(tag);
@@ -645,8 +661,12 @@ export class Game {
     return [...this.resources.roots.values()]
       .flatMap((c) => c.roots)
       .map((root) => root.userData.placement)
-      .filter((o) => o && kinds.has(o.id))
-      .map((o) => ({ ...o, ...kinds.get(o.id) }));
+      .filter(Boolean)
+      .flatMap((o) => {
+        const shelf = room.shelves.find((s) => matchesShelf(o, s.shelfId));
+        const kind = kinds.get(shelf?.shelfId ?? o.id);
+        return kind ? [{ ...o, ...kind }] : [];
+      });
   }
   getNearby() {
     const room = roomById(this.locationId);
@@ -710,11 +730,11 @@ export class Game {
         };
     }
     for (const object of this.readingObjects()) {
-      const pos = new THREE.Vector3(
-        object.position.x,
-        object.position.y,
-        object.position.z,
-      );
+      const point =
+        object.kind === "shelf"
+          ? closestShelfPoint(object, this.player.position)
+          : object.position;
+      const pos = new THREE.Vector3(point.x, point.y, point.z);
       const distance = pos.distanceTo(this.player.position);
       pos.y = object.kind === "shelf" ? 1.5 : 0.95;
       const aimed =
@@ -889,7 +909,12 @@ export class Game {
           dt > 0
             ? Math.min(6, previous.distanceTo(other.root.position) / dt)
             : 0;
-        other.root.rotation.y = pose.heading + Math.PI;
+        const target = pose.heading + Math.PI;
+        const difference = Math.atan2(
+          Math.sin(target - other.root.rotation.y),
+          Math.cos(target - other.root.rotation.y),
+        );
+        other.root.rotation.y += difference * (1 - Math.exp(-6 * dt));
       }
     }
     {

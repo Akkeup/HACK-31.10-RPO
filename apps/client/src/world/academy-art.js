@@ -18,6 +18,15 @@ export class AcademyArt {
     this.modelSlots = [];
     this.portals = new THREE.Group();
     scene.add(this.portals);
+    for (const x of [67.3, 92.7])
+      for (const z of [68, 91])
+        this.modelSlots.push({
+          key: "planter",
+          group: this.portals,
+          x,
+          z,
+          placeholder: [],
+        });
     // Leave the door leaves clear instead of running the wall trim across them.
     this.wallSkirting(
       this.portals,
@@ -749,6 +758,7 @@ export class AcademyArt {
         });
     }
     for (const x of [-2.4, 2.4]) {
+      const first = group.children.length;
       this.cylinder(group, x, 0.38, 3.5, 0.45, 0.52, 0.74, 0x927254, 9);
       const plant = new THREE.Mesh(
         new THREE.IcosahedronGeometry(0.53, 1),
@@ -756,6 +766,13 @@ export class AcademyArt {
       );
       plant.position.set(x, 1.04, 3.5);
       group.add(plant);
+      this.modelSlots.push({
+        key: "planter",
+        group,
+        x,
+        z: 3.5,
+        placeholder: group.children.slice(first),
+      });
     }
     return group;
   }

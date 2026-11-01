@@ -8,8 +8,80 @@ export async function runRoomChecks({ game, adapter }) {
     if (!condition) throw Error(name);
     report.checks.push(name);
   };
-  game.setBlocked(true, "roomqa");
   try {
+    const canvas = game.renderer.domElement;
+    let shortcuts = 0;
+    const shortcut = (event) => {
+      shortcuts++;
+      event.stopImmediatePropagation();
+    };
+    document.addEventListener("keydown", shortcut, true);
+    try {
+      canvas.focus();
+      for (const [code, key] of [
+        ["KeyW", "ц"],
+        ["KeyA", "ф"],
+        ["KeyS", "ы"],
+        ["KeyD", "в"],
+      ]) {
+        canvas.dispatchEvent(
+          new KeyboardEvent("keydown", {
+            code,
+            key,
+            bubbles: true,
+            cancelable: true,
+          }),
+        );
+        check(
+          game.keys.has(code),
+          code +
+            ": physical movement key wins over page shortcuts in Russian layout",
+        );
+        canvas.dispatchEvent(
+          new KeyboardEvent("keyup", {
+            code,
+            key,
+            bubbles: true,
+            cancelable: true,
+          }),
+        );
+        check(!game.keys.has(code), code + ": release clears movement");
+      }
+      check(
+        shortcuts === 0,
+        "movement keys do not reach competing page handlers",
+      );
+    } finally {
+      document.removeEventListener("keydown", shortcut, true);
+      game.keys.clear();
+    }
+    const beforeRight = { ...adapter.user.player.position };
+    game.yaw = 0;
+    canvas.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        code: "KeyD",
+        key: "в",
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    try {
+      await pause(200);
+      check(
+        adapter.user.player.position.x > beforeRight.x + 0.1,
+        "D moves right on clear floor through authoritative mock input",
+      );
+    } finally {
+      canvas.dispatchEvent(
+        new KeyboardEvent("keyup", {
+          code: "KeyD",
+          key: "в",
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
+    }
+    game.setBlocked(true, "roomqa");
     const deadline = performance.now() + 15000;
     while (
       !adapter.ready ||

@@ -65,6 +65,7 @@ export class DiscoveryAdapter {
       method,
       signal: signal || AbortSignal.timeout(10000),
       cache: "no-store",
+      redirect: "error",
       credentials: "omit",
       headers: {
         ...(this.#token ? { Authorization: "Bearer " + this.#token } : {}),
@@ -78,6 +79,10 @@ export class DiscoveryAdapter {
     const value = parseJSON(await response.text(), maxBytes);
     if (!response.ok) {
       validate("error", value);
+      if (response.status === 401 && this.#token) {
+        this.close();
+        this.status("auth-expired");
+      }
       throw Object.assign(new Error(value.message), value, {
         status: response.status,
       });
@@ -138,10 +143,13 @@ export class DiscoveryAdapter {
       const storageKey = this.user?.userId
         ? `discovery:session:${this.user.userId}`
         : null;
-      let existingSessionId =
-        storageKey && typeof localStorage !== "undefined"
-          ? localStorage.getItem(storageKey)
-          : null;
+      let existingSessionId = null;
+      try {
+        if (storageKey) existingSessionId = localStorage.getItem(storageKey);
+        if (existingSessionId) validate("common", existingSessionId, "uuid");
+      } catch {
+        existingSessionId = null;
+      }
 
       if (existingSessionId) {
         try {
@@ -152,12 +160,13 @@ export class DiscoveryAdapter {
             },
           );
           session = res.value;
-        } catch {
-          if (storageKey && typeof localStorage !== "undefined") {
-            try {
-              localStorage.removeItem(storageKey);
-            } catch {}
-          }
+        } catch (error) {
+          // A transient outage or denied access must not create another room.
+          if (!["NOT_FOUND", "SESSION_CLOSED"].includes(error.code))
+            throw error;
+          try {
+            if (storageKey) localStorage.removeItem(storageKey);
+          } catch {}
           existingSessionId = null;
         }
       }
@@ -174,16 +183,7 @@ export class DiscoveryAdapter {
             const sid = err.details?.find(
               (d) => d.path === "sessionId",
             )?.reason;
-            let targetSessionId = sid;
-            if (!targetSessionId) {
-              const sessions = await this.listSessions();
-              const found = sessions.find((s) =>
-                s.players?.some(
-                  (p) => p.displayName === this.user?.displayName,
-                ),
-              );
-              if (found) targetSessionId = found.sessionId;
-            }
+            const targetSessionId = sid;
             if (targetSessionId) {
               const res = await this.request(
                 `/api/v2/sessions/${targetSessionId}/members/me`,
@@ -204,14 +204,14 @@ export class DiscoveryAdapter {
     validate("http", session, "session");
     this.session = session;
     this.sessionId = session.sessionId;
-    if (this.user?.userId && typeof localStorage !== "undefined") {
-      try {
+    try {
+      if (this.user?.userId) {
         localStorage.setItem(
           `discovery:session:${this.user.userId}`,
           session.sessionId,
         );
-      } catch {}
-    }
+      }
+    } catch {}
     return { publicConfig, manifest, user: this.user };
   }
   async listSessions() {
@@ -347,7 +347,7 @@ export class DiscoveryAdapter {
       this.ready = false;
       if (this.closed) return;
       if ([4001, 4003].includes(e.code)) {
-        this.closed = true;
+        this.close();
         this.status(e.code === 4003 ? "auth-expired" : "replaced");
         this.initialReject?.(Error("Сеанс завершён. Войдите снова."));
         return;
@@ -487,9 +487,17 @@ export class DiscoveryAdapter {
     );
   }
   async fetchResource(descriptor, revision, signal) {
+    validate(
+      "streaming",
+      descriptor,
+      descriptor.chunkId ? "chunkDescriptor" : "asset",
+    );
+    if (!descriptor.url.startsWith(`/api/v2/worlds/${this.worldId}/`))
+      throw Error("INVALID_REQUEST: resource belongs to another world");
     const response = await fetch(descriptor.url, {
       signal,
       cache: "no-store",
+      redirect: "error",
       credentials: "omit",
       headers: {
         Authorization: "Bearer " + this.#token,
@@ -638,15 +646,17 @@ export class DiscoveryAdapter {
         });
       } catch {}
     }
-    if (this.user?.userId && typeof localStorage !== "undefined") {
-      try {
+    try {
+      if (this.user?.userId) {
         localStorage.removeItem(`discovery:session:${this.user.userId}`);
-      } catch {}
+      }
+    } catch {}
+    try {
+      await this.request("/api/v2/auth/logout", { method: "POST" });
+    } finally {
+      this.sessionId = undefined;
+      this.close();
     }
-    await this.request("/api/v2/auth/logout", { method: "POST" });
-    this.#token = undefined;
-    this.sessionId = undefined;
-    this.close();
   }
   close() {
     this.closed = true;
