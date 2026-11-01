@@ -8,6 +8,7 @@ import { command } from "../network/protocol.js";
 import { ACADEMY_HUB, ACADEMY_ROOMS, roomById, roomByPosition } from "./academy-locations.js";
 import { AcademyArt } from "./academy-art.js";
 import { matchesShelf, closestShelfPoint } from "./shelf-layout.js";
+import { NpcVisualPatrol } from "./npc-visual-patrol.js";
 export class Game {
   constructor(container, adapter, configs, onUpdate, onError) {
     this.container = container;
@@ -33,6 +34,8 @@ export class Game {
     this.fpsLow1Pct = 60;
     this.currentFrameTimeMs = 16.6;
     this.lastTick = -1;
+    this.serverTime = 0;
+    this.serverTimeReceivedAt = performance.now();
     this.yaw = 0;
     this.pitch = 0;
     this.activity = { mode: "exploring", targetId: null, seatId: null };
@@ -273,17 +276,24 @@ export class Game {
         if (id === currentRoom.teacherId) {
           npc.root.position.set(currentRoom.teacherPosition.x, currentRoom.teacherPosition.y, currentRoom.teacherPosition.z);
           npc.baseYaw = 0;
+          npc.visualPatrol = null;
+          npc.visualPatrolKey = null;
           npc.root.visible = true;
         } else if (npc.role === "examiner") {
           npc.root.position.set(currentRoom.examinerPosition.x, currentRoom.examinerPosition.y, currentRoom.examinerPosition.z);
           npc.baseYaw = 0;
+          npc.visualPatrol = null;
+          npc.visualPatrolKey = null;
           npc.root.visible = true;
         } else {
+          npc.visualPatrol = null;
           npc.root.visible = false;
         }
       }
     } else {
       for (const npc of this.npcs.values()) {
+        npc.visualPatrol = null;
+        npc.visualPatrolKey = null;
         npc.root.visible = true;
       }
     }
@@ -323,6 +333,8 @@ export class Game {
     }
     if (event.type !== "world.snapshot" || p.tick <= this.lastTick) return;
     this.lastTick = p.tick;
+    this.serverTime = p.tick / 20;
+    this.serverTimeReceivedAt = performance.now();
     if (this.pendingConfig && p.tick >= this.pendingConfig.effectiveTick) {
       this.applyPublicConfig(this.pendingConfig.publicConfig);
       this.pendingConfig = null;
@@ -446,13 +458,16 @@ export class Game {
       if (currentRoom) {
         actor.baseYaw = 0;
         if (npc.npcId === currentRoom.teacherId) {
-          actor.root.position.set(currentRoom.teacherPosition.x, currentRoom.teacherPosition.y, currentRoom.teacherPosition.z);
+          if (!actor.visualPatrol || this.adapter.isMock)
+            actor.root.position.set(currentRoom.teacherPosition.x, currentRoom.teacherPosition.y, currentRoom.teacherPosition.z);
           actor.root.visible = true;
         } else if (npc.role === "examiner") {
-          actor.root.position.set(currentRoom.examinerPosition.x, currentRoom.examinerPosition.y, currentRoom.examinerPosition.z);
+          if (!actor.visualPatrol || this.adapter.isMock)
+            actor.root.position.set(currentRoom.examinerPosition.x, currentRoom.examinerPosition.y, currentRoom.examinerPosition.z);
           actor.root.visible = true;
         } else {
-          actor.root.position.set(npc.position.x, npc.position.y, npc.position.z);
+          if (!actor.visualPatrol || this.adapter.isMock)
+            actor.root.position.set(npc.position.x, npc.position.y, npc.position.z);
           actor.root.visible = false;
         }
       } else {
@@ -467,13 +482,27 @@ export class Game {
           actor.root.position.set(npc.position.x, npc.position.y, npc.position.z);
           actor.root.rotation.y = npc.yawRad;
         }
-        actor.buffer.push(
-          [npc.position.x, npc.position.y, npc.position.z],
-          npc.yawRad,
-          performance.now(),
-          p.tick,
-        );
         actor.root.visible = true;
+      }
+      actor.buffer.push(
+        [npc.position.x, npc.position.y, npc.position.z],
+        npc.yawRad,
+        performance.now(),
+        p.tick,
+      );
+      actor.state = npc.state;
+      if (!this.adapter.isMock && npc.state === "idle") {
+        const visualPosition = currentRoom
+          ? npc.npcId === currentRoom.teacherId
+            ? currentRoom.teacherPosition
+            : npc.role === "examiner"
+              ? currentRoom.examinerPosition
+              : npc.position
+          : npc.position;
+        this.ensureNpcVisualPatrol(actor, npc, currentRoom, visualPosition);
+      } else {
+        actor.visualPatrol = null;
+        actor.visualPatrolKey = null;
       }
       actor.root.userData.npcProfile = {
         npcId: npc.npcId,
@@ -492,6 +521,33 @@ export class Game {
         this.npcs.delete(id);
       }
     if (this.resources.assets) this.hydrateActors();
+  }
+  ensureNpcVisualPatrol(actor, npc, room, anchor) {
+    const key = `${room?.roomId || "hub"}:${npc.role}:${npc.npcId}`;
+    if (actor.visualPatrolKey === key) return;
+    let points;
+    if (room && npc.npcId === room.teacherId) {
+      points = room.teacherRoute.map(([x, z]) => ({
+        x: room.center.x + x,
+        z: room.center.z + z,
+      }));
+    } else if (room && npc.role === "examiner") {
+      points = room.examinerRoute.map(([x, z]) => ({
+        x: room.center.x + x,
+        z: room.center.z + z,
+      }));
+    } else {
+      const radius = npc.npcId === "npc-guide" ? 0.95 : 0.65;
+      points = [
+        { x: anchor.x, z: anchor.z },
+        { x: anchor.x, z: anchor.z - radius },
+        { x: anchor.x + radius, z: anchor.z },
+        { x: anchor.x, z: anchor.z + radius },
+        { x: anchor.x - radius, z: anchor.z },
+      ];
+    }
+    actor.visualPatrol = new NpcVisualPatrol(points);
+    actor.visualPatrolKey = key;
   }
   applyPublicConfig(doc) {
     this.configs.revision = doc.revision;
@@ -1061,14 +1117,29 @@ export class Game {
       const root = npc.root,
         pose = npc.buffer.sample(now);
       const previous = root.position.clone();
-      if (pose && !roomById(this.locationId)) root.position.fromArray(pose.position);
+      const localPatrol =
+        !this.adapter.isMock && npc.state === "idle" && npc.visualPatrol;
+      const patrolPose = localPatrol
+        ? localPatrol.sample(
+            this.serverTime + (now - this.serverTimeReceivedAt) / 1000,
+          )
+        : null;
+      if (localPatrol) {
+        if (patrolPose) root.position.copy(patrolPose.position);
+      } else if (pose && (this.adapter.isMock || npc.state !== "idle")) {
+        root.position.fromArray(pose.position);
+      }
       root.userData.moveSpeed =
         dt > 0 ? Math.min(2, previous.distanceTo(root.position) / dt) : 0;
-      let target = pose?.heading ?? npc.baseYaw ?? root.rotation.y;
+      let target = patrolPose?.state === "walking"
+        ? patrolPose.heading
+        : pose?.heading ?? npc.baseYaw ?? root.rotation.y;
       const dx = this.player.position.x - root.position.x,
         dz = this.player.position.z - root.position.z;
       const dist = Math.hypot(dx, dz);
       if (
+        npc.state !== "walking" &&
+        patrolPose?.state !== "walking" &&
         dist <= 3.8 &&
         ["teacher", "examiner"].includes(npc.role) &&
         npc.id !== "npc-guide"
