@@ -1,0 +1,14 @@
+{
+  "walkSpeedMps": 200,
+  "runMultiplier": 1.5,
+  "interactionRadiusM": 3,
+  "collisionRadiusM": 0.35,
+  "tickHz": 20,
+  "snapshotHz": 10,
+  "inputHz": 20,
+  "allowedActions": [
+    "talk",
+    "inspect"
+  ],
+  "maxInputSilenceMs": 250
+}

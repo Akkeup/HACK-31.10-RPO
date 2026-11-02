@@ -1,0 +1,41 @@
+{
+  "protocolVersion": "1.0.0",
+  "type": "world.snapshot",
+  "requestId": null,
+  "payload": {
+    "tick": 2,
+    "interestRevision": 1,
+    "configRevision": 1,
+    "sessionStatus": "waiting",
+    "players": [
+      {
+        "playerId": "22222222-2222-4222-8222-222222222222",
+        "displayName": "Исследователь",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "yawRad": 0,
+        "connected": true,
+        "lastProcessedInputSeq": 0
+      }
+    ],
+    "npcs": [
+      {
+        "npcId": "npc-guide",
+        "displayName": "Проводник",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 1
+        },
+        "yawRad": 0,
+        "state": "idle",
+        "subject": "История открытий"
+      }
+    ]
+  },
+  "serverSeq": 3,
+  "serverTime": "2026-10-31T09:00:00Z"
+}

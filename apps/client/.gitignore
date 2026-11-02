@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env.local
+test-results/
+
+dist-real/
+
+.vite/
+dist-mock/

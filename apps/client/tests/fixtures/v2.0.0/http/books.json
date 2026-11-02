@@ -1,0 +1,32 @@
+{
+  "books": [
+    {
+      "bookId": "book-math-basics",
+      "shelfId": "shelf-mathematics",
+      "moduleId": "math-basics",
+      "contentVersion": "v1",
+      "title": "Математика: основные операции"
+    },
+    {
+      "bookId": "book-informatics-basics",
+      "shelfId": "shelf-informatics",
+      "moduleId": "informatics-basics",
+      "contentVersion": "v1",
+      "title": "Информатика: данные и алгоритмы"
+    },
+    {
+      "bookId": "book-history-basics",
+      "shelfId": "shelf-history",
+      "moduleId": "history-basics",
+      "contentVersion": "v1",
+      "title": "История: источники и хронология"
+    },
+    {
+      "bookId": "book-flags-demo",
+      "shelfId": "shelf-geography_flags",
+      "moduleId": "flags-demo",
+      "contentVersion": "demo-v1",
+      "title": "Демо: страны и флаги"
+    }
+  ]
+}

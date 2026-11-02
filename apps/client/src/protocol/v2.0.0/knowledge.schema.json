@@ -1,0 +1,346 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/2.0.0/knowledge.schema.json",
+  "$defs": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "sourceId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "retrievedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "localPath": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "reviewed",
+            "published"
+          ]
+        },
+        "synthetic": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sourceId",
+        "title",
+        "url",
+        "retrievedAt",
+        "revision",
+        "license",
+        "localPath",
+        "sha256",
+        "status",
+        "synthetic"
+      ],
+      "additionalProperties": false
+    },
+    "fact": {
+      "type": "object",
+      "properties": {
+        "factId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "moduleId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "contentVersion": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "minItems": 1,
+          "maxItems": 10
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "reviewed",
+            "published"
+          ]
+        }
+      },
+      "required": [
+        "factId",
+        "moduleId",
+        "contentVersion",
+        "text",
+        "sourceIds",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "country": {
+      "type": "object",
+      "properties": {
+        "countryId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "nameRu": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "descriptionSentences": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 250
+          },
+          "minItems": 3,
+          "maxItems": 4
+        },
+        "factIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "minItems": 3,
+          "maxItems": 10
+        },
+        "contentVersion": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "synthetic": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "countryId",
+        "nameRu",
+        "descriptionSentences",
+        "factIds",
+        "contentVersion",
+        "synthetic"
+      ],
+      "additionalProperties": false
+    },
+    "countryPrivate": {
+      "type": "object",
+      "properties": {
+        "public": {
+          "type": "object",
+          "properties": {
+            "countryId": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "nameRu": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "descriptionSentences": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 250
+              },
+              "minItems": 3,
+              "maxItems": 4
+            },
+            "factIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "minItems": 3,
+              "maxItems": 10
+            },
+            "contentVersion": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "synthetic": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "countryId",
+            "nameRu",
+            "descriptionSentences",
+            "factIds",
+            "contentVersion",
+            "synthetic"
+          ],
+          "additionalProperties": false
+        },
+        "wikidataId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^Q[1-9][0-9]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "acceptedNames": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "minItems": 1,
+          "maxItems": 20
+        },
+        "flagAssetId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "minItems": 1,
+          "maxItems": 10
+        }
+      },
+      "required": [
+        "public",
+        "wikidataId",
+        "acceptedNames",
+        "flagAssetId",
+        "sourceIds"
+      ],
+      "additionalProperties": false
+    },
+    "book": {
+      "type": "object",
+      "properties": {
+        "bookId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "shelfId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "moduleId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "contentVersion": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "bookId",
+        "shelfId",
+        "moduleId",
+        "contentVersion",
+        "title"
+      ],
+      "additionalProperties": false
+    },
+    "books": {
+      "type": "object",
+      "properties": {
+        "books": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "bookId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "shelfId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "moduleId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "contentVersion": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120
+              }
+            },
+            "required": [
+              "bookId",
+              "shelfId",
+              "moduleId",
+              "contentVersion",
+              "title"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 4,
+          "maxItems": 200
+        }
+      },
+      "required": [
+        "books"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

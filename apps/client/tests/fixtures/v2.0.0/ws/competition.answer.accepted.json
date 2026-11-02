@@ -1,0 +1,16 @@
+{
+  "protocolVersion": "2.0.0",
+  "type": "competition.answer.accepted",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "matchId": "0000000d-1234-4234-8234-00000000000d",
+    "questionId": "math-basics-q1",
+    "acceptedAt": "2026-10-31T09:00:00Z",
+    "answer": {
+      "kind": "single_choice",
+      "value": "option-1"
+    }
+  },
+  "serverSeq": 17,
+  "serverTime": "2026-10-31T09:00:00Z"
+}

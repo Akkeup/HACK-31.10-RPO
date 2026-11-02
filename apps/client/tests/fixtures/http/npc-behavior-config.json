@@ -1,0 +1,20 @@
+{
+  "maxConcurrent": 1,
+  "maxQueue": 4,
+  "profiles": [
+    {
+      "npcId": "npc-guide",
+      "displayName": "Проводник",
+      "personality": "Спокойно объясняет и задаёт вопросы.",
+      "subject": "История открытий",
+      "difficulty": "adaptive",
+      "knowledgePackId": "discovery-basics",
+      "memoryTurns": 10,
+      "memoryTtlHours": 24,
+      "provider": "rules",
+      "modelName": "",
+      "timeoutMs": 5000,
+      "fallbackText": "Давай начнём с наблюдения за окружающим миром."
+    }
+  ]
+}

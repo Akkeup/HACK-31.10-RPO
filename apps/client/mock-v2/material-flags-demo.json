@@ -1,0 +1,20 @@
+{
+  "module": {
+    "moduleId": "flags-demo",
+    "subject": "geography_flags",
+    "title": "Демо: страны и флаги",
+    "contentVersion": "demo-v1",
+    "teacherId": "teacher-flags",
+    "examinerId": "examiner-flags"
+  },
+  "sections": [
+    {
+      "heading": "Демонстрация",
+      "text": "Это вымышленная страна для проверки интерфейса. Реальный датасет подключается позже."
+    }
+  ],
+  "examples": ["Демо-страна А имеет учебный флаг из двух цветных полос."],
+  "keyPoints": [
+    "Данные этого модуля вымышлены и не предназначены для настоящего теста."
+  ]
+}

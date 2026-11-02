@@ -1,0 +1,13 @@
+{
+  "protocolVersion": "2.0.0",
+  "type": "world.ready",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "interestRevision": 1,
+    "resourceHashes": [
+      "0a6e3fd571a3e90f1b3fd426c2169c0c107e00be66001304836b1e1c22a61807",
+      "18023c4b7bf43d906ad1038f48a0a10e5c3c62a32493852dede171ef3cd2ed0f",
+      "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8"
+    ]
+  }
+}

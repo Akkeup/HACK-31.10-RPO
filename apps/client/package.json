@@ -1,0 +1,31 @@
+{
+  "name": "@discovery/client",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "build:real": "node scripts/build-client.js real",
+    "build:mock": "node scripts/build-client.js mock",
+    "check:release": "node scripts/check-release.js",
+    "check:backend": "node scripts/backend-smoke.js",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.js",
+    "format": "prettier --write src tests mock mock-v2 scripts/*.js index.html vite.config.js package.json",
+    "format:check": "prettier --check src tests mock mock-v2 scripts/*.js index.html vite.config.js package.json",
+    "test:integration": "node --test tests/reading-room.test.js",
+    "world:publish": "node scripts/publish-demo-world.js",
+    "verify:bundle": "node tests/verify-bundle.js"
+  },
+  "dependencies": {
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "prettier": "3.8.3",
+    "vite": "7.3.2",
+    "ws": "8.18.3"
+  }
+}

@@ -1,0 +1,424 @@
+{
+  "placements": [
+    {
+      "id": "shelf-mathematics-stack-1-west",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 69.375,
+        "y": 0,
+        "z": 72
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-mathematics",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 70.625,
+        "y": 0,
+        "z": 72
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-mathematics-stack-2-west",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 69.375,
+        "y": 0,
+        "z": 74.5
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-mathematics-stack-2-east",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 70.625,
+        "y": 0,
+        "z": 74.5
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-mathematics-stack-3-west",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 69.375,
+        "y": 0,
+        "z": 77
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-mathematics-stack-3-east",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 70.625,
+        "y": 0,
+        "z": 77
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-informatics-stack-1-west",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 73.375,
+        "y": 0,
+        "z": 72
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-informatics",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 74.625,
+        "y": 0,
+        "z": 72
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-informatics-stack-2-west",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 73.375,
+        "y": 0,
+        "z": 74.5
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-informatics-stack-2-east",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 74.625,
+        "y": 0,
+        "z": 74.5
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-informatics-stack-3-west",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 73.375,
+        "y": 0,
+        "z": 77
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-informatics-stack-3-east",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 74.625,
+        "y": 0,
+        "z": 77
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-history",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 85.375,
+        "y": 0,
+        "z": 72
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-history-stack-1-east",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 86.625,
+        "y": 0,
+        "z": 72
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-history-stack-2-west",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 85.375,
+        "y": 0,
+        "z": 74.5
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-history-stack-2-east",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 86.625,
+        "y": 0,
+        "z": 74.5
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-history-stack-3-west",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 85.375,
+        "y": 0,
+        "z": 77
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-history-stack-3-east",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 86.625,
+        "y": 0,
+        "z": 77
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-geography_flags",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 89.375,
+        "y": 0,
+        "z": 72
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-geography_flags-stack-1-east",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 90.625,
+        "y": 0,
+        "z": 72
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-geography_flags-stack-2-west",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 89.375,
+        "y": 0,
+        "z": 74.5
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-geography_flags-stack-2-east",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 90.625,
+        "y": 0,
+        "z": 74.5
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-geography_flags-stack-3-west",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 89.375,
+        "y": 0,
+        "z": 77
+      },
+      "yawRad": -1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "shelf-geography_flags-stack-3-east",
+      "chunkId": "c-2-2",
+      "modelId": "reading-shelf",
+      "position": {
+        "x": 90.625,
+        "y": 0,
+        "z": 77
+      },
+      "yawRad": 1.5707963267948966,
+      "scale": 1.25,
+      "collidable": true
+    },
+    {
+      "id": "book-math-basics",
+      "chunkId": "c-2-2",
+      "modelId": "reading-book",
+      "position": {
+        "x": 71.55,
+        "y": 0.95,
+        "z": 72
+      },
+      "yawRad": 1.5707963267948966,
+      "collidable": false
+    },
+    {
+      "id": "book-informatics-basics",
+      "chunkId": "c-2-2",
+      "modelId": "reading-book",
+      "position": {
+        "x": 75.55,
+        "y": 0.95,
+        "z": 72
+      },
+      "yawRad": 1.5707963267948966,
+      "collidable": false
+    },
+    {
+      "id": "book-history-basics",
+      "chunkId": "c-2-2",
+      "modelId": "reading-book",
+      "position": {
+        "x": 84.45,
+        "y": 0.95,
+        "z": 72
+      },
+      "yawRad": -1.5707963267948966,
+      "collidable": false
+    },
+    {
+      "id": "book-flags-demo",
+      "chunkId": "c-2-2",
+      "modelId": "reading-book",
+      "position": {
+        "x": 88.45,
+        "y": 0.95,
+        "z": 72
+      },
+      "yawRad": -1.5707963267948966,
+      "collidable": false
+    },
+    {
+      "id": "competition-central",
+      "chunkId": "c-2-2",
+      "modelId": "competition-table",
+      "position": {
+        "x": 80,
+        "y": 0,
+        "z": 83
+      },
+      "yawRad": 0,
+      "collidable": true
+    },
+    {
+      "id": "competition-seat-1",
+      "chunkId": "c-2-2",
+      "modelId": "competition-chair",
+      "position": {
+        "x": 80,
+        "y": 0,
+        "z": 84.05
+      },
+      "yawRad": 0,
+      "collidable": true
+    },
+    {
+      "id": "competition-seat-2",
+      "chunkId": "c-2-2",
+      "modelId": "competition-chair",
+      "position": {
+        "x": 81.35,
+        "y": 0,
+        "z": 83
+      },
+      "yawRad": 1.5707963267948966,
+      "collidable": true
+    },
+    {
+      "id": "competition-seat-3",
+      "chunkId": "c-2-2",
+      "modelId": "competition-chair",
+      "position": {
+        "x": 80,
+        "y": 0,
+        "z": 81.95
+      },
+      "yawRad": 3.141592653589793,
+      "collidable": true
+    },
+    {
+      "id": "competition-seat-4",
+      "chunkId": "c-2-2",
+      "modelId": "competition-chair",
+      "position": {
+        "x": 78.65,
+        "y": 0,
+        "z": 83
+      },
+      "yawRad": -1.5707963267948966,
+      "collidable": true
+    }
+  ]
+}

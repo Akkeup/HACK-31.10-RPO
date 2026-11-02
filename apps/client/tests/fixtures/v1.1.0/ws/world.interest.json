@@ -1,0 +1,34 @@
+{
+  "protocolVersion": "1.1.0",
+  "type": "world.interest",
+  "requestId": null,
+  "payload": {
+    "worldRevision": 1,
+    "interestRevision": 1,
+    "chunks": [
+      {
+        "chunkId": "c-0-0",
+        "x": 0,
+        "z": 0,
+        "sha256": "22990b94f67df5432b1b56c0d276cd0328a095d478440cfc1576f16f63757d33",
+        "byteSize": 469,
+        "url": "/api/v1/worlds/discovery-campus/chunks/c-0-0/22990b94f67df5432b1b56c0d276cd0328a095d478440cfc1576f16f63757d33",
+        "assetIds": [
+          "model-triangle"
+        ]
+      }
+    ],
+    "assets": [
+      {
+        "resourceId": "model-triangle",
+        "sha256": "18023c4b7bf43d906ad1038f48a0a10e5c3c62a32493852dede171ef3cd2ed0f",
+        "byteSize": 456,
+        "mediaType": "model/gltf+json",
+        "url": "/api/v1/worlds/discovery-campus/assets/18023c4b7bf43d906ad1038f48a0a10e5c3c62a32493852dede171ef3cd2ed0f"
+      }
+    ],
+    "requiredBytes": 925
+  },
+  "serverSeq": 2,
+  "serverTime": "2026-10-31T09:00:00Z"
+}

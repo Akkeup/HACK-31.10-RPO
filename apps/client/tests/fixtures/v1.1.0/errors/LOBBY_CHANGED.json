@@ -1,0 +1,7 @@
+{
+  "code": "LOBBY_CHANGED",
+  "message": "Lobby changed",
+  "retryable": false,
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "details": []
+}

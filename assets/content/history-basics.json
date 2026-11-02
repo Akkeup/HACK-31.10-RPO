@@ -1,0 +1,2363 @@
+{
+  "module": {
+    "moduleId": "history-basics",
+    "subject": "history",
+    "title": "История: источники и хронология",
+    "contentVersion": "v1",
+    "teacherId": "teacher-history",
+    "examinerId": "examiner-history"
+  },
+  "material": {
+    "module": {
+      "moduleId": "history-basics",
+      "subject": "history",
+      "title": "История: источники и хронология",
+      "contentVersion": "v1",
+      "teacherId": "teacher-history",
+      "examinerId": "examiner-history"
+    },
+    "sections": [
+      {
+        "heading": "Исторические источники и методы исследования",
+        "text": "История изучает прошлое человечества на основе источников. Источники делятся на вещественные (археологические находки, оружие, монеты, строения), письменные (летописи, грамоты, хроники, законы) и устные (мифы, былины, фольклор). Важнейшие вспомогательные дисциплины: археология, хронология, нумизматика и сфрагистика."
+      },
+      {
+        "heading": "Древний мир и зарождение цивилизаций",
+        "text": "Первые государства возникли в долинах рек Нила, Тигра и Евфрата. В Месопотамии около 1750 г. до н.э. был создан знаменитый свод законов царя Хаммурапи. В Древней Греции сформировалась система городов-государств (полисов) и родилась демократия в Афинах. Рим прошел путь от царского периода к республике и затем к могущественной империи."
+      },
+      {
+        "heading": "Средневековье и становление Древней Руси",
+        "text": "862 год считается датой зарождения древнерусской государственности (призвание варягов во главе с Рюриком). В 988 году князь Владимир крестил Русь. При Ярославе Мудром был составлен первый письменный свод законов — «Русская Правда». В 1242 г. Александр Невский разбил крестоносцев на Чудском озере, а в 1380 г. Дмитрий Донской победил на Куликовом поле."
+      },
+      {
+        "heading": "Эпоха Великих географических открытий и Возрождение",
+        "text": "В XV–XVI веках европейские мореплаватели открыли новые морские пути. В 1492 г. Христофор Колумб открыл Америку, в 1498 г. Васко да Гама обогнул Африку и достиг Индии, а экспедиция Фернана Магеллана (1519–1522) совершила первое кругосветное плавание. Иоганн Гутенберг изобрел печатный станок, что дало старт эпохе массовых знаний."
+      },
+      {
+        "heading": "Новое и Новейшее время: наука и прорыв в космос",
+        "text": "Эпоха Петра I ознаменовалась масштабной модернизацией России, созданием регулярной армии, флота и основанием Санкт-Петербурга в 1703 году. В 1755 году по инициативе М.В. Ломоносова был основан Московский университет. ХХ век стал веком космоса: 12 апреля 1961 года Юрий Гагарин совершил первый в истории человечества орбитальный полет."
+      }
+    ],
+    "examples": [
+      "862 г. — Призвание варягов на Русь",
+      "988 г. — Крещение Руси князем Владимиром",
+      "1242 г. — Ледовое побоище",
+      "1380 г. — Куликовская битва",
+      "1492 г. — Открытие Америки Колумбом",
+      "1703 г. — Основание Санкт-Петербурга",
+      "1961 г. — Первый полет человека в космос (Ю. Гагарин)"
+    ],
+    "keyPoints": [
+      "Исторические источники бывают вещественными, письменными и устными.",
+      "Хронология изучает измерение времени и датировку исторических событий.",
+      "Первый письменный свод законов на Руси — «Русская Правда».",
+      "Первое кругосветное плавание доказало шарообразность Земли."
+    ]
+  },
+  "questions": [
+    {
+      "question": {
+        "questionId": "hist-q01",
+        "prompt": "Что в исторической науке называют историческим источником?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Только современные учебники"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Любой памятник прошлого, созданный человеком и несущий информацию о событиях"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Только старинные монеты"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Художественные фильмы о войне"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-def",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-sources-def"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Любой памятник прошлого, созданный человеком и несущий информацию о событиях"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Исторический источник — это свидетельство прошлого, созданное человеком (документ, постройка, предмет быта, предание), по которому изучают историю.",
+      "difficulty": "basic",
+      "reviewTopic": "Понятие исторического источника"
+    },
+    {
+      "question": {
+        "questionId": "hist-q02",
+        "prompt": "К какому виду исторических источников относятся древние летописи и указы?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Письменные"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Вещественные"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Устные"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Этнографические"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-written",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Письменные"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Летописи, грамоты, законы и письма содержат текст, поэтому относятся к письменным историческим источникам.",
+      "difficulty": "basic",
+      "reviewTopic": "Виды источников"
+    },
+    {
+      "question": {
+        "questionId": "hist-q03",
+        "prompt": "К какому типу источников археологи относят глиняный кувшин, найденный при раскопках?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Вещественный"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Письменный"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Фольклорный"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Устный"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-material",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types",
+        "hist-fact-archaeology"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Вещественный"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Предметы быта, посуда, оружие и орудия труда относятся к вещественным (материальным) источникам.",
+      "difficulty": "basic",
+      "reviewTopic": "Вещественные источники"
+    },
+    {
+      "question": {
+        "questionId": "hist-q04",
+        "prompt": "Что отличает первичный исторический источник от вторичного?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Он создан очевидцем или участником во время происходивших событий"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Он написан обязательно на латинском языке"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Он опубликован в журнале в прошлом году"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Он обязательно сделан из золота"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-source-primary",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-primary"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Он создан очевидцем или участником во время происходивших событий"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Первичный источник создаётся современником событий непосредственно в эпоху их свершения, тогда как вторичный — анализ историка спустя время.",
+      "difficulty": "basic",
+      "reviewTopic": "Первичные источники"
+    },
+    {
+      "question": {
+        "questionId": "hist-q05",
+        "prompt": "Какая наука занимается установлением дат и хронологической последовательности событий прошлого?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Хронология"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Топография"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Нумизматика"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Геральдика"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-chrono-def",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-chronology-def"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Хронология"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Хронология — специальная историческая дисциплина, изучающая системы летосчисления и устанавливающая точные даты событий.",
+      "difficulty": "basic",
+      "reviewTopic": "Хронология"
+    },
+    {
+      "question": {
+        "questionId": "hist-q06",
+        "prompt": "Какой календарь был введён в Риме при Юлии Цезаре и стал известен как 'старый стиль'?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Григорианский"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Юлианский"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Лунный"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Майя"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-calendars",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-calendars"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Юлианский"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Юлианский календарь был разработан александрийскими астрономами во главе с Созигеном и введён Юлием Цезарем в 45 году до н.э.",
+      "difficulty": "basic",
+      "reviewTopic": "Календарные системы"
+    },
+    {
+      "question": {
+        "questionId": "hist-q07",
+        "prompt": "С какой целью в 1582 году папа римский Григорий XIII ввёл новый календарь?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Чтобы устранить накопившуюся ошибку в 10 дней и вернуть день весеннего равноденствия на 21 марта"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Чтобы сделать в году 10 месяцев"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Чтобы отменить високосные годы"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Чтобы переименовать дни недели"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-gregorian",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-calendars"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Чтобы устранить накопившуюся ошибку в 10 дней и вернуть день весеннего равноденствия на 21 марта"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Григорианский календарь скорректировал накапливавшееся отставание юлианского календаря от астрономического солнечного года.",
+      "difficulty": "basic",
+      "reviewTopic": "Григорианский календарь"
+    },
+    {
+      "question": {
+        "questionId": "hist-q08",
+        "prompt": "Какой научный метод датирования основан на измерении распада изотопа углерода-14 в органических остатках?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Радиоуглеродный анализ"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Дендрохронология"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Спектральный анализ"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Рентгенография"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-radiocarbon",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-dating"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Радиоуглеродный анализ"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Радиоуглеродное датирование измеряет остаточное содержание изотопа ¹⁴C в древесине, костях и других органических находках.",
+      "difficulty": "basic",
+      "reviewTopic": "Методы датирования"
+    },
+    {
+      "question": {
+        "questionId": "hist-q09",
+        "prompt": "По какому признаку метод дендрохронологии определяет точный возраст деревянных построек и предметов?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "По годичным кольцам деревьев"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "По цвету древесной коры"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "По глубине залегания в земле"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "По весу древесины"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-dendro",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-dating"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "По годичным кольцам деревьев"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Дендрохронология сопоставляет характерную толщину годичных колец деревьев с эталонной региональной шкалой.",
+      "difficulty": "basic",
+      "reviewTopic": "Дендрохронология"
+    },
+    {
+      "question": {
+        "questionId": "hist-q10",
+        "prompt": "К какому веку относится 1492 год (год плавания Колумба к берегам Америки)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "XIV век"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "XV век"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "XVI век"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "XVII век"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-century-calc",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "XV век"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "XV век длился с 1401 по 1500 год включительно. Следовательно, 1492 год относится к XV веку.",
+      "difficulty": "basic",
+      "reviewTopic": "Определение века по году"
+    },
+    {
+      "question": {
+        "questionId": "hist-q11",
+        "prompt": "Существует ли в традиционной исторической шкале летосчисления (наша эра / до нашей эры) нулевой год?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Да, между 1 годом до н.э. и 1 годом н.э."
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Нет, после 1 года до н.э. сразу наступает 1 год н.э."
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Да, нулевой год длился 100 дней"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Зависит от времени года"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-zero-year",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Нет, после 1 года до н.э. сразу наступает 1 год н.э."
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В исторической хронологии нулевого года нет: 1-й год до нашей эры непосредственно сменяется 1-м годом нашей эры.",
+      "difficulty": "basic",
+      "reviewTopic": "Летосчисление и отсутствие нулевого года"
+    },
+    {
+      "question": {
+        "questionId": "hist-q12",
+        "prompt": "Какая дисциплина изучает прошлое человечества путём раскопок вещественных памятников?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Археология"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Палеография"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Геология"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Антропология"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-archaeology",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-archaeology"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Археология"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Археология — наука, открывающая и изучающая материальные следы жизни людей древности (поселения, захоронения, орудия).",
+      "difficulty": "basic",
+      "reviewTopic": "Археология"
+    },
+    {
+      "question": {
+        "questionId": "hist-q13",
+        "prompt": "К какому виду исторических источников относятся передаваемые из поколения в поколение народные сказительные былины?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Устные (фольклорные)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Вещественные"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Письменные"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Архитектурные"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-oral-source",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Устные (фольклорные)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Устные источники сохраняют память о событиях в народных сказаниях, песнях, мифах и пословицах.",
+      "difficulty": "basic",
+      "reviewTopic": "Устные источники"
+    },
+    {
+      "question": {
+        "questionId": "hist-q14",
+        "prompt": "Как называется специальная историческая дисциплина, изучающая историю монетной чеканки и денежного обращения?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Нумизматика"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Сфрагистика"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Геральдика"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Генеалогия"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-numismatics",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Нумизматика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Нумизматика изучает старинные монеты, медали, клады и историю денежных систем разных эпох.",
+      "difficulty": "basic",
+      "reviewTopic": "Нумизматика"
+    },
+    {
+      "question": {
+        "questionId": "hist-q15",
+        "prompt": "Как называется специализированное учреждение, где хранятся и исследуются ценные исторические письменные документы?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Архив"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Лаборатория"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Амфитеатр"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Гербарий"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-archives",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-sources-def"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Архив"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Архивы собирают, систематизируют и надежно сохраняют рукописные и печатные документы государственных органов и граждан.",
+      "difficulty": "basic",
+      "reviewTopic": "Архивы"
+    },
+    {
+      "question": {
+        "questionId": "hist-q16",
+        "prompt": "Что включает в себя историческая критика источника перед признанием его данных достоверными?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Установление авторства, времени создания, подлинности и сопоставление с другими свидетельствами"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Проверку документа на орфографические ошибки"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Оценку стоимости продажи документа на аукционе"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Перевод текста исключительно на современный сленг"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-criticism",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-sources-def",
+        "hist-fact-primary"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Установление авторства, времени создания, подлинности и сопоставление с другими свидетельствами"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Критика источников (внешняя и внутренняя) позволяет выявить подделки, определить предвзятость автора и подтвердить достоверность фактов.",
+      "difficulty": "basic",
+      "reviewTopic": "Критика исторических источников"
+    },
+    {
+      "question": {
+        "questionId": "hist-q17",
+        "prompt": "Сколько лет составляет одно тысячелетие?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "100 лет"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "500 лет"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1000 лет"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "10 000 лет"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-millennium",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "1000 лет"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Одно тысячелетие (миллениум) равно ровно 10 векам или 1000 календарным годам.",
+      "difficulty": "basic",
+      "reviewTopic": "Единицы измерения времени"
+    },
+    {
+      "question": {
+        "questionId": "hist-q18",
+        "prompt": "Какая вспомогательная историческая дисциплина изучает гербы и государственные символы?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Геральдика"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Бонистика"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Эпиграфика"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Топонимика"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-heraldry",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-types"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Геральдика"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Геральдика — наука о гербах, их происхождении, строении, правилах составления и значении символических элементов.",
+      "difficulty": "basic",
+      "reviewTopic": "Геральдика"
+    },
+    {
+      "question": {
+        "questionId": "hist-q19",
+        "prompt": "В каком порядке велся отсчет лет до нашей эры (до н.э.)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "В порядке убывания к 1 году н.э. (например: 500 г. до н.э., затем 499 г. до н.э.)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "В порядке возрастания, как и в нашей эре"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Случайным образом по указанию правителей"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Отсчет велся только по десятилетиям"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-bce-direction",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-chronology-def",
+        "hist-fact-century"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "В порядке убывания к 1 году н.э. (например: 500 г. до н.э., затем 499 г. до н.э.)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При движении вперед во времени события до нашей эры приближаются к рубежу эр, поэтому число года уменьшается: 100 г. до н.э. был раньше, чем 50 г. до н.э.",
+      "difficulty": "basic",
+      "reviewTopic": "Счёт лет до нашей эры"
+    },
+    {
+      "question": {
+        "questionId": "hist-q20",
+        "prompt": "На каком принципе основан закон стратиграфии в археологии при определении относительного возраста находок?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "При ненарушенном залегании нижние слои почвы образовались раньше верхних"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Чем глубже слой, тем предметы в нем новее"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Все слои земли имеют одинаковый возраст"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Возраст определяется исключительно цветом глины"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-stratigraphy",
+      "sourceIds": [
+        "source-ruwiki-hist-source",
+        "source-ruwiki-chronology"
+      ],
+      "factIds": [
+        "hist-fact-dating",
+        "hist-fact-archaeology"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "При ненарушенном залегании нижние слои почвы образовались раньше верхних"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Закон суперпозиции гласит, что более глубокие геологические и культурные слои откладывались раньше тех, что лежат выше.",
+      "difficulty": "basic",
+      "reviewTopic": "Стратиграфия в археологии"
+    },
+    {
+      "question": {
+        "questionId": "hist-q21",
+        "prompt": "В каком году произошло Крещение Руси князем Владимиром Святославичем?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "988 год"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "862 год"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1242 год"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "1147 год"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-rus",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "988 год",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Крещение Руси произошло в 988 году по инициативе князя Владимира Красное Солнышко.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q22",
+        "prompt": "Кто возглавил экспедицию, совершившую первое в истории кругосветное плавание (1519–1522 гг.)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Фернан Магеллан"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Христофор Колумб"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Васко да Гама"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Джеймс Кук"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-discoveries",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Фернан Магеллан",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Экспедиция под командованием Фернана Магеллана (завершил Хуан Элькано) первой обогнула земной шар.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q23",
+        "prompt": "Какой князь разбил шведских и немецких рыцарей в Невской битве (1240 г.) и Ледовом побоище (1242 г.)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Александр Невский"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Дмитрий Донской"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Ярослав Мудрый"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Владимир Мономах"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-rus",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Александр Невский",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Александр Ярославич Невский одержал победы на Неве и на Чудском озере.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q24",
+        "prompt": "В каком году Христофор Колумб достиг берегов Америки?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1492 год"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1453 год"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1517 год"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "1380 год"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-discoveries",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "1492 год",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "12 октября 1492 года корабли Колумба достигли острова Сан-Сальвадор в Багамском архипелаге.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q25",
+        "prompt": "Какой город был основан Петром I в 1703 году в устье Невы?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Санкт-Петербург"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Москва"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Новгород"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Казань"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-empire",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Санкт-Петербург",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "27 мая 1703 года была заложена Петропавловская крепость, положившая начало Санкт-Петербургу.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q26",
+        "prompt": "Как назывался первый письменный свод законов Древнерусского государства?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "«Русская Правда»"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Судебник"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Соборное уложение"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Домострой"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-rus",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "«Русская Правда»",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "«Русская Правда», созданная при Ярославе Мудром, регулировала общественные отношения на Руси.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q27",
+        "prompt": "В какой древней цивилизации были созданы пирамиды в Гизе?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Древний Египет"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Месопотамия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Древний Рим"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Хеттское царство"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-ancient",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Древний Египет",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Великие пирамиды фараонов Хеопса, Хефрена и Микерина были возведены в Древнем Египте.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q28",
+        "prompt": "В каком сражении 1380 года объединенные русские войска под командованием Дмитрия Донского разбили ордынцев?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Куликовская битва"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Ледовое побоище"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Битва на Калке"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Полтавская битва"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-rus",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Куликовская битва",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Куликовская битва состоялась 8 сентября 1380 года на Куликовом поле у слияния рек Дона и Непрядвы.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q29",
+        "prompt": "Кто изобрел европейский способ книгопечатания подвижными литерами в середине XV века?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Иоганн Гутенберг"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Леонардо да Винчи"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Николай Коперник"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Галилео Галилей"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-discoveries",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Иоганн Гутенберг",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Немецкий изобретатель Иоганн Гутенберг около 1440 года создал станок с металлическими подвижными буквами.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q30",
+        "prompt": "В каком году Юрий Алексеевич Гагарин совершил первый в истории человечества полет в космос?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1961 год"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1957 год"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1969 год"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "1975 год"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-modern",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "1961 год",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "12 апреля 1961 года советский космонавт Юрий Гагарин на корабле «Восток-1» облетел Землю.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q31",
+        "prompt": "Какая река являлась главной водной артерией Древнего Египта, обеспечивавшей плодородие почв?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Нил"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Тигр"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Евфрат"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Инд"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-ancient",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Нил",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Ежегодные разливы реки Нил приносили плодородный ил, сделавший возможным земледелие в Египте.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q32",
+        "prompt": "В каком году Москва была впервые упомянута в древнерусских летописях Юрием Долгоруким?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1147 год"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "862 год"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "988 год"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "1240 год"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-rus",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "1147 год",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Летописное упоминание Москвы князем Юрием Долгоруким датируется 1147 годом («Приди ко мне, брате, в Москов»).",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q33",
+        "prompt": "Как звали первого царя из династии Романовых, избранного на царство в 1613 году?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Михаил Федорович"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Алексей Михайлович"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Петр I"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Иван IV"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-empire",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Михаил Федорович",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Земский собор 1613 года избрал на царство 16-летнего Михаила Федоровича Романова, завершив Смутное время.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q34",
+        "prompt": "Какая цивилизация подарила миру Олимпийские игры и театр?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Древняя Греция"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Древний Рим"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Финикия"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Персидская держава"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-ancient",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Древняя Греция",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Олимпийские игры зародились в 776 г. до н.э. в древнегреческой Олимпии, там же возник античный театр.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q35",
+        "prompt": "Какой выдающийся ученый был инициатором создания Московского государственного университета (1755 г.)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "М.В. Ломоносов"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Д.И. Менделеев"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "И.П. Павлов"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Н.И. Пирогов"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-empire",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "М.В. Ломоносов",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Михаил Васильевич Ломоносов разработал проект создания первого российского университета.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q36",
+        "prompt": "Как звали вавилонского царя XVIII века до н.э., создавшего один из древнейших сводов законов?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Хаммурапи"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Навуходоносор"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Саргон"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Ашшурбанапал"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-ancient",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Хаммурапи",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Законы царя Хаммурапи были высечены на черной базальтовой стеле клинописью.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q37",
+        "prompt": "В каком году произошла Бородинская битва в ходе Отечественной войны?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1812 год"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1805 год"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1825 год"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "1853 год"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-empire",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "1812 год",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Генеральное сражение Отечественной войны 1812 года между русской армией Кутузова и войсками Наполеона состоялось при Бородино.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q38",
+        "prompt": "Какое событие произошло 4 октября 1957 года и положило начало космической эре?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Запуск первого искусственного спутника Земли"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Высадка на Луну"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Полет Гагарина"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Запуск станции «Мир»"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-modern",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Запуск первого искусственного спутника Земли",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В СССР был успешно выведен на орбиту «Спутник-1», открывший космическую эру человечества.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q39",
+        "prompt": "Какой древний торговый путь связывал Китай и государства Средиземноморья?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Великий шелковый путь"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Путь «из варяг в греки»"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Янтарный путь"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Лазуритовый путь"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-discoveries",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Великий шелковый путь",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Великий шелковый путь представлял собой сеть караванных дорог, связывавших Восточную Азию с Европой.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q40",
+        "prompt": "В каком году произошло восстание декабристов на Сенатской площади в Петербурге?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1825 год"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1812 год"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1861 год"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "1905 год"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-empire",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "1825 год",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Выступление участников тайных обществ состоялось 14 декабря 1825 года после смерти Александра I.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q41",
+        "prompt": "Как в Древнем Риме называлось главное публичное место для народных собраний и судов?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Форум"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Колизей"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Пантеон"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Акрополь"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-ancient",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Форум",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Римский Форум (Forum Romanum) являлся центром общественной и политической жизни древнего Рима.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q42",
+        "prompt": "В каком году в России было отменено крепостное право императором Александром II?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1861 год"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1825 год"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1881 год"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "1917 год"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-empire",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "1861 год",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Манифест об отмене крепостного права был подписан Александром II 19 февраля 1861 года.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q43",
+        "prompt": "Какая международная организация была создана в 1945 году для поддержания мира и безопасности?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Организация Объединенных Наций (ООН)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Лига Наций"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "ЮНЕСКО"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Красный Крест"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-modern",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Организация Объединенных Наций (ООН)",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Устав ООН был подписан в Сан-Франциско в 1945 году представителями 50 государств-основателей.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q44",
+        "prompt": "Какой древнерусский летописный свод начала XII века составил монах Нестор?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "«Повесть временных лет»"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "«Слово о полку Игореве»"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "«Задонщина»"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "«Сказание о Мамаевом побоище»"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-sources",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "«Повесть временных лет»",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "«Повесть временных лет» Нестора — фундаментальный источник по ранней истории Древней Руси.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q45",
+        "prompt": "Кто был первым коронованным русским царем, венчавшимся на царство в 1547 году?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Иван IV Грозный"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Иван III Великий"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Василий III"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Петр I"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-rus",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Иван IV Грозный",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Иван IV Васильевич в 1547 году официально принял титул «царь и великий князь всея Руси».",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q46",
+        "prompt": "Какая вспомогательная историческая дисциплина изучает древние монеты и денежное обращение?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Нумизматика"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Сфрагистика"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Геральдика"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Генеалогия"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-sources",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Нумизматика",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Нумизматика исследует историю чеканки монет, кладов и денежных систем.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q47",
+        "prompt": "Какой португальский мореплаватель первым в 1498 году проложил морской путь в Индию вокруг Африки?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Васко да Гама"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Бартоломеу Диаш"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Христофор Колумб"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Америго Веспуччи"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-discoveries",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Васко да Гама",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Экспедиция Васко да Гамы обогнула мыс Доброй Надежды и достигла индийского порта Каликут.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q48",
+        "prompt": "В каком году состоялось Стояние на реке Угре, положившее конец ордынскому игу на Руси?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1480 год"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1380 год"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1240 год"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "1552 год"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-rus",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "1480 год",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Осенью 1480 года войска великого князя Ивана III и хана Ахмата стояли на реке Угре; Русь обрела суверенитет.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q49",
+        "prompt": "Какая наука занимается исследованием гербов и фамильных дворянских эмблем?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Геральдика"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Генеалогия"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Палеография"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Эпиграфика"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-sources",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Геральдика",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Геральдика изучает правила составления, символику и историю государственных и родовых гербов.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    },
+    {
+      "question": {
+        "questionId": "hist-q50",
+        "prompt": "В каком году началась Первая мировая война?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1914 год"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1917 год"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1939 год"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "1905 год"
+          }
+        ]
+      },
+      "questionFamilyId": "hist-fam-modern",
+      "sourceIds": [
+        "source-history-core"
+      ],
+      "factIds": [
+        "hist-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "1914 год",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Первая мировая война началась в конце июля 1914 года после сараевского убийства эрцгерцога Франца Фердинанда.",
+      "difficulty": "basic",
+      "reviewTopic": "История"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "requestId": "55555555-5555-4555-8555-555555555555",
+  "npcId": "npc-guide",
+  "status": "completed",
+  "text": "Исследование начинается с наблюдения и проверки предположений.",
+  "source": "rules",
+  "knowledgeIds": [
+    "observation"
+  ],
+  "progressRevision": 2,
+  "error": null
+}

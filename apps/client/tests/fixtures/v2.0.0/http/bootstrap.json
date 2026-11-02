@@ -1,0 +1,10 @@
+{
+  "protocolVersions": [
+    "2.0.0"
+  ],
+  "serverInstanceId": "33333333-3333-4333-8333-333333333333",
+  "worldIds": [
+    "discovery-campus"
+  ],
+  "offline": true
+}

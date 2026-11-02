@@ -1,0 +1,10 @@
+{
+  "factId": "demo-fact-1",
+  "moduleId": "flags-demo",
+  "contentVersion": "demo-v1",
+  "text": "Демо-страна А — вымышленная страна учебного прототипа.",
+  "sourceIds": [
+    "demo-source"
+  ],
+  "status": "draft"
+}

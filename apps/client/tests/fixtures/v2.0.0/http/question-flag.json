@@ -1,0 +1,15 @@
+{
+  "questionId": "flag-demo-q1",
+  "kind": "flag_country",
+  "prompt": "Какой стране принадлежит этот учебный флаг?",
+  "image": {
+    "assetId": "demo-flag-01",
+    "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+    "byteSize": 177,
+    "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+    "mediaType": "image/svg+xml",
+    "width": 240,
+    "height": 160,
+    "alt": "Флаг страны для вопроса"
+  }
+}

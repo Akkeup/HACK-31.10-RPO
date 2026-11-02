@@ -1,0 +1,61 @@
+{
+  "sourceArchive": "асеты 2.zip",
+  "entries": [
+    {
+      "file": "npc-common.glb",
+      "originalName": "обычные НПС.glb",
+      "byteSize": 604744,
+      "sha256": "997ca54675c626728013ebfc143da16c05c209cc1f092bff42663217c22ee08b",
+      "animations": []
+    },
+    {
+      "file": "door.glb",
+      "originalName": "дверь.glb",
+      "byteSize": 48372,
+      "sha256": "c15b540a3ce18e7b45211d777e80ade3bcf8891a5df3dcf61ed8c1e9336032db",
+      "animations": []
+    },
+    {
+      "file": "floor-module.glb",
+      "originalName": "пол.glb",
+      "byteSize": 145840,
+      "sha256": "d322e41ae617657512cdd5fd26e092ca9421c1cd7ddb2d2d616503b938297108",
+      "animations": []
+    },
+    {
+      "file": "computer-desk.glb",
+      "originalName": "стол с компьютером.glb",
+      "byteSize": 51664,
+      "sha256": "f0075f2b08b31a9c8e20bc5d2c91efa45b30cee0043bacd7cd86540afd2d049d",
+      "animations": []
+    },
+    {
+      "file": "player.glb",
+      "originalName": "модель игрока.glb",
+      "byteSize": 735360,
+      "sha256": "d0fa5ac2529e7260d91ffdc32c1b3746e157422936c2ab91304479825cffaeec",
+      "animations": []
+    },
+    {
+      "file": "board.glb",
+      "originalName": "доска.glb",
+      "byteSize": 55500,
+      "sha256": "fe049c50753457101e500261559ec688815a0e167014bc97b20b460547667b6e",
+      "animations": []
+    },
+    {
+      "file": "chair.glb",
+      "originalName": "стул.glb",
+      "byteSize": 60472,
+      "sha256": "465fd79214dd2a38ee74d0b4f1faeae45f934e1aa956f7f926279d5d16d9c668",
+      "animations": []
+    },
+    {
+      "file": "sophia.glb",
+      "originalName": "София.glb",
+      "byteSize": 751808,
+      "sha256": "72dc70820ca6308245cb6d6c9d7104548a49db4c2a4d141d93a9bbe7edc7e7f9",
+      "animations": []
+    }
+  ]
+}

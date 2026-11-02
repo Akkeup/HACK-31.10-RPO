@@ -1,0 +1,126 @@
+{
+  "teacher-mathematics": {
+    "path": "/assets/models/npc/teacher-mathematics.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "teacher-informatics": {
+    "path": "/assets/models/npc/teacher-informatics.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "teacher-history": {
+    "path": "/assets/models/npc/teacher-history.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "teacher-flags": {
+    "path": "/assets/models/npc/teacher-geography.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "examiner": {
+    "path": "/assets/models/pack-2/npc-common.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "planter": {
+    "path": "/assets/models/furniture/campus-planter-box.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0],
+    "hiddenNodes": ["coffee-cup"]
+  },
+  "shelf": {
+    "path": "/assets/models/furniture/bookshelf.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "chair": {
+    "path": "/assets/models/pack-2/chair.glb",
+    "available": true,
+    "scale": 1.25,
+    "rotationY": 3.141592653589793,
+    "offset": [0, 0, 0],
+    "hiddenNodes": ["dressing"]
+  },
+  "round-table": {
+    "path": "/assets/models/furniture/gaming-table.glb",
+    "available": false,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "lamp": {
+    "path": "/assets/models/furniture/lamp-table.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "guide": {
+    "path": "/assets/models/pack-2/sophia.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "player": {
+    "path": "/assets/models/characters/player-backpack.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "door": {
+    "path": "/assets/models/pack-2/door.glb",
+    "available": true,
+    "scale": 1.4,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "computer-desk": {
+    "path": "/assets/models/pack-2/computer-desk.glb",
+    "available": true,
+    "scale": 1.15,
+    "rotationY": 0,
+    "offset": [0, 0, 0],
+    "hiddenNodes": ["dressing"]
+  },
+  "board": {
+    "path": "/assets/models/pack-2/board.glb",
+    "available": false,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0],
+    "hiddenNodes": ["board-writing", "papers"]
+  },
+  "ceiling": {
+    "path": "/assets/models/pack-2/floor-module.glb",
+    "available": true,
+    "scale": 1,
+    "rotationY": 0,
+    "offset": [0, 0, 0]
+  },
+  "study-desk": {
+    "path": "/assets/models/pack-2/computer-desk.glb",
+    "available": true,
+    "scale": 1.19,
+    "rotationY": 0,
+    "offset": [0, 0, 0],
+    "hiddenNodes": ["equipment", "dressing"]
+  }
+}

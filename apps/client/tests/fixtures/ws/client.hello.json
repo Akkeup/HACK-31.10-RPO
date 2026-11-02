@@ -1,0 +1,8 @@
+{
+  "protocolVersion": "1.0.0",
+  "type": "client.hello",
+  "requestId": "44444444-4444-4444-8444-444444444444",
+  "payload": {
+    "clientName": "Discovery JS mock"
+  }
+}

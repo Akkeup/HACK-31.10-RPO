@@ -1,0 +1,45 @@
+{
+  "protocolVersion": "1.1.0",
+  "type": "quiz.state",
+  "requestId": "0000000f-1234-4234-8234-00000000000f",
+  "payload": {
+    "attemptId": "0000000a-1234-4234-8234-00000000000a",
+    "moduleId": "math-basics",
+    "contentVersion": "v1",
+    "npcId": "examiner-mathematics",
+    "seatId": "seat-math-basics",
+    "status": "active",
+    "revision": 1,
+    "ordinal": 1,
+    "questionCount": 5,
+    "passScore": 4,
+    "score": 0,
+    "question": {
+      "questionId": "math-basics-q1",
+      "prompt": "Сколько будет 2 + 3?",
+      "options": [
+        {
+          "optionId": "option-1",
+          "text": "5"
+        },
+        {
+          "optionId": "option-2",
+          "text": "4"
+        },
+        {
+          "optionId": "option-3",
+          "text": "6"
+        },
+        {
+          "optionId": "option-4",
+          "text": "1"
+        }
+      ]
+    },
+    "feedback": null,
+    "result": null,
+    "interruptionReason": null
+  },
+  "serverSeq": 14,
+  "serverTime": "2026-10-31T09:00:00Z"
+}

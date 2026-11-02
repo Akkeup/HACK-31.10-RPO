@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/2.0.0/education-pack.schema.json",
+  "type": "object",
+  "properties": {
+    "module": {
+      "$ref": "education.schema.json#/$defs/module"
+    },
+    "material": {
+      "$ref": "education.schema.json#/$defs/material"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "$ref": "education.schema.json#/$defs/question"
+          },
+          "questionFamilyId": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "sourceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+            },
+            "minItems": 1,
+            "maxItems": 10
+          },
+          "answerKey": {
+            "type": "object",
+            "properties": {
+              "acceptedValues": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "minItems": 1,
+                "maxItems": 20
+              },
+              "caseSensitive": {
+                "type": "boolean"
+              },
+              "numericTolerance": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1000
+              },
+              "rubricPoints": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 500
+                },
+                "maxItems": 10
+              },
+              "graded": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "acceptedValues",
+              "caseSensitive",
+              "numericTolerance",
+              "rubricPoints",
+              "graded"
+            ],
+            "additionalProperties": false
+          },
+          "explanation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "reviewTopic": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        },
+        "required": [
+          "question",
+          "questionFamilyId",
+          "sourceIds",
+          "answerKey",
+          "explanation",
+          "reviewTopic"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 5,
+      "maxItems": 100
+    }
+  },
+  "required": [
+    "module",
+    "material",
+    "questions"
+  ],
+  "additionalProperties": false
+}

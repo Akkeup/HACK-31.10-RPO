@@ -1,0 +1,2337 @@
+{
+  "module": {
+    "moduleId": "informatics-basics",
+    "subject": "informatics",
+    "title": "Информатика: данные и алгоритмы",
+    "contentVersion": "v1",
+    "teacherId": "teacher-informatics",
+    "examinerId": "examiner-informatics"
+  },
+  "material": {
+    "module": {
+      "moduleId": "informatics-basics",
+      "subject": "informatics",
+      "title": "Информатика: данные и алгоритмы",
+      "contentVersion": "v1",
+      "teacherId": "teacher-informatics",
+      "examinerId": "examiner-informatics"
+    },
+    "sections": [
+      {
+        "heading": "Единицы измерения информации и кодирование",
+        "text": "Минимальная единица информации — бит (0 или 1). Байт состоит из 8 бит. В 1 килобайте (КБ) содержится 1024 байта, в 1 мегабайте (МБ) — 1024 КБ, в 1 гигабайте (ГБ) — 1024 МБ. Для кодирования текста используются стандарты ASCII (1 байт на символ) и Unicode (UTF-8, от 1 до 4 байт)."
+      },
+      {
+        "heading": "Системы счисления и булева логика",
+        "text": "Компьютеры работают в двоичной системе счисления (основание 2). Для удобства человека используются восьмеричная (OCT) и шестнадцатеричная (HEX) системы. Основные логические операции: И (AND, конъюнкция), ИЛИ (OR, дизъюнкция), НЕ (NOT, инверсия) и исключающее ИЛИ (XOR)."
+      },
+      {
+        "heading": "Архитектура компьютера и память",
+        "text": "Архитектура фон Неймана включает процессор (CPU), оперативную память (RAM) и устройства ввода-вывода. Процессор выполняет команды по тактовой частоте. Кэш-память процессора (L1, L2, L3) — самая быстрая энергозависимая память. Постоянные накопители (SSD, HDD) хранят данные энергонезависимо."
+      },
+      {
+        "heading": "Алгоритмы и структуры данных",
+        "text": "Алгоритм — точная последовательность инструкций. Сложность алгоритмов оценивается через Big-O: O(1) — константная, O(log n) — логарифмическая (бинарный поиск), O(n) — линейная, O(n^2) — квадратичная. Базовые структуры данных: массив, стек (LIFO), очередь (FIFO) и хэш-таблица."
+      },
+      {
+        "heading": "Сети, интернет и базы данных",
+        "text": "Компьютерные сети объединяют узлы по протоколу TCP/IP. Протокол TCP гарантирует доставку пакетов, UDP передает быстрее без подтверждения. DNS преобразует доменные имена в IP-адреса. Реляционные базы данных организуют информацию в таблицы со связями и управляются языком SQL."
+      }
+    ],
+    "examples": [
+      "1 Байт = 8 Бит",
+      "1 КБ = 1024 Байта",
+      "101 в двоичной = 5 в десятичной (4 + 0 + 1)",
+      "Истина И Ложь = Ложь",
+      "Стек: Last In, First Out (LIFO)"
+    ],
+    "keyPoints": [
+      "Бит принимает только два состояния: 0 или 1.",
+      "В двоичной системе основание равно 2.",
+      "Бинарный поиск работает за время O(log n) в отсортированном массиве.",
+      "Оперативная память RAM очищается при выключении питания."
+    ]
+  },
+  "questions": [
+    {
+      "question": {
+        "questionId": "info-q01",
+        "prompt": "Как называется наименьшая единица информации в компьютере, принимающая значение 0 или 1?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Бит"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Байт"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Пиксель"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Слово"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bit",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-base"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Бит"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Бит (от англ. binary digit — двоичный знак) является минимальной единицей измерения информации в компьютере.",
+      "difficulty": "basic",
+      "reviewTopic": "Единицы информации"
+    },
+    {
+      "question": {
+        "questionId": "info-q02",
+        "prompt": "Сколько бит содержится в одном байте?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "4"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "8"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "16"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "10"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-byte",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-byte"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "8"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В одном байте содержится ровно 8 бит. С помощью одного байта можно закодировать 256 различных состояний.",
+      "difficulty": "basic",
+      "reviewTopic": "Байты и биты"
+    },
+    {
+      "question": {
+        "questionId": "info-q03",
+        "prompt": "Какое десятичное число записано в двоичной системе как 101?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "3"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "5"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "6"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "7"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bin-val",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-weights"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "5"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В двоичном числе 101 крайняя единица весит 4, ноль весит 2, правая единица весит 1: 4 + 0 + 1 = 5.",
+      "difficulty": "basic",
+      "reviewTopic": "Перевод из двоичной системы"
+    },
+    {
+      "question": {
+        "questionId": "info-q04",
+        "prompt": "Как записывается десятичное число 4 в двоичной системе счисления?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "11"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "100"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "101"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "110"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bin-four",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-weights"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "100"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Веса разрядов: 4, 2, 1. Для числа 4 берём единицу в разряде четвёрок и нули в остальных: 100₂ = 4.",
+      "difficulty": "basic",
+      "reviewTopic": "Двоичная запись чисел"
+    },
+    {
+      "question": {
+        "questionId": "info-q05",
+        "prompt": "Для чего в информатике используется дополнительный бит чётности (parity bit)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Для ускорения передачи данных"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Для обнаружения ошибок при передаче данных"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Для шифрования паролей"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Для сжатия изображений"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-parity-concept",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-parity"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Для обнаружения ошибок при передаче данных"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Бит чётности позволяет проверить, не исказился ли отдельный бит данных во время передачи по каналу связи.",
+      "difficulty": "basic",
+      "reviewTopic": "Обнаружение ошибок и чётность"
+    },
+    {
+      "question": {
+        "questionId": "info-q06",
+        "prompt": "Какое главное условие необходимо для применения алгоритма бинарного поиска?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Список должен быть отсортирован"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Все числа должны быть чётными"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Список должен быть очень коротким"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Данные должны быть зашифрованы"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-binary-search",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-search"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Список должен быть отсортирован"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Бинарный поиск работает только на отсортированных данных, поскольку на каждом шаге отсекает ровно половину неподходящих вариантов.",
+      "difficulty": "basic",
+      "reviewTopic": "Бинарный поиск"
+    },
+    {
+      "question": {
+        "questionId": "info-q07",
+        "prompt": "Что в информатике называют алгоритмом?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Любую случайную последовательность чисел"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Точную пошаговую последовательность инструкций для решения задачи"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Компьютерную микросхему"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Сетевой кабель"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-algorithm-def",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-algorithm"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Точную пошаговую последовательность инструкций для решения задачи"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Алгоритм — это упорядоченный набор чётких правил или действий, приводящих к решению поставленной задачи.",
+      "difficulty": "basic",
+      "reviewTopic": "Понятие алгоритма"
+    },
+    {
+      "question": {
+        "questionId": "info-q08",
+        "prompt": "Как алгоритм сжатия серий (RLE) сожмёт строку 'AAAAABBB'?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "5A3B"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "A5B3"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "AB8"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "AABB"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-rle-compress",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-rle"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "5A3B"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Алгоритм RLE заменяет непрерывную серию повторяющихся символов на их количество и сам символ: 5 букв A и 3 буквы B дают '5A3B'.",
+      "difficulty": "basic",
+      "reviewTopic": "Сжатие данных"
+    },
+    {
+      "question": {
+        "questionId": "info-q09",
+        "prompt": "На каком базовом действии основана сортировка методом пузырька (Bubble Sort)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Попарное сравнение соседних элементов и обмен местами"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Случайная перестановка всех элементов"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Удаление всех нечётных чисел"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Перевод всех чисел в двоичный вид"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bubble-sort",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-sorting"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Попарное сравнение соседних элементов и обмен местами"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Сортировка пузырьком последовательно сравнивает соседние элементы и меняет их местами, если они расположены в неправильном порядке.",
+      "difficulty": "basic",
+      "reviewTopic": "Алгоритмы сортировки"
+    },
+    {
+      "question": {
+        "questionId": "info-q10",
+        "prompt": "Сколько различных значений можно закодировать цепочкой из 3 бит?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "3"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "6"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "8"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "16"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bin-eight",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-weights"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "8"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Каждый бит имеет 2 возможных состояния. Три бита дают 2³ = 2 × 2 × 2 = 8 различных комбинаций (от 000 до 111).",
+      "difficulty": "basic",
+      "reviewTopic": "Комбинаторика битов"
+    },
+    {
+      "question": {
+        "questionId": "info-q11",
+        "prompt": "Как называется мельчайшая неделимая точка растрового цифрового изображения?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Пиксель"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Вектор"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Дюйм"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Бит"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-pixel",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-base"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Пиксель"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Пиксель (от англ. picture element) — это наименьший элемент матрицы цифрового дисплея или растрового рисунка.",
+      "difficulty": "basic",
+      "reviewTopic": "Представление графики"
+    },
+    {
+      "question": {
+        "questionId": "info-q12",
+        "prompt": "Сколько сравнений в худшем случае потребуется линейному поиску в неотсортированном списке из N элементов?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "N"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "N / 2"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "N²"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-linear-search",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-search"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "N"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В худшем случае искомый элемент находится на самом последнем месте или отсутствует, поэтому придётся проверить все N элементов.",
+      "difficulty": "basic",
+      "reviewTopic": "Линейный поиск"
+    },
+    {
+      "question": {
+        "questionId": "info-q13",
+        "prompt": "В цепочке данных 1 0 1 1 0 количество единиц нечётно (три единицы). Какой бит чётности нужно добавить для схемы чётной проверки?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "0"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Любой"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "2"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-parity-odd",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-parity"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Чтобы общее число единиц стало чётным (четыре), бит чётности должен быть равен 1: 3 + 1 = 4.",
+      "difficulty": "basic",
+      "reviewTopic": "Расчёт бита чётности"
+    },
+    {
+      "question": {
+        "questionId": "info-q14",
+        "prompt": "Как компьютеры хранят текстовые буквы и знаки в своей памяти?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "В виде числовых кодов по таблице кодировки (например, ASCII или Unicode)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Как маленькие фотографии каждой буквы"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Только с помощью звуковых волн"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Текст сохраняется без изменений как краска на экране"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-ascii",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-byte"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "В виде числовых кодов по таблице кодировки (например, ASCII или Unicode)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Каждому символу алфавита ставится в соответствие числовой код (например, 'A' = 65), который затем сохраняется в двоичном виде.",
+      "difficulty": "basic",
+      "reviewTopic": "Кодирование текста"
+    },
+    {
+      "question": {
+        "questionId": "info-q15",
+        "prompt": "Чему равно значение двоичного числа 10 в десятичной системе?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "10"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "2"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "0"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bin-two",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-weights"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "2"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В числе 10₂ в разряде двоек стоит 1, а в разряде единиц — 0. Получаем 1 × 2 + 0 × 1 = 2.",
+      "difficulty": "basic",
+      "reviewTopic": "Двоичное число два"
+    },
+    {
+      "question": {
+        "questionId": "info-q16",
+        "prompt": "Из каких двух главных элементов состоит математический граф (компьютерная сеть)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Вершины (узлы) и рёбра (связи между ними)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Пиксели и байты"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Числитель и знаменатель"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Процессор и монитор"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-graph-net",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-algorithm"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Вершины (узлы) и рёбра (связи между ними)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Граф состоит из множества вершин (узлов сети или городов) и соединяющих их рёбер (каналов связи или дорог).",
+      "difficulty": "basic",
+      "reviewTopic": "Теория графов и сети"
+    },
+    {
+      "question": {
+        "questionId": "info-q17",
+        "prompt": "Как называется сжатие данных, при котором исходную информацию можно восстановить абсолютно без потерь?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Сжатие без потерь (lossless)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Сжатие с потерями (lossy)"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Удаление данных"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Форматирование"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-lossless",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-rle"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Сжатие без потерь (lossless)"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "При сжатии без потерь (lossless, например алгоритмы ZIP или PNG) исходный файл после распаковки бит-в-бит совпадает с оригиналом.",
+      "difficulty": "basic",
+      "reviewTopic": "Сжатие без потерь"
+    },
+    {
+      "question": {
+        "questionId": "info-q18",
+        "prompt": "Какое максимальное десятичное число можно записать с помощью 4 бит?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "4"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "8"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "15"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "16"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-bin-fifteen",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-binary-weights"
+      ],
+      "correctOptionId": "opt-3",
+      "answerKey": {
+        "acceptedValues": [
+          "15"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Четыре единицы 1111₂ равны 8 + 4 + 2 + 1 = 15. Всего комбинаций 16 (от 0 до 15).",
+      "difficulty": "basic",
+      "reviewTopic": "Диапазон чисел"
+    },
+    {
+      "question": {
+        "questionId": "info-q19",
+        "prompt": "Что делает элемент-компаратор в сети сортировки?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Сравнивает два числа и направляет меньшее по одному каналу, а большее — по другому"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Умножает число на 2"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Стирает нечётные числа"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Перезагружает компьютер"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-sort-net",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-sorting"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Сравнивает два числа и направляет меньшее по одному каналу, а большее — по другому"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Компаратор сравнивает два значения на входе и упорядочивает их на выходе (меньшее наверх, большее вниз).",
+      "difficulty": "basic",
+      "reviewTopic": "Сети сортировки"
+    },
+    {
+      "question": {
+        "questionId": "info-q20",
+        "prompt": "Как в алгоритмах называется конструкция, повторяющая выполнение одних и тех же действий, пока выполняется условие?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Ветвление"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Цикл"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Присваивание"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Комментарий"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-loop",
+      "sourceIds": [
+        "source-cs-unplugged"
+      ],
+      "factIds": [
+        "cs-fact-algorithm"
+      ],
+      "correctOptionId": "opt-2",
+      "answerKey": {
+        "acceptedValues": [
+          "Цикл"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Цикл позволяет многократно выполнять блок инструкций заданное число раз или до достижения определённого условия.",
+      "difficulty": "basic",
+      "reviewTopic": "Управляющие конструкции"
+    },
+    {
+      "question": {
+        "questionId": "info-q21",
+        "prompt": "Сколько байт содержится в 1 Килобайте (КБ)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "1024"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1000"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "512"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "2048"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-units",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "1024",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В компьютерной технике приставки кратны степеням двойки: 1 КБ = 2^10 = 1024 байта.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q22",
+        "prompt": "Какая логическая операция возвращает 'Истина', только если оба операнда истинны?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "И (AND)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "ИЛИ (OR)"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "НЕ (NOT)"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "XOR"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-logic",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "И (AND)",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Конъюнкция (логическое И) истинна тогда и только тогда, когда оба высказывания истинны.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q23",
+        "prompt": "По какому принципу работает структура данных Стек (Stack)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "LIFO (Last In, First Out)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "FIFO (First In, First Out)"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Случайный доступ"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "По приоритету"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-datastruct",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "LIFO (Last In, First Out)",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Стек работает по принципу LIFO: последний добавленный элемент извлекается первым.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q24",
+        "prompt": "Какая временная сложность у алгоритма бинарного поиска в отсортированном массиве?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "O(log n)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "O(n)"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "O(1)"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "O(n²)"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-algorithms",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "O(log n)",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "На каждом шаге бинарный поиск делит область поиска пополам, поэтому его сложность логарифмическая: O(log n).",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q25",
+        "prompt": "Какое шестнадцатеричное число (HEX) соответствует десятичному числу 15?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "F"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "E"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "A"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "10"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-radix",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "F",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В шестнадцатеричной системе цифры от 10 до 15 обозначаются буквами: A=10, B=11, C=12, D=13, E=14, F=15.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q26",
+        "prompt": "Что означает аббревиатура CPU?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Central Processing Unit"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Computer Personal Unit"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Central Power Unit"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Core Program Utility"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-hardware",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Central Processing Unit",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "CPU (Central Processing Unit) — центральный процессор компьютера.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q27",
+        "prompt": "Какая память является энергозависимой и очищается при выключении питания?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "RAM (Оперативная память)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "SSD"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "HDD"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "ROM (ПЗУ)"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-hardware",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "RAM (Оперативная память)",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "RAM (Random Access Memory) теряет все записанные данные при прекращении подачи электропитания.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q28",
+        "prompt": "Для чего предназначена служба DNS в сети Интернет?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Преобразование доменных имен в IP-адреса"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Шифрование трафика"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Хранение веб-страниц"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Маршрутизация кабелей"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-networks",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Преобразование доменных имен в IP-адреса",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "DNS (Domain Name System) сопоставляет понятные человеку имена сайтов (например, site.ru) с числовыми IP-адресами.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q29",
+        "prompt": "Какой протокол обеспечивает защищенное шифрованное соединение при передаче веб-страниц?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "HTTPS"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "HTTP"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "FTP"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Telnet"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-security",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "HTTPS",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "HTTPS (Hypertext Transfer Protocol Secure) использует TLS-шифрование для защиты веб-трафика.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q30",
+        "prompt": "Какая структура данных работает по принципу очереди FIFO (First In, First Out)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Очередь (Queue)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Стек (Stack)"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Двоичное дерево"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Граф"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-datastruct",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Очередь (Queue)",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В очереди элемент, который встал первым, первым же и обрабатывается (FIFO).",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q31",
+        "prompt": "Чему равен результат побитовой операции: 1 XOR 1?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "0"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "1"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "2"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "-1"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-logic",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "0",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Исключающее ИЛИ (XOR) возвращает 1 только при различных значениях. При одинаковых битах (1 XOR 1) результат равен 0.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q32",
+        "prompt": "Сколько различных значений можно закодировать одним байтом (8 бит)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "256"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "128"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "512"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "64"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-units",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "256",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "2^8 = 256 различных комбинаций (числа от 0 до 255).",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q33",
+        "prompt": "Какая команда в языке SQL используется для извлечения данных из таблицы?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "SELECT"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "INSERT"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "UPDATE"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "FETCH"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-databases",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "SELECT",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Оператор SELECT используется для выборки строк и столбцов из базы данных.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q34",
+        "prompt": "Что такое первичный ключ (Primary Key) в реляционной базе данных?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Уникальный идентификатор записи"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Пароль к таблице"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Номер версии СУБД"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Внешняя ссылка"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-databases",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Уникальный идентификатор записи",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Первичный ключ однозначно идентифицирует каждую запись в таблице и не может содержать дубликатов.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q35",
+        "prompt": "Как называется наименьший элемент растрового изображения на экране монитора?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Пиксель (Pixel)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Бит"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Вектор"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Воксель"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-graphics",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Пиксель (Pixel)",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Пиксель (picture element) — наименьшая неделимая точка цифрового растрового дисплея.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q36",
+        "prompt": "Какая модель сетевого взаимодействия состоит из 7 уровней?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Модель OSI"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Стек TCP/IP"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Модель фон Неймана"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Модель Клиент-Сервер"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-networks",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Модель OSI",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Модель OSI (Open Systems Interconnection) состоит ровно из 7 уровней (физический, канальный, сетевой...).",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q37",
+        "prompt": "Какая алгоритмическая сложность у операции доступа к элементу массива по индексу?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "O(1)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "O(n)"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "O(log n)"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "O(n²)"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-algorithms",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "O(1)",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Массив обеспечивает мгновенный доступ к любому элементу по прямому смещению в памяти за время O(1).",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q38",
+        "prompt": "Сколько бит содержит стандартный IPv4-адрес?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "32 бита"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "64 бита"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "128 бит"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "16 бит"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-networks",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "32 бита",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "IPv4-адрес состоит из 4 октетов (байтов): 4 × 8 = 32 бита (например, 192.168.1.1).",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q39",
+        "prompt": "Сколько бит содержит IPv6-адрес?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "128 бит"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "64 бита"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "32 бита"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "256 бит"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-networks",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "128 бит",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "IPv6 использует 128-битные адреса, что решает проблему исчерпания диапазона IPv4.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q40",
+        "prompt": "Что такое алгоритмическая рекурсия?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Функция, вызывающая сама себя"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Бесконечный цикл"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Случайный выбор"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Сортировка пузырьком"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-algorithms",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Функция, вызывающая сама себя",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Рекурсия — это способ организации вычислений, при котором алгоритм обращается к самому себе с меньшими аргументами.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q41",
+        "prompt": "Какая криптографическая хэш-функция формирует дайджест длиной 256 бит?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "SHA-256"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "MD5"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "CRC32"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "AES-128"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-security",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "SHA-256",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Семейство SHA-2 включает SHA-256, дающий ровно 256 бит (32 байта) контрольного хэша.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q42",
+        "prompt": "Какой порт по умолчанию используется для защищенного протокола HTTPS?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "443"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "80"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "22"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "21"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-networks",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "443",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Стандартный защищенный веб-трафик HTTPS передается по порту 443 (обычный HTTP — порт 80).",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q43",
+        "prompt": "Что такое операционная система?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Комплекс программ, управляющих ресурсами компьютера"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Процессор"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Антивирус"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Текстовый редактор"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-hardware",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Комплекс программ, управляющих ресурсами компьютера",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "ОС — базовое системное ПО, предоставляющее интерфейс между аппаратурой и пользователем.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q44",
+        "prompt": "Какой формат кодирования символов покрывает знаки практически всех языков мира?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Unicode (UTF-8)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "ASCII"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "КОИ-8"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "CP-1251"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-units",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Unicode (UTF-8)",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Unicode был разработан для унификации всех алфавитов, эмодзи и специальных символов.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q45",
+        "prompt": "Какой алгоритм сортировки в среднем имеет сложность O(n log n)?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Быстрая сортировка (QuickSort)"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Пузырьковая сортировка"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Сортировка выбором"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Сортировка вставками"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-algorithms",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Быстрая сортировка (QuickSort)",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "QuickSort и MergeSort выполняют сортировку в среднем за время O(n log n).",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q46",
+        "prompt": "Что делает компилятор в программировании?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Переводит исходный код программы в машинный"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Ищет вирусы"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Рисует интерфейс"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Сжимает файлы"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-core",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Переводит исходный код программы в машинный",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Компилятор транслирует высокоуровневый код в бинарные инструкции процессора.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q47",
+        "prompt": "Как называется способ защиты информации с помощью открытого и закрытого ключей?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Асимметричное шифрование"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Симметричное шифрование"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Хэширование"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Стеганография"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-security",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Асимметричное шифрование",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "В асимметричной криптографии открытый ключ шифрует данные, а закрытый (приватный) их расшифровывает.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q48",
+        "prompt": "Какое расширение файла характерно для языка описания веб-страниц?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": ".html"
+          },
+          {
+            "optionId": "opt-2",
+            "text": ".exe"
+          },
+          {
+            "optionId": "opt-3",
+            "text": ".mp3"
+          },
+          {
+            "optionId": "opt-4",
+            "text": ".docx"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-networks",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          ".html",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "HTML (HyperText Markup Language) сохраняется с расширением .html или .htm.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q49",
+        "prompt": "Что такое переменная в программировании?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Именованная область памяти для хранения значения"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Константа"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Имя файла"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Команда процессора"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-core",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Именованная область памяти для хранения значения",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Переменная — это поименованная ячейка памяти, значение которой может изменяться в ходе работы программы.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    },
+    {
+      "question": {
+        "questionId": "info-q50",
+        "prompt": "Какое из устройств является устройством вывода информации?",
+        "kind": "single_choice",
+        "options": [
+          {
+            "optionId": "opt-1",
+            "text": "Монитор"
+          },
+          {
+            "optionId": "opt-2",
+            "text": "Клавиатура"
+          },
+          {
+            "optionId": "opt-3",
+            "text": "Мышь"
+          },
+          {
+            "optionId": "opt-4",
+            "text": "Сканер"
+          }
+        ]
+      },
+      "questionFamilyId": "info-fam-hardware",
+      "sourceIds": [
+        "source-informatics-core"
+      ],
+      "factIds": [
+        "info-fact-core"
+      ],
+      "correctOptionId": "opt-1",
+      "answerKey": {
+        "acceptedValues": [
+          "Монитор",
+          "opt-1"
+        ],
+        "caseSensitive": false,
+        "numericTolerance": 0,
+        "rubricPoints": [],
+        "graded": true
+      },
+      "explanation": "Монитор отображает визуальную информацию пользователю (вывод). Остальные являются устройствами ввода.",
+      "difficulty": "basic",
+      "reviewTopic": "Информатика"
+    }
+  ]
+}

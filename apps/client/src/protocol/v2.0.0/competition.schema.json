@@ -1,0 +1,577 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/2.0.0/competition.schema.json",
+  "$defs": {
+    "state": {
+      "type": "object",
+      "properties": {
+        "tableId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "lobbyId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "matchId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ownerPlayerId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "lobby",
+            "running",
+            "finished",
+            "cancelled"
+          ]
+        },
+        "subject": {
+          "type": "string",
+          "enum": [
+            "mathematics",
+            "informatics",
+            "history",
+            "geography_flags"
+          ]
+        },
+        "moduleId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "contentVersion": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "stakeAura": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "potAura": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50000
+        },
+        "questionCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "roundSeconds": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 120
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "playerId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "displayName": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "seatId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "ready": {
+                "type": "boolean"
+              },
+              "connected": {
+                "type": "boolean"
+              },
+              "left": {
+                "type": "boolean"
+              },
+              "score": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 20
+              }
+            },
+            "required": [
+              "playerId",
+              "displayName",
+              "seatId",
+              "ready",
+              "connected",
+              "left",
+              "score"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 5
+        },
+        "round": {
+          "anyOf": [
+            {
+              "$ref": "competition.schema.json#/$defs/round"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "settlement": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "settlementId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "matchId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "outcome": {
+                  "type": "string",
+                  "enum": [
+                    "winner",
+                    "draw",
+                    "cancelled"
+                  ]
+                },
+                "winnerPlayerId": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "potAura": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 50000
+                },
+                "payouts": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "playerId": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "amountAura": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 50000
+                      }
+                    },
+                    "required": [
+                      "playerId",
+                      "amountAura"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 2,
+                  "maxItems": 5
+                },
+                "reason": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "server_restart",
+                        "operator",
+                        "content_error"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "settlementId",
+                "matchId",
+                "outcome",
+                "winnerPlayerId",
+                "potAura",
+                "payouts",
+                "reason"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "tableId",
+        "lobbyId",
+        "matchId",
+        "ownerPlayerId",
+        "revision",
+        "status",
+        "subject",
+        "moduleId",
+        "contentVersion",
+        "stakeAura",
+        "potAura",
+        "questionCount",
+        "roundSeconds",
+        "participants",
+        "round",
+        "settlement"
+      ],
+      "additionalProperties": false
+    },
+    "table": {
+      "type": "object",
+      "properties": {
+        "tableId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "available",
+            "lobby",
+            "running",
+            "finished"
+          ]
+        },
+        "lobbyId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "matchId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "subject": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "mathematics",
+                "informatics",
+                "history",
+                "geography_flags"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stakeAura": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "occupiedSeats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "seatId": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+              },
+              "playerId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "seatId",
+              "playerId"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "tableId",
+        "status",
+        "lobbyId",
+        "matchId",
+        "subject",
+        "stakeAura",
+        "occupiedSeats"
+      ],
+      "additionalProperties": false
+    },
+    "round": {
+      "type": "object",
+      "properties": {
+        "ordinal": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "question": {
+          "$ref": "education.schema.json#/$defs/question"
+        },
+        "deadlineAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "answeredPlayerIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "maxItems": 5,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "ordinal",
+        "question",
+        "deadlineAt",
+        "answeredPlayerIds"
+      ],
+      "additionalProperties": false
+    },
+    "roundResult": {
+      "type": "object",
+      "properties": {
+        "matchId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "questionId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "expectedAnswer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "playerId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "score": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 20
+              },
+              "correct": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "playerId",
+              "score",
+              "correct"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 2,
+          "maxItems": 5
+        },
+        "nextRoundStartsAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "matchId",
+        "ordinal",
+        "questionId",
+        "expectedAnswer",
+        "explanation",
+        "scores",
+        "nextRoundStartsAt"
+      ],
+      "additionalProperties": false
+    },
+    "settlement": {
+      "type": "object",
+      "properties": {
+        "settlementId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "matchId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "winner",
+            "draw",
+            "cancelled"
+          ]
+        },
+        "winnerPlayerId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "potAura": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50000
+        },
+        "payouts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "playerId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "amountAura": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 50000
+              }
+            },
+            "required": [
+              "playerId",
+              "amountAura"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 2,
+          "maxItems": 5
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "server_restart",
+                "operator",
+                "content_error"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "settlementId",
+        "matchId",
+        "outcome",
+        "winnerPlayerId",
+        "potAura",
+        "payouts",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "ownRecovery": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "$ref": "competition.schema.json#/$defs/state"
+        },
+        "answerAccepted": {
+          "type": "boolean"
+        },
+        "submittedAnswer": {
+          "anyOf": [
+            {
+              "$ref": "answer.schema.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "state",
+        "submittedAnswer",
+        "answerAccepted"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

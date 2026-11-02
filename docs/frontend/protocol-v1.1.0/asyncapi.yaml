@@ -1,0 +1,647 @@
+asyncapi: 3.0.0
+info:
+  title: Discovery WebSocket server
+  version: 1.1.0
+  description: Server perspective. Discovery 1.1.0 learning, quizzes, competition
+    and aura. See docs/GAMEPLAY_V1.1.md.
+defaultContentType: application/json
+servers:
+  lan:
+    host: discovery.lan
+    protocol: wss
+    description: Same trusted origin as HTTP; discovery.v1 subprotocol.
+channels:
+  game:
+    address: /api/v1/ws
+    description: Query ticket from POST ws-ticket; never log ticket. Origin
+      allowlist required.
+    messages:
+      client.hello:
+        $ref: "#/components/messages/client.hello"
+      player.input:
+        $ref: "#/components/messages/player.input"
+      npc.interact:
+        $ref: "#/components/messages/npc.interact"
+      npc.cancel:
+        $ref: "#/components/messages/npc.cancel"
+      world.ready:
+        $ref: "#/components/messages/world.ready"
+      client.metrics:
+        $ref: "#/components/messages/client.metrics"
+      client.ping:
+        $ref: "#/components/messages/client.ping"
+      lesson.open:
+        $ref: "#/components/messages/lesson.open"
+      lesson.close:
+        $ref: "#/components/messages/lesson.close"
+      quiz.start:
+        $ref: "#/components/messages/quiz.start"
+      quiz.answer:
+        $ref: "#/components/messages/quiz.answer"
+      quiz.next:
+        $ref: "#/components/messages/quiz.next"
+      quiz.leave:
+        $ref: "#/components/messages/quiz.leave"
+      competition.join:
+        $ref: "#/components/messages/competition.join"
+      competition.configure:
+        $ref: "#/components/messages/competition.configure"
+      competition.ready:
+        $ref: "#/components/messages/competition.ready"
+      competition.start:
+        $ref: "#/components/messages/competition.start"
+      competition.answer:
+        $ref: "#/components/messages/competition.answer"
+      competition.leave:
+        $ref: "#/components/messages/competition.leave"
+      server.welcome:
+        $ref: "#/components/messages/server.welcome"
+      world.interest:
+        $ref: "#/components/messages/world.interest"
+      world.snapshot:
+        $ref: "#/components/messages/world.snapshot"
+      config.changed:
+        $ref: "#/components/messages/config.changed"
+      npc.accepted:
+        $ref: "#/components/messages/npc.accepted"
+      npc.result:
+        $ref: "#/components/messages/npc.result"
+      npc.cancelled:
+        $ref: "#/components/messages/npc.cancelled"
+      progress.updated:
+        $ref: "#/components/messages/progress.updated"
+      server.pong:
+        $ref: "#/components/messages/server.pong"
+      server.error:
+        $ref: "#/components/messages/server.error"
+      session.closed:
+        $ref: "#/components/messages/session.closed"
+      lesson.opened:
+        $ref: "#/components/messages/lesson.opened"
+      activity.changed:
+        $ref: "#/components/messages/activity.changed"
+      quiz.state:
+        $ref: "#/components/messages/quiz.state"
+      education.progress.updated:
+        $ref: "#/components/messages/education.progress.updated"
+      competition.state:
+        $ref: "#/components/messages/competition.state"
+      competition.answer.accepted:
+        $ref: "#/components/messages/competition.answer.accepted"
+      competition.round.closed:
+        $ref: "#/components/messages/competition.round.closed"
+      competition.settled:
+        $ref: "#/components/messages/competition.settled"
+      wallet.updated:
+        $ref: "#/components/messages/wallet.updated"
+    servers:
+      - $ref: "#/servers/lan"
+operations:
+  client_hello:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/client.hello"
+  player_input:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/player.input"
+  npc_interact:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/npc.interact"
+  npc_cancel:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/npc.cancel"
+  world_ready:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/world.ready"
+  client_metrics:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/client.metrics"
+  client_ping:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/client.ping"
+  lesson_open:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/lesson.open"
+  lesson_close:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/lesson.close"
+  quiz_start:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/quiz.start"
+  quiz_answer:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/quiz.answer"
+  quiz_next:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/quiz.next"
+  quiz_leave:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/quiz.leave"
+  competition_join:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/competition.join"
+  competition_configure:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/competition.configure"
+  competition_ready:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/competition.ready"
+  competition_start:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/competition.start"
+  competition_answer:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/competition.answer"
+  competition_leave:
+    action: receive
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/competition.leave"
+  server_welcome:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/server.welcome"
+  world_interest:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/world.interest"
+  world_snapshot:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/world.snapshot"
+  config_changed:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/config.changed"
+  npc_accepted:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/npc.accepted"
+  npc_result:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/npc.result"
+  npc_cancelled:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/npc.cancelled"
+  progress_updated:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/progress.updated"
+  server_pong:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/server.pong"
+  server_error:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/server.error"
+  session_closed:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/session.closed"
+  lesson_opened:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/lesson.opened"
+  activity_changed:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/activity.changed"
+  quiz_state:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/quiz.state"
+  education_progress_updated:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/education.progress.updated"
+  competition_state:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/competition.state"
+  competition_answer_accepted:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/competition.answer.accepted"
+  competition_round_closed:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/competition.round.closed"
+  competition_settled:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/competition.settled"
+  wallet_updated:
+    action: send
+    channel:
+      $ref: "#/channels/game"
+    messages:
+      - $ref: "#/channels/game/messages/wallet.updated"
+components:
+  messages:
+    client.hello:
+      name: client.hello
+      title: client.hello
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/client.hello
+    player.input:
+      name: player.input
+      title: player.input
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/player.input
+    npc.interact:
+      name: npc.interact
+      title: npc.interact
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/npc.interact
+    npc.cancel:
+      name: npc.cancel
+      title: npc.cancel
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/npc.cancel
+    world.ready:
+      name: world.ready
+      title: world.ready
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/world.ready
+    client.metrics:
+      name: client.metrics
+      title: client.metrics
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/client.metrics
+    client.ping:
+      name: client.ping
+      title: client.ping
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/client.ping
+    lesson.open:
+      name: lesson.open
+      title: lesson.open
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/lesson.open
+    lesson.close:
+      name: lesson.close
+      title: lesson.close
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/lesson.close
+    quiz.start:
+      name: quiz.start
+      title: quiz.start
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/quiz.start
+    quiz.answer:
+      name: quiz.answer
+      title: quiz.answer
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/quiz.answer
+    quiz.next:
+      name: quiz.next
+      title: quiz.next
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/quiz.next
+    quiz.leave:
+      name: quiz.leave
+      title: quiz.leave
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/quiz.leave
+    competition.join:
+      name: competition.join
+      title: competition.join
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/competition.join
+    competition.configure:
+      name: competition.configure
+      title: competition.configure
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/competition.configure
+    competition.ready:
+      name: competition.ready
+      title: competition.ready
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/competition.ready
+    competition.start:
+      name: competition.start
+      title: competition.start
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/competition.start
+    competition.answer:
+      name: competition.answer
+      title: competition.answer
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/competition.answer
+    competition.leave:
+      name: competition.leave
+      title: competition.leave
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/client-message.schema.json#/$defs/competition.leave
+    server.welcome:
+      name: server.welcome
+      title: server.welcome
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/server.welcome
+    world.interest:
+      name: world.interest
+      title: world.interest
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/world.interest
+    world.snapshot:
+      name: world.snapshot
+      title: world.snapshot
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/world.snapshot
+    config.changed:
+      name: config.changed
+      title: config.changed
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/config.changed
+    npc.accepted:
+      name: npc.accepted
+      title: npc.accepted
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/npc.accepted
+    npc.result:
+      name: npc.result
+      title: npc.result
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/npc.result
+    npc.cancelled:
+      name: npc.cancelled
+      title: npc.cancelled
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/npc.cancelled
+    progress.updated:
+      name: progress.updated
+      title: progress.updated
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/progress.updated
+    server.pong:
+      name: server.pong
+      title: server.pong
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/server.pong
+    server.error:
+      name: server.error
+      title: server.error
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/server.error
+    session.closed:
+      name: session.closed
+      title: session.closed
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/session.closed
+    lesson.opened:
+      name: lesson.opened
+      title: lesson.opened
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/lesson.opened
+    activity.changed:
+      name: activity.changed
+      title: activity.changed
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/activity.changed
+    quiz.state:
+      name: quiz.state
+      title: quiz.state
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/quiz.state
+    education.progress.updated:
+      name: education.progress.updated
+      title: education.progress.updated
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/education.progress.updated
+    competition.state:
+      name: competition.state
+      title: competition.state
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/competition.state
+    competition.answer.accepted:
+      name: competition.answer.accepted
+      title: competition.answer.accepted
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/competition.answer.accepted
+    competition.round.closed:
+      name: competition.round.closed
+      title: competition.round.closed
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/competition.round.closed
+    competition.settled:
+      name: competition.settled
+      title: competition.settled
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/competition.settled
+    wallet.updated:
+      name: wallet.updated
+      title: wallet.updated
+      contentType: application/json
+      payload:
+        schemaFormat: application/schema+json;version=draft-2020-12
+        schema:
+          $ref: schemas/v1.1.0/server-message.schema.json#/$defs/wallet.updated

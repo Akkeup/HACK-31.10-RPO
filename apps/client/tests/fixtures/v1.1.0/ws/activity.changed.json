@@ -1,0 +1,19 @@
+{
+  "protocolVersion": "1.1.0",
+  "type": "activity.changed",
+  "requestId": null,
+  "payload": {
+    "activity": {
+      "mode": "seated_quiz",
+      "targetId": "examiner-mathematics",
+      "seatId": "seat-math-basics"
+    },
+    "lessonId": null,
+    "attemptId": "0000000a-1234-4234-8234-00000000000a",
+    "matchId": null,
+    "lobbyId": null,
+    "revision": 2
+  },
+  "serverSeq": 13,
+  "serverTime": "2026-10-31T09:00:00Z"
+}

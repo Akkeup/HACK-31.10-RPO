@@ -1,0 +1,24 @@
+{
+  "attemptId": "0000000a-1234-4234-8234-00000000000a",
+  "moduleId": "math-basics",
+  "contentVersion": "v1",
+  "npcId": "examiner-mathematics",
+  "seatId": "seat-math-basics",
+  "status": "completed",
+  "revision": 11,
+  "ordinal": 5,
+  "questionCount": 5,
+  "passScore": 4,
+  "score": 4,
+  "question": null,
+  "feedback": null,
+  "result": {
+    "score": 4,
+    "maximumScore": 5,
+    "passed": true,
+    "reviewTopics": [
+      "Порядок операций"
+    ]
+  },
+  "interruptionReason": null
+}

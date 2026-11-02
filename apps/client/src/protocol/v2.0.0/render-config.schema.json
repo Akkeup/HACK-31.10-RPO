@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/2.0.0/render-config.schema.json",
+  "type": "object",
+  "properties": {
+    "quality": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "drawDistanceM": {
+      "type": "number",
+      "minimum": 30,
+      "maximum": 200
+    },
+    "shadows": {
+      "type": "boolean"
+    },
+    "lod": {
+      "type": "boolean"
+    },
+    "pixelRatio": {
+      "type": "number",
+      "minimum": 0.5,
+      "maximum": 2
+    },
+    "exposure": {
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 4
+    },
+    "animationEnabled": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "quality",
+    "drawDistanceM",
+    "shadows",
+    "lod",
+    "pixelRatio",
+    "exposure",
+    "animationEnabled"
+  ],
+  "additionalProperties": false
+}

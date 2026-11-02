@@ -1,0 +1,15 @@
+# Example only. Set both variables before starting Caddy.
+# DISCOVERY_DOMAIN=game.your-domain.example
+# DISCOVERY_CLIENT_ROOT=/absolute/path/to/apps/client/dist
+{$DISCOVERY_DOMAIN} {
+    header /sw.js Cache-Control "no-store"
+    header /index.html Cache-Control "no-cache"
+    @backend path /api/v2/* /health/*
+    handle @backend {
+        reverse_proxy 127.0.0.1:8080
+    }
+    handle {
+        root * {$DISCOVERY_CLIENT_ROOT}
+        file_server
+    }
+}

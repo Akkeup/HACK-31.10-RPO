@@ -1,0 +1,10 @@
+{
+  "sourceFile": "campus-planter-box-10970a.glb",
+  "file": "campus-planter-box.glb",
+  "byteSize": 52188,
+  "sha256": "bb13d1316960844b1f31e954633fcd57d5953a4fc6a3e0e30013f4f4db4cd195",
+  "externalDependencies": false,
+  "hiddenNodes": [
+    "coffee-cup"
+  ]
+}

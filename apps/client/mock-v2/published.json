@@ -1,0 +1,93 @@
+{
+  "manifest": {
+    "worldId": "discovery-campus",
+    "worldRevision": 1,
+    "totalWorldBytes": 2988437,
+    "cacheBudgetBytes": 298843,
+    "accounting": "unique-uncompressed-resource-bytes",
+    "maxResourceBytes": 1048576,
+    "maxChunkBytes": 262144
+  },
+  "interest": {
+    "worldRevision": 1,
+    "interestRevision": 1,
+    "chunks": [
+      {
+        "chunkId": "c-2-2",
+        "x": 2,
+        "z": 2,
+        "sha256": "04339f582aa0f52266ebb6d3759028c698fe5e9acd6ced802935ca85624034af",
+        "byteSize": 5557,
+        "url": "/api/v2/worlds/discovery-campus/chunks/c-2-2/04339f582aa0f52266ebb6d3759028c698fe5e9acd6ced802935ca85624034af",
+        "assetIds": [
+          "terrain-2-2",
+          "reading-shelf",
+          "reading-book",
+          "competition-table",
+          "competition-chair",
+          "explorer",
+          "demo-flag-01"
+        ]
+      }
+    ],
+    "assets": [
+      {
+        "resourceId": "explorer",
+        "sha256": "0de77610d961158bb971f03116deff3d5d6cb91dc2a5f27c7c6c2b706cef86ac",
+        "byteSize": 2752,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/0de77610d961158bb971f03116deff3d5d6cb91dc2a5f27c7c6c2b706cef86ac"
+      },
+      {
+        "resourceId": "reading-shelf",
+        "sha256": "dae724f52072e35d2442b233483bb76e4f348ea0ad2fe4b33897585c2abff99b",
+        "byteSize": 63756,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/dae724f52072e35d2442b233483bb76e4f348ea0ad2fe4b33897585c2abff99b"
+      },
+      {
+        "resourceId": "reading-book",
+        "sha256": "fae24a3fe0502485cb966ab80546edb97f9825d0742d48e70dc9108ebc8e09c6",
+        "byteSize": 2744,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/fae24a3fe0502485cb966ab80546edb97f9825d0742d48e70dc9108ebc8e09c6"
+      },
+      {
+        "resourceId": "demo-flag-01",
+        "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+        "byteSize": 177,
+        "mediaType": "image/svg+xml",
+        "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8"
+      },
+      {
+        "resourceId": "competition-table",
+        "sha256": "9e26520145ec14b52c0545ce79f8010cb48e8399c9835e6758aee4d590e54ec0",
+        "byteSize": 76244,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/9e26520145ec14b52c0545ce79f8010cb48e8399c9835e6758aee4d590e54ec0"
+      },
+      {
+        "resourceId": "competition-chair",
+        "sha256": "9cf0b5a8f9c71ac378376877f3352dc7ad22be8c7453df458b06df572c1b4d40",
+        "byteSize": 2972,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/9cf0b5a8f9c71ac378376877f3352dc7ad22be8c7453df458b06df572c1b4d40"
+      },
+      {
+        "resourceId": "terrain-2-2",
+        "sha256": "531a2784dfe386a3412c818961cb21c0f6590a9ae506c7e109d59027c1d22c69",
+        "byteSize": 40832,
+        "mediaType": "model/gltf-binary",
+        "url": "/api/v2/worlds/discovery-campus/assets/531a2784dfe386a3412c818961cb21c0f6590a9ae506c7e109d59027c1d22c69"
+      }
+    ],
+    "requiredBytes": 195034
+  },
+  "flag": {
+    "resourceId": "demo-flag-01",
+    "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+    "byteSize": 177,
+    "mediaType": "image/svg+xml",
+    "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8"
+  }
+}

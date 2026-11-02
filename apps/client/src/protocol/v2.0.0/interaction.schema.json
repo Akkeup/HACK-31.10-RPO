@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/2.0.0/interaction.schema.json",
+  "type": "object",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "npcId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "completed",
+        "cancelled",
+        "failed"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "maxLength": 4000
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "rules",
+        "ollama",
+        "fallback",
+        "none"
+      ]
+    },
+    "knowledgeIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+      },
+      "maxItems": 20,
+      "uniqueItems": true
+    },
+    "progressRevision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "error.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "requestId",
+    "npcId",
+    "status",
+    "text",
+    "source",
+    "knowledgeIds",
+    "progressRevision",
+    "error"
+  ],
+  "additionalProperties": false
+}

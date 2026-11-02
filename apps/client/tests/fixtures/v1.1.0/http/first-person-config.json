@@ -1,0 +1,10 @@
+{
+  "mode": "first_person",
+  "standingEyeHeightM": 1.65,
+  "seatedEyeHeightM": 1.05,
+  "mouseSensitivity": 1,
+  "pitchMinRad": -1.4,
+  "pitchMaxRad": 1.4,
+  "seatTransitionMs": 350,
+  "crosshair": true
+}

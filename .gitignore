@@ -1,0 +1,44 @@
+# Protocol specification (excluded as requested: "без спецификации")
+discovery-protocol-*/
+
+# Rust & Compiled binaries
+target/
+*.exe
+*.pdb
+*.dll
+*.so
+*.dylib
+apps/server/*.exe
+apps/server/*.pdb
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Environment and secrets
+.env
+*.local
+
+# Logs and databases
+*.log
+*.sqlite
+*.sqlite3
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# LLM Models and Weights
+llm/
+
+# Python
+__pycache__/
+*.pyc
+
+certs/*.pem
+certs/*.key
+certs/*.crt
+certs/*.csr
+scratch/

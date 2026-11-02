@@ -1,0 +1,267 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discovery.invalid/protocol/1.1.0/http.schema.json",
+  "$defs": {
+    "bootstrap": {
+      "type": "object",
+      "properties": {
+        "protocolVersions": {
+          "type": "array",
+          "items": {
+            "const": "1.1.0"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "serverInstanceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "worldIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+          },
+          "minItems": 1,
+          "maxItems": 10
+        },
+        "offline": {
+          "const": true
+        }
+      },
+      "required": [
+        "protocolVersions",
+        "serverInstanceId",
+        "worldIds",
+        "offline"
+      ],
+      "additionalProperties": false
+    },
+    "loginRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "password": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "username",
+        "password"
+      ],
+      "additionalProperties": false
+    },
+    "loginResponse": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string",
+          "minLength": 32,
+          "maxLength": 256
+        },
+        "tokenType": {
+          "const": "Bearer"
+        },
+        "expiresInSeconds": {
+          "const": 3600
+        },
+        "user": {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "displayName": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40
+            },
+            "role": {
+              "type": "string",
+              "enum": [
+                "player",
+                "admin"
+              ]
+            }
+          },
+          "required": [
+            "userId",
+            "displayName",
+            "role"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "accessToken",
+        "tokenType",
+        "expiresInSeconds",
+        "user"
+      ],
+      "additionalProperties": false
+    },
+    "me": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "player",
+            "admin"
+          ]
+        }
+      },
+      "required": [
+        "userId",
+        "displayName",
+        "role"
+      ],
+      "additionalProperties": false
+    },
+    "createSession": {
+      "type": "object",
+      "properties": {
+        "worldId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        }
+      },
+      "required": [
+        "worldId"
+      ],
+      "additionalProperties": false
+    },
+    "session": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "worldId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]{0,63}$"
+        },
+        "worldRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "waiting",
+            "active",
+            "paused",
+            "closed"
+          ]
+        },
+        "maxPlayers": {
+          "const": 5
+        },
+        "players": {
+          "type": "array",
+          "items": {
+            "$ref": "entities.schema.json#/$defs/player"
+          },
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "sessionId",
+        "worldId",
+        "worldRevision",
+        "status",
+        "maxPlayers",
+        "players"
+      ],
+      "additionalProperties": false
+    },
+    "sessions": {
+      "type": "object",
+      "properties": {
+        "sessions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/session"
+          },
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "sessions"
+      ],
+      "additionalProperties": false
+    },
+    "ticketRequest": {
+      "type": "object",
+      "properties": {
+        "protocolVersion": {
+          "const": "1.1.0"
+        }
+      },
+      "required": [
+        "protocolVersion"
+      ],
+      "additionalProperties": false
+    },
+    "ticketResponse": {
+      "type": "object",
+      "properties": {
+        "ticket": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{32,128}$"
+        },
+        "expiresInSeconds": {
+          "const": 30
+        },
+        "wsPath": {
+          "const": "/api/v1/ws"
+        },
+        "subprotocol": {
+          "const": "discovery.v1"
+        }
+      },
+      "required": [
+        "ticket",
+        "expiresInSeconds",
+        "wsPath",
+        "subprotocol"
+      ],
+      "additionalProperties": false
+    },
+    "health": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "ok"
+        },
+        "protocolVersion": {
+          "const": "1.1.0"
+        }
+      },
+      "required": [
+        "status",
+        "protocolVersion"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

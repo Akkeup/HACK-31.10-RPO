@@ -1,0 +1,1976 @@
+{
+  "manifest": {
+    "worldId": "discovery-campus",
+    "worldRevision": 1,
+    "totalWorldBytes": 2988437,
+    "cacheBudgetBytes": 298843,
+    "accounting": "unique-uncompressed-resource-bytes",
+    "maxResourceBytes": 1048576,
+    "maxChunkBytes": 262144
+  },
+  "chunks": [
+    {
+      "chunkId": "c-0-0",
+      "x": 0,
+      "z": 0,
+      "sha256": "bfff45abcdfe67a24f1a2d6db653b28826d59404d71ac075abbaff1ff51e8f8e",
+      "byteSize": 219,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-0/bfff45abcdfe67a24f1a2d6db653b28826d59404d71ac075abbaff1ff51e8f8e",
+      "assetIds": [
+        "terrain-0-0",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-1-0",
+      "x": 1,
+      "z": 0,
+      "sha256": "b94104c19e81a0e3334ac04f13116fbc03bd87256a1ab3c3edcb9d781f3f969e",
+      "byteSize": 220,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-1-0/b94104c19e81a0e3334ac04f13116fbc03bd87256a1ab3c3edcb9d781f3f969e",
+      "assetIds": [
+        "terrain-1-0",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-2-0",
+      "x": 2,
+      "z": 0,
+      "sha256": "70bacfbe4e0972f4e000d7a46a344b33e219a15edc8e7e069e85deaf82d43e88",
+      "byteSize": 220,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-0/70bacfbe4e0972f4e000d7a46a344b33e219a15edc8e7e069e85deaf82d43e88",
+      "assetIds": [
+        "terrain-2-0",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-3-0",
+      "x": 3,
+      "z": 0,
+      "sha256": "1e77e73749270beb3077e2bda04380e80a23eb340b9fc6aa568ae5133b7a1289",
+      "byteSize": 220,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-3-0/1e77e73749270beb3077e2bda04380e80a23eb340b9fc6aa568ae5133b7a1289",
+      "assetIds": [
+        "terrain-3-0",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-4-0",
+      "x": 4,
+      "z": 0,
+      "sha256": "4fda56e0f6f912f691635dd9af4553bc372b0cc1d4c7695420556db09f32e4e2",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-4-0/4fda56e0f6f912f691635dd9af4553bc372b0cc1d4c7695420556db09f32e4e2",
+      "assetIds": [
+        "terrain-4-0",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-5-0",
+      "x": 5,
+      "z": 0,
+      "sha256": "edb65a00c5f421e0d0710126e086ff8871c4a529994046d7a15f31a88ffc2982",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-5-0/edb65a00c5f421e0d0710126e086ff8871c4a529994046d7a15f31a88ffc2982",
+      "assetIds": [
+        "terrain-5-0",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-6-0",
+      "x": 6,
+      "z": 0,
+      "sha256": "cdc7110bfd24a7cfd81a395aaa7d6ae7916d5b9793976b6fe7957d154e49673d",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-6-0/cdc7110bfd24a7cfd81a395aaa7d6ae7916d5b9793976b6fe7957d154e49673d",
+      "assetIds": [
+        "terrain-6-0",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-7-0",
+      "x": 7,
+      "z": 0,
+      "sha256": "c6fe3feef632f77ffca41c0ae2eed474550f46cdd7e8a69270e62869fac59665",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-7-0/c6fe3feef632f77ffca41c0ae2eed474550f46cdd7e8a69270e62869fac59665",
+      "assetIds": [
+        "terrain-7-0",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-8-0",
+      "x": 8,
+      "z": 0,
+      "sha256": "e8d61e04f7af87db9e681ea48a3f6eb6b6bb21cf323c4e9c8e90192ab9f21c3c",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-8-0/e8d61e04f7af87db9e681ea48a3f6eb6b6bb21cf323c4e9c8e90192ab9f21c3c",
+      "assetIds": [
+        "terrain-8-0",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-9-0",
+      "x": 9,
+      "z": 0,
+      "sha256": "bf147d2d04f6ae0a1fc8d768074e62ce86ae01e956ea1390069012225415ada3",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-9-0/bf147d2d04f6ae0a1fc8d768074e62ce86ae01e956ea1390069012225415ada3",
+      "assetIds": [
+        "terrain-9-0",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-0-1",
+      "x": 0,
+      "z": 1,
+      "sha256": "e2fd224ba701ef9d84f4528a4d4c8403042a21e497c05ee130362eb55667e6aa",
+      "byteSize": 220,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-1/e2fd224ba701ef9d84f4528a4d4c8403042a21e497c05ee130362eb55667e6aa",
+      "assetIds": [
+        "terrain-0-1",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-1-1",
+      "x": 1,
+      "z": 1,
+      "sha256": "def473287154c172d128bdb3a7a760943fb7560cfab8960d49984fb2e44a7b7b",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-1-1/def473287154c172d128bdb3a7a760943fb7560cfab8960d49984fb2e44a7b7b",
+      "assetIds": [
+        "terrain-1-1",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-2-1",
+      "x": 2,
+      "z": 1,
+      "sha256": "6ae737c06b470c51d0aa6766c696f93d96aea9e07c5ea2e2377c946adf2f886a",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-1/6ae737c06b470c51d0aa6766c696f93d96aea9e07c5ea2e2377c946adf2f886a",
+      "assetIds": [
+        "terrain-2-1",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-3-1",
+      "x": 3,
+      "z": 1,
+      "sha256": "0f0bd4cdba29b1360127ef2b86c3910972760bd371fb58e14a5d7edb7461532b",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-3-1/0f0bd4cdba29b1360127ef2b86c3910972760bd371fb58e14a5d7edb7461532b",
+      "assetIds": [
+        "terrain-3-1",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-4-1",
+      "x": 4,
+      "z": 1,
+      "sha256": "50dfa91644a2f8d99202295bf2140b436e92fa97acda7b2199b9c0bfef6643a0",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-4-1/50dfa91644a2f8d99202295bf2140b436e92fa97acda7b2199b9c0bfef6643a0",
+      "assetIds": [
+        "terrain-4-1",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-5-1",
+      "x": 5,
+      "z": 1,
+      "sha256": "5e5d21a2a63e666f553134d0f15f40fecccdb11431698d82b228e8f92cd3f2b1",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-5-1/5e5d21a2a63e666f553134d0f15f40fecccdb11431698d82b228e8f92cd3f2b1",
+      "assetIds": [
+        "terrain-5-1",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-6-1",
+      "x": 6,
+      "z": 1,
+      "sha256": "8e8f204891f32295312b5f619b98b44d4c3b8051ba0076d693dec0e7501e2d8a",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-6-1/8e8f204891f32295312b5f619b98b44d4c3b8051ba0076d693dec0e7501e2d8a",
+      "assetIds": [
+        "terrain-6-1",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-7-1",
+      "x": 7,
+      "z": 1,
+      "sha256": "245a838751d5ee6058ed6c846722606656ef1e17a8b1789adcb3421a2eaff63f",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-7-1/245a838751d5ee6058ed6c846722606656ef1e17a8b1789adcb3421a2eaff63f",
+      "assetIds": [
+        "terrain-7-1",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-8-1",
+      "x": 8,
+      "z": 1,
+      "sha256": "633762ea26b9ffada9e49365eea81b5f3765a84fbf36cc84a8653eab25662445",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-8-1/633762ea26b9ffada9e49365eea81b5f3765a84fbf36cc84a8653eab25662445",
+      "assetIds": [
+        "terrain-8-1",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-9-1",
+      "x": 9,
+      "z": 1,
+      "sha256": "3206a62d5f0903c0f244ff12b52d53e4154784fa14cb627d97e463c32b117631",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-9-1/3206a62d5f0903c0f244ff12b52d53e4154784fa14cb627d97e463c32b117631",
+      "assetIds": [
+        "terrain-9-1",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-0-2",
+      "x": 0,
+      "z": 2,
+      "sha256": "b1f02746de03ce037b04d2f4317b9e91f7742bbdb2e86b4470da27c178d783e4",
+      "byteSize": 220,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-2/b1f02746de03ce037b04d2f4317b9e91f7742bbdb2e86b4470da27c178d783e4",
+      "assetIds": [
+        "terrain-0-2",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-1-2",
+      "x": 1,
+      "z": 2,
+      "sha256": "8f33cc5992bee82c21da0cb7c02ab661ea74be6901d1567f6896c0e0ca28bb0b",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-1-2/8f33cc5992bee82c21da0cb7c02ab661ea74be6901d1567f6896c0e0ca28bb0b",
+      "assetIds": [
+        "terrain-1-2",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-2-2",
+      "x": 2,
+      "z": 2,
+      "sha256": "04339f582aa0f52266ebb6d3759028c698fe5e9acd6ced802935ca85624034af",
+      "byteSize": 5557,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-2/04339f582aa0f52266ebb6d3759028c698fe5e9acd6ced802935ca85624034af",
+      "assetIds": [
+        "terrain-2-2",
+        "reading-shelf",
+        "reading-book",
+        "competition-table",
+        "competition-chair",
+        "explorer",
+        "demo-flag-01"
+      ]
+    },
+    {
+      "chunkId": "c-3-2",
+      "x": 3,
+      "z": 2,
+      "sha256": "cd7ca07ac04eba44a84d7492e36b2d4f7d6d8493b2df206d807bf8fc9c47fb93",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-3-2/cd7ca07ac04eba44a84d7492e36b2d4f7d6d8493b2df206d807bf8fc9c47fb93",
+      "assetIds": [
+        "terrain-3-2",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-4-2",
+      "x": 4,
+      "z": 2,
+      "sha256": "45392215f121100d76a1e9e48c8a5e06c0e295e3c3d8ebb9979d702d9aaff5dc",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-4-2/45392215f121100d76a1e9e48c8a5e06c0e295e3c3d8ebb9979d702d9aaff5dc",
+      "assetIds": [
+        "terrain-4-2",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-5-2",
+      "x": 5,
+      "z": 2,
+      "sha256": "ba5899d41eb18a474b45a849e4d079caa5a6e386aff2b36e9fda6030a756737a",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-5-2/ba5899d41eb18a474b45a849e4d079caa5a6e386aff2b36e9fda6030a756737a",
+      "assetIds": [
+        "terrain-5-2",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-6-2",
+      "x": 6,
+      "z": 2,
+      "sha256": "311d6f58f7f3a439b79bf840558dfee5360ccd2ced89f57766e83b9f61f506d6",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-6-2/311d6f58f7f3a439b79bf840558dfee5360ccd2ced89f57766e83b9f61f506d6",
+      "assetIds": [
+        "terrain-6-2",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-7-2",
+      "x": 7,
+      "z": 2,
+      "sha256": "ef398b91b7c151f95878254bdaae0b4d2aeca15a6cc0d6abf02f130f42b1591e",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-7-2/ef398b91b7c151f95878254bdaae0b4d2aeca15a6cc0d6abf02f130f42b1591e",
+      "assetIds": [
+        "terrain-7-2",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-8-2",
+      "x": 8,
+      "z": 2,
+      "sha256": "98968721018487c9447f6e595d5f5cd42afab188bcf70939c0f58f8050ea3c23",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-8-2/98968721018487c9447f6e595d5f5cd42afab188bcf70939c0f58f8050ea3c23",
+      "assetIds": [
+        "terrain-8-2",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-9-2",
+      "x": 9,
+      "z": 2,
+      "sha256": "a3666e5235c8d4f559d091b7afc61962ef36aa8a380f55f595b6a0ba0f45691a",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-9-2/a3666e5235c8d4f559d091b7afc61962ef36aa8a380f55f595b6a0ba0f45691a",
+      "assetIds": [
+        "terrain-9-2",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-0-3",
+      "x": 0,
+      "z": 3,
+      "sha256": "1857e55f632e0020a4b268aa40a5554fd89084391c63f504d951e22535dcb32d",
+      "byteSize": 220,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-3/1857e55f632e0020a4b268aa40a5554fd89084391c63f504d951e22535dcb32d",
+      "assetIds": [
+        "terrain-0-3",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-1-3",
+      "x": 1,
+      "z": 3,
+      "sha256": "862d8c648cba98e8229c7f3916b7f73eeb14465cce648588f8a5e99c9fe77adf",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-1-3/862d8c648cba98e8229c7f3916b7f73eeb14465cce648588f8a5e99c9fe77adf",
+      "assetIds": [
+        "terrain-1-3",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-2-3",
+      "x": 2,
+      "z": 3,
+      "sha256": "d625db4afa4d23a13dc76853b886c4b0f3887a631112732f2c99fb4e49b2aebd",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-3/d625db4afa4d23a13dc76853b886c4b0f3887a631112732f2c99fb4e49b2aebd",
+      "assetIds": [
+        "terrain-2-3",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-3-3",
+      "x": 3,
+      "z": 3,
+      "sha256": "1f782cafdd5931580e72aeee3e9b52dfdf6787d38cb38c64a5d01f8c4bababc5",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-3-3/1f782cafdd5931580e72aeee3e9b52dfdf6787d38cb38c64a5d01f8c4bababc5",
+      "assetIds": [
+        "terrain-3-3",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-4-3",
+      "x": 4,
+      "z": 3,
+      "sha256": "38ba4374b57d1ed2f84628beb3a70d5185cbdae2e5d5588ae3dcc95a72dedaa5",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-4-3/38ba4374b57d1ed2f84628beb3a70d5185cbdae2e5d5588ae3dcc95a72dedaa5",
+      "assetIds": [
+        "terrain-4-3",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-5-3",
+      "x": 5,
+      "z": 3,
+      "sha256": "396e631cf2acec20dcee741580678244cb58c22e18aa8acd4b081dc7d848e875",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-5-3/396e631cf2acec20dcee741580678244cb58c22e18aa8acd4b081dc7d848e875",
+      "assetIds": [
+        "terrain-5-3",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-6-3",
+      "x": 6,
+      "z": 3,
+      "sha256": "38432cb449fcaf2f1363d805f72d8af9909781081c44b4413339f0ef87cbd9f4",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-6-3/38432cb449fcaf2f1363d805f72d8af9909781081c44b4413339f0ef87cbd9f4",
+      "assetIds": [
+        "terrain-6-3",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-7-3",
+      "x": 7,
+      "z": 3,
+      "sha256": "3dd17ff90df6881798bc9cee64d1d5d1136d53b12fa38f52d5b666127a7f81fa",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-7-3/3dd17ff90df6881798bc9cee64d1d5d1136d53b12fa38f52d5b666127a7f81fa",
+      "assetIds": [
+        "terrain-7-3",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-8-3",
+      "x": 8,
+      "z": 3,
+      "sha256": "97a04553953b140dba590188259d45b7ba3513f5fd3ffe77ef357dcf557b47dc",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-8-3/97a04553953b140dba590188259d45b7ba3513f5fd3ffe77ef357dcf557b47dc",
+      "assetIds": [
+        "terrain-8-3",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-9-3",
+      "x": 9,
+      "z": 3,
+      "sha256": "78198e30c9c1bbe8f246da29fbdb1fc4370bc58887310f6b5de1a6a92ace086b",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-9-3/78198e30c9c1bbe8f246da29fbdb1fc4370bc58887310f6b5de1a6a92ace086b",
+      "assetIds": [
+        "terrain-9-3",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-0-4",
+      "x": 0,
+      "z": 4,
+      "sha256": "14cfa209984ed56b347a4150a315cf8549ececdd2c5d7249cad9976b87638a66",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-4/14cfa209984ed56b347a4150a315cf8549ececdd2c5d7249cad9976b87638a66",
+      "assetIds": [
+        "terrain-0-4",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-1-4",
+      "x": 1,
+      "z": 4,
+      "sha256": "7c0d464f26a340eea92604dc3f677e1008ce319cbf50b70165ee0de5cf1b1898",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-1-4/7c0d464f26a340eea92604dc3f677e1008ce319cbf50b70165ee0de5cf1b1898",
+      "assetIds": [
+        "terrain-1-4",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-2-4",
+      "x": 2,
+      "z": 4,
+      "sha256": "8ff94df788fecb4564515e320d75dbfb6528ec27744d7e943592ae0afa2e78de",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-4/8ff94df788fecb4564515e320d75dbfb6528ec27744d7e943592ae0afa2e78de",
+      "assetIds": [
+        "terrain-2-4",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-3-4",
+      "x": 3,
+      "z": 4,
+      "sha256": "96d0c0548f04f81afde36683ae4b5909f65500853047b349509aeb6f47abdd05",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-3-4/96d0c0548f04f81afde36683ae4b5909f65500853047b349509aeb6f47abdd05",
+      "assetIds": [
+        "terrain-3-4",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-4-4",
+      "x": 4,
+      "z": 4,
+      "sha256": "125fc631465732abd92f924f8a7c36356f1624d22eac6140079240e43987a009",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-4-4/125fc631465732abd92f924f8a7c36356f1624d22eac6140079240e43987a009",
+      "assetIds": [
+        "terrain-4-4",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-5-4",
+      "x": 5,
+      "z": 4,
+      "sha256": "13cc579e19bb7253f7feeb767d205ee3c403702bdca99f8fc08e49ce57858b85",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-5-4/13cc579e19bb7253f7feeb767d205ee3c403702bdca99f8fc08e49ce57858b85",
+      "assetIds": [
+        "terrain-5-4",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-6-4",
+      "x": 6,
+      "z": 4,
+      "sha256": "9d540bcf2332d9a047d4dbf658de6dae6be1fc48b750a78fe8b1e360e2a26306",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-6-4/9d540bcf2332d9a047d4dbf658de6dae6be1fc48b750a78fe8b1e360e2a26306",
+      "assetIds": [
+        "terrain-6-4",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-7-4",
+      "x": 7,
+      "z": 4,
+      "sha256": "596d9c68913f31b318fb14df96d70ce0a85e0f5f4ef5bf45655ac1f894fba0ec",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-7-4/596d9c68913f31b318fb14df96d70ce0a85e0f5f4ef5bf45655ac1f894fba0ec",
+      "assetIds": [
+        "terrain-7-4",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-8-4",
+      "x": 8,
+      "z": 4,
+      "sha256": "9ec9e82c0de7d2d8f576d81fdef6eb3a19ffb06c8cc053ae4fd3d36e7be3c427",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-8-4/9ec9e82c0de7d2d8f576d81fdef6eb3a19ffb06c8cc053ae4fd3d36e7be3c427",
+      "assetIds": [
+        "terrain-8-4",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-9-4",
+      "x": 9,
+      "z": 4,
+      "sha256": "882d3949c2a150c24685a55e2b6ebee6b632d4656ba96cffa0b7fe60ec9bfa5e",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-9-4/882d3949c2a150c24685a55e2b6ebee6b632d4656ba96cffa0b7fe60ec9bfa5e",
+      "assetIds": [
+        "terrain-9-4",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-0-5",
+      "x": 0,
+      "z": 5,
+      "sha256": "499ec02b561ee6852f5bcf0d0dceaa860e28faa154100a34a4ed5f9156cf7f6a",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-5/499ec02b561ee6852f5bcf0d0dceaa860e28faa154100a34a4ed5f9156cf7f6a",
+      "assetIds": [
+        "terrain-0-5",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-1-5",
+      "x": 1,
+      "z": 5,
+      "sha256": "138471920ed22e6cd1c96524045d8aedc5e920e0151251f276eb8b8033d2fac6",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-1-5/138471920ed22e6cd1c96524045d8aedc5e920e0151251f276eb8b8033d2fac6",
+      "assetIds": [
+        "terrain-1-5",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-2-5",
+      "x": 2,
+      "z": 5,
+      "sha256": "f83c0bb13084cabe75812e417ab521bcfdff8d5aee5d0aabe90dee118fce2c70",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-5/f83c0bb13084cabe75812e417ab521bcfdff8d5aee5d0aabe90dee118fce2c70",
+      "assetIds": [
+        "terrain-2-5",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-3-5",
+      "x": 3,
+      "z": 5,
+      "sha256": "8e418273a3fd04415f851fc24ae5f19987d7e8c93a4b6d08522388f4cf4e7d14",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-3-5/8e418273a3fd04415f851fc24ae5f19987d7e8c93a4b6d08522388f4cf4e7d14",
+      "assetIds": [
+        "terrain-3-5",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-4-5",
+      "x": 4,
+      "z": 5,
+      "sha256": "1a771077f2100f071201858ba35d5227bd4ee50343cf5fc407b66c8ca3ef337e",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-4-5/1a771077f2100f071201858ba35d5227bd4ee50343cf5fc407b66c8ca3ef337e",
+      "assetIds": [
+        "terrain-4-5",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-5-5",
+      "x": 5,
+      "z": 5,
+      "sha256": "786dbc12de4f1d989092388837e7608c60837abc89f5e7f06b7525f7f9cbf457",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-5-5/786dbc12de4f1d989092388837e7608c60837abc89f5e7f06b7525f7f9cbf457",
+      "assetIds": [
+        "terrain-5-5",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-6-5",
+      "x": 6,
+      "z": 5,
+      "sha256": "0d6c42ee7ce098edd4aa9c8b6dc5662b95928e88a1f60800d910a8039df18331",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-6-5/0d6c42ee7ce098edd4aa9c8b6dc5662b95928e88a1f60800d910a8039df18331",
+      "assetIds": [
+        "terrain-6-5",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-7-5",
+      "x": 7,
+      "z": 5,
+      "sha256": "812370da5633647765aca446fcd0447093e1c1a64a91417870be7676f63d72ba",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-7-5/812370da5633647765aca446fcd0447093e1c1a64a91417870be7676f63d72ba",
+      "assetIds": [
+        "terrain-7-5",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-8-5",
+      "x": 8,
+      "z": 5,
+      "sha256": "3700513bafacc07d1d0b541618c8d70dcf656786d8b98ffe515150c5429a7548",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-8-5/3700513bafacc07d1d0b541618c8d70dcf656786d8b98ffe515150c5429a7548",
+      "assetIds": [
+        "terrain-8-5",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-9-5",
+      "x": 9,
+      "z": 5,
+      "sha256": "608ef4449ed2c0d0649c6c9caa1abbab598e0e213b44da2db898ab1bb97c218a",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-9-5/608ef4449ed2c0d0649c6c9caa1abbab598e0e213b44da2db898ab1bb97c218a",
+      "assetIds": [
+        "terrain-9-5",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-0-6",
+      "x": 0,
+      "z": 6,
+      "sha256": "225ae16f8f9384a0abbc0349ac43ad939344a0ace39589f8d9d780f3c3c2b778",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-6/225ae16f8f9384a0abbc0349ac43ad939344a0ace39589f8d9d780f3c3c2b778",
+      "assetIds": [
+        "terrain-0-6",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-1-6",
+      "x": 1,
+      "z": 6,
+      "sha256": "a663cff13c4d8ac6347ace8d27051c9be8201fc67c0400bf728c4b2a5d65908c",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-1-6/a663cff13c4d8ac6347ace8d27051c9be8201fc67c0400bf728c4b2a5d65908c",
+      "assetIds": [
+        "terrain-1-6",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-2-6",
+      "x": 2,
+      "z": 6,
+      "sha256": "31ed3af903446f4af0f0f630175fb2bc27f844669ed826f24bf1367eb72e378f",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-6/31ed3af903446f4af0f0f630175fb2bc27f844669ed826f24bf1367eb72e378f",
+      "assetIds": [
+        "terrain-2-6",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-3-6",
+      "x": 3,
+      "z": 6,
+      "sha256": "d98073dc74fde1d5ee937ba75b850921ed6bf556da427a23aaec756e65abb847",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-3-6/d98073dc74fde1d5ee937ba75b850921ed6bf556da427a23aaec756e65abb847",
+      "assetIds": [
+        "terrain-3-6",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-4-6",
+      "x": 4,
+      "z": 6,
+      "sha256": "da4c10f6da71df7793817955a2d263eee42b8ed4d38b992b5e4300dea0e75b04",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-4-6/da4c10f6da71df7793817955a2d263eee42b8ed4d38b992b5e4300dea0e75b04",
+      "assetIds": [
+        "terrain-4-6",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-5-6",
+      "x": 5,
+      "z": 6,
+      "sha256": "48260185a8fe1e6f116ddbe1d35201f53ebf83235f8c0bced8f9391f93a7f7f6",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-5-6/48260185a8fe1e6f116ddbe1d35201f53ebf83235f8c0bced8f9391f93a7f7f6",
+      "assetIds": [
+        "terrain-5-6",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-6-6",
+      "x": 6,
+      "z": 6,
+      "sha256": "d308f9f54914d123229c224257eca32b7bbc605c2ff718ae707c3ddebb722239",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-6-6/d308f9f54914d123229c224257eca32b7bbc605c2ff718ae707c3ddebb722239",
+      "assetIds": [
+        "terrain-6-6",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-7-6",
+      "x": 7,
+      "z": 6,
+      "sha256": "f60c4173f2127bc99ed6487680c905aafbaceb0bbd809ef31ecb11a42071422f",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-7-6/f60c4173f2127bc99ed6487680c905aafbaceb0bbd809ef31ecb11a42071422f",
+      "assetIds": [
+        "terrain-7-6",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-8-6",
+      "x": 8,
+      "z": 6,
+      "sha256": "4777b0fe0a4a7d49e4016c3b373990e69110634aacd384a35a5bdfc33cdc3f23",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-8-6/4777b0fe0a4a7d49e4016c3b373990e69110634aacd384a35a5bdfc33cdc3f23",
+      "assetIds": [
+        "terrain-8-6",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-9-6",
+      "x": 9,
+      "z": 6,
+      "sha256": "7b1c177ea2e5fecdc475ede296340715765a1f23cd2a84fe851b1c67742c2c1d",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-9-6/7b1c177ea2e5fecdc475ede296340715765a1f23cd2a84fe851b1c67742c2c1d",
+      "assetIds": [
+        "terrain-9-6",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-0-7",
+      "x": 0,
+      "z": 7,
+      "sha256": "ec9dc4b3df232e0c1f077abf47b7c34e0d17022745c631b61041b69be5630f1f",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-7/ec9dc4b3df232e0c1f077abf47b7c34e0d17022745c631b61041b69be5630f1f",
+      "assetIds": [
+        "terrain-0-7",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-1-7",
+      "x": 1,
+      "z": 7,
+      "sha256": "33d44e63cfa621d0997a8c2a7bc8117c221814b087c47eaedca43903275a0879",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-1-7/33d44e63cfa621d0997a8c2a7bc8117c221814b087c47eaedca43903275a0879",
+      "assetIds": [
+        "terrain-1-7",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-2-7",
+      "x": 2,
+      "z": 7,
+      "sha256": "1d072d881ae4cbe5baf1c8347f28e79b834386b9a2a479f936251218100e70e2",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-7/1d072d881ae4cbe5baf1c8347f28e79b834386b9a2a479f936251218100e70e2",
+      "assetIds": [
+        "terrain-2-7",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-3-7",
+      "x": 3,
+      "z": 7,
+      "sha256": "7ffb7965b66fabdfbba7807c2ca37f9afe99c394eecb26c83dcf64bea2d01337",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-3-7/7ffb7965b66fabdfbba7807c2ca37f9afe99c394eecb26c83dcf64bea2d01337",
+      "assetIds": [
+        "terrain-3-7",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-4-7",
+      "x": 4,
+      "z": 7,
+      "sha256": "3cb4603fb7d98ba0606b5e14ce5452a1d354c17412de30972d584ea1e4872b90",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-4-7/3cb4603fb7d98ba0606b5e14ce5452a1d354c17412de30972d584ea1e4872b90",
+      "assetIds": [
+        "terrain-4-7",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-5-7",
+      "x": 5,
+      "z": 7,
+      "sha256": "0f5cc5e91cc1841332ddcaa3505ef90c0f20b7c1c90f1f34e2b81c5418b44718",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-5-7/0f5cc5e91cc1841332ddcaa3505ef90c0f20b7c1c90f1f34e2b81c5418b44718",
+      "assetIds": [
+        "terrain-5-7",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-6-7",
+      "x": 6,
+      "z": 7,
+      "sha256": "77b94452524b4592bb33fd0552816de66a622b692c6247acb666a4228beb7032",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-6-7/77b94452524b4592bb33fd0552816de66a622b692c6247acb666a4228beb7032",
+      "assetIds": [
+        "terrain-6-7",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-7-7",
+      "x": 7,
+      "z": 7,
+      "sha256": "97c7b200ea6276c59864539d59f62a530a1fff3db9425da70e51c28f5f5376e4",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-7-7/97c7b200ea6276c59864539d59f62a530a1fff3db9425da70e51c28f5f5376e4",
+      "assetIds": [
+        "terrain-7-7",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-8-7",
+      "x": 8,
+      "z": 7,
+      "sha256": "b9153d0c2ac6aabdde929c2acf3a2240c59afa7d1cb71d11127154e1d774c2ac",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-8-7/b9153d0c2ac6aabdde929c2acf3a2240c59afa7d1cb71d11127154e1d774c2ac",
+      "assetIds": [
+        "terrain-8-7",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-9-7",
+      "x": 9,
+      "z": 7,
+      "sha256": "faaec2498d85206f8d1debd4d522e1e442fa48b282edb3b5e0fbde69e1272971",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-9-7/faaec2498d85206f8d1debd4d522e1e442fa48b282edb3b5e0fbde69e1272971",
+      "assetIds": [
+        "terrain-9-7",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-0-8",
+      "x": 0,
+      "z": 8,
+      "sha256": "2b6fdf9ece0263c5c5a532b9ebd9131dadc622f2fc4e791a84578ee6141e5fbb",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-8/2b6fdf9ece0263c5c5a532b9ebd9131dadc622f2fc4e791a84578ee6141e5fbb",
+      "assetIds": [
+        "terrain-0-8",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-1-8",
+      "x": 1,
+      "z": 8,
+      "sha256": "6fb7423786d4aa52d91edcf598cc33df80b14e70605ee921b580ebff48fcd473",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-1-8/6fb7423786d4aa52d91edcf598cc33df80b14e70605ee921b580ebff48fcd473",
+      "assetIds": [
+        "terrain-1-8",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-2-8",
+      "x": 2,
+      "z": 8,
+      "sha256": "f02a39c526a59e4321aa1aa54e4f6ea10d6025d9739cccc735b705f482d27d78",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-8/f02a39c526a59e4321aa1aa54e4f6ea10d6025d9739cccc735b705f482d27d78",
+      "assetIds": [
+        "terrain-2-8",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-3-8",
+      "x": 3,
+      "z": 8,
+      "sha256": "b90a206e0251f289cfb9c455793b4ac6d84c2f4bd4c0a6a95c6c176cc6811271",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-3-8/b90a206e0251f289cfb9c455793b4ac6d84c2f4bd4c0a6a95c6c176cc6811271",
+      "assetIds": [
+        "terrain-3-8",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-4-8",
+      "x": 4,
+      "z": 8,
+      "sha256": "0e4293fe7c721c38272ea89c15e7c79446bc1e811317f4d7a2c64b4c5fc104e0",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-4-8/0e4293fe7c721c38272ea89c15e7c79446bc1e811317f4d7a2c64b4c5fc104e0",
+      "assetIds": [
+        "terrain-4-8",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-5-8",
+      "x": 5,
+      "z": 8,
+      "sha256": "ab2c55add98f6edc11963b6dc9694df15cbbe845e3137f46744c001506b3353c",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-5-8/ab2c55add98f6edc11963b6dc9694df15cbbe845e3137f46744c001506b3353c",
+      "assetIds": [
+        "terrain-5-8",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-6-8",
+      "x": 6,
+      "z": 8,
+      "sha256": "641167404336f58bcca97f01888538d3d8996d0bff4d482ace8a972081566598",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-6-8/641167404336f58bcca97f01888538d3d8996d0bff4d482ace8a972081566598",
+      "assetIds": [
+        "terrain-6-8",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-7-8",
+      "x": 7,
+      "z": 8,
+      "sha256": "0008f75d8f6a1295db119508d129affffc6e28e5d9b7d1b6f8eaadb50dfbc9c2",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-7-8/0008f75d8f6a1295db119508d129affffc6e28e5d9b7d1b6f8eaadb50dfbc9c2",
+      "assetIds": [
+        "terrain-7-8",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-8-8",
+      "x": 8,
+      "z": 8,
+      "sha256": "c4f576fda8220631784a0d541891201fe75d4581c9d9025208d548b9cd940834",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-8-8/c4f576fda8220631784a0d541891201fe75d4581c9d9025208d548b9cd940834",
+      "assetIds": [
+        "terrain-8-8",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-9-8",
+      "x": 9,
+      "z": 8,
+      "sha256": "5e37c13082491c63bffe2e3679a3f8de14e437c9c9ddc14d1073dbcde03f1335",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-9-8/5e37c13082491c63bffe2e3679a3f8de14e437c9c9ddc14d1073dbcde03f1335",
+      "assetIds": [
+        "terrain-9-8",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-0-9",
+      "x": 0,
+      "z": 9,
+      "sha256": "65e23cbf92401ac1698a6494ca3c7b14075df2466205b54f5ee992aa5cdfc5f7",
+      "byteSize": 221,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-0-9/65e23cbf92401ac1698a6494ca3c7b14075df2466205b54f5ee992aa5cdfc5f7",
+      "assetIds": [
+        "terrain-0-9",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-1-9",
+      "x": 1,
+      "z": 9,
+      "sha256": "cdf0a6d1b9705b96b9a1eb53409b5f40ab2fa9ee91d87168bb70c67a813d7033",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-1-9/cdf0a6d1b9705b96b9a1eb53409b5f40ab2fa9ee91d87168bb70c67a813d7033",
+      "assetIds": [
+        "terrain-1-9",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-2-9",
+      "x": 2,
+      "z": 9,
+      "sha256": "6b042953ccfa61c02e1394c5ce40468d737b34557b85d2de7da6cb893bc215ca",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-2-9/6b042953ccfa61c02e1394c5ce40468d737b34557b85d2de7da6cb893bc215ca",
+      "assetIds": [
+        "terrain-2-9",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-3-9",
+      "x": 3,
+      "z": 9,
+      "sha256": "be1dffd97faed0f75ca600469246cb8605973bbead8bea1f0711b95fa2d68c4c",
+      "byteSize": 222,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-3-9/be1dffd97faed0f75ca600469246cb8605973bbead8bea1f0711b95fa2d68c4c",
+      "assetIds": [
+        "terrain-3-9",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-4-9",
+      "x": 4,
+      "z": 9,
+      "sha256": "a48c0d498ed1cd3452767b32e68ef1a5c3b0026a72c0b5708cce6c0b43e0b013",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-4-9/a48c0d498ed1cd3452767b32e68ef1a5c3b0026a72c0b5708cce6c0b43e0b013",
+      "assetIds": [
+        "terrain-4-9",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-5-9",
+      "x": 5,
+      "z": 9,
+      "sha256": "b9a633862dbdb3be560905debf89dbb6d1e8c22f79e24518e9b07b8da3aaaa22",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-5-9/b9a633862dbdb3be560905debf89dbb6d1e8c22f79e24518e9b07b8da3aaaa22",
+      "assetIds": [
+        "terrain-5-9",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-6-9",
+      "x": 6,
+      "z": 9,
+      "sha256": "61d2164fe2a59ef6196eff6beae3c42a3b66906c4cc10e8a552158e05e2f3325",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-6-9/61d2164fe2a59ef6196eff6beae3c42a3b66906c4cc10e8a552158e05e2f3325",
+      "assetIds": [
+        "terrain-6-9",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-7-9",
+      "x": 7,
+      "z": 9,
+      "sha256": "61114f318e07d46f458fdfc6a7e78bb4f77349c08a67178dce99c1c2f3d77eb4",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-7-9/61114f318e07d46f458fdfc6a7e78bb4f77349c08a67178dce99c1c2f3d77eb4",
+      "assetIds": [
+        "terrain-7-9",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-8-9",
+      "x": 8,
+      "z": 9,
+      "sha256": "fce99404beb5e20a709443a7ddd0cb219a535f682a94250d3f5863491d844526",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-8-9/fce99404beb5e20a709443a7ddd0cb219a535f682a94250d3f5863491d844526",
+      "assetIds": [
+        "terrain-8-9",
+        "explorer"
+      ]
+    },
+    {
+      "chunkId": "c-9-9",
+      "x": 9,
+      "z": 9,
+      "sha256": "89bcd01adcae78fd57e31b2b690859fdea1b3baf8d44cd95896a1fe2a65f7caf",
+      "byteSize": 223,
+      "url": "/api/v2/worlds/discovery-campus/chunks/c-9-9/89bcd01adcae78fd57e31b2b690859fdea1b3baf8d44cd95896a1fe2a65f7caf",
+      "assetIds": [
+        "terrain-9-9",
+        "explorer"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "resourceId": "explorer",
+      "sha256": "0de77610d961158bb971f03116deff3d5d6cb91dc2a5f27c7c6c2b706cef86ac",
+      "byteSize": 2752,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/0de77610d961158bb971f03116deff3d5d6cb91dc2a5f27c7c6c2b706cef86ac"
+    },
+    {
+      "resourceId": "reading-shelf",
+      "sha256": "dae724f52072e35d2442b233483bb76e4f348ea0ad2fe4b33897585c2abff99b",
+      "byteSize": 63756,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/dae724f52072e35d2442b233483bb76e4f348ea0ad2fe4b33897585c2abff99b"
+    },
+    {
+      "resourceId": "reading-book",
+      "sha256": "fae24a3fe0502485cb966ab80546edb97f9825d0742d48e70dc9108ebc8e09c6",
+      "byteSize": 2744,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/fae24a3fe0502485cb966ab80546edb97f9825d0742d48e70dc9108ebc8e09c6"
+    },
+    {
+      "resourceId": "reading-desk",
+      "sha256": "af68f2ea23b64603d406416022567c77b227b845f39243e133269fce14907af8",
+      "byteSize": 36148,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/af68f2ea23b64603d406416022567c77b227b845f39243e133269fce14907af8"
+    },
+    {
+      "resourceId": "reading-notebook",
+      "sha256": "544a324d21a9f3ad0d15393c7deffb31f3cbc57586d853904b09fda17b7097fd",
+      "byteSize": 4564,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/544a324d21a9f3ad0d15393c7deffb31f3cbc57586d853904b09fda17b7097fd"
+    },
+    {
+      "resourceId": "demo-flag-01",
+      "sha256": "3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8",
+      "byteSize": 177,
+      "mediaType": "image/svg+xml",
+      "url": "/api/v2/worlds/discovery-campus/assets/3a184c24228c4892e39e9469c47830b0350a83cdcdfb932705f1aa8829e9d4d8"
+    },
+    {
+      "resourceId": "competition-table",
+      "sha256": "9e26520145ec14b52c0545ce79f8010cb48e8399c9835e6758aee4d590e54ec0",
+      "byteSize": 76244,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/9e26520145ec14b52c0545ce79f8010cb48e8399c9835e6758aee4d590e54ec0"
+    },
+    {
+      "resourceId": "competition-chair",
+      "sha256": "9cf0b5a8f9c71ac378376877f3352dc7ad22be8c7453df458b06df572c1b4d40",
+      "byteSize": 2972,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/9cf0b5a8f9c71ac378376877f3352dc7ad22be8c7453df458b06df572c1b4d40"
+    },
+    {
+      "resourceId": "terrain-0-0",
+      "sha256": "77b752774c2def694f20e444f65bf00daed153009b8002174f9271a72ccf6421",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/77b752774c2def694f20e444f65bf00daed153009b8002174f9271a72ccf6421"
+    },
+    {
+      "resourceId": "terrain-1-0",
+      "sha256": "b2554e3083db55ab5fea34013f72f3014c0f9133e59edff737f955ff75c8d52a",
+      "byteSize": 27880,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/b2554e3083db55ab5fea34013f72f3014c0f9133e59edff737f955ff75c8d52a"
+    },
+    {
+      "resourceId": "terrain-2-0",
+      "sha256": "7e9f9914f318125b0e1e7d084b6f844af77fe769d7a61b9b56998e7733f53946",
+      "byteSize": 25932,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/7e9f9914f318125b0e1e7d084b6f844af77fe769d7a61b9b56998e7733f53946"
+    },
+    {
+      "resourceId": "terrain-3-0",
+      "sha256": "e1234f4c58385a0a14f131cfc27e6fd8ff39a0f789a79d34d57caff6caca9823",
+      "byteSize": 27884,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/e1234f4c58385a0a14f131cfc27e6fd8ff39a0f789a79d34d57caff6caca9823"
+    },
+    {
+      "resourceId": "terrain-4-0",
+      "sha256": "130e318dcb03d0a34e437ec85c433310218dfe0a69fb569aad682fdd4b1950af",
+      "byteSize": 27880,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/130e318dcb03d0a34e437ec85c433310218dfe0a69fb569aad682fdd4b1950af"
+    },
+    {
+      "resourceId": "terrain-5-0",
+      "sha256": "123f091d5305bc828f672665efafb632a0ae88edd4c9c1f5a4ec85bc652a2259",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/123f091d5305bc828f672665efafb632a0ae88edd4c9c1f5a4ec85bc652a2259"
+    },
+    {
+      "resourceId": "terrain-6-0",
+      "sha256": "06c2bc9d6d95de856beed952f1d580eab26af1b436ffbfe137297960750073b8",
+      "byteSize": 27912,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/06c2bc9d6d95de856beed952f1d580eab26af1b436ffbfe137297960750073b8"
+    },
+    {
+      "resourceId": "terrain-7-0",
+      "sha256": "36f7d9994954143792f810ac8399ebb05a7efcacabdfba29f01ab74c8e01243b",
+      "byteSize": 27884,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/36f7d9994954143792f810ac8399ebb05a7efcacabdfba29f01ab74c8e01243b"
+    },
+    {
+      "resourceId": "terrain-8-0",
+      "sha256": "468909816ba63b215a90e690ab0d8154dc48978d96ea2e24836844e87c5efe65",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/468909816ba63b215a90e690ab0d8154dc48978d96ea2e24836844e87c5efe65"
+    },
+    {
+      "resourceId": "terrain-9-0",
+      "sha256": "11f0c530f2e62d4f3d806a5d083eb5995a9390864154ea05d9ece8cebee3f468",
+      "byteSize": 27888,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/11f0c530f2e62d4f3d806a5d083eb5995a9390864154ea05d9ece8cebee3f468"
+    },
+    {
+      "resourceId": "terrain-0-1",
+      "sha256": "0eb29ac52421722d09bca4f2c4aa2330fc7761f5e75a84c5d3a917d6cc4aeacf",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/0eb29ac52421722d09bca4f2c4aa2330fc7761f5e75a84c5d3a917d6cc4aeacf"
+    },
+    {
+      "resourceId": "terrain-1-1",
+      "sha256": "f42210dfe48d655ea6a9a79a019e4900e90ad73dccc9dcdfb1e4ce6d3509423c",
+      "byteSize": 27508,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/f42210dfe48d655ea6a9a79a019e4900e90ad73dccc9dcdfb1e4ce6d3509423c"
+    },
+    {
+      "resourceId": "terrain-2-1",
+      "sha256": "25ae8ce11182c3c88724b1797e03cc6d1545eac3774c37e03da1bfcb53b2847d",
+      "byteSize": 24796,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/25ae8ce11182c3c88724b1797e03cc6d1545eac3774c37e03da1bfcb53b2847d"
+    },
+    {
+      "resourceId": "terrain-3-1",
+      "sha256": "602640a6cb4c4a2ed59939352028d5e86a5cd0849612443fcc73cd64af94c86c",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/602640a6cb4c4a2ed59939352028d5e86a5cd0849612443fcc73cd64af94c86c"
+    },
+    {
+      "resourceId": "terrain-4-1",
+      "sha256": "1fc1893e1f5c77ef2a22b4cfa197875597bbec4cc0ec9e7fdb0f77eebaec6d08",
+      "byteSize": 27892,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/1fc1893e1f5c77ef2a22b4cfa197875597bbec4cc0ec9e7fdb0f77eebaec6d08"
+    },
+    {
+      "resourceId": "terrain-5-1",
+      "sha256": "61f827cd0f67f6a3d94ce8a6ceb9c48a8eaf999150028fef3bdb05f8ffa16dd3",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/61f827cd0f67f6a3d94ce8a6ceb9c48a8eaf999150028fef3bdb05f8ffa16dd3"
+    },
+    {
+      "resourceId": "terrain-6-1",
+      "sha256": "b104d1bd33a80c9c69245f1b95488b7b06fb0ebaecaf4aec8e4be6ea8df27392",
+      "byteSize": 27912,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/b104d1bd33a80c9c69245f1b95488b7b06fb0ebaecaf4aec8e4be6ea8df27392"
+    },
+    {
+      "resourceId": "terrain-7-1",
+      "sha256": "850d2405ec29476ec26c608e8bab78bb82dabfeec252bdfaab85af9545cd9685",
+      "byteSize": 27908,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/850d2405ec29476ec26c608e8bab78bb82dabfeec252bdfaab85af9545cd9685"
+    },
+    {
+      "resourceId": "terrain-8-1",
+      "sha256": "e7024ef34f82489331f6d8de290f6c1fff82f270afdc3eb6f74ac9f2460c0e18",
+      "byteSize": 27892,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/e7024ef34f82489331f6d8de290f6c1fff82f270afdc3eb6f74ac9f2460c0e18"
+    },
+    {
+      "resourceId": "terrain-9-1",
+      "sha256": "4c1db19e054c7da059adf54698b1f278e31e66d79c7707a13770c1e1b27e7cb5",
+      "byteSize": 27876,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/4c1db19e054c7da059adf54698b1f278e31e66d79c7707a13770c1e1b27e7cb5"
+    },
+    {
+      "resourceId": "terrain-0-2",
+      "sha256": "fb28603c92d8e109f80b5ab02fd52a8c4d5599c9cc51aa31061781ae8b212dfe",
+      "byteSize": 25540,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/fb28603c92d8e109f80b5ab02fd52a8c4d5599c9cc51aa31061781ae8b212dfe"
+    },
+    {
+      "resourceId": "terrain-1-2",
+      "sha256": "798e36c15a96aea7e7e8c2cc005e147584821ac69783a313acab7554147eb8fe",
+      "byteSize": 25552,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/798e36c15a96aea7e7e8c2cc005e147584821ac69783a313acab7554147eb8fe"
+    },
+    {
+      "resourceId": "terrain-2-2",
+      "sha256": "531a2784dfe386a3412c818961cb21c0f6590a9ae506c7e109d59027c1d22c69",
+      "byteSize": 40832,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/531a2784dfe386a3412c818961cb21c0f6590a9ae506c7e109d59027c1d22c69"
+    },
+    {
+      "resourceId": "terrain-3-2",
+      "sha256": "ace26694d424e9842d5f18ce83be4583dcfd67e609a5e9e6e7d5537dc883e295",
+      "byteSize": 24416,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/ace26694d424e9842d5f18ce83be4583dcfd67e609a5e9e6e7d5537dc883e295"
+    },
+    {
+      "resourceId": "terrain-4-2",
+      "sha256": "6b958792dd1a46252d9309c1024a170f6045c52e393ed5013b44d17afe89c624",
+      "byteSize": 27456,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/6b958792dd1a46252d9309c1024a170f6045c52e393ed5013b44d17afe89c624"
+    },
+    {
+      "resourceId": "terrain-5-2",
+      "sha256": "5cfab033991b7791ce829e2cb2ea02378b8abacd0e932665dbbe8de738e78d37",
+      "byteSize": 27080,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/5cfab033991b7791ce829e2cb2ea02378b8abacd0e932665dbbe8de738e78d37"
+    },
+    {
+      "resourceId": "terrain-6-2",
+      "sha256": "f793a4ca012a07f7604f2b5f4411eecfe4bbca725e1254cc1974d7858520505f",
+      "byteSize": 27088,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/f793a4ca012a07f7604f2b5f4411eecfe4bbca725e1254cc1974d7858520505f"
+    },
+    {
+      "resourceId": "terrain-7-2",
+      "sha256": "b96f08c629514eb06db37e4d8e8c69bb21e4020028a0ed0a4f2fa1e1fb389404",
+      "byteSize": 26680,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/b96f08c629514eb06db37e4d8e8c69bb21e4020028a0ed0a4f2fa1e1fb389404"
+    },
+    {
+      "resourceId": "terrain-8-2",
+      "sha256": "6163da6bd487bbaaec9f25f36537793e399fb3c09be20dc02439c3cd5bd4539c",
+      "byteSize": 27472,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/6163da6bd487bbaaec9f25f36537793e399fb3c09be20dc02439c3cd5bd4539c"
+    },
+    {
+      "resourceId": "terrain-9-2",
+      "sha256": "027fa9622aef7f568e157d3bdcd114ed19e9858cf86b28c89529dea55f74b97a",
+      "byteSize": 27084,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/027fa9622aef7f568e157d3bdcd114ed19e9858cf86b28c89529dea55f74b97a"
+    },
+    {
+      "resourceId": "terrain-0-3",
+      "sha256": "3f2ca4352b807ea31a6e1f3b03763af26e9a2fb77917286d3fa1d5d27c7711ca",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/3f2ca4352b807ea31a6e1f3b03763af26e9a2fb77917286d3fa1d5d27c7711ca"
+    },
+    {
+      "resourceId": "terrain-1-3",
+      "sha256": "99f721f1ff3587d1c94d150851551167ebe78be699e2735728273f230e16b264",
+      "byteSize": 27512,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/99f721f1ff3587d1c94d150851551167ebe78be699e2735728273f230e16b264"
+    },
+    {
+      "resourceId": "terrain-2-3",
+      "sha256": "bc7861c688209c905c8fc74b1e407d8ae5be3ebfb869ff690993bc0d45258cbb",
+      "byteSize": 24036,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/bc7861c688209c905c8fc74b1e407d8ae5be3ebfb869ff690993bc0d45258cbb"
+    },
+    {
+      "resourceId": "terrain-3-3",
+      "sha256": "ece1a8e3526700b2e7cba28574c3c7664fc5a4b403489e273480dda3a55451f9",
+      "byteSize": 27884,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/ece1a8e3526700b2e7cba28574c3c7664fc5a4b403489e273480dda3a55451f9"
+    },
+    {
+      "resourceId": "terrain-4-3",
+      "sha256": "b69469f05df5a35df449e1e7e2b4907d4e9f37e3f4454dbb59cbe36a794203d8",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/b69469f05df5a35df449e1e7e2b4907d4e9f37e3f4454dbb59cbe36a794203d8"
+    },
+    {
+      "resourceId": "terrain-5-3",
+      "sha256": "1bbf48f500d2989872d54fb1a1ce760c722f24167630ad604040e00048bd764f",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/1bbf48f500d2989872d54fb1a1ce760c722f24167630ad604040e00048bd764f"
+    },
+    {
+      "resourceId": "terrain-6-3",
+      "sha256": "ca2366c2e177ff96d3a3cd867cb5b661ca3ecad54b4dd69d12ad431d0c0babac",
+      "byteSize": 27892,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/ca2366c2e177ff96d3a3cd867cb5b661ca3ecad54b4dd69d12ad431d0c0babac"
+    },
+    {
+      "resourceId": "terrain-7-3",
+      "sha256": "68c9e29376269bb4e49c321547df470d6e3e63609dfdef107b117db43c810b62",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/68c9e29376269bb4e49c321547df470d6e3e63609dfdef107b117db43c810b62"
+    },
+    {
+      "resourceId": "terrain-8-3",
+      "sha256": "7f4c982ae09f86d763a63a741cb1aaabb83e3b0130e7fee1ce55182a68da185f",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/7f4c982ae09f86d763a63a741cb1aaabb83e3b0130e7fee1ce55182a68da185f"
+    },
+    {
+      "resourceId": "terrain-9-3",
+      "sha256": "ddcf51f41ea80a19fc13dbfcc468b715fae9232419d6de8c87437fe2889ec19a",
+      "byteSize": 27908,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/ddcf51f41ea80a19fc13dbfcc468b715fae9232419d6de8c87437fe2889ec19a"
+    },
+    {
+      "resourceId": "terrain-0-4",
+      "sha256": "4372a547259e6dc69e85b7ccb02dd3aea66f07d1bbed4f7436af592cda1fbe02",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/4372a547259e6dc69e85b7ccb02dd3aea66f07d1bbed4f7436af592cda1fbe02"
+    },
+    {
+      "resourceId": "terrain-1-4",
+      "sha256": "7b5df2f02965c2cdb2f44160bfbfdde8414f0460906f1013828fc96d73aa0c14",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/7b5df2f02965c2cdb2f44160bfbfdde8414f0460906f1013828fc96d73aa0c14"
+    },
+    {
+      "resourceId": "terrain-2-4",
+      "sha256": "cf34aca4d0b254bf49f0597a08ad14878e23e8a1f8e5bdf9a17fe97d1195b57a",
+      "byteSize": 27476,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/cf34aca4d0b254bf49f0597a08ad14878e23e8a1f8e5bdf9a17fe97d1195b57a"
+    },
+    {
+      "resourceId": "terrain-3-4",
+      "sha256": "bd422be34b51d9f566aa4f3ea0cc9a2034f14f059a8617aea5b357d126964a00",
+      "byteSize": 27880,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/bd422be34b51d9f566aa4f3ea0cc9a2034f14f059a8617aea5b357d126964a00"
+    },
+    {
+      "resourceId": "terrain-4-4",
+      "sha256": "bb394da11cf763a5fcff8564413ea9bd38f6081bff11fd1f7bcc25ec2824a5f0",
+      "byteSize": 27892,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/bb394da11cf763a5fcff8564413ea9bd38f6081bff11fd1f7bcc25ec2824a5f0"
+    },
+    {
+      "resourceId": "terrain-5-4",
+      "sha256": "4b829a0c33ea227d6e5e4c7d33bbf37563f20d8bb536993c8dfecf1259225e33",
+      "byteSize": 27908,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/4b829a0c33ea227d6e5e4c7d33bbf37563f20d8bb536993c8dfecf1259225e33"
+    },
+    {
+      "resourceId": "terrain-6-4",
+      "sha256": "000a236e23b6fd8fbdfe420a688a9490c86c59c71666ce47ad45fbaadb5b0b4a",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/000a236e23b6fd8fbdfe420a688a9490c86c59c71666ce47ad45fbaadb5b0b4a"
+    },
+    {
+      "resourceId": "terrain-7-4",
+      "sha256": "e02931d4fdf45228eec71a83ffce5abd9db2de300d0098a9e853e66cb9a0507d",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/e02931d4fdf45228eec71a83ffce5abd9db2de300d0098a9e853e66cb9a0507d"
+    },
+    {
+      "resourceId": "terrain-8-4",
+      "sha256": "0c774a69d663e15b1bb977ceb9e0a6978ee68881105a2726672b1c4d022cfa2c",
+      "byteSize": 27888,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/0c774a69d663e15b1bb977ceb9e0a6978ee68881105a2726672b1c4d022cfa2c"
+    },
+    {
+      "resourceId": "terrain-9-4",
+      "sha256": "edd37bb25cb54d9db136b9fe70d509e783941f8ad9a2e5f24827f149f3f587f2",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/edd37bb25cb54d9db136b9fe70d509e783941f8ad9a2e5f24827f149f3f587f2"
+    },
+    {
+      "resourceId": "terrain-0-5",
+      "sha256": "b5d1eae8195ca8ecbc34334fe324ac3ae0d4d92af1166134e9403d35c227bd02",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/b5d1eae8195ca8ecbc34334fe324ac3ae0d4d92af1166134e9403d35c227bd02"
+    },
+    {
+      "resourceId": "terrain-1-5",
+      "sha256": "048575d3fa6c406cfe262967098170f64aa21b4aed094715640cadc426d964ca",
+      "byteSize": 27912,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/048575d3fa6c406cfe262967098170f64aa21b4aed094715640cadc426d964ca"
+    },
+    {
+      "resourceId": "terrain-2-5",
+      "sha256": "f2f71bc522c73de8b89fbb7537675b6e8d677a247e07a53f0cc4c6e497ccb1b6",
+      "byteSize": 26692,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/f2f71bc522c73de8b89fbb7537675b6e8d677a247e07a53f0cc4c6e497ccb1b6"
+    },
+    {
+      "resourceId": "terrain-3-5",
+      "sha256": "ad75094fba793763e551fde8e2c0607fc1ebc4687679e06d4459a94f357653a9",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/ad75094fba793763e551fde8e2c0607fc1ebc4687679e06d4459a94f357653a9"
+    },
+    {
+      "resourceId": "terrain-4-5",
+      "sha256": "d651861b05ca4ba6614967278807dddab8b687a7cd338c51560473f79013616b",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/d651861b05ca4ba6614967278807dddab8b687a7cd338c51560473f79013616b"
+    },
+    {
+      "resourceId": "terrain-5-5",
+      "sha256": "4c4bc8afc053a14c1f13ff5621b39f3b5d819238d152da58204373b3af49c6b1",
+      "byteSize": 27908,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/4c4bc8afc053a14c1f13ff5621b39f3b5d819238d152da58204373b3af49c6b1"
+    },
+    {
+      "resourceId": "terrain-6-5",
+      "sha256": "59dd0c3a9f1c1d2b5bde9304b5d4deffc0da6edddeb0d91608e16edf9d239c29",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/59dd0c3a9f1c1d2b5bde9304b5d4deffc0da6edddeb0d91608e16edf9d239c29"
+    },
+    {
+      "resourceId": "terrain-7-5",
+      "sha256": "b6c456fac614c83f2442dc0fb3c5fa035f0bebe1b33e77edaf2a4c84af0a1c8e",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/b6c456fac614c83f2442dc0fb3c5fa035f0bebe1b33e77edaf2a4c84af0a1c8e"
+    },
+    {
+      "resourceId": "terrain-8-5",
+      "sha256": "cdcecc5387dec1744e7b0a195f082ee609179d6f1c8427e815b32785a8fbe402",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/cdcecc5387dec1744e7b0a195f082ee609179d6f1c8427e815b32785a8fbe402"
+    },
+    {
+      "resourceId": "terrain-9-5",
+      "sha256": "c722207174433f30a7d4541870a65d9c215620fbec2ba0dd316a19641cc40b44",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/c722207174433f30a7d4541870a65d9c215620fbec2ba0dd316a19641cc40b44"
+    },
+    {
+      "resourceId": "terrain-0-6",
+      "sha256": "ffa305325806bac8c167933767c6ce7e50b8cd2de24efd40bbd770cb43f908b3",
+      "byteSize": 27888,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/ffa305325806bac8c167933767c6ce7e50b8cd2de24efd40bbd770cb43f908b3"
+    },
+    {
+      "resourceId": "terrain-1-6",
+      "sha256": "deadf1b36fc098c13bd1e9a65b37e215b6d08047f9efe8f510e34e9dfd93657b",
+      "byteSize": 27908,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/deadf1b36fc098c13bd1e9a65b37e215b6d08047f9efe8f510e34e9dfd93657b"
+    },
+    {
+      "resourceId": "terrain-2-6",
+      "sha256": "5f75dd9d1b1bbf68c55da99c4515b738d5b00c5357b1adacbb42a98a554c34fe",
+      "byteSize": 27092,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/5f75dd9d1b1bbf68c55da99c4515b738d5b00c5357b1adacbb42a98a554c34fe"
+    },
+    {
+      "resourceId": "terrain-3-6",
+      "sha256": "9ac89ef587bc62a9aceacdfbffa574ef07945f04d2fc647485f73d6817cb816c",
+      "byteSize": 27884,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/9ac89ef587bc62a9aceacdfbffa574ef07945f04d2fc647485f73d6817cb816c"
+    },
+    {
+      "resourceId": "terrain-4-6",
+      "sha256": "776cc54a5404e85cf58cef58141a1653aa3e889dd604a6ccedbe8386e49f9023",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/776cc54a5404e85cf58cef58141a1653aa3e889dd604a6ccedbe8386e49f9023"
+    },
+    {
+      "resourceId": "terrain-5-6",
+      "sha256": "982e33c535e2b27f0babcc615cf31996a75205b2035a0f513c0cb5e76d7321ce",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/982e33c535e2b27f0babcc615cf31996a75205b2035a0f513c0cb5e76d7321ce"
+    },
+    {
+      "resourceId": "terrain-6-6",
+      "sha256": "f193cf7f4458ce6ff6f288b30ef8d944af76bf30f0162b5be17b6f30a8650d38",
+      "byteSize": 27908,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/f193cf7f4458ce6ff6f288b30ef8d944af76bf30f0162b5be17b6f30a8650d38"
+    },
+    {
+      "resourceId": "terrain-7-6",
+      "sha256": "69166c979acfdcd00589f8152c117a15507624acc02d0b18d18190295ad87d58",
+      "byteSize": 27916,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/69166c979acfdcd00589f8152c117a15507624acc02d0b18d18190295ad87d58"
+    },
+    {
+      "resourceId": "terrain-8-6",
+      "sha256": "a185b15f56031b50357158b5aa737621eb6a6e1cc01bdca9be1144e9dc6f19c8",
+      "byteSize": 27892,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/a185b15f56031b50357158b5aa737621eb6a6e1cc01bdca9be1144e9dc6f19c8"
+    },
+    {
+      "resourceId": "terrain-9-6",
+      "sha256": "96a30c9be5ade7e5ad77cceb341c9ac9dfffb9743d43a5811aa4f1683bdde743",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/96a30c9be5ade7e5ad77cceb341c9ac9dfffb9743d43a5811aa4f1683bdde743"
+    },
+    {
+      "resourceId": "terrain-0-7",
+      "sha256": "03b02d955a9536c9ca2e5d5b20c2f53929103f0f3092d798ae0c5d4e6a660a75",
+      "byteSize": 27892,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/03b02d955a9536c9ca2e5d5b20c2f53929103f0f3092d798ae0c5d4e6a660a75"
+    },
+    {
+      "resourceId": "terrain-1-7",
+      "sha256": "3caa3d6666d8831abb8b97ce342aceb3b04e7e0286f630c8361ccddc336635a6",
+      "byteSize": 27908,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/3caa3d6666d8831abb8b97ce342aceb3b04e7e0286f630c8361ccddc336635a6"
+    },
+    {
+      "resourceId": "terrain-2-7",
+      "sha256": "7ba3e12b5fe2bcb897008d8e6a8d085baf86442fc11dcfa78e52f44475255280",
+      "byteSize": 25932,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/7ba3e12b5fe2bcb897008d8e6a8d085baf86442fc11dcfa78e52f44475255280"
+    },
+    {
+      "resourceId": "terrain-3-7",
+      "sha256": "b32fe95968b3d9365c92f8d7a4c00a780d8f7e31b6f672d27d566eb1bbff2f75",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/b32fe95968b3d9365c92f8d7a4c00a780d8f7e31b6f672d27d566eb1bbff2f75"
+    },
+    {
+      "resourceId": "terrain-4-7",
+      "sha256": "011a5d464553c3d6e01e18f1e43a070ad3e1e585f18192b50574e4eadf776b1c",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/011a5d464553c3d6e01e18f1e43a070ad3e1e585f18192b50574e4eadf776b1c"
+    },
+    {
+      "resourceId": "terrain-5-7",
+      "sha256": "f7ebe1620247fdd7e0682f95e25348d03e5a563f48fb8b521fa614854653cc3a",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/f7ebe1620247fdd7e0682f95e25348d03e5a563f48fb8b521fa614854653cc3a"
+    },
+    {
+      "resourceId": "terrain-6-7",
+      "sha256": "6442656e12e878964be04d00a5f97bcdc4cdaeeb6b6ce73103276f2f3ab369e3",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/6442656e12e878964be04d00a5f97bcdc4cdaeeb6b6ce73103276f2f3ab369e3"
+    },
+    {
+      "resourceId": "terrain-7-7",
+      "sha256": "33524ecf5757c1878f977995ae9aae336dcfa42e1f1c98d8673779bea76218a2",
+      "byteSize": 27912,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/33524ecf5757c1878f977995ae9aae336dcfa42e1f1c98d8673779bea76218a2"
+    },
+    {
+      "resourceId": "terrain-8-7",
+      "sha256": "a298ec5cbc8759cc75db559ae22bfd33f909649b0610cd9de3443045040b7868",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/a298ec5cbc8759cc75db559ae22bfd33f909649b0610cd9de3443045040b7868"
+    },
+    {
+      "resourceId": "terrain-9-7",
+      "sha256": "a12c6edbb824c570e11e8f6f94732b7b11332b87564bfec809f36bf9ce0ca07e",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/a12c6edbb824c570e11e8f6f94732b7b11332b87564bfec809f36bf9ce0ca07e"
+    },
+    {
+      "resourceId": "terrain-0-8",
+      "sha256": "fa789f72bbcbd0590cfb4fb45a35a10105843ad1d00f93b5ccf607b0879ddf9a",
+      "byteSize": 27888,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/fa789f72bbcbd0590cfb4fb45a35a10105843ad1d00f93b5ccf607b0879ddf9a"
+    },
+    {
+      "resourceId": "terrain-1-8",
+      "sha256": "b3fe6f5b810947f24e34a9d257afdf500c89a27877d62ddcdea225f2cf5c6af3",
+      "byteSize": 27880,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/b3fe6f5b810947f24e34a9d257afdf500c89a27877d62ddcdea225f2cf5c6af3"
+    },
+    {
+      "resourceId": "terrain-2-8",
+      "sha256": "697ec1e3565314009f67ba69a93e57cc426c7f320936482f5ee509fa0c84ab83",
+      "byteSize": 26316,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/697ec1e3565314009f67ba69a93e57cc426c7f320936482f5ee509fa0c84ab83"
+    },
+    {
+      "resourceId": "terrain-3-8",
+      "sha256": "1a55bfc3adadd6ffce5410e5471650b930e28b6dec9c1402b1eec1f14da44fdd",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/1a55bfc3adadd6ffce5410e5471650b930e28b6dec9c1402b1eec1f14da44fdd"
+    },
+    {
+      "resourceId": "terrain-4-8",
+      "sha256": "5956f7356403eb0db600d27c0f398c73352627fe5d76ee4f01c29a3dd24945f7",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/5956f7356403eb0db600d27c0f398c73352627fe5d76ee4f01c29a3dd24945f7"
+    },
+    {
+      "resourceId": "terrain-5-8",
+      "sha256": "492455b51482181fb554e1b90388631387280da4db5897a7734be7af52902f7d",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/492455b51482181fb554e1b90388631387280da4db5897a7734be7af52902f7d"
+    },
+    {
+      "resourceId": "terrain-6-8",
+      "sha256": "282c671d8756a42a40b01def6459fcfb0d355dc97f339b92401619c3bf701f01",
+      "byteSize": 27912,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/282c671d8756a42a40b01def6459fcfb0d355dc97f339b92401619c3bf701f01"
+    },
+    {
+      "resourceId": "terrain-7-8",
+      "sha256": "70cf789b2fc3e5097aeb5290294056371850f4ecea9c31f6b50df33d7d63bde7",
+      "byteSize": 27904,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/70cf789b2fc3e5097aeb5290294056371850f4ecea9c31f6b50df33d7d63bde7"
+    },
+    {
+      "resourceId": "terrain-8-8",
+      "sha256": "39990c3d8eeca9cb2932ffa0edd19b21ab061b632725e5fedb454e24b42034a7",
+      "byteSize": 27880,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/39990c3d8eeca9cb2932ffa0edd19b21ab061b632725e5fedb454e24b42034a7"
+    },
+    {
+      "resourceId": "terrain-9-8",
+      "sha256": "4739748aa9a1f7aaeb9df9938a2b17afb5321e670b71f7c4cc56bc25f2e363b4",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/4739748aa9a1f7aaeb9df9938a2b17afb5321e670b71f7c4cc56bc25f2e363b4"
+    },
+    {
+      "resourceId": "terrain-0-9",
+      "sha256": "4556ae2fe0ccc6fe36649c2a5a092f593367c391f5d63e73eb1fbd41785a973d",
+      "byteSize": 27876,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/4556ae2fe0ccc6fe36649c2a5a092f593367c391f5d63e73eb1fbd41785a973d"
+    },
+    {
+      "resourceId": "terrain-1-9",
+      "sha256": "14769cb723337d7c339a8a27462acd59465fe58a18ad986c47827e0bd46b0cfa",
+      "byteSize": 27888,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/14769cb723337d7c339a8a27462acd59465fe58a18ad986c47827e0bd46b0cfa"
+    },
+    {
+      "resourceId": "terrain-2-9",
+      "sha256": "bce98afee8f4cb443d6a53d9e073f1ca78a10c58efd7fc7ab710593858d50351",
+      "byteSize": 25184,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/bce98afee8f4cb443d6a53d9e073f1ca78a10c58efd7fc7ab710593858d50351"
+    },
+    {
+      "resourceId": "terrain-3-9",
+      "sha256": "0a0754665438d7b16e7d667786fefd22182d39589eee8fec767b685746c9c90d",
+      "byteSize": 27900,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/0a0754665438d7b16e7d667786fefd22182d39589eee8fec767b685746c9c90d"
+    },
+    {
+      "resourceId": "terrain-4-9",
+      "sha256": "db3d7454564bb32a8a5d181897f778c0e31b6dfcc3d54d76fd7383c65f9ed193",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/db3d7454564bb32a8a5d181897f778c0e31b6dfcc3d54d76fd7383c65f9ed193"
+    },
+    {
+      "resourceId": "terrain-5-9",
+      "sha256": "cd978a57ea3063a64fb0da4b1de52e69a61fbc6a8d89623e1dc9a9c54a7f9576",
+      "byteSize": 27896,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/cd978a57ea3063a64fb0da4b1de52e69a61fbc6a8d89623e1dc9a9c54a7f9576"
+    },
+    {
+      "resourceId": "terrain-6-9",
+      "sha256": "283e21239438ea3ea67db989287e2693bf6c01241d8d86cf0dc460039bd7cb3d",
+      "byteSize": 27876,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/283e21239438ea3ea67db989287e2693bf6c01241d8d86cf0dc460039bd7cb3d"
+    },
+    {
+      "resourceId": "terrain-7-9",
+      "sha256": "09eeabc6155f7809c6839321178e388b414afa4d109b4f93bbc9e7d010bc6a4e",
+      "byteSize": 27880,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/09eeabc6155f7809c6839321178e388b414afa4d109b4f93bbc9e7d010bc6a4e"
+    },
+    {
+      "resourceId": "terrain-8-9",
+      "sha256": "bd6673203ea93f78915051cb27d11c444f61f1b64e089004aef05c14773e2235",
+      "byteSize": 27908,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/bd6673203ea93f78915051cb27d11c444f61f1b64e089004aef05c14773e2235"
+    },
+    {
+      "resourceId": "terrain-9-9",
+      "sha256": "57c08142ee7a3716940ce09b240296b3248fe27faba0cc53f3a71b82d22ca1c7",
+      "byteSize": 27912,
+      "mediaType": "model/gltf-binary",
+      "url": "/api/v2/worlds/discovery-campus/assets/57c08142ee7a3716940ce09b240296b3248fe27faba0cc53f3a71b82d22ca1c7"
+    }
+  ]
+}

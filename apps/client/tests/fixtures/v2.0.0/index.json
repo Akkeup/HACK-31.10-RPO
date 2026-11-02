@@ -1,0 +1,1137 @@
+[
+  {
+    "file": "fixtures/v2.0.0/http/modules.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/modules",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/material-flags-demo.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/material",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/country-demo.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/knowledge.schema.json#/$defs/country",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/content-server-only/country-demo.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/knowledge.schema.json#/$defs/countryPrivate",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/content-server-only/source-demo.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/knowledge.schema.json#/$defs/source",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/content-server-only/fact-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/knowledge.schema.json#/$defs/fact",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/content-server-only/fact-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/knowledge.schema.json#/$defs/fact",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/content-server-only/fact-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/knowledge.schema.json#/$defs/fact",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/books.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/knowledge.schema.json#/$defs/books",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/reading-room-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/reading-room-config.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/admin-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/config.schema.json#/$defs/adminDocument",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/admin-put.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/config.schema.json#/$defs/adminValues",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/public-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/config.schema.json#/$defs/publicDocument",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/gameplay-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/gameplay-config.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/world-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/world-config.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/content-server-only/history-basics.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education-pack.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/content-server-only/informatics-basics.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education-pack.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/content-server-only/math-basics.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education-pack.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/content-server-only/flags-demo.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education-pack.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/question-numeric.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/question",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/question-short-text.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/question",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/question-explanation.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/question",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/question-flag.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/question",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/quiz-active.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/attempt",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/quiz-feedback.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/attempt",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/quiz-suspended.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/attempt",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/quiz-completed.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/attempt",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/quiz-interrupted.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/attempt",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/competition-running.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/competition.schema.json#/$defs/state",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/competition-finished.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/competition.schema.json#/$defs/state",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/competition-recovery.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/competition.schema.json#/$defs/ownRecovery",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/manifest.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/streaming.schema.json#/$defs/manifest",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/interest.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/streaming.schema.json#/$defs/interest",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/material-math-basics.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/material",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/material-informatics-basics.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/material",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/material-history-basics.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/material",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/npc-behavior-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/npc-behavior-config.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/first-person-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/first-person-config.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/economy-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/economy-config.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/wallet.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/wallet.schema.json#/$defs/balance",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/wallet-reserved.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/wallet.schema.json#/$defs/balance",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/wallet-staked.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/wallet.schema.json#/$defs/balance",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/wallet-winner.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/wallet.schema.json#/$defs/balance",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/wallet-ledger.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/wallet.schema.json#/$defs/ledger",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/activity.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/activity.schema.json#/$defs/own",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/education-progress.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/progress",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/competition-lobby.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/competition.schema.json#/$defs/state",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/settlement-winner.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/competition.schema.json#/$defs/settlement",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/settlement-draw.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/competition.schema.json#/$defs/settlement",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/settlement-cancelled.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/competition.schema.json#/$defs/settlement",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/login-request.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/http.schema.json#/$defs/loginRequest",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/error.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/error.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/character-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/character-config.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/session.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/http.schema.json#/$defs/session",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/sessions.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/http.schema.json#/$defs/sessions",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/health.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/http.schema.json#/$defs/health",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/character-visual-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/character-visual-config.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/interaction-pending.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/interaction.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/interaction-result.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/interaction.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/ticket-response.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/http.schema.json#/$defs/ticketResponse",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/ticket-request.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/http.schema.json#/$defs/ticketRequest",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/login-response.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/http.schema.json#/$defs/loginResponse",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/progress.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/progress.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/me.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/http.schema.json#/$defs/me",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/render-config.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/render-config.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/create-session.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/http.schema.json#/$defs/createSession",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/http/bootstrap.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/http.schema.json#/$defs/bootstrap",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-0-0.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-1-0.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-2-0.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-3-0.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-4-0.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-5-0.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-6-0.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-7-0.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-8-0.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-9-0.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-0-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-1-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-2-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-3-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-4-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-5-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-6-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-7-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-8-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-9-1.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-0-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-1-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-2-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-3-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-4-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-5-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-6-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-7-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-8-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-9-2.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-0-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-1-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-2-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-3-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-4-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-5-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-6-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-7-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-8-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-9-3.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-0-4.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-1-4.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-2-4.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-3-4.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-4-4.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-5-4.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-6-4.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-7-4.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-8-4.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-9-4.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-0-5.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-1-5.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-2-5.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-3-5.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-4-5.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-5-5.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-6-5.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-7-5.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-8-5.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-9-5.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-0-6.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-1-6.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-2-6.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-3-6.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-4-6.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-5-6.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-6-6.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-7-6.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-8-6.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-9-6.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-0-7.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-1-7.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-2-7.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-3-7.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-4-7.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-5-7.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-6-7.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-7-7.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-8-7.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-9-7.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-0-8.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-1-8.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-2-8.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-3-8.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-4-8.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-5-8.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-6-8.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-7-8.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-8-8.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-9-8.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-0-9.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-1-9.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-2-9.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-3-9.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-4-9.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-5-9.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-6-9.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-7-9.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-8-9.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/resources/chunks/c-9-9.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/chunk.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/errors/SEAT_OCCUPIED.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/error.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/errors/ACTIVITY_CONFLICT.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/error.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/errors/INSUFFICIENT_AURA.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/error.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/errors/LOBBY_CHANGED.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/error.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/errors/NOT_READY.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/error.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/errors/MATCH_STARTED.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/error.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/errors/ANSWER_ALREADY_ACCEPTED.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/error.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/errors/QUESTION_CLOSED.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/error.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/errors/CONTENT_VERSION_UNAVAILABLE.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/error.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/client.hello.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/player.input.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/npc.interact.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/npc.cancel.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/world.ready.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/client.metrics.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/client.ping.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/lesson.open.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/lesson.close.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/quiz.start.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/quiz.answer.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/quiz.next.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/quiz.leave.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/competition.join.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/competition.configure.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/competition.ready.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/competition.start.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/competition.answer.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/competition.leave.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/quiz.resume.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/quiz.abandon.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/library.open.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/country.describe.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/server.welcome.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/world.interest.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/world.snapshot.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/config.changed.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/npc.accepted.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/npc.result.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/npc.cancelled.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/progress.updated.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/server.pong.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/server.error.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/session.closed.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/lesson.opened.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/activity.changed.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/quiz.state.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/education.progress.updated.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/competition.state.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/competition.answer.accepted.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/competition.round.closed.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/competition.settled.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/wallet.updated.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/country.description.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/ws/library.opened.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/server-message.schema.json",
+    "valid": true
+  },
+  {
+    "file": "fixtures/v2.0.0/invalid/key-leak.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/question",
+    "valid": false
+  },
+  {
+    "file": "fixtures/v2.0.0/invalid/wrong-answer-tag.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/answer.schema.json",
+    "valid": false
+  },
+  {
+    "file": "fixtures/v2.0.0/invalid/numeric-not-string.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/answer.schema.json",
+    "valid": false
+  },
+  {
+    "file": "fixtures/v2.0.0/invalid/too-long-country.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/knowledge.schema.json#/$defs/country",
+    "valid": false
+  },
+  {
+    "file": "fixtures/v2.0.0/invalid/old-message-version.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/client-message.schema.json",
+    "valid": false
+  },
+  {
+    "file": "fixtures/v2.0.0/http/quiz-attempts.json",
+    "schema": "https://discovery.invalid/protocol/2.0.0/education.schema.json#/$defs/attempts",
+    "valid": true
+  }
+]

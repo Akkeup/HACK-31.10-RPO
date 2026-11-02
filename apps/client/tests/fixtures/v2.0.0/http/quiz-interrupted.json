@@ -1,0 +1,20 @@
+{
+  "attemptId": "0000000a-1234-4234-8234-00000000000a",
+  "moduleId": "math-basics",
+  "contentVersion": "v1",
+  "npcId": "examiner-mathematics",
+  "seatId": "seat-math-basics",
+  "status": "interrupted",
+  "revision": 2,
+  "ordinal": 1,
+  "questionCount": 5,
+  "passScore": 4,
+  "score": 0,
+  "question": null,
+  "feedback": null,
+  "result": null,
+  "interruptionReason": "left",
+  "scoredQuestionCount": 5,
+  "suspendedAt": null,
+  "resumeState": null
+}

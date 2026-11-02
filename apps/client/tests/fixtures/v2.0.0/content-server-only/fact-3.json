@@ -1,0 +1,10 @@
+{
+  "factId": "demo-fact-3",
+  "moduleId": "flags-demo",
+  "contentVersion": "demo-v1",
+  "text": "Карточка нужна для проверки интерфейса и позже будет заменена реальными данными.",
+  "sourceIds": [
+    "demo-source"
+  ],
+  "status": "draft"
+}
